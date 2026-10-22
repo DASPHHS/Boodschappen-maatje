@@ -134,40 +134,65 @@ def scan_folder(identity,url):
     return rec,offers
 
 def ocr_folder_pages(folders,max_pages):
-    if max_pages<=0:return []
+    """Collect OCR evidence across all stores; diagnostics are returned separately."""
+    stats={"candidate_images":sum(len(f.get("images",[])) for f in folders),
+           "download_attempts":0,"download_success":0,"decode_success":0,
+           "ocr_success":0,"ocr_nonempty":0,"price_fragments":0,
+           "errors":[],"sample_text":[]}
+    if max_pages<=0:return [],stats
     try:
         import io,pytesseract
-        from PIL import Image
+        from PIL import Image,ImageOps,ImageEnhance
         pytesseract.get_tesseract_version()
     except Exception as exc:
-        print("OCR niet beschikbaar:",exc);return []
-    offers=[]; pages=0
-    for rec in folders:
-        for pageidx,url in enumerate(rec.get("images",[])[:2]):
-            if pages>=max_pages:return offers
-            data=fetch(url,binary=True)
-            if not data:continue
-            try:
-                image=Image.open(io.BytesIO(data))
-                if image.width<500:
-                    image=image.resize((image.width*3,image.height*3))
-                body=pytesseract.image_to_string(image.convert("RGB"),lang="nld+eng",config="--psm 11")
-            except Exception:continue
-            pages+=1
-            # OCR text is retained for review; regex price fragments are NOT asserted as product prices.
-            if not body.strip():continue
-            snippets=[]
-            for line in body.splitlines():
-                line=line.strip()
-                if len(line)>2 and parse_amount(line) is not None:
-                    snippets.append(line[:180])
-            for n,line in enumerate(snippets[:80]):
-                offers.append({"id":hashlib.sha1((rec["id"]+str(pageidx)+line+str(n)).encode()).hexdigest()[:20],
-                    "folder_id":rec["id"],"store":rec["store"],"text":line,
-                    "price":parse_amount(line),"url":rec["url"],"image_url":url,
-                    "page":pageidx+1,"source":"ocr_unverified","verified":False})
-    print(f"OCR: {pages} pagina-afbeeldingen verwerkt; {len(offers)} prijstekstfragmenten gevonden",flush=True)
-    return offers
+        stats["errors"].append("OCR niet beschikbaar: "+str(exc))
+        return [],stats
+    offers=[]
+    # Round-robin: distribute OCR across ALL discovered folders first.
+    queue=deque((rec,i,url) for i in range(2) for rec in folders
+                for url in rec.get("images",[])[i:i+1])
+    while queue and stats["ocr_success"]<max_pages:
+        rec,pageidx,url=queue.popleft()
+        stats["download_attempts"]+=1
+        data=fetch(url,binary=True)
+        if not data:
+            if len(stats["errors"])<12:stats["errors"].append("Afbeelding niet gedownload: "+url[:150])
+            continue
+        stats["download_success"]+=1
+        try:
+            img=Image.open(io.BytesIO(data))
+            img.load()
+            stats["decode_success"]+=1
+            if max(img.size)<350:
+                img=img.resize((img.width*3,img.height*3))
+            img=ImageOps.autocontrast(ImageOps.grayscale(img))
+            body=pytesseract.image_to_string(img,lang="nld+eng",config="--psm 11")
+            stats["ocr_success"]+=1
+        except Exception as exc:
+            if len(stats["errors"])<12:stats["errors"].append("OCR fout: "+str(exc)[:140])
+            continue
+        if not body.strip():continue
+        stats["ocr_nonempty"]+=1
+        if len(stats["sample_text"])<5:
+            stats["sample_text"].append({"store":rec["store"],"page":pageidx+1,
+                                         "excerpt":body[:250]})
+        # Prices on folders frequently omit the euro sign. These are tentative OCR
+        # fragments, never asserted as a product/price pair.
+        for n,line in enumerate(body.splitlines()):
+            line=line.strip()
+            if not 2<len(line)<190:continue
+            value=parse_amount(line)
+            if value is None:
+                m=re.search(r"(?<!\\d)(\\d{1,3}[,.]\\d{2})(?!\\d)",line)
+                if m:value=float(m.group(1).replace(",","."))
+            if value is None or not 0.05<=value<=999.99:continue
+            offers.append({"id":hashlib.sha1((rec["id"]+str(pageidx)+line+str(n)).encode()).hexdigest()[:20],
+                "folder_id":rec["id"],"store":rec["store"],"text":line,
+                "price":value,"url":rec["url"],"image_url":url,
+                "page":pageidx+1,"source":"ocr_unverified","verified":False})
+    stats["price_fragments"]=len(offers)
+    print("OCR diagnostics:",json.dumps(stats,ensure_ascii=False),flush=True)
+    return offers,stats
 
 RECIPES=[
  ("Harissa-kipwraps",["kip","wrap","paprika","spinazie"],"Kip kruiden met harissa, bakken en met groenten in volkoren wraps serveren."),
@@ -234,13 +259,15 @@ def main():
         if ident not in {r["id"] for r in current}:current.append(rec)
     # Retain past offers with deduplication, capped for GitHub's repository limits.
     offermap={o["id"]:o for o in prior.get("offers",[])}
-    for item in offers+ocr_folder_pages(current[:len(found)],args.ocr_pages):offermap[item["id"]]=item
+    ocr_offers,ocr_stats=ocr_folder_pages(current[:len(found)],args.ocr_pages)
+    for item in offers+ocr_offers:offermap[item["id"]]=item
     alloffers=list(offermap.values())[-30000:]
     now=datetime.now(timezone.utc).isoformat()
     report={"scanned_at":now,"folders":current,"offers":alloffers,
         "recipes":recipe_suggestions(alloffers),"stats":{**stats,"folder_links_found":len(found),
         "folders_accessible":len(current)-len(existing.keys()-found.keys()),
-        "offer_entries":len(alloffers),"failed_folders":len(errors)},
+        "offer_entries":len(alloffers),"new_offer_entries":len(offers)+len(ocr_offers),
+        "failed_folders":len(errors),"ocr":ocr_stats},
         "errors":errors[:50],"quality_notice":"Ongecontroleerde bron- en OCR-extractie; vergelijkbare consumentenprijzen niet gegarandeerd."}
     if not found:
         print("FOUT: Geen folderlinks ontdekt. Controleer robots.txt, sitewijzigingen en toegang.")
@@ -250,5 +277,7 @@ def main():
         raise SystemExit(2)
     render(report)
     print(json.dumps(report["stats"],ensure_ascii=False))
+    if not offers and not ocr_offers:
+        raise SystemExit("Geen nieuwe prijsfragmenten gevonden; scan als fout gemarkeerd. Zie OCR diagnostics.")
 
 if __name__=="__main__":main()
