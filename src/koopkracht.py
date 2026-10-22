@@ -269,6 +269,12 @@ def main():
         "offer_entries":len(alloffers),"new_offer_entries":len(offers)+len(ocr_offers),
         "failed_folders":len(errors),"ocr":ocr_stats},
         "errors":errors[:50],"quality_notice":"Ongecontroleerde bron- en OCR-extractie; vergelijkbare consumentenprijzen niet gegarandeerd."}
+    watchlist_file=ROOT/"config"/"personal-watchlist.json"
+    if watchlist_file.exists():
+        try:
+            report["personal_watchlist"]=json.loads(watchlist_file.read_text(encoding="utf-8"))
+        except (ValueError,OSError) as exc:
+            report["watchlist_error"]=str(exc)
     if not found:
         print("FOUT: Geen folderlinks ontdekt. Controleer robots.txt, sitewijzigingen en toegang.")
         if prior:
