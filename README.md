@@ -1,3 +1,18 @@
+# Koopkracht 1.0: aanbiedingen via PrijsProfeet
+
+**Actieve productiescan:** `src/prijsprofeet_v1.py`. De dagelijkse GitHub Actions-workflow gebruikt nu de openbare PrijsProfeet-API in plaats van de niet-functionerende AlleFolders-afbeeldingenscan.
+
+- **Gratis basis:** aanbiedingen van Albert Heijn, Jumbo, Lidl, Aldi, Dirk en andere ondersteunde ketens.
+- **Geen sleutel vereist:** publieke endpoints, optioneel `PRIJS_PROFEET_KEY` als GitHub Actions-secret voor hogere limieten.
+- **Uitvoer:** een vernieuwd dashboard met acties, kortingspercentages en geldigheidsdatums waar beschikbaar.
+- **Geen volledige mandprijs:** normale schapprijzen, uitgebreide matching en historische prijsreeksen vallen buiten de gratis laag.
+- **Bron:** [PrijsProfeet](https://www.prijsprofeet.nl). Gebruik van de API is onderworpen aan de [voorwaarden](https://www.prijsprofeet.nl/api-voorwaarden); gebruik de data niet om een concurrerende ruwe kopiedatabase op te bouwen.
+- **Test:** Actions → Dagelijkse Koopkracht Scan → Run workflow. De eerste live API-run moet aantonen dat alle drie prioriteitsketens data leveren. Bij onvoldoende data wordt de workflow rood in plaats van een leeg succes te melden.
+
+De oude AlleFolders-parser blijft als experimentele module in de repository maar maakt geen deel meer uit van de dagelijkse productiescan.
+
+---
+
 # Koopkracht: dagelijkse folders, aanbiedingen en recepten
 
 Open-source koopjesradar voor Nederlandse reclamefolders. Gebruikt een automatische GitHub Actions-scan en publiceert een statisch doorzoekbaar dashboard.
