@@ -17,6 +17,10 @@ AMOUNT_RX=re.compile(r"(?<!\d)(\d{1,4}[,.]\d{2})\s*€")
 STORE_PATTERN=re.compile(r"/(?:[a-z0-9-]+-aanbiedingen|winkels(?:/[^/?#]+)?)/?",re.I)
 SESSION=requests.Session(); SESSION.headers.update(HEADERS)
 ROBOTS={}
+FETCH_FAILURES={}
+
+def record_fetch_failure(reason):
+    FETCH_FAILURES[reason]=FETCH_FAILURES.get(reason,0)+1
 
 def safe_url(url):
     try:
@@ -48,17 +52,26 @@ def permitted(url):
     return ROBOTS[host].can_fetch(HEADERS["User-Agent"],url)
 
 def fetch(url, binary=False):
-    if not permitted(url): return None
+    if not safe_url(url):
+        record_fetch_failure("url_not_allowlisted")
+        return None
+    if not permitted(url):
+        record_fetch_failure("robots_disallowed_or_unavailable:"+str(urllib.parse.urlparse(url).hostname))
+        return None
     for attempt in range(3):
         try:
             r=SESSION.get(url,timeout=int(os.getenv("SCAN_TIMEOUT","15")))
-            if r.status_code in (403,404): return None
+            if r.status_code in (403,404):
+                record_fetch_failure("http_"+str(r.status_code)+":"+str(urllib.parse.urlparse(url).hostname))
+                return None
             if r.status_code==429 or r.status_code>=500:
+                record_fetch_failure("http_"+str(r.status_code)+":"+str(urllib.parse.urlparse(url).hostname))
                 time.sleep(2*(attempt+1)); continue
             r.raise_for_status()
             time.sleep(float(os.getenv("REQUEST_DELAY","0.5")))
             return r.content if binary else r.text
-        except requests.RequestException:
+        except requests.RequestException as exc:
+            record_fetch_failure("network_"+type(exc).__name__+":"+str(urllib.parse.urlparse(url).hostname))
             time.sleep(attempt+1)
     return None
 
@@ -191,6 +204,7 @@ def ocr_folder_pages(folders,max_pages):
                 "price":value,"url":rec["url"],"image_url":url,
                 "page":pageidx+1,"source":"ocr_unverified","verified":False})
     stats["price_fragments"]=len(offers)
+    stats["fetch_failures"]=dict(FETCH_FAILURES)
     print("OCR diagnostics:",json.dumps(stats,ensure_ascii=False),flush=True)
     return offers,stats
 
