@@ -17,15 +17,19 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-nld
+      - name: Controleer Python syntax en tests
+        run: |
+          python -m compileall -q src tests
+          python -m unittest discover -s tests -v
       - name: Scan openbare folders en genereer dashboard
+        id: scan
+        continue-on-error: true
         env:
           MAX_STORES: '180'
           MAX_FOLDERS: '450'
           OCR_PAGES: '60'
           REQUEST_DELAY: '0.5'
         run: python src/koopkracht.py
-      - name: Tests
-        run: python -m unittest discover -s tests -v
       - name: Commit bijgewerkte resultaten
         run: |
           git config user.name "koopkracht-bot"
@@ -35,7 +39,11 @@ jobs:
             git commit -m "Update folders en dashboard"
             git push
           fi
+      - name: Markeer onvoldoende extractie als fout
+        if: steps.scan.outcome == 'failure'
+        run: exit 1
       - name: Verzend overzicht wanneer geconfigureerd
+        if: steps.scan.outcome == 'success'
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
