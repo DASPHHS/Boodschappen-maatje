@@ -112,8 +112,9 @@ def scan_folder(identity,url):
     for match in re.finditer(r"https://cdn\.jafolders\.com/[^\s\"'<>\\]+",raw):
         link=html.unescape(match.group(0))
         if link not in seen: seen.add(link);images.append(link)
-    title=(soup.title.get_text(" ",strip=True) if soup.title else identity.split("/")[0])
     store=identity.split("/")[0].replace("-aanbiedingen","").replace("-"," ").title()
+    raw_title=soup.title.get_text(" ",strip=True) if soup.title else ""
+    title=(raw_title if raw_title and "Actuele folders en aanbiedingen deze week | AlleFolders" not in raw_title else f"{store} folder")
     today=datetime.now(timezone.utc).date().isoformat()
     rec={"id":identity,"store":store,"title":title,"url":url,"images":images[:200],
          "page_count":len(images[:200]),"last_seen":today}
