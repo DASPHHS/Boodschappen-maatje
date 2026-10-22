@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Koopkracht | Jouw aanbiedingenradar</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,sans-serif;background:#f5f7fb;color:#17233b}*{box-sizing:border-box}body{margin:0}header{background:#122846;color:white;padding:32px max(24px,calc((100vw - 1200px)/2))}h1{font-size:2.3rem;letter-spacing:-.04em;margin:0 0 6px}header p{opacity:.82}main{max-width:1200px;padding:24px;margin:auto}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin-bottom:22px}.metric,.panel{background:white;border:1px solid #e3e8f0;border-radius:14px;padding:18px;box-shadow:0 2px 8px #12284608}.num{font-size:1.8rem;font-weight:800}.muted{color:#67758a;font-size:.91rem}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}input,select,button{padding:12px;border:1px solid #cfd8e6;border-radius:10px;font:inherit}input{min-width:240px;flex:1}button,.tabs button{cursor:pointer;background:#fff}.tabs{display:flex;gap:8px;overflow-x:auto}.tabs button.active{background:#173d71;color:white}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.item{border:1px solid #e5eaf1;background:white;border-radius:14px;padding:16px;overflow-wrap:anywhere}.item h3{margin:0 0 8px}.item a{color:#1459aa}.pill{display:inline-block;background:#ecf3ff;color:#1a487b;border-radius:40px;padding:4px 9px;font-size:.77rem;margin-bottom:8px}section{margin-top:22px}.note{border-left:4px solid #d79d35;padding:10px 16px;background:#fff7e8;color:#624919;border-radius:4px}.empty{padding:32px;text-align:center;color:#67758a}.small{font-size:.8rem}details{margin-top:12px}</style></head><body>
+<header><h1>Koopkracht</h1><p>Alle folders, ontdekte aanbiedingen en maaltijdinspiratie op één plek.</p></header><main>
+<div class="metrics"><div class="metric"><div class="num" id="foldercount">0</div><div class="muted">Geregistreerde folders</div></div><div class="metric"><div class="num" id="storecount">0</div><div class="muted">Winkels</div></div><div class="metric"><div class="num" id="offercount">0</div><div class="muted">Prijsfragmenten</div></div><div class="metric"><div class="num" id="stamp">-</div><div class="muted">Laatste scan (UTC)</div></div></div>
+<div class="note"><strong>Datakwaliteit:</strong> Folders en gevonden prijsfragmenten zijn broninformatie, geen gecontroleerde prijsvergelijking. OCR kan woorden en bedragen verkeerd combineren. Receptprijzen worden uitsluitend getoond als ze volledig onderbouwd zijn.</div>
+<div class="toolbar"><input id="search" placeholder="Zoek winkel, product, aanbieding, gerecht..." aria-label="Zoeken"><select id="store"><option value="">Alle winkels</option></select><select id="sort"><option value="name">Alfabetisch</option><option value="recent">Recent eerst</option><option value="price">Goedkoopste fragmenten eerst</option></select></div>
+<div class="tabs"><button class="active" data-tab="folders">Folders</button><button data-tab="offers">Aanbiedingen</button><button data-tab="recipes">Recepten (15)</button><button data-tab="status">Scanstatus</button></div>
+<section id="results" class="grid" aria-live="polite"></section>
+</main><script id="dataset" type="application/json">__DATA__</script><script>
+const d=JSON.parse(document.querySelector("#dataset").textContent);
+const $=s=>document.querySelector(s), esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeLink=s=>{try{const u=new URL(s);return u.protocol==="https:"?u.href:"#"}catch{return "#"}};
+let tab="folders";
+$("#foldercount").textContent=d.folders.length.toLocaleString("nl-NL");
+$("#storecount").textContent=new Set(d.folders.map(x=>x.store)).size;
+$("#offercount").textContent=d.offers.length.toLocaleString("nl-NL");
+$("#stamp").textContent=d.scanned_at?.slice(0,10)||"nog niet";
+for(const v of [...new Set(d.folders.map(x=>x.store))].sort())$("#store").add(new Option(v,v));
+function render(){
+const q=$("#search").value.toLowerCase().trim(),store=$("#store").value,sort=$("#sort").value;
+const match=x=>(!store||x.store===store)&&(!q||JSON.stringify(x).toLowerCase().includes(q));
+let rows=tab==="folders"?d.folders.filter(match):tab==="offers"?d.offers.filter(match):tab==="recipes"?d.recipes.filter(x=>!q||JSON.stringify(x).toLowerCase().includes(q)):[];
+if(sort==="recent")rows.sort((a,b)=>String(b.last_seen||"").localeCompare(String(a.last_seen||"")));
+if(sort==="name")rows.sort((a,b)=>String(a.store||a.name||"").localeCompare(String(b.store||b.name||""),"nl"));
+if(sort==="price"&&tab==="offers")rows.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
+if(tab==="status"){
+ $("#results").innerHTML='<article class="panel"><h2>Scanresultaten</h2><pre style="white-space:pre-wrap;overflow-wrap:anywhere">'+esc(JSON.stringify(d.stats,null,2))+'</pre><h3>Eventuele fouten</h3><p>'+esc((d.errors||[]).join("\n")||"Geen opgeslagen foutmeldingen")+'</p><p class="muted">'+esc(d.quality_notice)+'</p></article>';return;
+}
+if(tab==="folders")$("#results").innerHTML=rows.slice(0,2000).map(x=>'<article class="item"><span class="pill">'+esc(x.store)+'</span><h3>'+esc(x.title)+'</h3><p class="muted">'+esc(x.page_count)+' geregistreerde pagina-afbeeldingen · '+esc(x.last_seen)+'</p><a href="'+esc(safeLink(x.url))+'" target="_blank" rel="noopener">Bekijk folder ↗</a></article>').join("");
+if(tab==="offers")$("#results").innerHTML=rows.slice(0,2500).map(x=>'<article class="item"><span class="pill">'+esc(x.store)+'</span><h3>'+esc(x.text.slice(0,120))+'</h3><p><strong>€ '+esc(Number(x.price).toFixed(2).replace(".",","))+'</strong> <span class="muted">('+esc(x.source)+', niet gecontroleerd)</span></p><a href="'+esc(safeLink(x.url))+'" target="_blank" rel="noopener">Bekijk bron ↗</a></article>').join("");
+if(tab==="recipes")$("#results").innerHTML=rows.map(x=>'<article class="item"><span class="pill">'+esc(x.matched_count)+' trefwoorden in aanbiedingen</span><h3>'+esc(x.name)+'</h3><p class="muted">'+esc(x.ingredients.join(", "))+'</p><p>'+esc(x.method)+'</p><p class="small muted">'+esc(x.cost_note)+'</p></article>').join("");
+if(!$("#results").innerHTML)$("#results").innerHTML='<div class="empty">Geen resultaten voor deze selectie.</div>';
+}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));tab=b.dataset.tab;render()}));
+["search","store","sort"].forEach(id=>$("#"+id).addEventListener(id==="search"?"input":"change",render));render();
+</script></body></html>
