@@ -3,7 +3,7 @@ sys.path.insert(0,"src")
 from koopkracht import folder_identity, parse_amount, safe_url, normalise_name
 class TestKoopkracht(unittest.TestCase):
     def test_folder_identity(self):
-        self.assertEqual(folder_identity("https://www.allefolders.nl/jumbo-aanbiedingen/abc/0"), "jumbo-aanbiedingen/abc")
+        self.assertEqual(folder_identity("https://www.allefolders.nl/jumbo-aanbiedingen/fa23cd05-6e77-4336-88a2-5f35f970f408/0"), "jumbo-aanbiedingen/fa23cd05-6e77-4336-88a2-5f35f970f408")
     def test_amount(self):
         self.assertEqual(parse_amount("€ 2,49"),2.49)
         self.assertIsNone(parse_amount("geen prijs"))
