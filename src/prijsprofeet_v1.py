@@ -6,7 +6,8 @@ import requests
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"src"))
-from koopkracht import render, recipe_suggestions
+from koopkracht import render
+from meal_planner import plan_one_store
 
 BASE="https://www.prijsprofeet.nl/api/v1"
 RETAILERS=["albert_heijn","jumbo","lidl","aldi","dirk","plus","hoogvliet","vomar","dekamarkt","ekoplaza"]
@@ -102,7 +103,7 @@ def main():
         try:old=json.loads(path.read_text())
         except (OSError,ValueError):pass
     report={"scanned_at":now,"folders":old.get("folders",[]),
-            "offers":offers,"recipes":recipe_suggestions(offers),
+            "offers":offers,"recipes":plan_one_store(offers),
             "stats":{"source":"PrijsProfeet openbare API","offer_entries":len(offers),
                      "retailers_with_offers":len(counts),"per_store":counts,
                      "failed_retailers":failures,"status":"live_api"},
