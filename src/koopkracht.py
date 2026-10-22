@@ -239,11 +239,13 @@ def main():
         "folders_accessible":len(current)-len(existing.keys()-found.keys()),
         "offer_entries":len(alloffers),"failed_folders":len(errors)},
         "errors":errors[:50],"quality_notice":"Ongecontroleerde bron- en OCR-extractie; vergelijkbare consumentenprijzen niet gegarandeerd."}
-    if not found and prior:
-        print("Geen bronnen gevonden: bestaande resultaten behouden en status gemarkeerd.")
-        prior["last_failed_scan"]=now
-        render(prior)
-    else:render(report)
+    if not found:
+        print("FOUT: Geen folderlinks ontdekt. Controleer robots.txt, sitewijzigingen en toegang.")
+        if prior:
+            prior["last_failed_scan"]=now
+            render(prior)
+        raise SystemExit(2)
+    render(report)
     print(json.dumps(report["stats"],ensure_ascii=False))
 
 if __name__=="__main__":main()
