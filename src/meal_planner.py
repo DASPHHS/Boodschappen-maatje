@@ -69,7 +69,10 @@ def plan_one_store(offers, day=None):
                 found.append({"ingredient":ingredient,"product":best["text"],"price":best["price"],
                               "unit_price":best.get("unit_price"),"discount_percentage":best.get("savings_percentage"),
                               "url":best.get("url"),"valid_until":best.get("valid_until")})
-            if not found:continue
+            # Only show recipes genuinely built on multiple confirmed action products.
+            # A single matched ingredient is NOT an action-based recipe.
+            if len(found)<2 or len(found)*2<len(ingredients):
+                continue
             plans.append({"name":title,"store":store,"servings":4,"ingredients":ingredients,
                           "method":method,"matches":found,"missing":missing,
                           "coverage":round(len(found)/len(ingredients)*100),
