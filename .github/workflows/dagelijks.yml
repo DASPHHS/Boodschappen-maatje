@@ -16,20 +16,16 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-nld
       - name: Controleer Python syntax en tests
         run: |
           python -m compileall -q src tests
           python -m unittest discover -s tests -v
-      - name: Scan openbare folders en genereer dashboard
+      - name: Haal actuele aanbiedingen op via PrijsProfeet API
         id: scan
         continue-on-error: true
         env:
-          MAX_STORES: '180'
-          MAX_FOLDERS: '450'
-          OCR_PAGES: '60'
-          REQUEST_DELAY: '0.5'
-        run: python src/koopkracht.py
+          PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
+        run: python src/prijsprofeet_v1.py
       - name: Commit bijgewerkte resultaten
         run: |
           git config user.name "koopkracht-bot"
@@ -39,7 +35,7 @@ jobs:
             git commit -m "Update folders en dashboard"
             git push
           fi
-      - name: Markeer onvoldoende extractie als fout
+      - name: Markeer ontbrekende supermarktgegevens als fout
         if: steps.scan.outcome == 'failure'
         run: exit 1
       - name: Verzend overzicht wanneer geconfigureerd
