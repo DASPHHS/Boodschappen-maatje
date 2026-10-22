@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "focus": {
+    "groceries": [
+      "skyr naturel 0% vet hoog eiwit",
+      "knijpkwark minimaal 20 g eiwit per zakje",
+      "magere kwark",
+      "magere yoghurt",
+      "volle melk",
+      "kipfilet",
+      "kipdijfilet",
+      "zalm",
+      "makreel",
+      "broccoli",
+      "spinazie",
+      "volkorenrijst"
+    ],
+    "comparisonStores": [
+      "Lidl",
+      "Albert Heijn",
+      "Jumbo",
+      "Picnic"
+    ],
+    "mealPlan": {
+      "servingsPerRecipe": 4,
+      "recipesToChooseFrom": 10,
+      "maxTotalMinutes": 45,
+      "maxActiveMinutes": 20
+    },
+    "outdoor": [
+      {
+        "brand": "Arc'teryx",
+        "category": "kleding",
+        "size": "XL",
+        "alert": "alleen bevestigde voorraad plus aantoonbare prijsbesparing"
+      },
+      {
+        "brand": "Salomon",
+        "category": "schoenen",
+        "eu_size": "47",
+        "size_equivalents": "alleen indien expliciet bevestigd door maattabel",
+        "alert": "alleen bevestigde voorraad plus aantoonbare prijsbesparing"
+      }
+    ]
+  },
+  "verification": {
+    "fullBasketCostRequired": true,
+    "includeWholePackages": true,
+    "includeDelivery": true,
+    "neverInferUnverifiedPrices": true,
+    "notifyOnlyVerifiedExceptionalOutdoorDeals": true
+  }
+}
