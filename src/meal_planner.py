@@ -25,7 +25,7 @@ RECIPES=[
  ("Kruidige linzensoep",["linzen","wortel","tomaat"],"Kook linzen met groenten en specerijen.")
 ]
 ALIASES={
- "kip":("kip","kipfilet","kipdij"),"wrap":("wrap","tortilla"),
+ "kip":("kip","kipfilet","kipdij"),"wrap":("wrap","wraps","tortilla"),
  "ei":("eieren","ei "," eieren"),"tomaat":("tomaat","tomaten"),
  "bonen":("bonen","kidney","black beans"),"pasta":("pasta","penne","fusilli"),
  "rijst":("rijst","basmati"),"kerrie":("kerrie","curry"),
