@@ -143,14 +143,13 @@ def ocr_folder_pages(folders,max_pages):
         print("OCR niet beschikbaar:",exc);return []
     offers=[]; pages=0
     for rec in folders:
-        for pageidx,url in enumerate(rec.get("images",[])):
+        for pageidx,url in enumerate(rec.get("images",[])[:2]):
             if pages>=max_pages:return offers
             data=fetch(url,binary=True)
             if not data:continue
             try:
                 image=Image.open(io.BytesIO(data))
-                if image.width<500:continue
-                body=pytesseract.image_to_string(image,lang="nld+eng",config="--psm 11")
+                if image.width<500:\n                    image=image.resize((image.width*3,image.height*3))\n                body=pytesseract.image_to_string(image.convert("RGB"),lang="nld+eng",config="--psm 11")
             except Exception:continue
             pages+=1
             # OCR text is retained for review; regex price fragments are NOT asserted as product prices.
@@ -165,9 +164,7 @@ def ocr_folder_pages(folders,max_pages):
                     "folder_id":rec["id"],"store":rec["store"],"text":line,
                     "price":parse_amount(line),"url":rec["url"],"image_url":url,
                     "page":pageidx+1,"source":"ocr_unverified","verified":False})
-    return offers
-
-RECIPES=[
+    print(f"OCR: {pages} pagina-afbeeldingen verwerkt; {len(offers)} prijstekstfragmenten gevonden",flush=True)\n    return offers\n\nRECIPES=[
  ("Harissa-kipwraps",["kip","wrap","paprika","spinazie"],"Kip kruiden met harissa, bakken en met groenten in volkoren wraps serveren."),
  ("Groenterijke nasi met ei",["rijst","ei","prei","wortel"],"Rijst bereiden, groenten wokken en ei toevoegen."),
  ("Kip met geroosterde groenten",["kip","courgette","paprika"],"Kip en groenten kruiden en roosteren in de oven."),
