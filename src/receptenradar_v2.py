@@ -240,7 +240,7 @@ def total_for(n,unit_price,promo=None):
     # Geen expliciet leesbare bundel = prijs slechts overnemen wanneer aanbieding
     # NIET via onbetrouwbare 1+1- of meer-voor-actiecondities loopt.
     ptype=normalize(promo.get("promotion_type",""))
-    if any(x in ptype for x in ("1 1","2 1","3 2","gratis","multi","bundle","voor")):
+    if any(x in ptype for x in ("1 1","2 1","3 2","gratis","multi","bundle")) or re.search(r"\b\d+\s+voor\b",ptype):
         return round(n*unit_price,2),n
     return round(n*promo["price"],2),n
 
