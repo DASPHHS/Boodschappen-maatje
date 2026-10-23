@@ -10,12 +10,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 @media(max-width:850px){.layout{grid-template-columns:1fr}.cartpanel{position:static}.eyebrow{margin-top:26px}}@media(max-width:550px){.cards{grid-template-columns:1fr}.wrap{padding:0 12px}.mainpanel,.cartpanel{padding:15px}h1{letter-spacing:-1.5px}header{padding-bottom:52px}.top a{font-size:11px}}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">koop<span>kracht</span> / recepten</div><a href="../">← Koopjesdashboard</a></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
-<p>Tot vijftien recepten per supermarkt met echte actieproducten, voor vier porties. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
+<p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek kip, curry, zalm, wraps…" type="search"><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Beste acties (top 15)</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div id="deals" hidden></div>
 </section><aside class="panel cartpanel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
@@ -40,12 +40,21 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
-  const rs=storeData().filter(r=>(r.title+" "+r.category+" "+r.ingredients.map(x=>x.label).join(" ")).toLocaleLowerCase("nl").includes(q));
+  let rs=storeData().filter(r=>(r.title+" "+r.category+" "+r.ingredients.map(x=>x.label).join(" ")).toLocaleLowerCase("nl").includes(q));
+  const cat=$("category").value;
+  if(cat==="meat")rs=rs.filter(r=>r.category==="Kip"||r.category==="Vlees");
+  if(cat==="fish")rs=rs.filter(r=>r.category==="Vis");
+  if(cat==="vega")rs=rs.filter(r=>r.category==="Vegetarisch");
+  const selection=$("selection").value;
+  if(selection==="two")rs=rs.filter(r=>r.sale_count>=2);
+  if(selection==="promos")rs=rs.filter(r=>r.sale_count>0);
   const sort=$("sort").value;
   if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
   if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
   if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
   if(sort==="deals")rs.sort((a,b)=>b.sale_count-a.sale_count||(a.per_serving??1e9)-(b.per_serving??1e9));
+  if(selection==="promos")rs=rs.slice(0,15);
+  $("store-status").textContent=rs.length+" getoonde recepten · "+state.data.counts.promotions[state.store]+" gevonden acties · "+state.data.counts.ordinary[state.store]+" gewone prijzen";
   $("recipes").innerHTML=rs.length?rs.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
     <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.sale_count} actie-ingrediënten</span></div>
     <div class="recipe-body"><h3>${esc(r.title)}</h3>
@@ -96,7 +105,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function render(){
   document.querySelectorAll("[data-store]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.store===state.store)));
   $("store-status").textContent=`${state.data.counts.ordinary[state.store]||0} gewone productprijzen · ${state.data.counts.promotions[state.store]||0} aanbiedingen`;
-  $("title").textContent=state.mode==="recipes"?storeData().length+" recepten met actieproducten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
+  $("title").textContent=state.mode==="recipes"?"Recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
   $("switch").textContent=state.mode==="recipes"?"Bekijk alle deals":"Terug naar recepten";
   $("sort").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
@@ -104,6 +113,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(state.mode==="deals")renderDeals();else renderRecipes();
   renderCart();
  }
+ $("category").addEventListener("change",()=>render());
+ $("selection").addEventListener("change",()=>render());
  document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;render()}));
  $("search").addEventListener("input",()=>render());
  $("sort").addEventListener("change",()=>render());
