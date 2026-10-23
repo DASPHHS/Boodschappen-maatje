@@ -38,6 +38,11 @@ class OfferDrivenTest(unittest.TestCase):
   recipes=meal_candidates(items)
   self.assertTrue(any({"kipgehakt","spinazie","champignons","pasta"}.issubset(
       {key for key,_,_ in recipe[3]}) for recipe in recipes))
+ def test_royale_hoeveelheid_eiwitcomponent(self):
+  items=[sale("kipfilet"),sale("broccoli")]
+  meals=meal_candidates(items)
+  self.assertTrue(any(
+      ("kipfilet",800,"g") in recipe[3] for recipe in meals))
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
