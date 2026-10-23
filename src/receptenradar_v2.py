@@ -305,6 +305,31 @@ def offer_price(ing,amount,unit,offers):
              "source":"PrijsProfeet","url":o["url"],**product_context(o,ing)}))
     return [x[1] for x in sorted(options,key=lambda x:x[0])]
 
+def alternative_offers(ingredient,amount,unit,offers,selected,limit=3):
+    """Echte kortingsopties naast het goedkoopste gekozen product.
+
+    De opties beïnvloeden de daadwerkelijke kassaprijs niet en worden niet
+    onterecht meegerekend als gebruikte actie.
+    """
+    choices=offer_price(ingredient,amount,unit,offers)
+    alternatives=[]
+    for candidate in choices:
+        if selected and candidate["sale"] and normalize(candidate["product"])==normalize(selected["product"]):
+            continue
+        # Prevent duplicate presentations for the same product/pack.
+        if any(normalize(a["product"])==normalize(candidate["product"]) for a in alternatives):
+            continue
+        alternatives.append({
+            "product":candidate["product"],"cash_price":candidate["cash_price"],
+            "packages":candidate["packages"],"package":candidate["package"],
+            "valid_until":candidate["action"].get("valid_until"),
+            "url":candidate["url"],
+            "more_expensive_than_selected":bool(
+                selected and candidate["cash_price"]>selected["cash_price"]+.001)
+        })
+        if len(alternatives)>=limit:break
+    return alternatives
+
 def product_context(product,ingredient):
     """Kenmerken van aangeboden alternatieven; geen onbewezen voedingsclaim."""
     name=normalize(product.get("name") or product.get("norm") or "")
@@ -494,6 +519,17 @@ def make_recipes(shelves,offers):
                     discounts+=bool(line["sale"])
                 else:
                     missing.append({"label":ING[key][0],"amount":amount,"unit":unit})
+            # Een kortingsartikel kan bestaan zonder dat het de goedkoopste
+            # kassa-optie is. Maak deze optie zichtbaar zonder de kassaprijs
+            # of het aantal gebruikte acties te vervalsen.
+            for line in lines:
+                key=line["key"]
+                matching=[(k,a,u) for k,a,u in ings if k==key]
+                if matching:
+                    _,amount,unit=matching[0]
+                    line["offer_alternatives"]=alternative_offers(
+                        key,amount,unit,offers[store],line)
+            alternative_count=sum(bool(l.get("offer_alternatives")) for l in lines)
             complete=len(missing)==0 and bool(lines)
             checkout=round(sum(x["cash_price"] for x in lines),2)
             consumed=round(sum(x["used_price"] for x in lines),2)
@@ -529,6 +565,7 @@ def make_recipes(shelves,offers):
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
+              "other_offer_count":alternative_count,
               "covered_count":len(lines),"complete":complete,
               "checkout":checkout if complete else None,"known_subtotal":checkout,
               "used_total":consumed if complete else None,
@@ -668,6 +705,10 @@ def main():
     tmp.replace(OUT)
     print(json.dumps({"shelf":counts,"offers":result["counts"]["promotions"],
                       "recipes_with_offers":{s:sum(r["sale_count"]>0 for r in result["recipes"][s]) for s in STORES},
+                      "breakfast_offer_details":{s:[{"title":r["title"],
+                       "used":r["sale_count"],"other":r.get("other_offer_count",0)}
+                       for r in result["recipes"][s] if r["meal_type"]=="Ontbijt"]
+                       for s in STORES},
                       "matched_offer_lines":{s:sum(r["sale_count"] for r in result["recipes"][s]) for s in STORES},
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
                       "errors":errors,
