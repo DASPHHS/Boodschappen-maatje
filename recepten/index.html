@@ -36,7 +36,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
  }
  function lineHtml(l){
-  return `<div class="line"><div>${esc(l.label)} <span class="sub">(${l.required} ${esc(l.unit)})</span><div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.packages} verpakking(en) · ${esc(l.source)}${l.sale?` <span class="pill">ACTIE</span>`:""}</div></div><strong>${euro(l.cash_price)}</strong></div>`;
+  return `<div class="line"><div>${esc(l.label)} <span class="sub">(${l.required} ${esc(l.unit)})</span><div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.packages} verpakking(en) · ${esc(l.source)}${l.sale?` <span class="pill">ACTIE</span>`:""}${l.frozen?` <span class="pill">DIEPVRIES</span>`:""}${l.flavoured_dairy?` <span class="pill">SMAAKVARIANT · CHECK ETIKET</span>`:""}</div></div><strong>${euro(l.cash_price)}</strong></div>`;
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
@@ -110,7 +110,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <div class="actions"><button class="btn ${isSelected(r)?"outline":""}" data-add="${esc(r.id)}">${isSelected(r)?"✓ Geselecteerd":"+ Voeg toe"}</button></div>
     <details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
     ${(r.missing||[]).map(x=>`<div class="line"><span>${esc(x.label)} (${x.amount} ${x.unit})</span><strong>Prijs onbekend</strong></div>`).join("")}
-    <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief olie, extra sauzen en andere niet-vermelde toevoegingen. ${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
+    <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief olie, extra sauzen en andere niet-vermelde toevoegingen. ${r.nutrition?.product_nutrition_unverified?.length?"Let op: voor gearomatiseerde zuivel zijn suiker, eiwitten en kcal nog niet gecontroleerd op het productetiket. ":""}${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
     </div></article>`).join(""):"<div class='notice'>Geen passende recepten voor deze zoekopdracht.</div>";
  }
  function renderDeals(){
