@@ -371,7 +371,7 @@ KCAL_PER_100ML={"kokosmelk":175,"melk":47}
 PROTEIN_PER_100ML={"melk":3.5}
 MIN_PROTEIN_PER_SERVING=30.0
 
-def nutrition_profile(ings):
+def nutrition_profile(ings,meal_type="Avondeten"):
     """Conservatieve receptschatting voor vier porties, géén etiketwaardes.
 
     Onbekende ingrediënten tellen niet mee. "Eiwitrijk" is hier een
@@ -423,13 +423,26 @@ def nutrition_profile(ings):
         for key,qty,unit in ings if key in vegetables)
     vegetable_g_per_serving=round(vegetable_g/4)
     vegetables_present=vegetable_g_per_serving>=250
-    priority=protein and lowish_carb and vegetables_present
+    # Ontbijt: eiwitrijke zuivel/havermout/fruit, zonder groente-eis.
+    # Lunch: royaal met groente, maar een iets lichtere portie toegestaan.
+    if meal_type=="Ontbijt":
+        balanced_breakfast=(amounts.get("kwark",0)>=1000 and
+                            (amounts.get("havermout",0)>=120 or
+                             amounts.get("banaan",0)>=300 or
+                             amounts.get("blauwe_bessen",0)>=250 or
+                             amounts.get("aardbeien",0)>=300))
+        priority=protein and balanced_breakfast
+    elif meal_type=="Lunch":
+        priority=protein and vegetable_g_per_serving>=180 and lowish_carb
+    else:
+        priority=protein and lowish_carb and vegetables_present
     return {"priority":priority,"protein_source":protein,
             "kcal_per_serving_estimate":kcal_per_serving if not kcal_unknown else None,
             "kcal_total_estimate":kcal_total if not kcal_unknown else None,
             "kcal_unknown":kcal_unknown,
             "protein_g_per_serving_estimate":protein_per_serving,
             "protein_target_g":MIN_PROTEIN_PER_SERVING,
+            "meal_type":meal_type,
             "protein_unknown":unknown,
             "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
             "vegetable_g_per_serving_estimate":vegetable_g_per_serving,
@@ -459,9 +472,9 @@ def make_recipes(shelves,offers):
             checkout=round(sum(x["cash_price"] for x in lines),2)
             consumed=round(sum(x["used_price"] for x in lines),2)
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
-            nutrition=nutrition_profile(ings)
             meal_type=("Ontbijt" if title.startswith("Ontbijt:") else
                        "Lunch" if title.startswith("Lunch:") else "Avondeten")
+            nutrition=nutrition_profile(ings,meal_type=meal_type)
             tl=title.casefold()
             cuisine=("Aziatisch" if any(x in tl for x in
                      ("aziatisch","thaise","koreaanse","japanse","teriyaki","tofu-",
