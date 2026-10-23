@@ -26,7 +26,7 @@ ING = {
  "aardappel": ("aardappelen", r"(vastkokende aardapp|kruimige aardapp|aardappelen|krieltjes)", r"friet|chips|puree|salade|saus|gratin"),
  "zoete_aardappel": ("zoete aardappel", r"(zoete aardappel|bataat)", r"friet|chips|soep|puree|gratin|schotel|maaltijd"),
  "wok": ("wokgroenten", r"(wokgroenten|roerbakgroenten|wok groente)", r"maaltijd|saus|soep"),
- "spinazie": ("spinazie", r"\bspinazie\b", r"pizza|saus|pasta|maaltijd|soep|smoothie|quiche"),
+ "spinazie": ("spinazie", r"\bspinazie\b", r"pizza|saus|pasta|maaltijd|soep|smoothie|quiche|a la creme|a la cr.me|roomspinazie"),
  "broccoli": ("broccoli", r"\bbroccoli\b", r"soep|saus|maaltijd|mix|pizza|a la creme|a la cr.me|room|roomspinazie"),
  "bloemkool": ("bloemkool", r"\bbloemkool\b", r"soep|saus|rijst|pizza|mix|maaltijd"),
  "paprika": ("paprika", r"\bpaprika('s)?\b", r"poeder|chips|saus|soep|maaltijd|smaak|pasta|kruiden|tortilla|wrap|crackers|snack|salsa"),
