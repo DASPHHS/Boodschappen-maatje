@@ -5,6 +5,20 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile
 
 class PrijsTest(unittest.TestCase):
+    def test_kcal_per_portie_en_totaal(self):
+        recipe=nutrition_profile([
+            ("kipfilet",800,"g"),("broccoli",1000,"g"),
+            ("aardappel",400,"g")])
+        # 880 kcal kip + 340 kcal broccoli + 320 kcal aardappelen.
+        self.assertEqual(recipe["kcal_total_estimate"],1540)
+        self.assertEqual(recipe["kcal_per_serving_estimate"],385)
+        self.assertEqual(recipe["kcal_unknown"],[])
+
+    def test_geen_schijnzekerheid_bij_ontbrekende_voedingswaarde(self):
+        recipe=nutrition_profile([("kipfilet",800,"g"),("onbekend",100,"g")])
+        self.assertIsNone(recipe["kcal_per_serving_estimate"])
+        self.assertIn("onbekend",recipe["kcal_unknown"])
+
     def test_dertig_gram_eiwit_per_portie(self):
         # 650g kipfilet + 800g broccoli voor vier porties.
         high=nutrition_profile([("kipfilet",650,"g"),("broccoli",800,"g")])
