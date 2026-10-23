@@ -337,7 +337,7 @@ def nutrition_profile(ings):
     amounts={key:float(qty) for key,qty,unit in ings}
     protein_sources={
        "kipfilet":125,"kipdij":125,"kipgehakt":125,"shoarma":125,
-       "gehakt":125,"zalm":125,"gerookte_zalm":70,"tonijn":70,
+       "gehakt":125,"varkenshaas":150,"zalm":125,"gerookte_zalm":70,"tonijn":70,
        "tofu":150,"eieren":2,"kikkererwten":160,"linzen":160,"bonen":160,
     }
     protein_cues=[key for key,limit in protein_sources.items() if amounts.get(key,0)>=limit*4]
