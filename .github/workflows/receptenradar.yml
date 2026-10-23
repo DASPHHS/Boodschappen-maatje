@@ -26,7 +26,9 @@ jobs:
       - name: Installeer netwerkbibliotheek
         run: python -m pip install 'requests>=2.31,<3'
       - name: Controleer syntax
-        run: python -m compileall -q src/receptenradar_v2.py src/receptenradar_catalog.py
+        run: |
+          python -m compileall -q src/receptenradar_v2.py src/receptenradar_catalog.py
+          python -m unittest discover -s tests -p test_receptenradar_v2.py -v
       - name: Haal echte schap- en actieprijzen op en bereken recepten
         env:
           PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
@@ -38,5 +40,6 @@ jobs:
           git add docs/recepten/data.json
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
+            git pull --rebase origin main
             git push
           fi
