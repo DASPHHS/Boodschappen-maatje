@@ -667,6 +667,8 @@ def main():
     tmp.write_text(json.dumps(result,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
     tmp.replace(OUT)
     print(json.dumps({"shelf":counts,"offers":result["counts"]["promotions"],
+                      "recipes_with_offers":{s:sum(r["sale_count"]>0 for r in result["recipes"][s]) for s in STORES},
+                      "matched_offer_lines":{s:sum(r["sale_count"] for r in result["recipes"][s]) for s in STORES},
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
                       "errors":errors,
                       "audit_unlinked":{s:audit[s]["unlinked_total"] for s in STORES}},ensure_ascii=False))
