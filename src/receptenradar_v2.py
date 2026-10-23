@@ -306,16 +306,10 @@ def make_recipes(shelves,offers):
         all_recipes.sort(key=lambda r:(-r["sale_count"],not r["complete"],
                                     r["per_serving"] if r["per_serving"] is not None else 1e7,
                                     r["minutes"]))
-        # Vermijd recepten zonder echte actie-ingrediënten. Minder dan 15 is
-        # eerlijker dan een misleidende aanvulling met gewone recepten.
-        all_recipes=[r for r in all_recipes if r["sale_count"]>0]
-        # Niet vijftien variaties dezelfde eiwitbron tonen: verdeel categorieën.
-        selected=[];counts={}
-        for recipe in all_recipes:
-            if counts.get(recipe["category"],0)>=6:continue
-            selected.append(recipe);counts[recipe["category"]]=counts.get(recipe["category"],0)+1
-            if len(selected)==15:break
-        final[store]=selected
+        # Bewaar de volledige receptenbibliotheek. De website toont standaard
+        # de sterkste acties, maar laat ook vlees, vis en vega zonder actie zien.
+        # Deze gerechten mogen nooit als actie worden aangeduid.
+        final[store]=all_recipes
     return final
 
 def main():
