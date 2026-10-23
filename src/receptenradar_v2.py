@@ -353,12 +353,39 @@ def make_recipes(shelves,offers):
         final[store]=all_recipes
     return final
 
+def export_shopping_index(shelves,offers):
+    """Compacte echte online winkelprijzen voor een lokale boodschappenchat.
+
+    De index bevat schapprijzen plus de nog geldige actieproducten, zonder
+    fictieve fallback. Browser ontvangt nooit API-credentials.
+    """
+    result={}
+    for store in STORES:
+        ordinary=[]
+        for p in shelves[store]:
+            ordinary.append([p["name"],p["price"],p["quantity"],p["unit"],p.get("url","")])
+        promos=[]
+        for p in offers[store]:
+            if not p.get("quantity") or not p.get("unit"):continue
+            promos.append([p["name"],p["price"],p["quantity"],p["unit"],
+                p.get("original_price"),p.get("multi_buy_quantity"),
+                p.get("multi_buy_price"),p.get("promotion_type",""),
+                p.get("valid_until"),p.get("url",""),p.get("is_loyalty",False)])
+        result[store]={"ordinary":ordinary,"promotions":promos}
+    path=ROOT/"recepten"/"winkelprijzen.json"
+    temp=path.with_suffix(".tmp")
+    temp.write_text(json.dumps({"updated_at":datetime.now(TZ).isoformat(),
+        "source":"Checkjebon en PrijsProfeet","stores":result},
+        ensure_ascii=False,separators=(",",":")),encoding="utf-8")
+    temp.replace(path)
+
 def main():
     errors=[]
     shelves,last_modified,counts=load_shelves()
     if not any(counts.values()):
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors=load_deals()
+    export_shopping_index(shelves,offers)
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
             "sources":{"ordinary":"Checkjebon open dataset","promotions":"PrijsProfeet gratis aanbiedingen-API"},
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
