@@ -277,6 +277,41 @@ def ingredient_price(ing,amount,unit,shelves,offers):
     return min(options,key=lambda x:(x["cash_price"],x["used_price"]))
 
 
+def nutrition_profile(ings):
+    """Conservatieve receptscreening, géén voedingswaarde-analyse.
+
+    Eiwitrijk betekent hier een substantiële zichtbare eiwitbron.
+    Relatief koolhydraatarm betekent een beperkte portie zetmeelbron.
+    Dit is dus geen bewezen gram/portie of medisch voedingsadvies.
+    """
+    amounts={key:float(qty) for key,qty,unit in ings}
+    protein_sources={
+       "kipfilet":125,"kipdij":125,"kipgehakt":125,"shoarma":125,
+       "gehakt":125,"zalm":125,"gerookte_zalm":70,"tonijn":70,
+       "tofu":150,"eieren":2,"kikkererwten":160,"linzen":160,"bonen":160,
+    }
+    protein_cues=[key for key,limit in protein_sources.items() if amounts.get(key,0)>=limit*4]
+    # Geen exacte eiwitclaim mogelijk zonder voedingswaardetabel, maar wel aanwijzing.
+    protein=bool(protein_cues)
+    dry_starches=("rijst","pasta","couscous")
+    dense_starches=("aardappel","zoete_aardappel")
+    dry_per_portion=sum(amounts.get(key,0) for key in dry_starches)/4
+    potato_per_portion=sum(amounts.get(key,0) for key in dense_starches)/4
+    breads_per_portion=sum(amounts.get(key,0) for key in ("wraps","naan"))/4
+    lowish_carb=dry_per_portion<=45 and potato_per_portion<=200 and breads_per_portion<=1
+    vegetables=("wok","spinazie","broccoli","bloemkool","paprika","courgette",
+                "champignons","tomaten","tomatenblokjes","ui","komkommer","wortel",
+                "sla","spruiten","boerenkool")
+    # Producten per stuk niet naar grammen omrekenen zonder gewichtsbron.
+    veg_g=sum(amounts.get(key,0) for key in vegetables if key not in ("paprika","courgette","komkommer","bloemkool"))
+    veg_pieces=sum(amounts.get(key,0) for key in ("paprika","courgette","komkommer","bloemkool"))
+    vegetables_present=veg_g>=500 or (veg_g>=280 and veg_pieces>=1) or veg_pieces>=3
+    priority=protein and lowish_carb and vegetables_present
+    return {"priority":priority,"protein_source":protein,
+            "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
+            "protein_cues":protein_cues,
+            "basis":"Indicatie uit ingrediënten en hoeveelheden, niet berekende voedingswaarden"}
+
 def make_recipes(shelves,offers):
     final={}
     for store in STORES:
@@ -294,11 +329,13 @@ def make_recipes(shelves,offers):
             checkout=round(sum(x["cash_price"] for x in lines),2)
             consumed=round(sum(x["used_price"] for x in lines),2)
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
+            nutrition=nutrition_profile(ings)
             inspiration=("HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
                          else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
               "inspiration":inspiration, "mealprep":title.startswith("Mealprep:") or minutes>=30,
+              "nutrition":nutrition,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "covered_count":len(lines),"complete":complete,
               "checkout":checkout if complete else None,"known_subtotal":checkout,
