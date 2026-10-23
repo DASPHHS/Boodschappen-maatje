@@ -154,6 +154,23 @@ def load_deals():
             if page==100:errors.append(f"{store}: boven paginalimiet, acties mogelijk onvolledig")
         except Exception as e:
             errors.append(f"{store}: {type(e).__name__}: {str(e)[:180]}")
+    # Aanvulling uit officiële Jumbo-aanbiedingspagina, gecontroleerd op
+    # 23 oktober 2026; expliciete einddatum conservatief t/m 27 oktober.
+    # Deze tijdelijke correctie is nodig omdat de bulkfeed sommige
+    # Kies & Mix-campagnes niet aanlevert. Niet automatisch verlengen.
+    if today<="2026-10-27" and not any(
+       "jumbo kipburgers" in p["norm"] and p.get("multi_buy_quantity")==2
+       for p in offers["jumbo"]):
+        offers["jumbo"].append({
+          "name":"Jumbo Kipburgers 250 g","norm":"jumbo kipburgers 250 g",
+          "price":3.59,"quantity":250.0,"unit":"g","size_label":"250 g",
+          "original_price":3.59,"multi_buy_quantity":2.0,
+          "multi_buy_price":6.0,"promotion_type":"Kies & Mix 2 voor 6",
+          "valid_from":"2026-01-07","valid_until":"2026-10-27",
+          "discount":16.4,
+          "url":"https://www.jumbo.com/aanbiedingen/hamburgers/3013651",
+          "ean":"","source":"Jumbo officiële aanbiedingspagina (handmatig geverifieerd)",
+          "is_loyalty":False})
     return offers,errors
 
 def match_ingredient(product,ingredient):
