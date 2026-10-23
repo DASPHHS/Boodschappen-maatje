@@ -25,7 +25,7 @@ class OfferDrivenTest(unittest.TestCase):
   items=[sale("vegetarische kipfilet"),sale("gewassen spinazie")]
   self.assertFalse(meal_candidates(items))
  def test_vier_actieingredienten_mogelijk(self):
-  items=[sale("kipfilet"),sale("broccoli"),sale("spinazie"),sale("krieltjes")]
+  items=[sale("kipfilet"),sale("broccoli"),sale("paprika",unit="st",amount=2),sale("krieltjes")]
   recipes=meal_candidates(items)
   self.assertTrue(any(len(r[3])==4 for r in recipes))
  def test_geen_kipgehakt_spinazie_boerenkool(self):
