@@ -392,7 +392,7 @@ def main():
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
             "recipes":make_recipes(shelves,offers),
-            "deals":{s:sorted(offers[s],key=lambda d:-(d.get("discount") or 0))[:180] for s in STORES},
+            "deals":{s:sorted(offers[s],key=lambda d:-(d.get("discount") or 0)) for s in STORES},
             "errors":errors,
             "disclaimer":"Online prijzen indicatief. Kassaprijzen zijn berekend uit beschikbare verpakkingen. Kruiden/olie uit voorraad en eventuele persoonlijke coupons niet inbegrepen. Geen garantie op winkelvoorraad."}
     OUT.parent.mkdir(parents=True,exist_ok=True)
