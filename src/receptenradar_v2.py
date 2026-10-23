@@ -222,7 +222,7 @@ def offer_price(ing,amount,unit,offers):
         typ=normalize(o.get("promotion_type",""))
         if o.get("multi_buy_quantity") or any(z in typ for z in ("multi","one_plus_one","gratis","bundle","voor","2 1","1 1")):continue
         original=o.get("original_price")
-        if not original or original<=o["price"]:continue
+        if original is not None and original<=o["price"]:continue
         n=math.ceil(amount/o["quantity"])
         if n>15:continue
         cost=round(n*o["price"],2)
@@ -230,7 +230,7 @@ def offer_price(ing,amount,unit,offers):
              "product":o["name"],"package":o["size_label"] or (str(o["quantity"])+" "+unit),
              "package_size":o["quantity"],"packages":n,"cash_price":cost,
              "used_price":round(amount/o["quantity"]*o["price"],2),
-             "regular_cash":round(n*original,2),"sale":True,
+             "regular_cash":round(n*(original or o["price"]),2),"sale":True,
              "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
                  "multi_buy_quantity":None,"multi_buy_price":None,"url":o["url"]},
              "source":"PrijsProfeet","url":o["url"]}))
@@ -301,6 +301,9 @@ def make_recipes(shelves,offers):
         all_recipes.sort(key=lambda r:(-r["sale_count"],not r["complete"],
                                     r["per_serving"] if r["per_serving"] is not None else 1e7,
                                     r["minutes"]))
+        # Vermijd recepten zonder echte actie-ingrediënten. Minder dan 15 is
+        # eerlijker dan een misleidende aanvulling met gewone recepten.
+        all_recipes=[r for r in all_recipes if r["sale_count"]>0]
         # Niet vijftien variaties dezelfde eiwitbron tonen: verdeel categorieën.
         selected=[];counts={}
         for recipe in all_recipes:
