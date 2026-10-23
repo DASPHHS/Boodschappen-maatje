@@ -187,6 +187,19 @@ def load_deals():
            "original_price":1.19,"multi_buy_quantity":2,"multi_buy_price":1.99,
            "promotion_type":"2 voor € 1,99","discount":16.4,
            "url":"https://www.jumbo.com/aanbiedingen/jumbo-minikrieltjes-aardappelschijfjes-of-opbakaardapppeltjes/3021433"},
+          # Jumbo-site 21–27 oktober: Campina naturel 1 kg 3,49 -> 2,49.
+          {"name":"Campina Magere Milde Kwark Naturel Voordeelpak 1 kg",
+           "price":2.49,"quantity":1000,"unit":"g","size_label":"1 kg",
+           "original_price":3.49,"multi_buy_quantity":None,"multi_buy_price":None,
+           "promotion_type":"voor € 2,49","discount":28.7,
+           "url":"https://www.jumbo.com/aanbiedingen/nu/actieprijs_20261021-20261027"},
+          # Officiële Jumbo-campagne: Jumbo Nederlandse Aardbeien 400 g
+          # reguliere productprijs 3,99, 25% korting aan de kassa.
+          {"name":"Jumbo Nederlandse Aardbeien 400 g",
+           "price":2.99,"quantity":400,"unit":"g","size_label":"400 g",
+           "original_price":3.99,"multi_buy_quantity":None,"multi_buy_price":None,
+           "promotion_type":"25% korting","discount":25.0,
+           "url":"https://www.jumbo.com/aanbiedingen/frambozen-of-nederlandse-aardbeien/3022919"},
           {"name":"Jumbo Bloemkool",
            "price":0.99,"quantity":1,"unit":"st","size_label":"per stuk",
            "original_price":1.69,"multi_buy_quantity":None,"multi_buy_price":None,
