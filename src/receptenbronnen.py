@@ -29,34 +29,39 @@ def category(name):
     if any(w in s for w in ["beef","pork","lamb","meatball","sausage","bacon","ham ","steak"]):return "Vlees"
     return "Overig/onbekend"
 SOURCES=[
-  ("The Meal Prep Manual","https://mealprepmanual.com/recipes/"),
-  ("Budget Bytes mealprep","https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/"),
+  ("The Meal Prep Manual","https://mealprepmanual.com/recipes/","mealprepmanual.com"),
+  ("Budget Bytes mealprep","https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/","www.budgetbytes.com"),
+  ("FitMenCook mealprep","https://fitmencook.com/recipes/category/meal-prep/","fitmencook.com"),
 ]
 def extra_mealprep_links():
-    """Discover author-provided titles and article links, not article content."""
+    """Indexeer uitsluitend publieke titels en artikel-URL's, geen recepten of foto's."""
     result=[]
-    for source,landing in SOURCES:
+    for source,landing,host in SOURCES:
         try:
             response=requests.get(landing,headers=HEADERS,timeout=25)
             response.raise_for_status()
             soup=BeautifulSoup(response.text,"html.parser")
             seen=set()
-            for a in soup.select("a[href]"):
+            for a in soup.select("h2 a[href], h3 a[href], h4 a[href], article a[href], .post-summary a[href]"):
                 href=a.get("href","").split("#")[0]
                 title=a.get_text(" ",strip=True)
-                if len(title)<9 or len(title)>105 or not href.startswith("https://"):continue
-                if source=="The Meal Prep Manual":
-                    valid=href.startswith("https://mealprepmanual.com/") and ("/recipe/" in href or "/recipes/" in href) and href.rstrip("/")!=landing.rstrip("/")
-                else:
-                    valid=href.startswith("https://www.budgetbytes.com/") and not any(v in href for v in ["/category/","/tag/","/shop/","/page/","/meal-plans/"])
-                if not valid or href in seen:continue
-                if re.search(r"sign up|subscribe|see all|recipes|home page|learn more",title,re.I):continue
+                if len(title)<10 or len(title)>130:continue
+                if not href.startswith("https://"+host+"/"):continue
+                if source=="FitMenCook mealprep" and "/recipes/" not in href:continue
+                if any(v in href for v in ["/category/","/tag/","/shop/","/page/","/meal-plans/","/index/"]):continue
+                if href.rstrip("/")==landing.rstrip("/") or href in seen:continue
+                if re.search(r"sign up|subscribe|see all|home page|learn more|next page|read more|about us|recipe index|start here",title,re.I):continue
+                if re.fullmatch(r"(categories|meal plans|surprise me|giveaways|contact|blog|news|search)",title,re.I):continue
+                # Amerikaanse dollars op bronpagina zijn geen supermarktprijs.
+                title=re.sub(r"\\s*\\$\\d+(?:\\.\\d+)?(?:\\s*(?:recipe|serving|per serving|/))*.*$", "",title).strip()
+                if len(title)<10:continue
                 seen.add(href)
                 result.append({"title":title,"source":source,"category":category(title),
                                "minutes":None,"url":href,"price_status":"Niet doorgerekend"})
-            print(source,"gevonden:",len(seen))
+                if len(seen)>=100:break
+            print(source,"receptlinks gevonden:",len(seen))
         except Exception as exc:
-            print(source,"kon niet worden gelezen",exc,file=sys.stderr)
+            print(source,"niet beschikbaar:",exc,file=sys.stderr)
     return result
 
 def main():
