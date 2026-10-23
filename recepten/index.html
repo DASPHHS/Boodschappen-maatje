@@ -70,7 +70,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
   if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
   if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
-  if(sort==="deals")rs.sort((a,b)=>b.sale_count-a.sale_count||(a.per_serving??1e9)-(b.per_serving??1e9));
+  if(sort==="deals")rs.sort((a,b)=>(b.deal_basket?.used_actions??b.sale_count)-(a.deal_basket?.used_actions??a.sale_count)||(a.deal_basket?.checkout??1e9)-(b.deal_basket?.checkout??1e9));
   const health=$("health").value;
   if(health==="only")rs=rs.filter(r=>r.nutrition?.priority);
   if(health==="prefer"){
@@ -90,8 +90,9 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     if(sort==="deals"){
       const groups=new Map();
       for(const recipe of rs){
-        if(!groups.has(recipe.sale_count))groups.set(recipe.sale_count,[]);
-        groups.get(recipe.sale_count).push(recipe);
+        const count=recipe.deal_basket?.used_actions??recipe.sale_count;
+        if(!groups.has(count))groups.set(count,[]);
+        groups.get(count).push(recipe);
       }
       rs=[...groups.keys()].sort((a,b)=>b-a).flatMap(count=>mixHealth(groups.get(count)));
     }else{
@@ -108,7 +109,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Hieronder staan recepten ter inspiratie (zonder bevestigde korting). Bij ieder recept staat of de totaalprijs volledig is of nog prijzen ontbreken. Bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
-    <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.sale_count} gebruikte acties${r.other_offer_count?` · ${r.other_offer_count} actie-alternatieven`:""}</span></div>
+    <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.deal_basket?.used_actions>r.sale_count?`${r.deal_basket.used_actions} acties mogelijk · ${r.sale_count} in goedkoopste mand`:`${r.sale_count} gebruikte acties`}</span></div>
     <div class="recipe-body"><h3>${esc(r.title)}</h3>
     <div class="chips"><span class="chip">${esc(r.meal_type||"Avondeten")}</span><span class="chip">${esc(r.cuisine||"Overig")}</span>${r.portable?`<span class="chip">Mee te nemen ✓</span>`:""}${r.prep_ahead?`<span class="chip">Voorbereiden mogelijk ✓</span>`:""}<span class="chip">${r.nutrition?.kcal_per_serving_estimate!=null?`≈ ${r.nutrition.kcal_per_serving_estimate} kcal/portie (${r.nutrition.kcal_total_estimate} kcal totaal, 4 porties)`:"Kcal niet volledig berekenbaar"}</span><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_g_per_serving_estimate!=null?`≈ ${Number(r.nutrition.protein_g_per_serving_estimate).toLocaleString("nl-NL")} g eiwit/portie · ${r.nutrition.protein_source?"≥30 g ✓":"<30 g"}`:"Eiwit niet berekend"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_g_per_serving_estimate!=null?`≈ ${r.nutrition.vegetable_g_per_serving_estimate} g groenten/portie · ${r.nutrition.vegetable_forward?"≥250 g ✓":"<250 g"}`:"Groenten niet berekend"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${recipePrice(r)}
