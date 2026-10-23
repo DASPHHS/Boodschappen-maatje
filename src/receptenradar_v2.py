@@ -302,8 +302,21 @@ def offer_price(ing,amount,unit,offers):
              "regular_cash":round(n*(original or o["price"]),2),"sale":True,
              "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
                  "multi_buy_quantity":o.get("multi_buy_quantity"),"multi_buy_price":o.get("multi_buy_price"),"url":o["url"]},
-             "source":"PrijsProfeet","url":o["url"]}))
+             "source":"PrijsProfeet","url":o["url"],**product_context(o,ing)}))
     return [x[1] for x in sorted(options,key=lambda x:x[0])]
+
+def product_context(product,ingredient):
+    """Kenmerken van aangeboden alternatieven; geen onbewezen voedingsclaim."""
+    name=normalize(product.get("name") or product.get("norm") or "")
+    frozen=bool(re.search(r"\b(diepvries|diepgevroren|bevroren|vriesvers|diepvr)\b",name))
+    # Een smaakvariant kan suiker en andere voedingswaarden hebben.
+    flavoured=(ingredient in ("kwark","yoghurt") and bool(re.search(
+        r"\b(aardbei|aardbeien|vanille|bosbes|blauwe bessen|framboos|kersen|perzik|mango|kokos|stracciatella|chocolade|fruit)\b",name)))
+    return {"frozen":frozen,"flavoured_dairy":flavoured,
+            "nutrition_unverified":flavoured,
+            "nutrition_note":("Voedingswaarden van deze smaakvariant zijn nog niet "
+                              "van het etiket overgenomen; controleer suiker en eiwit."
+                              if flavoured else "")}
 
 def ingredient_price(ing,amount,unit,shelves,offers):
     options=[]
@@ -327,7 +340,7 @@ def ingredient_price(ing,amount,unit,shelves,offers):
                          "valid_until":promo.get("valid_until"),"multi_buy_quantity":promo.get("multi_buy_quantity"),
                          "multi_buy_price":promo.get("multi_buy_price"),"url":promo["url"]},
                        "source":("PrijsProfeet + Checkjebon" if promo else "Checkjebon"),
-                       "url":p["url"]})
+                       "url":p["url"],**product_context(p,ing)})
     options.extend(offer_price(ing,amount,unit,offers))
     if not options:return None
     # Prioriteit bij boodschappen blijft lage prijs; bij beperkte meerkosten
@@ -488,6 +501,13 @@ def make_recipes(shelves,offers):
             meal_type=("Ontbijt" if title.startswith("Ontbijt:") else
                        "Lunch" if title.startswith("Lunch:") else "Avondeten")
             nutrition=nutrition_profile(ings,meal_type=meal_type)
+            # Bij gearomatiseerde zuivel is de generieke naturelwaardeschatting
+            # onvoldoende voor een betrouwbaar kcal-/eiwitlabel.
+            unverified=[x["product"] for x in lines if x.get("nutrition_unverified")]
+            if unverified:
+                nutrition["product_nutrition_unverified"]=unverified
+                nutrition["basis"]+=(" Gearomatiseerde zuivel: productetiket niet "
+                                    "geverifieerd; werkelijke suiker/eiwit/kcal kunnen afwijken.")
             tl=title.casefold()
             cuisine=("Aziatisch" if any(x in tl for x in
                      ("aziatisch","thaise","koreaanse","japanse","teriyaki","tofu-",
