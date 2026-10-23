@@ -328,22 +328,46 @@ def ingredient_price(ing,amount,unit,shelves,offers):
     return min(options,key=lambda x:(x["cash_price"],x["used_price"]))
 
 
-def nutrition_profile(ings):
-    """Conservatieve receptscreening, géén voedingswaarde-analyse.
+# Indicatieve, bewust conservatieve eiwitwaarden van gangbare producten.
+# Per 100 g eetbaar product, behalve eieren (g per stuk). Voedingswaarden
+# van het GEKOZEN winkelartikel kunnen afwijken. Onbekende ingrediënten
+# tellen niet mee, om niet stilzwijgend eiwitten te verzinnen.
+PROTEIN_PER_100G={
+ "kipfilet":20.0,"kipdij":17.0,"kipgehakt":17.0,"shoarma":16.0,
+ "gehakt":17.0,"varkenshaas":20.0,"zalm":19.0,"gerookte_zalm":18.0,
+ "tonijn":22.0,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
+ "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
+ "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
+ "tomaten":0.5,"tomatenblokjes":0.7,"ui":0.7,"sla":1.0,
+ "rijst":7.0,"pasta":11.0,"couscous":11.0,"aardappel":1.5,
+ "zoete_aardappel":1.2,"yoghurt":3.5,"kwark":9.0,
+ "kaas":20.0,"kokosmelk":1.0,"mais":2.0
+}
+PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
+                   "bloemkool":12.0,"paprika":1.0,"courgette":2.0,
+                   "komkommer":1.0,"avocado":2.0}
+MIN_PROTEIN_PER_SERVING=30.0
 
-    Eiwitrijk betekent hier een substantiële zichtbare eiwitbron.
-    Relatief koolhydraatarm betekent een beperkte portie zetmeelbron.
-    Dit is dus geen bewezen gram/portie of medisch voedingsadvies.
+def nutrition_profile(ings):
+    """Conservatieve receptschatting voor vier porties, géén etiketwaardes.
+
+    Onbekende ingrediënten tellen niet mee. "Eiwitrijk" is hier een
+    persoonlijke drempel van >=30 g geschat eiwit per portie.
     """
     amounts={key:float(qty) for key,qty,unit in ings}
-    protein_sources={
-       "kipfilet":125,"kipdij":125,"kipgehakt":125,"shoarma":125,
-       "gehakt":125,"varkenshaas":150,"zalm":125,"gerookte_zalm":70,"tonijn":70,
-       "tofu":150,"eieren":2,"kikkererwten":160,"linzen":160,"bonen":160,
-    }
-    protein_cues=[key for key,limit in protein_sources.items() if amounts.get(key,0)>=limit*4]
-    # Geen exacte eiwitclaim mogelijk zonder voedingswaardetabel, maar wel aanwijzing.
-    protein=bool(protein_cues)
+    protein_total=0.0
+    unknown=[]
+    for key,qty,unit in ings:
+        if unit=="g" and key in PROTEIN_PER_100G:
+            protein_total+=float(qty)*PROTEIN_PER_100G[key]/100
+        elif unit=="st" and key in PROTEIN_PER_PIECE:
+            protein_total+=float(qty)*PROTEIN_PER_PIECE[key]
+        elif unit=="ml" and key=="kokosmelk":
+            protein_total+=float(qty)*0.01
+        else:
+            unknown.append(key)
+    protein_per_serving=round(protein_total/4,1)
+    protein=protein_per_serving>=MIN_PROTEIN_PER_SERVING
     dry_starches=("rijst","pasta","couscous")
     dense_starches=("aardappel","zoete_aardappel")
     dry_per_portion=sum(amounts.get(key,0) for key in dry_starches)/4
@@ -353,15 +377,18 @@ def nutrition_profile(ings):
     vegetables=("wok","spinazie","broccoli","bloemkool","paprika","courgette",
                 "champignons","tomaten","tomatenblokjes","ui","komkommer","wortel",
                 "sla","spruiten","boerenkool")
-    # Producten per stuk niet naar grammen omrekenen zonder gewichtsbron.
-    veg_g=sum(amounts.get(key,0) for key in vegetables if key not in ("paprika","courgette","komkommer","bloemkool"))
-    veg_pieces=sum(amounts.get(key,0) for key in ("paprika","courgette","komkommer","bloemkool"))
+    veg_g=sum(amounts.get(key,0) for key in vegetables
+              if key not in ("paprika","courgette","komkommer","bloemkool"))
+    veg_pieces=sum(amounts.get(key,0) for key in
+                   ("paprika","courgette","komkommer","bloemkool"))
     vegetables_present=veg_g>=500 or (veg_g>=280 and veg_pieces>=1) or veg_pieces>=3
     priority=protein and lowish_carb and vegetables_present
     return {"priority":priority,"protein_source":protein,
+            "protein_g_per_serving_estimate":protein_per_serving,
+            "protein_target_g":MIN_PROTEIN_PER_SERVING,
+            "protein_unknown":unknown,
             "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
-            "protein_cues":protein_cues,
-            "basis":"Indicatie uit ingrediënten en hoeveelheden, niet berekende voedingswaarden"}
+            "basis":"Schatting per portie uit standaardwaarden; exacte winkelproductwaarden kunnen afwijken."}
 
 def make_recipes(shelves,offers):
     final={}
