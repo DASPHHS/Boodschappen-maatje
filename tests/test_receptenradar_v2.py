@@ -2,9 +2,18 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price
+from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile
 
 class PrijsTest(unittest.TestCase):
+    def test_dertig_gram_eiwit_per_portie(self):
+        # 650g kipfilet + 800g broccoli voor vier porties.
+        high=nutrition_profile([("kipfilet",650,"g"),("broccoli",800,"g")])
+        self.assertGreaterEqual(high["protein_g_per_serving_estimate"],30)
+        self.assertTrue(high["protein_source"])
+        low=nutrition_profile([("tofu",450,"g"),("broccoli",600,"g")])
+        self.assertLess(low["protein_g_per_serving_estimate"],30)
+        self.assertFalse(low["protein_source"])
+
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
         self.assertEqual(measure("0,75 liter"),(750,"ml"))
