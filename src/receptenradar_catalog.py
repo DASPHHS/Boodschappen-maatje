@@ -7,7 +7,7 @@ import re
 
 # Naam, zoekpatroon, uitgesloten woorden: conservatief, niet generiek fuzzy koppelen.
 ING = {
- "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread"),
+ "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread|pepersaus|roomsaus|saus|ragout|gepocheerd|gebakken"),
  "kipdij": ("kipdijfilet", r"kipdij(filet)?", r"vegetar|vegan|salade|broodbeleg|soep|smaak"),
  "kipgehakt": ("kipgehakt", r"\bkipgehakt\b", r"vegetar|vegan|gebraden|gekookt|beleg|worst|plantaardig"),
  "gehakt": ("rundergehakt", r"(rundergehakt|mager gehakt|half.om.half gehakt)", r"vegetar|vegan|kruiden|vervanger|gehaktbal"),
@@ -27,14 +27,14 @@ ING = {
  "zoete_aardappel": ("zoete aardappel", r"(zoete aardappel|bataat)", r"friet|chips|soep|puree|gratin|schotel|maaltijd"),
  "wok": ("wokgroenten", r"(wokgroenten|roerbakgroenten|wok groente)", r"maaltijd|saus|soep"),
  "spruiten": ("spruitjes", r"(spruitjes|spruiten)", r"saus|soep|stamppot|maaltijd|mix"),
- "gerookte_zalm": ("gerookte zalm", r"gerookte zalm", r"salade|saus|wraps|broodjes|spreads"),
+ "gerookte_zalm": ("gerookte zalm", r"gerookte zalm", r"salade|saus|wraps|broodjes|spreads|rolletje|roomkaas|hapje|sushi|mousse"),
  "spinazie": ("spinazie", r"\bspinazie\b", r"pizza|saus|pasta|maaltijd|soep|smoothie|quiche|a la creme|a la cr.me|roomspinazie"),
  "broccoli": ("broccoli", r"\bbroccoli\b", r"soep|saus|maaltijd|mix|pizza|a la creme|a la cr.me|room|roomspinazie"),
  "bloemkool": ("bloemkool", r"\bbloemkool\b", r"soep|saus|rijst|pizza|mix|maaltijd"),
  "paprika": ("paprika", r"\bpaprika('s)?\b", r"poeder|chips|saus|soep|maaltijd|smaak|pasta|kruiden|tortilla|wrap|crackers|snack|salsa"),
  "courgette": ("courgette", r"\bcourgette\b", r"soep|saus|maaltijd|mix"),
- "champignons": ("champignons", r"(kastanjechampignons|champignons)", r"soep|saus|maaltijd|mix"),
- "tomaten": ("tomaten", r"(trostomaten|cherrytomaten|romatomaten|tomaten)", r"puree|saus|blokjes|blik|soep|ketchup|pasta|sap|zongedroogd|gepeld|gezeefd|passata|bonen|tomatens|tomatensap"),
+ "champignons": ("champignons", r"(kastanjechampignons|champignons)", r"soep|saus|maaltijd|mix|wok|roerbakgroente|roerbakmix"),
+ "tomaten": ("tomaten", r"(trostomaten|cherrytomaten|romatomaten|tomaten)", r"puree|saus|blokjes|blik|soep|ketchup|pasta|sap|zongedroogd|gepeld|gezeefd|passata|bonen|tomatens|tomatensap|pulp|polpa|ciliegini|conserven"),
  "tomatenblokjes": ("tomatenblokjes", r"(tomatenblokjes|tomaten in blokjes|tomaten pulp|tomatenpulp)", r"soep|saus|maaltijd"),
  "ui": ("uien", r"(gele uien|uien|rode uien|sjalotten)", r"saus|soep|kruiden|gebakken|poeder|snippers"),
  "komkommer": ("komkommer", r"\bkomkommer\b", r"zuur|saus|soep|salade|plakjes"),
