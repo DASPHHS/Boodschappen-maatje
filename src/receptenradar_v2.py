@@ -188,9 +188,9 @@ def load_deals():
            "url":"https://www.jumbo.com/aanbiedingen/jumbo-minikrieltjes-aardappelschijfjes-of-opbakaardapppeltjes/3021433"},
           {"name":"Jumbo Bloemkool",
            "price":0.99,"quantity":1,"unit":"st","size_label":"per stuk",
-           "original_price":None,"multi_buy_quantity":None,"multi_buy_price":None,
-           "promotion_type":"voor € 0,99","discount":None,
-           "url":"https://www.jumbo.com/aanbiedingen/nu"},
+           "original_price":1.69,"multi_buy_quantity":None,"multi_buy_price":None,
+           "promotion_type":"vaste prijs","discount":41.4,
+           "url":"https://www.jumbo.com/aanbiedingen/bloemkool/3022996"},
         ]
         for item in verified:
             # Eén en hetzelfde product niet dubbel opnemen.
@@ -273,19 +273,21 @@ def offer_price(ing,amount,unit,offers):
         if o["unit"]!=unit or not o["quantity"] or not match_ingredient(o,ing):continue
         if o.get("is_loyalty"):continue
         typ=normalize(o.get("promotion_type",""))
-        if o.get("multi_buy_quantity") or any(z in typ for z in ("multi","one_plus_one","gratis","bundle","voor","2 1","1 1")):continue
+        is_bundle=bool(o.get("multi_buy_quantity") and o.get("multi_buy_price"))
+        if not is_bundle and any(z in typ for z in ("multi","one_plus_one","gratis","bundle","2 1","1 1")):continue
         original=o.get("original_price")
         if original is not None and original<=o["price"]:continue
         n=math.ceil(amount/o["quantity"])
         if n>15:continue
-        cost=round(n*o["price"],2)
+        cost,packs=total_for(n,original or o["price"],o)
+        if is_bundle and cost>=round(n*(original or o["price"]),2):continue
         options.append((cost,{"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
              "product":o["name"],"package":o["size_label"] or (str(o["quantity"])+" "+unit),
-             "package_size":o["quantity"],"packages":n,"cash_price":cost,
-             "used_price":round(amount/o["quantity"]*o["price"],2),
+             "package_size":o["quantity"],"packages":packs,"cash_price":cost,
+             "used_price":round(amount/o["quantity"]*(cost/packs),2),
              "regular_cash":round(n*(original or o["price"]),2),"sale":True,
              "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
-                 "multi_buy_quantity":None,"multi_buy_price":None,"url":o["url"]},
+                 "multi_buy_quantity":o.get("multi_buy_quantity"),"multi_buy_price":o.get("multi_buy_price"),"url":o["url"]},
              "source":"PrijsProfeet","url":o["url"]}))
     return [x[1] for x in sorted(options,key=lambda x:x[0])]
 
