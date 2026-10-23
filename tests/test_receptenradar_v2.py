@@ -14,6 +14,17 @@ class PrijsTest(unittest.TestCase):
         self.assertLess(low["protein_g_per_serving_estimate"],30)
         self.assertFalse(low["protein_source"])
 
+    def test_meer_groenten_in_plaats_van_zetmeel(self):
+        sufficient=nutrition_profile([("kipfilet",650,"g"),
+            ("spruiten",1100,"g"),("aardappel",400,"g")])
+        self.assertEqual(sufficient["vegetable_g_per_serving_estimate"],275)
+        self.assertTrue(sufficient["lower_carb"])
+        self.assertTrue(sufficient["priority"])
+        insufficient=nutrition_profile([("kipfilet",650,"g"),
+            ("spruiten",800,"g"),("aardappel",900,"g")])
+        self.assertFalse(insufficient["vegetable_forward"])
+        self.assertFalse(insufficient["lower_carb"])
+
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
         self.assertEqual(measure("0,75 liter"),(750,"ml"))
