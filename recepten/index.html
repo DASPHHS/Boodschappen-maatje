@@ -16,7 +16,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
 <div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
-<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div>
+<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
 <footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en kruiden, olie, bezorgkosten zijn niet inbegrepen.</footer><script>(function pageLogic(){
@@ -24,7 +24,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const safeURL=x=>{try{const u=new URL(x);return /^https?:$/.test(u.protocol)?u.href:"#"}catch{return "#"}};
- let state={data:null,store:"ah",mode:"recipes",visible:10,selected:JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]")};
+ let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,selected:JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]")};
  const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
  const storeData=()=>state.data?.recipes?.[state.store]||[];
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
@@ -91,7 +91,9 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function renderDeals(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
   const ds=(state.data?.deals?.[state.store]||[]).filter(x=>x.name.toLocaleLowerCase("nl").includes(q));
-  $("deals").innerHTML=ds.length?ds.slice(0,150).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount?`<small>−${Math.round(d.discount)}%</small>`:""}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
+  $("moredeals").hidden=ds.length<=state.dealVisible;
+  $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
+  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount?`<small>−${Math.round(d.discount)}%</small>`:""}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
  }
  function calcCart(){
   const rs=active(), groups=new Map(), missing=[];
@@ -132,18 +134,20 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("sort").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
   $("deals").hidden=state.mode!=="deals";
+  $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
   renderCart();
  }
  const resetAndRender=()=>{state.visible=10;render()};
  $("loadmore").addEventListener("click",()=>{state.visible+=10;renderRecipes()});
+ $("moredeals").addEventListener("click",()=>{state.dealVisible+=50;renderDeals()});
  $("category").addEventListener("change",resetAndRender);
  $("selection").addEventListener("change",resetAndRender);
  $("origin").addEventListener("change",resetAndRender);
  $("health").addEventListener("change",resetAndRender);
- document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;resetAndRender()}));
- $("search").addEventListener("input",resetAndRender);
+ document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;state.dealVisible=50;resetAndRender()}));
+ $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("sort").addEventListener("change",resetAndRender);
  $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add)});
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
