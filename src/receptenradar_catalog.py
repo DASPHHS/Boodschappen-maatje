@@ -7,6 +7,7 @@ import re
 
 # Naam, zoekpatroon, uitgesloten woorden: conservatief, niet generiek fuzzy koppelen.
 ING = {
+ "varkenshaas": ("varkenshaas", r"varkenshaas", r"rollade|broodbeleg|gevuld|saus|maaltijd|reepjes|medaillon|vleeswaren|salade"),
  "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread|pepersaus|roomsaus|saus|ragout|gepocheerd|gebakken"),
  "kipdij": ("kipdijfilet", r"kipdij(filet)?", r"vegetar|vegan|salade|broodbeleg|soep|smaak"),
  "kipgehakt": ("kipgehakt", r"\bkipgehakt\b", r"vegetar|vegan|gebraden|gekookt|beleg|worst|plantaardig"),
@@ -149,4 +150,10 @@ RECIPES = [
  ("Mealprep: kaneelpaprika-kip met zoete aardappel","Kip",40,[("kipdij",650,"g"),("zoete_aardappel",900,"g"),("broccoli",650,"g"),("yoghurt",250,"g")]),
  ("Mealprep: geroosterde groentencouscous met kikkererwten","Vegetarisch",40,[("couscous",320,"g"),("kikkererwten",600,"g"),("courgette",2,"st"),("paprika",3,"st")]),
  ("Mealprep: tofu-kokosrijst met spinazie","Vegetarisch",30,[("tofu",600,"g"),("spinazie",450,"g"),("kokosmelk",400,"ml"),("rijst",320,"g")]),
+ ("Varkenshaas met gebakken minikrieltjes en bloemkool","Vlees",35,[("varkenshaas",800,"g"),("aardappel",1100,"g"),("bloemkool",1,"st")]),
+ ("Varkenshaas met wokgroenten en aardappeltjes","Vlees",35,[("varkenshaas",800,"g"),("wok",800,"g"),("aardappel",1100,"g")]),
+ ("Varkenshaas met bloemkool en champignons","Vlees",35,[("varkenshaas",800,"g"),("bloemkool",1,"st"),("champignons",400,"g"),("aardappel",900,"g")]),
+ ("Varkenshaas met spruitjes en krieltjes","Vlees",35,[("varkenshaas",800,"g"),("spruiten",750,"g"),("aardappel",1000,"g")]),
+ ("Varkenshaas met gebakken broccoli en aardappelschijfjes","Vlees",35,[("varkenshaas",800,"g"),("broccoli",700,"g"),("aardappel",1100,"g")]),
+ ("Varkenshaas met spinazie en krieltjes","Vlees",35,[("varkenshaas",800,"g"),("spinazie",750,"g"),("aardappel",1100,"g")]),
 ]
