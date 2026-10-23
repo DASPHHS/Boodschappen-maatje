@@ -2,7 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context
+from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -88,6 +88,30 @@ class PrijsTest(unittest.TestCase):
         self.assertTrue(ctx["frozen"])
         flav=product_context({"name":"Skyr aardbei 450 g"},"kwark")
         self.assertTrue(flav["nutrition_unverified"])
+
+    def test_audit_herkent_ontbrekende_receptmatch(self):
+        offer={"name":"Diepvries blauwe bessen 750 g","norm":"diepvries blauwe bessen 750 g",
+               "quantity":750,"unit":"g","price":3.0,"original_price":5.0,
+               "promotion_type":"","is_loyalty":False,"url":"https://example.com"}
+        offers={"ah":[offer],"jumbo":[],"lidl":[]}
+        empty={"ah":[],"jumbo":[],"lidl":[]}
+        report=audit_promotions(offers,empty)
+        group=report["ah"]["groups"]["Fruit"]
+        self.assertEqual(group["recognized_offers"],1)
+        self.assertEqual(group["unlinked_offers"],1)
+        matched={"ah":[{"ingredients":[{"sale":True,
+           "action":{"name":"Diepvries blauwe bessen 750 g"}}]}],"jumbo":[],"lidl":[]}
+        report=audit_promotions(offers,matched)
+        self.assertEqual(report["ah"]["groups"]["Fruit"]["linked_offers"],1)
+
+    def test_audit_meldt_onbekende_verpakking(self):
+        offer={"name":"Diepvries spinazie aanbieding",
+               "norm":"diepvries spinazie aanbieding","quantity":None,
+               "unit":None,"price":1.0,"original_price":2.0,
+               "promotion_type":"","is_loyalty":False,"url":""}
+        report=audit_promotions({"ah":[offer],"jumbo":[],"lidl":[]},
+                                {"ah":[],"jumbo":[],"lidl":[]})
+        self.assertEqual(report["ah"]["unlinked"][0]["reason"],"Verpakkingsmaat onbekend")
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
