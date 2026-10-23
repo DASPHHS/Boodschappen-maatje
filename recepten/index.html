@@ -10,7 +10,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 @media(max-width:850px){.layout{grid-template-columns:1fr}.cartpanel{position:static}.eyebrow{margin-top:26px}}@media(max-width:550px){.cards{grid-template-columns:1fr}.wrap{padding:0 12px}.mainpanel,.cartpanel{padding:15px}h1{letter-spacing:-1.5px}header{padding-bottom:52px}.top a{font-size:11px}}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">koop<span>kracht</span> / recepten</div><a href="../">← Koopjesdashboard</a></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
-<p>Vijftien recepten per supermarkt voor vier porties. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
+<p>Tot vijftien recepten per supermarkt met echte actieproducten, voor vier porties. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
@@ -96,7 +96,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function render(){
   document.querySelectorAll("[data-store]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.store===state.store)));
   $("store-status").textContent=`${state.data.counts.ordinary[state.store]||0} gewone productprijzen · ${state.data.counts.promotions[state.store]||0} aanbiedingen`;
-  $("title").textContent=state.mode==="recipes"?"15 recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
+  $("title").textContent=state.mode==="recipes"?storeData().length+" recepten met actieproducten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
   $("switch").textContent=state.mode==="recipes"?"Bekijk alle deals":"Terug naar recepten";
   $("sort").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
