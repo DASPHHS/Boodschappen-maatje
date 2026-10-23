@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'src/receptenbronnen.py'
+      - 'recepten/eigen-archief.json'
       - 'recepten/inspiratie.html'
       - '.github/workflows/receptenbronnen.yml'
   schedule:
@@ -23,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Installeer requests
-        run: python -m pip install 'requests>=2.31,<3'
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
       - name: Verzamel recepttitels en bronlinks uit openbare toegestane bronnen
         run: python src/receptenbronnen.py
       - name: Bewaar herbruikbare receptenindex
