@@ -52,7 +52,7 @@ ING = {
  "avocado": ("avocado", r"\bavocado('s)?\b", r"olie|guacamole|saus|spread|maaltijd"),
  "mais": ("maïs", r"(mais|maïs)", r"chips|wafels|popcorn|meel|zetmeel|kippen|tortilla|soep"),
  "yoghurt": ("magere yoghurt", r"(magere yoghurt|griekse yoghurt|yoghurt griekse stijl)", r"drank|smaak|saus|knijp|fruit|aardbei|vanille|10% vet|volle"),
- "kwark": ("magere kwark", r"(magere kwark|kwark naturel|skyr naturel)", r"drink|knijp|toetje|aardbei|vanille|stracciatella"),
+ "kwark": ("magere kwark", r"(magere(?:\s+milde)?\s+kwark|kwark naturel|skyr naturel)", r"drink|knijp|toetje|aardbei|vanille|stracciatella"),
  "kaas": ("geraspte kaas", r"(geraspte (oude|belegen|jong|kaas)|kaas geraspt)", r"pizza|maaltijd|saus"),
  "kokosmelk": ("kokosmelk", r"kokosmelk", r"drank|shampoo|haar|dessert|rijst"),
  "naan": ("naanbrood", r"(naanbrood|naan brood|naan)", r"pizza|maaltijd"),
