@@ -12,7 +12,7 @@ import requests
 from receptenradar_catalog import ING, RECIPES
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/"docs"/"recepten"/"data.json"
+OUT=ROOT/"recepten"/"data.json"
 SHELVES="https://raw.githubusercontent.com/supermarkt/checkjebon/main/data/supermarkets.json"
 DEALS="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
 HEADERS={"User-Agent":"KoopkrachtRecepten/2.0 (+https://github.com/DASPHHS/koopkracht)","Accept":"application/json"}
