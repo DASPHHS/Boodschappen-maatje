@@ -15,7 +15,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Beste acties (top 15)</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Beste acties (top 15)</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div id="deals" hidden></div>
 </section><aside class="panel cartpanel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
@@ -45,6 +45,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(cat==="meat")rs=rs.filter(r=>r.category==="Kip"||r.category==="Vlees");
   if(cat==="fish")rs=rs.filter(r=>r.category==="Vis");
   if(cat==="vega")rs=rs.filter(r=>r.category==="Vegetarisch");
+  const origin=$("origin").value;
+  if(origin!=="all")rs=rs.filter(r=>r.inspiration===origin);
   const selection=$("selection").value;
   if(selection==="two")rs=rs.filter(r=>r.sale_count>=2);
   if(selection==="promos")rs=rs.filter(r=>r.sale_count>0);
@@ -58,7 +60,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("recipes").innerHTML=rs.length?rs.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
     <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.sale_count} actie-ingrediënten</span></div>
     <div class="recipe-body"><h3>${esc(r.title)}</h3>
-    <div class="chips"><span class="chip">${esc(r.category)}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
+    <div class="chips"><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${recipePrice(r)}
     <div class="actions"><button class="btn ${isSelected(r)?"outline":""}" data-add="${esc(r.id)}">${isSelected(r)?"✓ Geselecteerd":"+ Voeg toe"}</button></div>
     <details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
@@ -115,6 +117,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  $("category").addEventListener("change",()=>render());
  $("selection").addEventListener("change",()=>render());
+ $("origin").addEventListener("change",()=>render());
  document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;render()}));
  $("search").addEventListener("input",()=>render());
  $("sort").addEventListener("change",()=>render());
