@@ -341,7 +341,9 @@ PROTEIN_PER_100G={
  "tomaten":0.5,"tomatenblokjes":0.7,"ui":0.7,"sla":1.0,
  "rijst":7.0,"pasta":11.0,"couscous":11.0,"aardappel":1.5,
  "zoete_aardappel":1.2,"yoghurt":3.5,"kwark":9.0,
- "kaas":20.0,"kokosmelk":1.0,"mais":2.0
+ "kaas":20.0,"kokosmelk":1.0,"mais":2.0,
+ "havermout":12.0,"banaan":1.0,"blauwe_bessen":0.6,
+ "aardbeien":0.7,"noten":18.0,"hummus":6.0
 }
 PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
                    "bloemkool":12.0,"paprika":1.0,"courgette":2.0,
@@ -357,14 +359,16 @@ KCAL_PER_100G={
  "spinazie":25,"broccoli":34,"champignons":25,"tomaten":20,
  "tomatenblokjes":25,"ui":40,"wortel":40,"sla":18,
  "yoghurt":60,"kwark":58,"kaas":350,"kokosmelk":175,
- "mais":95
+ "mais":95,"havermout":370,"banaan":90,"blauwe_bessen":55,
+ "aardbeien":35,"noten":630,"hummus":240
 }
 # Stukgewichten zijn gemiddelden; geen etiketdata.
 KCAL_PER_PIECE={
  "eieren":75,"wraps":125,"naan":240,"bloemkool":175,
  "paprika":45,"courgette":50,"komkommer":35,"avocado":240
 }
-KCAL_PER_100ML={"kokosmelk":175}
+KCAL_PER_100ML={"kokosmelk":175,"melk":47}
+PROTEIN_PER_100ML={"melk":3.5}
 MIN_PROTEIN_PER_SERVING=30.0
 
 def nutrition_profile(ings):
@@ -383,6 +387,8 @@ def nutrition_profile(ings):
             protein_total+=float(qty)*PROTEIN_PER_100G[key]/100
         elif unit=="st" and key in PROTEIN_PER_PIECE:
             protein_total+=float(qty)*PROTEIN_PER_PIECE[key]
+        elif unit=="ml" and key in PROTEIN_PER_100ML:
+            protein_total+=float(qty)*PROTEIN_PER_100ML[key]/100
         elif unit=="ml" and key=="kokosmelk":
             protein_total+=float(qty)*0.01
         else:
@@ -454,6 +460,19 @@ def make_recipes(shelves,offers):
             consumed=round(sum(x["used_price"] for x in lines),2)
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
             nutrition=nutrition_profile(ings)
+            meal_type=("Ontbijt" if title.startswith("Ontbijt:") else
+                       "Lunch" if title.startswith("Lunch:") else "Avondeten")
+            tl=title.casefold()
+            cuisine=("Aziatisch" if any(x in tl for x in
+                     ("aziatisch","thaise","koreaanse","japanse","teriyaki","tofu-",
+                      "wok","buddhabowl","buddha")) else
+                     "Latijns-Amerikaans" if any(x in tl for x in
+                     ("mexicaans","costa ricaanse","gallo pinto","zuid-amerikaanse",
+                      "chipotle","burrito")) else
+                     "Mediterraan" if any(x in tl for x in
+                     ("mediterrane","italiaanse","griekse")) else "Overig")
+            portable=meal_type=="Lunch"
+            prep_ahead=meal_type in ("Lunch","Ontbijt")
             inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
                          else "HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
@@ -461,7 +480,8 @@ def make_recipes(shelves,offers):
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
               "inspiration":inspiration,"offer_driven":idx>=len(RECIPES),
               "mealprep":title.startswith("Mealprep:") or minutes>=30,
-              "nutrition":nutrition,
+              "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
+              "portable":portable,"prep_ahead":prep_ahead,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "covered_count":len(lines),"complete":complete,
               "checkout":checkout if complete else None,"known_subtotal":checkout,
