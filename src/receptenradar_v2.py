@@ -530,6 +530,25 @@ def make_recipes(shelves,offers):
                     line["offer_alternatives"]=alternative_offers(
                         key,amount,unit,offers[store],line)
             alternative_count=sum(bool(l.get("offer_alternatives")) for l in lines)
+            # Bouw daarnaast een afzonderlijke, volledig doorberekende
+            # actiemand. Deze vervangt de goedkoopste mand NIET stilzwijgend.
+            deal_lines=[]
+            for line in lines:
+                alternatives=line.get("offer_alternatives") or []
+                if alternatives and not line.get("sale"):
+                    best=min(alternatives,key=lambda x:x["cash_price"])
+                    deal_lines.append({"key":line["key"],"label":line["label"],
+                       "product":best["product"],"package":best["package"],
+                       "packages":best["packages"],"cash_price":best["cash_price"],
+                       "unit":line["unit"],"required":line["required"],"sale":True,
+                       "url":best["url"],"valid_until":best.get("valid_until")})
+                else:
+                    deal_lines.append({k:line.get(k) for k in
+                        ("key","label","product","package","packages","cash_price",
+                         "unit","required","sale","url")})
+            deal_used=sum(bool(l.get("sale")) for l in deal_lines)
+            deal_cash=round(sum(l["cash_price"] for l in deal_lines),2)
+            deal_extra=round(deal_cash-sum(l["cash_price"] for l in lines),2)
             complete=len(missing)==0 and bool(lines)
             checkout=round(sum(x["cash_price"] for x in lines),2)
             consumed=round(sum(x["used_price"] for x in lines),2)
@@ -566,6 +585,9 @@ def make_recipes(shelves,offers):
               "portable":portable,"prep_ahead":prep_ahead,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "other_offer_count":alternative_count,
+              "deal_basket":{"used_actions":deal_used,"checkout":deal_cash if complete else None,
+                             "known_subtotal":deal_cash,"extra_vs_cheapest":deal_extra,
+                             "ingredients":deal_lines},
               "covered_count":len(lines),"complete":complete,
               "checkout":checkout if complete else None,"known_subtotal":checkout,
               "used_total":consumed if complete else None,
