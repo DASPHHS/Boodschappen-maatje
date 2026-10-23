@@ -53,6 +53,22 @@ class PrijsTest(unittest.TestCase):
         self.assertTrue(p["priority"])
         self.assertGreaterEqual(p["protein_g_per_serving_estimate"],30)
 
+    def test_jumbo_magere_milde_kwark_herkend(self):
+        self.assertTrue(match_ingredient(
+            {"norm":"campina magere milde kwark naturel voordeelpak 1 kg"},"kwark"))
+        self.assertTrue(match_ingredient(
+            {"norm":"jumbo nederlandse aardbeien 400 g"},"aardbeien"))
+        self.assertFalse(match_ingredient(
+            {"norm":"optimel kwark met yoghurt aardbei 500 g"},"kwark"))
+
+    def test_vaste_aanbieding_voor_prijs(self):
+        promo={"price":2.49,"original_price":3.49,
+               "promotion_type":"voor € 2,49"}
+        self.assertEqual(total_for(2,3.49,promo),(4.98,2))
+        unverified_bundle={"price":2.99,"original_price":3.49,
+                           "promotion_type":"2 voor 2,99"}
+        self.assertEqual(total_for(2,3.49,unverified_bundle),(6.98,2))
+
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
         self.assertEqual(measure("0,75 liter"),(750,"ml"))
