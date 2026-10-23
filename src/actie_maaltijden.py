@@ -8,14 +8,14 @@ from receptenradar_catalog import ING
 import re
 
 PROTEINS={
- "kipfilet":("Kipfilet","Kip",650,"g"),"kipdij":("Kipdij","Kip",700,"g"),
- "kipgehakt":("Kipgehakt","Kip",650,"g"),"shoarma":("Kipshoarma","Kip",650,"g"),
+ "kipfilet":("Kipfilet","Kip",800,"g"),"kipdij":("Kipdij","Kip",800,"g"),
+ "kipgehakt":("Kipgehakt","Kip",800,"g"),"shoarma":("Kipshoarma","Kip",800,"g"),
  "varkenshaas":("Varkenshaas","Vlees",800,"g"),
- "gehakt":("Gehakt","Vlees",650,"g"),
- "zalm":("Zalm","Vis",650,"g"),
+ "gehakt":("Gehakt","Vlees",800,"g"),
+ "zalm":("Zalm","Vis",800,"g"),
  "gerookte_zalm":("Gerookte zalm","Vis",400,"g"),
  "tonijn":("Tonijn","Vis",500,"g"),
- "tofu":("Tofu","Vegetarisch",750,"g"),
+ "tofu":("Tofu","Vegetarisch",800,"g"),
  "kikkererwten":("Kikkererwten","Vegetarisch",850,"g"),
  "linzen":("Linzen","Vegetarisch",850,"g"),
  "bonen":("Zwarte bonen","Vegetarisch",850,"g"),
