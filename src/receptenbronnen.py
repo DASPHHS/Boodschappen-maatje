@@ -53,7 +53,7 @@ def extra_mealprep_links():
                 if re.search(r"sign up|subscribe|see all|home page|learn more|next page|read more|about us|recipe index|start here",title,re.I):continue
                 if re.fullmatch(r"(categories|meal plans|surprise me|giveaways|contact|blog|news|search)",title,re.I):continue
                 # Amerikaanse dollars op bronpagina zijn geen supermarktprijs.
-                title=re.sub(r"\\s*\\$\\d+(?:\\.\\d+)?(?:\\s*(?:recipe|serving|per serving|/))*.*$", "",title).strip()
+                title=re.sub(r"\s*\$\d+(?:\.\d+)?(?:\s*(?:recipe|serving|per serving|/))*.*$", "",title).strip()
                 if len(title)<10:continue
                 seen.add(href)
                 result.append({"title":title,"source":source,"category":category(title),
