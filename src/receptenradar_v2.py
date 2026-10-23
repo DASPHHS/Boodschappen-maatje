@@ -201,10 +201,15 @@ def promo_for(shelf,offer_list):
         # Exacte itemnaam met prefixverschil is toegestaan, geen generieke
         # ingrediëntfuzzy-match. Bijvoorbeeld Lidl "Gewassen spinazie" tegenover
         # Checkjebon "Spinazie".
-        ss=set(sn.split());os=set(on.split())
-        overlap=bool(ss and os and len(ss&os)>=2 and len(ss&os)/max(len(ss),len(os))>=.7)
-        safe_single=(len(ss)==1 and ss.issubset(os) and len(os)<=2)
-        if similarity<.84 and not overlap and not safe_single:continue
+        stop={"ah","jumbo","lidl","de","het","een","gram","gr","g","kg","ml","l","liter","bio","biologisch","vers","original","origineel","pak","zak","doos"}
+        ss={t for t in sn.split() if t not in stop and not t.isdigit()}
+        os={t for t in on.split() if t not in stop and not t.isdigit()}
+        # Vereis hetzelfde inhoudelijke productwoord; alleen merk, gewicht of
+        # winkelnaam matchen is niet genoeg (tomatenblokjes != cherrytomaten).
+        if not (ss & os):continue
+        overlap=len(ss&os)/max(len(ss),len(os))>=.66
+        safe_single=(len(ss)==1 and ss.issubset(os) and len(os)<=2) or (len(os)==1 and os.issubset(ss) and len(ss)<=2)
+        if similarity<.90 and not overlap and not safe_single:continue
         hits.append((similarity,offer))
     if not hits:return None
     return sorted(hits,key=lambda x:(x[0],x[1].get("discount") or 0),reverse=True)[0][1]
