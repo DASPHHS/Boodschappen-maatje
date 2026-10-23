@@ -171,6 +171,37 @@ def load_deals():
           "url":"https://www.jumbo.com/aanbiedingen/hamburgers/3013651",
           "ean":"","source":"Jumbo officiële aanbiedingspagina (handmatig geverifieerd)",
           "is_loyalty":False})
+    # Tijdelijke, officieel gecontroleerde Jumbo-schappromoties 21-27 okt.
+    # De bulkfeed mist soms categorie-acties; de einddatum voorkomt dat de
+    # handmatige aanvulling na deze week als actuele korting blijft staan.
+    if "2026-10-21"<=today<="2026-10-27":
+        verified=[
+          {"name":"Jumbo Varkenshaas Culinair 1 Stuk ca. 405 g",
+           "price":4.82,"quantity":405,"unit":"g","size_label":"ca. 405 g",
+           "original_price":6.74,"multi_buy_quantity":None,"multi_buy_price":None,
+           "promotion_type":"€ 1,19 per 100 gram","discount":28.5,
+           "url":"https://www.jumbo.com/aanbiedingen/varkenshaas-of-beenham-culinair/3021340"},
+          {"name":"Jumbo Minikrieltjes 600 g",
+           "price":1.19,"quantity":600,"unit":"g","size_label":"600 g",
+           "original_price":1.19,"multi_buy_quantity":2,"multi_buy_price":1.99,
+           "promotion_type":"2 voor € 1,99","discount":16.4,
+           "url":"https://www.jumbo.com/aanbiedingen/jumbo-minikrieltjes-aardappelschijfjes-of-opbakaardapppeltjes/3021433"},
+          {"name":"Jumbo Bloemkool",
+           "price":0.99,"quantity":1,"unit":"st","size_label":"per stuk",
+           "original_price":None,"multi_buy_quantity":None,"multi_buy_price":None,
+           "promotion_type":"voor € 0,99","discount":None,
+           "url":"https://www.jumbo.com/aanbiedingen/nu"},
+        ]
+        for item in verified:
+            # Eén en hetzelfde product niet dubbel opnemen.
+            if any(normalize(o["name"])==normalize(item["name"]) and
+                    o.get("multi_buy_quantity")==item["multi_buy_quantity"]
+                    for o in offers["jumbo"]):
+                continue
+            item.update({"norm":normalize(item["name"]),"valid_from":"2026-10-21",
+                         "valid_until":"2026-10-27","ean":"",
+                         "source":"Jumbo officiële campagnepagina","is_loyalty":False})
+            offers["jumbo"].append(item)
     return offers,errors
 
 def match_ingredient(product,ingredient):
