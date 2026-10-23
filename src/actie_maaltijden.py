@@ -140,7 +140,10 @@ def meal_candidates(offers,limit=65):
                     if not sensible_meal(pk,vk,sk,vk2):continue
                     # Een tweede groente zonder bijgerecht is zinvol als
                     # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
-                    # Bij twee groenten behoudt het gerecht circa 1,1 kg groenten\n                    # totaal in plaats van twee volledige porties te stapelen.\n                    main_amount=round(vamount*0.72) if vk2 and vunit=="g" else vamount\n                    ings=[(pk,pamount,punit),(vk,main_amount,vunit)]
+                    # Bij twee groenten behoudt het gerecht circa 1,1 kg groenten
+                    # totaal in plaats van twee volledige porties te stapelen.
+                    main_amount=round(vamount*0.72) if vk2 and vunit=="g" else vamount
+                    ings=[(pk,pamount,punit),(vk,main_amount,vunit)]
                     title=pname+" met "+vname
                     if vk2:
                         v2name,v2amount,v2unit=VEGETABLES[vk2]
