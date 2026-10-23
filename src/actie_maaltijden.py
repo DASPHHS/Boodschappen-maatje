@@ -22,18 +22,18 @@ PROTEINS={
  "eieren":("Eieren","Vegetarisch",10,"st")
 }
 VEGETABLES={
- "broccoli":("broccoli",800,"g"),"bloemkool":("bloemkool",1,"st"),
- "spinazie":("spinazie",800,"g"),"boerenkool":("boerenkool",800,"g"),
- "wok":("wokgroenten",900,"g"),"spruiten":("spruitjes",800,"g"),
+ "broccoli":("broccoli",1100,"g"),"bloemkool":("bloemkool",1,"st"),
+ "spinazie":("spinazie",1100,"g"),"boerenkool":("boerenkool",1100,"g"),
+ "wok":("wokgroenten",1100,"g"),"spruiten":("spruitjes",1100,"g"),
  "courgette":("courgette",3,"st"),"paprika":("paprika",4,"st"),
- "champignons":("champignons",700,"g"),"wortel":("wortelen",800,"g"),
- "tomaten":("tomaten",800,"g"),"sla":("salade",300,"g"),
+ "champignons":("champignons",1100,"g"),"wortel":("wortelen",1100,"g"),
+ "tomaten":("tomaten",1100,"g"),"sla":("salade",1000,"g"),
  "komkommer":("komkommer",2,"st")
 }
 SIDES={
- "aardappel":("krieltjes",650,"g"),"zoete_aardappel":("zoete aardappel",650,"g"),
- "rijst":("zilvervliesrijst",180,"g"),"pasta":("volkoren pasta",180,"g"),
- "couscous":("volkoren couscous",180,"g"),
+ "aardappel":("krieltjes",400,"g"),"zoete_aardappel":("zoete aardappel",400,"g"),
+ "rijst":("zilvervliesrijst",140,"g"),"pasta":("volkoren pasta",140,"g"),
+ "couscous":("volkoren couscous",140,"g"),
  "wraps":("volkoren wraps",4,"st"),
 }
 SELECTION_EXCLUSIONS=re.compile(
@@ -140,12 +140,12 @@ def meal_candidates(offers,limit=65):
                     if not sensible_meal(pk,vk,sk,vk2):continue
                     # Een tweede groente zonder bijgerecht is zinvol als
                     # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
-                    ings=[(pk,pamount,punit),(vk,vamount,vunit)]
+                    # Bij twee groenten behoudt het gerecht circa 1,1 kg groenten\n                    # totaal in plaats van twee volledige porties te stapelen.\n                    main_amount=round(vamount*0.72) if vk2 and vunit=="g" else vamount\n                    ings=[(pk,pamount,punit),(vk,main_amount,vunit)]
                     title=pname+" met "+vname
                     if vk2:
                         v2name,v2amount,v2unit=VEGETABLES[vk2]
                         # Voorkom absurd veel groente per 4 porties.
-                        v2amount=round(v2amount*0.65) if v2unit=="g" else max(1,round(v2amount*0.65))
+                        v2amount=round(v2amount*0.35) if v2unit=="g" else max(1,round(v2amount*0.65))
                         ings.append((vk2,v2amount,v2unit))
                         title+=", "+v2name
                     if sk:
