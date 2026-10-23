@@ -377,17 +377,22 @@ def nutrition_profile(ings):
     vegetables=("wok","spinazie","broccoli","bloemkool","paprika","courgette",
                 "champignons","tomaten","tomatenblokjes","ui","komkommer","wortel",
                 "sla","spruiten","boerenkool")
-    veg_g=sum(amounts.get(key,0) for key in vegetables
-              if key not in ("paprika","courgette","komkommer","bloemkool"))
-    veg_pieces=sum(amounts.get(key,0) for key in
-                   ("paprika","courgette","komkommer","bloemkool"))
-    vegetables_present=veg_g>=500 or (veg_g>=280 and veg_pieces>=1) or veg_pieces>=3
+    # Benadering eetbaar gewicht per stuk, uitsluitend voor persoonlijke
+    # filtering. Echte winkelverpakkingen variëren; toon dit als schatting.
+    veg_piece_g={"paprika":150,"courgette":280,"komkommer":300,"bloemkool":700}
+    vegetable_g=sum(
+        qty if unit=="g" else qty*veg_piece_g.get(key,0)
+        for key,qty,unit in ings if key in vegetables)
+    vegetable_g_per_serving=round(vegetable_g/4)
+    vegetables_present=vegetable_g_per_serving>=250
     priority=protein and lowish_carb and vegetables_present
     return {"priority":priority,"protein_source":protein,
             "protein_g_per_serving_estimate":protein_per_serving,
             "protein_target_g":MIN_PROTEIN_PER_SERVING,
             "protein_unknown":unknown,
             "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
+            "vegetable_g_per_serving_estimate":vegetable_g_per_serving,
+            "vegetable_target_g":250,
             "basis":"Schatting per portie uit standaardwaarden; exacte winkelproductwaarden kunnen afwijken."}
 
 def make_recipes(shelves,offers):
