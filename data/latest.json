@@ -1,5 +1,5 @@
 {
-  "scanned_at": "2026-10-22T23:26:54.823331+00:00",
+  "scanned_at": "2026-10-23T00:00:18.399721+00:00",
   "folders": [
     {
       "id": "lidl-aanbiedingen/a4b1b8bc-79c8-4f66-82e2-1acba17caefe",
@@ -2454,6 +2454,25 @@
       "unit_price": null,
       "image_url": "https://web-fileserver.dirk.nl/artikelen/482364_2026-10-19_04-03-28-557_528e8243-2e39-4288-b4ea-1a15af083aa4.png",
       "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/sla-en-verse-kruiden/koriander/120105",
+      "source": "prijsprofeet",
+      "verified": false,
+      "kind": "top_by_percentage"
+    },
+    {
+      "id": "dirk:dirk_106855_2026-10-21:top_by_percentage",
+      "store": "Dirk",
+      "text": "Bakker van der Akker Naturel eierkoeken",
+      "price": 0.99,
+      "original_price": 1.99,
+      "savings_percentage": 50.3,
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "promotion_status": "unknown",
+      "brand": "Bakker van der Akker",
+      "category": null,
+      "unit_price": null,
+      "image_url": "https://web-fileserver.dirk.nl/artikelen/187889_1_465676_638485132330053193.png",
+      "url": "https://www.dirk.nl/boodschappen/brood-beleg-en-koek/koekjes/bakker-van-der-akker-naturel-eierkoeken/106855",
       "source": "prijsprofeet",
       "verified": false,
       "kind": "top_by_percentage"
@@ -6069,6 +6088,25 @@
       "kind": "top_by_percentage"
     },
     {
+      "id": "dirk:dirk_115650_2026-10-23:top_by_percentage",
+      "store": "Dirk",
+      "text": "Bits & Bites Trio aioli",
+      "price": 1.69,
+      "original_price": 2.95,
+      "savings_percentage": 42.7,
+      "valid_from": "2026-10-23",
+      "valid_until": "2026-10-25",
+      "promotion_status": "unknown",
+      "brand": "Bits & Bites",
+      "category": null,
+      "unit_price": null,
+      "image_url": "https://web-fileserver.dirk.nl/artikelen/476219_2026-10-19_04-06-37-156_d74c1852-daf3-4e4a-947c-f1f6bf9e86e0.png",
+      "url": "https://www.dirk.nl/boodschappen/maaltijden-salades-en-tapas/tapas/bits-en-bites-trio-aioli/115650",
+      "source": "prijsprofeet",
+      "verified": false,
+      "kind": "top_by_percentage"
+    },
+    {
       "id": "plus:plus_918446_2026-10-21:top_by_percentage",
       "store": "PLUS",
       "text": "Ajax Shower power",
@@ -6539,6 +6577,25 @@
       "unit_price": null,
       "image_url": "https://s7g10.scene7.com/is/image/aldinord/product_1210301_main_cms_4_nl_nl_prei_cw01_2024",
       "url": "https://www.aldi.nl/product/prei-1210301.html",
+      "source": "prijsprofeet",
+      "verified": false,
+      "kind": "top_by_percentage"
+    },
+    {
+      "id": "dirk:dirk_123213_2026-10-23:top_by_percentage",
+      "store": "Dirk",
+      "text": "Vleeschmeesters Actie entrecote",
+      "price": 6.65,
+      "original_price": 10.9,
+      "savings_percentage": 39.0,
+      "valid_from": "2026-10-23",
+      "valid_until": "2026-10-25",
+      "promotion_status": "unknown",
+      "brand": "Vleeschmeesters",
+      "category": null,
+      "unit_price": null,
+      "image_url": "https://web-fileserver.dirk.nl/artikelen/254460_1_488391_639098562298545800.png",
+      "url": "https://www.dirk.nl/boodschappen/vlees-en-vis/rundvlees/vleeschmeesters-actie-entrecote/123213",
       "source": "prijsprofeet",
       "verified": false,
       "kind": "top_by_percentage"
@@ -7342,7 +7399,7 @@
       "kind": "top_by_percentage"
     },
     {
-      "id": "dirk:dirk_68271_2026-10-21:top_by_percentage",
+      "id": "dirk:dirk_68271_2026-10-21:top_by_amount",
       "store": "Dirk",
       "text": "Spa Intense",
       "price": 0.79,
@@ -7358,7 +7415,7 @@
       "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/mineraal-en-bronwater/spa-intense/68271",
       "source": "prijsprofeet",
       "verified": false,
-      "kind": "top_by_percentage"
+      "kind": "top_by_amount"
     },
     {
       "id": "hoogvliet:hoogvliet_715433000_2026-10-21:top_by_amount",
@@ -7435,25 +7492,6 @@
       "source": "prijsprofeet",
       "verified": false,
       "kind": "top_by_amount"
-    },
-    {
-      "id": "dirk:dirk_83026_2026-10-21:top_by_percentage",
-      "store": "Dirk",
-      "text": "Fruity Juice Sinaasappelsap",
-      "price": 2.69,
-      "original_price": 3.65,
-      "savings_percentage": 26.3,
-      "valid_from": "2026-10-21",
-      "valid_until": "2026-10-27",
-      "promotion_status": "unknown",
-      "brand": "Fruity Juice",
-      "category": null,
-      "unit_price": null,
-      "image_url": "https://web-fileserver.dirk.nl/artikelen/230913_1_444576_638877567515407956.png",
-      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/vruchtensappen/fruity-juice-sinaasappelsap/83026",
-      "source": "prijsprofeet",
-      "verified": false,
-      "kind": "top_by_percentage"
     },
     {
       "id": "ekoplaza:eko207607:top_by_percentage",
@@ -7627,7 +7665,7 @@
       "kind": "top_by_percentage"
     },
     {
-      "id": "dirk:dirk_100600_2026-10-21:top_by_percentage",
+      "id": "dirk:dirk_100600_2026-10-21:top_by_amount",
       "store": "Dirk",
       "text": "Sprite Zero",
       "price": 0.59,
@@ -7643,7 +7681,7 @@
       "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/frisdranken/sprite-zero/100600",
       "source": "prijsprofeet",
       "verified": false,
-      "kind": "top_by_percentage"
+      "kind": "top_by_amount"
     },
     {
       "id": "plus:plus_275543_2026-10-14:top_by_amount",
@@ -9318,6 +9356,25 @@
       "kind": "top_by_amount"
     },
     {
+      "id": "dirk:dirk_101400_2026-10-23:top_by_amount",
+      "store": "Dirk",
+      "text": "Aperitivo tapasschotel Amoretti",
+      "price": 6.49,
+      "original_price": 8.39,
+      "savings_percentage": 22.6,
+      "valid_from": "2026-10-23",
+      "valid_until": "2026-10-25",
+      "promotion_status": "unknown",
+      "brand": "Aperitivo",
+      "category": null,
+      "unit_price": null,
+      "image_url": "https://web-fileserver.dirk.nl/artikelen/221175_1_460581_638780592541904393.png",
+      "url": "https://www.dirk.nl/boodschappen/maaltijden-salades-en-tapas/tapas/aperitivo-tapasschotel-amoretti/101400",
+      "source": "prijsprofeet",
+      "verified": false,
+      "kind": "top_by_amount"
+    },
+    {
       "id": "dekamarkt:dekamarkt_19456_2026-10-20:top_by_amount",
       "store": "DekaMarkt",
       "text": "The Famous Grouse Whisky",
@@ -9601,44 +9658,6 @@
       "source": "prijsprofeet",
       "verified": false,
       "kind": "top_by_percentage"
-    },
-    {
-      "id": "dirk:dirk_3631_2026-10-21:top_by_amount",
-      "store": "Dirk",
-      "text": "Château David Bordeaux superieur",
-      "price": 3.99,
-      "original_price": 4.99,
-      "savings_percentage": 20.0,
-      "valid_from": "2026-10-21",
-      "valid_until": "2026-10-27",
-      "promotion_status": "unknown",
-      "brand": "Château David",
-      "category": null,
-      "unit_price": null,
-      "image_url": "https://web-fileserver.dirk.nl/artikelen/252585_2026-10-19_04-04-09-387_beda338a-017c-4ea0-a218-553b817f76b7.png",
-      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/wijn/chateau-david-bordeaux-superieur/3631",
-      "source": "prijsprofeet",
-      "verified": false,
-      "kind": "top_by_amount"
-    },
-    {
-      "id": "dirk:dirk_107436_2026-10-21:top_by_amount",
-      "store": "Dirk",
-      "text": "Diamond Allure Pinot grigio",
-      "price": 3.99,
-      "original_price": 4.99,
-      "savings_percentage": 20.0,
-      "valid_from": "2026-10-21",
-      "valid_until": "2026-10-27",
-      "promotion_status": "unknown",
-      "brand": "Diamond Allure",
-      "category": null,
-      "unit_price": null,
-      "image_url": "https://web-fileserver.dirk.nl/artikelen/466466_2026-10-06_15-03-36-358_b568b0f5-5327-4780-9729-928c4c2f23e5.png",
-      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/wijn/diamond-allure-pinot-grigio/107436",
-      "source": "prijsprofeet",
-      "verified": false,
-      "kind": "top_by_amount"
     },
     {
       "id": "dekamarkt:dekamarkt_19557_2026-10-20:top_by_amount",
@@ -10236,66 +10255,6 @@
       "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
     },
     {
-      "name": "Zalm met broccoli",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "zalm",
-        "broccoli"
-      ],
-      "method": "Bak zalm en stoom broccoli.",
-      "matches": [
-        {
-          "ingredient": "zalm",
-          "product": "Daily Chef Penne gerookte zalm",
-          "price": 2.49,
-          "unit_price": null,
-          "discount_percentage": 30.6,
-          "url": "https://www.dirk.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/daily-chef-penne-gerookte-zalm/68316",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "broccoli"
-      ],
-      "coverage": 50,
-      "matched_count": 1,
-      "missing_count": 1,
-      "known_promotion_product_sum": 2.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Zalm met broccoli",
-      "store": "Albert Heijn",
-      "servings": 4,
-      "ingredients": [
-        "zalm",
-        "broccoli"
-      ],
-      "method": "Bak zalm en stoom broccoli.",
-      "matches": [
-        {
-          "ingredient": "zalm",
-          "product": "AH Excellent Gerookte sockeye zalm",
-          "price": 4.12,
-          "unit_price": null,
-          "discount_percentage": 25.0,
-          "url": "https://www.ah.nl/producten/product/wi185801/ah-excellent-gerookte-sockeye-zalm",
-          "valid_until": "2026-10-25"
-        }
-      ],
-      "missing": [
-        "broccoli"
-      ],
-      "coverage": 50,
-      "matched_count": 1,
-      "missing_count": 1,
-      "known_promotion_product_sum": 4.12,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
       "name": "Harissa-kipwraps",
       "store": "DekaMarkt",
       "servings": 4,
@@ -10378,1408 +10337,18 @@
       "known_promotion_product_sum": 4.0,
       "total_price": null,
       "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Frittata met groenten",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "ei",
-        "spinazie",
-        "champignon"
-      ],
-      "method": "Bak de groenten, voeg ei toe en laat stollen.",
-      "matches": [
-        {
-          "ingredient": "spinazie",
-          "product": "Vers afbak Borek stick spinazie feta",
-          "price": 0.69,
-          "unit_price": null,
-          "discount_percentage": 40.0,
-          "url": "https://www.dirk.nl/boodschappen/brood-beleg-en-koek/broodjes-en-snacks/vers-afbak-borek-stick-spinazie-feta/115041",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "ei",
-        "champignon"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.69,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Tonijnbonensalade",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "tonijn",
-        "bonen",
-        "tomaat"
-      ],
-      "method": "Meng tonijn, bonen en groenten.",
-      "matches": [
-        {
-          "ingredient": "bonen",
-          "product": "Hak Bruine bonen in pak",
-          "price": 0.74,
-          "unit_price": null,
-          "discount_percentage": 50.34,
-          "url": "https://www.plus.nl/product/hak-bruine-bonen-in-pak-pak-380-g-191498",
-          "valid_until": "2026-10-23"
-        }
-      ],
-      "missing": [
-        "tonijn",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.74,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Vegetarische chili",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "bonen",
-        "paprika",
-        "tomaat"
-      ],
-      "method": "Laat bonen en groenten met kruiden sudderen.",
-      "matches": [
-        {
-          "ingredient": "bonen",
-          "product": "Hak Bruine bonen in pak",
-          "price": 0.74,
-          "unit_price": null,
-          "discount_percentage": 50.34,
-          "url": "https://www.plus.nl/product/hak-bruine-bonen-in-pak-pak-380-g-191498",
-          "valid_until": "2026-10-23"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.74,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Frittata met groenten",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "ei",
-        "spinazie",
-        "champignon"
-      ],
-      "method": "Bak de groenten, voeg ei toe en laat stollen.",
-      "matches": [
-        {
-          "ingredient": "spinazie",
-          "product": "Spinazie ongewassen",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 44.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/aardappelen-groente-en-fruit/groente/spinazie-ongewassen/95535",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "ei",
-        "champignon"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Shakshuka",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "ei",
-        "tomaat",
-        "paprika"
-      ],
-      "method": "Stoof de groenten en gaar eieren in de saus.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Heinz Tomaten blokjes basilicum-oregano",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.4,
-          "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/groenteconserven/heinz-tomaten-blokjes-basilicum-oregano/33849",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "ei",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Tonijnbonensalade",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "tonijn",
-        "bonen",
-        "tomaat"
-      ],
-      "method": "Meng tonijn, bonen en groenten.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Heinz Tomaten blokjes basilicum-oregano",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.4,
-          "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/groenteconserven/heinz-tomaten-blokjes-basilicum-oregano/33849",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "tonijn",
-        "bonen"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Vegetarische chili",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "bonen",
-        "paprika",
-        "tomaat"
-      ],
-      "method": "Laat bonen en groenten met kruiden sudderen.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Heinz Tomaten blokjes basilicum-oregano",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.4,
-          "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/groenteconserven/heinz-tomaten-blokjes-basilicum-oregano/33849",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "bonen",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Heinz Tomaten blokjes basilicum-oregano",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.4,
-          "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/groenteconserven/heinz-tomaten-blokjes-basilicum-oregano/33849",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "gehakt"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kruidige linzensoep",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "linzen",
-        "wortel",
-        "tomaat"
-      ],
-      "method": "Kook linzen met groenten en specerijen.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Heinz Tomaten blokjes basilicum-oregano",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.4,
-          "url": "https://www.dirk.nl/boodschappen/aardappelen-groente-en-fruit/groenteconserven/heinz-tomaten-blokjes-basilicum-oregano/33849",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "linzen",
-        "wortel"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip met geroosterde groenten",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "courgette",
-        "paprika"
-      ],
-      "method": "Rooster gekruide kip en groenten in de oven.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Knorr Air fryer mix voor krokante kip knoflook",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 50.25,
-          "url": "https://hoogvliet.nl/product/knorr-air-fryer-mix-voor-krokante-kip-knoflook-733174000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "courgette",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip-kerrie met bloemkoolrijst",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "bloemkool",
-        "kerrie"
-      ],
-      "method": "Bak kip met kerrie, bereid bloemkoolrijst.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Knorr Air fryer mix voor krokante kip knoflook",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 50.25,
-          "url": "https://hoogvliet.nl/product/knorr-air-fryer-mix-voor-krokante-kip-knoflook-733174000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "bloemkool",
-        "kerrie"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip uit de airfryer",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "sla",
-        "aardappel"
-      ],
-      "method": "Bereid gekruide kip in de airfryer en maak een salade.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Knorr Air fryer mix voor krokante kip knoflook",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 50.25,
-          "url": "https://hoogvliet.nl/product/knorr-air-fryer-mix-voor-krokante-kip-knoflook-733174000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "sla",
-        "aardappel"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Volkoren pastasalade",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "pasta",
-        "tomaat",
-        "kip"
-      ],
-      "method": "Kook pasta en meng met kip en groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Knorr Air fryer mix voor krokante kip knoflook",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 50.25,
-          "url": "https://hoogvliet.nl/product/knorr-air-fryer-mix-voor-krokante-kip-knoflook-733174000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "pasta",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Shakshuka",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "ei",
-        "tomaat",
-        "paprika"
-      ],
-      "method": "Stoof de groenten en gaar eieren in de saus.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "ei",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Tonijnbonensalade",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "tonijn",
-        "bonen",
-        "tomaat"
-      ],
-      "method": "Meng tonijn, bonen en groenten.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "tonijn",
-        "bonen"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Vegetarische chili",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "bonen",
-        "paprika",
-        "tomaat"
-      ],
-      "method": "Laat bonen en groenten met kruiden sudderen.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "bonen",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Volkoren pastasalade",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "pasta",
-        "tomaat",
-        "kip"
-      ],
-      "method": "Kook pasta en meng met kip en groenten.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "pasta",
-        "kip"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "gehakt"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kruidige linzensoep",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "linzen",
-        "wortel",
-        "tomaat"
-      ],
-      "method": "Kook linzen met groenten en specerijen.",
-      "matches": [
-        {
-          "ingredient": "tomaat",
-          "product": "Boboli Duo focaccia basillicum & tomaat",
-          "price": 1.49,
-          "unit_price": null,
-          "discount_percentage": 37.7,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/verse-maaltijden/boboli-duo-focaccia-basillicum-en-tomaat/40896",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "linzen",
-        "wortel"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "Albert Heijn",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "gehakt",
-          "product": "AH Terra Plantaardig gehakt",
-          "price": 1.5,
-          "unit_price": null,
-          "discount_percentage": 50.0,
-          "url": "https://www.ah.nl/producten/product/wi564795/ah-terra-plantaardig-gehakt",
-          "valid_until": "2026-10-25"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.5,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip-kerrie met bloemkoolrijst",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "bloemkool",
-        "kerrie"
-      ],
-      "method": "Bak kip met kerrie, bereid bloemkoolrijst.",
-      "matches": [
-        {
-          "ingredient": "kerrie",
-          "product": "Unox Curry soep extra rijkgevuld",
-          "price": 1.69,
-          "unit_price": null,
-          "discount_percentage": 64.4,
-          "url": "https://www.dirk.nl/boodschappen/maaltijden-salades-en-tapas/houdbare-soepen/unox-curry-soep-extra-rijkgevuld/98559",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "kip",
-        "bloemkool"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 1.69,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Wraps met tofu",
-      "store": "DekaMarkt",
-      "servings": 4,
-      "ingredients": [
-        "tofu",
-        "wrap",
-        "komkommer"
-      ],
-      "method": "Bak tofu en serveer met rauwkost in wraps.",
-      "matches": [
-        {
-          "ingredient": "wrap",
-          "product": "Santa Maria Tortilla organic whole wheat",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 42.0,
-          "url": "https://www.dekamarkt.nl/boodschappen/maaltijden-salades-en-tapas/houdbare-maaltijden/santa-maria-tortilla-organic-whole-wheat/99894",
-          "valid_until": "2026-10-26"
-        }
-      ],
-      "missing": [
-        "tofu",
-        "komkommer"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip met geroosterde groenten",
-      "store": "Jumbo",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "courgette",
-        "paprika"
-      ],
-      "method": "Rooster gekruide kip en groenten in de oven.",
-      "matches": [
-        {
-          "ingredient": "paprika",
-          "product": "Duyvis Tijgernootjes BBQ Paprika Pinda Noten 275 gr",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 39.2,
-          "url": "https://www.jumbo.com/producten/duyvis-tijgernootjes-bbq-paprika-pinda-noten-275-gr-354726ZK",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "kip",
-        "courgette"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Shakshuka",
-      "store": "Jumbo",
-      "servings": 4,
-      "ingredients": [
-        "ei",
-        "tomaat",
-        "paprika"
-      ],
-      "method": "Stoof de groenten en gaar eieren in de saus.",
-      "matches": [
-        {
-          "ingredient": "paprika",
-          "product": "Duyvis Tijgernootjes BBQ Paprika Pinda Noten 275 gr",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 39.2,
-          "url": "https://www.jumbo.com/producten/duyvis-tijgernootjes-bbq-paprika-pinda-noten-275-gr-354726ZK",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "ei",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Vegetarische chili",
-      "store": "Jumbo",
-      "servings": 4,
-      "ingredients": [
-        "bonen",
-        "paprika",
-        "tomaat"
-      ],
-      "method": "Laat bonen en groenten met kruiden sudderen.",
-      "matches": [
-        {
-          "ingredient": "paprika",
-          "product": "Duyvis Tijgernootjes BBQ Paprika Pinda Noten 275 gr",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 39.2,
-          "url": "https://www.jumbo.com/producten/duyvis-tijgernootjes-bbq-paprika-pinda-noten-275-gr-354726ZK",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "bonen",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "Jumbo",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "paprika",
-          "product": "Duyvis Tijgernootjes BBQ Paprika Pinda Noten 275 gr",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 39.2,
-          "url": "https://www.jumbo.com/producten/duyvis-tijgernootjes-bbq-paprika-pinda-noten-275-gr-354726ZK",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "gehakt",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Wraps met tofu",
-      "store": "Jumbo",
-      "servings": 4,
-      "ingredients": [
-        "tofu",
-        "wrap",
-        "komkommer"
-      ],
-      "method": "Bak tofu en serveer met rauwkost in wraps.",
-      "matches": [
-        {
-          "ingredient": "wrap",
-          "product": "Doritos Gingerbread Tortilla Chips Snackbox 135 gr",
-          "price": 2.0,
-          "unit_price": null,
-          "discount_percentage": 33.1,
-          "url": "https://www.jumbo.com/producten/doritos-gingerbread-tortilla-chips-snackbox-135-gr-781819STK",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "tofu",
-        "komkommer"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "gehakt",
-          "product": "Hoogvliet Gemengd gehakt",
-          "price": 2.29,
-          "unit_price": null,
-          "discount_percentage": 50.11,
-          "url": "https://hoogvliet.nl/product/hoogvliet-gemengd-gehakt-727839000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 2.29,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip met geroosterde groenten",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "courgette",
-        "paprika"
-      ],
-      "method": "Rooster gekruide kip en groenten in de oven.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Beneful Graanvrij hondenvoer met kip",
-          "price": 4.49,
-          "unit_price": null,
-          "discount_percentage": 32.88,
-          "url": "https://www.plus.nl/product/beneful-graanvrij-hondenvoer-met-kip-stazak-1200-g-361915",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "courgette",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 4.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip-kerrie met bloemkoolrijst",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "bloemkool",
-        "kerrie"
-      ],
-      "method": "Bak kip met kerrie, bereid bloemkoolrijst.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Beneful Graanvrij hondenvoer met kip",
-          "price": 4.49,
-          "unit_price": null,
-          "discount_percentage": 32.88,
-          "url": "https://www.plus.nl/product/beneful-graanvrij-hondenvoer-met-kip-stazak-1200-g-361915",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "bloemkool",
-        "kerrie"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 4.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip uit de airfryer",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "sla",
-        "aardappel"
-      ],
-      "method": "Bereid gekruide kip in de airfryer en maak een salade.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Beneful Graanvrij hondenvoer met kip",
-          "price": 4.49,
-          "unit_price": null,
-          "discount_percentage": 32.88,
-          "url": "https://www.plus.nl/product/beneful-graanvrij-hondenvoer-met-kip-stazak-1200-g-361915",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "sla",
-        "aardappel"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 4.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Volkoren pastasalade",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "pasta",
-        "tomaat",
-        "kip"
-      ],
-      "method": "Kook pasta en meng met kip en groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Beneful Graanvrij hondenvoer met kip",
-          "price": 4.49,
-          "unit_price": null,
-          "discount_percentage": 32.88,
-          "url": "https://www.plus.nl/product/beneful-graanvrij-hondenvoer-met-kip-stazak-1200-g-361915",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "pasta",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 4.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Gevulde paprika met gehakt",
-      "store": "Ekoplaza",
-      "servings": 4,
-      "ingredients": [
-        "paprika",
-        "gehakt",
-        "tomaat"
-      ],
-      "method": "Vul paprika's met gebakken gehakt en groenten en gaar in de oven.",
-      "matches": [
-        {
-          "ingredient": "gehakt",
-          "product": "Pie gehakt kaas",
-          "price": 4.66,
-          "unit_price": null,
-          "discount_percentage": 15.12,
-          "url": "https://www.ekoplaza.nl/nl/producten/product/pie-gehakt-kaas-0001245509",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "paprika",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 4.66,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip met geroosterde groenten",
-      "store": "Ekoplaza",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "courgette",
-        "paprika"
-      ],
-      "method": "Rooster gekruide kip en groenten in de oven.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Surinaamse Roti kip masala",
-          "price": 9.49,
-          "unit_price": null,
-          "discount_percentage": 26.0,
-          "url": "https://www.ekoplaza.nl/nl/producten/product/surinaamse-roti-kip-masala-0001207607",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "courgette",
-        "paprika"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 9.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Kip uit de airfryer",
-      "store": "Ekoplaza",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "sla",
-        "aardappel"
-      ],
-      "method": "Bereid gekruide kip in de airfryer en maak een salade.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Surinaamse Roti kip masala",
-          "price": 9.49,
-          "unit_price": null,
-          "discount_percentage": 26.0,
-          "url": "https://www.ekoplaza.nl/nl/producten/product/surinaamse-roti-kip-masala-0001207607",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "sla",
-        "aardappel"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 9.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Volkoren pastasalade",
-      "store": "Ekoplaza",
-      "servings": 4,
-      "ingredients": [
-        "pasta",
-        "tomaat",
-        "kip"
-      ],
-      "method": "Kook pasta en meng met kip en groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Surinaamse Roti kip masala",
-          "price": 9.49,
-          "unit_price": null,
-          "discount_percentage": 26.0,
-          "url": "https://www.ekoplaza.nl/nl/producten/product/surinaamse-roti-kip-masala-0001207607",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "pasta",
-        "tomaat"
-      ],
-      "coverage": 33,
-      "matched_count": 1,
-      "missing_count": 2,
-      "known_promotion_product_sum": 9.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Harissa-kipwraps",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "method": "Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten.",
-      "matches": [
-        {
-          "ingredient": "spinazie",
-          "product": "Vers afbak Borek stick spinazie feta",
-          "price": 0.69,
-          "unit_price": null,
-          "discount_percentage": 40.0,
-          "url": "https://www.dirk.nl/boodschappen/brood-beleg-en-koek/broodjes-en-snacks/vers-afbak-borek-stick-spinazie-feta/115041",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "kip",
-        "wrap",
-        "paprika"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 0.69,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Harissa-kipwraps",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "method": "Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Knorr Air fryer mix voor krokante kip knoflook",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 50.25,
-          "url": "https://hoogvliet.nl/product/knorr-air-fryer-mix-voor-krokante-kip-knoflook-733174000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Groenterijke nasi met ei",
-      "store": "Hoogvliet",
-      "servings": 4,
-      "ingredients": [
-        "rijst",
-        "ei",
-        "prei",
-        "wortel"
-      ],
-      "method": "Kook rijst, wok groenten en roerbak het ei erdoor.",
-      "matches": [
-        {
-          "ingredient": "rijst",
-          "product": "Cesar Senior 10+ met kip en rijst in gelei",
-          "price": 0.99,
-          "unit_price": null,
-          "discount_percentage": 43.43,
-          "url": "https://hoogvliet.nl/product/cesar-senior-10-met-kip-en-rijst-in-gelei-068935000",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "ei",
-        "prei",
-        "wortel"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 0.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Groenterijke nasi met ei",
-      "store": "Aldi",
-      "servings": 4,
-      "ingredients": [
-        "rijst",
-        "ei",
-        "prei",
-        "wortel"
-      ],
-      "method": "Kook rijst, wok groenten en roerbak het ei erdoor.",
-      "matches": [
-        {
-          "ingredient": "prei",
-          "product": "Prei",
-          "price": 1.0,
-          "unit_price": null,
-          "discount_percentage": 39.0,
-          "url": "https://www.aldi.nl/product/prei-1210301.html",
-          "valid_until": "2026-10-25"
-        }
-      ],
-      "missing": [
-        "rijst",
-        "ei",
-        "wortel"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 1.0,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Groenterijke nasi met ei",
-      "store": "Dirk",
-      "servings": 4,
-      "ingredients": [
-        "rijst",
-        "ei",
-        "prei",
-        "wortel"
-      ],
-      "method": "Kook rijst, wok groenten en roerbak het ei erdoor.",
-      "matches": [
-        {
-          "ingredient": "rijst",
-          "product": "Alesie Pandan rijst",
-          "price": 2.99,
-          "unit_price": null,
-          "discount_percentage": 49.2,
-          "url": "https://www.dirk.nl/boodschappen/voorraadkast/rijst-couscous-en-quinoa/alesie-pandan-rijst/42458",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "ei",
-        "prei",
-        "wortel"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 2.99,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Harissa-kipwraps",
-      "store": "PLUS",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "method": "Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Beneful Graanvrij hondenvoer met kip",
-          "price": 4.49,
-          "unit_price": null,
-          "discount_percentage": 32.88,
-          "url": "https://www.plus.nl/product/beneful-graanvrij-hondenvoer-met-kip-stazak-1200-g-361915",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 4.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
-    },
-    {
-      "name": "Harissa-kipwraps",
-      "store": "Ekoplaza",
-      "servings": 4,
-      "ingredients": [
-        "kip",
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "method": "Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten.",
-      "matches": [
-        {
-          "ingredient": "kip",
-          "product": "Surinaamse Roti kip masala",
-          "price": 9.49,
-          "unit_price": null,
-          "discount_percentage": 26.0,
-          "url": "https://www.ekoplaza.nl/nl/producten/product/surinaamse-roti-kip-masala-0001207607",
-          "valid_until": "2026-10-27"
-        }
-      ],
-      "missing": [
-        "wrap",
-        "paprika",
-        "spinazie"
-      ],
-      "coverage": 25,
-      "matched_count": 1,
-      "missing_count": 3,
-      "known_promotion_product_sum": 9.49,
-      "total_price": null,
-      "cost_note": "Niet de receptprijs: normale prijzen, vereiste hoeveelheden en ontbrekende ingrediënten zijn niet bekend."
     }
   ],
   "stats": {
     "source": "PrijsProfeet openbare API",
-    "offer_entries": 464,
+    "offer_entries": 465,
     "retailers_with_offers": 10,
     "per_store": {
       "albert_heijn": 65,
       "jumbo": 77,
       "lidl": 1,
       "aldi": 15,
-      "dirk": 60,
+      "dirk": 61,
       "plus": 63,
       "hoogvliet": 66,
       "vomar": 1,
