@@ -32,7 +32,7 @@ SOURCES=([
   ("The Meal Prep Manual","https://mealprepmanual.com/recipes/","mealprepmanual.com"),
   ("Budget Bytes mealprep","https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/","www.budgetbytes.com"),
   ("FitMenCook mealprep","https://fitmencook.com/recipes/category/meal-prep/","fitmencook.com"),
-]) +
+] +
   [("The Meal Prep Manual", "https://mealprepmanual.com/recipes/?_page="+str(i), "mealprepmanual.com") for i in range(2,9)] +
   [("Budget Bytes mealprep", "https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/page/"+str(i)+"/", "www.budgetbytes.com") for i in range(2,4)] +
   [("FitMenCook mealprep", "https://fitmencook.com/recipes/category/meal-prep/page/"+str(i)+"/", "fitmencook.com") for i in range(2,4)])
