@@ -15,7 +15,7 @@ function render(){
  const q=$("q").value.toLocaleLowerCase("nl").trim(),src=$("source").value,cat=$("cat").value;
  filtered=items.filter(x=>(!q||x.title.toLocaleLowerCase("nl").includes(q))&&(src==="all"||x.source===src)&&(cat==="all"||x.category===cat));
  $("status").textContent=filtered.length.toLocaleString("nl-NL")+" gevonden recepten";
- $("cards").innerHTML=filtered.slice(0,limit).map(x=>'<article class="card"><span class="chip">'+esc(x.source)+' · '+esc(x.category)+(x.minutes?' · '+Number(x.minutes)+' min':'')+'</span><h3>'+esc(x.title)+'</h3><a href="'+encodeURI(x.url)+'" target="_blank" rel="noopener noreferrer">Bekijk origineel recept ↗</a></article>').join("")||"<p>Geen recepten gevonden. Probeer een andere zoekterm.</p>";
+ $("cards").innerHTML=filtered.slice(0,limit).map(x=>'<article class="card"><span class="chip">'+esc(x.source)+' · '+esc(x.category)+(x.minutes?' · '+Number(x.minutes)+' min':'')+'</span><h3>'+esc(x.title)+'</h3><a href="'+encodeURI(x.url||'#')+'" target="_blank" rel="noopener noreferrer">Bekijk origineel recept ↗</a></article>').join("")||"<p>Geen recepten gevonden. Probeer een andere zoekterm.</p>";
  $("more").hidden=filtered.length<=limit;
 }
 for(const id of ["q","source","cat"])$(id).addEventListener(id==="q"?"input":"change",()=>{limit=36;render()});
