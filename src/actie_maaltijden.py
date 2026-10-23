@@ -91,29 +91,38 @@ def meal_candidates(offers,limit=65):
             if pk==vk:continue
             vname,vamount,vunit=VEGETABLES[vk]
             selected_sides=[None]+sides[:4]
+            # Ook een tweede afgeprijsde groente kan een maaltijd compleet maken.
+            # Alleen de eerste drie extra groenten beperken combinatorische groei.
+            second_vegetables=[None]+[x for x in veggies if x!=vk][:3]
             for sk in selected_sides:
-                # Altijd minstens 2 bevestigde categorieën in de aanbieding.
-                ings=[(pk,pamount,punit),(vk,vamount,vunit)]
-                title=pname+" met "+vname
-                if sk:
-                    sname,samount,sunit=SIDES[sk]
-                    ings.append((sk,samount,sunit))
-                    title+=" en "+sname
-                else:
-                    # Geen zetmeelbron nodig voor een goede eiwitrijke maaltijd;
-                    # voeg extra groente toe als mogelijke lunch/avondmaaltijd.
-                    title+=" (koolhydraatbewust)"
-                offer_keys=sum(bool(groups[r].get(k)) for r,k in
-                               [("proteine",pk),("groente",vk),("bijgerecht",sk)] if k)
-                score=offer_keys*20+strength(pk,"proteine")+strength(vk,"groente")+(
-                    strength(sk,"bijgerecht") if sk else 3)
-                scored.append((score,pk,vk,sk,(title,cat,35,ings)))
-    scored.sort(key=lambda x:(-x[0],x[1],x[2],str(x[3])))
+                for vk2 in second_vegetables:
+                    # Een tweede groente zonder bijgerecht is zinvol als
+                    # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
+                    ings=[(pk,pamount,punit),(vk,vamount,vunit)]
+                    title=pname+" met "+vname
+                    if vk2:
+                        v2name,v2amount,v2unit=VEGETABLES[vk2]
+                        # Voorkom absurd veel groente per 4 porties.
+                        v2amount=round(v2amount*0.65) if v2unit=="g" else max(1,round(v2amount*0.65))
+                        ings.append((vk2,v2amount,v2unit))
+                        title+=", "+v2name
+                    if sk:
+                        sname,samount,sunit=SIDES[sk]
+                        ings.append((sk,samount,sunit))
+                        title+=" en "+sname
+                    elif not vk2:
+                        title+=" (koolhydraatbewust)"
+                    offer_keys=2+bool(sk)+bool(vk2)
+                    score=offer_keys*30+strength(pk,"proteine")+strength(vk,"groente")+(
+                        strength(sk,"bijgerecht") if sk else 3)+(
+                        strength(vk2,"groente") if vk2 else 0)
+                    scored.append((score,pk,vk,sk,vk2,(title,cat,35,ings)))
+    scored.sort(key=lambda x:(-x[0],x[1],x[2],str(x[3]),str(x[4])))
     # Beperk repetitieve varianten van hetzelfde eiwit & groente.
     selected=[];pair_count={};protein_count={};side_count={}
-    for score,pk,vk,sk,recipe in scored:
+    for score,pk,vk,sk,vk2,recipe in scored:
         pair=(pk,vk)
-        if pair_count.get(pair,0)>=2 or protein_count.get(pk,0)>=15:continue
+        if pair_count.get(pair,0)>=3 or protein_count.get(pk,0)>=15:continue
         if sk and side_count.get(sk,0)>=20:continue
         pair_count[pair]=pair_count.get(pair,0)+1
         protein_count[pk]=protein_count.get(pk,0)+1
