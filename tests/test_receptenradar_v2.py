@@ -2,7 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile
+from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -68,6 +68,26 @@ class PrijsTest(unittest.TestCase):
         unverified_bundle={"price":2.99,"original_price":3.49,
                            "promotion_type":"2 voor 2,99"}
         self.assertEqual(total_for(2,3.49,unverified_bundle),(6.98,2))
+
+    def test_gezonde_varianten_en_diepvries(self):
+        self.assertTrue(match_ingredient(
+            {"norm":"optimel magere kwark vanille zonder toegevoegde suiker 500 g"},"kwark"))
+        self.assertTrue(match_ingredient(
+            {"norm":"skyr aardbei 450 g"},"kwark"))
+        self.assertTrue(match_ingredient(
+            {"norm":"diepvries blauwe bessen 750 g"},"blauwe_bessen"))
+        self.assertTrue(match_ingredient(
+            {"norm":"diepvries broccoli roosjes 1000 g"},"broccoli"))
+        self.assertTrue(match_ingredient(
+            {"norm":"diepvries zalmfilet 500 g"},"zalm"))
+        self.assertFalse(match_ingredient(
+            {"norm":"aardbeien kwark dessert mousse"},"kwark"))
+        self.assertFalse(match_ingredient(
+            {"norm":"blauwe bessen jam"},"blauwe_bessen"))
+        ctx=product_context({"name":"Diepvries blauwe bessen 750 g"},"blauwe_bessen")
+        self.assertTrue(ctx["frozen"])
+        flav=product_context({"name":"Skyr aardbei 450 g"},"kwark")
+        self.assertTrue(flav["nutrition_unverified"])
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
