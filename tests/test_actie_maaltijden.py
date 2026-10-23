@@ -24,6 +24,10 @@ class OfferDrivenTest(unittest.TestCase):
  def test_geen_dranken_of_pseudovlees(self):
   items=[sale("vegetarische kipfilet"),sale("gewassen spinazie")]
   self.assertFalse(meal_candidates(items))
+ def test_vier_actieingredienten_mogelijk(self):
+  items=[sale("kipfilet"),sale("broccoli"),sale("spinazie"),sale("krieltjes")]
+  recipes=meal_candidates(items)
+  self.assertTrue(any(len(r[3])==4 for r in recipes))
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
