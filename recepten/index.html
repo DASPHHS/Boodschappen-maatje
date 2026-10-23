@@ -30,7 +30,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
  function save(){localStorage.setItem("koopkracht_v2_selection",JSON.stringify(state.selected))}
  function isSelected(r){return state.selected.some(x=>x.store===state.store&&x.id===r.id)}
- function toggle(id){let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0)state.selected.splice(i,1);else state.selected.push({store:state.store,id});save();render()}
+ function toggle(id,variant="cheapest"){let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0&&((state.selected[i].variant||"cheapest")===variant))state.selected.splice(i,1);else if(i>=0)state.selected[i]={store:state.store,id,variant};else state.selected.push({store:state.store,id,variant});save();render()}
  function recipePrice(r){
   if(r.complete)return `<div class="cash">${euro(r.checkout)} <small>volledige verpakkingen</small></div><div class="tagline">${euro(r.per_serving)} per portie, gebruikte ingrediënten · 4 porties</div>`;
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
@@ -114,7 +114,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <div class="chips"><span class="chip">${esc(r.meal_type||"Avondeten")}</span><span class="chip">${esc(r.cuisine||"Overig")}</span>${r.portable?`<span class="chip">Mee te nemen ✓</span>`:""}${r.prep_ahead?`<span class="chip">Voorbereiden mogelijk ✓</span>`:""}<span class="chip">${r.nutrition?.kcal_per_serving_estimate!=null?`≈ ${r.nutrition.kcal_per_serving_estimate} kcal/portie (${r.nutrition.kcal_total_estimate} kcal totaal, 4 porties)`:"Kcal niet volledig berekenbaar"}</span><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_g_per_serving_estimate!=null?`≈ ${Number(r.nutrition.protein_g_per_serving_estimate).toLocaleString("nl-NL")} g eiwit/portie · ${r.nutrition.protein_source?"≥30 g ✓":"<30 g"}`:"Eiwit niet berekend"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_g_per_serving_estimate!=null?`≈ ${r.nutrition.vegetable_g_per_serving_estimate} g groenten/portie · ${r.nutrition.vegetable_forward?"≥250 g ✓":"<250 g"}`:"Groenten niet berekend"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${recipePrice(r)}
     ${r.deal_basket?.used_actions>r.sale_count?`<div class="notice" style="margin:8px 0 12px"><strong>Ook mogelijk: echte actiemand met ${r.deal_basket.used_actions} gebruikte acties</strong><div> ${r.complete?euro(r.deal_basket.checkout)+" voor alle verpakkingen":euro(r.deal_basket.known_subtotal)+" bekend subtotaal"} · ${r.deal_basket.extra_vs_cheapest>0?euro(r.deal_basket.extra_vs_cheapest)+" duurder dan de goedkoopste mand": "niet duurder dan de goedkoopste mand"}</div><details><summary>Bekijk de ingrediënten van de actiemand</summary>${r.deal_basket.ingredients.map(l=>`<div class="line"><div>${esc(l.label)}: ${esc(l.product)}${l.sale?" · ACTIE":""} ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Bron</a>`:""}</div><strong>${euro(l.cash_price)}</strong></div>`).join("")}</details></div>`:""}
-    <div class="actions"><button class="btn ${isSelected(r)?"outline":""}" data-add="${esc(r.id)}">${isSelected(r)?"✓ Geselecteerd":"+ Voeg toe"}</button></div>
+    <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn outline" data-add="${esc(r.id)}" data-variant="cheapest">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&(x.variant||"cheapest")==="cheapest")?"✓ Goedkoopste gekozen":"+ Goedkoopste mand"}</button>${r.deal_basket?.used_actions>r.sale_count?`<button class="btn" data-add="${esc(r.id)}" data-variant="deals">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&x.variant==="deals")?"✓ Actiemand gekozen":"+ Kies actiemand"}</button>`:""}</div>
     <details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
     ${(r.missing||[]).map(x=>`<div class="line"><span>${esc(x.label)} (${x.amount} ${x.unit})</span><strong>Prijs onbekend</strong></div>`).join("")}
     <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief olie, extra sauzen en andere niet-vermelde toevoegingen. ${r.nutrition?.product_nutrition_unverified?.length?"Let op: voor gearomatiseerde zuivel zijn suiker, eiwitten en kcal nog niet gecontroleerd op het productetiket. ":""}${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
@@ -131,7 +131,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const rs=active(), groups=new Map(), missing=[];
   for(const selected of rs){
    const r=state.data.recipes[selected.store].find(x=>x.id===selected.id);
-   for(const l of r.ingredients){
+   const ingredientLines=selected.variant==="deals"&&r.deal_basket?.ingredients?r.deal_basket.ingredients:r.ingredients;
+   for(const l of ingredientLines){
     const k=selected.store+"|"+l.product+"|"+l.package_size+"|"+l.unit;
     if(!groups.has(k))groups.set(k,{...l,store:selected.store,required:0,unit_price:l.regular_cash/Math.ceil(l.required/l.package_size)});
     groups.get(k).required+=l.required;
@@ -197,7 +198,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;state.dealVisible=50;resetAndRender()}));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("sort").addEventListener("change",resetAndRender);
- $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add)});
+ $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")});
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
  $("clear").addEventListener("click",()=>{state.selected=[];save();render()});
  $("copy").addEventListener("click",async()=>{
