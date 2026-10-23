@@ -294,7 +294,11 @@ def make_recipes(shelves,offers):
             checkout=round(sum(x["cash_price"] for x in lines),2)
             consumed=round(sum(x["used_price"] for x in lines),2)
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
+            inspiration=("HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
+                         else "Mealprep-variant" if title.startswith("Mealprep:")
+                         else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
+              "inspiration":inspiration, "mealprep":title.startswith("Mealprep:") or minutes>=30,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "covered_count":len(lines),"complete":complete,
               "checkout":checkout if complete else None,"known_subtotal":checkout,
