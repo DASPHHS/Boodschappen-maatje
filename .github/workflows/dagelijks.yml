@@ -57,6 +57,7 @@ jobs:
           echo "::error::AH, Jumbo of Lidl onvolledig. Geen onjuiste dagelijkse e-mail."
           exit 1
       - name: Verzend dagelijkse buitenkansjesmail
+        if: github.event_name != 'push'
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
