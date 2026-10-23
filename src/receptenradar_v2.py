@@ -21,18 +21,36 @@ if KEY: HEADERS["X-API-Key"]=KEY
 STORES={"ah":"Albert Heijn","jumbo":"Jumbo","lidl":"Lidl"}
 TZ=ZoneInfo("Europe/Amsterdam")
 
-def fetch(url,params=None,tries=3):
+_next_request_at=0.0
+def fetch(url,params=None,tries=9):
+    global _next_request_at
+    last_error=None
     for attempt in range(tries):
         try:
-            r=requests.get(url,params=params,headers=HEADERS,timeout=35)
-            if r.status_code in (429,500,502,503,504):
-                time.sleep(min(8,1+2**attempt));continue
-            r.raise_for_status()
+            if "prijsprofeet.nl" in url:
+                wait=max(0,_next_request_at-time.monotonic())
+                if wait:time.sleep(wait)
+                # Snelheidslimiet voor bulk-endpoints: geen API-key vereist.
+                _next_request_at=time.monotonic()+2.9
+            r=requests.get(url,params=params,headers=HEADERS,timeout=30)
+            if r.status_code==429:
+                delay=min(110,max(8,int(r.headers.get("Retry-After","65"))))
+                last_error=f"PrijsProfeet HTTP 429, retry after {delay}s, URL {r.url}"
+                print(last_error,flush=True)
+                time.sleep(delay)
+                continue
+            if r.status_code in (500,502,503,504):
+                last_error=f"HTTP {r.status_code} {r.url}"
+                time.sleep(min(40,2**attempt))
+                continue
+            if not r.ok:
+                raise RuntimeError(f"HTTP {r.status_code}, URL {r.url}, respons {r.text[:170]}")
             return r
-        except (requests.RequestException,ValueError):
-            if attempt==tries-1: raise
-            time.sleep(1+attempt)
-    raise RuntimeError("Geen geldige API-respons")
+        except (requests.RequestException,ValueError) as ex:
+            last_error=f"{type(ex).__name__}: {str(ex)[:200]}"
+            if attempt<tries-1:time.sleep(min(30,3+2**attempt))
+        except RuntimeError:raise
+    raise RuntimeError(last_error or "Geen geldige API-respons")
 
 def num(x):
     try:
