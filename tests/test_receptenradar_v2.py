@@ -117,7 +117,7 @@ class PrijsTest(unittest.TestCase):
         regular={"product":"Jumbo huismerk kwark","cash_price":3.0,"sale":False}
         offer={"name":"Campina Magere Milde Kwark Naturel 1 kg",
                "norm":"campina magere milde kwark naturel 1 kg",
-               "quantity":1000,"unit":"g","price":2.49,
+               "quantity":1000,"unit":"g","size_label":"1 kg","price":2.49,
                "original_price":3.49,"multi_buy_quantity":None,
                "multi_buy_price":None,"promotion_type":"vaste actieprijs",
                "url":"https://www.jumbo.com/aanbiedingen/"}
