@@ -346,6 +346,25 @@ PROTEIN_PER_100G={
 PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
                    "bloemkool":12.0,"paprika":1.0,"courgette":2.0,
                    "komkommer":1.0,"avocado":2.0}
+# Indicatieve kcal per 100 gram (droge rijst/pasta/couscous; peulvruchten
+# uitgelekt; vlees en vis rauw). Waarden variëren per product.
+KCAL_PER_100G={
+ "kipfilet":110,"kipdij":140,"kipgehakt":155,"shoarma":170,
+ "gehakt":190,"varkenshaas":120,"zalm":205,"gerookte_zalm":165,
+ "tonijn":115,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
+ "rijst":355,"pasta":350,"couscous":350,"aardappel":80,
+ "zoete_aardappel":85,"wok":35,"boerenkool":35,"spruiten":43,
+ "spinazie":25,"broccoli":34,"champignons":25,"tomaten":20,
+ "tomatenblokjes":25,"ui":40,"wortel":40,"sla":18,
+ "yoghurt":60,"kwark":58,"kaas":350,"kokosmelk":175,
+ "mais":95
+}
+# Stukgewichten zijn gemiddelden; geen etiketdata.
+KCAL_PER_PIECE={
+ "eieren":75,"wraps":125,"naan":240,"bloemkool":175,
+ "paprika":45,"courgette":50,"komkommer":35,"avocado":240
+}
+KCAL_PER_100ML={"kokosmelk":175}
 MIN_PROTEIN_PER_SERVING=30.0
 
 def nutrition_profile(ings):
@@ -356,6 +375,8 @@ def nutrition_profile(ings):
     """
     amounts={key:float(qty) for key,qty,unit in ings}
     protein_total=0.0
+    kcal_total=0.0
+    kcal_unknown=[]
     unknown=[]
     for key,qty,unit in ings:
         if unit=="g" and key in PROTEIN_PER_100G:
@@ -366,6 +387,17 @@ def nutrition_profile(ings):
             protein_total+=float(qty)*0.01
         else:
             unknown.append(key)
+    for key,qty,unit in ings:
+        if unit=="g" and key in KCAL_PER_100G:
+            kcal_total+=float(qty)*KCAL_PER_100G[key]/100
+        elif unit=="st" and key in KCAL_PER_PIECE:
+            kcal_total+=float(qty)*KCAL_PER_PIECE[key]
+        elif unit=="ml" and key in KCAL_PER_100ML:
+            kcal_total+=float(qty)*KCAL_PER_100ML[key]/100
+        else:
+            kcal_unknown.append(key)
+    kcal_total=round(kcal_total)
+    kcal_per_serving=round(kcal_total/4)
     protein_per_serving=round(protein_total/4,1)
     protein=protein_per_serving>=MIN_PROTEIN_PER_SERVING
     dry_starches=("rijst","pasta","couscous")
@@ -387,13 +419,16 @@ def nutrition_profile(ings):
     vegetables_present=vegetable_g_per_serving>=250
     priority=protein and lowish_carb and vegetables_present
     return {"priority":priority,"protein_source":protein,
+            "kcal_per_serving_estimate":kcal_per_serving if not kcal_unknown else None,
+            "kcal_total_estimate":kcal_total if not kcal_unknown else None,
+            "kcal_unknown":kcal_unknown,
             "protein_g_per_serving_estimate":protein_per_serving,
             "protein_target_g":MIN_PROTEIN_PER_SERVING,
             "protein_unknown":unknown,
             "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
             "vegetable_g_per_serving_estimate":vegetable_g_per_serving,
             "vegetable_target_g":250,
-            "basis":"Schatting per portie uit standaardwaarden; exacte winkelproductwaarden kunnen afwijken."}
+            "basis":"Indicatieve voedingswaarden uit standaardproducten; olie, kruiden, sauzen en niet vermelde ingrediënten zijn niet meegerekend. Etiketwaarden kunnen afwijken."}
 
 def make_recipes(shelves,offers):
     final={}
