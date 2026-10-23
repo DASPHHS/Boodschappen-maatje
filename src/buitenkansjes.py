@@ -100,7 +100,7 @@ def compare(rows,today):
         matches=by_ean.get((p["ean"],p["quantity"].casefold()),[]) if p["ean"] and p["quantity"] else []
         other=min((x for x in matches if x["retailer"]!=p["retailer"]),key=lambda x:x["price"],default=None)
         p["other"]={"store":NAMES.get(other["retailer"],other["retailer"]),"price":other["price"]} if other else None
-        if p["discount_pct"] is not None and p["discount_pct"]>=25 and other and p["price"]<=other["price"]*.90:
+        if p["discount_pct"] is not None and p["discount_pct"]>=25 and other and not p["multi_buy_quantity"] and not other["multi_buy_quantity"] and p["price"]<=other["price"]*.90:
             p["market_advantage_pct"]=round((1-p["price"]/other["price"])*100,1)
             p["proof"]="ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
             confirmed.append(p)
@@ -120,6 +120,7 @@ def safe(s): return html.escape(str(s),quote=True)
 def render(data):
     def item(p):
         discount=("%s%% korting vs van-prijs"%p["discount_pct"]) if p["discount_pct"] is not None else "van-prijs onbekend"
+        if p.get("multi_buy_quantity"): discount += f' · bundel van {p["multi_buy_quantity"]} stuks (totaal {euros(float(p["multi_buy_price"])) if p.get("multi_buy_price") else "controleer bundelprijs"})'
         other=p.get("other")
         competitor=(f' · Concurrent {safe(other["store"])}: {euros(other["price"])}' if other else ' · Marktvergelijking ontbreekt')
         per_unit=f' · {euros(p["unit_price"])}/{safe(p["unit"])}' if p["unit"] and p["unit_price"] is not None else ''
