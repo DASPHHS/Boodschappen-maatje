@@ -39,6 +39,20 @@ class PrijsTest(unittest.TestCase):
         self.assertFalse(insufficient["vegetable_forward"])
         self.assertFalse(insufficient["lower_carb"])
 
+    def test_ontbijt_zonder_groente_toch_passend(self):
+        p=nutrition_profile([
+          ("kwark",1400,"g"),("havermout",160,"g"),
+          ("banaan",480,"g"),("blauwe_bessen",300,"g")],meal_type="Ontbijt")
+        self.assertTrue(p["priority"])
+        self.assertTrue(p["protein_source"])
+        self.assertGreater(p["kcal_per_serving_estimate"],300)
+
+    def test_lunch_met_groenten(self):
+        p=nutrition_profile([("kipfilet",800,"g"),("broccoli",800,"g"),
+                             ("wortel",300,"g"),("rijst",140,"g")],meal_type="Lunch")
+        self.assertTrue(p["priority"])
+        self.assertGreaterEqual(p["protein_g_per_serving_estimate"],30)
+
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
         self.assertEqual(measure("0,75 liter"),(750,"ml"))
