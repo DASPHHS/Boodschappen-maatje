@@ -575,6 +575,75 @@ def export_shopping_index(shelves,offers):
         ensure_ascii=False,separators=(",",":")),encoding="utf-8")
     temp.replace(path)
 
+# Belangrijke ingredientgroepen waarmee ontbrekende actieherkenning direct
+# zichtbaar wordt. Dit is een diagnostische controle, geen extra prijsgok.
+AUDIT_GROUPS={
+    "Zuivel":("kwark","yoghurt","melk"),
+    "Fruit":("aardbeien","blauwe_bessen","banaan"),
+    "Groenten":("broccoli","spinazie","spruiten","bloemkool","wok",
+                "paprika","courgette","champignons","wortel","tomaten"),
+    "Vlees en kip":("kipfilet","kipdij","kipgehakt","gehakt","varkenshaas"),
+    "Vis":("zalm","gerookte_zalm","tonijn"),
+    "Plantaardig":("tofu","kikkererwten","linzen","bonen"),
+    "Ontbijt en lunch":("havermout","wraps","hummus")
+}
+
+def audit_promotions(offers,recipes):
+    """Signaleer gevonden acties die NIET als actie in recepten terechtkomen.
+
+    Een naamherkenning betekent niet dat de korting betrouwbaar te berekenen is.
+    Daarom worden ontbrekende maateenheden, bundels en vergelijkingen afzonderlijk
+    gerapporteerd, zonder fictieve kortingen toe te voegen.
+    """
+    report={}
+    for store in STORES:
+        rows=offers[store]
+        linked={normalize(line.get("action",{}).get("name",""))
+                for recipe in recipes[store]
+                for line in recipe["ingredients"] if line.get("sale") and line.get("action")}
+        groups={}
+        details=[]
+        for group,keys in AUDIT_GROUPS.items():
+            count=linked_count=0
+            for offer in rows:
+                matching=[key for key in keys if match_ingredient(offer,key)]
+                if not matching:continue
+                count+=1
+                if normalize(offer["name"]) in linked:
+                    linked_count+=1
+                    continue
+                typ=normalize(offer.get("promotion_type") or "")
+                if not offer.get("quantity") or not offer.get("unit"):
+                    reason="Verpakkingsmaat onbekend"
+                elif offer.get("is_loyalty"):
+                    reason="Klantenkaartactie niet doorberekend"
+                elif (not offer.get("multi_buy_quantity") and
+                      any(t in typ for t in ("1 1","2 1","3 2","gratis","bundle","multi"))):
+                    reason="Bundelvoorwaarden onvoldoende bekend"
+                elif (offer.get("original_price") and
+                      offer["original_price"]<=offer["price"] and
+                      not offer.get("multi_buy_quantity")):
+                    reason="Geen aantoonbaar prijsvoordeel"
+                else:
+                    reason="Niet gekozen: receptdekking, productmatch of goedkoopste alternatief"
+                details.append({"name":offer["name"],"group":group,
+                                "keys":matching,"reason":reason,
+                                "price":offer["price"],
+                                "valid_until":offer.get("valid_until"),
+                                "url":offer.get("url","")})
+            groups[group]={"recognized_offers":count,
+                           "linked_offers":linked_count,
+                           "unlinked_offers":count-linked_count}
+        # Eén product kan in meerdere inhoudelijke groepen vallen. De
+        # groepsaantallen zijn diagnostisch en tellen niet op tot een uniek totaal.
+        details.sort(key=lambda d:(d["group"],d["reason"],d["name"]))
+        report[store]={"groups":groups,"unlinked":details[:250],
+                       "unlinked_total":len(details),
+                       "note":"Een niet-gekoppelde actie is niet automatisch een fout: "
+                              "een normale prijs kan goedkoper zijn of de verpakking "
+                              "kan niet betrouwbaar worden doorgerekend."}
+    return report
+
 def main():
     errors=[]
     shelves,last_modified,counts=load_shelves()
@@ -582,12 +651,14 @@ def main():
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors=load_deals()
     export_shopping_index(shelves,offers)
+    recipes=make_recipes(shelves,offers)
+    audit=audit_promotions(offers,recipes)
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
             "sources":{"ordinary":"Checkjebon open dataset","promotions":"PrijsProfeet gratis aanbiedingen-API"},
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
-            "recipes":make_recipes(shelves,offers),
+            "recipes":recipes,"audit":audit,
             "deals":{s:sorted(offers[s],key=lambda d:-(d.get("discount") or 0)) for s in STORES},
             "errors":errors,
             "disclaimer":"Online prijzen indicatief. Kassaprijzen zijn berekend uit beschikbare verpakkingen. Kruiden/olie uit voorraad en eventuele persoonlijke coupons niet inbegrepen. Geen garantie op winkelvoorraad."}
@@ -597,5 +668,6 @@ def main():
     tmp.replace(OUT)
     print(json.dumps({"shelf":counts,"offers":result["counts"]["promotions"],
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
-                      "errors":errors},ensure_ascii=False))
+                      "errors":errors,
+                      "audit_unlinked":{s:audit[s]["unlinked_total"] for s in STORES}},ensure_ascii=False))
 if __name__=="__main__":main()
