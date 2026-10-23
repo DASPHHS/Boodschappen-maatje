@@ -536,16 +536,12 @@ def make_recipes(shelves,offers):
             for line in lines:
                 alternatives=line.get("offer_alternatives") or []
                 if alternatives and not line.get("sale"):
-                    best=min(alternatives,key=lambda x:x["cash_price"])
-                    deal_lines.append({"key":line["key"],"label":line["label"],
-                       "product":best["product"],"package":best["package"],
-                       "packages":best["packages"],"cash_price":best["cash_price"],
-                       "unit":line["unit"],"required":line["required"],"sale":True,
-                       "url":best["url"],"valid_until":best.get("valid_until")})
+                    original=[(k,a,u) for k,a,u in ings if k==line["key"]][0]
+                    candidates=offer_price(original[0],original[1],original[2],offers[store])
+                    best=min(candidates,key=lambda x:x["cash_price"])
+                    deal_lines.append(best)
                 else:
-                    deal_lines.append({k:line.get(k) for k in
-                        ("key","label","product","package","packages","cash_price",
-                         "unit","required","sale","url")})
+                    deal_lines.append({k:v for k,v in line.items() if k!="offer_alternatives"})
             deal_used=sum(bool(l.get("sale")) for l in deal_lines)
             deal_cash=round(sum(l["cash_price"] for l in deal_lines),2)
             deal_extra=round(deal_cash-sum(l["cash_price"] for l in lines),2)
