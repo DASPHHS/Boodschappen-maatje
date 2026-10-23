@@ -170,7 +170,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("category").addEventListener("change",resetAndRender);
  $("selection").addEventListener("change",resetAndRender);
  $("origin").addEventListener("change",resetAndRender);
- $("mealtype").addEventListener("change",()=>{if($("mealtype").value==="Lunch"||$("mealtype").value==="Ontbijt")$("selection").value="all";resetAndRender()});
+ $("mealtype").addEventListener("change",resetAndRender);
  $("format").addEventListener("change",resetAndRender);
  $("cuisine").addEventListener("change",resetAndRender);
  $("health").addEventListener("change",resetAndRender);
