@@ -10,12 +10,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 @media(max-width:850px){.layout{grid-template-columns:1fr}.cartpanel{position:static}.eyebrow{margin-top:26px}}@media(max-width:550px){.cards{grid-template-columns:1fr}.wrap{padding:0 12px}.mainpanel,.cartpanel{padding:15px}h1{letter-spacing:-1.5px}header{padding-bottom:52px}.top a{font-size:11px}}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">koop<span>kracht</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a><a href="../">← Koopjesdashboard</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
-<p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
+<p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div><div class="filters"><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div>
 </section><aside class="panel cartpanel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
@@ -57,15 +57,30 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
   if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
   if(sort==="deals")rs.sort((a,b)=>b.sale_count-a.sale_count||(a.per_serving??1e9)-(b.per_serving??1e9));
+  const health=$("health").value;
+  if(health==="only")rs=rs.filter(r=>r.nutrition?.priority);
+  if(health==="prefer"){
+    const recommended=rs.filter(r=>r.nutrition?.priority);
+    const others=rs.filter(r=>!r.nutrition?.priority);
+    const mixed=[];
+    while(recommended.length||others.length){
+      mixed.push(...recommended.splice(0,7),...others.splice(0,3));
+      if(!recommended.length&&others.length)mixed.push(...others.splice(0,10));
+      if(!others.length&&recommended.length)mixed.push(...recommended.splice(0,10));
+    }
+    rs=mixed;
+  }
   const total=rs.length;
   const visible=rs.slice(0,state.visible);
-  $("store-status").textContent=Math.min(total,state.visible)+" van "+total+" recepten zichtbaar · "+state.data.counts.promotions[state.store]+" actuele aanbiedingen · "+state.data.counts.ordinary[state.store]+" gewone prijzen";
+  const suitable=visible.filter(r=>r.nutrition?.priority).length;
+  const portion=visible.length?Math.round(100*suitable/visible.length):0;
+  $("store-status").textContent=visible.length+" van "+total+" recepten · "+portion+"% voedingsvoorkeur volgens ingrediëntscreening · "+state.data.counts.promotions[state.store]+" acties";
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
     <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.sale_count} actie-ingrediënten</span></div>
     <div class="recipe-body"><h3>${esc(r.title)}</h3>
-    <div class="chips"><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
+    <div class="chips"><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_source?"Eiwitbron ✓":"Eiwitbron beperkt"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_forward?"Veel groenten ✓":"Groente aanvullen"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${recipePrice(r)}
     <div class="actions"><button class="btn ${isSelected(r)?"outline":""}" data-add="${esc(r.id)}">${isSelected(r)?"✓ Geselecteerd":"+ Voeg toe"}</button></div>
     <details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
@@ -126,6 +141,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("category").addEventListener("change",resetAndRender);
  $("selection").addEventListener("change",resetAndRender);
  $("origin").addEventListener("change",resetAndRender);
+ $("health").addEventListener("change",resetAndRender);
  document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;resetAndRender()}));
  $("search").addEventListener("input",resetAndRender);
  $("sort").addEventListener("change",resetAndRender);
