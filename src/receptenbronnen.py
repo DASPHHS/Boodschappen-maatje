@@ -32,7 +32,10 @@ SOURCES=[
   ("The Meal Prep Manual","https://mealprepmanual.com/recipes/","mealprepmanual.com"),
   ("Budget Bytes mealprep","https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/","www.budgetbytes.com"),
   ("FitMenCook mealprep","https://fitmencook.com/recipes/category/meal-prep/","fitmencook.com"),
-]
+] +
+  [("The Meal Prep Manual", "https://mealprepmanual.com/recipes/?_page="+str(i), "mealprepmanual.com") for i in range(2,9)] +
+  [("Budget Bytes mealprep", "https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/page/"+str(i)+"/", "www.budgetbytes.com") for i in range(2,4)] +
+  [("FitMenCook mealprep", "https://fitmencook.com/recipes/category/meal-prep/page/"+str(i)+"/", "fitmencook.com") for i in range(2,4)]
 def extra_mealprep_links():
     """Indexeer uitsluitend publieke titels en artikel-URL's, geen recepten of foto's."""
     result=[]
@@ -103,7 +106,8 @@ def main():
         key=(item.get("source"),item.get("url") or item.get("local_page"))
         if key in seenkeys:continue
         seenkeys.add(key);unique.append(item)
-    items=unique
+    priorities={"Mijn HelloFresh-archief":0,"HelloFresh":1,"The Meal Prep Manual":2,"FitMenCook mealprep":3,"Budget Bytes mealprep":4,"Wikibooks":5}
+    items=sorted(unique,key=lambda v:(priorities.get(v.get("source"),9), v.get("title","").casefold()))
     data={"updated_at":datetime.now(timezone.utc).isoformat(),
           "attribution":"Wikibooks bijdragers, CC BY-SA 4.0: https://en.wikibooks.org/wiki/Cookbook:Recipes",
           "description":"Recepttitels met links naar de originele bron. Geen volledige recepten, geverifieerde ingrediënten of supermarktprijzen.",
