@@ -3,10 +3,11 @@
 Haalt uitsluitend titels en originele links op uit de Wikibooks Cookbook
 via de officiële Wikimedia API. Kopieert geen HelloFresh-instructies/foto's.
 """
-import json,time,sys
+import json,time,sys,re
 from datetime import datetime,timezone
 from pathlib import Path
 import requests
+from bs4 import BeautifulSoup
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"inspiratie.json"
@@ -27,6 +28,37 @@ def category(name):
     if any(w in s for w in ["chicken","poultry","turkey"]):return "Kip"
     if any(w in s for w in ["beef","pork","lamb","meatball","sausage","bacon","ham ","steak"]):return "Vlees"
     return "Overig/onbekend"
+SOURCES=[
+  ("The Meal Prep Manual","https://mealprepmanual.com/recipes/"),
+  ("Budget Bytes mealprep","https://www.budgetbytes.com/category/extra-bytes/budget-friendly-meal-prep/"),
+]
+def extra_mealprep_links():
+    """Discover author-provided titles and article links, not article content."""
+    result=[]
+    for source,landing in SOURCES:
+        try:
+            response=requests.get(landing,headers=HEADERS,timeout=25)
+            response.raise_for_status()
+            soup=BeautifulSoup(response.text,"html.parser")
+            seen=set()
+            for a in soup.select("a[href]"):
+                href=a.get("href","").split("#")[0]
+                title=a.get_text(" ",strip=True)
+                if len(title)<9 or len(title)>105 or not href.startswith("https://"):continue
+                if source=="The Meal Prep Manual":
+                    valid=href.startswith("https://mealprepmanual.com/") and ("/recipe/" in href or "/recipes/" in href) and href.rstrip("/")!=landing.rstrip("/")
+                else:
+                    valid=href.startswith("https://www.budgetbytes.com/") and not any(v in href for v in ["/category/","/tag/","/shop/","/page/","/meal-plans/"])
+                if not valid or href in seen:continue
+                if re.search(r"sign up|subscribe|see all|recipes|home page|learn more",title,re.I):continue
+                seen.add(href)
+                result.append({"title":title,"source":source,"category":category(title),
+                               "minutes":None,"url":href,"price_status":"Niet doorgerekend"})
+            print(source,"gevonden:",len(seen))
+        except Exception as exc:
+            print(source,"kon niet worden gelezen",exc,file=sys.stderr)
+    return result
+
 def main():
     items=[{"title":title,"source":"HelloFresh","category":cat,"minutes":minutes,"url":url} for title,cat,minutes,url in HF]
     found=set()
@@ -55,6 +87,18 @@ def main():
         if OUT.exists():
             old=json.loads(OUT.read_text(encoding="utf-8"))
             if len(old.get("items",[]))>len(HF):return
+    # Titels uit eigen archief staan los van de publieke scans en kunnen later
+    # veilig door de receptcalculator worden omgezet naar originele varianten.
+    own=ROOT/"recepten"/"eigen-archief.json"
+    if own.exists():
+        items.extend(json.loads(own.read_text(encoding="utf-8")).get("items",[]))
+    items.extend(extra_mealprep_links())
+    seenkeys=set();unique=[]
+    for item in items:
+        key=(item.get("source"),item.get("url") or item.get("local_page"))
+        if key in seenkeys:continue
+        seenkeys.add(key);unique.append(item)
+    items=unique
     data={"updated_at":datetime.now(timezone.utc).isoformat(),
           "attribution":"Wikibooks bijdragers, CC BY-SA 4.0: https://en.wikibooks.org/wiki/Cookbook:Recipes",
           "description":"Recepttitels met links naar de originele bron. Geen volledige recepten, geverifieerde ingrediënten of supermarktprijzen.",
