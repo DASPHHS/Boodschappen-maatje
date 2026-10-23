@@ -28,6 +28,16 @@ class OfferDrivenTest(unittest.TestCase):
   items=[sale("kipfilet"),sale("broccoli"),sale("spinazie"),sale("krieltjes")]
   recipes=meal_candidates(items)
   self.assertTrue(any(len(r[3])==4 for r in recipes))
+ def test_geen_kipgehakt_spinazie_boerenkool(self):
+  items=[sale("kipgehakt"),sale("spinazie"),sale("boerenkool"),sale("krieltjes"),sale("paprika",unit="st",amount=2)]
+  recipes=meal_candidates(items)
+  self.assertFalse(any({"kipgehakt","spinazie","boerenkool"}.issubset(
+      {key for key,_,_ in recipe[3]}) for recipe in recipes))
+ def test_herkenbare_maaltijd(self):
+  items=[sale("kipgehakt"),sale("spinazie"),sale("champignons"),sale("volkoren pasta")]
+  recipes=meal_candidates(items)
+  self.assertTrue(any({"kipgehakt","spinazie","champignons","pasta"}.issubset(
+      {key for key,_,_ in recipe[3]}) for recipe in recipes))
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
