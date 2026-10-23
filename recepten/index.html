@@ -60,15 +60,31 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const health=$("health").value;
   if(health==="only")rs=rs.filter(r=>r.nutrition?.priority);
   if(health==="prefer"){
-    const recommended=rs.filter(r=>r.nutrition?.priority);
-    const others=rs.filter(r=>!r.nutrition?.priority);
-    const mixed=[];
-    while(recommended.length||others.length){
-      mixed.push(...recommended.splice(0,7),...others.splice(0,3));
-      if(!recommended.length&&others.length)mixed.push(...others.splice(0,10));
-      if(!others.length&&recommended.length)mixed.push(...recommended.splice(0,10));
+    // Prioriteer 70% voedingsvoorkeur ZONDER de gekozen sortering te breken.
+    // Bij 'Meeste actie-ingrediënten' rangschikken we eerst strikt op actieaantal.
+    const mixHealth=items=>{
+      const healthy=items.filter(r=>r.nutrition?.priority);
+      const other=items.filter(r=>!r.nutrition?.priority);
+      const mixed=[];
+      while(healthy.length||other.length){
+        mixed.push(...healthy.splice(0,7),...other.splice(0,3));
+        if(!healthy.length&&other.length)mixed.push(...other.splice(0,10));
+        if(!other.length&&healthy.length)mixed.push(...healthy.splice(0,10));
+      }
+      return mixed;
+    };
+    if(sort==="deals"){
+      const groups=new Map();
+      for(const recipe of rs){
+        if(!groups.has(recipe.sale_count))groups.set(recipe.sale_count,[]);
+        groups.get(recipe.sale_count).push(recipe);
+      }
+      rs=[...groups.keys()].sort((a,b)=>b-a).flatMap(count=>mixHealth(groups.get(count)));
+    }else{
+      // Prijs en bereidingstijd blijven hun eigen, exacte sortering houden.
+      // De voedingsvoorkeur is dan zichtbaar als badge/filter in plaats
+      // van een verborgen ingreep in de gekozen rangorde.
     }
-    rs=mixed;
   }
   const total=rs.length;
   const visible=rs.slice(0,state.visible);
