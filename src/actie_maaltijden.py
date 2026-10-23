@@ -43,6 +43,47 @@ SELECTION_EXCLUSIONS=re.compile(
 # Deze productgroepen hebben andere hoeveelheden/eenheden; niet zonder bewijs koppelen.
 GROUPS={"proteine":PROTEINS,"groente":VEGETABLES,"bijgerecht":SIDES}
 
+# Beproefde combinatiegroepen: een kortingspercentage is geen recept.
+PAIRINGS={
+ "kipfilet":("broccoli bloemkool spinazie wok courgette paprika champignons wortel tomaten sla spruiten","aardappel rijst pasta wraps"),
+ "kipdij":("broccoli bloemkool spinazie wok courgette paprika champignons wortel tomaten spruiten","aardappel rijst zoete_aardappel"),
+ "kipgehakt":("spinazie courgette paprika champignons tomaten wok broccoli","rijst pasta wraps"),
+ "shoarma":("wok paprika courgette sla tomaten komkommer","wraps aardappel rijst"),
+ "varkenshaas":("broccoli bloemkool champignons spruiten spinazie wortel","aardappel zoete_aardappel"),
+ "gehakt":("broccoli bloemkool courgette paprika champignons tomaten spinazie wok wortel","aardappel pasta rijst wraps"),
+ "zalm":("broccoli bloemkool spinazie courgette spruiten wortel","aardappel rijst pasta"),
+ "gerookte_zalm":("spinazie courgette sla komkommer tomaten","pasta wraps"),
+ "tonijn":("paprika tomaten sla komkommer courgette","pasta rijst wraps"),
+ "tofu":("broccoli wok paprika courgette champignons wortel spinazie","rijst couscous"),
+ "kikkererwten":("spinazie bloemkool tomaten paprika courgette wortel","rijst couscous"),
+ "linzen":("spinazie tomaten wortel courgette paprika champignons","rijst pasta"),
+ "bonen":("paprika tomaten sla courgette wok","rijst wraps"),
+ "eieren":("spinazie champignons paprika tomaten courgette broccoli","aardappel wraps")
+}
+SECOND_VEG={
+ "spinazie":"champignons tomaten courgette",
+ "broccoli":"paprika wortel champignons",
+ "bloemkool":"paprika wortel tomaten",
+ "spruiten":"champignons wortel",
+ "wok":"paprika champignons",
+ "courgette":"paprika champignons tomaten spinazie",
+ "paprika":"courgette tomaten champignons broccoli wok sla",
+ "champignons":"spinazie courgette paprika spruiten broccoli",
+ "wortel":"broccoli bloemkool spruiten paprika",
+ "tomaten":"courgette paprika spinazie sla",
+ "sla":"paprika tomaten komkommer",
+ "komkommer":"sla tomaten",
+ "boerenkool":""
+}
+def sensible_meal(protein,veg,side=None,veg2=None):
+    allowed_veg,allowed_sides=PAIRINGS.get(protein,("",""))
+    if veg not in allowed_veg.split() or (side and side not in allowed_sides.split()):
+        return False
+    if veg2 and (veg2 not in allowed_veg.split() or
+                 veg2 not in SECOND_VEG.get(veg,"").split()):
+        return False
+    return True
+
 def classify_offers(offers):
     """Welke ingrediëntcategorieën zijn aantoonbaar in aanbieding?
 
@@ -88,7 +129,7 @@ def meal_candidates(offers,limit=65):
     for pk in proteins:
         pname,cat,pamount,punit=PROTEINS[pk]
         for vk in veggies:
-            if pk==vk:continue
+            if pk==vk or not sensible_meal(pk,vk):continue
             vname,vamount,vunit=VEGETABLES[vk]
             selected_sides=[None]+sides[:4]
             # Ook een tweede afgeprijsde groente kan een maaltijd compleet maken.
@@ -96,6 +137,7 @@ def meal_candidates(offers,limit=65):
             second_vegetables=[None]+[x for x in veggies if x!=vk][:3]
             for sk in selected_sides:
                 for vk2 in second_vegetables:
+                    if not sensible_meal(pk,vk,sk,vk2):continue
                     # Een tweede groente zonder bijgerecht is zinvol als
                     # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
                     ings=[(pk,pamount,punit),(vk,vamount,vunit)]
