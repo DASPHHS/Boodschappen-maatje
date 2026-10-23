@@ -2,7 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions
+from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -112,6 +112,19 @@ class PrijsTest(unittest.TestCase):
         report=audit_promotions({"ah":[offer],"jumbo":[],"lidl":[]},
                                 {"ah":[],"jumbo":[],"lidl":[]})
         self.assertEqual(report["ah"]["unlinked"][0]["reason"],"Verpakkingsmaat onbekend")
+
+    def test_echt_actiealternatief_naast_goedkopere_schapprijs(self):
+        regular={"product":"Jumbo huismerk kwark","cash_price":3.0,"sale":False}
+        offer={"name":"Campina Magere Milde Kwark Naturel 1 kg",
+               "norm":"campina magere milde kwark naturel 1 kg",
+               "quantity":1000,"unit":"g","price":2.49,
+               "original_price":3.49,"multi_buy_quantity":None,
+               "multi_buy_price":None,"promotion_type":"vaste actieprijs",
+               "url":"https://www.jumbo.com/aanbiedingen/"}
+        alternative=alternative_offers("kwark",1400,"g",[offer],regular)
+        self.assertEqual(len(alternative),1)
+        self.assertEqual(alternative[0]["cash_price"],4.98)
+        self.assertTrue(alternative[0]["more_expensive_than_selected"])
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
