@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES
+from actie_maaltijden import meal_candidates
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"data.json"
@@ -366,10 +367,16 @@ def make_recipes(shelves,offers):
     final={}
     for store in STORES:
         all_recipes=[]
-        for idx,(title,category,minutes,ings) in enumerate(RECIPES):
+        dynamic=meal_candidates(offers[store])
+        proposals=list(RECIPES)+dynamic
+        price_cache={}
+        for idx,(title,category,minutes,ings) in enumerate(proposals):
             lines=[];missing=[];discounts=0
             for key,amount,unit in ings:
-                line=ingredient_price(key,amount,unit,shelves[store],offers[store])
+                cache_key=(key,amount,unit)
+                if cache_key not in price_cache:
+                    price_cache[cache_key]=ingredient_price(key,amount,unit,shelves[store],offers[store])
+                line=price_cache[cache_key]
                 if line:
                     lines.append(line)
                     discounts+=bool(line["sale"])
@@ -380,11 +387,13 @@ def make_recipes(shelves,offers):
             consumed=round(sum(x["used_price"] for x in lines),2)
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
             nutrition=nutrition_profile(ings)
-            inspiration=("HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
+            inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
+                         else "HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
                          else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
-              "inspiration":inspiration, "mealprep":title.startswith("Mealprep:") or minutes>=30,
+              "inspiration":inspiration,"offer_driven":idx>=len(RECIPES),
+              "mealprep":title.startswith("Mealprep:") or minutes>=30,
               "nutrition":nutrition,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "covered_count":len(lines),"complete":complete,
@@ -394,9 +403,13 @@ def make_recipes(shelves,offers):
               "saving":saving,"ingredients":lines,"missing":missing,
               "optional_pantry":"Olie, zout, peper en kruiden naar smaak (niet in prijs inbegrepen)."})
         # Beste ACTIECOMBINATIES voorop, daarbinnen kleinste complete prijs per portie.
-        all_recipes.sort(key=lambda r:(-r["sale_count"],not r["complete"],
-                                    r["per_serving"] if r["per_serving"] is not None else 1e7,
-                                    r["minutes"]))
+        all_recipes.sort(key=lambda r:(
+               not r["complete"],
+               -r["sale_count"],
+               -(r["saving"] if r["saving"] else 0),
+               not r["nutrition"]["priority"],
+               r["per_serving"] if r["per_serving"] is not None else 1e7,
+               r["minutes"]))
         # Bewaar de volledige receptenbibliotheek. De website toont standaard
         # de sterkste acties, maar laat ook vlees, vis en vega zonder actie zien.
         # Deze gerechten mogen nooit als actie worden aangeduid.
