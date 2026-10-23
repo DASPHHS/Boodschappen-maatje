@@ -183,24 +183,63 @@ def total_for(n,unit_price,promo=None):
     return round(n*promo["price"],2),n
 
 def promo_for(shelf,offer_list):
-    """Gebruik alleen aanbod bij nagenoeg identieke productnaam, exacte verpakking en referentieprijs."""
+    """Controleer alleen dezelfde verpakking en een sterk overeenkomende naam.
+
+    Checkjebon gebruikt soms een andere merkprefix dan PrijsProfeet. Een aanbieding
+    hoeft niet exact dezelfde huidige schapprijs te hebben; de opgegeven
+    oorspronkelijke prijs is de beste aanvullende kwaliteitscontrole.
+    """
     hits=[]
+    sn=shelf["norm"]
     for offer in offer_list:
         if shelf["unit"]!=offer["unit"] or shelf["quantity"]!=offer["quantity"]:continue
-        similarity=SequenceMatcher(None,shelf["norm"],offer["norm"]).ratio()
-        if similarity<.92:continue
+        if offer.get("is_loyalty"):continue
         original=offer.get("original_price")
-        if original is None or abs(original-shelf["price"])/shelf["price"]>.18:continue
-        if offer.get("is_loyalty"):continue # speciale ledenvoorwaarde alleen in dealslijst
+        if not original or abs(original-shelf["price"])/max(shelf["price"],.01)>.30:continue
+        on=offer["norm"]
+        similarity=SequenceMatcher(None,sn,on).ratio()
+        # Exacte itemnaam met prefixverschil is toegestaan, geen generieke
+        # ingrediëntfuzzy-match. Bijvoorbeeld Lidl "Gewassen spinazie" tegenover
+        # Checkjebon "Spinazie".
+        ss=set(sn.split());os=set(on.split())
+        overlap=bool(ss and os and len(ss&os)>=2 and len(ss&os)/max(len(ss),len(os))>=.7)
+        safe_single=(len(ss)==1 and ss.issubset(os) and len(os)<=2)
+        if similarity<.84 and not overlap and not safe_single:continue
         hits.append((similarity,offer))
     if not hits:return None
-    return max(hits,key=lambda x:x[0])[1]
+    return sorted(hits,key=lambda x:(x[0],x[1].get("discount") or 0),reverse=True)[0][1]
+
+def offer_price(ing,amount,unit,offers):
+    """Actieartikel zelf als bron als de normale dataset de variant niet bevat.
+
+    Alleen simpele individuele actieprijzen met exact bekende maatvoering.
+    Voor complexe combinaties/bonuskaarten wordt geen kassaprijs verzonnen.
+    """
+    options=[]
+    for o in offers:
+        if o["unit"]!=unit or not o["quantity"] or not match_ingredient(o,ing):continue
+        if o.get("is_loyalty"):continue
+        typ=normalize(o.get("promotion_type",""))
+        if o.get("multi_buy_quantity") or any(z in typ for z in ("multi","one_plus_one","gratis","bundle","voor","2 1","1 1")):continue
+        original=o.get("original_price")
+        if not original or original<=o["price"]:continue
+        n=math.ceil(amount/o["quantity"])
+        if n>15:continue
+        cost=round(n*o["price"],2)
+        options.append((cost,{"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
+             "product":o["name"],"package":o["size_label"] or (str(o["quantity"])+" "+unit),
+             "package_size":o["quantity"],"packages":n,"cash_price":cost,
+             "used_price":round(amount/o["quantity"]*o["price"],2),
+             "regular_cash":round(n*original,2),"sale":True,
+             "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
+                 "multi_buy_quantity":None,"multi_buy_price":None,"url":o["url"]},
+             "source":"PrijsProfeet","url":o["url"]}))
+    return [x[1] for x in sorted(options,key=lambda x:x[0])]
 
 def ingredient_price(ing,amount,unit,shelves,offers):
     options=[]
     for p in shelves:
         if p["unit"]!=unit or not match_ingredient(p,ing):continue
-        # Uitgesproken afwijkende hoeveelheden in de productcatalogus vermijden
         if unit=="g" and p["quantity"]>5000:continue
         if unit=="ml" and p["quantity"]>4000:continue
         if unit=="st" and p["quantity"]>30:continue
@@ -209,22 +248,29 @@ def ingredient_price(ing,amount,unit,shelves,offers):
         regular=round(n*p["price"],2)
         promo=promo_for(p,offers)
         cost,packs=total_for(n,p["price"],promo)
-        # Actie is niet noodzakelijk goedkoper bij een vereiste bundel
         if cost>=regular:
             cost,packs,promo=regular,n,None
         used=round(amount/p["quantity"]*(cost/packs),2) if packs else None
-        options.append((cost,used,{"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
+        options.append({"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
                        "product":p["name"],"package":p["size_label"],"package_size":p["quantity"],
                        "packages":packs,"cash_price":cost,"used_price":used,"regular_cash":regular,
                        "sale":bool(promo),"action":promo and {"name":promo["name"],"price":promo["price"],
                          "valid_until":promo.get("valid_until"),"multi_buy_quantity":promo.get("multi_buy_quantity"),
                          "multi_buy_price":promo.get("multi_buy_price"),"url":promo["url"]},
                        "source":("PrijsProfeet + Checkjebon" if promo else "Checkjebon"),
-                       "url":p["url"]}))
+                       "url":p["url"]})
+    options.extend(offer_price(ing,amount,unit,offers))
     if not options:return None
-    # Optimaliseer kassaprijs, bij gelijkspel de kleinste verspillingswaarde.
-    options.sort(key=lambda x:(round(x[0],2),round(x[1],2)))
-    return options[0][2]
+    # Prioriteit bij boodschappen blijft lage prijs; bij beperkte meerkosten
+    # mag een echte actie winnen. Vergelijk feitelijke kassakosten, geen opgeblazen
+    # kortingspercentage ten opzichte van een dure adviesprijs.
+    minimum=min(x["cash_price"] for x in options)
+    preferred=[x for x in options if x["sale"] and x["cash_price"]<=minimum*1.12]
+    if preferred:
+        preferred.sort(key=lambda x:(x["cash_price"],-max(0,x["regular_cash"]-x["cash_price"])))
+        return preferred[0]
+    return min(options,key=lambda x:(x["cash_price"],x["used_price"]))
+
 
 def make_recipes(shelves,offers):
     final={}
