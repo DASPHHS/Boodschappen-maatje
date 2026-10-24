@@ -385,7 +385,7 @@ def ingredient_price(ing,amount,unit,shelves,offers):
 # tellen niet mee, om niet stilzwijgend eiwitten te verzinnen.
 PROTEIN_PER_100G={
  "kipfilet":20.0,"kipdij":17.0,"kipgehakt":17.0,"shoarma":16.0,
- "gehakt":17.0,"varkenshaas":20.0,"zalm":19.0,"gerookte_zalm":18.0,
+ "gehakt":17.0,"varkenshaas":20.0,"rookworst":12.0,"zalm":19.0,"gerookte_zalm":18.0,
  "tonijn":22.0,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
  "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
  "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
@@ -403,7 +403,7 @@ PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
 # uitgelekt; vlees en vis rauw). Waarden variëren per product.
 KCAL_PER_100G={
  "kipfilet":110,"kipdij":140,"kipgehakt":155,"shoarma":170,
- "gehakt":190,"varkenshaas":120,"zalm":205,"gerookte_zalm":165,
+ "gehakt":190,"varkenshaas":120,"rookworst":280,"zalm":205,"gerookte_zalm":165,
  "tonijn":115,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
  "rijst":355,"pasta":350,"couscous":350,"aardappel":80,
  "zoete_aardappel":85,"wok":35,"boerenkool":35,"spruiten":43,
@@ -487,6 +487,8 @@ def nutrition_profile(ings,meal_type="Avondeten"):
         priority=protein and vegetable_g_per_serving>=180 and lowish_carb
     else:
         priority=protein and lowish_carb and vegetables_present
+    processed_meat=any(key=="rookworst" for key,qty,unit in ings)
+    if processed_meat:priority=False
     return {"priority":priority,"protein_source":protein,
             "kcal_per_serving_estimate":kcal_per_serving if not kcal_unknown else None,
             "kcal_total_estimate":kcal_total if not kcal_unknown else None,
@@ -494,6 +496,10 @@ def nutrition_profile(ings,meal_type="Avondeten"):
             "protein_g_per_serving_estimate":protein_per_serving,
             "protein_target_g":MIN_PROTEIN_PER_SERVING,
             "meal_type":meal_type,
+            "processed_meat":processed_meat,
+            "health_note":("Boerenkool is een gezonde groente; rookworst is bewerkt vlees. "
+                           "Kies dit af en toe of neem de variant met kip."
+                           if processed_meat else ""),
             "protein_unknown":unknown,
             "lower_carb":lowish_carb,"vegetable_forward":vegetables_present,
             "vegetable_g_per_serving_estimate":vegetable_g_per_serving,
@@ -644,7 +650,7 @@ AUDIT_GROUPS={
     "Fruit":("aardbeien","blauwe_bessen","banaan"),
     "Groenten":("broccoli","spinazie","spruiten","bloemkool","wok",
                 "paprika","courgette","champignons","wortel","tomaten"),
-    "Vlees en kip":("kipfilet","kipdij","kipgehakt","gehakt","varkenshaas"),
+    "Vlees en kip":("kipfilet","kipdij","kipgehakt","gehakt","varkenshaas","rookworst"),
     "Vis":("zalm","gerookte_zalm","tonijn"),
     "Plantaardig":("tofu","kikkererwten","linzen","bonen"),
     "Ontbijt en lunch":("havermout","wraps","hummus")
