@@ -291,7 +291,13 @@ def offer_price(ing,amount,unit,offers):
         is_bundle=bool(o.get("multi_buy_quantity") and o.get("multi_buy_price"))
         if not is_bundle and any(z in typ for z in ("multi","one_plus_one","gratis","bundle","2 1","1 1")):continue
         original=o.get("original_price")
-        if original is not None and original<=o["price"]:continue
+        # Bij 2-voor-acties blijft de getoonde losse stukprijs vaak gelijk
+        # aan de normale prijs; controleer daarom de TOTALE bundelkorting.
+        if is_bundle:
+            k=o["multi_buy_quantity"]
+            if k<2 or o["multi_buy_price"]>=k*(original or o["price"]):continue
+        elif original is not None and original<=o["price"]:
+            continue
         n=math.ceil(amount/o["quantity"])
         if n>15:continue
         cost,packs=total_for(n,original or o["price"],o)
@@ -576,8 +582,14 @@ def make_recipes(shelves,offers):
             unverified=[x["product"] for x in lines if x.get("nutrition_unverified")]
             if unverified:
                 nutrition["product_nutrition_unverified"]=unverified
-                nutrition["basis"]+=(" Gearomatiseerde zuivel: productetiket niet "
-                                    "geverifieerd; werkelijke suiker/eiwit/kcal kunnen afwijken.")
+                nutrition["basis"]+=(" Gearomatiseerde zuivel: etiketwaarden ontbreken. "
+                                    "Getoonde eiwit- en kcal-schattingen zijn niet betrouwbaar.")
+                # Niet rekenen met naturelwaarden voor een ander voedingsproduct.
+                nutrition["kcal_per_serving_estimate"]=None
+                nutrition["kcal_total_estimate"]=None
+                nutrition["protein_g_per_serving_estimate"]=None
+                nutrition["protein_source"]=False
+                nutrition["priority"]=False
             tl=title.casefold()
             cuisine=("Aziatisch" if any(x in tl for x in
                      ("aziatisch","thaise","koreaanse","japanse","teriyaki",
