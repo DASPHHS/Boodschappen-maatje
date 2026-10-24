@@ -616,6 +616,14 @@ def make_recipes(shelves,offers):
             meal_type=("Ontbijt" if title.startswith("Ontbijt:") else
                        "Lunch" if title.startswith("Lunch:") else "Avondeten")
             nutrition=nutrition_profile(ings,meal_type=meal_type)
+            # Bron toont bij natte conserven doorgaans het nettogewicht van de
+            # verpakking. Uitlekgewicht is niet algemeen beschikbaar.
+            # Benoem dit expliciet: zonder etiket is exact benodigde
+            # hoeveelheid en voedingswaarde niet te garanderen.
+            drained_uncertain=[ING[key][0] for key,amount,unit in ings
+                               if key in ("tonijn","bonen","linzen","kikkererwten")]
+            if drained_uncertain:
+                nutrition["drained_weight_unverified"]=drained_uncertain
             # Bij gearomatiseerde zuivel is de generieke naturelwaardeschatting
             # onvoldoende voor een betrouwbaar kcal-/eiwitlabel.
             unverified=[x["product"] for x in lines if x.get("nutrition_unverified")]
@@ -659,6 +667,7 @@ def make_recipes(shelves,offers):
               "portable":portable,"prep_ahead":prep_ahead,
               "instructions":instructions,"pantry":pantry,
               "price_excludes_pantry":True,
+              "drained_weight_unverified":drained_uncertain,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "other_offer_count":alternative_count,
               "deal_basket":{"used_actions":deal_used,"checkout":deal_cash if complete else None,
