@@ -732,10 +732,10 @@ def audit_promotions(offers,recipes):
                     linked_count+=1
                     continue
                 typ=normalize(offer.get("promotion_type") or "")
-                if not any(k in recipe_keys for k in matching):
-                    reason="Ingrediënt ontbreekt in beschikbare recepten"
-                elif not offer.get("quantity") or not offer.get("unit"):
+                if not offer.get("quantity") or not offer.get("unit"):
                     reason="Verpakkingsmaat onbekend"
+                elif not any(k in recipe_keys for k in matching):
+                    reason="Ingrediënt ontbreekt in beschikbare recepten"
                 elif offer.get("is_loyalty"):
                     reason="Klantenkaartactie niet doorberekend"
                 elif (not offer.get("multi_buy_quantity") and
