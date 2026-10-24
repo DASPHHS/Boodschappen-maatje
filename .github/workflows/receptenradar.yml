@@ -40,9 +40,13 @@ jobs:
         run: python src/receptenradar_v2.py
       - name: Publiceer geverifieerde prijsgegevens naar GitHub Pages
         run: |
+          # Werkt bij GitHub Pages bron 'main /root' en 'main /docs'.
+          # Synchroniseer ook de pagina's en aanvullende databestanden.
+          mkdir -p docs/recepten
+          cp -a recepten/. docs/recepten/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add recepten/data.json recepten/winkelprijzen.json
+          git add recepten/data.json recepten/winkelprijzen.json docs/recepten
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
             git pull --rebase origin main
