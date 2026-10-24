@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_catalog import RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from actie_maaltijden import DISH_TEMPLATES
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
+from receptenradar_v2 import fresh_spinach_required,measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -209,6 +209,19 @@ class PrijsTest(unittest.TestCase):
                 if veg2:ings.append((veg2,200,"g"))
                 self.assertEqual(dish_quality_issues(title,"Kip" if protein.startswith("kip") else "Vlees",ings),[])
                 self.assertGreater(len(cooking_instructions(title,ings,method)),30)
+
+    def test_diepvries_mag_behalve_bij_rauwe_spinazie(self):
+        self.assertTrue(fresh_spinach_required("Lunch: zalm-spinaziewrap", "spinazie"))
+        self.assertFalse(fresh_spinach_required("Kikkererwtencurry met spinazie", "spinazie"))
+        base={"unit":"g","quantity":500,"size_label":"500 g",
+              "url":"https://www.ah.nl"}
+        shelves=[dict(base,name="AH diepvries spinazie",norm="ah diepvries spinazie",price=0.79),
+                 dict(base,name="AH verse spinazie",norm="ah verse spinazie",price=1.99)]
+        cheapest=ingredient_price("spinazie",500,"g",shelves,[])
+        for_raw=ingredient_price("spinazie",500,"g",shelves,[],fresh_only=True)
+        self.assertTrue(cheapest["frozen"])
+        self.assertFalse(for_raw["frozen"])
+        self.assertEqual(for_raw["cash_price"],1.99)
 
     def test_echt_goedkoopste_product_wint_van_duurdere_aanbieding(self):
         shelf=[{"name":"AH Broccoli 500 g","norm":"ah broccoli 500 g",
