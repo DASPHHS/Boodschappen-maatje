@@ -144,8 +144,16 @@ def classify_offers(offers):
         if not offer.get("quantity") or offer.get("is_loyalty"):
             continue
         typ=offer.get("promotion_type","").lower()
-        if ("gratis" in typ or "1+1" in typ) and not (
-                offer.get("multi_buy_quantity") and offer.get("multi_buy_price")):
+        multi_qty=offer.get("multi_buy_quantity") or 0
+        multi_price=offer.get("multi_buy_price") or 0
+        normal=offer.get("original_price") or offer.get("price") or 0
+        real_bundle=multi_qty>=2 and multi_price>0 and multi_price<multi_qty*normal
+        real_single=bool(offer.get("original_price") and
+                         offer.get("price") and offer["price"]<offer["original_price"])
+        # Alleen rekenbaar werkelijk voordeel telt voor actiegestuurde maaltijden.
+        if not (real_bundle or real_single):
+            continue
+        if ("gratis" in typ or "1+1" in typ) and not real_bundle:
             continue
         for role,group in GROUPS.items():
             for key in group:
