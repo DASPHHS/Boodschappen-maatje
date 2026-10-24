@@ -112,6 +112,17 @@ def verified_discount(offer):
         return bundle<count*(old or price)
     return old>price>0
 
+def verified_discount_percentage(offer):
+    if not verified_discount(offer):
+        return None
+    price=offer.get("price") or 0
+    old=offer.get("original_price") or price
+    count=offer.get("multi_buy_quantity") or 0
+    bundle=offer.get("multi_buy_price") or 0
+    if count>=2 and bundle>0:
+        return round(100*(1-bundle/(count*old)),1)
+    return round(100*(1-price/old),1)
+
 def store_code(x):
     n=normalize(x).replace(" ","")
     if n in ("ah","albertheijn","albert_heijn"):return "ah"
@@ -840,9 +851,11 @@ def main():
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
             "recipes":recipes,"audit":audit,"quality_audit":quality,
-            "deals":{s:sorted(({**o,"discount_verified":verified_discount(o)} for o in offers[s]),
+            "deals":{s:sorted(({**o,"discount_verified":verified_discount(o),
+                                  "verified_discount_pct":verified_discount_percentage(o)}
+                                 for o in offers[s]),
                               key=lambda d:(not d["discount_verified"],
-                                            -(d.get("discount") or 0))) for s in STORES},
+                                            -(d.get("verified_discount_pct") or 0))) for s in STORES},
             "errors":errors,
             "disclaimer":"Online prijzen indicatief. Kassaprijzen zijn berekend uit beschikbare verpakkingen. Kruiden/olie uit voorraad en eventuele persoonlijke coupons niet inbegrepen. Geen garantie op winkelvoorraad."}
     OUT.parent.mkdir(parents=True,exist_ok=True)
