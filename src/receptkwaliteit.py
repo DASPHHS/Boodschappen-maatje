@@ -7,7 +7,7 @@ import re
 from receptenradar_catalog import ING
 
 BASIS = ("olijfolie (circa 1 eetlepel)", "zout naar smaak", "zwarte peper naar smaak")
-BROTH = "groentebouillon (circa 800 ml, bereid met water en bouillonblokje)"
+BROTH = "groentebouillon (circa 600 ml, bereid met water en bouillonblokje)"
 
 def pantry_for_recipe(title, ingredients, instructions=""):
     """Concreet vermelde smaakmakers, bewust niet meegerekend in de winkelprijs."""
@@ -41,6 +41,12 @@ def pantry_for_recipe(title, ingredients, instructions=""):
     if "yoghurt" in keys or "kwark" in keys:
         if any(x in name for x in ("wrap", "saus", "salade", "fris", "bowl", "dressing")):
             pantry += ["citroensap (1 eetlepel)", "knoflookpoeder (naar smaak)"]
+    if "teriyaki" in name or "zoetzuur" in name:
+        pantry += ["honing (1 eetlepel)"]
+    if "zoetzuur" in name:
+        pantry += ["azijn (1 eetlepel)"]
+    if "harissa" in name:
+        pantry += ["harissakruiden (1 theelepel)"]
     # De specifieke bereidingswijze kan extra, niet geprijsde smaakmakers noemen.
     # Maak die zichtbaar in plaats van ze in de instructie te verstoppen.
     mentioned = (name + " " + instructions.casefold())
@@ -125,14 +131,35 @@ def cooking_instructions(title, ingredients, curated=""):
                 "(volg bij diepvriesgroente de verpakkingsinstructie). "
                 + meat + "Giet af en stamp aardappelen en boerenkool met een scheut kookvocht. "
                 "Serveer met de bereide eiwitbron.")
+    if "gevulde paprika" in name:
+        return ("Verwarm de oven voor op 190 °C. Kook de rijst volgens de verpakking. "
+                "Halveer de paprika's en verwijder de zaadlijsten. Bak het rundergehakt "
+                "volledig gaar met de kruiden; roer tomatenblokjes en rijst erdoor. "
+                "Vul de paprikahelften en bak ze circa 20-25 minuten in de oven tot ze zacht zijn.")
+    if "gevulde zoete aardappel" in name:
+        return ("Prik de zoete aardappelen rondom in en gaar ze circa 10-15 minuten in de "
+                "magnetron, afhankelijk van hun grootte. Verwarm de bonen met de kruiden. "
+                "Snijd de gare aardappelen open en vul met bonen en gesneden tomaat. "
+                "Schep er yoghurt over en serveer direct.")
+    if "lasagne" in name:
+        return ("Verwarm de oven voor op 200 °C. Snijd de courgette in dunne plakken. "
+                "Verwarm de uitgelekte linzen met tomatenblokjes en de genoemde kruiden. "
+                "Maak in een ovenschaal afwisselend laagjes courgette en linzensaus, "
+                "eindig met geraspte kaas en bak circa 25-30 minuten tot de courgette zacht is.")
+    if "visstoof" in name:
+        return ("Kook de aardappelen in circa 15-20 minuten gaar. Snijd de wortel in kleine "
+                "stukken en laat met 150 ml water, olie en kruiden afgedekt zacht worden. "
+                "Voeg de zalm in stukken toe en gaar rustig in de stoof, zonder hard koken. "
+                "Neem de pan van het vuur en roer de yoghurt erdoor; serveer met de krieltjes.")
     if "frittata" in name or "omelet" in name or "shakshuka" in name:
         if "shakshuka" in name:
             return ("Fruit de gesneden groenten en specerijen in wat olijfolie. Voeg de uitgelekte "
                     "bonen en tomatenblokjes toe en laat 8-10 minuten zachtjes pruttelen. "
                     "Maak kuiltjes, breek de eieren erin, dek af en gaar tot het eiwit volledig gestold is.")
-        return ("Verwarm de oven voor op 180 °C. Bak de gesneden groenten kort in een ovenbestendige "
-                "pan met olijfolie. Klop de eieren los en schenk over de groenten. "
-                "Voeg eventuele kaas of vis toe. Gaar 12-18 minuten tot het ei volledig gestold is.")
+        return ("Verwarm de oven voor op 180 °C. Bak eventuele rauwe kip eerst volledig gaar "
+                "in een ovenbestendige pan met olijfolie. Voeg de gesneden groenten toe en "
+                "bak kort. Klop de eieren los en schenk over de pan. Voeg eventuele kaas of "
+                "gerookte zalm toe. Gaar 12-18 minuten tot het ei volledig gestold is.")
     if "risotto" in name:
         raise ValueError("Risotto vereist een specifieke, gecontroleerde bereidingswijze")
     steps = ["Was en snijd de groenten. Giet bonen, linzen of kikkererwten uit blik af als deze worden gebruikt."]
@@ -171,11 +198,11 @@ def cooking_instructions(title, ingredients, curated=""):
         steps.append("Laat de tonijn uit blik goed uitlekken; deze hoeft niet opnieuw gaar gebakken te worden.")
     elif "eieren" in keys:
         steps.append("Kook de eieren hard in circa 9 minuten, of bak ze in olijfolie tot het eiwit gestold is.")
-    if "curry" in name or "stoof" in name or "bolognese" in name:
+    if "curry" in name or "stoof" in name or "bolognese" in name or "tomatensaus" in name:
         steps.append("Fruit de specerijen kort en voeg de aanwezige tomatenblokjes en/of kokosmelk toe. "
                      "Voeg stevige groenten en peulvruchten toe; laat zachtjes pruttelen totdat ze gaar zijn. "
                      "Voeg spinazie pas aan het einde toe.")
-    elif any(x in name for x in ("oven", "gerooster", "traybake", "plaat", "ovenschotel", "lasagne")):
+    elif any(x in name for x in ("oven", "gerooster", "traybake", "plaat", "schotel", "lasagne")):
         steps.append("Bereid de overige groenten gaar in de oven of een pan. "
                      "Verdeel bij een ovenschotel de bereide onderdelen over een ovenschaal, "
                      "strooi eventuele kaas erover en bak tot de kaas gesmolten is.")
