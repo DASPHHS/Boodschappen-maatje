@@ -14,7 +14,7 @@ ING = {
  "noten": ("ongezouten noten", r"(ongezouten noten|ongezouten amandelen|ongezouten walnoten)", r"pasta|reep|koek|chocolade|smaak"),
  "melk": ("halfvolle melk", r"(halfvolle melk|melk halfvol)", r"chocolade|drank smaak|poeder|lactosevrij"),
  "hummus": ("hummus naturel", r"(hummus|humus)", r"chips|wrap|salade|broodje|maaltijd|dipmix|kruiden"),
- "rookworst": ("rookworst", r"\\brookworst\\b", r"vegetar|vegan|plantaardig|soep|saus|chips|smaak|kruiden|broodbeleg|maaltijd|stamppot"),
+ "rookworst": ("rookworst", r"\brookworst\b", r"vegetar|vegan|plantaardig|soep|saus|chips|smaak|kruiden|broodbeleg|maaltijd|stamppot"),
  "varkenshaas": ("varkenshaas", r"varkenshaas", r"rollade|broodbeleg|gevuld|saus|maaltijd|reepjes|medaillon|vleeswaren|salade"),
  "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread|pepersaus|roomsaus|saus|ragout|gepocheerd|gebakken"),
  "kipdij": ("kipdijfilet", r"kipdij(filet)?", r"vegetar|vegan|salade|broodbeleg|soep|smaak"),
