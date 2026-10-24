@@ -351,7 +351,7 @@ def fresh_spinach_required(title,ing):
     name=normalize(title)
     return (ing=="spinazie" and
             any(x in name for x in ("wrap","salade")) and
-            not any(x in name for x in ("roerei","eiwrap","warm","frittata")))
+            not any(x in name for x in ("roerei","eiwrap","ei wraps","warm","frittata")))
 
 def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
     options=[]
