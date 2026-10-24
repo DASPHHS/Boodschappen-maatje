@@ -299,6 +299,10 @@ class PrijsTest(unittest.TestCase):
         self.assertAlmostEqual(verified_discount_percentage(bundle),16.4)
         no_saving={**bundle,"multi_buy_price":2.50}
         self.assertFalse(verified_discount(no_saving))
+        unknown_bundle={"price":1.50,"original_price":2.0,
+                        "promotion_type":"2 voor 3,00"}
+        self.assertFalse(verified_discount(unknown_bundle))
+        self.assertIsNone(verified_discount_percentage(unknown_bundle))
 
     def test_aanbieding_met_niet_geverifieerde_normaalprijs_niet_als_korting(self):
         product={"name":"Jumbo broccoli 500 g","norm":"jumbo broccoli 500 g",
