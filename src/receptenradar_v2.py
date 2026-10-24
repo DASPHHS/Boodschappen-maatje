@@ -325,7 +325,7 @@ def offer_price(ing,amount,unit,offers):
     options=[]
     for o in offers:
         if o["unit"]!=unit or not o["quantity"] or not match_ingredient(o,ing):continue
-        if o.get("is_loyalty"):continue
+        if o.get("is_loyalty") or not verified_discount(o):continue
         typ=normalize(o.get("promotion_type",""))
         is_bundle=bool(o.get("multi_buy_quantity") and o.get("multi_buy_price"))
         if not is_bundle and any(z in typ for z in ("multi","one_plus_one","gratis","bundle","2 1","1 1")):continue
