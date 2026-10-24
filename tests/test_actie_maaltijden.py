@@ -2,7 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from actie_maaltijden import classify_offers,meal_candidates
+from actie_maaltijden import classify_offers,meal_candidates,DISH_TEMPLATES
 
 def sale(name,unit="g",amount=600,discount=30):
  return {"name":name,"norm":name.lower(),"unit":unit,"quantity":amount,
@@ -43,6 +43,19 @@ class OfferDrivenTest(unittest.TestCase):
   meals=meal_candidates(items)
   self.assertTrue(any(
       ("kipfilet",800,"g") in recipe[3] for recipe in meals))
+ def test_alle_automatische_recepten_zijn_echte_templates(self):
+  items=[sale("kipfilet"),sale("kipshoarma"),sale("broccoli"),
+         sale("wokgroenten"),sale("krieltjes"),sale("volkoren pasta")]
+  dishes=meal_candidates(items)
+  known={x[4] for x in DISH_TEMPLATES}
+  self.assertTrue(dishes)
+  self.assertTrue(all(d[0] in known for d in dishes))
+  self.assertFalse(any(d[0]=="Kipfilet met wokgroenten en volkoren pasta" for d in dishes))
+  self.assertTrue(any("Kipshoarma met" in d[0] for d in dishes))
+ def test_geen_pasta_zonder_uitgewerkt_gerecht(self):
+  items=[sale("kipfilet"),sale("wokgroenten"),sale("volkoren pasta")]
+  self.assertFalse(any({x[0] for x in d[3]}=={"kipfilet","wok","pasta"}
+      for d in meal_candidates(items)))
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
