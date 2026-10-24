@@ -84,6 +84,51 @@ def sensible_meal(protein,veg,side=None,veg2=None):
         return False
     return True
 
+# Recepttemplates i.p.v. willekeurige combinatie van afgeprijsde producten.
+# (eiwit, hoofdgroente, bijgerecht, extra groente, titel, kookaanpak)
+# None betekent dat er géén bijgerecht of tweede groente nodig is.
+DISH_TEMPLATES=[
+ ("kipfilet","broccoli","aardappel",None,"Ovenkip met broccoli en geroosterde krieltjes","Kruid kip en krieltjes met paprikapoeder, knoflook, peper en wat olie. Rooster in de oven, voeg broccoli later toe."),
+ ("kipfilet","broccoli",None,None,"Knoflookkip met geroosterde broccoli","Bak gekruide kipfilet goudbruin. Rooster broccoli met knoflook en citroen."),
+ ("kipfilet","broccoli","aardappel","paprika","Ovenkip met paprika, broccoli en krieltjes","Rooster kip, paprika, broccoli en krieltjes met olie, knoflook en paprikapoeder. Voeg broccoli later toe."),
+ ("kipfilet","broccoli","rijst","wortel","Teriyaki-kip met broccoli, wortel en zilvervliesrijst","Roerbak kip, broccoli en wortel. Maak af met sojasaus, gember en knoflook; serveer met rijst."),
+ ("kipfilet","wok","rijst",None,"Gemberkip met wokgroenten en rijst","Bak kipfilet met knoflook en gember. Roerbak wokgroenten beetgaar en serveer met rijst en een beetje sojasaus."),
+ ("kipfilet","wok",None,"paprika","Roerbak-kip met wokgroenten en paprika","Roerbak kip met gember en knoflook, voeg wokgroenten en paprika toe en maak af met sojasaus."),
+ ("kipfilet","spinazie","pasta","champignons","Romige kip-spinaziepasta met champignons","Bak kip en champignons. Schep er spinazie, volkoren pasta en een beetje yoghurt door."),
+ ("kipfilet","courgette","pasta","tomaten","Volkoren pasta met kip, courgette en tomaat","Bak kip en courgette met Italiaanse kruiden. Voeg tomaten en gekookte pasta toe."),
+ ("kipfilet","paprika","wraps","sla","Kipfajita-wraps met paprika en sla","Bak reepjes kip met komijn en paprikapoeder, voeg paprika toe en serveer in wraps met frisse sla."),
+ ("kipfilet","sla","wraps","tomaten","Frisse kipwrap met tomaat en sla","Bak gekruide kip en laat afkoelen. Vul wraps met kip, tomaat, sla en een beetje yoghurtdressing."),
+ ("kipdij","broccoli","rijst","wortel","Sticky kipdij met broccoli, wortel en rijst","Rooster kipdij met sojasaus, gember en knoflook. Serveer met gestoomde broccoli, wortel en rijst."),
+ ("kipdij","bloemkool","aardappel",None,"Gekruide kipdij met bloemkool en krieltjes","Rooster kipdij, bloemkool en krieltjes op een bakplaat met paprika en tijm."),
+ ("kipgehakt","spinazie","pasta","champignons","Italiaanse kipgehaktballetjes met spinazie, champignons en volkorenpasta","Draai balletjes van kipgehakt met Italiaanse kruiden. Bak met champignons en serveer met spinazie en pasta."),
+ ("kipgehakt","courgette","pasta","tomaten","Kipgehaktballetjes in tomatensaus met courgette en pasta","Bak gekruide kipgehaktballetjes. Stoof tomaat en courgette tot saus en serveer met pasta."),
+ ("kipgehakt","paprika","wraps","tomaten","Mexicaanse kipgehaktwraps met paprika en tomaat","Bak kipgehakt met komijn en paprikapoeder, voeg paprika en tomaat toe en vul de wraps."),
+ ("shoarma","paprika","wraps","sla","Kipshoarmawraps met paprika en sla","Bak kipshoarma met paprika; vul warme wraps met knapperige sla en yoghurtsaus."),
+ ("shoarma","wok","aardappel",None,"Kipshoarma met gebakken groenten en krieltjes","Bak kipshoarma en krieltjes apart. Roerbak de groenten en serveer met knoflookyoghurt."),
+ ("shoarma","wok","aardappel","paprika","Kipshoarma met paprika, wokgroenten en krieltjes","Bak kipshoarma, wokgroenten en paprika in de pan; serveer met krokante krieltjes en yoghurtsaus."),
+ ("varkenshaas","broccoli","aardappel",None,"Varkenshaas met broccoli en gebakken krieltjes","Bak varkenshaas kort rondom en laat garen. Serveer met gestoomde broccoli en gebakken krieltjes."),
+ ("varkenshaas","spruiten","aardappel",None,"Varkenshaas met geroosterde spruiten en krieltjes","Rooster spruitjes en krieltjes met tijm; bak varkenshaas apart en laat even rusten."),
+ ("varkenshaas","champignons","aardappel",None,"Varkenshaas met champignons en krieltjes","Bak varkenshaas en champignons met tijm en knoflook. Serveer met krieltjes."),
+ ("gehakt","tomaten","pasta","courgette","Volkoren bolognese met courgette","Bak rundergehakt met ui en Italiaanse kruiden; laat tomaat en courgette meestoven en serveer met pasta."),
+ ("gehakt","paprika","wraps","tomaten","Mexicaanse rundergehaktwraps met paprika en tomaat","Bak gehakt met komijn en gerookt paprikapoeder. Voeg paprika en tomaat toe en vul wraps."),
+ ("gehakt","broccoli","aardappel",None,"Gekruid rundergehakt met broccoli en gebakken aardappelen","Bak gehakt met ui, peper en paprikapoeder. Serveer met broccoli en gebakken aardappelen."),
+ ("zalm","broccoli","aardappel",None,"Ovenzalm met broccoli en krieltjes","Rooster krieltjes, voeg broccoli en zalm toe en maak af met citroen, dille en peper."),
+ ("zalm","spinazie","pasta",None,"Volkoren zalmpasta met spinazie en citroen","Bak zalm apart en roer spinazie door de gekookte pasta. Maak af met citroen en zwarte peper."),
+ ("zalm","spruiten","aardappel",None,"Ovenzalm met spruitjes en krieltjes","Rooster spruitjes en krieltjes; voeg zalm later toe met citroen en dille."),
+ ("gerookte_zalm","sla","wraps","komkommer","Frisse gerookte-zalmwraps met sla en komkommer","Vul wraps met gerookte zalm, komkommer, sla en yoghurtdressing; houd gekoeld."),
+ ("tonijn","tomaten","pasta",None,"Mediterrane tonijnpasta met tomaat","Meng tonijn met tomaat, knoflook, olijfolie en volkoren pasta."),
+ ("tonijn","sla","wraps","tomaten","Tonijnwraps met sla en tomaat","Meng tonijn met een beetje yoghurt en peper. Vul wraps met sla en tomaat."),
+ ("tofu","broccoli","rijst","wortel","Gembertofu met broccoli, wortel en rijst","Bak tofu krokant met gember en sojasaus; roerbak groenten en serveer met rijst."),
+ ("tofu","wok","rijst",None,"Krokante tofu met wokgroenten en rijst","Bak tofu krokant, roerbak groenten met knoflook en gember en serveer met rijst."),
+ ("tofu","wok",None,"paprika","Krokante tofu met wokgroenten en paprika","Bak tofu goudbruin; wok groenten met paprika, gember en sojasaus."),
+ ("kikkererwten","bloemkool","rijst",None,"Kikkererwten-bloemkoolcurry met zilvervliesrijst","Stoof bloemkool en kikkererwten met currykruiden, tomaat uit voorraad en een scheut water; serveer met rijst."),
+ ("linzen","tomaten","pasta","courgette","Linzenbolognese met courgette en volkorenpasta","Laat linzen, tomaat, courgette en Italiaanse kruiden zachtjes pruttelen; serveer met pasta."),
+ ("bonen","paprika","wraps","tomaten","Zwartebonenwraps met paprika en tomaat","Stoof zwarte bonen met paprika, tomaat, komijn en gerookt paprikapoeder; vul de wraps."),
+ ("eieren","spinazie","wraps","champignons","Spinazie-champignon-eiwraps","Bak spinazie en champignons; giet er geklutste eieren over en verdeel over wraps."),
+ ("eieren","broccoli","aardappel",None,"Groente-omelet met broccoli en gebakken aardappeltjes","Bak aardappeltjes, voeg kortgegaarde broccoli toe en giet de eieren erover."),
+]
+DISH_BY_KEYS={(p,v,s,v2):(title,method) for p,v,s,v2,title,method in DISH_TEMPLATES}
+
 def classify_offers(offers):
     """Welke ingrediëntcategorieën zijn aantoonbaar in aanbieding?
 
@@ -138,25 +183,22 @@ def meal_candidates(offers,limit=65):
             for sk in selected_sides:
                 for vk2 in second_vegetables:
                     if not sensible_meal(pk,vk,sk,vk2):continue
+                    template=DISH_BY_KEYS.get((pk,vk,sk,vk2))
+                    if not template:continue
                     # Een tweede groente zonder bijgerecht is zinvol als
                     # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
                     # Bij twee groenten behoudt het gerecht circa 1,1 kg groenten
                     # totaal in plaats van twee volledige porties te stapelen.
                     main_amount=round(vamount*0.72) if vk2 and vunit=="g" else vamount
                     ings=[(pk,pamount,punit),(vk,main_amount,vunit)]
-                    title=pname+" met "+vname
+                    title,method=template
                     if vk2:
                         v2name,v2amount,v2unit=VEGETABLES[vk2]
-                        # Voorkom absurd veel groente per 4 porties.
                         v2amount=round(v2amount*0.35) if v2unit=="g" else max(1,round(v2amount*0.65))
                         ings.append((vk2,v2amount,v2unit))
-                        title+=", "+v2name
                     if sk:
                         sname,samount,sunit=SIDES[sk]
                         ings.append((sk,samount,sunit))
-                        title+=" en "+sname
-                    elif not vk2:
-                        title+=" (koolhydraatbewust)"
                     offer_keys=2+bool(sk)+bool(vk2)
                     score=offer_keys*30+strength(pk,"proteine")+strength(vk,"groente")+(
                         strength(sk,"bijgerecht") if sk else 3)+(
