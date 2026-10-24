@@ -30,7 +30,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
  function save(){localStorage.setItem("koopkracht_v2_selection",JSON.stringify(state.selected))}
  function isSelected(r){return state.selected.some(x=>x.store===state.store&&x.id===r.id)}
- function toggle(id,variant="cheapest"){let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0&&((state.selected[i].variant||"cheapest")===variant))state.selected.splice(i,1);else if(i>=0)state.selected[i]={store:state.store,id,variant};else state.selected.push({store:state.store,id,variant});save();render()}
+ function toggle(id,variant="cheapest"){state.selected=state.selected.filter(x=>x.store===state.store);let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0&&((state.selected[i].variant||"cheapest")===variant))state.selected.splice(i,1);else if(i>=0)state.selected[i]={store:state.store,id,variant};else state.selected.push({store:state.store,id,variant});save();render()}
  function recipePrice(r){
   if(r.complete)return `<div class="cash">${euro(r.checkout)} <small>geprijsde producten, hele verpakkingen</small></div><div class="tagline">${euro(r.per_serving)} per portie op basis van gebruikte hoeveelheden · zonder smaakmakers · 4 porties</div>`;
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
@@ -60,8 +60,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(origin!=="all")rs=rs.filter(r=>r.inspiration===origin);
   const selection=$("selection").value;
   const withoutPromoFilter=rs;
-  if(selection==="two")rs=rs.filter(r=>(r.sale_count+(r.other_offer_count||0))>=2);
-  if(selection==="promos")rs=rs.filter(r=>(r.deal_basket?.used_actions||r.sale_count)>0);
+  if(selection==="two")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>=2);
+  if(selection==="promos")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>0);
   const noMatchingPromotions=(selection!=="all" && rs.length===0 && withoutPromoFilter.length>0);
   // Behoud het inzicht in reguliere kassaprijzen bij een mislukte actiematch,
   // maar toon dit uitsluitend met een expliciete waarschuwing.
@@ -127,7 +127,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const ds=(state.data?.deals?.[state.store]||[]).filter(x=>x.name.toLocaleLowerCase("nl").includes(q));
   $("moredeals").hidden=ds.length<=state.dealVisible;
   $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
-  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount?`<small>−${Math.round(d.discount)}%</small>`:""}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
+  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity&&d.multi_buy_price?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount?`<small>−${Math.round(d.discount)}%</small>`:""}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
  }
  function calcCart(){
   const rs=active(), groups=new Map(), missing=[];
@@ -139,7 +139,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     if(!groups.has(k))groups.set(k,{...l,store:selected.store,required:0,unit_price:l.regular_cash/Math.ceil(l.required/l.package_size)});
     groups.get(k).required+=l.required;
    }
-   for(const l of r.missing)if(!missing.some(x=>x.store===selected.store&&x.label===l.label))missing.push({...l,store:selected.store});
+   for(const l of r.missing){
+    const existing=missing.find(x=>x.store===selected.store&&x.label===l.label&&x.unit===l.unit);
+    if(existing)existing.amount+=l.amount;
+    else missing.push({...l,store:selected.store});
+   }
   }
   const items=[...groups.values()].map(l=>{
     const n=Math.ceil(l.required/l.package_size),normal=n*l.unit_price;
@@ -157,8 +161,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   return {items,missing,pantry,list:rs,total:Math.round(items.reduce((sum,x)=>sum+x.cash_price,0)*100)/100};
  }
  function renderCart(){
-  const cart=calcCart();$("cart-count").textContent=cart.list.length?`${cart.list.length} recepten · ${cart.items.length} producten`:"Kies een of meer recepten.";
-  $("cart").innerHTML=cart.items.length?cart.items.map(l=>`<div class="cartitem"><div class="row"><b>${esc(l.label)}</b><strong>${euro(l.cash_price)}</strong></div><small>${l.packages} × ${esc(l.product)} · ${esc(l.package)} · ${esc(state.data.store_names[l.store])}</small></div>`).join("")+(cart.missing.length?`<div class="notice warn">Prijs ontbreekt: ${cart.missing.map(l=>esc(l.label)+" ("+esc(state.data.store_names[l.store])+")").join(", ")}</div>`:""):"<div class='notice'>Voeg recepten toe om één gecombineerde boodschappenlijst te maken. Ik tel hele verpakkingen.</div>";
+  const cart=calcCart();$("cart-count").textContent=cart.list.length?`${cart.list.length} recepten · ${cart.items.length} producten · ${state.data.store_names[cart.list[0].store]}`:"Kies een of meer recepten. Eén supermarkt per mand.";
+  $("cart").innerHTML=cart.items.length?cart.items.map(l=>`<div class="cartitem"><div class="row"><b>${esc(l.label)}</b><strong>${euro(l.cash_price)}</strong></div><small>${l.packages} × ${esc(l.product)} · ${esc(l.package)} · ${esc(state.data.store_names[l.store])}</small></div>`).join("")+(cart.missing.length?`<div class="notice warn">Prijs ontbreekt: ${cart.missing.map(l=>esc(l.label)+" ("+esc(l.amount+" "+l.unit)+", "+esc(state.data.store_names[l.store])+")").join(", ")}</div>`:""):"<div class='notice'>Voeg recepten toe om één gecombineerde boodschappenlijst te maken. Ik tel hele verpakkingen.</div>";
    if(cart.pantry.length)$("cart").innerHTML+=`<div class="notice"><strong>Smaakmakers, niet in prijs</strong><div>${cart.pantry.map(esc).join(", ")}</div></div>`;
   $("total").textContent=euro(cart.total)+(cart.missing.length?" + onbekend":"");
   $("cart-hint").textContent=cart.missing.length?"Dit is geen volledig kassabedrag: er ontbreken prijzen.":"Kassabedrag voor alle berekende verpakkingen. Olie, kruiden en overige genoemde smaakmakers, eventuele bezorgkosten en coupons niet inbegrepen.";
@@ -211,7 +215,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
  $("clear").addEventListener("click",()=>{state.selected=[];save();render()});
  $("copy").addEventListener("click",async()=>{
-  const c=calcCart();const text=["Boodschappenlijst Koopkracht",""].concat(c.items.map(x=>`${x.packages} × ${x.product} (${state.data.store_names[x.store]}) ${euro(x.cash_price)}`),c.missing.map(x=>`Prijs onbekend: ${x.label} (${state.data.store_names[x.store]})`),["","Smaakmakers (niet geprijsd): "+(c.pantry.join(", ")||"geen"),"","Berekend totaal: "+euro(c.total)+(c.missing.length?" + ontbrekende bedragen":"")]).join("\n");
+  const c=calcCart();const text=["Boodschappenlijst Koopkracht",""].concat(c.items.map(x=>`${x.packages} × ${x.product} (${state.data.store_names[x.store]}) ${euro(x.cash_price)}`),c.missing.map(x=>`Prijs onbekend: ${x.label}, ${x.amount} ${x.unit} (${state.data.store_names[x.store]})`),["","Smaakmakers (niet geprijsd): "+(c.pantry.join(", ")||"geen"),"","Berekend totaal: "+euro(c.total)+(c.missing.length?" + ontbrekende bedragen":"")]).join("\n");
   try{await navigator.clipboard.writeText(text);$("copy").textContent="Gekopieerd ✓"}catch{window.prompt("Kopieer deze boodschappenlijst",text)}
  });
  $("print").addEventListener("click",()=>window.print());
@@ -226,7 +230,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    $("coverage").textContent=Object.values(state.data.counts.ordinary).reduce((a,b)=>a+b,0).toLocaleString("nl-NL")+" gewone prijzen";
    if(state.data.errors?.length)$("alerts").innerHTML=`<div class="notice warn">Niet alle actiebronnen zijn beschikbaar: ${state.data.errors.map(esc).join("; ")}</div>`;
    if(Date.now()-t.getTime()>48*3600*1000)$("alerts").innerHTML+="<div class='notice warn'>De gegevens zijn meer dan 48 uur oud. Controleer de prijzen voor je boodschappen doet.</div>";
-   state.selected=active();render();
+   state.selected=active();
+   if(state.selected.length){
+     const chosen=state.selected[0].store;
+     state.selected=state.selected.filter(x=>x.store===chosen);
+     save();
+   }
+   render();
   }catch(e){
    $("update").textContent="Nog geen actuele scan";$("coverage").textContent="Databronnen nog niet bevestigd";
    $("recipes").innerHTML="";$("alerts").innerHTML=`<div class="notice warn"><b>Geen actuele prijzen beschikbaar.</b><br>${esc(e.message)}. We tonen geen fictieve receptenprijzen. Kijk bij de GitHub Actions-workflow 'Receptenradar prijzen en recepten'.</div>`;
