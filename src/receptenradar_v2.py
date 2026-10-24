@@ -306,13 +306,15 @@ def offer_price(ing,amount,unit,offers):
              "source":"PrijsProfeet","url":o["url"],**product_context(o,ing)}))
     return [x[1] for x in sorted(options,key=lambda x:x[0])]
 
-def alternative_offers(ingredient,amount,unit,offers,selected,limit=3):
+def alternative_offers(ingredient,amount,unit,offers,selected,limit=3,fresh_only=False):
     """Echte kortingsopties naast het goedkoopste gekozen product.
 
     De opties beïnvloeden de daadwerkelijke kassaprijs niet en worden niet
     onterecht meegerekend als gebruikte actie.
     """
     choices=offer_price(ingredient,amount,unit,offers)
+    if fresh_only:
+        choices=[x for x in choices if not x.get("frozen")]
     alternatives=[]
     for candidate in choices:
         if selected and candidate["sale"] and normalize(candidate["product"])==normalize(selected["product"]):
@@ -344,10 +346,18 @@ def product_context(product,ingredient):
                               "van het etiket overgenomen; controleer suiker en eiwit."
                               if flavoured else "")}
 
-def ingredient_price(ing,amount,unit,shelves,offers):
+def fresh_spinach_required(title,ing):
+    """Rauwe spinazie in wraps en salades vereist verse bladeren, geen diepvriesblokjes."""
+    name=normalize(title)
+    return (ing=="spinazie" and
+            any(x in name for x in ("wrap","salade")) and
+            not any(x in name for x in ("roerei","eiwrap","warm","frittata")))
+
+def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
     options=[]
     for p in shelves:
         if p["unit"]!=unit or not match_ingredient(p,ing):continue
+        if fresh_only and product_context(p,ing)["frozen"]:continue
         if unit=="g" and p["quantity"]>5000:continue
         if unit=="ml" and p["quantity"]>4000:continue
         if unit=="st" and p["quantity"]>30:continue
@@ -367,7 +377,8 @@ def ingredient_price(ing,amount,unit,shelves,offers):
                          "multi_buy_price":promo.get("multi_buy_price"),"url":promo["url"]},
                        "source":("PrijsProfeet + Checkjebon" if promo else "Checkjebon"),
                        "url":p["url"],**product_context(p,ing)})
-    options.extend(offer_price(ing,amount,unit,offers))
+    promo_options=offer_price(ing,amount,unit,offers)
+    options.extend(x for x in promo_options if not fresh_only or not x.get("frozen"))
     if not options:return None
     # De goedkoopste mand is ook echt de laagste kassaprijs.
     # Acties die iets duurder zijn blijven apart zichtbaar als actie-alternatief.
@@ -514,9 +525,10 @@ def make_recipes(shelves,offers):
                 raise ValueError("Recept bevat onjuist hoofdingrediënt: "+"; ".join(problems))
             lines=[];missing=[];discounts=0
             for key,amount,unit in ings:
-                cache_key=(key,amount,unit)
+                fresh_only=fresh_spinach_required(title,key)
+                cache_key=(key,amount,unit,fresh_only)
                 if cache_key not in price_cache:
-                    price_cache[cache_key]=ingredient_price(key,amount,unit,shelves[store],offers[store])
+                    price_cache[cache_key]=ingredient_price(key,amount,unit,shelves[store],offers[store],fresh_only=fresh_only)
                 line=price_cache[cache_key]
                 if line:
                     lines.append(line)
@@ -532,7 +544,8 @@ def make_recipes(shelves,offers):
                 if matching:
                     _,amount,unit=matching[0]
                     line["offer_alternatives"]=alternative_offers(
-                        key,amount,unit,offers[store],line)
+                        key,amount,unit,offers[store],line,
+                        fresh_only=fresh_spinach_required(title,key))
             alternative_count=sum(bool(l.get("offer_alternatives")) for l in lines)
             # Bouw daarnaast een afzonderlijke, volledig doorberekende
             # actiemand. Deze vervangt de goedkoopste mand NIET stilzwijgend.
@@ -542,6 +555,8 @@ def make_recipes(shelves,offers):
                 if alternatives and not line.get("sale"):
                     original=[(k,a,u) for k,a,u in ings if k==line["key"]][0]
                     candidates=offer_price(original[0],original[1],original[2],offers[store])
+                    if fresh_spinach_required(title,original[0]):
+                        candidates=[x for x in candidates if not x.get("frozen")]
                     best=min(candidates,key=lambda x:x["cash_price"])
                     deal_lines.append(best)
                 else:
