@@ -56,6 +56,17 @@ class OfferDrivenTest(unittest.TestCase):
   items=[sale("kipfilet"),sale("wokgroenten"),sale("volkoren pasta")]
   self.assertFalse(any({x[0] for x in d[3]}=={"kipfilet","wok","pasta"}
       for d in meal_candidates(items)))
+ def test_onbewezen_actie_kan_geen_recept_aanjagen(self):
+  kip=sale("kipfilet")
+  broccoli=sale("broccoli")
+  kip["price"]=3
+  kip["original_price"]=3
+  self.assertEqual(meal_candidates([kip,broccoli]),[])
+  # Geldige 2-voor-actie blijft bruikbaar, ook bij gelijke losse prijs.
+  kip["multi_buy_quantity"]=2
+  kip["multi_buy_price"]=5
+  self.assertTrue(meal_candidates([kip,broccoli]))
+
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
