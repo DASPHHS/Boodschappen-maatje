@@ -92,19 +92,19 @@ def dish_quality_issues(title, category, ingredients):
     # Onderdelen die expliciet in de titel worden genoemd, moeten
     # ook daadwerkelijk in het gerecht zitten, niet enkel in een productnaam.
     mentioned_requirements = (
-        (r"\\bboerenkool\\b", "boerenkool"),
-        (r"\\bbroccoli\\b", "broccoli"),
-        (r"\\bbloemkool\\b", "bloemkool"),
-        (r"\\bspinazie\\b", "spinazie"),
-        (r"\\bcourgette\\b", "courgette"),
-        (r"\\bchampignons?\\b", "champignons"),
-        (r"\\bspruitjes?\\b", "spruiten"),
-        (r"\\bavocado\\b", "avocado"),
-        (r"\\bkikkererwten\\b", "kikkererwten"),
-        (r"\\btofu\\b", "tofu"),
-        (r"\\btonijn\\b", "tonijn"),
-        (r"\\bhummus\\b", "hummus"),
-        (r"\\bpaprika\\b", "paprika"),
+        (r"\bboerenkool\b", "boerenkool"),
+        (r"\bbroccoli\b", "broccoli"),
+        (r"\bbloemkool\b", "bloemkool"),
+        (r"\bspinazie\b", "spinazie"),
+        (r"\bcourgette\b", "courgette"),
+        (r"\bchampignons?\b", "champignons"),
+        (r"\bspruitjes?\b", "spruiten"),
+        (r"\bavocado\b", "avocado"),
+        (r"\bkikkererwten\b", "kikkererwten"),
+        (r"\btofu\b", "tofu"),
+        (r"\btonijn\b", "tonijn"),
+        (r"\bhummus\b", "hummus"),
+        (r"\bpaprika\b", "paprika"),
     )
     for pattern, required in mentioned_requirements:
         if re.search(pattern, name) and required not in keys:
