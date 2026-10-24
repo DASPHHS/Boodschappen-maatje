@@ -165,12 +165,17 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const panel=$("audit-panel");
    panel.hidden=!report;
    if(!report)return;
+   const quality=state.data?.quality_audit?.[state.store];
+   const qualityHtml=quality?'<h3 style="margin-top:16px">Kwaliteitscontrole per eetmoment</h3>'+
+     Object.entries(quality.meals||{}).map(([name,metrics])=>
+       `<div class="line"><span>${esc(name)}: ${metrics.recipes} recepten, ${metrics.fully_priced} volledig geprijsd</span><strong>${metrics.with_action_choices} met acties</strong></div>`).join("")+
+     `<p class="sub">${quality.review_needed} recepten met één of meer aandachtspunten, zoals te weinig eiwit, ontbrekende prijzen of een niet-uitgewerkt actierecept.</p>`:"";
    const groups=Object.entries(report.groups||{});
    const count=groups.reduce((sum,[,g])=>sum+(g.unlinked_offers||0),0);
    $("audit-summary").textContent="Controle op niet-gekoppelde aanbiedingen · "+count+" groepsvermeldingen";
    const summary=groups.map(([name,g])=>`<div class="line"><span>${esc(name)}: ${g.linked_offers} gekoppeld / ${g.recognized_offers} herkend</span><strong>${g.unlinked_offers} niet gekoppeld</strong></div>`).join("");
    const rows=(report.unlinked||[]).slice(0,25).map(x=>`<div class="line"><div><strong>${esc(x.name)}</strong><div class="sub">${esc(x.group)} · ${esc(x.reason)}</div></div><div class="dealprice">${euro(x.price)}${x.url?`<small><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">Bekijk bron</a></small>`:""}</div></div>`).join("");
-   $("audit-body").innerHTML=`<p class="sub">Dit is een diagnose, geen lijst bewezen gemiste kortingen: ook duurdere actieproducten kunnen terecht buiten recepten vallen. Je ziet maximaal 25 voorbeelden.</p>${summary}<h3 style="margin-top:16px">Voorbeelden voor controle</h3>${rows||"<p>Geen herkende, niet-gekoppelde producten.</p>"}`;
+   $("audit-body").innerHTML=`<p class="sub">Dit is een diagnose, geen lijst bewezen gemiste kortingen: ook duurdere actieproducten kunnen terecht buiten recepten vallen. Je ziet maximaal 25 voorbeelden.</p>${qualityHtml}${summary}<h3 style="margin-top:16px">Voorbeelden voor controle</h3>${rows||"<p>Geen herkende, niet-gekoppelde producten.</p>"}`;
  }
  function render(){
   document.querySelectorAll("[data-store]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.store===state.store)));
