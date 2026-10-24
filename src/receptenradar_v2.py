@@ -579,7 +579,7 @@ def make_recipes(shelves,offers):
                         instructions=method
                         break
             instructions=cooking_instructions(title,ings,instructions)
-            pantry=pantry_for_recipe(title,ings)
+            pantry=pantry_for_recipe(title,ings,instructions)
             portable=meal_type=="Lunch"
             prep_ahead=meal_type in ("Lunch","Ontbijt")
             inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
