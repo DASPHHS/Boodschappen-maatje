@@ -706,7 +706,10 @@ def audit_recipe_quality(recipes):
             issues_for_recipe=[]
             if not recipe.get("complete"):
                 issues_for_recipe.append("Onvolledige kassaprijs")
-            if nutrition.get("protein_g_per_serving_estimate",0)<30:
+            protein_value=nutrition.get("protein_g_per_serving_estimate")
+            if protein_value is None:
+                issues_for_recipe.append("Eiwitwaarde van gekozen product niet geverifieerd")
+            elif protein_value<30:
                 issues_for_recipe.append("Minder dan 30 gram eiwit per portie")
             if recipe.get("meal_type")=="Avondeten" and nutrition.get(
                     "vegetable_g_per_serving_estimate",0)<250:
