@@ -134,12 +134,14 @@ def cooking_instructions(title, ingredients, curated=""):
                 "Voeg de tomatenblokjes, honing en azijn toe en laat circa 8 minuten zachtjes "
                 "inkoken tot een zoetzure saus. Serveer met de rijst.")
     if "gehaktballetjes" in name or "köfte" in name:
-        return ("Kneed het gehakt met de genoemde kruiden tot kleine balletjes en bak ze in "
-                "olijfolie rondom bruin en volledig gaar. Kook de aanwezige pasta volgens "
-                "de verpakking. Voeg gesneden groenten en eventuele tomatenblokjes of "
-                "kokosmelk toe aan de pan en laat zachtjes garen. "
-                "Roer eventuele spinazie pas als laatste erdoor en serveer met de pasta "
-                "of met de overige groenten.")
+        bijgerecht = ("Kook de volkorenpasta volgens de verpakking. " if "pasta" in keys
+                      else "Kook de zilvervliesrijst volgens de verpakking. " if "rijst" in keys
+                      else "")
+        return ("Kneed het gehakt met de genoemde kruiden tot kleine balletjes en bak ze "
+                "in olijfolie rondom bruin en volledig gaar. " + bijgerecht +
+                "Voeg gesneden groenten en eventuele tomatenblokjes of kokosmelk toe "
+                "aan de pan en laat zachtjes garen. Voeg spinazie pas als laatste toe "
+                "indien aanwezig, en serveer met het bereide bijgerecht.")
     if "stamppot" in name:
         meat = ("Verwarm de rookworst volgens de verpakking en snijd in porties. "
                 if "rookworst" in keys else
