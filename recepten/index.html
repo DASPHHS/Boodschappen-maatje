@@ -105,7 +105,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const visible=rs.slice(0,state.visible);
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
   const portion=visible.length?Math.round(100*suitable/visible.length):0;
-  $("store-status").textContent=visible.length+" van "+total+" recepten · "+portion+"% voedingsvoorkeur volgens ingrediëntscreening · "+state.data.counts.promotions[state.store]+" acties";
+  $("store-status").textContent=visible.length+" van "+total+" recepten · "+portion+"% voedingsvoorkeur volgens ingrediëntscreening · "+state.data.counts.promotions[state.store]+" actievermeldingen (korting niet altijd bevestigd)";
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Hieronder staan recepten ter inspiratie (zonder bevestigde korting). Bij ieder recept staat of de totaalprijs volledig is of nog prijzen ontbreken. Bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
@@ -127,7 +127,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const ds=(state.data?.deals?.[state.store]||[]).filter(x=>x.name.toLocaleLowerCase("nl").includes(q));
   $("moredeals").hidden=ds.length<=state.dealVisible;
   $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
-  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity&&d.multi_buy_price?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount?`<small>−${Math.round(d.discount)}%</small>`:""}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
+  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity&&d.multi_buy_price?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount_verified?`<small>−${Math.round(d.verified_discount_pct)}% berekend</small>`:`<small>Voordeel niet bevestigd</small>`}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
  }
  function calcCart(){
   const rs=active(), groups=new Map(), missing=[];
