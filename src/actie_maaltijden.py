@@ -176,10 +176,10 @@ def meal_candidates(offers,limit=65):
         for vk in veggies:
             if pk==vk or not sensible_meal(pk,vk):continue
             vname,vamount,vunit=VEGETABLES[vk]
-            selected_sides=[None]+sides[:4]
+            selected_sides=[None]+sides
             # Ook een tweede afgeprijsde groente kan een maaltijd compleet maken.
-            # Alleen de eerste drie extra groenten beperken combinatorische groei.
-            second_vegetables=[None]+[x for x in veggies if x!=vk][:3]
+            # Alleen vaste recepten/templates worden daarna geselecteerd.
+            second_vegetables=[None]+[x for x in veggies if x!=vk]
             for sk in selected_sides:
                 for vk2 in second_vegetables:
                     if not sensible_meal(pk,vk,sk,vk2):continue
