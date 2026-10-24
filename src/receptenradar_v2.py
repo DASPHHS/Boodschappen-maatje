@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, validate_dish_ingredients
+from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -368,15 +369,9 @@ def ingredient_price(ing,amount,unit,shelves,offers):
                        "url":p["url"],**product_context(p,ing)})
     options.extend(offer_price(ing,amount,unit,offers))
     if not options:return None
-    # Prioriteit bij boodschappen blijft lage prijs; bij beperkte meerkosten
-    # mag een echte actie winnen. Vergelijk feitelijke kassakosten, geen opgeblazen
-    # kortingspercentage ten opzichte van een dure adviesprijs.
-    minimum=min(x["cash_price"] for x in options)
-    preferred=[x for x in options if x["sale"] and x["cash_price"]<=minimum*1.12]
-    if preferred:
-        preferred.sort(key=lambda x:(x["cash_price"],-max(0,x["regular_cash"]-x["cash_price"])))
-        return preferred[0]
-    return min(options,key=lambda x:(x["cash_price"],x["used_price"]))
+    # De goedkoopste mand is ook echt de laagste kassaprijs.
+    # Acties die iets duurder zijn blijven apart zichtbaar als actie-alternatief.
+    return min(options,key=lambda x:(x["cash_price"],not x["sale"],x["used_price"]))
 
 
 # Indicatieve, bewust conservatieve eiwitwaarden van gangbare producten.
@@ -514,7 +509,7 @@ def make_recipes(shelves,offers):
         proposals=list(RECIPES)+dynamic
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
-            problems=validate_dish_ingredients(title,ings)
+            problems=validate_dish_ingredients(title,ings)+dish_quality_issues(title,category,ings)
             if problems:
                 raise ValueError("Recept bevat onjuist hoofdingrediënt: "+"; ".join(problems))
             lines=[];missing=[];discounts=0
@@ -583,6 +578,8 @@ def make_recipes(shelves,offers):
                     if template_title==title:
                         instructions=method
                         break
+            instructions=cooking_instructions(title,ings,instructions)
+            pantry=pantry_for_recipe(title,ings)
             portable=meal_type=="Lunch"
             prep_ahead=meal_type in ("Lunch","Ontbijt")
             inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
@@ -594,7 +591,8 @@ def make_recipes(shelves,offers):
               "mealprep":title.startswith("Mealprep:") or minutes>=30,
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
-              "instructions":instructions,
+              "instructions":instructions,"pantry":pantry,
+              "price_excludes_pantry":True,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "other_offer_count":alternative_count,
               "deal_basket":{"used_actions":deal_used,"checkout":deal_cash if complete else None,
@@ -605,7 +603,7 @@ def make_recipes(shelves,offers):
               "used_total":consumed if complete else None,
               "per_serving":round(consumed/4,2) if complete else None,
               "saving":saving,"ingredients":lines,"missing":missing,
-              "optional_pantry":"Olie, zout, peper en kruiden naar smaak (niet in prijs inbegrepen)."})
+              "optional_pantry":"Smaakmakers staan per recept apart vermeld; niet inbegrepen in de prijs of voedingswaardeschatting."})
         # Beste ACTIECOMBINATIES voorop, daarbinnen kleinste complete prijs per portie.
         all_recipes.sort(key=lambda r:(
                not r["complete"],
