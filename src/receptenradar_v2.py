@@ -10,7 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES
-from actie_maaltijden import meal_candidates
+from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"data.json"
@@ -561,13 +561,19 @@ def make_recipes(shelves,offers):
                                     "geverifieerd; werkelijke suiker/eiwit/kcal kunnen afwijken.")
             tl=title.casefold()
             cuisine=("Aziatisch" if any(x in tl for x in
-                     ("aziatisch","thaise","koreaanse","japanse","teriyaki","tofu-",
-                      "wok","buddhabowl","buddha")) else
+                     ("aziatisch","thaise","koreaanse","japanse","teriyaki",
+                      "gember","sojasaus","buddhabowl","buddha")) else
                      "Latijns-Amerikaans" if any(x in tl for x in
                      ("mexicaans","costa ricaanse","gallo pinto","zuid-amerikaanse",
                       "chipotle","burrito")) else
                      "Mediterraan" if any(x in tl for x in
                      ("mediterrane","italiaanse","griekse")) else "Overig")
+            instructions=""
+            if idx>=len(RECIPES):
+                for p,v,side,other,template_title,method in DISH_TEMPLATES:
+                    if template_title==title:
+                        instructions=method
+                        break
             portable=meal_type=="Lunch"
             prep_ahead=meal_type in ("Lunch","Ontbijt")
             inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
@@ -579,6 +585,7 @@ def make_recipes(shelves,offers):
               "mealprep":title.startswith("Mealprep:") or minutes>=30,
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
+              "instructions":instructions,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
               "other_offer_count":alternative_count,
               "deal_basket":{"used_actions":deal_used,"checkout":deal_cash if complete else None,
