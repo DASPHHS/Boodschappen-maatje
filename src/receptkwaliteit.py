@@ -41,9 +41,9 @@ def pantry_for_recipe(title, ingredients, instructions=""):
     if "yoghurt" in keys or "kwark" in keys:
         if any(x in name for x in ("wrap", "saus", "salade", "fris", "bowl", "dressing")):
             pantry += ["citroensap (1 eetlepel)", "knoflookpoeder (naar smaak)"]
-    if "teriyaki" in name or "zoetzuur" in name:
+    if "teriyaki" in name or "zoetzur" in name:
         pantry += ["honing (1 eetlepel)"]
-    if "zoetzuur" in name:
+    if "zoetzur" in name:
         pantry += ["azijn (1 eetlepel)"]
     if "harissa" in name:
         pantry += ["harissakruiden (1 theelepel)"]
