@@ -153,7 +153,9 @@ def classify_offers(offers):
         # Alleen rekenbaar werkelijk voordeel telt voor actiegestuurde maaltijden.
         if not (real_bundle or real_single):
             continue
-        if ("gratis" in typ or "1+1" in typ) and not real_bundle:
+        incomplete_bundle=(any(x in typ for x in ("gratis","1+1","2+1","multi","bundle"))
+                           or bool(re.search(r"\b\d+\s+voor\b",typ)))
+        if incomplete_bundle and not real_bundle:
             continue
         for role,group in GROUPS.items():
             for key in group:
