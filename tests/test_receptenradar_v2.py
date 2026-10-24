@@ -2,7 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from receptenradar_catalog import RECIPES
+from receptenradar_catalog import RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
@@ -176,6 +176,38 @@ class PrijsTest(unittest.TestCase):
                                 {"ah":[],"jumbo":[],"lidl":[]})
         self.assertEqual(report["ah"]["unlinked"][0]["reason"],
                          "Ingrediënt ontbreekt in beschikbare recepten")
+
+    def test_risotto_heeft_echte_risottorijst(self):
+        risottos=[r for r in RECIPES if "risotto" in r[0].lower()]
+        self.assertTrue(risottos)
+        for title,category,minutes,ings in risottos:
+            keys={key for key,qty,unit in ings}
+            self.assertIn("risottorijst",keys)
+            self.assertNotIn("rijst",keys)
+            self.assertFalse(validate_dish_ingredients(title,ings))
+            self.assertIn(title,RECIPE_METHODS)
+            profile=nutrition_profile(ings)
+            self.assertGreaterEqual(profile["vegetable_g_per_serving_estimate"],250)
+            self.assertGreaterEqual(profile["protein_g_per_serving_estimate"],30)
+            self.assertIsNotNone(profile["kcal_per_serving_estimate"])
+
+    def test_geen_verkeerde_rijst_voor_risotto(self):
+        self.assertTrue(match_ingredient({"norm":"jumbo arborio risottorijst 500 g"},"risottorijst"))
+        self.assertTrue(match_ingredient({"norm":"ah carnaroli rijst 500 g"},"risottorijst"))
+        self.assertFalse(match_ingredient({"norm":"ah zilvervliesrijst 500 g"},"risottorijst"))
+        self.assertFalse(match_ingredient({"norm":"risotto maaltijd met champignons"},"risottorijst"))
+        self.assertFalse(match_ingredient({"norm":"arborio risottorijst 500 g"},"rijst"))
+        self.assertTrue(validate_dish_ingredients(
+            "Champignonrisotto", [("rijst",180,"g"),("champignons",1000,"g")]))
+        self.assertTrue(validate_dish_ingredients(
+            "Kipwrap", [("kipfilet",800,"g"),("sla",600,"g")]))
+        self.assertTrue(validate_dish_ingredients(
+            "Volkoren pasta met kip", [("rijst",200,"g"),("kipfilet",800,"g")]))
+
+    def test_alle_recepten_hebben_passende_gerechtbasis(self):
+        for title,category,minutes,ingredients in RECIPES:
+            with self.subTest(title=title):
+                self.assertEqual(validate_dish_ingredients(title,ingredients),[])
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
