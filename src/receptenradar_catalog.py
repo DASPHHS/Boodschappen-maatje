@@ -14,6 +14,7 @@ ING = {
  "noten": ("ongezouten noten", r"(ongezouten noten|ongezouten amandelen|ongezouten walnoten)", r"pasta|reep|koek|chocolade|smaak"),
  "melk": ("halfvolle melk", r"(halfvolle melk|melk halfvol)", r"chocolade|drank smaak|poeder|lactosevrij"),
  "hummus": ("hummus naturel", r"(hummus|humus)", r"chips|wrap|salade|broodje|maaltijd|dipmix|kruiden"),
+ "rookworst": ("rookworst", r"\\brookworst\\b", r"vegetar|vegan|plantaardig|soep|saus|chips|smaak|kruiden|broodbeleg|maaltijd|stamppot"),
  "varkenshaas": ("varkenshaas", r"varkenshaas", r"rollade|broodbeleg|gevuld|saus|maaltijd|reepjes|medaillon|vleeswaren|salade"),
  "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread|pepersaus|roomsaus|saus|ragout|gepocheerd|gebakken"),
  "kipdij": ("kipdijfilet", r"kipdij(filet)?", r"vegetar|vegan|salade|broodbeleg|soep|smaak"),
@@ -224,4 +225,7 @@ RECIPES = [
  ("Ontbijt: kwark met havermout, banaan en aardbeien","Vegetarisch",5,[("kwark",1400,"g"),("havermout",160,"g"),("banaan",360,"g"),("aardbeien",400,"g")]),
  ("Ontbijt: overnight oats met banaan en noten","Vegetarisch",10,[("kwark",1400,"g"),("havermout",160,"g"),("banaan",420,"g"),("noten",100,"g")]),
  ("Ontbijt: groenteomelet met skyr ernaast","Vegetarisch",15,[("eieren",12,"st"),("spinazie",450,"g"),("paprika",2,"st"),("kwark",1000,"g")]),
+ ("Boerenkoolstamppot met rookworst (af en toe)","Vlees",35,[("boerenkool",1200,"g"),("aardappel",600,"g"),("rookworst",400,"g"),("ui",150,"g")]),
+ ("Boerenkoolstamppot met kruidige kip (lichter alternatief)","Kip",35,[("boerenkool",1200,"g"),("aardappel",600,"g"),("kipfilet",750,"g"),("ui",150,"g")]),
+
 ]
