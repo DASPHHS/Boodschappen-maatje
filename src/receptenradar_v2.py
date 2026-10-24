@@ -92,6 +92,26 @@ def measure_offer(offer):
             return quantity,unit
     return None,None
 
+def offer_size_label(product,quantity,unit):
+    """Presenteer altijd de gemeten maat met eenheid, ook bij numerieke API-velden."""
+    for field in ("quantity","size"):
+        value=product.get(field)
+        if measure(value)==(quantity,unit) and isinstance(value,str):
+            return value.strip()
+    return f"{int(quantity) if float(quantity).is_integer() else quantity} {unit}" if quantity else "Onbekend"
+
+def verified_discount(offer):
+    """Alleen numeriek controleerbaar prijsvoordeel verdient een kortingsbadge."""
+    if offer.get("is_loyalty"):
+        return False
+    price=offer.get("price") or 0
+    old=offer.get("original_price") or 0
+    count=offer.get("multi_buy_quantity") or 0
+    bundle=offer.get("multi_buy_price") or 0
+    if count>=2 and bundle>0:
+        return bundle<count*(old or price)
+    return old>price>0
+
 def store_code(x):
     n=normalize(x).replace(" ","")
     if n in ("ah","albertheijn","albert_heijn"):return "ah"
@@ -147,7 +167,7 @@ def load_deals():
                     size,unit=measure_offer(r)
                     offers[store].append({
                        "name":name,"norm":normalize(name),"price":price,"quantity":size,"unit":unit,
-                       "size_label":str(r.get("quantity") or r.get("size") or ""),
+                       "size_label":offer_size_label(r,size,unit),
                        "original_price":num(r.get("original_price")),
                        "multi_buy_quantity":num(r.get("multi_buy_quantity")),
                        "multi_buy_price":num(r.get("multi_buy_price")),
@@ -820,7 +840,9 @@ def main():
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
             "recipes":recipes,"audit":audit,"quality_audit":quality,
-            "deals":{s:sorted(offers[s],key=lambda d:-(d.get("discount") or 0)) for s in STORES},
+            "deals":{s:sorted(({**o,"discount_verified":verified_discount(o)} for o in offers[s]),
+                              key=lambda d:(not d["discount_verified"],
+                                            -(d.get("discount") or 0))) for s in STORES},
             "errors":errors,
             "disclaimer":"Online prijzen indicatief. Kassaprijzen zijn berekend uit beschikbare verpakkingen. Kruiden/olie uit voorraad en eventuele persoonlijke coupons niet inbegrepen. Geen garantie op winkelvoorraad."}
     OUT.parent.mkdir(parents=True,exist_ok=True)
