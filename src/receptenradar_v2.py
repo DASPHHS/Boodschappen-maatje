@@ -84,6 +84,14 @@ def measure(text):
     if unit=="ml":return(q,"ml")
     return(q,"st")
 
+def measure_offer(offer):
+    """Lees de eerste bruikbare hoeveelheid mét eenheid, ook bij numerieke API-velden."""
+    for value in (offer.get("quantity"),offer.get("size"),offer.get("name")):
+        quantity,unit=measure(value)
+        if quantity and unit:
+            return quantity,unit
+    return None,None
+
 def store_code(x):
     n=normalize(x).replace(" ","")
     if n in ("ah","albertheijn","albert_heijn"):return "ah"
@@ -136,7 +144,7 @@ def load_deals():
                     key=str(r.get("id") or (name+str(price)))
                     if key in seen:continue
                     seen.add(key)
-                    size,unit=measure(r.get("quantity") or r.get("size") or name)
+                    size,unit=measure_offer(r)
                     offers[store].append({
                        "name":name,"norm":normalize(name),"price":price,"quantity":size,"unit":unit,
                        "size_label":str(r.get("quantity") or r.get("size") or ""),
