@@ -3,7 +3,7 @@ import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_catalog import RECIPES
-from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers
+from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -144,6 +144,38 @@ class PrijsTest(unittest.TestCase):
         self.assertFalse(klassiek_nutrition["priority"])
         self.assertTrue(beter_nutrition["priority"])
         self.assertGreaterEqual(beter_nutrition["protein_g_per_serving_estimate"],30)
+
+    def test_alle_productgroepen_zijn_in_de_controle(self):
+        from receptenradar_catalog import ING
+        covered={key for group in AUDIT_GROUPS.values() for key in group}
+        self.assertEqual(set(ING),covered)
+        for key in ("rookworst","boerenkool","kwark","aardbeien",
+                    "zalm","broccoli","wraps","rijst","tofu"):
+            self.assertIn(key,covered)
+
+    def test_controle_per_eetmoment_zonder_onterechte_groente_eis_bij_ontbijt(self):
+        basic={"complete":True,"sale_count":0,"other_offer_count":0,
+               "offer_driven":False,"ingredients":[],"instructions":""}
+        breakfast={**basic,"title":"Kwark met fruit","meal_type":"Ontbijt",
+                   "nutrition":{"protein_g_per_serving_estimate":36,
+                                "vegetable_g_per_serving_estimate":0}}
+        dinner={**basic,"title":"Te kleine groenteportie","meal_type":"Avondeten",
+                 "nutrition":{"protein_g_per_serving_estimate":36,
+                              "vegetable_g_per_serving_estimate":150}}
+        data=audit_recipe_quality({"jumbo":[breakfast,dinner]})["jumbo"]
+        self.assertEqual(data["meals"]["Ontbijt"]["recipes"],1)
+        self.assertEqual(data["meals"]["Avondeten"]["recipes"],1)
+        self.assertEqual(data["review_needed"],1)
+        self.assertEqual(data["examples"][0]["title"],dinner["title"])
+
+    def test_audit_meldt_ontbrekend_ingrediënt_in_recepten(self):
+        o={"name":"AH rookworst 250 g","norm":"ah rookworst 250 g",
+           "quantity":250,"unit":"g","price":2.5,"original_price":3,
+           "promotion_type":"","is_loyalty":False}
+        report=audit_promotions({"ah":[o],"jumbo":[],"lidl":[]},
+                                {"ah":[],"jumbo":[],"lidl":[]})
+        self.assertEqual(report["ah"]["unlinked"][0]["reason"],
+                         "Ingrediënt ontbreekt in beschikbare recepten")
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
