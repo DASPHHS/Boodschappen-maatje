@@ -254,7 +254,7 @@ RECIPE_METHODS = {
     "HelloFresh-geïnspireerd: champignonrisotto met kipgehakt": (
         "Fruit ui en champignons, bak het kipgehakt goed gaar en zet apart. "
         "Rooster de droge Arborio- of Carnarolirijst kort mee met de ui. "
-        "Voeg circa 700–900 ml hete bouillon in porties toe en roer regelmatig, "
+        "Voeg circa 500–650 ml hete bouillon in porties toe en roer regelmatig, "
         "tot de rijst gaar maar nog stevig is (volg de verpakking). "
         "Schep kipgehakt, spinazie en geraspte kaas erdoor en laat de spinazie slinken. "
         "Let op: bouillon, peper en olie moeten nog van de voorraad komen "
