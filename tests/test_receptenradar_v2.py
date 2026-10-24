@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_catalog import RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from actie_maaltijden import DISH_TEMPLATES
-from receptenradar_v2 import fresh_spinach_required,measure,measure_offer,match_ingredient,total_for,promo_for,offer_price,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
+from receptenradar_v2 import fresh_spinach_required,measure,measure_offer,offer_size_label,verified_discount,verified_discount_percentage,match_ingredient,total_for,promo_for,offer_price,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -267,6 +267,36 @@ class PrijsTest(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(validate_dish_ingredients(title,ingredients),[])
 
+    def test_aanbiedingsbadge_alleen_bij_verifieerbare_korting(self):
+        single={"price":2.49,"original_price":3.49}
+        self.assertTrue(verified_discount(single))
+        self.assertAlmostEqual(verified_discount_percentage(single),28.7)
+        unknown={"price":2.49,"original_price":None}
+        self.assertFalse(verified_discount(unknown))
+        self.assertIsNone(verified_discount_percentage(unknown))
+        bundle={"price":1.19,"original_price":1.19,
+                "multi_buy_quantity":2,"multi_buy_price":1.99}
+        self.assertTrue(verified_discount(bundle))
+        self.assertAlmostEqual(verified_discount_percentage(bundle),16.4)
+        no_saving={**bundle,"multi_buy_price":2.50}
+        self.assertFalse(verified_discount(no_saving))
+
+    def test_aanbieding_met_niet_geverifieerde_normaalprijs_niet_als_korting(self):
+        product={"name":"Jumbo broccoli 500 g","norm":"jumbo broccoli 500 g",
+                 "quantity":500,"unit":"g","size_label":"500 g",
+                 "price":0.99,"original_price":None,"promotion_type":"actie",
+                 "multi_buy_quantity":None,"multi_buy_price":None,
+                 "is_loyalty":False,"url":"https://www.jumbo.com"}
+        self.assertEqual(offer_price("broccoli",500,"g",[product]),[])
+        product["original_price"]=1.49
+        self.assertEqual(len(offer_price("broccoli",500,"g",[product])),1)
+
+    def test_ingrediënt_in_titel_mag_niet_ontbreken(self):
+        self.assertTrue(dish_quality_issues("Tofuwok met broccoli","Vegetarisch",
+                                            [("tofu",600,"g"),("wok",800,"g")]))
+        self.assertFalse(dish_quality_issues("Kip met broccoli","Kip",
+                                            [("kipfilet",600,"g"),("broccoli",800,"g")]))
+
     def test_werkelijke_meerstukskorting_ondanks_gelijke_losse_prijs(self):
         bundle={"name":"Jumbo Minikrieltjes 600 g",
                 "norm":"jumbo minikrieltjes 600 g","quantity":600,"unit":"g",
@@ -284,6 +314,7 @@ class PrijsTest(unittest.TestCase):
     def test_numerieke_api_hoeveelheid_heeft_verpakkingsfallback(self):
         product={"name":"AH broccoli 500 g","quantity":500,"size":"500 g"}
         self.assertEqual(measure_offer(product),(500,"g"))
+        self.assertEqual(offer_size_label(product,500,"g"),"500 g")
         self.assertEqual(measure_offer({"name":"Jumbo aardappelen 1 kg",
                                        "quantity":1000,"size":""}),(1000,"g"))
 
