@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
+from receptenradar_checks import validate_publication
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -858,6 +859,7 @@ def main():
     offers,errors=load_deals()
     export_shopping_index(shelves,offers)
     recipes=make_recipes(shelves,offers)
+    validate_publication(recipes)
     audit=audit_promotions(offers,recipes)
     quality=audit_recipe_quality(recipes)
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
