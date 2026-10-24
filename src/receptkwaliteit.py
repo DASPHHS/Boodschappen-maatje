@@ -118,10 +118,32 @@ def dish_quality_issues(title, category, ingredients):
 
 def cooking_instructions(title, ingredients, curated=""):
     """Een volledige uitvoerbare basisbereiding; bekende specifieke methode gaat voor."""
-    if curated:
-        return curated
     name = title.casefold()
     keys = {key for key, _, _ in ingredients}
+    if curated:
+        # Ook bij een korte recepttemplate moeten granen en wraps worden bereid.
+        method=curated.strip()
+        steps=[]
+        if "rijst" in keys and not re.search(r"\b(kook|bereid).{0,50}rijst",method,re.I):
+            steps.append("Kook de zilvervliesrijst volgens de verpakking.")
+        if "pasta" in keys and not re.search(r"\b(kook|bereid).{0,50}pasta",method,re.I):
+            steps.append("Kook de volkoren pasta volgens de verpakking.")
+        if "couscous" in keys and not re.search(r"\b(bereid|wel|kook).{0,50}couscous",method,re.I):
+            steps.append("Bereid de volkoren couscous met heet water volgens de verpakking.")
+        if "wraps" in keys and not re.search(r"verwarm.{0,30}wrap",method,re.I):
+            steps.append("Verwarm de wraps volgens de verpakking.")
+        if "tonijn" in keys and not re.search(r"laat.{0,30}tonijn.{0,20}uitlekken",method,re.I):
+            steps.append("Laat de tonijn uit blik uitlekken.")
+        if keys.intersection({"bonen","kikkererwten","linzen"}) and not re.search(
+                r"(uitgelek|giet.{0,20}af)",method,re.I):
+            steps.append("Giet peulvruchten uit blik of pot af en spoel ze zo nodig kort.")
+        if "rooster" in method.lower() and not re.search(r"oven|airfryer",method,re.I):
+            steps.append("Verwarm de oven voor op 200 °C als je de ingrediënten roostert.")
+        steps.append(method)
+        if keys.intersection({"kipfilet","kipdij","kipgehakt","shoarma"}) and not re.search(
+                r"volledig gaar|door en door gaar",method,re.I):
+            steps.append("Controleer dat de kip volledig gaar is voor het serveren.")
+        return " ".join(steps)
     def has(*names): return bool(keys.intersection(names))
     if name.startswith("ontbijt:"):
         if "overnight" in name:
