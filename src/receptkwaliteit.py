@@ -122,6 +122,24 @@ def cooking_instructions(title, ingredients, curated=""):
                     "Neem de pan van het vuur, verdeel over vier kommen en voeg kwark en gesneden banaan toe.")
         return ("Verdeel de kwark of skyr over vier kommen. Was en snijd het fruit; voeg havermout "
                 "en eventuele ongezouten noten toe. Serveer direct.")
+    if "teriyaki" in name and not curated:
+        return ("Kook de zilvervliesrijst volgens de verpakking. Snijd de kip en groenten. "
+                "Bak de kip in olijfolie volledig gaar en roerbak de groenten beetgaar. "
+                "Roer sojasaus, honing, gember en knoflook met een paar eetlepels water "
+                "door elkaar, voeg toe en schep om tot het alles licht bedekt. "
+                "Serveer met de rijst.")
+    if "zoetzur" in name:
+        return ("Kook de zilvervliesrijst volgens de verpakking. Snijd de kip in stukjes en "
+                "bak deze in olijfolie volledig gaar. Bak de gesneden paprika kort mee. "
+                "Voeg de tomatenblokjes, honing en azijn toe en laat circa 8 minuten zachtjes "
+                "inkoken tot een zoetzure saus. Serveer met de rijst.")
+    if "gehaktballetjes" in name or "köfte" in name:
+        return ("Kneed het gehakt met de genoemde kruiden tot kleine balletjes en bak ze in "
+                "olijfolie rondom bruin en volledig gaar. Kook de aanwezige pasta volgens "
+                "de verpakking. Voeg gesneden groenten en eventuele tomatenblokjes of "
+                "kokosmelk toe aan de pan en laat zachtjes garen. "
+                "Roer eventuele spinazie pas als laatste erdoor en serveer met de pasta "
+                "of met de overige groenten.")
     if "stamppot" in name:
         meat = ("Verwarm de rookworst volgens de verpakking en snijd in porties. "
                 if "rookworst" in keys else
