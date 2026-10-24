@@ -110,6 +110,12 @@ def verified_discount(offer):
     bundle=offer.get("multi_buy_price") or 0
     if count>=2 and bundle>0:
         return bundle<count*(old or price)
+    # Een incomplete meerstuksactie is géén aantoonbare individuele korting.
+    promotion=normalize(offer.get("promotion_type") or "")
+    if any(term in promotion for term in ("gratis","one_plus_one","multi","bundle",
+                                           "1 1","2 1","3 2")) or re.search(
+                                               r"\b\d+\s+voor\b",promotion):
+        return False
     return old>price>0
 
 def verified_discount_percentage(offer):
