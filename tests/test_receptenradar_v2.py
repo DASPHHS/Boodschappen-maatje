@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_catalog import RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from actie_maaltijden import DISH_TEMPLATES
-from receptenradar_v2 import fresh_spinach_required,measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
+from receptenradar_v2 import fresh_spinach_required,measure,measure_offer,match_ingredient,total_for,promo_for,offer_price,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
     def test_kcal_per_portie_en_totaal(self):
@@ -266,6 +266,36 @@ class PrijsTest(unittest.TestCase):
         for title,category,minutes,ingredients in RECIPES:
             with self.subTest(title=title):
                 self.assertEqual(validate_dish_ingredients(title,ingredients),[])
+
+    def test_werkelijke_meerstukskorting_ondanks_gelijke_losse_prijs(self):
+        bundle={"name":"Jumbo Minikrieltjes 600 g",
+                "norm":"jumbo minikrieltjes 600 g","quantity":600,"unit":"g",
+                "size_label":"600 g","price":1.19,"original_price":1.19,
+                "multi_buy_quantity":2,"multi_buy_price":1.99,
+                "promotion_type":"2 voor 1,99","is_loyalty":False,
+                "url":"https://www.jumbo.com"}
+        result=offer_price("aardappel",1200,"g",[bundle])
+        self.assertEqual(len(result),1)
+        self.assertEqual(result[0]["cash_price"],1.99)
+        self.assertEqual(result[0]["packages"],2)
+        bundle["multi_buy_price"]=2.50
+        self.assertEqual(offer_price("aardappel",1200,"g",[bundle]),[])
+
+    def test_numerieke_api_hoeveelheid_heeft_verpakkingsfallback(self):
+        product={"name":"AH broccoli 500 g","quantity":500,"size":"500 g"}
+        self.assertEqual(measure_offer(product),(500,"g"))
+        self.assertEqual(measure_offer({"name":"Jumbo aardappelen 1 kg",
+                                       "quantity":1000,"size":""}),(1000,"g"))
+
+    def test_kwaliteitsaudit_met_onbevestigde_eiwitwaarden(self):
+        recipe={"title":"Fruitkwark met vanille","meal_type":"Ontbijt",
+                "complete":True,"offer_driven":False,"ingredients":[],
+                "nutrition":{"protein_g_per_serving_estimate":None,
+                             "vegetable_g_per_serving_estimate":0}}
+        report=audit_recipe_quality({"ah":[recipe]})
+        self.assertEqual(report["ah"]["review_needed"],1)
+        self.assertIn("Eiwitwaarde van gekozen product niet geverifieerd",
+                      report["ah"]["examples"][0]["issues"])
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
