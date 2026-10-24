@@ -267,6 +267,25 @@ class PrijsTest(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(validate_dish_ingredients(title,ingredients),[])
 
+    def test_actierecepten_hebben_de_nodige_bereidingsstappen(self):
+        examples=[
+            ("Teriyaki-kip met broccoli en rijst",
+             [("kipfilet",800,"g"),("broccoli",1000,"g"),("rijst",140,"g")],
+             "Roerbak kip en broccoli; serveer met rijst.","Kook de zilvervliesrijst"),
+            ("Italiaanse gehaktballetjes met pasta",
+             [("kipgehakt",800,"g"),("pasta",300,"g"),("spinazie",500,"g")],
+             "Bak kipgehaktballetjes en serveer met pasta.","Kook de volkoren pasta"),
+            ("Tonijnwraps met tomaat",
+             [("tonijn",500,"g"),("wraps",4,"st"),("tomaten",400,"g")],
+             "Vul wraps met tonijn en tomaat.","Laat de tonijn"),
+        ]
+        for title,ingredients,method,required in examples:
+            with self.subTest(title=title):
+                result=cooking_instructions(title,ingredients,method)
+                self.assertIn(required,result)
+        self.assertIn("Verwarm de wraps",cooking_instructions(*examples[2][:2],
+                                                              curated=examples[2][2]))
+
     def test_aanbiedingsbadge_alleen_bij_verifieerbare_korting(self):
         single={"price":2.49,"original_price":3.49}
         self.assertTrue(verified_discount(single))
