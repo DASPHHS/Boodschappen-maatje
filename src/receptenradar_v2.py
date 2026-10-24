@@ -9,7 +9,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
-from receptenradar_catalog import ING, RECIPES
+from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, validate_dish_ingredients
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -390,7 +390,7 @@ PROTEIN_PER_100G={
  "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
  "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
  "tomaten":0.5,"tomatenblokjes":0.7,"ui":0.7,"sla":1.0,
- "rijst":7.0,"pasta":11.0,"couscous":11.0,"aardappel":1.5,
+ "rijst":7.0,"risottorijst":7.0,"pasta":11.0,"couscous":11.0,"aardappel":1.5,
  "zoete_aardappel":1.2,"yoghurt":3.5,"kwark":9.0,
  "kaas":20.0,"kokosmelk":1.0,"mais":2.0,
  "havermout":12.0,"banaan":1.0,"blauwe_bessen":0.6,
@@ -405,7 +405,7 @@ KCAL_PER_100G={
  "kipfilet":110,"kipdij":140,"kipgehakt":155,"shoarma":170,
  "gehakt":190,"varkenshaas":120,"rookworst":280,"zalm":205,"gerookte_zalm":165,
  "tonijn":115,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
- "rijst":355,"pasta":350,"couscous":350,"aardappel":80,
+ "rijst":355,"risottorijst":360,"pasta":350,"couscous":350,"aardappel":80,
  "zoete_aardappel":85,"wok":35,"boerenkool":35,"spruiten":43,
  "spinazie":25,"broccoli":34,"champignons":25,"tomaten":20,
  "tomatenblokjes":25,"ui":40,"wortel":40,"sla":18,
@@ -457,7 +457,7 @@ def nutrition_profile(ings,meal_type="Avondeten"):
     kcal_per_serving=round(kcal_total/4)
     protein_per_serving=round(protein_total/4,1)
     protein=protein_per_serving>=MIN_PROTEIN_PER_SERVING
-    dry_starches=("rijst","pasta","couscous")
+    dry_starches=("rijst","risottorijst","pasta","couscous")
     dense_starches=("aardappel","zoete_aardappel")
     dry_per_portion=sum(amounts.get(key,0) for key in dry_starches)/4
     potato_per_portion=sum(amounts.get(key,0) for key in dense_starches)/4
@@ -514,6 +514,9 @@ def make_recipes(shelves,offers):
         proposals=list(RECIPES)+dynamic
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
+            problems=validate_dish_ingredients(title,ings)
+            if problems:
+                raise ValueError("Recept bevat onjuist hoofdingrediënt: "+"; ".join(problems))
             lines=[];missing=[];discounts=0
             for key,amount,unit in ings:
                 cache_key=(key,amount,unit)
@@ -574,7 +577,7 @@ def make_recipes(shelves,offers):
                       "chipotle","burrito")) else
                      "Mediterraan" if any(x in tl for x in
                      ("mediterrane","italiaanse","griekse")) else "Overig")
-            instructions=""
+            instructions=RECIPE_METHODS.get(title,"")
             if idx>=len(RECIPES):
                 for p,v,side,other,template_title,method in DISH_TEMPLATES:
                     if template_title==title:
