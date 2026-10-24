@@ -646,15 +646,65 @@ def export_shopping_index(shelves,offers):
 # Belangrijke ingredientgroepen waarmee ontbrekende actieherkenning direct
 # zichtbaar wordt. Dit is een diagnostische controle, geen extra prijsgok.
 AUDIT_GROUPS={
-    "Zuivel":("kwark","yoghurt","melk"),
-    "Fruit":("aardbeien","blauwe_bessen","banaan"),
+    "Zuivel":("kwark","yoghurt","melk","kaas"),
+    "Fruit":("aardbeien","blauwe_bessen","banaan","avocado"),
     "Groenten":("broccoli","spinazie","spruiten","bloemkool","wok",
-                "paprika","courgette","champignons","wortel","tomaten"),
-    "Vlees en kip":("kipfilet","kipdij","kipgehakt","gehakt","varkenshaas","rookworst"),
+                "paprika","courgette","champignons","wortel","tomaten",
+                "tomatenblokjes","boerenkool","sla","komkommer","ui"),
+    "Vlees en kip":("kipfilet","kipdij","kipgehakt","gehakt","varkenshaas",
+                    "rookworst","shoarma"),
     "Vis":("zalm","gerookte_zalm","tonijn"),
     "Plantaardig":("tofu","kikkererwten","linzen","bonen"),
-    "Ontbijt en lunch":("havermout","wraps","hummus")
+    "Ontbijt en lunch":("havermout","wraps","hummus","noten","eieren"),
+    "Bijgerechten":("rijst","pasta","couscous","aardappel","zoete_aardappel",
+                    "naan","mais","kokosmelk")
 }
+# Nieuw opgenomen ingrediënten horen automatisch bij de controle, zelfs
+# wanneer iemand vergeet ze handmatig aan AUDIT_GROUPS toe te voegen.
+AUDIT_GROUPS["Overige ingrediënten"]=tuple(
+    sorted(set(ING)-{key for keys in AUDIT_GROUPS.values() for key in keys}))
+
+def audit_recipe_quality(recipes):
+    """Meet generiek alle ongeprijsde, onevenwichtige en actiearme recepten.
+
+    Ontbijt hoeft geen groenten te bevatten. Een gezondheidswaarschuwing
+    is geen verbod: ook klassiekers blijven vindbaar.
+    """
+    report={}
+    for store,items in recipes.items():
+        issues=[]
+        for recipe in items:
+            nutrition=recipe.get("nutrition") or {}
+            issues_for_recipe=[]
+            if not recipe.get("complete"):
+                issues_for_recipe.append("Onvolledige kassaprijs")
+            if nutrition.get("protein_g_per_serving_estimate",0)<30:
+                issues_for_recipe.append("Minder dan 30 gram eiwit per portie")
+            if recipe.get("meal_type")=="Avondeten" and nutrition.get(
+                    "vegetable_g_per_serving_estimate",0)<250:
+                issues_for_recipe.append("Minder dan 250 gram groenten bij avondeten")
+            if recipe.get("offer_driven") and not recipe.get("instructions"):
+                issues_for_recipe.append("Actierecept zonder bereidingswijze")
+            if nutrition.get("processed_meat"):
+                issues_for_recipe.append("Bewerkt vlees: incidentele keuze")
+            if recipe.get("other_offer_count",0) and not recipe.get("sale_count",0):
+                issues_for_recipe.append("Acties beschikbaar, niet in goedkoopste mand")
+            if issues_for_recipe:
+                issues.append({"title":recipe["title"],"meal_type":recipe["meal_type"],
+                               "issues":issues_for_recipe})
+        meal_summary={}
+        for meal in ("Ontbijt","Lunch","Avondeten"):
+            subset=[r for r in items if r.get("meal_type")==meal]
+            meal_summary[meal]={
+                "recipes":len(subset),
+                "with_action_choices":sum((r.get("deal_basket") or {}).get(
+                    "used_actions",r.get("sale_count",0))>0 for r in subset),
+                "fully_priced":sum(bool(r.get("complete")) for r in subset)
+            }
+        report[store]={"meals":meal_summary,
+                       "review_needed":len(issues),
+                       "examples":issues[:40]}
+    return report
 
 def audit_promotions(offers,recipes):
     """Signaleer gevonden acties die NIET als actie in recepten terechtkomen.
@@ -666,6 +716,7 @@ def audit_promotions(offers,recipes):
     report={}
     for store in STORES:
         rows=offers[store]
+        recipe_keys={line.get("key") for recipe in recipes[store] for line in recipe.get("ingredients",[])}
         linked={normalize(line.get("action",{}).get("name",""))
                 for recipe in recipes[store]
                 for line in recipe["ingredients"] if line.get("sale") and line.get("action")}
@@ -681,7 +732,9 @@ def audit_promotions(offers,recipes):
                     linked_count+=1
                     continue
                 typ=normalize(offer.get("promotion_type") or "")
-                if not offer.get("quantity") or not offer.get("unit"):
+                if not any(k in recipe_keys for k in matching):
+                    reason="Ingrediënt ontbreekt in beschikbare recepten"
+                elif not offer.get("quantity") or not offer.get("unit"):
                     reason="Verpakkingsmaat onbekend"
                 elif offer.get("is_loyalty"):
                     reason="Klantenkaartactie niet doorberekend"
@@ -721,12 +774,13 @@ def main():
     export_shopping_index(shelves,offers)
     recipes=make_recipes(shelves,offers)
     audit=audit_promotions(offers,recipes)
+    quality=audit_recipe_quality(recipes)
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
             "sources":{"ordinary":"Checkjebon open dataset","promotions":"PrijsProfeet gratis aanbiedingen-API"},
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
-            "recipes":recipes,"audit":audit,
+            "recipes":recipes,"audit":audit,"quality_audit":quality,
             "deals":{s:sorted(offers[s],key=lambda d:-(d.get("discount") or 0)) for s in STORES},
             "errors":errors,
             "disclaimer":"Online prijzen indicatief. Kassaprijzen zijn berekend uit beschikbare verpakkingen. Kruiden/olie uit voorraad en eventuele persoonlijke coupons niet inbegrepen. Geen garantie op winkelvoorraad."}
