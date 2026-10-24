@@ -3,6 +3,8 @@ import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from receptenradar_catalog import RECIPES, RECIPE_METHODS, validate_dish_ingredients
+from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
+from actie_maaltijden import DISH_TEMPLATES
 from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
@@ -176,6 +178,49 @@ class PrijsTest(unittest.TestCase):
                                 {"ah":[],"jumbo":[],"lidl":[]})
         self.assertEqual(report["ah"]["unlinked"][0]["reason"],
                          "Ingrediënt ontbreekt in beschikbare recepten")
+
+    def test_smaakmakers_worden_concreet_en_afzonderlijk_benoemd(self):
+        title="Kip teriyaki met wokgroenten"
+        ings=[("kipfilet",800,"g"),("wok",1000,"g"),("rijst",140,"g")]
+        pantry=pantry_for_recipe(title,ings)
+        self.assertTrue(any("olijfolie" in x for x in pantry))
+        self.assertTrue(any("sojasaus" in x for x in pantry))
+        self.assertTrue(any("gember" in x for x in pantry))
+        self.assertFalse(any(key in {"olijfolie","sojasaus","gemberpoeder"} for key,_,_ in ings))
+        method=cooking_instructions(title,ings)
+        self.assertGreater(len(method),100)
+
+    def test_alle_recepten_hebben_bereiding_en_correcte_gerechtnaam(self):
+        for title,category,minutes,ings in RECIPES:
+            with self.subTest(title=title):
+                self.assertEqual(dish_quality_issues(title,category,ings),[])
+                method=cooking_instructions(title,ings,RECIPE_METHODS.get(title,""))
+                self.assertGreater(len(method),75)
+                pantry=pantry_for_recipe(title,ings,method)
+                self.assertIsInstance(pantry,list)
+                if not title.startswith("Ontbijt:"):
+                    self.assertTrue(any("olijfolie" in x for x in pantry))
+
+    def test_ook_actierecepten_hebben_consistente_gerechtnaam_en_bereiding(self):
+        for protein,veg,side,veg2,title,method in DISH_TEMPLATES:
+            with self.subTest(title=title):
+                ings=[(protein,800,"g"),(veg,800,"g")]
+                if side:ings.append((side,200,"g"))
+                if veg2:ings.append((veg2,200,"g"))
+                self.assertEqual(dish_quality_issues(title,"Kip" if protein.startswith("kip") else "Vlees",ings),[])
+                self.assertGreater(len(cooking_instructions(title,ings,method)),30)
+
+    def test_echt_goedkoopste_product_wint_van_duurdere_aanbieding(self):
+        shelf=[{"name":"AH Broccoli 500 g","norm":"ah broccoli 500 g",
+                "unit":"g","quantity":500,"price":1.0,
+                "size_label":"500 g","url":"https://www.ah.nl"}]
+        offer=[{"name":"Duurdere broccoli","norm":"broccoli","unit":"g",
+                "quantity":500,"price":1.05,"original_price":1.49,
+                "promotion_type":"","is_loyalty":False,"size_label":"500 g",
+                "url":"https://www.ah.nl"}]
+        result=ingredient_price("broccoli",500,"g",shelf,offer)
+        self.assertEqual(result["cash_price"],1.0)
+        self.assertFalse(result["sale"])
 
     def test_risotto_heeft_echte_risottorijst(self):
         risottos=[r for r in RECIPES if "risotto" in r[0].lower()]
