@@ -29,6 +29,7 @@ ING = {
  "linzen": ("linzen", r"\blinzen\b", r"chips|soep|gedroog|droge|kikkererwten|mix|noedel"),
  "bonen": ("zwarte bonen", r"(zwarte bonen|kidneybonen)", r"saus|soep|burgers|gedroog"),
  "rijst": ("zilvervliesrijst", r"(zilvervliesrijst|bruine rijst|volkorenrijst)", r"wafels|melk|drank|pudding|cracker|saus"),
+ "risottorijst": ("risottorijst (Arborio of Carnaroli)", r"(risottorijst|risotto rijst|arborio|carnaroli|vialone nano|risotto rice|riso per risotti)", r"kant.en.klaar|maaltijd|saus|soep|risottomix|risotto mix|met kip|met champignons|mix voor"),
  "pasta": ("volkoren pasta", r"(volkoren (penne|pasta|spaghetti|fusilli|macaroni)|spaghetti volkoren|penne volkoren)", r"saus|maaltijd|kant.en.klaar"),
  "couscous": ("volkoren couscous", r"(volkoren couscous|couscous volkoren)", r"salade|maaltijd"),
  "wraps": ("volkoren wraps", r"(volkoren wraps|wraps volkoren|volkoren tortilla)", r"chips|kant.en.klaar|vulling"),
@@ -143,7 +144,7 @@ RECIPES = [
  ("HelloFresh-geïnspireerd: kalfsburgerstijl met pompoenachtige zoete aardappel","Vlees",35,[("gehakt",600,"g"),("zoete_aardappel",850,"g"),("spruiten",650,"g"),("ui",200,"g")]),
  ("HelloFresh-geïnspireerd: romige visstoof met krieltjes","Vis",35,[("zalm",600,"g"),("aardappel",900,"g"),("wortel",400,"g"),("yoghurt",250,"g")]),
  ("HelloFresh-geïnspireerd: garnalenstijl vegetarische couscousbowl","Vegetarisch",25,[("kikkererwten",650,"g"),("couscous",320,"g"),("courgette",2,"st"),("tomaten",400,"g")]),
- ("HelloFresh-geïnspireerd: champignonrisotto met kipgehakt","Kip",35,[("kipgehakt",650,"g"),("rijst",320,"g"),("champignons",500,"g"),("spinazie",300,"g")]),
+ ("HelloFresh-geïnspireerd: champignonrisotto met kipgehakt","Kip",40,[("kipgehakt",650,"g"),("risottorijst",180,"g"),("champignons",700,"g"),("spinazie",400,"g"),("ui",150,"g"),("kaas",100,"g")]),
  ("HelloFresh-geïnspireerd: conchiglie-ovenschotel met mozzarella-stijl kaas","Vegetarisch",35,[("pasta",350,"g"),("courgette",2,"st"),("tomatenblokjes",800,"g"),("kaas",200,"g")]),
  ("HelloFresh-geïnspireerd: köfte-gehaktballetjes in kokos-currysaus","Vlees",30,[("gehakt",650,"g"),("kokosmelk",400,"ml"),("rijst",320,"g"),("wok",700,"g")]),
  ("HelloFresh-geïnspireerd: roerbaknoedelsstijl met gehakt en spitskoolmix","Vlees",25,[("gehakt",650,"g"),("wok",800,"g"),("pasta",320,"g"),("paprika",2,"st")]),
@@ -229,3 +230,34 @@ RECIPES = [
  ("Boerenkoolstamppot met kruidige kip (lichter alternatief)","Kip",35,[("boerenkool",1200,"g"),("aardappel",600,"g"),("kipfilet",750,"g"),("ui",150,"g")]),
 
 ]
+
+# Bewaak expliciete gerechtvormen: risotto is geen zilvervliesrijstgerecht.
+# Deze semantische regels worden op de hele bibliotheek én nieuwe voorstellen getest.
+DISH_REQUIRED_INGREDIENTS = (
+    (r"risotto", "risottorijst"),
+    (r"pasta|spaghetti|penne|fusilli|macaroni", "pasta"),
+    (r"wrap|tortilla|fajita", "wraps"),
+    (r"couscous", "couscous"),
+    (r"stamppot", "aardappel"),
+)
+
+def validate_dish_ingredients(title, ingredients):
+    keys = {key for key, amount, unit in ingredients}
+    issues = []
+    name = title.lower()
+    for pattern, required in DISH_REQUIRED_INGREDIENTS:
+        if re.search(pattern, name) and required not in keys:
+            issues.append(f"{title}: verplichte basis {required} ontbreekt")
+    return issues
+
+RECIPE_METHODS = {
+    "HelloFresh-geïnspireerd: champignonrisotto met kipgehakt": (
+        "Fruit ui en champignons, bak het kipgehakt goed gaar en zet apart. "
+        "Rooster de droge Arborio- of Carnarolirijst kort mee met de ui. "
+        "Voeg circa 700–900 ml hete bouillon in porties toe en roer regelmatig, "
+        "tot de rijst gaar maar nog stevig is (volg de verpakking). "
+        "Schep kipgehakt, spinazie en geraspte kaas erdoor en laat de spinazie slinken. "
+        "Let op: bouillon, peper en olie moeten nog van de voorraad komen "
+        "en zijn niet in de getoonde kassaprijs opgenomen."
+    )
+}
