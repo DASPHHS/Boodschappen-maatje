@@ -2,6 +2,7 @@
 import unittest,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
+from receptenradar_catalog import RECIPES
 from receptenradar_v2 import measure,match_ingredient,total_for,promo_for,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers
 
 class PrijsTest(unittest.TestCase):
@@ -125,6 +126,24 @@ class PrijsTest(unittest.TestCase):
         self.assertEqual(len(alternative),1)
         self.assertEqual(alternative[0]["cash_price"],4.98)
         self.assertTrue(alternative[0]["more_expensive_than_selected"])
+
+    def test_rookworst_klassieker_en_gezonder_alternatief(self):
+        klassiek=[r for r in RECIPES if r[0]=="Boerenkoolstamppot met rookworst (af en toe)"]
+        gezonder=[r for r in RECIPES if r[0]=="Boerenkoolstamppot met kruidige kip (lichter alternatief)"]
+        self.assertEqual(len(klassiek),1)
+        self.assertEqual(len(gezonder),1)
+        self.assertEqual({x[0] for x in klassiek[0][3]},
+                         {"boerenkool","aardappel","rookworst","ui"})
+        self.assertTrue(match_ingredient({"norm":"ah gelderse rookworst 250 g"},"rookworst"))
+        self.assertFalse(match_ingredient({"norm":"vegetarische rookworst 200 g"},"rookworst"))
+        self.assertFalse(match_ingredient({"norm":"rookworstsaus 300 g"},"rookworst"))
+        klassiek_nutrition=nutrition_profile(klassiek[0][3])
+        beter_nutrition=nutrition_profile(gezonder[0][3])
+        self.assertGreaterEqual(klassiek_nutrition["vegetable_g_per_serving_estimate"],250)
+        self.assertTrue(klassiek_nutrition["processed_meat"])
+        self.assertFalse(klassiek_nutrition["priority"])
+        self.assertTrue(beter_nutrition["priority"])
+        self.assertGreaterEqual(beter_nutrition["protein_g_per_serving_estimate"],30)
 
     def test_verpakkingen(self):
         self.assertEqual(measure("2 x 125 g"),(250,"g"))
