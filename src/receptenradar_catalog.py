@@ -95,7 +95,7 @@ RECIPES = [
  ("Gehaktstoof met kikkererwten","Vlees",35,[("gehakt",500,"g"),("kikkererwten",400,"g"),("tomatenblokjes",800,"g"),("spinazie",400,"g")]),
  ("Ovenschotel met gehakt en bloemkool","Vlees",40,[("gehakt",600,"g"),("bloemkool",1,"st"),("aardappel",750,"g"),("kaas",150,"g")]),
  ("Kikkererwtencurry met spinazie","Vegetarisch",30,[("kikkererwten",650,"g"),("spinazie",500,"g"),("kokosmelk",400,"ml"),("rijst",300,"g")]),
- ("Tofuwok met broccoli","Vegetarisch",25,[("tofu",600,"g"),("wok",800,"g"),("rijst",320,"g")]),
+ ("Tofuwok met wokgroenten","Vegetarisch",25,[("tofu",600,"g"),("wok",800,"g"),("rijst",320,"g")]),
  ("Shakshuka met bonen","Vegetarisch",30,[("eieren",8,"st"),("tomatenblokjes",800,"g"),("bonen",400,"g"),("paprika",2,"st")]),
  ("Linzen-bolognese met groenten","Vegetarisch",35,[("linzen",500,"g"),("tomatenblokjes",800,"g"),("champignons",450,"g"),("pasta",320,"g")]),
  ("Vegetarische burritobowl","Vegetarisch",25,[("bonen",600,"g"),("mais",300,"g"),("rijst",320,"g"),("avocado",2,"st")]),
