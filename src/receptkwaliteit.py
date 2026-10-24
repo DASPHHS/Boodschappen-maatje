@@ -9,7 +9,7 @@ from receptenradar_catalog import ING
 BASIS = ("olijfolie (circa 1 eetlepel)", "zout naar smaak", "zwarte peper naar smaak")
 BROTH = "groentebouillon (circa 800 ml, bereid met water en bouillonblokje)"
 
-def pantry_for_recipe(title, ingredients):
+def pantry_for_recipe(title, ingredients, instructions=""):
     """Concreet vermelde smaakmakers, bewust niet meegerekend in de winkelprijs."""
     name = title.casefold()
     keys = {key for key, _, _ in ingredients}
@@ -41,6 +41,23 @@ def pantry_for_recipe(title, ingredients):
     if "yoghurt" in keys or "kwark" in keys:
         if any(x in name for x in ("wrap", "saus", "salade", "fris", "bowl", "dressing")):
             pantry += ["citroensap (1 eetlepel)", "knoflookpoeder (naar smaak)"]
+    # De specifieke bereidingswijze kan extra, niet geprijsde smaakmakers noemen.
+    # Maak die zichtbaar in plaats van ze in de instructie te verstoppen.
+    mentioned = (name + " " + instructions.casefold())
+    extras = (
+        ("knoflook", "knoflook (1 teen)"),
+        ("citroen", "citroensap (1 eetlepel)"),
+        ("sojasaus", "sojasaus (2 eetlepels)"),
+        ("gember", "gemberpoeder (1 theelepel)"),
+        ("komijn", "gemalen komijn (1 theelepel)"),
+        ("paprikapoeder", "paprikapoeder (1 theelepel)"),
+        ("tijm", "gedroogde tijm (1 theelepel)"),
+        ("dille", "gedroogde dille (1 theelepel)"),
+        ("currypoeder", "currypoeder (2 theelepels)"),
+    )
+    for term, label in extras:
+        if term in mentioned and not any(term in item for item in pantry):
+            pantry.append(label)
     return list(dict.fromkeys(pantry))
 
 UNSUPPORTED_DISH_WORDS = re.compile(
@@ -137,9 +154,12 @@ def cooking_instructions(title, ingredients, curated=""):
     if has("kipfilet","kipdij","kipgehakt","shoarma"):
         steps.append("Bak de kip of het kipgehakt met de genoemde kruiden in een beetje olijfolie; "
                      "zorg dat alle stukken volledig gaar zijn.")
-    elif has("gehakt","varkenshaas","rookworst"):
-        steps.append("Bak het gehakt gaar, of bak de varkenshaas rondom bruin en laat volledig garen. "
-                     "Gebruik bij rookworst de bereidingsinstructies op de verpakking.")
+    elif "gehakt" in keys:
+        steps.append("Bak het rundergehakt rul en volledig gaar in olijfolie en breng op smaak met de genoemde kruiden.")
+    elif "varkenshaas" in keys:
+        steps.append("Bak de varkenshaas rondom bruin in olijfolie, laat op matig vuur garen en kort rusten.")
+    elif "rookworst" in keys:
+        steps.append("Verwarm de rookworst volgens de bereidingsinstructies op de verpakking.")
     elif "zalm" in keys:
         steps.append("Bak de zalm rustig in wat olijfolie tot deze gaar is; bij diepvrieszalm volg je "
                      "de instructies voor ontdooien en bereiden op de verpakking.")
