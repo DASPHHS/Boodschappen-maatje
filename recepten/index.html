@@ -143,7 +143,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 </div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
-  <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Aanvullende inspiratie uit verschillende wereldkeukens. Voorrang voor groenten en eiwitbronnen; zware gerechten krijgen een lagere prioriteit. Een titelmatch is geen gecontroleerde maaltijd: ingrediënten, voedingswaarde en totaalprijs moeten nog worden geverifieerd.</p></div></div>
+  <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Extra wereldkeukens vanuit actuele aanbiedingen: sommige recepten zijn alleen op titel gekoppeld, bij andere zijn actieproducten daadwerkelijk teruggevonden in de oorspronkelijke ingrediëntenlijst. Vierpersoonsporties, voedingswaarden en kassaprijzen worden pas bevestigd na volledige controle.</p></div></div>
   <div class="source-match-actions">
   <label for="source-priority">Inspiratiekwaliteit</label>
   <select id="source-priority" aria-label="Welke wereldgerechten tonen">
@@ -383,7 +383,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function updateCuisineOptions(){
    const current=$("cuisine").value;
    const priced=state.data?.recipes?.[state.store]||[];
-   const matches=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
+   const matches=(state.data?.source_recipe_matches?.[state.store]?.candidates||[])
+    .concat(state.data?.discovered_recipes?.[state.store]?.ingredient_confirmed_candidates||[]);
    const counts={};
    for(const r of priced){
      const c=r.cuisine||"Internationaal";
@@ -448,7 +449,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function renderSourceMatches(){
    const panel=$("source-matches-panel");
-   const entries=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
+   const old=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
+   const ingredientChecked=state.data?.discovered_recipes?.[state.store]?.ingredient_confirmed_candidates||[];
+   const keys=new Set();
+   const entries=ingredientChecked.concat(old).filter(x=>{
+     const key=(x.source||"")+"|"+(x.url||x.title);
+     if(keys.has(key))return false;keys.add(key);return true;
+   });
    const cuisine=$("cuisine").value;
    const query=$("search").value.trim().toLocaleLowerCase("nl");
    const mode=$("source-priority").value;
@@ -459,7 +466,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      (mode==="all"||x.health_priority!=="lage prioriteit"));
    const rank=x=>x.health_priority==="kansrijk voor controle"?0:
      x.health_priority==="nader beoordelen"?1:3;
-   filtered.sort((a,b)=>rank(a)-rank(b)||b.matched_title_terms-a.matched_title_terms);
+   filtered.sort((a,b)=>rank(a)-rank(b)||
+     Number(b.verification_level==="ingredient_names_only")-
+     Number(a.verification_level==="ingredient_names_only")||
+     b.matched_title_terms-a.matched_title_terms);
    panel.hidden=state.mode!=="recipes"||!entries.length;
    $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store)+
       (cuisine==="all"?"":"&cuisine="+encodeURIComponent(cuisine));
@@ -482,8 +492,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
        ${different?`<div class="original-title">Originele titel: ${esc(r.title)}</div>`:
         '<div class="original-title">Titel zoals vermeld bij de bron</div>'}
        <div class="sub">${esc(r.cuisine||"Internationaal")} · ${esc(r.source)}</div>
-       <div class="offer-tags">Mogelijke match op recepttitel: ${esc((r.match_terms||[]).join(", "))}</div>
-       <span class="score">${r.health_priority==="kansrijk voor controle"?
+       <div class="offer-tags">${r.verification_level==="ingredient_names_only"?
+        "Actieproducten teruggevonden in broningrediëntenlijst: ":
+        "Mogelijke match op recepttitel: "}${esc((r.match_terms||[]).join(", "))}</div>
+       <span class="score">${r.verification_level==="ingredient_names_only"?
+        "Ingrediëntenlijst aanwezig; hoeveelheden, 4 porties en voedingswaarden nog niet gecontroleerd. ": ""}
+        ${r.health_priority==="kansrijk voor controle"?
          "Volgens de titel groente/peulvruchten én een eiwitbron; nog controleren":
          r.health_priority==="lage prioriteit"?"Waarschijnlijk rijker of zwaarder gerecht":
          "Voedingskwaliteit nog niet te bepalen"}</span>
