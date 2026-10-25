@@ -84,10 +84,11 @@ jobs:
           cp recepten/data.json docs/recepten/data.json
           cp recepten/winkelprijzen.json docs/recepten/winkelprijzen.json
           cp recepten/ontdekte_recepten.json docs/recepten/ontdekte_recepten.json
+          cp recepten/status.json docs/recepten/status.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json
-          git add docs/recepten/index.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json
+          git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json
+          git add docs/recepten/index.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
             git pull --rebase origin main
