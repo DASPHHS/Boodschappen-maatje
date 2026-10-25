@@ -1,4 +1,4 @@
-"""Open receptenindex voor Koopkracht.
+"""Open receptenindex voor Boodschappen Maatje.
 
 Haalt uitsluitend titels en originele links op uit de Wikibooks Cookbook
 via de officiële Wikimedia API. Kopieert geen HelloFresh-instructies/foto's.
@@ -8,11 +8,12 @@ from datetime import datetime,timezone
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
+from wereldkeuken_bronnen import WORLD_SOURCES,collect_world_links
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"inspiratie.json"
 API="https://en.wikibooks.org/w/api.php"
-HEADERS={"User-Agent":"Koopkracht-Receptenradar/1.0 (educational recipe-discovery; https://github.com/DASPHHS/koopkracht)"}
+HEADERS={"User-Agent":"BoodschappenMaatje-Receptenradar/2.0 (personal recipe-discovery; https://github.com/DASPHHS/Boodschappen-maatje)"}
 HF=[
 ("Boerenkool met dragonroomsaus en garnalen","Vis",20,"https://www.hellofresh.nl/recipes/boerenkool-met-dragonroomsaus-en-garnalen-68116bbf5917498f8bf2c1c1"),
 ("Kip met harissa en geroosterde bloemkool","Kip",35,"https://www.hellofresh.nl/recipes/kip-met-harissa-en-geroosterde-bloemkool-63c7d3dd788f6ee4ca33d7d2"),
@@ -71,6 +72,7 @@ def main():
     items=[{"title":title,"source":"HelloFresh","category":cat,"minutes":minutes,"url":url} for title,cat,minutes,url in HF]
     found=set()
     cursor=None
+    source_status=[]
     try:
         for _ in range(30):
             params={"action":"query","list":"categorymembers","cmtitle":"Category:Recipes",
@@ -91,26 +93,59 @@ def main():
             time.sleep(.15)
     except Exception as exc:
         print("Wikibooks fetch failed:",exc,file=sys.stderr)
-        # Geen lege of fictieve dataset publiceren als de bron platligt.
+        # Gebruik bewezen eerder verzamelde titels bij bronuitval. Vernieuw
+        # de andere bronnen en archieven wel gewoon, zonder leeg te publiceren.
         if OUT.exists():
-            old=json.loads(OUT.read_text(encoding="utf-8"))
-            if len(old.get("items",[]))>len(HF):return
+            try:
+                old=json.loads(OUT.read_text(encoding="utf-8"))
+                items.extend(x for x in old.get("items",[]) if x.get("source")=="Wikibooks")
+            except (OSError,ValueError,TypeError):
+                pass
     # Titels uit eigen archief staan los van de publieke scans en kunnen later
     # veilig door de receptcalculator worden omgezet naar originele varianten.
     own=ROOT/"recepten"/"eigen-archief.json"
     if own.exists():
         items.extend(json.loads(own.read_text(encoding="utf-8")).get("items",[]))
+    for archive in ("surinaams-archief.json","hello-fresh-maart-archief.json"):
+        path=ROOT/"recepten"/archive
+        if path.exists():
+            try:
+                items.extend(json.loads(path.read_text(encoding="utf-8")).get("items",[]))
+            except (OSError,ValueError,TypeError) as exc:
+                print("Privé-archiefindex niet beschikbaar:",archive,exc,file=sys.stderr)
+    # Een receptbron is een startpunt voor onderzoek, geen al geverifieerd recept.
+    # Toon de collectie zelfs als automatisch indexeren niet lukt.
+    for source,cuisine,landing in WORLD_SOURCES:
+        items.append({"title":"Ontdek recepten: "+source,"source":source,
+                      "cuisine":cuisine,"category":"Broncollectie","minutes":None,
+                      "url":landing,"kind":"collection",
+                      "verification":"Doorzoekbare broncollectie; geen individueel recept",
+                      "price_status":"Niet doorgerekend"})
+    try:
+        extra,status=collect_world_links()
+        items.extend(extra)
+        source_status=status
+    except (requests.RequestException,ValueError) as exc:
+        print("Wereldkeukens tijdelijk niet beschikbaar:",exc,file=sys.stderr)
+        source_status=[{"source":"Wereldkeukens","status":"fout","error":type(exc).__name__}]
     items.extend(extra_mealprep_links())
     seenkeys=set();unique=[]
     for item in items:
-        key=(item.get("source"),item.get("url") or item.get("local_page"))
+        key=(item.get("source"),item.get("url") or item.get("local_page") or item.get("title","").casefold())
         if key in seenkeys:continue
         seenkeys.add(key);unique.append(item)
-    priorities={"Mijn HelloFresh-archief":0,"HelloFresh":1,"The Meal Prep Manual":2,"FitMenCook mealprep":3,"Budget Bytes mealprep":4,"Wikibooks":5}
-    items=sorted(unique,key=lambda v:(priorities.get(v.get("source"),9), v.get("title","").casefold()))
+    priorities={"Sandhia's Surinaamse Recepten (eigen PDF)":0,
+                "Mijn HelloFresh-archief (maart)":1,"Mijn HelloFresh-archief":2,
+                "HelloFresh":3,"The Meal Prep Manual":5,"FitMenCook mealprep":6,
+                "Budget Bytes mealprep":7,"Wikibooks":12}
+    # Bewaak dat publicatie ook zonder toegang tot één externe bron bruikbaar blijft.
+    items=sorted(unique,key=lambda v:(priorities.get(v.get("source"),4),
+             v.get("cuisine") or "", v.get("title","").casefold()))
     data={"updated_at":datetime.now(timezone.utc).isoformat(),
           "attribution":"Wikibooks bijdragers, CC BY-SA 4.0: https://en.wikibooks.org/wiki/Cookbook:Recipes",
-          "description":"Recepttitels met links naar de originele bron. Geen volledige recepten, geverifieerde ingrediënten of supermarktprijzen.",
+          "description":"Wereldkeukens, publieke bronlinks en eigen kookboekindexen. Bronlinks/titels zijn niet automatisch geverifieerde ingrediënten of kassaprijzen.",
+          "source_status":source_status,
+          "source_collections":len(WORLD_SOURCES),
           "items":items}
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(data,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
