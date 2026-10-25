@@ -652,7 +652,7 @@ def make_recipes(shelves,offers):
                      ("mexicaans","costa ricaanse","gallo pinto","zuid-amerikaanse",
                       "chipotle","burrito")) else
                      "Mediterraan" if any(x in tl for x in
-                     ("mediterrane","italiaanse","griekse")) else "Overig")
+                     ("mediterrane","italiaanse","italiaans","griekse")) else "Overig")
             instructions=RECIPE_METHODS.get(title,"")
             if idx>=len(RECIPES):
                 for p,v,side,other,template_title,method in DISH_TEMPLATES:
