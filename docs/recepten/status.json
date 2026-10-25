@@ -1,0 +1,69 @@
+{
+  "updated_at": "2026-10-25T20:15:35.343780+01:00",
+  "source_last_modified": null,
+  "shelf_products": {
+    "ah": 15657,
+    "jumbo": 9713,
+    "lidl": 5369
+  },
+  "promotion_mentions": {
+    "ah": 3013,
+    "jumbo": 1617,
+    "lidl": 67
+  },
+  "verified_discounts": {
+    "ah": 3013,
+    "jumbo": 1569,
+    "lidl": 11
+  },
+  "upcoming_promotion_mentions": {
+    "ah": 2574,
+    "jumbo": 752,
+    "lidl": 36
+  },
+  "verified_upcoming_discounts": {
+    "ah": 2574,
+    "jumbo": 740,
+    "lidl": 1
+  },
+  "fully_priced_recipes": {
+    "ah": 106,
+    "jumbo": 73,
+    "lidl": 36
+  },
+  "recipes_with_used_discount": {
+    "ah": 64,
+    "jumbo": 44,
+    "lidl": 37
+  },
+  "health_review_needed": {
+    "ah": 158,
+    "jumbo": 158,
+    "lidl": 152
+  },
+  "source_recipe_title_candidates": {
+    "ah": 80,
+    "jumbo": 80,
+    "lidl": 21
+  },
+  "external_recipe_results": {
+    "ah": 56,
+    "jumbo": 41,
+    "lidl": 29
+  },
+  "external_recipe_strictly_verified": {
+    "ah": 0,
+    "jumbo": 0,
+    "lidl": 0
+  },
+  "external_recipe_ingredient_checked": {
+    "ah": 39,
+    "jumbo": 18,
+    "lidl": 7
+  },
+  "weekmenu_status": "indicative_online_comparison",
+  "other_stores_automatically_priced": false,
+  "local_inventory_checked": false,
+  "email_delivery_verified_by_this_scan": false,
+  "source_errors": []
+}

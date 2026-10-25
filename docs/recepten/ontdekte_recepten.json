@@ -1,19 +1,2106 @@
 {
   "ah": {
     "recipes": [],
+    "ingredient_confirmed_candidates": [
+      {
+        "title": "Red Peas Soup",
+        "title_nl": "Rood erwten soep",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://caribbeanpot.com/caribbean-red-peas-soup/",
+        "match_terms": [
+          "aardappel",
+          "bonen",
+          "kokosmelk",
+          "paprika",
+          "wortel"
+        ],
+        "matched_title_terms": 5,
+        "ingredient_keys": [
+          "aardappel",
+          "bonen",
+          "kokosmelk",
+          "paprika",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "paprika": [
+            "Red Pepper"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Salmon Avocado Salad",
+        "title_nl": "Zalm avocado salade",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/4521/salmon-avocado-and-cucumber-salad",
+        "match_terms": [
+          "avocado",
+          "komkommer",
+          "spinazie",
+          "zalm"
+        ],
+        "matched_title_terms": 4,
+        "ingredient_keys": [
+          "avocado",
+          "komkommer",
+          "spinazie",
+          "zalm"
+        ],
+        "source_ingredient_names": {
+          "avocado": [
+            "Avocado"
+          ],
+          "komkommer": [
+            "Cucumber"
+          ],
+          "spinazie": [
+            "Spinach"
+          ],
+          "zalm": [
+            "Salmon"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Bahia-style Moqueca prawn stew",
+        "title_nl": "Bahia-style Moqueca prawn stew",
+        "source": "TheMealDB",
+        "cuisine": "Braziliaans",
+        "url": "https://www.bbcgoodfood.com/recipes/bahia-style-moqueca-prawn-stew",
+        "match_terms": [
+          "kokosmelk",
+          "paprika",
+          "rijst"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "kokosmelk",
+          "paprika",
+          "rijst",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "paprika": [
+            "Red Pepper"
+          ],
+          "rijst": [
+            "Rice"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Bang bang prawn salad",
+        "title_nl": "Bang bang prawn salad",
+        "source": "TheMealDB",
+        "cuisine": "Vietnamees",
+        "url": "https://www.bbcgoodfood.com/recipes/bang-bang-prawn-salad",
+        "match_terms": [
+          "kokosmelk",
+          "komkommer",
+          "rijst"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "kokosmelk",
+          "komkommer",
+          "rijst"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "komkommer": [
+            "Cucumber"
+          ],
+          "rijst": [
+            "Rice Noodles"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Belgian Waterzooi Chicken",
+        "title_nl": "Belgian Waterzooi Chicken",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://junedarville.com/waterzooi.html",
+        "match_terms": [
+          "aardappel",
+          "kipfilet",
+          "wortel"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "eieren",
+          "kipfilet",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Callaloo Jamaican Style",
+        "title_nl": "Callaloo Jamaican Style",
+        "source": "TheMealDB",
+        "cuisine": "Caribisch",
+        "url": "https://www.africanbites.com/callaloo-jamaican-style/",
+        "match_terms": [
+          "banaan",
+          "boerenkool",
+          "paprika"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "banaan",
+          "boerenkool",
+          "paprika",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "banaan": [
+            "Banana"
+          ],
+          "boerenkool": [
+            "Kale"
+          ],
+          "paprika": [
+            "Red Pepper"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Couscous",
+        "title_nl": "Chicken Couscous",
+        "source": "TheMealDB",
+        "cuisine": "Marokkaans",
+        "url": "https://www.bbcgoodfood.com/recipes/13139/onepan-chicken-couscous",
+        "match_terms": [
+          "couscous",
+          "kikkererwten",
+          "kipfilet"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "couscous",
+          "kikkererwten",
+          "kipfilet",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "couscous": [
+            "Couscous"
+          ],
+          "kikkererwten": [
+            "Chickpeas"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Jamaican Instant Pot Rice and Beans",
+        "title_nl": "Jamaican Instant Pot Rice and Beans",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.myforkinglife.com/jamaican-instant-pot-rice-and-beans/#recipe",
+        "match_terms": [
+          "bonen",
+          "kokosmelk",
+          "rijst"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "bonen",
+          "kokosmelk",
+          "rijst",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "rijst": [
+            "Rice"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Jamaican Rice and Peas",
+        "title_nl": "Jamaican Rice and Peas",
+        "source": "TheMealDB",
+        "cuisine": "Caribisch",
+        "url": "https://www.myforkinglife.com/jamaican-rice-and-peas/#recipe",
+        "match_terms": [
+          "bonen",
+          "kokosmelk",
+          "rijst"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "bonen",
+          "kokosmelk",
+          "rijst"
+        ],
+        "source_ingredient_names": {
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "rijst": [
+            "Rice"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Mini chilli beef pies",
+        "title_nl": "Mini chilli beef pies",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/mini-chilli-beef-pies",
+        "match_terms": [
+          "aardappel",
+          "bonen",
+          "gehakt"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "bonen",
+          "gehakt",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "gehakt": [
+            "Minced Beef"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Amok Trey – Cambodian Fish Curry",
+        "title_nl": "Amok Trey – Cambodian Fish Curry",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://recipes-for-life.com/cambodian-recipes/",
+        "match_terms": [
+          "banaan",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "banaan",
+          "eieren",
+          "kokosmelk"
+        ],
+        "source_ingredient_names": {
+          "banaan": [
+            "Banana Leaves"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Authentic Laos Tapioca Pudding with Bananas",
+        "title_nl": "Authentic Laos Tapioca Pudding with Bananas",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://cookingwithlane.com/laos-banana-tapioca-pudding-nam-van-mak-kuay/",
+        "match_terms": [
+          "banaan",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "banaan",
+          "kokosmelk"
+        ],
+        "source_ingredient_names": {
+          "banaan": [
+            "Banana"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Ayam Percik",
+        "title_nl": "Ayam Percik",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://www.curiousnut.com/roasted-spiced-chicken-ayam-percik/",
+        "match_terms": [
+          "kipdij",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipdij",
+          "kokosmelk"
+        ],
+        "source_ingredient_names": {
+          "kipdij": [
+            "Chicken Thighs"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Bai Sach Chrouk – Grilled Pork with Rice",
+        "title_nl": "Bai Sach Chrouk – Grilled Pork with Rice",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://recipes-for-life.com/cambodian-recipes/",
+        "match_terms": [
+          "kokosmelk",
+          "komkommer"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kokosmelk",
+          "komkommer"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "komkommer": [
+            "Cucumber"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Cambodian Waffles (Num Poum)",
+        "title_nl": "Cambodian Waffles (Num Poum)",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.phnomenon.com/index.php/cambodian-food/category/recipes/",
+        "match_terms": [
+          "kokosmelk",
+          "rijst"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "kokosmelk",
+          "rijst"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "rijst": [
+            "Rice Flour"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chick-Fil-A Sandwich",
+        "title_nl": "Chick-Fil-A Sandwich",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://hilahcooking.com/chick-fil-a-copycat/",
+        "match_terms": [
+          "kipfilet",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "kipfilet",
+          "melk"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Fajita Mac and Cheese",
+        "title_nl": "Chicken Fajita Mac and Cheese",
+        "source": "TheMealDB",
+        "cuisine": "Mexicaans",
+        "url": "http://twistedfood.co.uk/chicken-fajita-mac-n-cheese/",
+        "match_terms": [
+          "kipfilet",
+          "paprika"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipfilet",
+          "paprika",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "chicken breast"
+          ],
+          "paprika": [
+            "red pepper"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Ham and Leek Pie",
+        "title_nl": "Chicken Ham and Leek Pie",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbc.co.uk/food/recipes/creamy_chicken_ham_and_03877",
+        "match_terms": [
+          "kipfilet",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipfilet",
+          "melk"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Salad With Mushrooms and Bacon",
+        "title_nl": "Chicken Salad With Mushrooms and Bacon",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://denmark.dk/people-and-culture/recipes/chicken-salad/",
+        "match_terms": [
+          "champignons",
+          "kipfilet"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "champignons",
+          "kipfilet"
+        ],
+        "source_ingredient_names": {
+          "champignons": [
+            "Mushrooms"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken and Potato Roti",
+        "title_nl": "Chicken and Potato Roti",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.totallybarbados.com/articles/barbados-recipes/chicken-potato-roti-recipe/",
+        "match_terms": [
+          "aardappel",
+          "kipfilet"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "kipfilet",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chocolate Avocado Mousse",
+        "title_nl": "Chocolate Avocado Mousse",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://www.hemsleyandhemsley.com/recipe/chocolate-avocado-mousse/",
+        "match_terms": [
+          "avocado",
+          "banaan"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "avocado",
+          "banaan"
+        ],
+        "source_ingredient_names": {
+          "avocado": [
+            "Avocado"
+          ],
+          "banaan": [
+            "Banana"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Coconut Natilla Recipe",
+        "title_nl": "Coconut Natilla Recipe",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.mycolombianrecipes.com/natilla-colombiana-colombian-style-pudding/#recipe",
+        "match_terms": [
+          "kokosmelk",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kokosmelk",
+          "melk"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Corn on the cob with lime, green chilli and coconut butter",
+        "title_nl": "Corn on the cob with lime, green chilli and coconut butter",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.theguardian.com/food/2020/jul/04/andi-oliver-antiguan-feast-recipes-slow-cooked-pork-belly-corn-chilli-lime-mango-chow-spiced-bread-butter-pudding",
+        "match_terms": [
+          "kokosmelk",
+          "mais"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kokosmelk",
+          "mais"
+        ],
+        "source_ingredient_names": {
+          "kokosmelk": [
+            "Coconut Milk"
+          ],
+          "mais": [
+            "Corn On The Cob"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Dominica’s coconut rough cake",
+        "title_nl": "Dominica’s coconut rough cake",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://dominicagourmet.com/dominica-coconut-rough-cake-recipe/",
+        "match_terms": [
+          "havermout",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "havermout",
+          "kokosmelk"
+        ],
+        "source_ingredient_names": {
+          "havermout": [
+            "Oats"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Frikadeller - Danish Meatballs",
+        "title_nl": "Frikadeller - Danish Meatballs",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://denmark.dk/people-and-culture/recipes/danish-meat-balls/",
+        "match_terms": [
+          "havermout",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "havermout",
+          "melk",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "havermout": [
+            "Oats"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "General Tsos Chicken",
+        "title_nl": "General Tsos Chicken",
+        "source": "TheMealDB",
+        "cuisine": "Chinees",
+        "url": "https://www.skinnytaste.com/general-tsos-chicken/",
+        "match_terms": [
+          "kipfilet",
+          "rijst"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "kipfilet",
+          "rijst",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "rijst": [
+            "Rice Vinegar"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
+        "title_nl": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.themealdb.com/meal/52993",
+        "match_terms": [
+          "aardappel",
+          "kipfilet"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "broccoli",
+          "kipfilet"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Oatmeal pancakes",
+        "title_nl": "Oatmeal pancakes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://goya.es/en/recipes/oatmeal-pancakes",
+        "match_terms": [
+          "aardbeien",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardbeien",
+          "eieren",
+          "melk"
+        ],
+        "source_ingredient_names": {
+          "aardbeien": [
+            "Strawberries"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Potato Gratin with Chicken",
+        "title_nl": "Potato Gratin with Chicken",
+        "source": "TheMealDB",
+        "cuisine": "Italiaans",
+        "url": "https://www.instagram.com/p/BHxR7hYBJ6P",
+        "match_terms": [
+          "aardappel",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "spinazie",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Rice and Beans",
+        "title_nl": "Rijst met bonen",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.ourcayman.ky/en-us/about/more-about-cayman/recipes",
+        "match_terms": [
+          "bonen",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "bonen",
+          "kokosmelk",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Salt Beef and Beans",
+        "title_nl": "Salt Beef and Beans",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.ourcayman.ky/en-us/about/more-about-cayman/recipes",
+        "match_terms": [
+          "bonen",
+          "kokosmelk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "bonen",
+          "kokosmelk"
+        ],
+        "source_ingredient_names": {
+          "bonen": [
+            "Kidney Beans"
+          ],
+          "kokosmelk": [
+            "Coconut Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Shakshuka Feta Cheese",
+        "title_nl": "Shakshuka Feta Cheese",
+        "source": "TheMealDB",
+        "cuisine": "Midden-Oosters",
+        "url": "https://cookpad.com/eng/recipes/22551672?ref=search&search_term=saudi+arabia",
+        "match_terms": [
+          "paprika",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "paprika",
+          "spinazie",
+          "tomaten"
+        ],
+        "source_ingredient_names": {
+          "paprika": [
+            "Red Pepper"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Spanish beans with chicken & chorizo",
+        "title_nl": "Spanish beans with chicken & chorizo",
+        "source": "TheMealDB",
+        "cuisine": "Spaans",
+        "url": "https://www.bbcgoodfood.com/recipes/spanish-beans-chicken-chorizo",
+        "match_terms": [
+          "kipdij",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipdij",
+          "spinazie",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kipdij": [
+            "Chicken Thighs"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Spinach & Ricotta Cannelloni",
+        "title_nl": "Spinach & Ricotta Cannelloni",
+        "source": "TheMealDB",
+        "cuisine": "Italiaans",
+        "url": "https://www.bbcgoodfood.com/recipes/531632/spinach-and-ricotta-cannelloni",
+        "match_terms": [
+          "melk",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "melk",
+          "spinazie"
+        ],
+        "source_ingredient_names": {
+          "melk": [
+            "Milk"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Strawberry Rhubarb Pie",
+        "title_nl": "Strawberry Rhubarb Pie",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.joyofbaking.com/StrawberryRhubarbPie.html",
+        "match_terms": [
+          "aardbeien",
+          "melk"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardbeien",
+          "melk"
+        ],
+        "source_ingredient_names": {
+          "aardbeien": [
+            "Strawberries"
+          ],
+          "melk": [
+            "Milk"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Tuna Nicoise",
+        "title_nl": "Tuna Nicoise",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/9529/winter-tuna-nioise",
+        "match_terms": [
+          "aardappel",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "eieren",
+          "spinazie",
+          "tonijn"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Tuna and Egg Briks",
+        "title_nl": "Tuna and Egg Briks",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://allrecipes.co.uk/recipe/3096/tunisian-tuna-and-egg-briks.aspx",
+        "match_terms": [
+          "komkommer",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "komkommer",
+          "spinazie",
+          "tomaten",
+          "tonijn"
+        ],
+        "source_ingredient_names": {
+          "komkommer": [
+            "Cucumber"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Tunisian Lamb Soup",
+        "title_nl": "Tunisian Lamb Soup",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://allrecipes.co.uk/recipe/16694/tunisian-lamb-soup.aspx",
+        "match_terms": [
+          "kikkererwten",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kikkererwten",
+          "spinazie",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kikkererwten": [
+            "Chickpeas"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Vegan Lasagna",
+        "title_nl": "Vegan Lasagna",
+        "source": "TheMealDB",
+        "cuisine": "Italiaans",
+        "url": "https://www.themealdb.com/meal/52775",
+        "match_terms": [
+          "spinazie",
+          "wortel"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "courgette",
+          "spinazie",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "spinach"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      }
+    ],
+    "ingredient_confirmed_count": 39,
     "source_results": 56,
     "verified_matches": 0,
     "errors": []
   },
   "jumbo": {
     "recipes": [],
+    "ingredient_confirmed_candidates": [
+      {
+        "title": "Beef Caldereta",
+        "title_nl": "Beef Caldereta",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.kawalingpinoy.com/beef-caldereta/",
+        "match_terms": [
+          "aardappel",
+          "paprika",
+          "tomaten",
+          "wortel"
+        ],
+        "matched_title_terms": 4,
+        "ingredient_keys": [
+          "aardappel",
+          "paprika",
+          "tomaten",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "paprika": [
+            "Green Pepper",
+            "Red Pepper"
+          ],
+          "tomaten": [
+            "Tomato Puree"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Balchi di Pisca",
+        "title_nl": "Balchi di Pisca",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.visitaruba.com/aruba-recipes/balchi-di-pisca/",
+        "match_terms": [
+          "aardappel",
+          "paprika",
+          "tomaten"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "eieren",
+          "paprika",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "paprika": [
+            "Green Pepper"
+          ],
+          "tomaten": [
+            "Tomato"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beef Sunday Roast",
+        "title_nl": "Beef Sunday Roast",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/9020/best-yorkshire-puddings",
+        "match_terms": [
+          "aardappel",
+          "broccoli",
+          "wortel"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "broccoli",
+          "eieren",
+          "melk",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "broccoli": [
+            "Broccoli"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Belgian Waterzooi Chicken",
+        "title_nl": "Belgian Waterzooi Chicken",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://junedarville.com/waterzooi.html",
+        "match_terms": [
+          "aardappel",
+          "kipfilet",
+          "wortel"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "eieren",
+          "kipfilet",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
+        "title_nl": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.themealdb.com/meal/52993",
+        "match_terms": [
+          "aardappel",
+          "broccoli",
+          "kipfilet"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "broccoli",
+          "kipfilet"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "broccoli": [
+            "Broccoli"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Air fryer patatas bravas",
+        "title_nl": "Air fryer patatas bravas",
+        "source": "TheMealDB",
+        "cuisine": "Spaans",
+        "url": "https://www.bbcgoodfood.com/recipes/air-fryer-patatas-bravas",
+        "match_terms": [
+          "aardappel",
+          "tomaten"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "tomaten": [
+            "Tomato Puree"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "BBQ Pork Sloppy Joes",
+        "title_nl": "BBQ Pork Sloppy Joes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.themealdb.com/meal/52995",
+        "match_terms": [
+          "aardappel",
+          "tomaten"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "tomaten"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "tomaten": [
+            "Tomato Ketchup"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beef Brisket Pot Roast",
+        "title_nl": "Beef Brisket Pot Roast",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://www.simplyrecipes.com/recipes/beef_brisket_pot_roast/",
+        "match_terms": [
+          "aardappel",
+          "wortel"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beef Mechado",
+        "title_nl": "Beef Mechado",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://panlasangpinoy.com/filipino-pinoy-food-tomato-sauce-beef-mechado-recipe/",
+        "match_terms": [
+          "aardappel",
+          "tomaten"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "tomaten": [
+            "Tomato Puree"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beef pumpkin Stew",
+        "title_nl": "Beef pumpkin Stew",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.honeyandbirch.com/pumpkin-beef-stew-recipe/#recipe",
+        "match_terms": [
+          "aardappel",
+          "wortel"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beetroot latkes",
+        "title_nl": "Beetroot latkes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/beetroot-latkes",
+        "match_terms": [
+          "tomaten",
+          "yoghurt"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "tomaten",
+          "yoghurt"
+        ],
+        "source_ingredient_names": {
+          "tomaten": [
+            "Cherry Tomatoes"
+          ],
+          "yoghurt": [
+            "Greek Yogurt"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Bengali Chicken Curry with Potatoes",
+        "title_nl": "Bengali Chicken Curry with Potatoes",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.allrecipes.com/recipe/215055/bengali-chicken-curry-with-potatoes/",
+        "match_terms": [
+          "kipfilet",
+          "tomaten"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipfilet",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "tomaten": [
+            "Tomato"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Fajita Mac and Cheese",
+        "title_nl": "Chicken Fajita Mac and Cheese",
+        "source": "TheMealDB",
+        "cuisine": "Mexicaans",
+        "url": "http://twistedfood.co.uk/chicken-fajita-mac-n-cheese/",
+        "match_terms": [
+          "kipfilet",
+          "paprika"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipfilet",
+          "paprika",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "chicken breast"
+          ],
+          "paprika": [
+            "red pepper"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Salad With Mushrooms and Bacon",
+        "title_nl": "Chicken Salad With Mushrooms and Bacon",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://denmark.dk/people-and-culture/recipes/chicken-salad/",
+        "match_terms": [
+          "champignons",
+          "kipfilet"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "champignons",
+          "kipfilet"
+        ],
+        "source_ingredient_names": {
+          "champignons": [
+            "Mushrooms"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken Shawarma with homemade garlic herb yoghurt sauce",
+        "title_nl": "Chicken Shawarma with homemade garlic herb yoghurt sauce",
+        "source": "TheMealDB",
+        "cuisine": "Midden-Oosters",
+        "url": "https://cookpad.com/eng/recipes/24343467?ref=search&search_term=saudi+arabia",
+        "match_terms": [
+          "kipfilet",
+          "yoghurt"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipfilet",
+          "yoghurt"
+        ],
+        "source_ingredient_names": {
+          "kipfilet": [
+            "Chicken Breast"
+          ],
+          "yoghurt": [
+            "Greek Yogurt"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Chicken and Potato Roti",
+        "title_nl": "Chicken and Potato Roti",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.totallybarbados.com/articles/barbados-recipes/chicken-potato-roti-recipe/",
+        "match_terms": [
+          "aardappel",
+          "kipfilet"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "kipfilet",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "kipfilet": [
+            "Chicken Breast"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Grilled aubergines with spicy chickpeas & walnut sauce",
+        "title_nl": "Grilled aubergines with spicy chickpeas & walnut sauce",
+        "source": "TheMealDB",
+        "cuisine": "Turks",
+        "url": "https://www.bbcgoodfood.com/recipes/grilled-aubergines-spicy-chickpeas-walnut-sauce",
+        "match_terms": [
+          "tomaten",
+          "yoghurt"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kikkererwten",
+          "tomaten",
+          "ui",
+          "yoghurt"
+        ],
+        "source_ingredient_names": {
+          "tomaten": [
+            "Tomato"
+          ],
+          "yoghurt": [
+            "Greek Yogurt"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Imam bayildi with BBQ lamb & tzatziki",
+        "title_nl": "Imam bayildi with BBQ lamb & tzatziki",
+        "source": "TheMealDB",
+        "cuisine": "Turks",
+        "url": "https://www.bbcgoodfood.com/recipes/imam-bayildi-bbq-lamb-tzatziki",
+        "match_terms": [
+          "tomaten",
+          "yoghurt"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "komkommer",
+          "tomaten",
+          "ui",
+          "yoghurt"
+        ],
+        "source_ingredient_names": {
+          "tomaten": [
+            "Tomato"
+          ],
+          "yoghurt": [
+            "Greek Yogurt"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      }
+    ],
+    "ingredient_confirmed_count": 18,
     "source_results": 41,
     "verified_matches": 0,
     "errors": []
   },
   "lidl": {
     "recipes": [],
-    "source_results": 38,
+    "ingredient_confirmed_candidates": [
+      {
+        "title": "Ají de Aguacate Recipe (Colombian Spicy Avocado Sauce)",
+        "title_nl": "Ají de Aguacate Recipe (Colombian Spicy Avocado Sauce)",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.mycolombianrecipes.com/aji-de-aguacate-colombian-hot-avocado-sauce/#recipe",
+        "match_terms": [
+          "avocado",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "avocado",
+          "eieren",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "avocado": [
+            "Avocado"
+          ],
+          "ui": [
+            "Onion"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Curried Spinach from Botswana",
+        "title_nl": "Curried Spinach from Botswana",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://kosherworldkitchen.com/morogo-curried-spinach/#recipe",
+        "match_terms": [
+          "spinazie",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "spinazie",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "Spinach"
+          ],
+          "ui": [
+            "Onion"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Potato Gratin with Chicken",
+        "title_nl": "Potato Gratin with Chicken",
+        "source": "TheMealDB",
+        "cuisine": "Italiaans",
+        "url": "https://www.instagram.com/p/BHxR7hYBJ6P",
+        "match_terms": [
+          "spinazie",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "aardappel",
+          "spinazie",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "Spinach"
+          ],
+          "ui": [
+            "Onions"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Salmon Avocado Salad",
+        "title_nl": "Zalm avocado salade",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/4521/salmon-avocado-and-cucumber-salad",
+        "match_terms": [
+          "avocado",
+          "spinazie"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "avocado",
+          "komkommer",
+          "spinazie",
+          "zalm"
+        ],
+        "source_ingredient_names": {
+          "avocado": [
+            "Avocado"
+          ],
+          "spinazie": [
+            "Spinach"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Spanish beans with chicken & chorizo",
+        "title_nl": "Spanish beans with chicken & chorizo",
+        "source": "TheMealDB",
+        "cuisine": "Spaans",
+        "url": "https://www.bbcgoodfood.com/recipes/spanish-beans-chicken-chorizo",
+        "match_terms": [
+          "spinazie",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kipdij",
+          "spinazie",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "Spinach"
+          ],
+          "ui": [
+            "Onion"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Tunisian Lamb Soup",
+        "title_nl": "Tunisian Lamb Soup",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "http://allrecipes.co.uk/recipe/16694/tunisian-lamb-soup.aspx",
+        "match_terms": [
+          "spinazie",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "kikkererwten",
+          "spinazie",
+          "tomaten",
+          "ui"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "Spinach"
+          ],
+          "ui": [
+            "Onion"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Vegan Lasagna",
+        "title_nl": "Vegan Lasagna",
+        "source": "TheMealDB",
+        "cuisine": "Italiaans",
+        "url": "https://www.themealdb.com/meal/52775",
+        "match_terms": [
+          "spinazie",
+          "ui"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "courgette",
+          "spinazie",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "spinazie": [
+            "spinach"
+          ],
+          "ui": [
+            "onion"
+          ]
+        },
+        "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      }
+    ],
+    "ingredient_confirmed_count": 7,
+    "source_results": 29,
     "verified_matches": 0,
     "errors": []
   }
