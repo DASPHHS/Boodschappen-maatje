@@ -193,7 +193,10 @@ Promise.all([
  fetch("./data.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
 ]).then(([data,price])=>{
  items=Array.isArray(data.items)?data.items:[];deals=price;meta=data;
- setupFilters();render();
+ setupFilters();
+ const requested=new URLSearchParams(window.location.search).get("store");
+ if(["ah","jumbo","lidl"].includes(requested))$("actionstore").value=requested;
+ render();
  if(!price)$("match-status").textContent="Actieprijsdata niet beschikbaar; bronzoekfunctie werkt wel.";
 }).catch(err=>{
  $("status").textContent="Brongegevens niet beschikbaar";
