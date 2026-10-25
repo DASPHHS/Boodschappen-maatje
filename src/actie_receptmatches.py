@@ -8,6 +8,7 @@ of '2 daadwerkelijk gebruikte acties' presenteren.
 import json,re,unicodedata
 from pathlib import Path
 from receptenradar_catalog import ING
+from recept_keukens import infer_cuisine,dutch_title
 
 ROOT=Path(__file__).resolve().parents[1]
 RECIPE_INDEX=ROOT/"recepten"/"inspiratie.json"
@@ -77,7 +78,8 @@ def select_candidates(index_items,promotion_keys,limit=80):
         if url is not None and not str(url).startswith(("https://","http://")):
             continue
         candidates.append({
-          "title":title,"source":source,"cuisine":item.get("cuisine") or "Overig / wereldwijd",
+          "title":title,"title_nl":item.get("title_nl") or dutch_title(title)[0],
+          "source":source,"cuisine":infer_cuisine(title,item.get("cuisine")),
           "category":item.get("category") or "Onbekend",
           "url":url,"match_terms":list(matched),"possible_offer_keys":
               sorted({x for keys in matched.values() for x in keys}),
@@ -85,45 +87,44 @@ def select_candidates(index_items,promotion_keys,limit=80):
           "verification":"ALLEEN TITELMATCH — broningrediënten niet gecontroleerd",
           "servings_verified":False,"price_verified":False
         })
-    # Gezondheid kan niet worden vastgesteld zonder ingrediënten en porties.
-    # Dit is uitsluitend een conservatieve triage voor inspiratie.
-    heavy=re.compile(r"\\b(bacon|spek|alfredo|carbonara|roomsaus|deep.fried|gefrituurd|frituur|\
-bakabana|cake|dessert|milkshake|koek|snoep|ijs|chocolate|chocolade|spareribs|\
-varkenspoot|slagroom|kroket|loempia)\\b",re.I)
-    positive=re.compile(r"\\b(groent\\w*|broccoli|spinazie|kousenband|bonen|linzen|\
-kikkererwten|tofu|tahoe|salade|soep|salad|lentil|beans|vegetables|chickpeas|\
-aubergine|courgette|paprika|curry|roti|saoto|tajine|tagine|stew|chicken|kip|\
-zalm|salmon|vis|fish|tuna|tonijn)\\b",re.I)
-    cuisine_hint=(
-      ("Surinaams",r"surinam|sranang|roti|saoto|moksi|moksie|bakkeljauw|pom(tayer)?|kouseband|bara|masoesa|alesi|alesie"),
-      ("Koreaans",r"bibimbap|bulgogi|kimchi|gochujang|japchae|korean"),
-      ("Japans",r"ramen|miso|sushi|teriyaki|yakitori|japan"),
-      ("Indonesisch",r"rendang|gado.gado|nasi goreng|soto ayam|indones"),
-      ("Indiaas",r"biryani|tandoori|vindaloo|dal|dahl|tikka|indian"),
-      ("Thais",r"pad thai|tom kha|tom yum|massaman|thai"),
-      ("Vietnamees",r"pho|banh mi|vietnam"),
-      ("Marokkaans",r"harira|tajine|tagine|moroccan|marokka"),
-      ("Turks",r"lahmacun|kofte|kofte|turk"),
-      ("Libanees",r"tabbouleh|fattoush|lebanese|libane"),
-      ("Mexicaans",r"enchilada|fajita|burrito|taco|mexican"),
-      ("Italiaans",r"risotto|pesto|lasagne|gnocchi|italian|spaghetti|penne"),
-      ("Grieks",r"moussaka|souvlaki|greek|grieks"),
-      ("Nederlands",r"stamppot|hutspot|boerenkool|holland"),
+    # Gezondheid kun je niet vaststellen zonder de volledige ingrediënten.
+    # De titel levert alleen zwakke signalen voor welke recepten éérst
+    # inhoudelijk gecontroleerd moeten worden.
+    heavy=re.compile(
+        r"\b(bacon|spek|alfredo|carbonara|roomsaus|deep.fried|gefrituurd|"
+        r"frituur|bakabana|cake|dessert|milkshake|koek|snoep|ijs|"
+        r"chocolate|chocolade|spareribs|varkenspoot|slagroom|kroket|loempia)\b",
+        re.I)
+    vegetable=re.compile(
+        r"\b(broccoli|spinazie|groent\w*|vegetabl\w*|salad|salade|"
+        r"lentil\w*|linzen|kikkererwt\w*|chickpea\w*|bonen|beans|"
+        r"paprika|courgette|zucchini|tomaten|tomato\w*|aubergine|"
+        r"eggplant|kale|bloemkool|cauliflower|avocado|carrots?)\b",re.I)
+    protein=re.compile(
+        r"\b(chicken|kip|kipfilet\w*|kippendij\w*|tofu|tahoe|beef|"
+        r"gehakt|zalm|salmon|tuna|tonijn|vis|fish|shrimp|garnalen|"
+        r"lentil\w*|linzen|beans|bonen|chickpeas|kikkererwten|"
+        r"egg|eieren)\b",re.I)
+    starches=(
+        re.compile(r"\b(rice|rijst|nasi|alesi)\b",re.I),
+        re.compile(r"\b(potato\w*|aardappel\w*)\b",re.I),
+        re.compile(r"\b(pasta|spaghetti|noodles|bami)\b",re.I),
     )
     for x in candidates:
         name=normalized(x["title"])
-        if x["cuisine"] in ("Overig / wereldwijd","Overig/onbekend","Wereldkeukens",None,""):
-            for cuisine,pattern in cuisine_hint:
-                if re.search(pattern,name):
-                    x["cuisine"]=cuisine
-                    break
-        if x["cuisine"] in ("Overig / wereldwijd","Overig/onbekend","Wereldkeukens",None,""):
-            x["cuisine"]="Internationaal"
-        x["health_review"]="Niet beoordeeld: volledige ingrediënten en porties ontbreken"
-        x["health_priority"]="lage prioriteit" if heavy.search(name) else (
-             "mogelijk interessant" if positive.search(name) else "onbekend")
-        x["_rank"]=(0 if x["health_priority"]=="mogelijk interessant" else
-                    1 if x["health_priority"]=="onbekend" else 3)
+        x["health_review"]="Niet geverifieerd: volledige ingrediënten, hoeveelheden en voedingswaarden ontbreken"
+        n_starches=sum(bool(p.search(name)) for p in starches)
+        x["health_priority"]=(
+            "lage prioriteit" if heavy.search(name)
+            else "kansrijk voor controle" if vegetable.search(name)
+                 and protein.search(name) and n_starches<2
+            else "nader beoordelen"
+        )
+        x["_rank"]={
+            "kansrijk voor controle":0,
+            "nader beoordelen":1,
+            "lage prioriteit":3,
+        }[x["health_priority"]]
     candidates.sort(key=lambda x:(x["_rank"],-x["matched_title_terms"],
        0 if x["source"].startswith(("AH ","Jumbo ","Faja Lobi","SurinamCooking",
                                     "Sandhia","Mijn HelloFresh")) else 1,
