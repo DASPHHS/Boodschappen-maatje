@@ -43,6 +43,14 @@ WORLD_SOURCES=[
  ("Jumbo · Wereldkeukens","Wereldkeukens","https://www.jumbo.com/recepten"),
  ("LeukeRecepten · Aziatisch","Aziatisch","https://www.leukerecepten.nl/aziatisch/"),
  ("24Kitchen · Wereldkeukens","Wereldkeukens","https://www.24kitchen.nl/recepten"),
+ ("Allerhande · Magazine-archief","Kookmagazines","https://www.ah.nl/allerhande/magazines"),
+ ("Jumbo JUMMM · Magazine en weekmenu's","Kookmagazines","https://www.jumbo.com/recepten"),
+ ("Lidl · Recepten en seizoensmagazines","Kookmagazines","https://www.lidl.nl/"),
+ ("PLUS · Recepten","Wereldkeukens","https://www.plus.nl/recepten"),
+ ("Dirk · Recepten","Wereldkeukens","https://www.dirk.nl/meer/recepten"),
+ ("BBC Good Food · Caribisch","Caribisch","https://www.bbcgoodfood.com/recipes/collection/caribbean-recipes"),
+ ("BBC Good Food · Marokkaans","Marokkaans","https://www.bbcgoodfood.com/recipes/collection/moroccan-recipes"),
+ ("24Kitchen · Familierecepten","Wereldkeukens","https://www.24kitchen.nl/thema/zoals-alleen-oma-dat-kan-recepten"),
 ]
 # Bron kan opnieuw toegankelijk worden; een tijdelijke 403/timeout geeft geen
 # recht om willekeurig een URL als verifieerbaar recept te behandelen.
@@ -57,10 +65,13 @@ LINK_RULES={
  "deliciousmagazine.nl":r"^/recepten/[^?#]+",
  "www.24kitchen.nl":r"^/recepten/[^?#]+",
  "www.leukerecepten.nl":r"^/recepten/[^?#]+",
+ "www.plus.nl":r"^/recepten/[^?#]+",
+ "www.dirk.nl":r"^/meer/recepten/[^?#]+",
+ "www.bbcgoodfood.com":r"^/recipes/(?!collection/)[^?#]+",
 }
 BANNED_TITLE=re.compile(r"^(recepten|naar het recept|bekijk recept|lees meer|read more|bekijk alle|"
                         r"meer informatie|gerelateerde recepten|maak dit recept|toon meer|"
-                        r"weekmenu|voorbereiding|bekijk het volledige recept)$",re.I)
+                        r"weekmenu|voorbereiding|bekijk het volledige recept|bekijk volledige recept)$",re.I)
 
 @lru_cache(maxsize=45)
 def robots_allowed(url):
