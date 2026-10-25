@@ -34,6 +34,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .source-match-item strong{font-size:14px}.source-match-item a{display:inline-block;margin-top:5px;font-size:12px;font-weight:750}
 .source-match-item .sub{margin-top:5px}.source-match-item .offer-tags{color:#28593e;font-size:12px;margin-top:5px}
 @media(max-width:580px){.source-match-grid{grid-template-columns:1fr}.source-matches-panel{padding:12px}}
+
+.cuisine-shortcuts{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;padding:5px 0 16px;margin-top:-5px}
+.cuisine-shortcuts button{border:1px solid #c9ded0;border-radius:20px;background:white;color:#275e3f;padding:8px 11px;font:inherit;font-size:12px;white-space:nowrap;cursor:pointer}
+.cuisine-shortcuts button[aria-pressed=true]{background:#173d2f;color:#fff}
+.source-match-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0;font-size:13px}
+.source-match-actions select{border:1px solid #c7ddcc;background:white;border-radius:9px;padding:10px;font:inherit;max-width:100%}
+.source-match-item .original-title{font-size:12px;color:#668171;margin-top:5px}
+.source-match-item .score{display:block;margin:8px 0 3px;font-size:12px;color:#3c6750}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
@@ -41,7 +49,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Optionele keukenfilter"><option value="all">Alle keukens (optioneel)</option><option value="Aziatisch">Aziatisch</option><option value="Latijns-Amerikaans">Latijns-Amerikaans</option><option value="Mediterraan">Mediterraan</option><option value="Overig">Overig</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="cuisine-shortcuts" class="cuisine-shortcuts" aria-label="Snel filteren op wereldkeuken"></div>
 <section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
  <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
  <div class="deal-controls">
@@ -98,8 +107,20 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
   <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Aanvullende inspiratie uit verschillende wereldkeukens. Voorrang voor groenten en eiwitbronnen; zware gerechten krijgen een lagere prioriteit. Een titelmatch is geen gecontroleerde maaltijd: ingrediënten, voedingswaarde en totaalprijs moeten nog worden geverifieerd.</p></div></div>
-  <div class="source-match-grid" id="source-matches"></div>
-  <p><a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a></p>
+  <div class="source-match-actions">
+  <label for="source-priority">Inspiratiekwaliteit</label>
+  <select id="source-priority" aria-label="Welke wereldgerechten tonen">
+    <option value="promising">Kansrijke ideeën eerst (volgens titel)</option>
+    <option value="strict">Alleen kansrijk op titel</option>
+    <option value="all">Ook zwaardere en andere ideeën tonen</option>
+  </select>
+  <span class="sub" id="source-count" aria-live="polite"></span>
+</div>
+<div class="source-match-grid" id="source-matches"></div>
+<div class="source-match-actions">
+ <button id="source-loadmore" class="btn outline small" type="button" hidden>Meer inspiratie tonen</button>
+ <a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a>
+</div>
 </section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
@@ -108,7 +129,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const safeURL=x=>{try{const u=new URL(x);return /^https?:$/.test(u.protocol)?u.href:"#"}catch{return "#"}};
- let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,selected:JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]")};
+ let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]")};
  const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
  const storeData=()=>state.data?.recipes?.[state.store]||[];
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
@@ -364,6 +385,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("title").textContent=state.mode==="recipes"?"Recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
   $("switch").textContent=state.mode==="recipes"?"Bekijk alle deals":"Terug naar recepten";
   $("recipe-filters").hidden=state.mode==="deals";
+  $("cuisine-shortcuts").hidden=state.mode==="deals";
   $("deal-filters").hidden=state.mode!=="deals";
   document.querySelector(".layout").classList.toggle("deal-mode",state.mode==="deals");
   $("cart-panel").hidden=state.mode==="deals";
@@ -384,9 +406,18 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("origin").addEventListener("change",resetAndRender);
  $("mealtype").addEventListener("change",resetAndRender);
  $("format").addEventListener("change",resetAndRender);
- $("cuisine").addEventListener("change",resetAndRender);
+ $("cuisine").addEventListener("change",()=>{state.sourceVisible=8;resetAndRender()});
+ $("source-priority").addEventListener("change",()=>{state.sourceVisible=8;renderSourceMatches()});
+ $("source-loadmore").addEventListener("click",()=>{state.sourceVisible+=8;renderSourceMatches()});
+ $("cuisine-shortcuts").addEventListener("click",e=>{
+   const b=e.target.closest("[data-cuisine]");if(!b)return;
+   $("cuisine").value=b.dataset.cuisine;state.sourceVisible=8;resetAndRender();
+ });
  $("health").addEventListener("change",resetAndRender);
- document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;state.dealVisible=50;resetAndRender()}));
+ document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{
+   state.store=b.dataset.store;state.dealVisible=50;state.sourceVisible=8;
+   updateCuisineOptions();resetAndRender();
+ }));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("sort").addEventListener("change",resetAndRender);
  for(const id of ["deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
@@ -419,6 +450,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    $("coverage").textContent=Object.values(state.data.counts.ordinary).reduce((a,b)=>a+b,0).toLocaleString("nl-NL")+" gewone prijzen";
    if(state.data.errors?.length)$("alerts").innerHTML=`<div class="notice warn">Niet alle actiebronnen zijn beschikbaar: ${state.data.errors.map(esc).join("; ")}</div>`;
    if(Date.now()-t.getTime()>48*3600*1000)$("alerts").innerHTML+="<div class='notice warn'>De gegevens zijn meer dan 48 uur oud. Controleer de prijzen voor je boodschappen doet.</div>";
+   updateCuisineOptions();
    state.selected=active();
    if(state.selected.length){
      const chosen=state.selected[0].store;
