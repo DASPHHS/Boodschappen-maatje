@@ -11,6 +11,11 @@ def calculate(basket, quotes, stores, budget):
     """basket: [{id,quantity}]; quotes: [{id,store,price_eur,verified,available}].
     Prices are totals for the exact required basket quantity, including promotions.
     """
+    if not basket:
+        return {"status":"basket_not_configured","recommended":None,
+                "stores":[{"store":store,"complete":False,"missing":["Geen boodschappenlijst opgegeven"],
+                           "total_eur":None,"within_budget":None} for store in stores],
+                "notice":"Lege boodschappenlijst is geen gratis volledige mand."}
     prices = defaultdict(dict)
     for q in quotes:
         if not q.get("verified") or not q.get("available"):
