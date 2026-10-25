@@ -68,6 +68,7 @@ helpers.renderSourceMatches();
 assert.ok(elements["source-matches"].innerHTML.includes("Marokkaanse tajine"));
 elements["source-priority"].value="strict";
 helpers.renderSourceMatches();
-assert.ok(elements["source-matches"].innerHTML.includes("Geen kandidaten voor deze keuze"));
+assert.ok(elements["source-count"].textContent.includes("Geen kandidaten voor deze keuze"));
+assert.ok(elements["source-matches"].innerHTML.includes("In deze supermarkt zijn nog geen passende"));
 assert.equal(elements["source-matches-panel"].hidden,false);
 console.log("Keukens, vertaalde titels, gezondheidsvoorselectie en bronfilters OK");
