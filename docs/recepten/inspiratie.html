@@ -146,7 +146,7 @@ function inferCuisine(x){
 function render(){
  const q=lower($("q").value.trim()),cuisine=$("cuisine").value,source=$("source").value,cat=$("cat").value,kind=$("kind").value,store=$("actionstore").value;
  filtered=items.filter(x=>{
-  if(q&&!lower(x.title+" "+x.source+" "+(x.cuisine||"")).includes(q))return false;
+  if(q&&!lower(x.title+" "+(x.title_nl||"")+" "+x.source+" "+(x.cuisine||"")).includes(q))return false;
   if(cuisine!=="all"&&inferCuisine(x)!==cuisine)return false;
   if(source!=="all"&&x.source!==source)return false;
   if(cat!=="all"&&x.category!==cat)return false;
@@ -172,7 +172,7 @@ function render(){
  $("cards").innerHTML=filtered.slice(0,limit).map(x=>{
    const link=safeUrl(x.url),collection=x.kind==="collection",found=store!=="all"&&!collection?offerTitleMatches(x.title,store):[];
    return '<article class="card"><span class="pill '+(collection?"collection":"")+'">'+esc(inferCuisine(x))+(collection?" · Broncollectie":" · Receptidee")+'</span>'+
-      '<h3>'+esc(x.title)+'</h3><div class="source">'+esc(x.source)+'</div>'+
+      '<h3>'+esc(x.title_nl||x.title)+'</h3>'+(x.title_nl&&x.title_nl!==x.title?'<div class="small">Originele titel: '+esc(x.title)+'</div>':'<div class="small">Titel zoals bij de bron</div>')+'<div class="source">'+esc(x.source)+'</div>'+
       (!collection?'<div class="small">'+esc(x.category||"Soort nog niet gecontroleerd")+(x.minutes?" · "+Number(x.minutes)+" minuten":"")+'</div>':"")+
       (found.length?'<div class="action"><strong>Mogelijke actiematch:</strong> '+esc(found.join(", "))+'<br>Alleen op receptnaam; volledige ingrediënten en prijs nog controleren.</div>':"")+
       (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(collection?"Open receptenbron ↗":"Bekijk oorspronkelijk recept ↗")+'</a>':
@@ -209,6 +209,8 @@ Promise.all([
  setupFilters();
  const requested=new URLSearchParams(window.location.search).get("store");
  if(["ah","jumbo","lidl"].includes(requested))$("actionstore").value=requested;
+ const chosen=new URLSearchParams(window.location.search).get("cuisine");
+ if(chosen&&[...$("cuisine").options].some(o=>o.value===chosen))$("cuisine").value=chosen;
  render();
  if(!price)$("match-status").textContent="Actieprijsdata niet beschikbaar; bronzoekfunctie werkt wel.";
 }).catch(err=>{
