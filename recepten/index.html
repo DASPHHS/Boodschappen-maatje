@@ -331,36 +331,79 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     +(hasDrained?"Let op: bij conserven is het uitlekgewicht niet bevestigd. ":"")
     +"Alleen geprijsde ingrediënten, zonder genoemde smaakmakers, bezorgkosten of coupons.";
  }
+ function updateCuisineOptions(){
+   const current=$("cuisine").value;
+   const priced=state.data?.recipes?.[state.store]||[];
+   const matches=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
+   const counts={};
+   for(const r of priced){
+     const c=r.cuisine||"Internationaal";
+     counts[c]??={priced:0,inspiration:0};counts[c].priced++;
+   }
+   for(const r of matches){
+     const c=r.cuisine||"Internationaal";
+     counts[c]??={priced:0,inspiration:0};counts[c].inspiration++;
+   }
+   const order=["Surinaams","Indonesisch","Indiaas","Thais","Vietnamees","Koreaans",
+     "Japans","Chinees","Turks","Marokkaans","Libanees","Grieks","Italiaans",
+     "Mexicaans","Spaans","Nederlands","Frans","Caribisch","Ethiopisch",
+     "Peruaans","Braziliaans","Costa Ricaans","West-Afrikaans","Midden-Oosters",
+     "Mediterraan","Amerikaans","Internationaal"];
+   const entries=Object.entries(counts).sort((a,b)=>{
+     const ai=order.indexOf(a[0]),bi=order.indexOf(b[0]);
+     if(ai>=0&&bi>=0)return ai-bi;
+     if(ai>=0)return -1;if(bi>=0)return 1;
+     return a[0].localeCompare(b[0],"nl");
+   });
+   $("cuisine").innerHTML='<option value="all">Alle wereldkeukens</option>'+
+     entries.map(([name,c])=>'<option value="'+esc(name)+'">'+esc(name)+
+       ' ('+c.priced+' geprijsd · '+c.inspiration+' inspiratie)</option>').join("");
+   $("cuisine").value=Object.hasOwn(counts,current)?current:"all";
+   const featured=["all",...order.filter(c=>counts[c]&&c!=="Internationaal").slice(0,12)];
+   $("cuisine-shortcuts").innerHTML=featured.map(c=>
+     '<button type="button" data-cuisine="'+esc(c)+'" aria-pressed="'+
+     (c===$("cuisine").value)+'">'+(c==="all"?"Alle keukens":esc(c))+
+     '</button>').join("");
+ }
  function renderSourceMatches(){
    const panel=$("source-matches-panel");
    const entries=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
-   panel.hidden=state.mode!=="recipes"||!entries.length;
+   const cuisine=$("cuisine").value;
+   const query=$("search").value.trim().toLocaleLowerCase("nl");
+   const mode=$("source-priority").value;
+   const filtered=entries.filter(x=>
+     (cuisine==="all"||(x.cuisine||"Internationaal")===cuisine)&&
+     (!query||(x.title+" "+(x.title_nl||"")+" "+(x.match_terms||[]).join(" ")).toLocaleLowerCase("nl").includes(query))&&
+     (mode!=="strict"||x.health_priority==="kansrijk voor controle")&&
+     (mode==="all"||x.health_priority!=="lage prioriteit"));
+   const rank=x=>x.health_priority==="kansrijk voor controle"?0:
+     x.health_priority==="nader beoordelen"?1:3;
+   filtered.sort((a,b)=>rank(a)-rank(b)||b.matched_title_terms-a.matched_title_terms);
+   panel.hidden=state.mode!=="recipes"||!filtered.length;
+   $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store)+
+      (cuisine==="all"?"":"&cuisine="+encodeURIComponent(cuisine));
    if(panel.hidden)return;
-   $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store);
-   const preferred=entries.filter(x=>x.health_priority==="mogelijk interessant");
-   const pool=preferred.length>=4?preferred:entries.filter(x=>x.health_priority!=="lage prioriteit");
-   const selected=[],cuisines=new Set(),sources=new Set();
-   for(const r of pool){
-     if(selected.length>=8)break;
-     if(!cuisines.has(r.cuisine)&&!sources.has(r.source)){
-       selected.push(r);cuisines.add(r.cuisine);sources.add(r.source);
-     }
-   }
-   for(const r of pool){
-     if(selected.length>=8)break;
-     if(!selected.includes(r)&&(!sources.has(r.source)||!cuisines.has(r.cuisine))){
-       selected.push(r);cuisines.add(r.cuisine);sources.add(r.source);
-     }
-   }
-   for(const r of pool){if(selected.length>=8)break;if(!selected.includes(r))selected.push(r)}
-   $("source-matches").innerHTML=selected.map(r=>
-     `<div class="source-match-item"><strong>${esc(r.title)}</strong>
+   const selected=filtered.slice(0,state.sourceVisible);
+   $("source-count").textContent=selected.length+" van "+filtered.length+
+     " voorlopige suggesties"+(cuisine==="all"?"":" · "+cuisine);
+   $("source-loadmore").hidden=state.sourceVisible>=filtered.length;
+   $("source-loadmore").textContent="Toon "+Math.min(8,filtered.length-state.sourceVisible)+" extra ideeën";
+   $("source-matches").innerHTML=selected.map(r=>{
+     const dutch=r.title_nl||r.title;
+     const different=dutch!==r.title;
+     return `<div class="source-match-item"><strong>${esc(dutch)}</strong>
+       ${different?`<div class="original-title">Originele titel: ${esc(r.title)}</div>`:
+        '<div class="original-title">Titel zoals vermeld bij de bron</div>'}
        <div class="sub">${esc(r.cuisine||"Internationaal")} · ${esc(r.source)}</div>
-       <div class="offer-tags">Mogelijke actieproducten: ${esc((r.match_terms||[]).join(", "))}</div>
-       <div class="sub">Gezondheid: ${esc(r.health_priority||"niet beoordeeld")} · Recept en prijs nog niet gecontroleerd.</div>
-       ${r.url&&safeURL(r.url)?`<a href="${safeURL(r.url)}" target="_blank" rel="noopener noreferrer">Bekijk recept bij de bron ↗</a>`:
-       '<div class="sub">Receptkaart in je eigen PDF, niet publiek gedeeld.</div>'}
-     </div>`).join("");
+       <div class="offer-tags">Mogelijke match op recepttitel: ${esc((r.match_terms||[]).join(", "))}</div>
+       <span class="score">${r.health_priority==="kansrijk voor controle"?
+         "Volgens de titel groente/peulvruchten én een eiwitbron; nog controleren":
+         r.health_priority==="lage prioriteit"?"Waarschijnlijk rijker of zwaarder gerecht":
+         "Voedingskwaliteit nog niet te bepalen"}</span>
+       ${r.url&&safeURL(r.url)?`<a href="${safeURL(r.url)}" target="_blank" rel="noopener noreferrer">Bekijk origineel recept ↗</a>`:
+        '<div class="sub">De originele receptkaart staat in je eigen PDF.</div>'}
+     </div>`;
+   }).join("");
  }
  function renderAudit(){
    const report=state.data?.audit?.[state.store];
