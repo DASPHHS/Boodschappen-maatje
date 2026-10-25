@@ -4,7 +4,7 @@ Haalt uitsluitend titels en originele links op uit de Wikibooks Cookbook
 via de officiële Wikimedia API. Kopieert geen HelloFresh-instructies/foto's.
 """
 import json,time,sys,re
-from datetime import datetime,timezone
+from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
@@ -128,6 +128,17 @@ def main():
     except (requests.RequestException,ValueError) as exc:
         print("Wereldkeukens tijdelijk niet beschikbaar:",exc,file=sys.stderr)
         source_status=[{"source":"Wereldkeukens","status":"fout","error":type(exc).__name__}]
+    # Externe bronlinks worden per dag in drie tranches vernieuwd. Bewaar
+    # maximaal 30 dagen recent ontdekte originele recepten uit andere tranches.
+    if OUT.exists():
+        try:
+            existing=json.loads(OUT.read_text(encoding="utf-8")).get("items",[])
+            cutoff=(datetime.now(timezone.utc)-timedelta(days=30)).date().isoformat()
+            source_names={name for name,_,_ in WORLD_SOURCES}
+            items.extend(x for x in existing if x.get("source") in source_names
+                and x.get("kind")!="collection" and x.get("discovered_at","")>=cutoff)
+        except (OSError,ValueError,TypeError):
+            pass
     items.extend(extra_mealprep_links())
     seenkeys=set();unique=[]
     for item in items:
