@@ -9,6 +9,7 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 from wereldkeuken_bronnen import WORLD_SOURCES,collect_world_links
+from recept_keukens import infer_cuisine,dutch_title
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"inspiratie.json"
@@ -140,6 +141,15 @@ def main():
         except (OSError,ValueError,TypeError):
             pass
     items.extend(extra_mealprep_links())
+    # Keukenidentiteit en Nederlandstalige weergave voor álle titels, ook de
+    # vierduizend historische Wikibooks-recepten.
+    for item in items:
+        item["cuisine"]=infer_cuisine(item.get("title"),item.get("cuisine"))
+        dutch,translated=dutch_title(item.get("title",""))
+        if translated:
+            item["title_nl"]=dutch
+        else:
+            item.pop("title_nl",None)
     seenkeys=set();unique=[]
     for item in items:
         key=(item.get("source"),item.get("url") or item.get("local_page") or item.get("title","").casefold())
