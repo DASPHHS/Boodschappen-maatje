@@ -85,16 +85,66 @@ def select_candidates(index_items,promotion_keys,limit=80):
           "verification":"ALLEEN TITELMATCH — broningrediënten niet gecontroleerd",
           "servings_verified":False,"price_verified":False
         })
-    # Vergelijk verschillende keukens, in plaats van 80 vrijwel gelijke titels.
-    candidates.sort(key=lambda x:(-x["matched_title_terms"],
-       0 if x["source"].startswith(("AH ","Jumbo ","Faja Lobi","SurinamCooking")) else 1,
+    # Gezondheid kan niet worden vastgesteld zonder ingrediënten en porties.
+    # Dit is uitsluitend een conservatieve triage voor inspiratie.
+    heavy=re.compile(r"\\b(bacon|spek|alfredo|carbonara|roomsaus|deep.fried|gefrituurd|frituur|\
+bakabana|cake|dessert|milkshake|koek|snoep|ijs|chocolate|chocolade|spareribs|\
+varkenspoot|slagroom|kroket|loempia)\\b",re.I)
+    positive=re.compile(r"\\b(groent\\w*|broccoli|spinazie|kousenband|bonen|linzen|\
+kikkererwten|tofu|tahoe|salade|soep|salad|lentil|beans|vegetables|chickpeas|\
+aubergine|courgette|paprika|curry|roti|saoto|tajine|tagine|stew|chicken|kip|\
+zalm|salmon|vis|fish|tuna|tonijn)\\b",re.I)
+    cuisine_hint=(
+      ("Surinaams",r"surinam|sranang|roti|saoto|moksi|moksie|bakkeljauw|pom(tayer)?|kouseband|bara|masoesa|alesi|alesie"),
+      ("Koreaans",r"bibimbap|bulgogi|kimchi|gochujang|japchae|korean"),
+      ("Japans",r"ramen|miso|sushi|teriyaki|yakitori|japan"),
+      ("Indonesisch",r"rendang|gado.gado|nasi goreng|soto ayam|indones"),
+      ("Indiaas",r"biryani|tandoori|vindaloo|dal|dahl|tikka|indian"),
+      ("Thais",r"pad thai|tom kha|tom yum|massaman|thai"),
+      ("Vietnamees",r"pho|banh mi|vietnam"),
+      ("Marokkaans",r"harira|tajine|tagine|moroccan|marokka"),
+      ("Turks",r"lahmacun|kofte|kofte|turk"),
+      ("Libanees",r"tabbouleh|fattoush|lebanese|libane"),
+      ("Mexicaans",r"enchilada|fajita|burrito|taco|mexican"),
+      ("Italiaans",r"risotto|pesto|lasagne|gnocchi|italian|spaghetti|penne"),
+      ("Grieks",r"moussaka|souvlaki|greek|grieks"),
+      ("Nederlands",r"stamppot|hutspot|boerenkool|holland"),
+    )
+    for x in candidates:
+        name=normalized(x["title"])
+        if x["cuisine"] in ("Overig / wereldwijd","Overig/onbekend","Wereldkeukens",None,""):
+            for cuisine,pattern in cuisine_hint:
+                if re.search(pattern,name):
+                    x["cuisine"]=cuisine
+                    break
+        if x["cuisine"] in ("Overig / wereldwijd","Overig/onbekend","Wereldkeukens",None,""):
+            x["cuisine"]="Internationaal"
+        x["health_review"]="Niet beoordeeld: volledige ingrediënten en porties ontbreken"
+        x["health_priority"]="lage prioriteit" if heavy.search(name) else (
+             "mogelijk interessant" if positive.search(name) else "onbekend")
+        x["_rank"]=(0 if x["health_priority"]=="mogelijk interessant" else
+                    1 if x["health_priority"]=="onbekend" else 3)
+    candidates.sort(key=lambda x:(x["_rank"],-x["matched_title_terms"],
+       0 if x["source"].startswith(("AH ","Jumbo ","Faja Lobi","SurinamCooking",
+                                    "Sandhia","Mijn HelloFresh")) else 1,
        x["title"].casefold()))
-    result=[];per_cuisine={}
-    for item in candidates:
-        cuisine=item["cuisine"]
-        if per_cuisine.get(cuisine,0)>=18:continue
-        result.append(item);per_cuisine[cuisine]=per_cuisine.get(cuisine,0)+1
-        if len(result)>=limit:break
+    # Diversifieer op bron en keuken in een ronde selectie. Anders domineert
+    # Wikibooks het eerste scherm, ook met duizenden andere receptbronnen.
+    result=[];counts={};sources={};remaining=list(candidates)
+    while remaining and len(result)<limit:
+        eligible=[x for x in remaining if counts.get(x["cuisine"],0)<12]
+        if not eligible:break
+        choice=min(eligible,key=lambda x:(
+            x["_rank"],
+            counts.get(x["cuisine"],0)*2,
+            sources.get(x["source"],0)*2,
+            -x["matched_title_terms"],
+            x["title"].casefold()))
+        remaining.remove(choice)
+        choice.pop("_rank",None)
+        result.append(choice)
+        counts[choice["cuisine"]]=counts.get(choice["cuisine"],0)+1
+        sources[choice["source"]]=sources.get(choice["source"],0)+1
     return result
 
 def build_action_title_candidates(offers_by_store,index_path=RECIPE_INDEX,limit=80):
