@@ -1,4 +1,18 @@
-# Koopkracht 1.0: aanbiedingen via PrijsProfeet
+# Boodschappen Maatje — Recepten Radar, aanbiedingen en boodschappen
+
+**Nieuwe projectnaam:** [DASPHHS/Boodschappen-maatje](https://github.com/DASPHHS/Boodschappen-maatje).
+
+**Startpagina:** https://dasphhs.github.io/Boodschappen-maatje/ — opent de uitgebreide groene Recepten Radar met Albert Heijn, Jumbo en Lidl.
+
+**Aanbiedingen en folders:** https://dasphhs.github.io/Boodschappen-maatje/docs/aanbiedingen.html — apart bewaard, niet meer de hoofdpagina.
+
+**Direct naar Recepten Radar:** https://dasphhs.github.io/Boodschappen-maatje/docs/recepten/
+
+De broncode voor de reeds bestaande aanbiedingenmodule behoudt voorlopig historische bestandsnamen zoals `koopkracht.py`; deze namen zijn interne implementatiedetails. De dagelijkse aanbiedingenverwerking schrijft de afzonderlijke aanbiedingenpagina en **overschrijft de startpagina niet meer**.
+
+---
+
+## Technische achtergrond: de oorspronkelijke Koopkracht scanner
 
 **Actieve productiescan:** `src/prijsprofeet_v1.py`. De dagelijkse GitHub Actions-workflow gebruikt nu de openbare PrijsProfeet-API in plaats van de niet-functionerende AlleFolders-afbeeldingenscan.
 
@@ -13,13 +27,13 @@ De oude AlleFolders-parser blijft als experimentele module in de repository maar
 
 ---
 
-# Koopkracht: dagelijkse folders, aanbiedingen en recepten
+## Oorspronkelijke folderscanner
 
 Open-source koopjesradar voor Nederlandse reclamefolders. Gebruikt een automatische GitHub Actions-scan en publiceert een statisch doorzoekbaar dashboard.
 
 ## Starten
 1. Ga naar **Actions** > **Dagelijkse Koopkracht Scan** > **Run workflow**. GitHub Actions moet voor de repository ingeschakeld zijn.
-2. De workflow vindt winkels, folders en aanbiedingen; het dashboard wordt in `docs/index.html` gebouwd.
+2. De workflow vindt winkels, folders en aanbiedingen; het oude dashboard wordt in `docs/aanbiedingen.html` gebouwd. `docs/index.html` blijft de doorverwijzing naar de Recepten Radar.
 3. Om het dashboard openbaar bereikbaar te maken: **Settings > Pages > Deploy from a branch > main /docs**.
 4. Voor e-mail: zet repository Actions-secrets `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_TO`. Zonder deze gegevens wordt geen e-mail verstuurd.
 
