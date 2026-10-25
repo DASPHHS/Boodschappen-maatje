@@ -3,8 +3,17 @@ on:
   schedule:
     - cron: '0 6 * * 5'
   workflow_dispatch:
+  push:
+    paths:
+      - 'recepten/data.json'
+      - 'src/weekly_advice.py'
+      - 'tests/test_weekly_advice.py'
+      - '.github/workflows/weekly-shopping.yml'
 permissions:
   contents: write
+concurrency:
+  group: wekelijkse-boodschappenvergelijking
+  cancel-in-progress: true
 jobs:
   weekly-advice:
     runs-on: ubuntu-latest
@@ -13,7 +22,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Calculate advice from verified prices
+      - name: Controleer automatische kassaprijzen en geen fictieve winkels
+        run: python -m unittest discover -s tests -p "test_weekly_advice.py" -v
+      - name: Vergelijk dezelfde recepten per supermarkt
         run: python src/weekly_advice.py
       - name: Commit weekly report
         run: |
@@ -22,5 +33,6 @@ jobs:
           git add docs/weekly-advice.json
           if ! git diff --cached --quiet; then
             git commit -m "Update weekly shopping advice"
+            git pull --rebase origin main
             git push
           fi
