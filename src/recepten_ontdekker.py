@@ -49,14 +49,14 @@ def ingredient_key(name):
     # hebben: "rice noodles" is GEEN rijst, "egg noodles" geen eieren,
     # "tomato paste" geen tomaten en "onion powder" geen verse ui.
     incompatible=(
-      r"\\b(rice (noodles?|paper|flour|vinegar|wine|syrup|cakes?|crackers?)|"
+      r"\b(rice (noodles?|paper|flour|vinegar|wine|syrup|cakes?|crackers?)|"
       r"egg (noodles?|whites?|powder|rolls?|plant|substitute)|"
       r"tomato (paste|puree|sauce|ketchup|powder|soup)|"
       r"onion (powder|soup|seasoning)|"
       r"cheese (sauce|powder|spread)|"
       r"mushroom (soup|sauce|powder)|"
       r"milk (powder|chocolate)|"
-      r"salmon (roe|oil|paste))\\b"
+      r"salmon (roe|oil|paste))\b"
     )
     if re.search("".join(incompatible),name):return None
     # Noem pas de productgroep als de bronvermelding werkelijk op het
