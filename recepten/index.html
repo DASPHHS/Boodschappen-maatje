@@ -8,16 +8,88 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .btn{border:0;border-radius:10px;padding:9px 13px;background:var(--green);color:white;font-weight:750}.btn.outline{color:var(--green);border:1px solid #cce1d1;background:white}.btn.small{font-size:12px;padding:7px 10px}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.recipe{border:1px solid var(--border);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;background:white}.recipe.selected{border-color:#6daa81;box-shadow:0 0 0 1px #6daa81}.visual{background:linear-gradient(105deg,#e2efe2,#f9f1d9);display:flex;justify-content:space-between;align-items:center;padding:14px 17px;height:75px}.visual>span:first-child{font-size:37px}.pill{border-radius:20px;background:#d0ebd8;color:#19683c;padding:5px 8px;font-size:10px;font-weight:850}.recipe-body{padding:16px;display:flex;flex-direction:column;flex:1}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px}.chip{background:#f3f6f3;padding:3px 7px;border-radius:7px;color:#496459;font-size:11px;font-weight:750}.chip.promo{background:#e2f4e6}.cash{font-size:24px;font-weight:850;letter-spacing:-.8px}.cash small{font-size:11px;font-weight:500;color:var(--grey);letter-spacing:0}.tagline{color:var(--grey);font-size:12px;margin:4px 0 10px}.actions{margin-top:auto}.recipe details{margin-top:12px;padding-top:11px;border-top:1px solid var(--border)}summary{cursor:pointer;font-size:12px;font-weight:800}.line{border-bottom:1px solid #eaf0eb;padding:8px 0;display:flex;justify-content:space-between;gap:8px;font-size:12px}.line:last-child{border-bottom:0}.line strong{white-space:nowrap}.product{color:var(--grey);font-size:11px}.cartpanel h2{font-size:18px}.cartitem{padding:12px 0;border-bottom:1px solid var(--border)}.cartitem small{display:block;color:var(--grey);font-size:11px}.cartitem .row{align-items:flex-start}.price-row{display:flex;justify-content:space-between;align-items:baseline;margin:20px 0 7px}.price-row strong{font-size:24px}.sidebuttons{display:flex;gap:8px;margin-top:16px}.sidebuttons>*{flex:1}.notice{padding:15px;background:#f3f8f3;border:1px solid #e1eee2;border-radius:11px;color:#51715b;font-size:13px;margin:12px 0}.notice.warn{background:#fff7e6;border-color:#f2d9a9;color:#775c30}.fine{font-size:11px;color:var(--grey);line-height:1.6}.deal{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}.deal small,.dealprice small{display:block;color:var(--grey)}.deal a{font-size:12px}.dealprice{text-align:right;white-space:nowrap}footer{padding-bottom:35px;font-size:12px;color:#718077;line-height:1.7}[hidden]{display:none!important}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.cartpanel{position:static}.eyebrow{margin-top:26px}}@media(max-width:550px){.top,.row{flex-wrap:wrap}.filters>*{width:100%;max-width:100%}.cards{grid-template-columns:1fr}.wrap{padding:0 12px}.mainpanel,.cartpanel{padding:15px}h1{letter-spacing:-1.5px}header{padding-bottom:52px}.top a{font-size:11px}}
-</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a><a href="../aanbiedingen.html">Overige aanbiedingen en folders ↗</a></span></div>
+
+.deal-filter-area{margin:14px 0 20px;padding:17px;border-radius:13px;background:#f6f9f6;border:1px solid var(--border)}
+.deal-intro{display:flex;gap:10px;justify-content:space-between;align-items:baseline;flex-wrap:wrap;margin-bottom:13px}
+.deal-intro strong{font-size:16px}.deal-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}
+.deal-controls>*{width:100%;min-width:0;border:1px solid #d6e4d9;background:white;border-radius:9px;padding:10px 12px;color:#254433}
+.deal-controls #deal-search{grid-column:span 2}.deal-shortcuts{display:flex;gap:6px;overflow-x:auto;padding:13px 0 5px;scrollbar-width:thin}
+.deal-shortcut{white-space:nowrap;background:white;color:#315b43;border:1px solid #cce0d1;border-radius:20px;padding:6px 11px;font-size:12px;cursor:pointer}
+.deal-shortcut[aria-pressed=true]{background:var(--dark);border-color:var(--dark);color:white}
+.deal-meta{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--grey);margin-top:5px}
+.deal-note{font-size:12px;color:#567163;line-height:1.6;margin:12px 0 0}
+.layout.deal-mode{grid-template-columns:minmax(0,1fr)}
+#deals{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+#deals .deal{border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;gap:12px;padding:15px;background:white;min-width:0}
+#deals .deal>div:first-child{min-width:0;overflow-wrap:anywhere}#deals .dealprice{text-align:left;white-space:normal;margin-top:auto}
+#deals .dealprice>b{font-size:21px}#deals .dealprice small{margin-top:4px}
+.deal-category{display:inline-block;margin-bottom:8px;background:#eaf4ed;color:#275f3b;padding:4px 8px;border-radius:7px;font-size:11px;font-weight:700}
+.deal-condition{font-size:12px;color:#446d52;font-weight:650;margin-top:6px}
+#deals .deal a{display:inline-block;margin-top:8px}
+@media(max-width:600px){.deal-controls{grid-template-columns:minmax(0,1fr)}.deal-controls #deal-search{grid-column:auto}.deal-filter-area{padding:12px}#deals{grid-template-columns:1fr}}
+</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Optionele keukenfilter"><option value="all">Alle keukens (optioneel)</option><option value="Aziatisch">Aziatisch</option><option value="Latijns-Amerikaans">Latijns-Amerikaans</option><option value="Mediterraan">Mediterraan</option><option value="Overig">Overig</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Optionele keukenfilter"><option value="all">Alle keukens (optioneel)</option><option value="Aziatisch">Aziatisch</option><option value="Latijns-Amerikaans">Latijns-Amerikaans</option><option value="Mediterraan">Mediterraan</option><option value="Overig">Overig</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
+ <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
+ <div class="deal-controls">
+  <input id="deal-search" type="search" placeholder="Zoek product, merk of ingrediënt…" aria-label="Zoek in aanbiedingen">
+  <select id="deal-category" aria-label="Aanbiedingscategorie">
+   <option value="all">Alle productcategorieën</option>
+   <option value="produce">Groente &amp; fruit</option>
+   <option value="protein">Vlees, vis &amp; vega</option>
+   <option value="dairy">Zuivel &amp; eieren</option>
+   <option value="grains">Brood, rijst &amp; pasta</option>
+   <option value="drinks">Dranken</option>
+   <option value="pantry">Voorraad &amp; snacks</option>
+   <option value="care">Verzorging &amp; huishouden</option>
+   <option value="other">Overige producten</option>
+  </select>
+  <select id="deal-status" aria-label="Controleerbaar prijsvoordeel">
+   <option value="all">Alle acties, ook onbevestigde kortingen</option>
+   <option value="verified">Alleen berekenbare kortingen</option>
+   <option value="unverified">Voordeel niet bevestigd</option>
+  </select>
+  <select id="deal-promotion" aria-label="Soort aanbieding">
+   <option value="all">Alle actietypes</option>
+   <option value="bundle">Meerverpakkingen &amp; bundels</option>
+   <option value="loyalty">Klantenkaart of app</option>
+   <option value="other">Overige acties</option>
+  </select>
+  <select id="deal-minimum" aria-label="Minimale aantoonbare korting">
+   <option value="0">Alle kortingspercentages</option>
+   <option value="10">Minstens 10% berekend</option>
+   <option value="25">Minstens 25% berekend</option>
+   <option value="40">Minstens 40% berekend</option>
+   <option value="50">Minstens 50% berekend</option>
+  </select>
+  <select id="deal-sort" aria-label="Aanbiedingen sorteren">
+   <option value="discount">Hoogste berekenbare korting</option>
+   <option value="price">Laagste actieprijs</option>
+   <option value="expiry">Loopt het eerst af</option>
+   <option value="name">Productnaam A–Z</option>
+  </select>
+ </div>
+ <div class="deal-shortcuts" aria-label="Snel filteren op categorie">
+  <button class="deal-shortcut" type="button" data-deal-category="all">Alles</button>
+  <button class="deal-shortcut" type="button" data-deal-category="produce">Groente &amp; fruit</button>
+  <button class="deal-shortcut" type="button" data-deal-category="protein">Vlees, vis &amp; vega</button>
+  <button class="deal-shortcut" type="button" data-deal-category="dairy">Zuivel</button>
+  <button class="deal-shortcut" type="button" data-deal-category="grains">Brood &amp; granen</button>
+  <button class="deal-shortcut" type="button" data-deal-category="drinks">Dranken</button>
+  <button class="deal-shortcut" type="button" data-deal-category="pantry">Voorraad &amp; snacks</button>
+  <button class="deal-shortcut" type="button" data-deal-category="care">Verzorging &amp; huishouden</button>
+ </div>
+ <div class="deal-meta"><span id="deal-confidence"></span><button class="btn outline small" id="deal-reset" type="button">Wis filters</button></div>
+ <p class="deal-note">Kortingspercentages worden uitsluitend getoond wanneer ze uit de beschikbare actiegegevens berekend kunnen worden. Controleer prijzen, beschikbaarheid en voorwaarden bij de winkel. <a href="../aanbiedingen.html">Overige supermarkten en folders (indicatieve brongegevens)</a>.</p>
+</section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
-</section><aside class="panel cartpanel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
+</section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
 <footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
@@ -123,13 +195,68 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief genoemde smaakmakers. ${r.nutrition?.product_nutrition_unverified?.length?"Let op: voor gearomatiseerde zuivel zijn suiker, eiwitten en kcal nog niet gecontroleerd op het productetiket. ":""}${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
     </div></article>`).join(""):"<div class='notice warn'>Er zijn geen recepten die aan alle filters voldoen. Kies bijvoorbeeld 'Alle recepten' of controleer het eetmoment. Ontbrekende actie-matches worden afzonderlijk gecontroleerd.</div>");
  }
+
+ // Categorieën zijn een indicatie op basis van de productnaam, geen geverifieerde productspecificaties.
+ const DEAL_CATEGORIES={
+  produce:"Groente & fruit",protein:"Vlees, vis & vega",dairy:"Zuivel & eieren",
+  grains:"Brood, rijst & pasta",drinks:"Dranken",pantry:"Voorraad & snacks",
+  care:"Verzorging & huishouden",other:"Overige producten"
+ };
+ const words=name=>" "+String(name||"").normalize("NFKD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ")+" ";
+ function dealCategory(d){
+  const n=words(d.name),any=items=>items.some(w=>n.includes(" "+w+" "));
+  if(any(["wasmiddel","waspoeder","wasverzachter","vaatwastabletten","vaatwasmiddel","toiletpapier","keukenpapier","schoonmaakmiddel","allesreiniger","afwasmiddel","shampoo","conditioner","douchegel","deodorant","tandpasta","tandenborstel","scheermes","scheergel","huidcreme","dagcreme","zonnebrand","reinigingsdoekjes","handzeep","zeep","luchtverfrisser","luier","luiers"]))return "care";
+  if(any(["koffie","koffiecups","thee","cola","frisdrank","limonade","vruchtensap","sinaasappelsap","appelsap","water","mineraalwater","bier","wijn","energiedrank","energy","smoothie","drank","ice tea","ijsthee"]))return "drinks";
+  if(any(["chips","koek","koeken","koekjes","chocolade","snoep","noten","amandelen","cashewnoten","walnoten","pinda","pindas","olijfolie","zonnebloemolie","saus","pastasaus","tomatensaus","ketchup","mayonaise","bonen","kidneybonen","kikkererwten","linzen","blik","conserven","pesto","hagelslag","jam","honing","crackers","beschuit"]))return "pantry";
+  if(any(["kwark","yoghurt","yogurt","skyr","melk","kaas","roomkaas","eieren","eier","boter","slagroom","kookroom","karnemelk","hutenkase","mozzarella","parmezaan","feta"]))return "dairy";
+  if(any(["kip","kipfilet","kipdij","kipburgers","kipgehakt","gehakt","rund","rundergehakt","rundvlees","varkensvlees","varkenshaas","rookworst","worst","biefstuk","shoarma","hamburger","hamburgers","schnitzel","spek","ham","zalm","zalmfilet","tonijn","garnalen","kabeljauw","vis","visfilet","tofu","tempeh","vegetarisch","vegan","vlees","slavink"]))return "protein";
+  if(any(["broccoli","bloemkool","boerenkool","spruiten","spruitjes","sla","rucola","veldsla","komkommer","tomaten","tomaat","paprika","courgette","spinazie","wokgroenten","wokgroente","roerbakgroenten","champignons","kastanjechampignons","aardappelen","aardappel","krieltjes","wortelen","wortel","uien","ui","avocado","appels","appel","peren","peer","bananen","banaan","aardbeien","aardbei","blauwe","bosbessen","druiven","mango","meloen","fruit","perzik","sinaasappels","mandarijnen","kiwi","passievruchten","passievrucht","citroen","limoen","andijvie","asperges","prei","aubergine","groentemix","groenten","ijsbergsla"]))return "produce";
+  if(any(["pasta","spaghetti","penne","fusilli","macaroni","rijst","risottorijst","couscous","brood","volkorenbrood","pistolets","wraps","tortilla","naan","havermout","muesli","cruesli","granen","bloem","meel","bulgur","quinoa","pitabrood","stokbrood"]))return "grains";
+  return "other";
+ }
+ function dealPromotion(d){
+  if(d.is_loyalty)return "loyalty";
+  if(Number(d.multi_buy_quantity)>=2&&Number(d.multi_buy_price)>0)return "bundle";
+  return "other";
+ }
  function renderDeals(){
-  const q=$("search").value.trim().toLocaleLowerCase("nl");
-  const ds=(state.data?.deals?.[state.store]||[]).filter(x=>x.name.toLocaleLowerCase("nl").includes(q));
+  const original=state.data?.deals?.[state.store]||[];
+  const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
+  const category=$("deal-category").value,status=$("deal-status").value;
+  const promotion=$("deal-promotion").value,minimum=Number($("deal-minimum").value)||0;
+  const sort=$("deal-sort").value;
+  const verified=d=>Boolean(d.discount_verified)&&Number.isFinite(Number(d.verified_discount_pct))&&Number(d.verified_discount_pct)>0;
+  let ds=original.filter(d=>
+   (!query||String(d.name||"").toLocaleLowerCase("nl").includes(query))&&
+   (category==="all"||dealCategory(d)===category)&&
+   (status==="all"||(status==="verified"?verified(d):!verified(d)))&&
+   (promotion==="all"||dealPromotion(d)===promotion)&&
+   (!minimum||(verified(d)&&Number(d.verified_discount_pct)>=minimum))
+  );
+  const value=d=>verified(d)?Number(d.verified_discount_pct):0;
+  if(sort==="discount")ds.sort((a,b)=>Number(verified(b))-Number(verified(a))||value(b)-value(a)||a.name.localeCompare(b.name,"nl"));
+  if(sort==="price")ds.sort((a,b)=>(Number(a.price)||Infinity)-(Number(b.price)||Infinity));
+  if(sort==="expiry")ds.sort((a,b)=>(a.valid_until||"9999-12-31").localeCompare(b.valid_until||"9999-12-31")||value(b)-value(a));
+  if(sort==="name")ds.sort((a,b)=>a.name.localeCompare(b.name,"nl"));
+  const count=original.filter(verified).length,filteredVerified=ds.filter(verified).length;
+  $("deal-count").textContent=ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen";
+  $("deal-confidence").textContent=count.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" kortingen berekenbaar; "+filteredVerified.toLocaleString("nl-NL")+" binnen huidige selectie.";
+  $("store-status").textContent=ds.length+" gefilterde acties · "+count+" met berekenbaar voordeel van "+original.length+" vermeldingen";
+  document.querySelectorAll("[data-deal-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.dealCategory===category)));
   $("moredeals").hidden=ds.length<=state.dealVisible;
   $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
-  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>`<div class="deal"><div><strong>${esc(d.name)}</strong><div class="sub">${esc(d.size_label)} · ${d.valid_until?"t/m "+esc(d.valid_until):"Geen einddatum"}${d.multi_buy_quantity&&d.multi_buy_price?` · ${d.multi_buy_quantity} voor ${euro(d.multi_buy_price)}`:""}</div><a href="${safeURL(d.url)}" target="_blank" rel="noopener">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b>${d.discount_verified?`<small>−${Math.round(d.verified_discount_pct)}% berekend</small>`:`<small>Voordeel niet bevestigd</small>`}</div></div>`).join(""):"<div class='notice'>Geen acties gevonden in de ingelezen gegevens.</div>";
+  const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>{
+   const valid=verified(d);
+   const bundle=dealPromotion(d)==="bundle";
+   const offerLabel=bundle?Math.round(Number(d.multi_buy_quantity))+" voor "+euro(d.multi_buy_price):
+     d.is_loyalty?"Let op: app- of klantenkaartvoorwaarden":String(d.promotion_type||"").trim();
+   const expiring=d.valid_until&&d.valid_until>=today&&
+     (new Date(d.valid_until+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/(24*3600*1000)<=3;
+   return `<article class="deal"><div><span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span><div><strong>${esc(d.name)}</strong></div><div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
+  }).join(""):"<div class='notice'>Geen aanbiedingen gevonden met deze filters. Probeer een andere categorie of wis de filters.</div>";
  }
+
  function calcCart(){
   const rs=active(), groups=new Map(), missing=[];
   for(const selected of rs){
@@ -174,7 +301,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function renderAudit(){
    const report=state.data?.audit?.[state.store];
    const panel=$("audit-panel");
-   panel.hidden=!report;
+   panel.hidden=state.mode==="deals"||!report;
    if(!report)return;
    const quality=state.data?.quality_audit?.[state.store];
    const qualityHtml=quality?'<h3 style="margin-top:16px">Kwaliteitscontrole per eetmoment</h3>'+
@@ -193,7 +320,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("store-status").textContent=`${state.data.counts.ordinary[state.store]||0} gewone productprijzen · ${state.data.counts.promotions[state.store]||0} aanbiedingen`;
   $("title").textContent=state.mode==="recipes"?"Recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
   $("switch").textContent=state.mode==="recipes"?"Bekijk alle deals":"Terug naar recepten";
-  $("sort").hidden=state.mode==="deals";
+  $("recipe-filters").hidden=state.mode==="deals";
+  $("deal-filters").hidden=state.mode!=="deals";
+  document.querySelector(".layout").classList.toggle("deal-mode",state.mode==="deals");
+  $("cart-panel").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
   $("deals").hidden=state.mode!=="deals";
   $("moredeals").hidden=state.mode!=="deals";
@@ -215,6 +345,17 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  document.querySelectorAll("[data-store]").forEach(b=>b.addEventListener("click",()=>{state.store=b.dataset.store;state.dealVisible=50;resetAndRender()}));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("sort").addEventListener("change",resetAndRender);
+ for(const id of ["deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
+  $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals()});
+ }
+ document.querySelectorAll("[data-deal-category]").forEach(b=>b.addEventListener("click",()=>{
+  $("deal-category").value=b.dataset.dealCategory;state.dealVisible=50;renderDeals();
+ }));
+ $("deal-reset").addEventListener("click",()=>{
+  $("deal-search").value="";$("deal-category").value="all";$("deal-status").value="all";
+  $("deal-promotion").value="all";$("deal-minimum").value="0";$("deal-sort").value="discount";
+  state.dealVisible=50;renderDeals();
+ });
  $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")});
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
  $("clear").addEventListener("click",()=>{state.selected=[];save();render()});
