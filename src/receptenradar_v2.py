@@ -914,6 +914,35 @@ def main():
     tmp=OUT.with_suffix(".tmp")
     tmp.write_text(json.dumps(result,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
     tmp.replace(OUT)
+    # Kleine controlesamenvatting voorkomt dat succesvolle workflows ten
+    # onrechte als volledige dekking van alle prijs- en receptbronnen gelden.
+    status={
+      "updated_at":result["updated_at"],
+      "source_last_modified":last_modified,
+      "shelf_products":counts,
+      "promotion_mentions":result["counts"]["promotions"],
+      "verified_discounts":{s:sum(bool(o["discount_verified"]) for o in result["deals"][s])
+                            for s in STORES},
+      "upcoming_promotion_mentions":result["upcoming_counts"],
+      "verified_upcoming_discounts":{s:sum(bool(o["discount_verified"]) for o in result["upcoming_deals"][s])
+                            for s in STORES},
+      "fully_priced_recipes":{s:sum(bool(r["complete"]) for r in recipes[s]) for s in STORES},
+      "recipes_with_used_discount":{s:sum(r["sale_count"]>0 for r in recipes[s]) for s in STORES},
+      "health_review_needed":{s:quality[s]["review_needed"] for s in STORES},
+      "source_recipe_title_candidates":{s:source_recipe_matches[s].get("possible_title_matches",0)
+                                         for s in STORES},
+      "external_recipe_results":{s:discovered[s].get("source_results",0) for s in STORES},
+      "external_recipe_strictly_verified":{s:discovered[s].get("verified_matches",0) for s in STORES},
+      "external_recipe_ingredient_checked":{s:discovered[s].get("ingredient_confirmed_count",0)
+                                            for s in STORES},
+      "weekmenu_status":weekmenu_advice.get("status"),
+      "other_stores_automatically_priced":False,
+      "local_inventory_checked":False,
+      "email_delivery_verified_by_this_scan":False,
+      "source_errors":errors,
+    }
+    path=ROOT/"recepten"/"status.json"
+    path.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
     print(json.dumps({"shelf":counts,"offers":result["counts"]["promotions"],
                       "recipes_with_offers":{s:sum(r["sale_count"]>0 for r in result["recipes"][s]) for s in STORES},
                       "breakfast_offer_details":{s:[{"title":r["title"],
