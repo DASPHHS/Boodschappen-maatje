@@ -944,6 +944,19 @@ def main():
     tmp=OUT.with_suffix(".tmp")
     tmp.write_text(json.dumps(result,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
     tmp.replace(OUT)
+    # GitHub Actions-commits starten door GitHub-token geen andere workflows.
+    # Maak het wekelijkse supermarktadvies daarom ALTIJD samen met de
+    # nieuwste receptenprijsdata, niet pas bij een volgende vrijdag-run.
+    from weekly_advice import report_from_receptenradar
+    config=json.loads((ROOT/"config"/"shopping-agent.json").read_text(encoding="utf-8"))
+    advice=report_from_receptenradar(OUT,config["weekly_budget_eur"])
+    advice["generated_at"]=datetime.now(TZ).isoformat()
+    advice["budget_eur"]=config["weekly_budget_eur"]
+    advice["comparison_type"]="identieke gerechten uit de huidige Recepten Radar"
+    target=ROOT/"docs"/"weekly-advice.json"
+    target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text(json.dumps(advice,ensure_ascii=False,indent=2)+"\n",
+                      encoding="utf-8")
     # Kleine controlesamenvatting voorkomt dat succesvolle workflows ten
     # onrechte als volledige dekking van alle prijs- en receptbronnen gelden.
     status={
