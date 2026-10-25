@@ -582,6 +582,29 @@ def nutrition_profile(ings,meal_type="Avondeten"):
             "vegetable_target_g":250,
             "basis":"Indicatieve voedingswaarden uit standaardproducten; olie, kruiden, sauzen en niet vermelde ingrediënten zijn niet meegerekend. Etiketwaarden kunnen afwijken."}
 
+def mealprep_suitable(title,meal_type="Avondeten",category=None):
+    """Conservatieve indicatie op basis van gerechtsoort, niet op kooktijd.
+
+    Bewaarbaarheid hangt ook af van ingrediënten, terugkoelen en verpakking.
+    Dit is een planningstip; geen houdbaarheids- of voedselveiligheidsgarantie.
+    """
+    name=normalize(title)
+    if meal_type=="Ontbijt":
+        return any(x in name for x in ("overnight oats","ei muffins","havermout"))
+    if meal_type=="Lunch":
+        return any(x in name for x in ("soep","chili","curry","frittata","linzen"))
+    if meal_type!="Avondeten":return False
+    if category=="Vis" or any(x in name for x in
+        ("gerookte zalm","garnalen","tonijnsalade","rauwe vis")):
+        return False
+    if any(x in name for x in ("salade","rauwkost","vers beleg")):return False
+    return any(x in name for x in
+        ("mealprep","stoof","curry","chili","lasagne","ovenschotel",
+         "soep","nasi","bami","roti","stamppot","traybake",
+         "eenpans","rijstschotel","linzen","bonenschotel",
+         "ragout","schotel"))
+
+
 def make_recipes(shelves,offers):
     final={}
     for store in STORES:
@@ -672,16 +695,23 @@ def make_recipes(shelves,offers):
             instructions=cooking_instructions(title,ings,instructions)
             pantry=pantry_for_recipe(title,ings,instructions)
             portable=meal_type=="Lunch"
-            prep_ahead=meal_type in ("Lunch","Ontbijt")
+            mealprep=mealprep_suitable(title,meal_type,category)
+            prep_ahead=mealprep
             inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
                          else "HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
                          else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
               "inspiration":inspiration,"offer_driven":idx>=len(RECIPES),
-              "mealprep":title.startswith("Mealprep:") or minutes>=30,
+              "mealprep":mealprep,
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
+              "mealprep_note":("Kan als gekookte basis vooruit worden bereid. "
+                               "Koel na koken snel terug, bewaar gekoeld of "
+                               "vries afzonderlijke porties in. Verwarm "
+                               "goed door, met extra aandacht voor rijst."
+                               if mealprep else "Bewaarbaarheid voor meerdere dagen "
+                               "niet bevestigd; bereid bij voorkeur vers."),
               "instructions":instructions,"pantry":pantry,
               "price_excludes_pantry":True,
               "drained_weight_unverified":drained_uncertain,
