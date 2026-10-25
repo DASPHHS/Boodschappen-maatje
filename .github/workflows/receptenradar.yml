@@ -9,11 +9,14 @@ on:
       - 'src/receptenradar_checks.py'
       - 'src/recepten_ontdekker.py'
       - 'src/actie_receptmatches.py'
+      - 'src/recept_keukens.py'
       - 'src/actie_maaltijden.py'
       - 'tests/test_actie_maaltijden.py'
       - 'tests/test_receptenradar_v2.py'
       - 'tests/test_receptenradar_checks.py'
       - 'tests/test_actie_receptmatches.py'
+      - 'tests/test_recept_keukens.py'
+      - 'tests/test_keuken_filters.cjs'
       - 'tests/test_deal_filters.cjs'
       - 'recepten/index.html'
       - '.github/workflows/receptenradar.yml'
@@ -37,11 +40,12 @@ jobs:
         run: python -m pip install 'requests>=2.31,<3'
       - name: Controleer syntax
         run: |
-          python -m compileall -q src/receptenradar_v2.py src/receptenradar_catalog.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/actie_maaltijden.py
+          python -m compileall -q src/receptenradar_v2.py src/receptenradar_catalog.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/recept_keukens.py src/actie_maaltijden.py
           python -m unittest discover -s tests -p "test_receptenradar_v2.py" -v
           python -m unittest discover -s tests -p "test_receptenradar_checks.py" -v
           python -m unittest discover -s tests -p "test_actie_maaltijden.py" -v
           python -m unittest discover -s tests -p "test_actie_receptmatches.py" -v
+          python -m unittest discover -s tests -p "test_recept_keukens.py" -v
       - name: Controleer JavaScript van de receptenwebsite
         run: |
           python - <<'PY'
@@ -55,6 +59,7 @@ jobs:
           PY
           node --check /tmp/receptenradar_check.js
           node tests/test_deal_filters.cjs
+          node tests/test_keuken_filters.cjs
       - name: Haal echte schap- en actieprijzen op en bereken recepten
         env:
           PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
