@@ -1,0 +1,1356 @@
+{
+  "date": "2026-10-25",
+  "scanned": 14433,
+  "confirmed": [
+    {
+      "name": "Zuivelhoeve Boern vla karamelsnoepjes",
+      "retailer": "dirk",
+      "price": 0.99,
+      "normal": 1.98,
+      "discount_pct": 50.0,
+      "ean": "8711399026732",
+      "quantity": "450 g",
+      "unit": "kg",
+      "unit_price": 2.2,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Chocolade en snoep"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/zuivel-en-kaas/vla/zuivelhoeve-boern-vla-karamelsnoepjes/123065",
+      "other": {
+        "store": "PLUS",
+        "price": 1.79
+      },
+      "market_advantage_pct": 44.7,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "Müllermilk protein chocolade",
+      "retailer": "dekamarkt",
+      "price": 1.29,
+      "normal": 1.99,
+      "discount_pct": 35.2,
+      "ean": "8717982009236",
+      "quantity": "400 g",
+      "unit": "kg",
+      "unit_price": 3.23,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-20",
+      "valid_until": "2026-10-26",
+      "tags": [
+        "Chocolade en snoep"
+      ],
+      "url": "https://www.dekamarkt.nl/boodschappen/zuivel-en-kaas/zuiveldranken/mullermilk-protein-chocolade/115842",
+      "other": {
+        "store": "AH",
+        "price": 1.64
+      },
+      "market_advantage_pct": 21.3,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "L'Or Espresso Forza Koffiecups voordeelpak",
+      "retailer": "dirk",
+      "price": 4.49,
+      "normal": 7.79,
+      "discount_pct": 42.4,
+      "ean": "8711000360811",
+      "quantity": "20 stuks",
+      "unit": "stuk",
+      "unit_price": 0.22,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Koffie"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/koffie-en-cacao/l-or-espresso-forza-koffiecups-voordeelpak/31380",
+      "other": {
+        "store": "PLUS",
+        "price": 4.99
+      },
+      "market_advantage_pct": 10.0,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "L'Or Lungo Elegante Koffiecups voordeelpak",
+      "retailer": "dirk",
+      "price": 4.49,
+      "normal": 7.79,
+      "discount_pct": 42.4,
+      "ean": "8711000377239",
+      "quantity": "20 stuks",
+      "unit": "stuk",
+      "unit_price": 0.22,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Koffie"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/koffie-en-cacao/l-or-lungo-elegante-koffiecups-voordeelpak/49541",
+      "other": {
+        "store": "PLUS",
+        "price": 4.99
+      },
+      "market_advantage_pct": 10.0,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "L'Or Lungo Profondo Koffiecups voordeelpak",
+      "retailer": "dirk",
+      "price": 4.49,
+      "normal": 7.69,
+      "discount_pct": 41.6,
+      "ean": "8711000360316",
+      "quantity": "20 stuks",
+      "unit": "stuk",
+      "unit_price": 0.22,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Koffie"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/koffie-en-cacao/l-or-lungo-profondo-koffiecups-voordeelpak/31236",
+      "other": {
+        "store": "PLUS",
+        "price": 4.99
+      },
+      "market_advantage_pct": 10.0,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "L'Or Espresso Ristretto Koffiecups voordeelpak",
+      "retailer": "dirk",
+      "price": 4.49,
+      "normal": 7.69,
+      "discount_pct": 41.6,
+      "ean": "8711000360835",
+      "quantity": "20 stuks",
+      "unit": "stuk",
+      "unit_price": 0.22,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Koffie"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/koffie-en-cacao/l-or-espresso-ristretto-koffiecups-voordeelpak/31237",
+      "other": {
+        "store": "PLUS",
+        "price": 4.99
+      },
+      "market_advantage_pct": 10.0,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    },
+    {
+      "name": "L'Or Lungo Estremo Koffiecups Voordeelpak",
+      "retailer": "dirk",
+      "price": 4.49,
+      "normal": 7.69,
+      "discount_pct": 41.6,
+      "ean": "8711000413401",
+      "quantity": "20 stuks",
+      "unit": "stuk",
+      "unit_price": 0.22,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Koffie"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/dranken-sap-koffie-en-thee/koffie-en-cacao/l-or-lungo-estremo-koffiecups-voordeelpak/40396",
+      "other": {
+        "store": "PLUS",
+        "price": 4.99
+      },
+      "market_advantage_pct": 10.0,
+      "proof": "ECHT KOOPJE: zelfde EAN/verpakking bij concurrent"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Dreft Wasverzachter soft orange",
+      "retailer": "hoogvliet",
+      "price": 2.99,
+      "normal": 10.99,
+      "discount_pct": 72.8,
+      "ean": "8719558808465",
+      "quantity": "1.65 l",
+      "unit": "L",
+      "unit_price": 1.81,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://hoogvliet.nl/product/dreft-wasverzachter-soft-orange-733440000",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Witte Reus Waspoeder wit",
+      "retailer": "albert_heijn",
+      "price": 8.99,
+      "normal": 28.99,
+      "discount_pct": 69.0,
+      "ean": "5410091779368",
+      "quantity": "60 wasbeurten",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-19",
+      "valid_until": "2026-10-25",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.ah.nl/producten/product/wi609056/witte-reus-waspoeder-wit",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Witte Reus Waspoeder color",
+      "retailer": "albert_heijn",
+      "price": 8.99,
+      "normal": 28.99,
+      "discount_pct": 69.0,
+      "ean": "5410091779320",
+      "quantity": "60 wasbeurten",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-19",
+      "valid_until": "2026-10-25",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.ah.nl/producten/product/wi609057/witte-reus-waspoeder-color",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Sun Pro-Expert Lemon Vaatwascapsules",
+      "retailer": "hoogvliet",
+      "price": 9.99,
+      "normal": 29.99,
+      "discount_pct": 66.7,
+      "ean": "8720181916304",
+      "quantity": "64 stuks",
+      "unit": "stuk",
+      "unit_price": 0.16,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel",
+        "Vaatwastabletten"
+      ],
+      "url": "https://hoogvliet.nl/product/sun-proexpert-lemon-vaatwascapsules-733289000",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Specials Waspoeder Fleur & Fijn 10 Wasbeurten",
+      "retailer": "jumbo",
+      "price": 2.3,
+      "normal": 5.75,
+      "discount_pct": 60.0,
+      "ean": "8720181605260",
+      "quantity": "550 g",
+      "unit": "kg",
+      "unit_price": 4.18,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 11.5,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-specials-waspoeder-fleur-fijn-10-wasbeurten-134064DS",
+      "other": {
+        "store": "Hoogvliet",
+        "price": 2.96
+      },
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics Wasverzachter Morgenfris 39 wasbeurten",
+      "retailer": "jumbo",
+      "price": 2.58,
+      "normal": 6.45,
+      "discount_pct": 60.0,
+      "ean": "8720181633034",
+      "quantity": "780 ml",
+      "unit": "L",
+      "unit_price": 3.31,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 12.9,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-wasverzachter-morgenfris-39-wasbeurten-688643FLS",
+      "other": {
+        "store": "Hoogvliet",
+        "price": 2.9
+      },
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Puur & Zacht 780ML",
+      "retailer": "jumbo",
+      "price": 2.58,
+      "normal": 6.45,
+      "discount_pct": 60.0,
+      "ean": "8720181633041",
+      "quantity": "780ML",
+      "unit": "L",
+      "unit_price": 3.31,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 12.9,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-puur-zacht-780ml-688646FLS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Pink Sensation 780ML",
+      "retailer": "jumbo",
+      "price": 2.94,
+      "normal": 7.35,
+      "discount_pct": 60.0,
+      "ean": "8720181633065",
+      "quantity": "780ML",
+      "unit": "L",
+      "unit_price": 3.77,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 14.7,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-pink-sensation-780ml-688521FLS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Jasmijn & Sandelhout 780ML",
+      "retailer": "jumbo",
+      "price": 2.94,
+      "normal": 7.35,
+      "discount_pct": 60.0,
+      "ean": "8720181633072",
+      "quantity": "780ML",
+      "unit": "L",
+      "unit_price": 3.77,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 14.7,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-jasmijn-sandelhout-780ml-688885FLS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Puur & Zacht 780ML 8x",
+      "retailer": "jumbo",
+      "price": 3.14,
+      "normal": 7.85,
+      "discount_pct": 60.0,
+      "ean": "8721497060286",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 15.7,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-puur-zacht-780ml-8x-788172STK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Jasmijn & Sandelhout 780ml 8x",
+      "retailer": "jumbo",
+      "price": 3.14,
+      "normal": 7.85,
+      "discount_pct": 60.0,
+      "ean": "8721497060279",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 15.7,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-jasmijn-sandelhout-780ml-8x-788177STK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Collections 3-in-1 Wascapsules Color Spa Sensation 15 wasbeurten",
+      "retailer": "jumbo",
+      "price": 3.2,
+      "normal": 8.0,
+      "discount_pct": 60.0,
+      "ean": "8720181510946",
+      "quantity": "259.5 g",
+      "unit": "kg",
+      "unit_price": 12.33,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 16.0,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-collections-3-in-1-wascapsules-color-spa-sensation-15-wasbeurten-634156DS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics Wasverzachter Morgenfris 1.1 L",
+      "retailer": "jumbo",
+      "price": 3.39,
+      "normal": 8.47,
+      "discount_pct": 60.0,
+      "ean": "8720181633089",
+      "quantity": "1.1 L",
+      "unit": "L",
+      "unit_price": 3.08,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 16.94,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-wasverzachter-morgenfris-11-l-688648FLS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Puur&Zacht 1,1L",
+      "retailer": "jumbo",
+      "price": 3.44,
+      "normal": 8.59,
+      "discount_pct": 60.0,
+      "ean": "8720181633171",
+      "quantity": "1,1L",
+      "unit": "L",
+      "unit_price": 3.13,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 17.18,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-puurzacht-1,1l-688525FLS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Sun Vaatwascapsules Intense Power 16 Stuks",
+      "retailer": "jumbo",
+      "price": 3.6,
+      "normal": 8.99,
+      "discount_pct": 60.0,
+      "ean": "8721497017877",
+      "quantity": "16 Stuks",
+      "unit": "stuk",
+      "unit_price": 0.23,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 17.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel",
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.jumbo.com/producten/sun-vaatwascapsules-intense-power-16-stuks-741242PAK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics 3-in-1 Wascapsules Color 15 wasbeurten",
+      "retailer": "jumbo",
+      "price": 3.8,
+      "normal": 9.49,
+      "discount_pct": 60.0,
+      "ean": "8720181975073",
+      "quantity": "317 g",
+      "unit": "kg",
+      "unit_price": 11.99,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 18.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-3-in-1-wascapsules-color-15-wasbeurten-574527CUP",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics 3-in-1 Wascapsules Stralend Wit 15 wasbeurten",
+      "retailer": "jumbo",
+      "price": 3.8,
+      "normal": 9.49,
+      "discount_pct": 60.0,
+      "ean": "8720181975066",
+      "quantity": "317 g",
+      "unit": "kg",
+      "unit_price": 11.99,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 18.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-3-in-1-wascapsules-stralend-wit-15-wasbeurten-574529CUP",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Sun Brilliant Shine All in 1 Vaatwascapsules 16 Stuks 240 g",
+      "retailer": "jumbo",
+      "price": 4.0,
+      "normal": 9.99,
+      "discount_pct": 60.0,
+      "ean": "8720181943737",
+      "quantity": "240 g",
+      "unit": "kg",
+      "unit_price": 16.67,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 19.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel",
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.jumbo.com/producten/sun-brilliant-shine-all-in-1-vaatwascapsules-16-stuks-240-g-563746ZK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Sun Intense Power 18 Vaatwascapsules",
+      "retailer": "jumbo",
+      "price": 4.0,
+      "normal": 9.99,
+      "discount_pct": 60.0,
+      "ean": "8721497017877",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 19.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel",
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.jumbo.com/producten/sun-intense-power-18-vaatwascapsules-772303PAK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Puur & Zacht 1.1L 8X",
+      "retailer": "jumbo",
+      "price": 4.0,
+      "normal": 9.99,
+      "discount_pct": 60.0,
+      "ean": "8721497060378",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 19.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-puur-zacht-11l-8x-788174STK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Wasverzachter Morgenfris 1.1L 8X",
+      "retailer": "jumbo",
+      "price": 4.0,
+      "normal": 9.99,
+      "discount_pct": 60.0,
+      "ean": "8721497060361",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 19.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-wasverzachter-morgenfris-11l-8x-788178STK",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics 3-in-1 Wascapsules Stralend Wit 15 Wasbeurten",
+      "retailer": "jumbo",
+      "price": 4.12,
+      "normal": 10.29,
+      "discount_pct": 60.0,
+      "ean": "8720181975066",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 20.58,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-3-in-1-wascapsules-stralend-wit-15-wasbeurten-769871DS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Sun All-in 1 Vaatwastabletten Citroen 19 tabletten",
+      "retailer": "jumbo",
+      "price": 4.2,
+      "normal": 10.49,
+      "discount_pct": 60.0,
+      "ean": "8720181493560",
+      "quantity": "19 tabletten",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 20.98,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.jumbo.com/producten/sun-all-in-1-vaatwastabletten-citroen-19-tabletten-621510DS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics Wasmiddeldoekjes Black Velvet 16 wasstrips",
+      "retailer": "jumbo",
+      "price": 4.32,
+      "normal": 10.79,
+      "discount_pct": 60.0,
+      "ean": "8720181264634",
+      "quantity": "67 g",
+      "unit": "kg",
+      "unit_price": 64.48,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 21.58,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-wasmiddeldoekjes-black-velvet-16-wasstrips-544533DS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    },
+    {
+      "name": "Robijn Classics Wasmiddeldoekjes Stralend Wit 16 wasstrips",
+      "retailer": "jumbo",
+      "price": 4.32,
+      "normal": 10.79,
+      "discount_pct": 60.0,
+      "ean": "8720181264627",
+      "quantity": "67 g",
+      "unit": "kg",
+      "unit_price": 64.48,
+      "loyalty_price": null,
+      "multi_buy_quantity": 5,
+      "multi_buy_price": 21.58,
+      "status": "active",
+      "valid_from": "2026-10-21",
+      "valid_until": "2026-10-27",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.jumbo.com/producten/robijn-classics-wasmiddeldoekjes-stralend-wit-16-wasstrips-544535DS",
+      "other": null,
+      "proof": "Nog niet bewezen (geen gunstig geverifieerde concurrent)"
+    }
+  ],
+  "next_week": [
+    {
+      "name": "Coca-Cola Zero no caffeine 8x25 cl",
+      "retailer": "dekamarkt",
+      "price": 0.49,
+      "normal": 6.39,
+      "discount_pct": 92.3,
+      "ean": "5000112659504",
+      "quantity": "2 liter",
+      "unit": "L",
+      "unit_price": 0.24,
+      "loyalty_price": null,
+      "multi_buy_quantity": 2,
+      "multi_buy_price": 0.99,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-02",
+      "tags": [
+        "Cola zero"
+      ],
+      "url": "https://www.dekamarkt.nl/boodschappen/dranken-sap-koffie-en-thee/frisdranken/coca-cola-zero-no-caffeine-8x25-cl/84264"
+    },
+    {
+      "name": "Coca-Cola Zero 8x25 cl",
+      "retailer": "dekamarkt",
+      "price": 0.49,
+      "normal": 4.29,
+      "discount_pct": 88.6,
+      "ean": "5000112658958",
+      "quantity": "2 liter",
+      "unit": "L",
+      "unit_price": 0.24,
+      "loyalty_price": null,
+      "multi_buy_quantity": 2,
+      "multi_buy_price": 0.99,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-02",
+      "tags": [
+        "Cola zero"
+      ],
+      "url": "https://www.dekamarkt.nl/boodschappen/dranken-sap-koffie-en-thee/frisdranken/coca-cola-zero-8x25-cl/84143"
+    },
+    {
+      "name": "Coca-Cola Zero cherry 4x25 cl",
+      "retailer": "dekamarkt",
+      "price": 0.49,
+      "normal": 3.19,
+      "discount_pct": 84.6,
+      "ean": "5000112658989",
+      "quantity": "1 liter",
+      "unit": "L",
+      "unit_price": 0.49,
+      "loyalty_price": null,
+      "multi_buy_quantity": 2,
+      "multi_buy_price": 0.99,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-02",
+      "tags": [
+        "Cola zero"
+      ],
+      "url": "https://www.dekamarkt.nl/boodschappen/dranken-sap-koffie-en-thee/frisdranken/coca-cola-zero-cherry-4x25-cl/84144"
+    },
+    {
+      "name": "Coca-Cola Zero vanilla 4x25cl",
+      "retailer": "dekamarkt",
+      "price": 0.49,
+      "normal": 3.15,
+      "discount_pct": 84.4,
+      "ean": "5000112659009",
+      "quantity": "1 liter",
+      "unit": "L",
+      "unit_price": 0.49,
+      "loyalty_price": null,
+      "multi_buy_quantity": 2,
+      "multi_buy_price": 0.99,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-02",
+      "tags": [
+        "Cola zero"
+      ],
+      "url": "https://www.dekamarkt.nl/boodschappen/dranken-sap-koffie-en-thee/frisdranken/coca-cola-zero-vanilla-4x25cl/84146"
+    },
+    {
+      "name": "Pods of wasmiddel",
+      "retailer": "hoogvliet",
+      "price": 4.99,
+      "normal": 19.99,
+      "discount_pct": 75.0,
+      "ean": "",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.hoogvliet.nl/aanbiedingen/202644167?utm_campaign=202643nl2&utm_source=AlleFolders"
+    },
+    {
+      "name": "Robijn Wasverzachter tropical 38 wasbeurten",
+      "retailer": "dirk",
+      "price": 1.99,
+      "normal": 7.55,
+      "discount_pct": 73.6,
+      "ean": "8720181633119",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 2.6,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/huishoud-en-huisdieren/wasmiddel-en-verzachters/robijn-wasverzachter-tropical-38-wasbeurten/116064"
+    },
+    {
+      "name": "Robijn Wasverzachter paradise secret 38 wasbeurten",
+      "retailer": "dirk",
+      "price": 1.99,
+      "normal": 7.49,
+      "discount_pct": 73.4,
+      "ean": "8720181633126",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 2.6,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/huishoud-en-huisdieren/wasmiddel-en-verzachters/robijn-wasverzachter-paradise-secret-38-wasbeurten/116073"
+    },
+    {
+      "name": "Sun Vaatwastabletten pro-expert",
+      "retailer": "dirk",
+      "price": 2.99,
+      "normal": 9.79,
+      "discount_pct": 69.5,
+      "ean": "8721497017860",
+      "quantity": "18 Stuks",
+      "unit": "stuk",
+      "unit_price": 0.17,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/huishoud-en-huisdieren/afwasmiddelen-en-benodigdheden/sun-vaatwastabletten-pro-expert/127394"
+    },
+    {
+      "name": "Sun Vaatwastabletten all in one lemon",
+      "retailer": "dirk",
+      "price": 2.99,
+      "normal": 9.49,
+      "discount_pct": 68.5,
+      "ean": "8720181493560",
+      "quantity": "19 Stuks",
+      "unit": "stuk",
+      "unit_price": 0.16,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.dirk.nl/boodschappen/huishoud-en-huisdieren/afwasmiddelen-en-benodigdheden/sun-vaatwastabletten-all-in-one-lemon/107422"
+    },
+    {
+      "name": "Robijn Wasverzachter puur & zacht 39sc",
+      "retailer": "plus",
+      "price": 2.26,
+      "normal": 6.79,
+      "discount_pct": 66.7,
+      "ean": "8721497060286",
+      "quantity": "780 ml",
+      "unit": "L",
+      "unit_price": 2.9,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 6.79,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-puur-zacht-39sc-fles-780-ml-614798"
+    },
+    {
+      "name": "Robijn classics Wasverzachter morgenfris 39sc",
+      "retailer": "plus",
+      "price": 2.26,
+      "normal": 6.79,
+      "discount_pct": 66.7,
+      "ean": "8721497060330",
+      "quantity": "780 ml",
+      "unit": "L",
+      "unit_price": 2.9,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 6.79,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-classics-wasverzachter-morgenfris-39sc-fles-780-ml-614800"
+    },
+    {
+      "name": "Robijn Wasverzachter passiebloem & bergamot",
+      "retailer": "plus",
+      "price": 2.45,
+      "normal": 7.35,
+      "discount_pct": 66.7,
+      "ean": "8721497060347",
+      "quantity": "780 ml",
+      "unit": "L",
+      "unit_price": 3.14,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.35,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-passiebloem-bergamot-fles-780-ml-614802"
+    },
+    {
+      "name": "Robijn Wasverzachter pink sensation 39sc",
+      "retailer": "plus",
+      "price": 2.45,
+      "normal": 7.35,
+      "discount_pct": 66.7,
+      "ean": "8721497060354",
+      "quantity": "780 ml",
+      "unit": "L",
+      "unit_price": 3.14,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.35,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-pink-sensation-39sc-fles-780-ml-614804"
+    },
+    {
+      "name": "Robijn Wasverzachter beautiful mystery 38sc",
+      "retailer": "plus",
+      "price": 2.63,
+      "normal": 7.89,
+      "discount_pct": 66.7,
+      "ean": "8720181633102",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 3.44,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.89,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-beautiful-mystery-38sc-fles-765-ml-614092"
+    },
+    {
+      "name": "Robijn Wasverzachter paradise secret 38sc",
+      "retailer": "plus",
+      "price": 2.63,
+      "normal": 7.89,
+      "discount_pct": 66.7,
+      "ean": "8720181633126",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 3.44,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.89,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-paradise-secret-38sc-fles-765-ml-614094"
+    },
+    {
+      "name": "Robijn Wasverzachter spa sensation 38sc",
+      "retailer": "plus",
+      "price": 2.63,
+      "normal": 7.89,
+      "discount_pct": 66.7,
+      "ean": "8720181633133",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 3.44,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.89,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-spa-sensation-38sc-fles-765-ml-614096"
+    },
+    {
+      "name": "Robijn Wasverzachter tropical 38sc",
+      "retailer": "plus",
+      "price": 2.63,
+      "normal": 7.89,
+      "discount_pct": 66.7,
+      "ean": "8720181633119",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 3.44,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.89,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasverzachter-tropical-38sc-fles-765-ml-614098"
+    },
+    {
+      "name": "Robijn collections Wasverzachter zwitsal 38sc",
+      "retailer": "plus",
+      "price": 2.63,
+      "normal": 7.89,
+      "discount_pct": 66.7,
+      "ean": "8720181633164",
+      "quantity": "765 ml",
+      "unit": "L",
+      "unit_price": 3.44,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 7.89,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-collections-wasverzachter-zwitsal-38sc-fles-765-ml-614100"
+    },
+    {
+      "name": "Robijn Vloeibaar wasmiddel wol & fijn",
+      "retailer": "plus",
+      "price": 5.23,
+      "normal": 15.69,
+      "discount_pct": 66.7,
+      "ean": "8720181907951",
+      "quantity": "720 ml",
+      "unit": "L",
+      "unit_price": 7.26,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 15.69,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-vloeibaar-wasmiddel-wol-fijn-fles-720-ml-791323"
+    },
+    {
+      "name": "Robijn Fleur&fijn vloeibaar wasmiddel",
+      "retailer": "plus",
+      "price": 5.23,
+      "normal": 15.69,
+      "discount_pct": 66.7,
+      "ean": "8720181907968",
+      "quantity": "720 ml",
+      "unit": "L",
+      "unit_price": 7.26,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 15.69,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-fleur-fijn-vloeibaar-wasmiddel-fles-720-ml-791325"
+    },
+    {
+      "name": "Robijn Wasmiddel poeder fleur en fijn",
+      "retailer": "plus",
+      "price": 1.92,
+      "normal": 5.75,
+      "discount_pct": 66.6,
+      "ean": "8720181605260",
+      "quantity": "550 g",
+      "unit": "kg",
+      "unit_price": 3.49,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 5.75,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasmiddel-poeder-fleur-en-fijn-doos-550-g-384167"
+    },
+    {
+      "name": "Robijn Wasmiddeldoekjes Color",
+      "retailer": "plus",
+      "price": 3.6,
+      "normal": 10.79,
+      "discount_pct": 66.6,
+      "ean": "8720181264641",
+      "quantity": "16 stuks",
+      "unit": "stuk",
+      "unit_price": 0.23,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 10.79,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasmiddeldoekjes-color-doos-16-st-801722"
+    },
+    {
+      "name": "Robijn Wasmiddeldoekjes Stralend Wit",
+      "retailer": "plus",
+      "price": 3.6,
+      "normal": 10.79,
+      "discount_pct": 66.6,
+      "ean": "8720181264627",
+      "quantity": "16 stuks",
+      "unit": "stuk",
+      "unit_price": 0.23,
+      "loyalty_price": null,
+      "multi_buy_quantity": 3,
+      "multi_buy_price": 10.79,
+      "status": "upcoming",
+      "valid_from": "2026-10-28",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.plus.nl/product/robijn-wasmiddeldoekjes-stralend-wit-doos-16-st-801724"
+    },
+    {
+      "name": "Finish Ultimate Regular vaatwastabletten",
+      "retailer": "hoogvliet",
+      "price": 3.49,
+      "normal": 9.79,
+      "discount_pct": 64.4,
+      "ean": "",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Vaatwastabletten"
+      ],
+      "url": "https://www.hoogvliet.nl/aanbiedingen/202644132?utm_campaign=202643nl2&utm_source=AlleFolders"
+    },
+    {
+      "name": "Witte Reus of Fleuril wasmiddel of waspoeder",
+      "retailer": "hoogvliet",
+      "price": 5.49,
+      "normal": 14.99,
+      "discount_pct": 63.4,
+      "ean": "",
+      "quantity": "",
+      "unit": null,
+      "unit_price": null,
+      "loyalty_price": null,
+      "multi_buy_quantity": null,
+      "multi_buy_price": null,
+      "status": "upcoming",
+      "valid_from": "2026-10-27",
+      "valid_until": "2026-11-03",
+      "tags": [
+        "Wasmiddel"
+      ],
+      "url": "https://www.hoogvliet.nl/aanbiedingen/202644129?utm_campaign=202643nl2&utm_source=AlleFolders"
+    }
+  ],
+  "coverage": {
+    "albert_heijn": {
+      "received": 5667,
+      "total": 5667,
+      "complete": true
+    },
+    "jumbo": {
+      "received": 2370,
+      "total": 2370,
+      "complete": true
+    },
+    "lidl": {
+      "received": 103,
+      "total": 103,
+      "complete": true
+    },
+    "aldi": {
+      "received": 350,
+      "total": 350,
+      "complete": true
+    },
+    "dirk": {
+      "received": 760,
+      "total": 760,
+      "complete": true
+    },
+    "hoogvliet": {
+      "received": 733,
+      "total": 733,
+      "complete": true
+    },
+    "plus": {
+      "received": 3093,
+      "total": 3093,
+      "complete": true
+    },
+    "dekamarkt": {
+      "received": 1178,
+      "total": 1178,
+      "complete": true
+    },
+    "vomar": {
+      "received": 179,
+      "total": 179,
+      "complete": true
+    }
+  }
+}
