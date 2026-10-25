@@ -24,6 +24,8 @@ ALIASES={
  "indisch":"Indonesisch","surinaamse":"Surinaams","surinamese":"Surinaams",
  "hollands":"Nederlands","nederlands":"Nederlands",
  "mediterrane":"Mediterraan","mediterraan":"Mediterraan",
+ "indian":"Indiaas","chinese":"Chinees","french":"Frans",
+ "spanish":"Spaans","turkish":"Turks","brazilian":"Braziliaans",
  "mexican":"Mexicaans","italian":"Italiaans","greek":"Grieks",
  "american":"Amerikaans","korean":"Koreaans","thai":"Thais",
  "japanese":"Japans","vietnamese":"Vietnamees","moroccan":"Marokkaans",
