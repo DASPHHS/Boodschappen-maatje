@@ -97,7 +97,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 </section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
-  <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Echte kookboeken en externe receptbronnen, geselecteerd op passende woorden in de receptnaam. Ingrediënten, porties en totaalprijzen zijn hier nog niet geverifieerd.</p></div></div>
+  <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Aanvullende inspiratie uit verschillende wereldkeukens. Voorrang voor groenten en eiwitbronnen; zware gerechten krijgen een lagere prioriteit. Een titelmatch is geen gecontroleerde maaltijd: ingrediënten, voedingswaarde en totaalprijs moeten nog worden geverifieerd.</p></div></div>
   <div class="source-match-grid" id="source-matches"></div>
   <p><a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a></p>
 </section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
@@ -316,12 +316,29 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    panel.hidden=state.mode!=="recipes"||!entries.length;
    if(panel.hidden)return;
    $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store);
-   $("source-matches").innerHTML=entries.slice(0,8).map(r=>
+   const preferred=entries.filter(x=>x.health_priority==="mogelijk interessant");
+   const pool=preferred.length>=4?preferred:entries.filter(x=>x.health_priority!=="lage prioriteit");
+   const selected=[],cuisines=new Set(),sources=new Set();
+   for(const r of pool){
+     if(selected.length>=8)break;
+     if(!cuisines.has(r.cuisine)&&!sources.has(r.source)){
+       selected.push(r);cuisines.add(r.cuisine);sources.add(r.source);
+     }
+   }
+   for(const r of pool){
+     if(selected.length>=8)break;
+     if(!selected.includes(r)&&(!sources.has(r.source)||!cuisines.has(r.cuisine))){
+       selected.push(r);cuisines.add(r.cuisine);sources.add(r.source);
+     }
+   }
+   for(const r of pool){if(selected.length>=8)break;if(!selected.includes(r))selected.push(r)}
+   $("source-matches").innerHTML=selected.map(r=>
      `<div class="source-match-item"><strong>${esc(r.title)}</strong>
-       <div class="sub">${esc(r.cuisine||"Wereldkeuken")} · ${esc(r.source)}</div>
-       <div class="offer-tags">Mogelijke actiematch op titel: ${esc((r.match_terms||[]).join(", "))}</div>
-       ${r.url?`<a href="${safeURL(r.url)}" target="_blank" rel="noopener noreferrer">Originele receptbron ↗</a>`:
-       '<div class="sub">Receptkaart staat in je eigen PDF, niet publiek gedeeld.</div>'}
+       <div class="sub">${esc(r.cuisine||"Internationaal")} · ${esc(r.source)}</div>
+       <div class="offer-tags">Mogelijke actieproducten: ${esc((r.match_terms||[]).join(", "))}</div>
+       <div class="sub">Gezondheid: ${esc(r.health_priority||"niet beoordeeld")} · Recept en prijs nog niet gecontroleerd.</div>
+       ${r.url&&safeURL(r.url)?`<a href="${safeURL(r.url)}" target="_blank" rel="noopener noreferrer">Bekijk recept bij de bron ↗</a>`:
+       '<div class="sub">Receptkaart in je eigen PDF, niet publiek gedeeld.</div>'}
      </div>`).join("");
  }
  function renderAudit(){
