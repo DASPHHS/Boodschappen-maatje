@@ -45,9 +45,32 @@ PANTRY_TERMS=("salt","pepper","oil","garlic","ginger","paprika powder","cumin",
 # Onbekende substantiele ingrediënten mogen niet stilzwijgend verdwijnen.
 def ingredient_key(name):
     name=normalize(name).strip()
+    # Broningrediënt en supermarktproduct moeten dezelfde culinaire vorm
+    # hebben: "rice noodles" is GEEN rijst, "egg noodles" geen eieren,
+    # "tomato paste" geen tomaten en "onion powder" geen verse ui.
+    incompatible=(
+      r"\\b(rice (noodles?|paper|flour|vinegar|wine|syrup|cakes?|crackers?)|"
+      r"egg (noodles?|whites?|powder|rolls?|plant|substitute)|"
+      r"tomato (paste|puree|sauce|ketchup|powder|soup)|"
+      r"onion (powder|soup|seasoning)|"
+      r"cheese (sauce|powder|spread)|"
+      r"mushroom (soup|sauce|powder)|"
+      r"milk (powder|chocolate)|"
+      r"salmon (roe|oil|paste))\\b"
+    )
+    if re.search("".join(incompatible),name):return None
+    # Noem pas de productgroep als de bronvermelding werkelijk op het
+    # ingrediënt of een eenvoudige bewerkingsvorm daarvan slaat.
+    safe_modifiers=("chopped","sliced","diced","fresh","frozen","canned",
+                    "tinned","drained","cooked","raw","peeled","fillets",
+                    "fillet","cut","pieces")
     for term,key in sorted(ALIASES.items(),key=lambda x:-len(x[0])):
-        if name==term or name.startswith(term+" "):
-            return key
+        if name==term:return key
+        if name.startswith(term+" "):
+            extra=name[len(term)+1:]
+            if extra in safe_modifiers or (
+                extra and all(word in safe_modifiers for word in extra.split())):
+                return key
     return None
 
 def is_pantry(name):
