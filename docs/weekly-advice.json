@@ -1,37 +1,9 @@
 {
-  "generated_at": "2026-10-23T10:55:53.191343+00:00",
-  "budget_eur": 150,
+  "status": "no_common_weekmenu",
   "recommended": null,
-  "stores": [
-    {
-      "store": "Jumbo",
-      "complete": true,
-      "missing": [],
-      "total_eur": 0,
-      "within_budget": true
-    },
-    {
-      "store": "Albert Heijn",
-      "complete": true,
-      "missing": [],
-      "total_eur": 0,
-      "within_budget": true
-    },
-    {
-      "store": "Lidl",
-      "complete": true,
-      "missing": [],
-      "total_eur": 0,
-      "within_budget": true
-    },
-    {
-      "store": "Picnic",
-      "complete": true,
-      "missing": [],
-      "total_eur": 0,
-      "within_budget": true
-    }
-  ],
-  "status": "basket_not_configured",
-  "notice": "No store is recommended without verified prices for every basket item."
+  "stores": [],
+  "notice": "Geen compleet vergelijkbaar menu bij alle drie winkels.",
+  "comparison_type": "zelfde drie recepten uit bestaande Recepten Radar",
+  "budget_eur": 150,
+  "generated_at": "2026-10-25T18:55:52.067102+00:00"
 }
