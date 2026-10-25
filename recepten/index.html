@@ -52,6 +52,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .weekmenu-panel ol{padding-left:22px}
 .weekmenu-panel li{padding:4px 0}
 .weekmenu-panel .weekmenu-caveat{font-size:12px;color:#557263;line-height:1.6}
+
+.other-stores{margin:18px 0;border-top:1px solid var(--border);padding:14px 0}
+.other-stores h3{margin:0 0 7px;font-size:17px}
+.other-store-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px;margin-top:12px}
+.other-store-grid a{display:block;border:1px solid #d6e7d9;background:#f8fcf8;border-radius:10px;padding:12px;text-decoration:none}
+.other-store-grid a strong{display:block;color:#205638;font-size:15px}
+.other-store-grid a small{display:block;color:#637c6c;font-size:12px;line-height:1.4;margin-top:4px}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
@@ -124,6 +131,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div class="deal-meta"><span id="deal-confidence"></span><button class="btn outline small" id="deal-reset" type="button">Wis filters</button></div>
  <p class="deal-note">Morgen en komende dagen: uitsluitend een preview van wat de bron al heeft gepubliceerd. Toekomstige aanbiedingen worden nooit alvast gebruikt in de prijs van een recept voor vandaag. Kortingspercentages worden uitsluitend getoond wanneer ze uit de beschikbare actiegegevens berekend kunnen worden. Controleer prijzen, beschikbaarheid en voorwaarden bij de winkel. <a href="../aanbiedingen.html">Overige supermarkten en folders (indicatieve brongegevens)</a>.</p>
 </section>
+<div id="other-store-links" class="other-stores" hidden>
+  <h3>Ook relevant: Action en drogisterijen</h3>
+  <p class="sub">Deze officiële actiepagina's zijn nog niet automatisch in de prijsvergelijking geïntegreerd. Aanbiedingen hier tellen dus niet mee in de huidige AH-, Jumbo- of Lidl-kassaprijzen.</p>
+  <div class="other-store-grid">
+    <a href="https://www.action.com/nl-nl/weekactie/" target="_blank" rel="noopener noreferrer"><strong>Action</strong><small>Wekelijkse acties · zelf controleren</small></a>
+    <a href="https://www.kruidvat.nl/aanbiedingen/dezeweek" target="_blank" rel="noopener noreferrer"><strong>Kruidvat</strong><small>Drogisterijdeals · zelf controleren</small></a>
+    <a href="https://www.etos.nl/aanbiedingen/" target="_blank" rel="noopener noreferrer"><strong>Etos</strong><small>Verzorging en huishouden · zelf controleren</small></a>
+    <a href="https://www.da.nl/aanbiedingen" target="_blank" rel="noopener noreferrer"><strong>DA</strong><small>Actieartikelen · zelf controleren</small></a>
+  </div>
+</div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
   <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Aanvullende inspiratie uit verschillende wereldkeukens. Voorrang voor groenten en eiwitbronnen; zware gerechten krijgen een lagere prioriteit. Een titelmatch is geen gecontroleerde maaltijd: ingrediënten, voedingswaarde en totaalprijs moeten nog worden geverifieerd.</p></div></div>
@@ -504,6 +521,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("cart-panel").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
   $("deals").hidden=state.mode!=="deals";
+  $("other-store-links").hidden=state.mode!=="deals";
   $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
