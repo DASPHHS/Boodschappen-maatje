@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, validate_dish_ingredients
+from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
@@ -644,15 +645,7 @@ def make_recipes(shelves,offers):
                 nutrition["protein_g_per_serving_estimate"]=None
                 nutrition["protein_source"]=False
                 nutrition["priority"]=False
-            tl=title.casefold()
-            cuisine=("Aziatisch" if any(x in tl for x in
-                     ("aziatisch","thaise","koreaanse","japanse","teriyaki",
-                      "gember","sojasaus","buddhabowl","buddha")) else
-                     "Latijns-Amerikaans" if any(x in tl for x in
-                     ("mexicaans","costa ricaanse","gallo pinto","zuid-amerikaanse",
-                      "chipotle","burrito")) else
-                     "Mediterraan" if any(x in tl for x in
-                     ("mediterrane","italiaanse","italiaans","griekse")) else "Overig")
+            cuisine=infer_cuisine(title)
             instructions=RECIPE_METHODS.get(title,"")
             if idx>=len(RECIPES):
                 for p,v,side,other,template_title,method in DISH_TEMPLATES:
