@@ -18,6 +18,7 @@ on:
       - 'tests/test_actie_receptmatches.py'
       - 'tests/test_recept_keukens.py'
       - 'tests/test_weekmenu_advies.py'
+      - 'tests/test_externe_receptcontrole.py'
       - 'tests/test_toekomstige_acties.py'
       - 'tests/test_weekmenu_ui.cjs'
       - 'tests/test_keuken_filters.cjs'
@@ -52,6 +53,7 @@ jobs:
           python -m unittest discover -s tests -p "test_recept_keukens.py" -v
           python -m unittest discover -s tests -p "test_weekmenu_advies.py" -v
           python -m unittest discover -s tests -p "test_toekomstige_acties.py" -v
+          python -m unittest discover -s tests -p "test_externe_receptcontrole.py" -v
       - name: Controleer JavaScript van de receptenwebsite
         run: |
           python - <<'PY'
