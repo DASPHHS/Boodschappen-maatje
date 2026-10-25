@@ -1,9 +1,82 @@
 {
-  "status": "no_common_weekmenu",
-  "recommended": null,
-  "stores": [],
-  "notice": "Geen compleet vergelijkbaar menu bij alle drie winkels.",
-  "comparison_type": "zelfde drie recepten uit bestaande Recepten Radar",
+  "status": "indicative_recipe_comparison",
+  "source_updated_at": "2026-10-25T20:25:00.149033+01:00",
+  "recommended": {
+    "store": "Albert Heijn",
+    "complete": true,
+    "total_eur": 23.33,
+    "within_budget": true
+  },
+  "stores": [
+    {
+      "store": "Albert Heijn",
+      "complete": true,
+      "total_eur": 23.33,
+      "within_budget": true
+    },
+    {
+      "store": "Jumbo",
+      "complete": true,
+      "total_eur": 30.14,
+      "within_budget": true
+    },
+    {
+      "store": "Lidl",
+      "complete": true,
+      "total_eur": 39.46,
+      "within_budget": true
+    },
+    {
+      "store": "Picnic",
+      "complete": false,
+      "total_eur": null,
+      "within_budget": null,
+      "missing": [
+        "Prijsdekking Picnic nog niet aangesloten"
+      ]
+    }
+  ],
+  "meals": [
+    {
+      "title": "Gehaktstoof met kikkererwten",
+      "category": "Vlees",
+      "cuisine": "Internationaal",
+      "minutes": 35,
+      "portions": 4,
+      "protein_min_g_per_portion": 30.9,
+      "vegetable_min_g_per_portion": 300,
+      "passes_nutrition_preference": true
+    },
+    {
+      "title": "Kipgehaktballetjes met tomatensaus",
+      "category": "Kip",
+      "cuisine": "Internationaal",
+      "minutes": 35,
+      "portions": 4,
+      "protein_min_g_per_portion": 37.7,
+      "vegetable_min_g_per_portion": 300,
+      "passes_nutrition_preference": true
+    },
+    {
+      "title": "Boerenkoolstamppot met rundergehakt",
+      "category": "Vlees",
+      "cuisine": "Internationaal",
+      "minutes": 35,
+      "portions": 4,
+      "protein_min_g_per_portion": 33.0,
+      "vegetable_min_g_per_portion": 200,
+      "passes_nutrition_preference": true
+    }
+  ],
+  "recipe_count": 3,
+  "portion_count": 12,
+  "price_exclusions": [
+    "kruiden en andere standaardvoorraad",
+    "bezorgkosten en eventuele minimale bestelkosten",
+    "persoonlijke kortingen en lokale winkelvoorraad"
+  ],
+  "notice": "Vergelijking voor exact dezelfde geprijsde recepten bij AH, Jumbo en Lidl. Geen volledige huishoudelijke weekmand. Online schapprijzen en aanbiedingen kunnen afwijken van lokale winkelvoorraad.",
+  "generated_at": "2026-10-25T20:25:00.344110+01:00",
   "budget_eur": 150,
-  "generated_at": "2026-10-25T18:55:52.067102+00:00"
+  "comparison_type": "identieke gerechten uit de huidige Recepten Radar"
 }

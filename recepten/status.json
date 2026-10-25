@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T20:15:35.343780+01:00",
+  "updated_at": "2026-10-25T20:25:00.149033+01:00",
   "source_last_modified": null,
   "shelf_products": {
     "ah": 15657,
@@ -57,8 +57,8 @@
     "lidl": 0
   },
   "external_recipe_ingredient_checked": {
-    "ah": 39,
-    "jumbo": 18,
+    "ah": 35,
+    "jumbo": 15,
     "lidl": 7
   },
   "weekmenu_status": "indicative_online_comparison",

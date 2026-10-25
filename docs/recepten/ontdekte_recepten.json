@@ -125,41 +125,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Bang bang prawn salad",
-        "title_nl": "Bang bang prawn salad",
-        "source": "TheMealDB",
-        "cuisine": "Vietnamees",
-        "url": "https://www.bbcgoodfood.com/recipes/bang-bang-prawn-salad",
-        "match_terms": [
-          "kokosmelk",
-          "komkommer",
-          "rijst"
-        ],
-        "matched_title_terms": 3,
-        "ingredient_keys": [
-          "kokosmelk",
-          "komkommer",
-          "rijst"
-        ],
-        "source_ingredient_names": {
-          "kokosmelk": [
-            "Coconut Milk"
-          ],
-          "komkommer": [
-            "Cucumber"
-          ],
-          "rijst": [
-            "Rice Noodles"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Belgian Waterzooi Chicken",
         "title_nl": "Belgian Waterzooi Chicken",
         "source": "TheMealDB",
@@ -173,7 +138,6 @@
         "matched_title_terms": 3,
         "ingredient_keys": [
           "aardappel",
-          "eieren",
           "kipfilet",
           "wortel"
         ],
@@ -355,7 +319,6 @@
           "aardappel",
           "bonen",
           "gehakt",
-          "tomaten",
           "ui"
         ],
         "source_ingredient_names": {
@@ -370,37 +333,6 @@
           ]
         },
         "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Amok Trey – Cambodian Fish Curry",
-        "title_nl": "Amok Trey – Cambodian Fish Curry",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://recipes-for-life.com/cambodian-recipes/",
-        "match_terms": [
-          "banaan",
-          "kokosmelk"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "banaan",
-          "eieren",
-          "kokosmelk"
-        ],
-        "source_ingredient_names": {
-          "banaan": [
-            "Banana Leaves"
-          ],
-          "kokosmelk": [
-            "Coconut Milk"
-          ]
-        },
-        "health_priority": "nader beoordelen",
         "verification_level": "ingredient_names_only",
         "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
         "servings_verified": false,
@@ -498,27 +430,26 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Cambodian Waffles (Num Poum)",
-        "title_nl": "Cambodian Waffles (Num Poum)",
+        "title": "Bang bang prawn salad",
+        "title_nl": "Bang bang prawn salad",
         "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.phnomenon.com/index.php/cambodian-food/category/recipes/",
+        "cuisine": "Vietnamees",
+        "url": "https://www.bbcgoodfood.com/recipes/bang-bang-prawn-salad",
         "match_terms": [
           "kokosmelk",
-          "rijst"
+          "komkommer"
         ],
         "matched_title_terms": 2,
         "ingredient_keys": [
-          "eieren",
           "kokosmelk",
-          "rijst"
+          "komkommer"
         ],
         "source_ingredient_names": {
           "kokosmelk": [
             "Coconut Milk"
           ],
-          "rijst": [
-            "Rice Flour"
+          "komkommer": [
+            "Cucumber"
           ]
         },
         "health_priority": "nader beoordelen",
@@ -742,36 +673,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Corn on the cob with lime, green chilli and coconut butter",
-        "title_nl": "Corn on the cob with lime, green chilli and coconut butter",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.theguardian.com/food/2020/jul/04/andi-oliver-antiguan-feast-recipes-slow-cooked-pork-belly-corn-chilli-lime-mango-chow-spiced-bread-butter-pudding",
-        "match_terms": [
-          "kokosmelk",
-          "mais"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "kokosmelk",
-          "mais"
-        ],
-        "source_ingredient_names": {
-          "kokosmelk": [
-            "Coconut Milk"
-          ],
-          "mais": [
-            "Corn On The Cob"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Dominica’s coconut rough cake",
         "title_nl": "Dominica’s coconut rough cake",
         "source": "TheMealDB",
@@ -824,38 +725,6 @@
           ],
           "melk": [
             "Milk"
-          ]
-        },
-        "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "General Tsos Chicken",
-        "title_nl": "General Tsos Chicken",
-        "source": "TheMealDB",
-        "cuisine": "Chinees",
-        "url": "https://www.skinnytaste.com/general-tsos-chicken/",
-        "match_terms": [
-          "kipfilet",
-          "rijst"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "eieren",
-          "kipfilet",
-          "rijst",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "kipfilet": [
-            "Chicken Breast"
-          ],
-          "rijst": [
-            "Rice Vinegar"
           ]
         },
         "health_priority": "kansrijk voor controle",
@@ -1033,8 +902,7 @@
         "ingredient_keys": [
           "eieren",
           "paprika",
-          "spinazie",
-          "tomaten"
+          "spinazie"
         ],
         "source_ingredient_names": {
           "paprika": [
@@ -1221,7 +1089,6 @@
         "ingredient_keys": [
           "kikkererwten",
           "spinazie",
-          "tomaten",
           "ui"
         ],
         "source_ingredient_names": {
@@ -1272,7 +1139,7 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       }
     ],
-    "ingredient_confirmed_count": 39,
+    "ingredient_confirmed_count": 35,
     "source_results": 56,
     "verified_matches": 0,
     "errors": []
@@ -1280,48 +1147,6 @@
   "jumbo": {
     "recipes": [],
     "ingredient_confirmed_candidates": [
-      {
-        "title": "Beef Caldereta",
-        "title_nl": "Beef Caldereta",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.kawalingpinoy.com/beef-caldereta/",
-        "match_terms": [
-          "aardappel",
-          "paprika",
-          "tomaten",
-          "wortel"
-        ],
-        "matched_title_terms": 4,
-        "ingredient_keys": [
-          "aardappel",
-          "paprika",
-          "tomaten",
-          "ui",
-          "wortel"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "paprika": [
-            "Green Pepper",
-            "Red Pepper"
-          ],
-          "tomaten": [
-            "Tomato Puree"
-          ],
-          "wortel": [
-            "Carrots"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
       {
         "title": "Balchi di Pisca",
         "title_nl": "Balchi di Pisca",
@@ -1353,6 +1178,43 @@
           ]
         },
         "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Beef Caldereta",
+        "title_nl": "Beef Caldereta",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.kawalingpinoy.com/beef-caldereta/",
+        "match_terms": [
+          "aardappel",
+          "paprika",
+          "wortel"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "paprika",
+          "ui",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "paprika": [
+            "Green Pepper",
+            "Red Pepper"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "nader beoordelen",
         "verification_level": "ingredient_names_only",
         "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
         "servings_verified": false,
@@ -1410,7 +1272,6 @@
         "matched_title_terms": 3,
         "ingredient_keys": [
           "aardappel",
-          "eieren",
           "kipfilet",
           "wortel"
         ],
@@ -1468,67 +1329,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Air fryer patatas bravas",
-        "title_nl": "Air fryer patatas bravas",
-        "source": "TheMealDB",
-        "cuisine": "Spaans",
-        "url": "https://www.bbcgoodfood.com/recipes/air-fryer-patatas-bravas",
-        "match_terms": [
-          "aardappel",
-          "tomaten"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "aardappel",
-          "tomaten",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "tomaten": [
-            "Tomato Puree"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "BBQ Pork Sloppy Joes",
-        "title_nl": "BBQ Pork Sloppy Joes",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.themealdb.com/meal/52995",
-        "match_terms": [
-          "aardappel",
-          "tomaten"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "aardappel",
-          "tomaten"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "tomaten": [
-            "Tomato Ketchup"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Beef Brisket Pot Roast",
         "title_nl": "Beef Brisket Pot Roast",
         "source": "TheMealDB",
@@ -1550,37 +1350,6 @@
           ],
           "wortel": [
             "Carrots"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Beef Mechado",
-        "title_nl": "Beef Mechado",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://panlasangpinoy.com/filipino-pinoy-food-tomato-sauce-beef-mechado-recipe/",
-        "match_terms": [
-          "aardappel",
-          "tomaten"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "aardappel",
-          "tomaten",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "tomaten": [
-            "Tomato Puree"
           ]
         },
         "health_priority": "nader beoordelen",
@@ -1870,7 +1639,7 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       }
     ],
-    "ingredient_confirmed_count": 18,
+    "ingredient_confirmed_count": 15,
     "source_results": 41,
     "verified_matches": 0,
     "errors": []
@@ -2048,7 +1817,6 @@
         "ingredient_keys": [
           "kikkererwten",
           "spinazie",
-          "tomaten",
           "ui"
         ],
         "source_ingredient_names": {
