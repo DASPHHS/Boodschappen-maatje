@@ -54,6 +54,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
  <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
  <div class="deal-controls">
+  <select id="deal-period" aria-label="Wanneer geldt de aanbieding?">
+    <option value="today">Vandaag geldig</option>
+    <option value="tomorrow">Morgen geldig</option>
+    <option value="upcoming">Komende 7 dagen (nog niet gestart)</option>
+  </select>
   <input id="deal-search" type="search" placeholder="Zoek product, merk of ingrediënt…" aria-label="Zoek in aanbiedingen">
   <select id="deal-category" aria-label="Aanbiedingscategorie">
    <option value="all">Alle productcategorieën</option>
@@ -102,7 +107,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   <button class="deal-shortcut" type="button" data-deal-category="care">Verzorging &amp; huishouden</button>
  </div>
  <div class="deal-meta"><span id="deal-confidence"></span><button class="btn outline small" id="deal-reset" type="button">Wis filters</button></div>
- <p class="deal-note">Kortingspercentages worden uitsluitend getoond wanneer ze uit de beschikbare actiegegevens berekend kunnen worden. Controleer prijzen, beschikbaarheid en voorwaarden bij de winkel. <a href="../aanbiedingen.html">Overige supermarkten en folders (indicatieve brongegevens)</a>.</p>
+ <p class="deal-note">Morgen en komende dagen: uitsluitend een preview van wat de bron al heeft gepubliceerd. Toekomstige aanbiedingen worden nooit alvast gebruikt in de prijs van een recept voor vandaag. Kortingspercentages worden uitsluitend getoond wanneer ze uit de beschikbare actiegegevens berekend kunnen worden. Controleer prijzen, beschikbaarheid en voorwaarden bij de winkel. <a href="../aanbiedingen.html">Overige supermarkten en folders (indicatieve brongegevens)</a>.</p>
 </section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
@@ -253,7 +258,15 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   return "other";
  }
  function renderDeals(){
-  const original=state.data?.deals?.[state.store]||[];
+  const period=$("deal-period").value;
+  const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+  const tomorrow=new Date(new Date(today+"T12:00:00Z").getTime()+86400000).toISOString().slice(0,10);
+  const running=state.data?.deals?.[state.store]||[];
+  const future=state.data?.upcoming_deals?.[state.store]||[];
+  const original=period==="today"?running:period==="tomorrow"?
+    running.filter(d=>!d.valid_until||d.valid_until>=tomorrow)
+      .concat(future.filter(d=>d.valid_from===tomorrow)):
+    future;
   const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
   const category=$("deal-category").value,status=$("deal-status").value;
   const promotion=$("deal-promotion").value,minimum=Number($("deal-minimum").value)||0;
@@ -272,13 +285,15 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(sort==="expiry")ds.sort((a,b)=>(a.valid_until||"9999-12-31").localeCompare(b.valid_until||"9999-12-31")||value(b)-value(a));
   if(sort==="name")ds.sort((a,b)=>a.name.localeCompare(b.name,"nl"));
   const count=original.filter(verified).length,filteredVerified=ds.filter(verified).length;
-  $("deal-count").textContent=ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen";
+  $("deal-count").textContent=ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
+    (period==="upcoming"?" · Nog niet geldig":period==="tomorrow"?" · Morgen geldig":"");
   $("deal-confidence").textContent=count.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" kortingen berekenbaar; "+filteredVerified.toLocaleString("nl-NL")+" binnen huidige selectie.";
-  $("store-status").textContent=ds.length+" gefilterde acties · "+count+" met berekenbaar voordeel van "+original.length+" vermeldingen";
+  $("store-status").textContent=ds.length+" gefilterde aanbiedingen · "+count+
+    " met berekenbaar voordeel van "+original.length+" vermeldingen"+
+    (period==="today"?"":" · Let op startdatum");
   document.querySelectorAll("[data-deal-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.dealCategory===category)));
   $("moredeals").hidden=ds.length<=state.dealVisible;
   $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
-  const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
   $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>{
    const valid=verified(d);
    const bundle=dealPromotion(d)==="bundle";
@@ -286,8 +301,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      d.is_loyalty?"Let op: app- of klantenkaartvoorwaarden":String(d.promotion_type||"").trim();
    const expiring=d.valid_until&&d.valid_until>=today&&
      (new Date(d.valid_until+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/(24*3600*1000)<=3;
-   return `<article class="deal"><div><span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span><div><strong>${esc(d.name)}</strong></div><div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
-  }).join(""):"<div class='notice'>Geen aanbiedingen gevonden met deze filters. Probeer een andere categorie of wis de filters.</div>";
+   return `<article class="deal"><div><span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span>
+    ${d.valid_from&&d.valid_from>today?'<span class="deal-category" style="background:#fff2d8;color:#724800">Vanaf '+esc(d.valid_from)+' · nog niet geldig</span>':''}
+    <div><strong>${esc(d.name)}</strong></div><div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
+  }).join(""):"<div class='notice'>Geen aanbiedingen gevonden met deze filters of deze geldigheidsperiode. De bron kan ook nog geen toekomstige acties leveren. Probeer een andere keuze of controleer de winkelwebsite.</div>";
  }
 
  function calcCart(){
@@ -471,14 +488,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("sort").addEventListener("change",resetAndRender);
- for(const id of ["deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
+ for(const id of ["deal-period","deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
   $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals()});
  }
  document.querySelectorAll("[data-deal-category]").forEach(b=>b.addEventListener("click",()=>{
   $("deal-category").value=b.dataset.dealCategory;state.dealVisible=50;renderDeals();
  }));
  $("deal-reset").addEventListener("click",()=>{
-  $("deal-search").value="";$("deal-category").value="all";$("deal-status").value="all";
+  $("deal-period").value="today";$("deal-search").value="";$("deal-category").value="all";$("deal-status").value="all";
   $("deal-promotion").value="all";$("deal-minimum").value="0";$("deal-sort").value="discount";
   state.dealVisible=50;renderDeals();
  });
