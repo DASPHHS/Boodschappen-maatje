@@ -1,24 +1,202 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#163e2d"><title>Recepteninspiratie · Boodschappen Maatje</title>
-<style>
-:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#193b2a;background:#f6f8f5}*{box-sizing:border-box}body{margin:0}header{background:#163e2d;color:white;padding:23px 16px 38px}header>div,main,footer{max-width:1100px;margin:auto}a{color:#176943}header a{color:#b6e4c8}h1{font-size:clamp(29px,5vw,48px);line-height:1.1;letter-spacing:-1.4px;margin:32px 0 14px}header p{color:#d5e5db;max-width:720px}.note{padding:13px;background:#e5f2e7;border:1px solid #d0e8d4;border-radius:12px;font-size:13px;margin:17px 0}main{padding:0 14px 80px}.controls{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.controls>*{padding:12px;border:1px solid #dbe6de;border-radius:10px;background:white;font:inherit;min-width:130px;max-width:100%}input{flex:1;min-width:220px}.sub{font-size:12px;color:#73877b}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{border:1px solid #e3ebe5;border-radius:15px;background:white;padding:17px;display:flex;flex-direction:column;gap:8px}.card h3{margin:0;font-size:16px;line-height:1.3}.chip{font-size:11px;color:#236c45;border-radius:7px;background:#e8f5e9;padding:5px 8px;align-self:start}.card a{margin-top:auto;font-size:13px;font-weight:700}.card a[href="#"]{pointer-events:none;color:#73877b;text-decoration:none}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.btn{cursor:pointer;background:#176943;color:#fff;border:0;padding:11px 15px;border-radius:9px;font:inherit;font-weight:bold}footer{padding:20px 15px;color:#73877b;font-size:12px}
-@media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:550px){.cards{grid-template-columns:1fr}}
-</style></head><body><header><div><a href="./">← Terug naar prijzen en recepten</a><h1>Ontdek nieuwe recepten.<br>Uit duizenden ideeën.</h1><p>Zoek in een open receptenindex en in een selectie van bestaande HelloFresh-recepten. Bekijk het oorspronkelijke recept via de bronlink.</p></div></header><main>
-<div class="note"><strong>Belangrijk:</strong> dit is een <em>inspiratiebibliotheek</em>, geen automatisch doorgerekende boodschappenlijst. Om een recept volledig te prijzen, moeten de ingrediënten eerst worden vertaald naar hoeveelheden en concrete producten van AH, Jumbo of Lidl. HelloFresh-receptteksten en foto's worden niet overgenomen.</div>
-<div class="row"><h2>Recepten ontdekken</h2><span class="sub" id="status">Receptenindex laden…</span></div>
-<div class="controls"><input id="q" type="search" placeholder="Zoek: boerenkool, curry, chicken, zalm…"><select id="source"><option value="all">Alle bronnen</option><option value="HelloFresh">HelloFresh</option><option value="Wikibooks">Wikibooks</option><option value="Mijn HelloFresh-archief">Mijn aangeleverde recepten</option><option value="Budget Bytes mealprep">Budget Bytes mealprep</option><option value="The Meal Prep Manual">The Meal Prep Manual</option><option value="FitMenCook mealprep">FitMenCook mealprep</option></select><select id="cat"><option value="all">Vlees, vis, vega, alles</option><option value="Kip">Kip</option><option value="Vlees">Vlees</option><option value="Vis">Vis</option><option value="Overig/onbekend">Overig / nog niet ingedeeld</option><option value="Vegetarisch">Vegetarisch</option><option value="Ontbijt en snacks">Ontbijt en snacks</option></select></div>
-<div class="cards" id="cards"></div><div style="text-align:center;margin:25px"><button class="btn" id="more" hidden>Toon meer recepten</button></div>
-</main><footer><p>Bronvermelding: <a href="https://en.wikibooks.org/wiki/Cookbook:Recipes">Wikibooks Cookbook</a>, bijdragers, CC BY-SA 4.0. HelloFresh-receptnamen en links verwijzen naar <a href="https://www.hellofresh.nl/recipes">HelloFresh</a>. Deze bronindex geeft geen garantie op voedingswaarden, beschikbare ingrediënten of actuele prijzen.</p></footer>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#163e2d">
+<title>Wereldkeukens & recepten | Boodschappen Maatje</title><style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f6f8f5;color:#1a392a}
+*{box-sizing:border-box}body{margin:0}a{color:#176943}
+header{background:#173d2f;color:white;padding:22px 16px 45px}header>div,main,footer{max-width:1170px;margin:auto}
+header a{color:#c4efd1;font-weight:650}h1{font-size:clamp(32px,5vw,51px);line-height:1.1;letter-spacing:-1.7px;margin:36px 0 12px}
+header p{color:#d0e6d6;max-width:760px;line-height:1.65}
+main{padding:0 16px 80px}.lead{margin-top:-20px;background:white;border:1px solid #dbe8df;border-radius:15px;padding:19px;position:relative;box-shadow:0 8px 25px #0825160d}
+.note{font-size:13px;color:#547560;line-height:1.55}.hint{background:#f0f7ef;border:1px solid #d8eadc;border-radius:10px;padding:12px;margin:13px 0;color:#375e45;font-size:13px}
+.row{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:9px;margin:19px 0}
+.controls>*{font:inherit;padding:11px 12px;border:1px solid #d3e2d8;background:white;border-radius:9px;width:100%;min-width:0}
+.controls #q{grid-column:span 2}.quick{display:flex;gap:7px;overflow:auto;padding:6px 0 16px}
+.quick button{border:1px solid #c9dfd0;border-radius:18px;background:white;color:#295d3f;padding:8px 13px;white-space:nowrap;font-size:12px;cursor:pointer}
+.quick button[aria-pressed=true]{color:white;background:#173d2f;border-color:#173d2f}
+.stats{font-size:13px;color:#5a7665;margin:4px 0 17px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.card{background:white;border:1px solid #dce8de;border-radius:14px;padding:17px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.card h3{font-size:16px;line-height:1.35;margin:0;overflow-wrap:anywhere}
+.pill{color:#27583c;background:#e7f4e9;border-radius:6px;font-size:11px;padding:4px 8px;align-self:start;font-weight:700}
+.pill.collection{background:#e3eaf6;color:#2d4d81}
+.small{font-size:12px;color:#687f72;line-height:1.5}
+.source{font-size:12px;color:#476c55}.card a{margin-top:auto;font-size:13px;font-weight:750;overflow-wrap:anywhere}
+.action{background:#f1f7ed;border:1px solid #d9e9d5;padding:9px;border-radius:8px;color:#275738;font-size:12px}
+.btn{font:inherit;font-weight:bold;padding:11px 17px;border:0;border-radius:9px;background:#176943;color:white;cursor:pointer}
+footer{padding:23px 17px;color:#6b7c71;font-size:12px;line-height:1.6}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.controls #q{grid-column:auto}main{padding:0 12px 50px}}
+</style></head>
+<body><header><div><a href="./">← Terug naar Recepten Radar</a>
+<h1>Wereldkeukens ontdekken.<br>Van roti tot bibimbap.</h1>
+<p>Surinaams, Aziatisch, Midden-Oosters, Latijns-Amerikaans, Europees en nog veel meer. Doorzoek eigen kookboekindexen en openbare receptcollecties. Ontdek welke recepten mogelijk aansluiten bij acties van Albert Heijn, Jumbo en Lidl.</p></div></header>
+<main>
+<section class="lead">
+<div class="row"><h2>Zoek echte recepten en kookboeken</h2><span class="stats" id="status" aria-live="polite">Bronnen laden…</span></div>
+<div class="hint"><strong>Zo werkt de controle:</strong> een recepttitel of bronlink is inspiratie, geen volledig gecontroleerde maaltijd. Actiematches hier zijn alleen <strong>mogelijke matches op recepttitel</strong>, niet op gecontroleerde ingrediënten of kassaprijzen. Voor volledig geprijsde recepten ga je naar de <a href="./">Recepten Radar</a>. Je eigen PDF-receptkaarten blijven privé.</div>
+<div class="controls">
+<input id="q" type="search" placeholder="Zoek bijvoorbeeld roti, saoto, ramen, tajine, curry, kip…" aria-label="Zoek in alle recepttitels">
+<select id="cuisine" aria-label="Wereldkeuken"><option value="all">Alle wereldkeukens</option></select>
+<select id="source" aria-label="Receptenbron"><option value="all">Alle bronnen en kookboeken</option></select>
+<select id="cat" aria-label="Soort recept"><option value="all">Alle soorten recepten</option><option>Kip</option><option>Vlees</option><option>Vis</option><option>Vegetarisch</option><option>Ontbijt en snacks</option><option>Overig/onbekend</option></select>
+<select id="kind" aria-label="Recepten of bronverzamelingen"><option value="all">Recepten én broncollecties</option><option value="recipe">Alleen recepten</option><option value="collection">Alleen broncollecties</option></select>
+<select id="actionstore" aria-label="Match met actuele aanbiedingen"><option value="all">Ongeacht aanbiedingen</option><option value="ah">Mogelijke actiematches · Albert Heijn</option><option value="jumbo">Mogelijke actiematches · Jumbo</option><option value="lidl">Mogelijke actiematches · Lidl</option></select>
+<select id="sort" aria-label="Sorteren"><option value="recommended">Aanbevolen en brondiversiteit</option><option value="name">Titel A–Z</option><option value="source">Bron A–Z</option></select>
+</div>
+<div class="quick" aria-label="Snel een keuken kiezen">
+<button type="button" data-cuisine="all">Alles</button><button type="button" data-cuisine="Surinaams">Surinaams</button><button type="button" data-cuisine="Indonesisch">Indonesisch</button><button type="button" data-cuisine="Indiaas">Indiaas</button><button type="button" data-cuisine="Koreaans">Koreaans</button><button type="button" data-cuisine="Marokkaans">Marokkaans</button><button type="button" data-cuisine="Italiaans">Italiaans</button><button type="button" data-cuisine="Mexicaans">Mexicaans</button>
+</div>
+<div class="row"><h2>Gevonden gerechten</h2><span id="match-status" class="small">Bron- en actiedata worden geladen</span></div>
+</section>
+<div id="cards" class="cards" style="margin-top:18px"></div>
+<div style="text-align:center;margin:26px"><button class="btn" id="more" hidden>Toon meer recepten</button></div>
+</main><footer>Recepttitels en links blijven toegeschreven aan hun bronnen. In eigen PDF-archieven worden geen volledige receptteksten of afbeeldingen openbaar gedeeld. De publieke Wikibooks-index verwijst naar de oorspronkelijke inhoud (CC BY-SA 4.0). De bronindex bewijst geen portiegrootte, voedingswaarde, beschikbaarheid of supermarktprijs.</footer>
 <script>
-const $=id=>document.getElementById(id),esc=t=>String(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let items=[],filtered=[],limit=36;
-function render(){
- const q=$("q").value.toLocaleLowerCase("nl").trim(),src=$("source").value,cat=$("cat").value;
- filtered=items.filter(x=>(!q||x.title.toLocaleLowerCase("nl").includes(q))&&(src==="all"||x.source===src)&&(cat==="all"||x.category===cat));
- $("status").textContent=filtered.length.toLocaleString("nl-NL")+" gevonden recepten";
- $("cards").innerHTML=filtered.slice(0,limit).map(x=>'<article class="card"><span class="chip">'+esc(x.source)+' · '+esc(x.category)+(x.minutes?' · '+Number(x.minutes)+' min':'')+'</span><h3>'+esc(x.title)+'</h3><a href="'+encodeURI(x.url||'#')+'" target="_blank" rel="noopener noreferrer">'+(x.url?'Bekijk origineel recept ↗':'Uit jouw receptenarchief')+'</a></article>').join("")||"<p>Geen recepten gevonden. Probeer een andere zoekterm.</p>";
- $("more").hidden=filtered.length<=limit;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl=x=>{try{const u=new URL(x);return ["https:","http:"].includes(u.protocol)?u.href:null}catch{return null}};
+const lower=x=>String(x||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("nl");
+let items=[],filtered=[],limit=36,deals=null,meta=null;
+const signals=[
+ ["kip",/\b(kip|chicken|poultry|pollo|ayam|ajam|murgie|poulet|chicken|chickenwings|kippendij|kipfilet|kipgehakt)\b/],
+ ["gehakt",/\b(gehakt|mince|ground beef|meatball|gehaktballetjes)\b/],
+ ["zalm",/\b(zalm|salmon)\b/],["garnalen",/\b(garnalen|shrimp|prawn|gamba|gamba.s)\b/],
+ ["tofu",/\b(tofu|tahoe)\b/],["broccoli",/\bbroccoli\b/],
+ ["bloemkool",/\b(bloemkool|cauliflower)\b/],
+ ["boerenkool",/\b(boerenkool|kale)\b/],
+ ["spinazie",/\b(spinazie|spinach)\b/],["paprika",/\bpaprika\b/],
+ ["pompoen",/\b(pompoen|pumpkin)\b/],
+ ["champignons",/\b(champignon|champignons|paddenstoel|mushrooms?)\b/],
+ ["aardappel",/\b(aardappel|aardappels|aardappelen|potatoes|potato)\b/],
+ ["tomaat",/\b(tomaat|tomaten|tomato|tomatoes)\b/],
+ ["rijst",/\b(rijst|rice|nasi|alesi|alesie)\b/],
+ ["pasta",/\b(pasta|spaghetti|rigatoni|fusilli|penne|farfalle|macaroni|bami|noodle|noedels?)\b/],
+ ["bonen",/\b(bonen|bruine bonen|beans|kousenband|sperziebonen)\b/],
+ ["kikkererwten",/\b(kikkererwten|chickpeas|chana)\b/],
+ ["linzen",/\b(linzen|lentils|dal|dahl)\b/],
+ ["courgette",/\b(courgette|zucchini)\b/],
+ ["aubergine",/\b(aubergine|eggplant)\b/],
+ ["kwark",/\b(kwark|skyr)\b/],["yoghurt",/\b(yoghurt|yogurt)\b/],
+ ["ei",/\b(ei|eieren|eggs?|omelet|frittata)\b/]
+];
+const highlightWords={
+ "kip":/\b(kipfilet|kippendij|kipgehakt|kippenpoten|kippenbouten|kip)\b/,
+ "gehakt":/\b(gehakt|rundergehakt|kipgehakt)\b/,
+ "zalm":/\bzalm\b/,"garnalen":/\b(garnalen|gamba|scampi)\b/,
+ "tofu":/\b(tofu|tahoe)\b/,"broccoli":/\bbroccoli\b/,
+ "bloemkool":/\bbloemkool\b/,"boerenkool":/\bboerenkool\b/,
+ "spinazie":/\bspinazie\b/,"paprika":/\bpaprika\b/,
+ "pompoen":/\bpompoen\b/,"champignons":/\b(champignon|champignons|paddenstoelen)\b/,
+ "aardappel":/\b(aardappel|aardappelen|krieltjes)\b/,
+ "tomaat":/\b(tomaat|tomaten|tomatenblokjes)\b/,
+ "rijst":/\b(rijst|zilvervliesrijst)\b/,"pasta":/\b(pasta|spaghetti|macaroni|penne|farfalle)\b/,
+ "bonen":/\b(bonen|bruine bonen|sperziebonen|kousenband)\b/,
+ "kikkererwten":/\bkikkererwten\b/,"linzen":/\blinzen\b/,
+ "courgette":/\bcourgette\b/,"aubergine":/\baubergine\b/,
+ "kwark":/\b(kwark|skyr)\b/,"yoghurt":/\byoghurt\b/,
+ "ei":/\b(eieren|ei)\b/
+};
+function offerTitleMatches(title,store){
+ if(!deals?.deals?.[store])return [];
+ const n=lower(title),titlekeys=signals.filter(x=>x[1].test(n)).map(x=>x[0]);
+ const matched=[];
+ for(const deal of deals.deals[store]){
+  if(deal.discount_verified!==true)continue;
+  const dn=lower(deal.name);
+  for(const key of titlekeys){
+   if(highlightWords[key]?.test(dn)&&!matched.includes(key)){matched.push(key);break}
+  }
+ }
+ return matched;
 }
-for(const id of ["q","source","cat"])$(id).addEventListener(id==="q"?"input":"change",()=>{limit=36;render()});
-$("more").addEventListener("click",()=>{limit+=36;render()});
-fetch("./inspiratie.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(d=>{items=Array.isArray(d.items)?d.items:[];render()}).catch(e=>{$("status").textContent="Index nog niet beschikbaar";$("cards").innerHTML="<p>De eerste bronimport is nog niet gepubliceerd. Probeer opnieuw na een succesvolle GitHub Actions-run.</p>"});
+function inferCuisine(x){
+ if(x.cuisine)return x.cuisine;
+ const t=lower(x.title);
+ for(const [name,pattern] of [
+  ["Surinaams",/surinaam|surinam|sranang|roti|saoto|moksi|moksie|bakkeljauw|kouseband|pomtayer|masoesa/],
+  ["Koreaans",/korean|korea|bulgogi|bibimbap|kimchi|gochujang/],
+  ["Japans",/japan|ramen|miso|sushi|teriyaki|yakitori/],
+  ["Indonesisch",/indones|rendang|sambal|gado gado|nasi goreng|satay/],
+  ["Indiaas",/indian|tandoori|biryani|dal|dahl|masala|vindaloo/],
+  ["Thais",/thai|pad thai|tom kha|massaman/],
+  ["Vietnamees",/vietnam|pho|banh mi/],
+  ["Marokkaans",/moroccan|marokka|tajine|tagine|harira/],
+  ["Turks",/turk|turks|kofte|köfte|lahmacun/],
+  ["Libanees",/lebanese|libane|tabbouleh|fattoush/],
+  ["Mexicaans",/mexican|taco|enchilada|fajita|burrito|quesadilla/],
+  ["Italiaans",/italian|italia|risotto|pesto|gnocchi|lasagne|parmigiana/],
+  ["Grieks",/greek|grieks|moussaka|souvlaki/],
+  ["Nederlands",/dutch|hollands|stamppot|hutspot/]
+ ])if(pattern.test(t))return name;
+ return "Overig / wereldwijd";
+}
+function render(){
+ const q=lower($("q").value.trim()),cuisine=$("cuisine").value,source=$("source").value,cat=$("cat").value,kind=$("kind").value,store=$("actionstore").value;
+ filtered=items.filter(x=>{
+  if(q&&!lower(x.title+" "+x.source+" "+(x.cuisine||"")).includes(q))return false;
+  if(cuisine!=="all"&&inferCuisine(x)!==cuisine)return false;
+  if(source!=="all"&&x.source!==source)return false;
+  if(cat!=="all"&&x.category!==cat)return false;
+  if(kind==="recipe"&&x.kind==="collection")return false;
+  if(kind==="collection"&&x.kind!=="collection")return false;
+  if(store!=="all"&&(x.kind==="collection"||!offerTitleMatches(x.title,store).length))return false;
+  return true;
+ });
+ const ranking=x=>{
+  if(x.kind==="collection")return 1;
+  if(x.source?.startsWith("Sandhia"))return 2;
+  if(x.source?.startsWith("Mijn HelloFresh"))return 3;
+  if(x.source==="Wikibooks")return 9;
+  return 5;
+ };
+ if($("sort").value==="recommended")filtered.sort((a,b)=>ranking(a)-ranking(b)||a.title.localeCompare(b.title,"nl"));
+ if($("sort").value==="name")filtered.sort((a,b)=>a.title.localeCompare(b.title,"nl"));
+ if($("sort").value==="source")filtered.sort((a,b)=>a.source.localeCompare(b.source,"nl")||a.title.localeCompare(b.title,"nl"));
+ $("status").textContent=filtered.length.toLocaleString("nl-NL")+" resultaten";
+ const matches=store!=="all"?filtered.length:0;
+ $("match-status").textContent=store!=="all"?matches+" mogelijke titelmatches met berekenbare acties. Check altijd het hele recept.":"Kies een supermarkt om mogelijke actiecombinaties te zien.";
+ document.querySelectorAll("[data-cuisine]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.cuisine===cuisine)));
+ $("cards").innerHTML=filtered.slice(0,limit).map(x=>{
+   const link=safeUrl(x.url),collection=x.kind==="collection",found=store!=="all"&&!collection?offerTitleMatches(x.title,store):[];
+   return '<article class="card"><span class="pill '+(collection?"collection":"")+'">'+esc(inferCuisine(x))+(collection?" · Broncollectie":" · Receptidee")+'</span>'+
+      '<h3>'+esc(x.title)+'</h3><div class="source">'+esc(x.source)+'</div>'+
+      (!collection?'<div class="small">'+esc(x.category||"Soort nog niet gecontroleerd")+(x.minutes?" · "+Number(x.minutes)+" minuten":"")+'</div>':"")+
+      (found.length?'<div class="action"><strong>Mogelijke actiematch:</strong> '+esc(found.join(", "))+'<br>Alleen op receptnaam; volledige ingrediënten en prijs nog controleren.</div>':"")+
+      (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(collection?"Open receptenbron ↗":"Bekijk oorspronkelijk recept ↗")+'</a>':
+       '<div class="small">Opgenomen uit je eigen PDF; originele receptkaart staat niet openbaar.</div>')+'</article>';
+ }).join("")||'<div class="hint">Geen overeenkomsten gevonden. Kies een andere keuken, zoekterm of filter. Bij actiematches tellen alleen expliciet in de receptnaam genoemde ingrediënten.</div>';
+ $("more").hidden=filtered.length<=limit;
+ $("more").textContent="Toon "+Math.min(36,filtered.length-limit)+" meer";
+}
+function setupFilters(){
+ for(const [id,values] of [
+  ["cuisine",[...new Set(items.map(inferCuisine))].sort((a,b)=>a.localeCompare(b,"nl"))],
+  ["source",[...new Set(items.map(x=>x.source))].sort((a,b)=>a.localeCompare(b,"nl"))]
+ ]){
+  for(const val of values){
+   const option=document.createElement("option");option.value=val;option.textContent=val;
+   $(id).append(option);
+  }
+ }
+ for(const id of ["q","cuisine","source","cat","kind","actionstore","sort"]){
+  $(id).addEventListener(id==="q"?"input":"change",()=>{limit=36;render()});
+ }
+ document.querySelectorAll("[data-cuisine]").forEach(b=>b.addEventListener("click",()=>{
+  const value=b.dataset.cuisine;
+  if(value!=="all"&&![...$("cuisine").options].some(o=>o.value===value))return;
+  $("cuisine").value=value;limit=36;render();
+ }));
+ $("more").addEventListener("click",()=>{limit+=36;render()});
+}
+Promise.all([
+ fetch("./inspiratie.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Receptenindex HTTP "+r.status);return r.json()}),
+ fetch("./data.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([data,price])=>{
+ items=Array.isArray(data.items)?data.items:[];deals=price;meta=data;
+ setupFilters();render();
+ if(!price)$("match-status").textContent="Actieprijsdata niet beschikbaar; bronzoekfunctie werkt wel.";
+}).catch(err=>{
+ $("status").textContent="Brongegevens niet beschikbaar";
+ $("cards").innerHTML='<div class="hint">De receptindex kon niet worden geladen. Controleer de wekelijkse receptenbibliotheekscan. '+esc(err.message)+'</div>';
+});
 </script></body></html>
