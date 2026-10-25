@@ -47,7 +47,13 @@ def api(params):
         return r.json()
     raise RuntimeError("Upstream API geeft herhaaldelijk een fout.")
 
-def pull(store,max_pages=50):
+def pull(store,max_pages=120):
+    """Pagina's volledig doorlopen voordat een dagrapport wordt gepubliceerd.
+
+    De AH-API bevat momenteel ruim 5000 promotievermeldingen: 50 pagina's
+    van 100 zijn dus niet voldoende. Geen onvolledige dekking als volledig
+    verklaren; limiet blijft bestaan voor onbegrensde bronnen.
+    """
     rows=[]
     for page in range(1,max_pages+1):
         d=api({"retailer":store,"page":page,"page_size":100})
