@@ -379,10 +379,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const rank=x=>x.health_priority==="kansrijk voor controle"?0:
      x.health_priority==="nader beoordelen"?1:3;
    filtered.sort((a,b)=>rank(a)-rank(b)||b.matched_title_terms-a.matched_title_terms);
-   panel.hidden=state.mode!=="recipes"||!filtered.length;
+   panel.hidden=state.mode!=="recipes"||!entries.length;
    $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store)+
       (cuisine==="all"?"":"&cuisine="+encodeURIComponent(cuisine));
    if(panel.hidden)return;
+   if(!filtered.length){
+     $("source-count").textContent="Geen kandidaten voor deze keuze";
+     $("source-loadmore").hidden=true;
+     $("source-matches").innerHTML='<div class="sub">In deze supermarkt zijn nog geen passende bronrecepten gevonden voor de gekozen keuken en kwaliteitsfilter. Bekijk ook de grotere wereldkeukenbibliotheek; daar staan recepten die nog niet aan aanbiedingen zijn gekoppeld.</div>';
+     return;
+   }
    const selected=filtered.slice(0,state.sourceVisible);
    $("source-count").textContent=selected.length+" van "+filtered.length+
      " voorlopige suggesties"+(cuisine==="all"?"":" · "+cuisine);
@@ -437,6 +443,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
+  document.querySelectorAll("#cuisine-shortcuts [data-cuisine]").forEach(b=>
+    b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
   renderSourceMatches();
   renderCart();
   renderAudit();
