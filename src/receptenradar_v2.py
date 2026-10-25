@@ -885,6 +885,8 @@ def main():
     validate_publication(recipes)
     audit=audit_promotions(offers,recipes)
     quality=audit_recipe_quality(recipes)
+    from weekmenu_advies import build_weekmenu
+    weekmenu_advice=build_weekmenu(recipes)
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
             "sources":{"ordinary":"Checkjebon open dataset","promotions":"PrijsProfeet gratis aanbiedingen-API"},
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
@@ -899,6 +901,7 @@ def main():
             "upcoming_counts":{s:len(upcoming[s]) for s in STORES},
             "recipes":recipes,"discovered_recipes":discovered,
             "source_recipe_matches":source_recipe_matches,
+            "weekmenu_advice":weekmenu_advice,
             "audit":audit,"quality_audit":quality,
             "deals":{s:sorted(({**o,"discount_verified":verified_discount(o),
                                   "verified_discount_pct":verified_discount_percentage(o)}
@@ -920,6 +923,7 @@ def main():
                       "matched_offer_lines":{s:sum(r["sale_count"] for r in result["recipes"][s]) for s in STORES},
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
                       "errors":errors,
+                      "weekmenu_status":weekmenu_advice.get("status"),
                       "upcoming_offers":{s:len(upcoming[s]) for s in STORES},
                       "title_matches":{s:source_recipe_matches[s].get("possible_title_matches",0) for s in STORES},
                       "audit_unlinked":{s:audit[s]["unlinked_total"] for s in STORES}},ensure_ascii=False))
