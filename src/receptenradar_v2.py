@@ -866,6 +866,10 @@ def main():
     except (requests.RequestException,ValueError,OSError) as exc:
         errors.append("Externe receptontdekking tijdelijk niet beschikbaar: "+str(exc))
         discovered={s:{"recipes":[],"verified_matches":0,"errors":["bron tijdelijk onbereikbaar"]} for s in STORES}
+    # Recepten uit ALLE publieke en eigen bronindexen vinden op basis van de
+    # actuele aanbiedingen. Deze titelmatches zijn nadrukkelijk NIET geprijsd.
+    from actie_receptmatches import build_action_title_candidates
+    source_recipe_matches=build_action_title_candidates(offers)
     export_shopping_index(shelves,offers)
     recipes=make_recipes(shelves,offers)
     validate_publication(recipes)
@@ -877,6 +881,7 @@ def main():
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
             "recipes":recipes,"discovered_recipes":discovered,
+            "source_recipe_matches":source_recipe_matches,
             "audit":audit,"quality_audit":quality,
             "deals":{s:sorted(({**o,"discount_verified":verified_discount(o),
                                   "verified_discount_pct":verified_discount_percentage(o)}
@@ -898,5 +903,6 @@ def main():
                       "matched_offer_lines":{s:sum(r["sale_count"] for r in result["recipes"][s]) for s in STORES},
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
                       "errors":errors,
+                      "title_matches":{s:source_recipe_matches[s].get("possible_title_matches",0) for s in STORES},
                       "audit_unlinked":{s:audit[s]["unlinked_total"] for s in STORES}},ensure_ascii=False))
 if __name__=="__main__":main()
