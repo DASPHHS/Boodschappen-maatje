@@ -27,6 +27,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .deal-condition{font-size:12px;color:#446d52;font-weight:650;margin-top:6px}
 #deals .deal a{display:inline-block;margin-top:8px}
 @media(max-width:600px){.deal-controls{grid-template-columns:minmax(0,1fr)}.deal-controls #deal-search{grid-column:auto}.deal-filter-area{padding:12px}#deals{grid-template-columns:1fr}}
+
+.source-matches-panel{margin:26px 0 8px;padding:18px;border-radius:13px;border:1px solid #d9e8da;background:#f5faf5}
+.source-match-panel h3{margin:0}.source-match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}
+.source-match-item{border:1px solid #dce9dd;background:white;border-radius:10px;padding:12px;min-width:0}
+.source-match-item strong{font-size:14px}.source-match-item a{display:inline-block;margin-top:5px;font-size:12px;font-weight:750}
+.source-match-item .sub{margin-top:5px}.source-match-item .offer-tags{color:#28593e;font-size:12px;margin-top:5px}
+@media(max-width:580px){.source-match-grid{grid-template-columns:1fr}.source-matches-panel{padding:12px}}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
@@ -88,7 +95,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div class="deal-meta"><span id="deal-confidence"></span><button class="btn outline small" id="deal-reset" type="button">Wis filters</button></div>
  <p class="deal-note">Kortingspercentages worden uitsluitend getoond wanneer ze uit de beschikbare actiegegevens berekend kunnen worden. Controleer prijzen, beschikbaarheid en voorwaarden bij de winkel. <a href="../aanbiedingen.html">Overige supermarkten en folders (indicatieve brongegevens)</a>.</p>
 </section>
-<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
+<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
+<section class="source-matches-panel" id="source-matches-panel" hidden>
+  <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Echte kookboeken en externe receptbronnen, geselecteerd op passende woorden in de receptnaam. Ingrediënten, porties en totaalprijzen zijn hier nog niet geverifieerd.</p></div></div>
+  <div class="source-match-grid" id="source-matches"></div>
+  <p><a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a></p>
+</section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
 <footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script>(function pageLogic(){
@@ -298,6 +310,20 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     +(hasDrained?"Let op: bij conserven is het uitlekgewicht niet bevestigd. ":"")
     +"Alleen geprijsde ingrediënten, zonder genoemde smaakmakers, bezorgkosten of coupons.";
  }
+ function renderSourceMatches(){
+   const panel=$("source-matches-panel");
+   const entries=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
+   panel.hidden=state.mode!=="recipes"||!entries.length;
+   if(panel.hidden)return;
+   $("source-more-link").href="./inspiratie.html?store="+encodeURIComponent(state.store);
+   $("source-matches").innerHTML=entries.slice(0,8).map(r=>
+     `<div class="source-match-item"><strong>${esc(r.title)}</strong>
+       <div class="sub">${esc(r.cuisine||"Wereldkeuken")} · ${esc(r.source)}</div>
+       <div class="offer-tags">Mogelijke actiematch op titel: ${esc((r.match_terms||[]).join(", "))}</div>
+       ${r.url?`<a href="${safeURL(r.url)}" target="_blank" rel="noopener noreferrer">Originele receptbron ↗</a>`:
+       '<div class="sub">Receptkaart staat in je eigen PDF, niet publiek gedeeld.</div>'}
+     </div>`).join("");
+ }
  function renderAudit(){
    const report=state.data?.audit?.[state.store];
    const panel=$("audit-panel");
@@ -329,6 +355,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
+  renderSourceMatches();
   renderCart();
   renderAudit();
  }
