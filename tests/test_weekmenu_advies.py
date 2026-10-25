@@ -44,10 +44,10 @@ class WeekmenuAdviesTests(unittest.TestCase):
         basket=_cost_of_lines(rows)
         self.assertEqual(basket["checkout"],3.0)
         self.assertEqual(basket["products"][0]["packages"],2)
-        # Bij slechts één noodzakelijke verpakking is twee voor drie wél
-        # voordelig als de tweede verpakking voor €1 extra mee kan.
+        # Voor één pak is de expliciet getoonde bundelprijs niet goedkoper
+        # dan de reguliere prijs per stuk: geen fictief voordeel.
         one=_cost_of_lines([line("broccoli",220,500,2,bundle)])
-        self.assertEqual(one["checkout"],2.0)
+        self.assertEqual(one["checkout"],3.0)
         self.assertEqual(one["products"][0]["packages"],1)
 
     def test_vergelijk_dezelfde_recepten_en_niet_drie_verschillende_lijstjes(self):
