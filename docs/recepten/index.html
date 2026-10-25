@@ -308,7 +308,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const running=state.data?.deals?.[state.store]||[];
   const future=state.data?.upcoming_deals?.[state.store]||[];
   const original=period==="today"?running:period==="tomorrow"?
-    running.filter(d=>!d.valid_until||d.valid_until>=tomorrow)
+    running.filter(d=>d.valid_until&&d.valid_until>=tomorrow)
       .concat(future.filter(d=>d.valid_from===tomorrow)):
     future;
   const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
