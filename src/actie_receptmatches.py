@@ -19,7 +19,7 @@ def normalized(value):
 # Groepen die in een receptenTITEL culinair herkenbaar zijn.
 # Productvarianten en deelstukken tellen NIET als bewezen substituut.
 TITLE_KEYS={
- "kip":(r"\b(kip|kipfilet|kippendij|chicken|ajam|ayam|murgie|pollo|poulet)\b",
+ "kip":(r"\b(kip|kipfilet\w*|kippendij\w*|kipgehakt\w*|chicken|ajam|ayam|murgie|pollo|poulet)\b",
         ("kipfilet","kipdij","kipgehakt")),
  "gehakt":(r"\b(gehakt|meatballs?|minced|gehaktballetjes|rundergehakt)\b",
            ("gehakt","kipgehakt")),
@@ -29,10 +29,10 @@ TITLE_KEYS={
  "eieren":(r"\b(ei|eieren|egg|eggs|omelet|frittata)\b",("eieren",)),
  "kikkererwten":(r"\b(kikkererwt(en)?|chickpeas?|chana)\b",("kikkererwten",)),
  "linzen":(r"\b(linzen|lentils?|dal|dahl)\b",("linzen",)),
- "bonen":(r"\b(bonen|beans|kouseband|sperziebonen)\b",("bonen",)),
+ "bonen":(r"\b(bonen|beans|kidneybonen|zwarte bonen)\b",("bonen",)),
  "rijst":(r"\b(rijst|rice|nasi|alesi|alesie)\b",("rijst",)),
- "pasta":(r"\b(pasta|spaghetti|macaroni|penne|fusilli|rigatoni|farfalle|bami|noedels?)\b",("pasta",)),
- "aardappel":(r"\b(aardappelen|aardappels|aardappel|krieltjes|potatoes|potato)\b",("aardappel",)),
+ "pasta":(r"\b(pasta|spaghetti|macaroni|penne|fusilli|rigatoni|farfalle)\b",("pasta",)),
+ "aardappel":(r"(?<!zoete )\b(aardappelen|aardappels|aardappel|krieltjes)\b|(?<!sweet )\b(potatoes|potato)\b",("aardappel",)),
  "zoete_aardappel":(r"\b(zoete aardappel|bataat|sweet potato)\b",("zoete_aardappel",)),
  "boerenkool":(r"\b(boerenkool|kale)\b",("boerenkool",)),
  "spinazie":(r"\b(spinazie|spinach)\b",("spinazie",)),
