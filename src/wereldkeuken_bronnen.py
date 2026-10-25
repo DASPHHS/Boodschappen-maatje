@@ -8,6 +8,7 @@ import re
 from urllib.parse import urlparse, urljoin
 from urllib.robotparser import RobotFileParser
 from functools import lru_cache
+from datetime import datetime,timezone
 import requests
 from bs4 import BeautifulSoup
 
@@ -65,11 +66,16 @@ BANNED_TITLE=re.compile(r"^(recepten|naar het recept|bekijk recept|lees meer|rea
 def robots_allowed(url):
     parsed=urlparse(url)
     rp=RobotFileParser()
-    rp.set_url(f"{parsed.scheme}://{parsed.netloc}/robots.txt")
     try:
-        rp.read()
+        response=requests.get(f"{parsed.scheme}://{parsed.netloc}/robots.txt",
+                              headers={"User-Agent":USER_AGENT},timeout=5)
+        if response.status_code==404:
+            return True
+        if response.status_code!=200:
+            return False
+        rp.parse(response.text.splitlines())
         return rp.can_fetch(USER_AGENT,url)
-    except Exception:
+    except requests.RequestException:
         return False
 
 def parse_links(html,landing,source,cuisine,limit=60):
@@ -94,6 +100,7 @@ def parse_links(html,landing,source,cuisine,limit=60):
         result.append({"title":title,"source":source,"cuisine":cuisine,
                        "category":"Overig/onbekend","minutes":None,"url":url,
                        "verification":"Bronlink ontdekt, ingrediënten niet gecontroleerd",
+                       "discovered_at":datetime.now(timezone.utc).date().isoformat(),
                        "price_status":"Niet doorgerekend"})
         if len(result)>=limit:break
     return result
@@ -101,7 +108,9 @@ def parse_links(html,landing,source,cuisine,limit=60):
 def collect_world_links(session=None,limit_per_source=50,max_sources=None):
     http=session or requests.Session()
     results=[];status=[]
-    sources=WORLD_SOURCES if max_sources is None else WORLD_SOURCES[:max_sources]
+    # Dagelijkse rotatie: elke drie dagen komt iedere bron aan bod.
+    shard=datetime.now(timezone.utc).date().toordinal()%3
+    sources=WORLD_SOURCES[shard::3] if max_sources is None else WORLD_SOURCES[:max_sources]
     for source,cuisine,url in sources:
         if not robots_allowed(url):
             status.append({"source":source,"status":"robots-blokkade of robots onbekend","count":0})
