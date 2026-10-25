@@ -61,6 +61,7 @@ def pantry_for_recipe(title, ingredients, instructions=""):
         ("dille", "gedroogde dille (1 theelepel)"),
         ("currypoeder", "currypoeder (2 theelepels)"),
         ("honing", "honing (1 eetlepel)"),
+        ("chilivlokken", "chilivlokken (optioneel, naar smaak)"),
     )
     for term, label in extras:
         if term in mentioned and not any(term in item for item in pantry):
