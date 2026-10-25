@@ -30,13 +30,13 @@ def main():
             lines.append(f"- {o.get('text','Product')}: {p}{expiry}")
         sections.append("\n".join(lines))
     day = datetime.now(ZoneInfo("Europe/Amsterdam"))
-    body = ("KOOPKRACHT DAGELIJKSE SCAN | " + day.strftime("%d-%m-%Y") +
+    body = ("BOODSCHAPPEN MAATJE | DAGELIJKSE SCAN | " + day.strftime("%d-%m-%Y") +
             "\n\n" + "\n\n".join(sections) +
             "\n\nLET OP: Dit zijn aanbiedingen, NIET een volledig berekende boodschappenmand of 48 geprijsde recepten." +
-            "\nZie het dashboard voor meer details: https://dasphhs.github.io/koopkracht/" +
+            "\nZie het dashboard voor meer details: https://dasphhs.github.io/Boodschappen-maatje/" +
             "\nBron: PrijsProfeet (https://www.prijsprofeet.nl).")
     msg = EmailMessage()
-    msg["Subject"] = "Koopkracht: AH, Jumbo en Lidl | " + day.strftime("%d-%m-%Y")
+    msg["Subject"] = "Boodschappen Maatje: AH, Jumbo en Lidl | " + day.strftime("%d-%m-%Y")
     msg["From"] = os.environ["SMTP_USER"]
     msg["To"] = os.environ["EMAIL_TO"]
     msg.set_content(body)
