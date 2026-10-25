@@ -96,19 +96,32 @@ const highlightWords={
  "kwark":/\b(kwark|skyr)\b/,"yoghurt":/\byoghurt\b/,
  "ei":/\b(eieren|ei)\b/
 };
-function offerTitleMatches(title,store){
- if(!deals?.deals?.[store])return [];
- const n=lower(title),titlekeys=signals.filter(x=>x[1].test(n)).map(x=>x[0]);
- const matched=[];
- for(const deal of deals.deals[store]){
-  if(deal.discount_verified!==true)continue;
-  const dn=lower(deal.name);
-  for(const key of titlekeys){
-   if(highlightWords[key]?.test(dn)&&!matched.includes(key)){matched.push(key);break}
+// Bereken de beschikbare actie-ingrediënten slechts één keer per supermarkt.
+let dealKeyCache=null;
+function availableDealKeywords(store){
+ if(dealKeyCache===null){
+  dealKeyCache={};
+  for(const [retailer,allDeals] of Object.entries(deals?.deals||{})){
+   const keys=new Set();
+   for(const deal of allDeals){
+    if(deal.discount_verified!==true)continue;
+    const n=lower(deal.name);
+    for(const [key,rule] of Object.entries(highlightWords)){
+     if(rule.test(n))keys.add(key);
+    }
+   }
+   dealKeyCache[retailer]=keys;
   }
  }
- return matched;
+ return dealKeyCache[store]||new Set();
 }
+function offerTitleMatches(title,store){
+ const keys=availableDealKeywords(store);
+ if(!keys.size)return [];
+ const n=lower(title);
+ return signals.filter(([key,pattern])=>keys.has(key)&&pattern.test(n)).map(([key])=>key);
+}
+
 function inferCuisine(x){
  if(x.cuisine)return x.cuisine;
  const t=lower(x.title);
