@@ -121,7 +121,7 @@ RECIPES = [
  ("Kruidige kip met boerenkool en zoete aardappel","Kip",35,[("boerenkool",600,"g"),("kipfilet",650,"g"),("zoete_aardappel",800,"g"),("yoghurt",200,"g")]),
  ("Boerenkool-shakshuka met eieren en bonen","Vegetarisch",30,[("boerenkool",600,"g"),("eieren",8,"st"),("bonen",400,"g"),("tomatenblokjes",800,"g")]),
  ("Boerenkool-linzencurry met kokos","Vegetarisch",30,[("boerenkool",600,"g"),("linzen",500,"g"),("kokosmelk",400,"ml"),("rijst",300,"g")]),
- ("Italiaanse boerenkoolpasta met kipgehakt","Kip",30,[("boerenkool",600,"g"),("kipgehakt",600,"g"),("pasta",320,"g"),("tomatenblokjes",400,"g")]),
+ ("Italiaans geïnspireerde boerenkoolpasta met kipgehakt","Kip",30,[("boerenkool",600,"g"),("kipgehakt",600,"g"),("pasta",320,"g"),("tomatenblokjes",400,"g")]),
  ("Boerenkoolfrittata met champignons","Vegetarisch",30,[("boerenkool",450,"g"),("eieren",8,"st"),("champignons",450,"g"),("kaas",150,"g")]),
  ("Koreaanse kip met broccoli en zilvervliesrijst","Kip",35,[("kipdij",650,"g"),("broccoli",700,"g"),("rijst",300,"g"),("ui",200,"g")]),
  ("Gekruid rundergehakt met wokgroenten","Vlees",25,[("gehakt",600,"g"),("wok",800,"g"),("rijst",300,"g"),("ui",200,"g")]),
@@ -251,6 +251,18 @@ def validate_dish_ingredients(title, ingredients):
     return issues
 
 RECIPE_METHODS = {
+    "Italiaans geïnspireerde boerenkoolpasta met kipgehakt": (
+        "Breng water aan de kook voor de volkorenpasta. Kook de pasta volgens de verpakking en "
+        "bewaar een kopje kookwater. Verwarm olijfolie in een ruime pan en bak het kipgehakt "
+        "met gedroogde oregano, fijngesneden knoflook, zout en peper volledig gaar en rul. "
+        "Voeg de tomatenblokjes toe en laat circa 8 minuten zachtjes pruttelen. "
+        "Snijd verse boerenkool fijn en verwijder eventuele dikke nerven; gebruik bij diepvriesboerenkool "
+        "de aanwijzingen op de verpakking. Voeg de boerenkool met een scheut water toe "
+        "en laat onder een deksel 8-12 minuten zachtjes garen tot de kool zacht genoeg is. "
+        "Schep de gekookte pasta erdoor en voeg indien nodig wat achtergehouden kookwater toe "
+        "om de saus goed te laten hechten. Breng op smaak met extra peper en eventueel "
+        "chilivlokken uit voorraad. Verdeel over vier porties."
+    ),
     "HelloFresh-geïnspireerd: champignonrisotto met kipgehakt": (
         "Fruit ui en champignons, bak het kipgehakt goed gaar en zet apart. "
         "Rooster de droge Arborio- of Carnarolirijst kort mee met de ui. "
