@@ -240,7 +240,18 @@ def render(data):
     DOCS.mkdir(parents=True,exist_ok=True)
     (DOCS/"data.json").write_text(json.dumps(data,ensure_ascii=False,indent=2))
     template=(ROOT/"src"/"template.html").read_text()
-    (DOCS/"index.html").write_text(template.replace("__DATA__",json.dumps(data,ensure_ascii=False).replace("</","<\\/")))
+    # Receptenradar is de hoofdingang; oude folderdashboard blijft toegankelijk.
+    (DOCS/"aanbiedingen.html").write_text(
+        template.replace("__DATA__",json.dumps(data,ensure_ascii=False).replace("</","<\\/")),
+        encoding="utf-8")
+    (DOCS/"index.html").write_text(
+        '<!doctype html><html lang="nl"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>Boodschappen Maatje | Recepten en aanbiedingen</title>'
+        '<meta http-equiv="refresh" content="0;url=./recepten/">'
+        '<script>location.replace("./recepten/")</script></head>'
+        '<body><a href="./recepten/">Open Boodschappen Maatje</a></body></html>',
+        encoding="utf-8")
     DATA.mkdir(exist_ok=True)
     (DATA/"latest.json").write_text(json.dumps(data,ensure_ascii=False,indent=2))
     with (DATA/"folders.csv").open("w",newline="",encoding="utf-8") as f:
