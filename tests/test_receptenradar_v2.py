@@ -8,6 +8,23 @@ from actie_maaltijden import DISH_TEMPLATES
 from receptenradar_v2 import fresh_spinach_required,measure,measure_offer,offer_size_label,verified_discount,verified_discount_percentage,match_ingredient,total_for,promo_for,offer_price,ingredient_price,nutrition_profile,product_context,audit_promotions,alternative_offers,audit_recipe_quality,AUDIT_GROUPS
 
 class PrijsTest(unittest.TestCase):
+    def test_italiaans_geinspireerde_boerenkoolpasta_heeft_gerijpte_methode(self):
+        naam="Italiaans geïnspireerde boerenkoolpasta met kipgehakt"
+        recepten=[x for x in RECIPES if x[0]==naam]
+        self.assertEqual(len(recepten),1)
+        _,categorie,bereidingstijd,ingredienten=recepten[0]
+        self.assertEqual(categorie,"Kip")
+        self.assertEqual(bereidingstijd,30)
+        self.assertEqual({k for k,_,_ in ingredienten},{"boerenkool","kipgehakt","pasta","tomatenblokjes"})
+        methode=cooking_instructions(naam,ingredienten,RECIPE_METHODS.get(naam,""))
+        kruiden=pantry_for_recipe(naam,ingredienten,methode)
+        for term in ("boerenkool","kipgehakt","volledig gaar","pasta","tomatenblokjes","8-12 minuten"):
+            self.assertIn(term,methode)
+        self.assertTrue(any("oregano" in x for x in kruiden))
+        self.assertTrue(any("knoflook" in x for x in kruiden))
+        self.assertTrue(any("chilivlokken" in x for x in kruiden))
+        self.assertFalse(dish_quality_issues(naam,categorie,ingredienten))
+
     def test_kcal_per_portie_en_totaal(self):
         recipe=nutrition_profile([
             ("kipfilet",800,"g"),("broccoli",1000,"g"),
