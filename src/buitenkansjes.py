@@ -33,7 +33,7 @@ WATCH={
 "Maaltijden":[r"(kipfilet|kipdij|zalm|makreel|tonijn|broccoli|spinazie|volkorenrijst|wokgroenten)"],
 "Overig":[r"(ginger beer|texels 0.0|0[.,]0)"]}
 PATTERNS={key:[re.compile(x,re.I) for x in values] for key,values in WATCH.items()}
-HEADERS={"User-Agent":"KoopkrachtPersonal/2.0 (+https://github.com/DASPHHS/koopkracht)","Accept":"application/json"}
+HEADERS={"User-Agent":"KoopkrachtPersonal/2.0 (+https://github.com/DASPHHS/Boodschappen-maatje)","Accept":"application/json"}
 if os.getenv("PRIJS_PROFEET_KEY"): HEADERS["X-API-Key"]=os.environ["PRIJS_PROFEET_KEY"]
 
 def api(params):
@@ -127,7 +127,7 @@ def render(data):
         return f'<article><strong>{safe(p["name"])}</strong><b class="price">{euros(p["price"])}</b><p>{safe(NAMES.get(p["retailer"],p["retailer"]))} · {discount}{per_unit}{competitor}</p><p>{safe(p["valid_from"])} tot {safe(p["valid_until"])} · {safe(p.get("proof","volgende week, nog niet actief"))}</p><a href="{safe(p["url"])}">Bekijk aanbieding</a></article>'
     def section(title,rows,empty):
         return f'<section><h2>{title}</h2>'+("".join(item(p) for p in rows) if rows else f'<p>{empty}</p>')+'</section>'
-    body=f'<h1>Koopkracht Radar</h1><p>Persoonlijke buitenkansjes · Bleiswijk · {safe(data["date"])}</p>'
+    body=f'<h1>Boodschappen Maatje</h1><p>Persoonlijke buitenkansjes · Bleiswijk · {safe(data["date"])}</p>'
     body+=section("Echt bewezen buitenkansjes",data["confirmed"][:8],"Vandaag geen aanbiedingen die én 25% onder de van-prijs én minstens 10% onder identieke actuele concurrentieprijs liggen.")
     body+=section("Interessant, maar nog controleren",data["candidates"][:12],"Geen kandidaten gevonden.")
     body+=section("Volgende week, nog niet kopen",data["next_week"][:12],"Nog geen toekomstige aanbiedingen gevonden.")
