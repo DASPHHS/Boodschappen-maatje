@@ -26,6 +26,8 @@ on:
       - 'recepten/index.html'
       - 'recepten/status.html'
       - 'tests/test_scan_status.cjs'
+      - 'tests/test_mealprep_labels.py'
+      - 'tests/test_mealprep_ui.cjs'
       - '.github/workflows/receptenradar.yml'
   schedule:
     - cron: '31 5 * * *'
@@ -56,6 +58,7 @@ jobs:
           python -m unittest discover -s tests -p "test_weekmenu_advies.py" -v
           python -m unittest discover -s tests -p "test_toekomstige_acties.py" -v
           python -m unittest discover -s tests -p "test_externe_receptcontrole.py" -v
+          python -m unittest discover -s tests -p "test_mealprep_labels.py" -v
       - name: Controleer JavaScript van de receptenwebsite
         run: |
           python - <<'PY'
@@ -72,6 +75,7 @@ jobs:
           node tests/test_keuken_filters.cjs
           node tests/test_weekmenu_ui.cjs
           node tests/test_scan_status.cjs
+          node tests/test_mealprep_ui.cjs
       - name: Haal echte schap- en actieprijzen op en bereken recepten
         env:
           PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
