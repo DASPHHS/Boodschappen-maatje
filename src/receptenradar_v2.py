@@ -4,7 +4,7 @@ Combineert Checkjebon (normale online schapprijzen) met PrijsProfeet
 (actuele promoties). Geen geschatte productprijzen en geen fictieve fallback.
 """
 import json, math, os, re, sys, time, unicodedata
-from datetime import datetime, date, timezone
+from datetime import datetime, date, timezone, timedelta
 from difflib import SequenceMatcher
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -19,7 +19,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"data.json"
 SHELVES="https://raw.githubusercontent.com/supermarkt/checkjebon/main/data/supermarkets.json"
 DEALS="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
-HEADERS={"User-Agent":"KoopkrachtRecepten/2.0 (+https://github.com/DASPHHS/koopkracht)","Accept":"application/json"}
+HEADERS={"User-Agent":"BoodschappenMaatjeRecepten/3.0 (+https://github.com/DASPHHS/Boodschappen-maatje)","Accept":"application/json"}
 KEY=os.getenv("PRIJS_PROFEET_KEY")
 if KEY: HEADERS["X-API-Key"]=KEY
 STORES={"ah":"Albert Heijn","jumbo":"Jumbo","lidl":"Lidl"}
@@ -158,10 +158,19 @@ def load_shelves():
                                  "unit":unit,"size_label":item.get("s") or "","url":link,"source":"Checkjebon"})
     return prices,response.headers.get("Last-Modified"),{s:len(rows) for s,rows in prices.items()}
 
-def load_deals():
+def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
+    """Acties nu + preview voor komende dagen, zonder toekomstige prijzen
+    onterecht te gebruiken voor een mand die vandaag wordt gekocht.
+
+    De bestaande returnvorm (acties, fouten) blijft beschikbaar.
+    Bij include_upcoming=True komt toekomstige aanbiedingen als derde element.
+    """
     offers={s:[] for s in STORES}
+    upcoming={s:[] for s in STORES}
     errors=[]
-    today=datetime.now(TZ).date().isoformat()
+    day=as_of or datetime.now(TZ).date()
+    today=day.isoformat()
+    limit=(day+timedelta(days=horizon_days)).isoformat()
     for store,slug in (("ah","albert_heijn"),("jumbo","jumbo"),("lidl","lidl")):
         try:
             page=1;seen=set()
@@ -175,8 +184,16 @@ def load_deals():
                     status=r.get("promotion_status")
                     start=str(r.get("valid_from") or "")[:10]
                     until=str(r.get("valid_until") or "")[:10]
-                    if status not in (None,"active") or (start and start>today) or (until and until<today):continue
+                    if status not in (None,"active","upcoming") or (until and until<today):
+                        continue
                     if store_code(r.get("retailer",slug))!=store:continue
+                    if start>today:
+                        if not start or start>limit or not until or until<start:
+                            continue
+                        destination=upcoming[store]
+                    else:
+                        if status=="upcoming":continue
+                        destination=offers[store]
                     name=str(r.get("name") or "").strip()
                     price=num(r.get("price"))
                     if not name or not price:continue
@@ -184,7 +201,7 @@ def load_deals():
                     if key in seen:continue
                     seen.add(key)
                     size,unit=measure_offer(r)
-                    offers[store].append({
+                    destination.append({
                        "name":name,"norm":normalize(name),"price":price,"quantity":size,"unit":unit,
                        "size_label":offer_size_label(r,size,unit),
                        "original_price":num(r.get("original_price")),
@@ -264,7 +281,7 @@ def load_deals():
                          "valid_until":"2026-10-27","ean":"",
                          "source":"Jumbo officiële campagnepagina","is_loyalty":False})
             offers["jumbo"].append(item)
-    return offers,errors
+    return (offers,errors,upcoming) if include_upcoming else (offers,errors)
 
 def match_ingredient(product,ingredient):
     label,pattern,exclude=ING[ingredient]
@@ -849,7 +866,7 @@ def main():
     shelves,last_modified,counts=load_shelves()
     if not any(counts.values()):
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
-    offers,errors=load_deals()
+    offers,errors,upcoming=load_deals(include_upcoming=True)
     # Externe recepten zoeken vanuit daadwerkelijke actieproducten.
     # Losse bronresultaten zijn geen berekende vierpersoonsmaaltijden.
     try:
@@ -873,6 +890,13 @@ def main():
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
+            "upcoming_deals":{s:sorted(({**o,"discount_verified":verified_discount(o),
+                              "verified_discount_pct":verified_discount_percentage(o)}
+                         for o in upcoming[s]),key=lambda d:(
+                         d.get("valid_from") or "9999-12-31",
+                         not d["discount_verified"],
+                         -(d.get("verified_discount_pct") or 0))) for s in STORES},
+            "upcoming_counts":{s:len(upcoming[s]) for s in STORES},
             "recipes":recipes,"discovered_recipes":discovered,
             "source_recipe_matches":source_recipe_matches,
             "audit":audit,"quality_audit":quality,
@@ -896,6 +920,7 @@ def main():
                       "matched_offer_lines":{s:sum(r["sale_count"] for r in result["recipes"][s]) for s in STORES},
                       "fully_priced_recipes":{s:sum(r["complete"] for r in result["recipes"][s]) for s in STORES},
                       "errors":errors,
+                      "upcoming_offers":{s:len(upcoming[s]) for s in STORES},
                       "title_matches":{s:source_recipe_matches[s].get("possible_title_matches",0) for s in STORES},
                       "audit_unlinked":{s:audit[s]["unlinked_total"] for s in STORES}},ensure_ascii=False))
 if __name__=="__main__":main()
