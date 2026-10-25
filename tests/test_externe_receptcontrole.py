@@ -2,7 +2,7 @@
 import sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from recepten_ontdekker import ingredient_confirmed_candidate,verify_meal
+from recepten_ontdekker import ingredient_confirmed_candidate,verify_meal,ingredient_key
 
 def source():
     return {"idMeal":"12345","strMeal":"Chicken Broccoli Curry",
@@ -26,6 +26,18 @@ class ExterneBroncontroleTests(unittest.TestCase):
         self.assertEqual(found["cuisine"],"Indiaas")
         self.assertIsNone(verify_meal(meal,{"kipdij","broccoli"}),
                           "Zonder controleerbare originele porties geen geprijsd recept")
+
+    def test_broningredienten_mogen_geen_ander_product_worden(self):
+        for ingredient in ("Rice Noodles","Rice Paper","Egg Noodles",
+                           "Tomato Paste","Tomato Sauce","Onion Powder",
+                           "Cheese Sauce","Mushroom Soup","Salmon Roe"):
+            with self.subTest(ingredient=ingredient):
+                self.assertIsNone(ingredient_key(ingredient))
+        self.assertEqual(ingredient_key("Rice"),"rijst")
+        self.assertEqual(ingredient_key("Brown Rice"),"rijst")
+        self.assertEqual(ingredient_key("Eggs"),"eieren")
+        self.assertEqual(ingredient_key("Chicken Thighs"),"kipdij")
+        self.assertEqual(ingredient_key("Cherry Tomatoes"),"tomaten")
 
     def test_twee_actieproducten_vereist(self):
         self.assertIsNone(ingredient_confirmed_candidate(source(),{"kipdij"}))
