@@ -1,0 +1,20 @@
+{
+  "ah": {
+    "recipes": [],
+    "source_results": 56,
+    "verified_matches": 0,
+    "errors": []
+  },
+  "jumbo": {
+    "recipes": [],
+    "source_results": 41,
+    "verified_matches": 0,
+    "errors": []
+  },
+  "lidl": {
+    "recipes": [],
+    "source_results": 38,
+    "verified_matches": 0,
+    "errors": []
+  }
+}
