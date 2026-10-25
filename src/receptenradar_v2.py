@@ -857,6 +857,15 @@ def main():
     if not any(counts.values()):
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors=load_deals()
+    # Externe recepten zoeken vanuit daadwerkelijke actieproducten.
+    # Losse bronresultaten zijn geen berekende vierpersoonsmaaltijden.
+    try:
+        from recepten_ontdekker import build as discover_recipes, save as save_discovery
+        discovered=discover_recipes(offers)
+        save_discovery(discovered)
+    except (requests.RequestException,ValueError,OSError) as exc:
+        errors.append("Externe receptontdekking tijdelijk niet beschikbaar: "+str(exc))
+        discovered={s:{"recipes":[],"verified_matches":0,"errors":["bron tijdelijk onbereikbaar"]} for s in STORES}
     export_shopping_index(shelves,offers)
     recipes=make_recipes(shelves,offers)
     validate_publication(recipes)
@@ -867,7 +876,8 @@ def main():
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
                             "promotions":"https://www.prijsprofeet.nl"},
             "store_names":STORES,"counts":{"ordinary":counts,"promotions":{s:len(offers[s]) for s in STORES}},
-            "recipes":recipes,"audit":audit,"quality_audit":quality,
+            "recipes":recipes,"discovered_recipes":discovered,
+            "audit":audit,"quality_audit":quality,
             "deals":{s:sorted(({**o,"discount_verified":verified_discount(o),
                                   "verified_discount_pct":verified_discount_percentage(o)}
                                  for o in offers[s]),
