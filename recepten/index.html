@@ -202,11 +202,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   grains:"Brood, rijst & pasta",drinks:"Dranken",pantry:"Voorraad & snacks",
   care:"Verzorging & huishouden",other:"Overige producten"
  };
- const words=name=>" "+String(name||"").normalize("NFKD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ")+" ";
+ const words=name=>" "+String(name||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ")+" ";
  function dealCategory(d){
   const n=words(d.name),any=items=>items.some(w=>n.includes(" "+w+" "));
   if(any(["wasmiddel","waspoeder","wasverzachter","vaatwastabletten","vaatwasmiddel","toiletpapier","keukenpapier","schoonmaakmiddel","allesreiniger","afwasmiddel","shampoo","conditioner","douchegel","deodorant","tandpasta","tandenborstel","scheermes","scheergel","huidcreme","dagcreme","zonnebrand","reinigingsdoekjes","handzeep","zeep","luchtverfrisser","luier","luiers"]))return "care";
-  if(any(["koffie","koffiecups","thee","cola","frisdrank","limonade","vruchtensap","sinaasappelsap","appelsap","water","mineraalwater","bier","wijn","energiedrank","energy","smoothie","drank","ice tea","ijsthee"]))return "drinks";
+  if(any(["koffie","koffiecups","thee","cola","frisdrank","limonade","vruchtensap","sinaasappelsap","appelsap","water","mineraalwater","bier","wijn","energiedrank","energy","red bull","redbull","pepsi","fanta","coca cola","smoothie","drank","ice tea","ijsthee"]))return "drinks";
   if(any(["chips","koek","koeken","koekjes","chocolade","snoep","noten","amandelen","cashewnoten","walnoten","pinda","pindas","olijfolie","zonnebloemolie","saus","pastasaus","tomatensaus","ketchup","mayonaise","bonen","kidneybonen","kikkererwten","linzen","blik","conserven","pesto","hagelslag","jam","honing","crackers","beschuit"]))return "pantry";
   if(any(["kwark","yoghurt","yogurt","skyr","melk","kaas","roomkaas","eieren","eier","boter","slagroom","kookroom","karnemelk","hutenkase","mozzarella","parmezaan","feta"]))return "dairy";
   if(any(["kip","kipfilet","kipdij","kipburgers","kipgehakt","gehakt","rund","rundergehakt","rundvlees","varkensvlees","varkenshaas","rookworst","worst","biefstuk","shoarma","hamburger","hamburgers","schnitzel","spek","ham","zalm","zalmfilet","tonijn","garnalen","kabeljauw","vis","visfilet","tofu","tempeh","vegetarisch","vegan","vlees","slavink"]))return "protein";
