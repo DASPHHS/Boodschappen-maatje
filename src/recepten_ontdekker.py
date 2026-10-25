@@ -10,7 +10,8 @@ from pathlib import Path
 from urllib.parse import quote
 import requests
 from receptenradar_catalog import ING
-from receptenradar_v2 import match_ingredient, normalize
+from receptenradar_v2 import match_ingredient, normalize, verified_discount
+from recept_keukens import infer_cuisine,dutch_title
 
 ROOT=Path(__file__).resolve().parents[1]
 CACHE=ROOT/"recepten"/"ontdekte_recepten.json"
@@ -73,8 +74,7 @@ def fetch_discovered(offers,session=None,max_queries=10):
     candidates=Counter()
     for offer in offers:
         if not offer.get("quantity") or not offer.get("unit"):continue
-        if offer.get("original_price") is None or offer["original_price"]<=offer["price"]:
-            continue
+        if not verified_discount(offer):continue
         for key in ING:
             if match_ingredient(offer,key):
                 candidates[key]+=1
@@ -133,18 +133,68 @@ def verify_meal(meal,offered_keys):
             "pricing_status":"Bronporties niet bevestigd; geen kassaprijs",
             "instructions_status":"Bereidingswijze bij de originele bron"}
 
+def ingredient_confirmed_candidate(meal,offered_keys):
+    """Selecteer bronrecepten met echte, door de bron genoemde actieproducten.
+
+    De broningrediënten zijn gecontroleerd op NAAM, niet op hoeveelheden,
+    vierpersoonsverhoudingen, voedingswaarden of volledige kassaprijzen.
+    """
+    if not meal.get("idMeal") or not meal.get("strMeal") or not meal.get("strInstructions"):
+        return None
+    raw=meal.get("strSource") or ("https://www.themealdb.com/meal/"+str(meal["idMeal"]))
+    if not isinstance(raw,str) or not raw.startswith(("https://","http://")):
+        return None
+    original={}
+    for i in range(1,21):
+        name=(meal.get(f"strIngredient{i}") or "").strip()
+        if not name:continue
+        key=ingredient_key(name)
+        if key:original.setdefault(key,[]).append(name)
+    matches=sorted(set(original).intersection(offered_keys))
+    if len(matches)<2:return None
+    title=str(meal["strMeal"]).strip()
+    dutch,_=dutch_title(title)
+    area=str(meal.get("strArea") or "").strip()
+    cuisine=infer_cuisine(title,area or None)
+    keys=set(original)
+    nutrient_meal=bool(keys.intersection({"kipfilet","kipdij","gehakt","tofu","zalm",
+                   "tonijn","eieren","linzen","bonen","kikkererwten","kwark"}))
+    produce=bool(keys.intersection({"broccoli","spinazie","boerenkool","bloemkool",
+                   "paprika","courgette","champignons","wortel","tomaten",
+                   "tomatenblokjes","ui","sla"}))
+    return {"title":title,"title_nl":dutch,"source":"TheMealDB",
+            "cuisine":cuisine,"url":raw,
+            "match_terms":matches,"matched_title_terms":len(matches),
+            "ingredient_keys":sorted(keys),
+            "source_ingredient_names":{k:original[k] for k in matches},
+            "health_priority":"kansrijk voor controle" if nutrient_meal and produce
+                else "nader beoordelen",
+            "verification_level":"ingredient_names_only",
+            "verification":"Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+            "servings_verified":False,"price_verified":False,
+            "health_review":"Nog geen controle op hoeveelheden, kcal of eiwit per portie"}
+
+
 def build(offers_by_store,session=None):
     result={}
     for store,offers in offers_by_store.items():
         offered_keys=set()
         for o in offers:
-            if o.get("original_price") is None or o["original_price"]<=o["price"]:continue
+            if not verified_discount(o):continue
             for key in ING:
                 if match_ingredient(o,key):offered_keys.add(key)
         meals,errors=fetch_discovered(offers,session=session)
         verified=[v for meal in meals if (v:=verify_meal(meal,offered_keys))]
-        result[store]={"recipes":verified[:80],"source_results":len(meals),
-                       "verified_matches":len(verified),"errors":errors}
+        candidates=[v for meal in meals if
+                    (v:=ingredient_confirmed_candidate(meal,offered_keys))]
+        candidates.sort(key=lambda x:(-x["matched_title_terms"],
+                                x["source"],x["title"]))
+        result[store]={"recipes":verified[:80],
+                       "ingredient_confirmed_candidates":candidates[:60],
+                       "ingredient_confirmed_count":len(candidates),
+                       "source_results":len(meals),
+                       "verified_matches":len(verified),
+                       "errors":errors}
     return result
 
 def save(result):
