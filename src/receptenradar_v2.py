@@ -972,7 +972,7 @@ def main():
       "source_errors":errors,
     }
     path=ROOT/"recepten"/"status.json"
-    path.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    path.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"shelf":counts,"offers":result["counts"]["promotions"],
                       "recipes_with_offers":{s:sum(r["sale_count"]>0 for r in result["recipes"][s]) for s in STORES},
                       "breakfast_offer_details":{s:[{"title":r["title"],
