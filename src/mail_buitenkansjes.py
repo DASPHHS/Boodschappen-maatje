@@ -16,10 +16,10 @@ def main():
     day=datetime.now(ZoneInfo("Europe/Amsterdam"))
     count=len(data.get("confirmed",[]))
     msg=EmailMessage()
-    msg["Subject"]=f"Koopkracht Radar | {count} bewezen buitenkansjes | {day:%d-%m-%Y}"
+    msg["Subject"]=f"Boodschappen Maatje | {count} bewezen buitenkansjes | {day:%d-%m-%Y}"
     msg["From"]=os.environ["SMTP_USER"]
     msg["To"]=os.environ["EMAIL_TO"]
-    msg.set_content(f"Vandaag {count} onderbouwde buitenkansjes.\n\nBekijk de aanbiedingen, kandidaten en komende-week-acties op https://dasphhs.github.io/koopkracht/buitenkansjes.html\n\nBron: PrijsProfeet (https://www.prijsprofeet.nl).\n")
+    msg.set_content(f"Vandaag {count} onderbouwde buitenkansjes.\n\nBekijk de aanbiedingen, kandidaten en komende-week-acties op https://dasphhs.github.io/Boodschappen-maatje/docs/buitenkansjes.html\n\nBron: PrijsProfeet (https://www.prijsprofeet.nl).\n")
     msg.add_alternative(body,subtype="html")
     port=int(os.getenv("SMTP_PORT") or "587")
     if port==465:
