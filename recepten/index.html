@@ -42,6 +42,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .source-match-actions select{border:1px solid #c7ddcc;background:white;border-radius:9px;padding:10px;font:inherit;max-width:100%}
 .source-match-item .original-title{font-size:12px;color:#668171;margin-top:5px}
 .source-match-item .score{display:block;margin:8px 0 3px;font-size:12px;color:#3c6750}
+
+.weekmenu-panel{margin:14px 0 20px;padding:16px;background:#f1f8f2;border:1px solid #cddfce;border-radius:14px}
+.weekmenu-panel>summary{font-size:15px;font-weight:800;color:#23583e;cursor:pointer}
+.weekmenu-panel .weekmenu-stores{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px;margin:14px 0}
+.weekmenu-panel .weekmenu-store{background:white;border:1px solid #d8e8dc;padding:12px;border-radius:10px;min-width:0}
+.weekmenu-panel .weekmenu-store strong{font-size:21px;display:block}
+.weekmenu-panel .weekmenu-store .btn{width:100%;margin-top:9px}
+.weekmenu-panel ol{padding-left:22px}
+.weekmenu-panel li{padding:4px 0}
+.weekmenu-panel .weekmenu-caveat{font-size:12px;color:#557263;line-height:1.6}
 </style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Ontdek duizenden recepten ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Een grote receptenbibliotheek met filters voor vlees, vis en vegetarisch. De voordeligste actiecombinaties staan bovenaan. Waar mogelijk voldoet 70% aan jouw eiwit- en koolhydraatvoorkeur. Aanbiedingen én normale prijzen, zodat je weet wat alle verpakkingen bij elkaar kosten.</p>
@@ -49,7 +59,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
-<div id="alerts"></div><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div id="alerts"></div>
+<details id="weekmenu-panel" class="weekmenu-panel" hidden>
+ <summary>Weekmenu: drie kookmomenten · vergelijk AH, Jumbo en Lidl</summary>
+ <div id="weekmenu-content" aria-live="polite"></div>
+</details>
+<details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
 <div id="cuisine-shortcuts" class="cuisine-shortcuts" aria-label="Snel filteren op wereldkeuken"></div>
 <section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
  <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
@@ -382,6 +397,38 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      (c===$("cuisine").value)+'">'+(c==="all"?"Alle keukens":esc(c))+
      '</button>').join("");
  }
+ function renderWeekmenu(){
+   const panel=$("weekmenu-panel");
+   panel.hidden=state.mode==="deals";
+   if(panel.hidden)return;
+   const m=state.data?.weekmenu_advice;
+   if(!m){panel.hidden=true;return}
+   if(m.status!=="indicative_online_comparison"){
+     $("weekmenu-content").innerHTML="<p class='sub'>Nog geen eerlijk vergelijkbaar weekmenu. "+
+       esc(m.message||"Er ontbreken identieke, volledig geprijsde recepten.")+"</p>";
+     return;
+   }
+   const names=state.data.store_names;
+   const stores=(m.order_cheapest_first||[]).map(store=>{
+     const q=m.stores[store];
+     return `<div class="weekmenu-store"><div class="sub">${esc(names[store])}${store===m.cheapest_store?" · laagste prijs van deze gerechten":""}</div>
+       <strong>${euro(q.checkout)}</strong>
+       <div class="sub">${m.portion_count} porties · hele verpakkingen</div>
+       <div class="sub">${q.sale_line_count} kortingregels in gekozen mand</div>
+       <button class="btn outline small" type="button" data-weekmenu-choose="${esc(store)}">Zet dit menu op mijn lijst</button>
+       </div>`;
+   }).join("");
+   $("weekmenu-content").innerHTML=
+     '<p class="sub">Dit vergelijkt precies dezelfde '+m.recipe_count+
+     ' maaltijden bij alle drie supermarkten, ieder voor 4 personen. Voor ongeveer '+
+     m.recipe_count+' kookmomenten en '+m.portion_count+' porties.</p>'+
+     '<ol>'+m.meals.map(x=>'<li><strong>'+esc(x.title)+'</strong> · '+
+       esc(x.cuisine||"Internationaal")+' · '+esc(x.category||"Maaltijd")+
+       (x.passes_nutrition_preference?' · eiwit- en groenterijk volgens schatting':' · voedingsvoorkeur niet volledig bevestigd')+
+       '</li>').join("")+'</ol>'+
+     '<div class="weekmenu-stores">'+stores+'</div>'+
+     '<p class="weekmenu-caveat">Indicatieve online kassaprijzen voor de gekozen verpakkingen; exclusief kruiden en overige voorraad, bezorgkosten en persoonlijke kortingen. Lokale beschikbaarheid niet gecontroleerd. Geen vergelijking van al je overige weekboodschappen.</p>';
+ }
  function renderSourceMatches(){
    const panel=$("source-matches-panel");
    const entries=state.data?.source_recipe_matches?.[state.store]?.candidates||[];
@@ -463,6 +510,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   document.querySelectorAll("#cuisine-shortcuts [data-cuisine]").forEach(b=>
     b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
   renderSourceMatches();
+  renderWeekmenu();
   renderCart();
   renderAudit();
  }
@@ -498,6 +546,22 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("deal-period").value="today";$("deal-search").value="";$("deal-category").value="all";$("deal-status").value="all";
   $("deal-promotion").value="all";$("deal-minimum").value="0";$("deal-sort").value="discount";
   state.dealVisible=50;renderDeals();
+ });
+ $("weekmenu-panel").addEventListener("click",e=>{
+   const b=e.target.closest("[data-weekmenu-choose]");
+   if(!b)return;
+   const store=b.dataset.weekmenuChoose;
+   const m=state.data?.weekmenu_advice;
+   if(!m||!m.stores?.[store]||!m.meals)return;
+   const selected=m.meals.map(meal=>{
+     const item=state.data.recipes[store].find(r=>r.title===meal.title&&r.complete);
+     return item?{store,id:item.id,variant:"cheapest"}:null;
+   }).filter(Boolean);
+   if(selected.length!==m.meals.length)return;
+   state.store=store;state.selected=selected;
+   $("cuisine").value="all";$("selection").value="all";
+   updateCuisineOptions();save();render();
+   $("cart-panel").scrollIntoView({behavior:"smooth",block:"start"});
  });
  $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")});
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
