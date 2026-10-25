@@ -39,7 +39,7 @@ WORLD_SOURCES=[
  ("AH Allerhande · Italiaans","Italiaans","https://www.ah.nl/allerhande/recepten/italiaanse-recepten"),
  ("AH Allerhande · Mexicaans","Mexicaans","https://www.ah.nl/allerhande/recepten/mexicaanse-recepten"),
  ("AH Allerhande · Spaans","Spaans","https://www.ah.nl/allerhande/recepten/spaanse-recepten"),
- ("AH Allerhande · Nederlands","Nederlands","https://www.ah.nl/allerhande/recepten/hollandse-recepten"),
+ ("AH Allerhande · Nederlands","Nederlands","https://www.ah.nl/allerhande/recepten/nederlandse-recepten"),
  ("Jumbo · Wereldkeukens","Wereldkeukens","https://www.jumbo.com/recepten"),
  ("LeukeRecepten · Aziatisch","Aziatisch","https://www.leukerecepten.nl/aziatisch/"),
  ("24Kitchen · Wereldkeukens","Wereldkeukens","https://www.24kitchen.nl/recepten"),
