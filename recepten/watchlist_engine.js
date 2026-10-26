@@ -18,6 +18,11 @@ const VERIFIED=[
  {id:"AH-wi556289",protein100:13,portion:200,source:"https://www.ah.nl/producten/product/wi556289/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"AH-wi585919",protein100:10,portion:450,serving:200,source:"https://www.ah.nl/producten/product/wi585919/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"AH-wi585929",protein100:12,portion:205,proteinPerPortion:25,source:"https://www.ah.nl/producten/product/wi585929/xxl-nutrition-fitquark-strawberry"},
+ {id:"AH-wi555459",protein100:13,portion:200,source:"https://www.ah.nl/producten/product/wi555459/protein-kwark-met-yoghurt-perzik-passie"},
+ {id:"AH-wi585917",protein100:10,portion:450,serving:200,source:"https://www.ah.nl/producten/product/wi585917/protein-kwark-met-yoghurt-vanillesmaak"},
+ {id:"AH-wi585918",protein100:10,portion:450,serving:200,source:"https://www.ah.nl/producten/product/wi585918/protein-kwark-met-yoghurt-perzik"},
+ {id:"AH-wi520225",protein100:12,portion:200,proteinPerPortion:25,source:"https://www.ah.nl/producten/product/wi520225/hipro-protein-kwark-banaan"},
+ {id:"AH-wi597041",protein100:10,portion:450,serving:200,source:"https://www.ah.nl/producten/product/wi597041/lindahls-protein-kvarg-vanillesmaak"},
  {id:"Jumbo-590777CUP",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-aardbei-kwark-200-g-590777CUP"},
  {id:"Jumbo-735508ZK",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK"},
  {id:"Jumbo-685838ZK",protein100:12,portion:205,proteinPerPortion:25,source:"https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK"},
@@ -33,7 +38,12 @@ const DIRECT_PRICES=[
  {id:"AH-wi555458",store:"ah",name:"AH Protein kwark met yoghurt framboos",price:0.95,quantity:200,unit:"g",url:"https://www.ah.nl/producten/product/wi555458/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"AH-wi556289",store:"ah",name:"AH Protein kwark met yoghurt framboos",price:1.39,quantity:200,unit:"g",url:"https://www.ah.nl/producten/product/wi556289/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"AH-wi585919",store:"ah",name:"AH Protein kwark met yoghurt framboos",price:1.99,quantity:450,unit:"g",url:"https://www.ah.nl/producten/product/wi585919/ah-protein-kwark-met-yoghurt-framboos"},
- {id:"AH-wi585929",store:"ah",name:"XXL Nutrition Fitquark strawberry",price:1.79,quantity:205,unit:"g",url:"https://www.ah.nl/producten/product/wi585929/xxl-nutrition-fitquark-strawberry"}
+ {id:"AH-wi585929",store:"ah",name:"XXL Nutrition Fitquark strawberry",price:1.79,quantity:205,unit:"g",url:"https://www.ah.nl/producten/product/wi585929/xxl-nutrition-fitquark-strawberry"},
+ {id:"AH-wi555459",store:"ah",name:"AH Protein kwark met yoghurt perzik passie",price:0.95,quantity:200,unit:"g",url:"https://www.ah.nl/producten/product/wi555459/protein-kwark-met-yoghurt-perzik-passie"},
+ {id:"AH-wi585917",store:"ah",name:"AH Protein kwark met yoghurt vanillesmaak",price:1.99,quantity:450,unit:"g",url:"https://www.ah.nl/producten/product/wi585917/protein-kwark-met-yoghurt-vanillesmaak"},
+ {id:"AH-wi585918",store:"ah",name:"AH Protein kwark met yoghurt perzik",price:1.99,quantity:450,unit:"g",url:"https://www.ah.nl/producten/product/wi585918/protein-kwark-met-yoghurt-perzik"},
+ {id:"AH-wi520225",store:"ah",name:"HiPRO Protein kwark banaan",price:1.99,quantity:200,unit:"g",url:"https://www.ah.nl/producten/product/wi520225/hipro-protein-kwark-banaan"},
+ {id:"AH-wi597041",store:"ah",name:"Lindahls Protein kvarg vanillesmaak",price:2.79,quantity:450,unit:"g",url:"https://www.ah.nl/producten/product/wi597041/lindahls-protein-kvarg-vanillesmaak"}
 ];
 function directPriceFor(item,store,date=isoDate()){
  if(store!=="ah"||date!=="2026-10-26")return null;
@@ -57,7 +67,7 @@ function nutrition(name,quantity,unit,url){
  if(!match||unit!=="g"||!Number.isFinite(Number(quantity))||quantity!==match.portion)return null;
  const n=norm(name);
  // Aanbiedingsbron en voedingsspecificatie moeten hetzelfde SKU én productsoort zijn.
- if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|quark|yoghurt|yogurt)|(kwark|quark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
+ if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|quark|kvarg|yoghurt|yogurt)|(kwark|quark|kvarg|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
  if(id?.startsWith("Jumbo-")&&!/(protein|xxl|fit).*(kwark|quark|yoghurt|yogurt)|(kwark|quark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
  return {proteinPer100g:match.protein100,proteinPerPackage:match.proteinPerPortion??round(match.protein100*quantity/100,1),
    proteinSource:match.source,serving:match.serving??match.portion,
@@ -82,11 +92,11 @@ function matchProduct(name,watch,url=''){
  const rejects=/\b(?:babyvoeding|baby|olvarit|knorr|maaltijd|poeder|soep|kruidenmix|smoothie)\b/;
  if(rejects.test(s))return false;
  switch(watch.type){
- case "squeezequark":return (/(knijpkwark|knijp kwark|quark pouch|kwark pouch|kwark zakje)/.test(s)||["Jumbo-685838ZK","Jumbo-685839ZK","AH-wi585929"].includes(sku(url)))&&!/(yoghurt|yogurt|drink)/.test(s);
- case "squeeze":return (/(knijp|breaker|pouch|zakje)/.test(s)||["Jumbo-735508ZK","Jumbo-685838ZK","Jumbo-685839ZK","AH-wi585929"].includes(sku(url)))&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
+ case "squeezequark":return (/(knijpkwark|knijp kwark|quark pouch|kwark pouch|kwark zakje)/.test(s)||["Jumbo-685838ZK","Jumbo-685839ZK","AH-wi585929","AH-wi520225"].includes(sku(url)))&&!/(yoghurt|yogurt|drink)/.test(s);
+ case "squeeze":return (/(knijp|breaker|pouch|zakje)/.test(s)||["Jumbo-735508ZK","Jumbo-685838ZK","Jumbo-685839ZK","AH-wi585929","AH-wi520225"].includes(sku(url)))&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
  case "xxl":return /(xxl|zuivelhoeve)/.test(s)&&/(fit yog|fit yoghurt|fit yogurt|fityogurt)/.test(s);
  case "protein":return /(protein|proteine|hipro|high protein|fit yog|fit yoghurt|fit yogurt|skyr|kwark|quark)/.test(s)&&
-   /(kwark|quark|yoghurt|yogurt|skyr|protein pudding|proteine pudding)/.test(s)&&!/\b(drank|shake|poeder|snackreep)\b/.test(s);
+   /(kwark|quark|kvarg|yoghurt|yogurt|skyr|protein pudding|proteine pudding)/.test(s)&&!/\b(drank|shake|poeder|snackreep)\b/.test(s);
  case "milk":return /\b(volle melk|vollemelk|volle houdbare melk)\b/.test(s)&&
    !/\b(halfvol|magere|karnemelk|chocolade|geit|lactosevrij|kokos|soja|amandel|haver|plantaardig|melkpoeder|melkdrank)\b/.test(s);
  case "gingerbeer":return /(ginger beer|gingerbeer|gemberbier)/.test(s)&&
