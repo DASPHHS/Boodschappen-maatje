@@ -262,6 +262,18 @@ RECIPES = [
  ("Garnalenwok met groenten en zilvervliesrijst","Vis",25,[("garnalen",800,"g"),("wok",900,"g"),("rijst",300,"g")]),
 
 
+
+ ("Tandoori-kip met naan, broccoli en yoghurtsaus","Kip",35,[("kipfilet",800,"g"),("broccoli",850,"g"),("naan",4,"st"),("yoghurt",300,"g")]),
+ ("Kip Madras met paprika en zilvervliesrijst","Kip",35,[("kipdij",800,"g"),("paprika",3,"st"),("spinazie",700,"g"),("rijst",260,"g"),("kokosmelk",400,"ml")]),
+ ("Vegetarische linzen-tofucurry met naan en spinazie","Vegetarisch",35,[("tofu",900,"g"),("linzen",700,"g"),("spinazie",700,"g"),("naan",4,"st"),("tomatenblokjes",400,"g")]),
+ ("Kruidige garnalencurry met naan en courgette","Vis",30,[("garnalen",800,"g"),("courgette",3,"st"),("naan",4,"st"),("kokosmelk",400,"ml")]),
+ ("Mexicaanse burrito's met kipgehakt, paprika en bonen","Kip",30,[("kipgehakt",750,"g"),("bonen",500,"g"),("paprika",3,"st"),("wraps",8,"st"),("tomaten",500,"g")]),
+ ("Risotto met kipgehakt, champignons en spinazie","Kip",40,[("risottorijst",320,"g"),("kipgehakt",700,"g"),("champignons",600,"g"),("spinazie",600,"g"),("kaas",120,"g")]),
+ ("Aziatische teriyaki-tofu met wokgroenten en rijst","Vegetarisch",25,[("tofu",1000,"g"),("wok",1100,"g"),("rijst",260,"g"),("noten",100,"g")]),
+ ("Marokkaanse kip-kikkererwtenstoof met naan","Kip",35,[("kipfilet",750,"g"),("kikkererwten",600,"g"),("courgette",2,"st"),("tomaten",600,"g"),("naan",4,"st")]),
+ ("Shakshuka met kikkererwten, spinazie en naan","Vegetarisch",30,[("eieren",12,"st"),("kikkererwten",800,"g"),("spinazie",600,"g"),("tomatenblokjes",800,"g"),("naan",4,"st")]),
+ ("Thaise kip Siam met broccoli, wortel en rijst","Kip",30,[("kipfilet",750,"g"),("broccoli",800,"g"),("wortel",350,"g"),("rijst",260,"g"),("kokosmelk",250,"ml")]),
+
 ]
 
 # Bewaak expliciete gerechtvormen: risotto is geen zilvervliesrijstgerecht.
@@ -326,6 +338,18 @@ RECIPE_METHODS["Ontbijt: kwark 450 g met blauwe bessen en havermout"] = (
  "30 g havermout erover. Serveer meteen. De volledige aankoopprijs "
  "betreft alle verpakkingen; de verbruikskosten zijn voor vier kommen."
 )
+RECIPE_METHODS.update({
+ "Tandoori-kip met naan, broccoli en yoghurtsaus": "Meng yoghurtsaus met tandoorikruiden naar smaak. Bak de kipfilet met tandoorikruiden door en door gaar, kook of rooster de broccoli beetgaar, verwarm naan volgens de verpakking en serveer met de yoghurtsaus. Gebruik het Knorr-pakket alleen als optionele vervanger van de smaakmakers; de pakketprijs is niet meegerekend.",
+ "Kip Madras met paprika en zilvervliesrijst": "Kook de zilvervliesrijst. Bak de kipdij door en door gaar, voeg paprika en Madras-kruiden toe, schenk kokosmelk erbij en laat inkoken. Laat de spinazie in de laatste minuten slinken. Een maaltijdpakket telt alleen mee als exacte ingrediënten en prijs gecontroleerd zijn.",
+ "Vegetarische linzen-tofucurry met naan en spinazie": "Giet de linzen uit blik of pot af en spoel kort. Bak tofu met currykruiden, voeg tomatenblokjes en linzen toe en laat kort pruttelen. Voeg spinazie toe en laat slinken. Verwarm naan volgens de verpakking. Controleer het werkelijke uitlekgewicht van de linzen.",
+ "Kruidige garnalencurry met naan en courgette": "Snijd de courgette, bak deze aan met knoflook en currykruiden en voeg kokosmelk toe. Laat enkele minuten koken en voeg de ontdooide garnalen op het einde toe. Verhit volledig en serveer met warme naan.",
+ "Mexicaanse burrito's met kipgehakt, paprika en bonen": "Bak het kipgehakt volledig gaar met komijn en paprikapoeder. Voeg fijngesneden paprika en tomaten toe. Giet de bonen af en schep ze erdoor. Verwarm wraps en vul ze met het mengsel. Een Wereldgerechten-pakket is optioneel en wordt alleen apart geprijsd als de precieze inhoud bekend is.",
+ "Risotto met kipgehakt, champignons en spinazie": "Rooster risottorijst kort mee met ui in een beetje olie. Voeg hete bouillon in kleine porties toe en roer tot de rijst gaar is. Bak ondertussen het kipgehakt volledig gaar en bak 600 g champignons. Voeg spinazie en kaas aan het einde toe. Kook niet automatisch alle gekochte champignons mee.",
+ "Aziatische teriyaki-tofu met wokgroenten en rijst": "Kook de zilvervliesrijst. Bak de tofu krokant en roerbak de wokgroenten kort. Voeg een kleine hoeveelheid sojasaus met gember toe en serveer met rijst en ongezouten noten.",
+ "Marokkaanse kip-kikkererwtenstoof met naan": "Bak de kip volledig gaar met ras el hanout. Voeg courgette en tomaten toe en laat stoven. Laat de kikkererwten uitlekken, schep ze door de stoof en verwarm naan volgens de verpakking.",
+ "Shakshuka met kikkererwten, spinazie en naan": "Laat tomatenblokjes met paprikapoeder en komijn inkoken. Voeg uitgelekte kikkererwten en spinazie toe. Maak kuiltjes en laat de eieren onder een deksel volledig stollen. Serveer met warme naan.",
+ "Thaise kip Siam met broccoli, wortel en rijst": "Kook de zilvervliesrijst. Bak de kip volledig gaar. Wok broccoli en wortel, voeg kokosmelk, gember en een beetje sojasaus toe en warm kort door. Serveer met de rijst."
+})
 RECIPE_METHODS.update({
  "Knoflookgarnalen met volkorenpasta en spinazie": "Kook de volkorenpasta. Bak de garnalen kort met knoflook en paprikapoeder. Voeg tomaten toe en laat de spinazie slinken. Meng met de pasta en verdeel over vier porties. Gebruik alleen de in het recept vermelde hoeveelheden.",
  "Garnalencurry met bloemkool en rijst": "Kook de rijst. Fruit de ui en currykruiden, voeg bloemkool en kokosmelk toe en laat garen. Voeg de garnalen pas op het einde toe en verhit volledig. Verdeel over vier borden.",
