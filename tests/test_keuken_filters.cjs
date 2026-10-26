@@ -48,8 +48,8 @@ const safeURL=x=>x;
 const helpers=new Function("state","$","esc","safeURL",
   script.slice(begin,end)+"return {updateCuisineOptions,renderSourceMatches};")(state,$,esc,safeURL);
 helpers.updateCuisineOptions();
-assert.ok(elements.cuisine.innerHTML.includes("Surinaams (1 geprijsd · 1 inspiratie)"));
-assert.ok(elements.cuisine.innerHTML.includes("Marokkaans (0 geprijsd · 1 inspiratie)"));
+assert.ok(elements.cuisine.innerHTML.includes("Surinaams (1 complete recepten)"));
+assert.ok(!elements.cuisine.innerHTML.includes("Marokkaans"),"Geen keuken zonder volledig geprijsde gerechten aanbieden");
 assert.ok(elements.cuisine.innerHTML.includes("Internationaal"));
 assert.ok(elements["cuisine-shortcuts"].innerHTML.includes("Surinaams"));
 
