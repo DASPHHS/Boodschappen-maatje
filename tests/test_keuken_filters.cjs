@@ -26,7 +26,7 @@ const elements={
   "source-priority":{value:"promising"},
 };
 const state={store:"ah",mode:"recipes",sourceVisible:8,
-  data:{recipes:{ah:[{cuisine:"Surinaams"},{cuisine:"Nederlands"}]},source_recipe_matches:{
+  data:{recipes:{ah:[{cuisine:"Surinaams",complete:true},{cuisine:"Nederlands",complete:true}]},source_recipe_matches:{
    ah:{candidates:[
      {title:"Chicken Bowls with Rice and Lentils",title_nl:"Kipbowls met rijst en linzen",
       source:"The Meal Prep Manual",cuisine:"Internationaal",match_terms:["kip","linzen"],
