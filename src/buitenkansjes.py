@@ -17,8 +17,8 @@ STORES=["albert_heijn","jumbo","lidl","aldi","dirk","hoogvliet","plus","dekamark
 NAMES={"albert_heijn":"AH","jumbo":"Jumbo","lidl":"Lidl","aldi":"Aldi","dirk":"Dirk","hoogvliet":"Hoogvliet","plus":"PLUS","dekamarkt":"DekaMarkt","vomar":"Vomar"}
 WATCH={
 "Volle melk":[r"\bvolle melk\b",r"\bvolle houdbare melk\b"],
-"Kwark, skyr en yoghurt":[r"\\b(skyr|magere yoghurt|magere kwark|high protein|highprotein|proteine kwark|proteïne kwark|protein kwark|knijpkwark|fitquark|fitkwark|xxl nutrition|kvarg|protein yoghurt)\\b"],
-"Maaltijdpakketten":[r"\\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix|risotteria|spaghetteria|foodtrips)\\b"],
+"Kwark, skyr en yoghurt":[r"\b(skyr|magere yoghurt|magere kwark|high protein|highprotein|proteine kwark|proteïne kwark|protein kwark|knijpkwark|fitquark|fitkwark|xxl nutrition|kvarg|protein yoghurt)\b"],
+"Maaltijdpakketten":[r"\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix|risotteria|spaghetteria|foodtrips)\b"],
 "Cola zero":[r"\b(coca.cola zero|pepsi max|pepsi zero|cola zero)\b"],
 "Texels en bier":[r"\b(texels|texelse|bier|pils|alcoholvrij)\b"],
 "Diepvriesfruit":[r"(diepvries|bevroren).*(fruit|bessen|bosvruchten|aardbei|mango|framboos)",r"diepvriesfruit"],
