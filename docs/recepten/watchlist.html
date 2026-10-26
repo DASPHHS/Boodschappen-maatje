@@ -62,7 +62,7 @@ function inStore(product,p){
  if(p.id==="knijp")return /(knijpkwark|knijp kwark|breaker|squeeze.*quark|kwark.*knijp)/.test(n)&&!/(baby|fruit|chocolade)/.test(n);
  if(p.id==="xxl")return /(xxl|zuivelhoeve)/.test(n)&&/(fit.?yog|fit.?yogh|fityogurt|fit yogurt|yogurt granola)/.test(n);
  if(p.id==="highprotein")return /(protein|proteine|prote n|hipro|high protein|fit.?yog|fit.?quark|skyr|kwark)/.test(n)&&
-   /(yoghurt|yogurt|kwark|quark|protein|proteine|pudding|skyr)/.test(n)&&!/(drank|shake|melk|poeder|snackreep)/.test(n);
+   /(yoghurt|yogurt|kwark|quark|protein|proteine|pudding|skyr)/.test(n)&&!/\b(drank|shake|melk|poeder|snackreep)\b/.test(n);
  if(p.id==="vollemelk")return /(volle melk|vollemelk|volle houdbare melk)/.test(n)&&!/(halfvol|karnemelk|chocolade|geit|lactosevrij|kokos|soja|amandel|haver|plantaardig|magere|melkpoeder|melkdrank)/.test(n);
  if(p.id==="gingerbeer")return /(ginger beer|gingerbeer|gemberbier)/.test(n)&&/(alcoholvrij|0 0|0 procent|zero|non alcoholic)/.test(n);
  if(p.id==="skuum")return /skuumkoppe/.test(n)&&!/(alcoholvrij|0 0|zero)/.test(n);
