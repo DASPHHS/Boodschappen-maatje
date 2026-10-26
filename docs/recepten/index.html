@@ -266,13 +266,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function plannedPortions(store,id){return PersonalWeekmenu.portions(weekPlan,store,id)}
  function clearRecipeFilters(){
   $("selection").value="all";$("duration").value="all";$("category").value="all";
-  $("cuisine").value="all";$("format").value="all";$("mealtype").value="all";
-  $("origin").value="all";$("health").value="off";$("mealprep-filter").value="all";
+  $("cuisine").value="all";$("format").value="all";$("mealtype").value="Avondeten";
+  $("origin").value="all";$("health").value="prefer";$("mealprep-filter").value="all";
   state.favoriteOnly=false;state.sharedOnly=false;state.visible=10;
+  $("only-favorites").setAttribute("aria-pressed","false");
+  $("only-favorites").textContent="☆ Alleen mijn favorieten";
+  $("shared-hits-only").setAttribute("aria-pressed","false");
  }
  function openChosenRecipe(id){
   const r=storeData().find(r=>String(r.id)===String(id));if(!r)return;
-  clearRecipeFilters();$("search").value=r.title;state.mode="recipes";render();
+  clearRecipeFilters();$("mealtype").value=r.meal_type||"Avondeten";$("search").value=r.title;state.mode="recipes";render();
   $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
  }
  function addRecipeToWeek(id,day){
