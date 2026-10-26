@@ -11,6 +11,7 @@ assert.equal(R.bundleInfo({promotion_type:"1+1 gratis"}).required,2);
 assert.equal(R.validToday({valid_from:"2026-10-21",valid_until:"2026-10-27"},"2026-10-26"),true);
 assert.equal(R.validToday({valid_from:"2026-10-28",valid_until:"2026-11-04"},"2026-10-26"),false);
 assert.equal(R.isVerified({discount_verified:false,verified_discount_pct:60}),false);
+assert.equal(R.isVerified({discount_verified:true,verified_discount_pct:60,promotion_type:"2+3 gratis"}),false,"Vijf-aankopenbundel is geen 60% korting op één product");
 const ranked=R.sort([{name:"Koekjes",discount_verified:true,verified_discount_pct:65},
 {name:"Knorr Wereldgerechten Bami",promotion_type:"2+3 gratis",discount_verified:false},
 {name:"XXL Nutrition Fitquark",discount_verified:true,verified_discount_pct:25}]);
