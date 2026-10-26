@@ -216,7 +216,7 @@ def main():
     ROOT.joinpath("docs").mkdir(exist_ok=True)
     ROOT.joinpath("docs/recepten").mkdir(parents=True,exist_ok=True)
     ROOT.joinpath("docs/recepten/extra-supermarkt-deals.json").write_text(
-        json.dumps(retailer_offers,ensure_ascii=False,separators=(",",":"))+"\\n",encoding="utf8")
+        json.dumps(retailer_offers,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf8")
     ROOT.joinpath("data/buitenkansjes.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     ROOT.joinpath("docs/buitenkansjes.html").write_text(render(result),encoding="utf8")
     print("ECHTE",len(result["confirmed"]),"TE CONTROLEREN",len(result["candidates"]),"VOLGENDE WEEK",len(result["next_week"]))
