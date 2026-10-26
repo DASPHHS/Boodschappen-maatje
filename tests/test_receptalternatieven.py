@@ -19,6 +19,32 @@ class AlternativeTests(unittest.TestCase):
         self.assertIn("tonijn", matching_focus("Healthy tuna wraps"))
         self.assertNotIn("tonijn", matching_focus("Salade met kip en tomaat"))
 
+    def test_all_known_ingredients_are_covered(self):
+        from receptenradar_catalog import ING
+        self.assertTrue(set(ING).issubset(set(FOCUS)))
+        for key in ("bloemkool", "linzen", "varkenshaas", "aardappel", "champignons", "havermout"):
+            self.assertIn(key, FOCUS)
+
+    def test_recipe_without_tag_stays_available(self):
+        prices={"recipes":{"ah":[{
+            "title":"Bijzonder gerecht zonder herkenbare ingrediënten",
+            "category":"Vegetarisch","complete":True,"checkout":6.20,
+            "ingredients":[],"nutrition":{}
+        }],"jumbo":[],"lidl":[]}}
+        suggestions=priced_suggestions(prices)
+        self.assertEqual(len(suggestions),1)
+        self.assertEqual(suggestions[0]["checkout"],6.20)
+        self.assertEqual(suggestions[0]["focus"],[])
+
+    def test_external_without_ingredient_tag_is_included(self):
+        index={"items":[{"title":"Erwtenschotel met zelfgemaakte croutons",
+           "url":"https://www.example.org/recepten/erwten","source":"Testbron",
+           "cuisine":"Nederlands","category":"Vegetarisch"}]}
+        result=source_suggestions(index,[],{},NOW)
+        self.assertEqual(len(result),1)
+        self.assertEqual(result[0]["category"],"Vegetarisch")
+        self.assertNotIn("checkout",result[0])
+
     def test_price_only_from_complete_cash_basket(self):
         prices={"updated_at":"2026-10-26T12:00:00+01:00","recipes":{
           "ah":[{
