@@ -139,8 +139,22 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div id="cuisine-shortcuts" class="cuisine-shortcuts" hidden aria-label="Wereldkeuken snelkeuze"></div>
 
 <section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
- <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
+ <div class="deal-intro"><strong>Alle deals · meest relevant voor jou</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
+ <div class="sub" style="margin:4px 0 12px">Maaltijdpakketten, eiwitrijke kwark en veelzijdige gezonde ingrediënten krijgen extra aandacht. Een 2+3-actie geldt pas bij vijf deelnemende producten.</div>
  <div class="deal-controls">
+  <select id="extra-store" aria-label="Aanbiedingen per supermarkt">
+   <option value="basis">Gekozen supermarkt: AH, Jumbo of Lidl</option>
+   <option value="dirk">Dirk</option><option value="plus">PLUS</option>
+   <option value="hoogvliet">Hoogvliet</option><option value="aldi">Aldi</option>
+   <option value="dekamarkt">DekaMarkt</option><option value="vomar">Vomar</option>
+  </select>
+  <select id="deal-interest" aria-label="Wat is voor jou interessant">
+   <option value="all">Alle interessante acties</option>
+   <option value="maaltijdpakket">Wereldgerechten en maaltijdpakketten</option>
+   <option value="proteine">Eiwitrijke kwark en vergelijkbaar</option>
+   <option value="basis">Kookbasics zoals naan</option>
+   <option value="vers">Gezonde maaltijdingrediënten</option>
+  </select>
   <select id="deal-period" aria-label="Wanneer geldt de aanbieding?">
     <option value="today">Vandaag geldig</option>
     <option value="tomorrow">Morgen geldig</option>
@@ -177,7 +191,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    <option value="50">Minstens 50% berekend</option>
   </select>
   <select id="deal-sort" aria-label="Aanbiedingen sorteren">
-   <option value="discount">Hoogste berekenbare korting</option>
+   <option value="relevant">Meest relevant voor mij</option><option value="discount">Hoogste berekenbare korting</option>
    <option value="price">Laagste actieprijs</option>
    <option value="expiry">Loopt het eerst af</option>
    <option value="name">Productnaam A–Z</option>
@@ -248,7 +262,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
 <details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
+<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./deal_relevantie.js"></script><script src="./weekselectie_engine.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -567,7 +581,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(any(["wasmiddel","waspoeder","wasverzachter","vaatwastabletten","vaatwasmiddel","toiletpapier","keukenpapier","schoonmaakmiddel","allesreiniger","afwasmiddel","shampoo","conditioner","douchegel","deodorant","tandpasta","tandenborstel","scheermes","scheergel","huidcreme","dagcreme","zonnebrand","reinigingsdoekjes","handzeep","zeep","luchtverfrisser","luier","luiers"]))return "care";
   if(any(["koffie","koffiecups","thee","cola","frisdrank","limonade","vruchtensap","sinaasappelsap","appelsap","water","mineraalwater","bier","wijn","energiedrank","energy","red bull","redbull","pepsi","fanta","coca cola","smoothie","drank","ice tea","ijsthee"]))return "drinks";
   if(any(["chips","koek","koeken","koekjes","chocolade","snoep","noten","amandelen","cashewnoten","walnoten","pinda","pindas","olijfolie","zonnebloemolie","saus","pastasaus","tomatensaus","ketchup","mayonaise","bonen","kidneybonen","kikkererwten","linzen","blik","conserven","pesto","hagelslag","jam","honing","crackers","beschuit"]))return "pantry";
-  if(any(["kwark","yoghurt","yogurt","skyr","melk","kaas","roomkaas","eieren","eier","boter","slagroom","kookroom","karnemelk","hutenkase","mozzarella","parmezaan","feta"]))return "dairy";
+  if(any(["fitquark","fitkwark","kvarg","kwark","yoghurt","yogurt","skyr","melk","kaas","roomkaas","eieren","eier","boter","slagroom","kookroom","karnemelk","hutenkase","mozzarella","parmezaan","feta"]))return "dairy";
   if(any(["kip","kipfilet","kipdij","kipburgers","kipgehakt","kipshoarma","gehakt","rund","rundergehakt","rundvlees","varkensvlees","varkenshaas","rookworst","worst","biefstuk","shoarma","hamburger","hamburgers","schnitzel","spek","ham","zalm","zalmfilet","tonijn","garnalen","kabeljauw","vis","visfilet","tofu","tempeh","vegetarisch","vegan","vlees","slavink"]))return "protein";
   if(any(["broccoli","bloemkool","boerenkool","spruiten","spruitjes","sla","rucola","veldsla","komkommer","tomaten","tomaat","paprika","courgette","spinazie","wokgroenten","wokgroente","roerbakgroenten","champignons","kastanjechampignons","aardappelen","aardappel","krieltjes","wortelen","wortel","uien","ui","avocado","appels","appel","peren","peer","bananen","banaan","aardbeien","aardbei","blauwe","bosbessen","druiven","mango","meloen","fruit","perzik","sinaasappels","mandarijnen","kiwi","passievruchten","passievrucht","citroen","limoen","andijvie","asperges","prei","aubergine","groentemix","groenten","ijsbergsla"]))return "produce";
   if(any(["pasta","spaghetti","penne","fusilli","macaroni","rijst","risottorijst","couscous","brood","volkorenbrood","pistolets","wraps","tortilla","naan","havermout","muesli","cruesli","granen","bloem","meel","bulgur","quinoa","pitabrood","stokbrood"]))return "grains";
@@ -575,7 +589,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function dealPromotion(d){
   if(d.is_loyalty)return "loyalty";
-  if(Number(d.multi_buy_quantity)>=2&&Number(d.multi_buy_price)>0)return "bundle";
+  if(DealRelevantie.bundleInfo(d))return "bundle";
   return "other";
  }
  function offersForPeriod(period,today,running,future){
@@ -600,25 +614,51 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    }
    return [...unique.values()];
  }
+ state.extraDeals=null;state.extraDealsLoading=false;state.extraDealsError=false;
+ async function ensureExtraDeals(){
+  if(state.extraDeals||state.extraDealsLoading||state.extraDealsError)return;
+  state.extraDealsLoading=true;
+  try{
+   const response=await fetch("./extra-supermarkt-deals.json",{cache:"no-store"});
+   if(!response.ok)throw Error("Extra winkels nog niet bijgewerkt");
+   const data=await response.json();
+   if(!data?.stores)throw Error("Geen winkelindex");
+   state.extraDeals=data;
+  }catch(e){state.extraDealsError=true}
+  finally{state.extraDealsLoading=false;if(state.data&&state.mode==="deals")renderDeals()}
+ }
+ const EXTRA_STORES={dirk:"Dirk",plus:"PLUS",hoogvliet:"Hoogvliet",aldi:"Aldi",dekamarkt:"DekaMarkt",vomar:"Vomar"};
+ function dealRecipeQuery(name){
+  const text=DealRelevantie.norm(name);
+  for(const cue of ["tandoori","madras","risotto","burrito","enchilada","taco","lasagne","bobotie","roti","teriyaki","paella","siam","pok","naan","garnalen","pastinaak"])
+   if(new RegExp("\\b"+cue+"\\b").test(text))return cue==="pok"?"bowl":cue;
+  return "";
+ }
  function renderDeals(){
   const period=$("deal-period").value;
   const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
-  const running=state.data?.deals?.[state.store]||[];
-  const future=state.data?.upcoming_deals?.[state.store]||[];
+  const otherStore=$("extra-store").value;
+  if(otherStore!=="basis"&&!state.extraDeals&&!state.extraDealsLoading&&!state.extraDealsError)void ensureExtraDeals();
+  const extra=otherStore!=="basis";
+  const running=extra?(state.extraDeals?.stores?.[otherStore]||[]):(state.data?.deals?.[state.store]||[]);
+  const future=extra?[]:(state.data?.upcoming_deals?.[state.store]||[]);
   const original=offersForPeriod(period,today,running,future);
   const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
   const category=$("deal-category").value,status=$("deal-status").value;
+  const interest=$("deal-interest").value;
   const promotion=$("deal-promotion").value,minimum=Number($("deal-minimum").value)||0;
   const sort=$("deal-sort").value;
   const verified=d=>Boolean(d.discount_verified)&&Number.isFinite(Number(d.verified_discount_pct))&&Number(d.verified_discount_pct)>0;
   let ds=original.filter(d=>
    (!query||String(d.name||"").toLocaleLowerCase("nl").includes(query))&&
+   (interest==="all"||DealRelevantie.classify(d)===interest)&&
    (category==="all"||dealCategory(d)===category)&&
    (status==="all"||(status==="verified"?verified(d):!verified(d)))&&
    (promotion==="all"||dealPromotion(d)===promotion)&&
    (!minimum||(verified(d)&&Number(d.verified_discount_pct)>=minimum))
   );
   const value=d=>verified(d)?Number(d.verified_discount_pct):0;
+  if(sort==="relevant")ds=DealRelevantie.sort(ds);
   if(sort==="discount")ds.sort((a,b)=>Number(verified(b))-Number(verified(a))||value(b)-value(a)||a.name.localeCompare(b.name,"nl"));
   if(sort==="price")ds.sort((a,b)=>(Number(a.price)||Infinity)-(Number(b.price)||Infinity));
   if(sort==="expiry")ds.sort((a,b)=>(a.valid_until||"9999-12-31").localeCompare(b.valid_until||"9999-12-31")||value(b)-value(a));
@@ -626,27 +666,42 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const grouped=groupDealVariants(ds);
   const count=original.filter(verified).length,filteredVerified=ds.filter(verified).length;
   const scanDay=state.data?.updated_at?new Date(state.data.updated_at).toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"}):"";
-  const stale=Boolean(scanDay&&scanDay<today);
-  $("deal-count").textContent=(stale?"Voorlopig: laatste scan "+scanDay+" · ":"")+
+  const sourceDay=extra?String(state.extraDeals?.updated_at||"").slice(0,10):scanDay;
+  const stale=Boolean(sourceDay&&sourceDay<today);
+  if(extra&&!state.extraDeals){
+    $("deal-count").textContent=state.extraDealsLoading?
+      "Aanbiedingen van "+EXTRA_STORES[otherStore]+" worden geladen…":
+      "Nog geen betrouwbare aanvullende winkelscan gepubliceerd.";
+  }
+  if(!extra||state.extraDeals)$("deal-count").textContent=(stale?"Voorlopig: laatste scan "+sourceDay+" · ":"")+
     grouped.length.toLocaleString("nl-NL")+" acties ("+ds.length.toLocaleString("nl-NL")+" varianten) van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
     (period==="upcoming"?" · Nog niet geldig":period==="tomorrow"?" · Morgen geldig":"");
   $("deal-confidence").textContent=count.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" kortingen berekenbaar; "+filteredVerified.toLocaleString("nl-NL")+" binnen huidige selectie.";
-  $("store-status").textContent=grouped.length+" acties · "+ds.length+" varianten · "+count+
+  $("store-status").textContent=(extra?EXTRA_STORES[otherStore]+" · aanvullende acties, geen geprijsde volledige receptmand · ":"")+
+    grouped.length+" acties · "+ds.length+" varianten · "+count+
     " met berekenbaar voordeel van "+original.length+" vermeldingen"+
     (period==="today"?"":" · Let op startdatum");
   document.querySelectorAll("[data-deal-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.dealCategory===category)));
   $("moredeals").hidden=grouped.length<=state.dealVisible;
   $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,grouped.length-state.dealVisible)+" resterend)";
-  $("deals").innerHTML=grouped.length?grouped.slice(0,state.dealVisible).map(d=>{
+  $("deals").innerHTML=(extra&&!state.extraDeals)?
+    "<div class='notice'>"+(state.extraDealsLoading?"Aanbiedingen worden opgehaald.":"Deze winkel heeft nog geen actuele, verifieerbare gegevens. De recepten blijven bij AH, Jumbo en Lidl berekend.")+"</div>":
+    grouped.length?grouped.slice(0,state.dealVisible).map(d=>{
    const valid=verified(d);
    const bundle=dealPromotion(d)==="bundle";
-   const offerLabel=bundle?Math.round(Number(d.multi_buy_quantity))+" voor "+euro(d.multi_buy_price):
+   const rule=DealRelevantie.bundleInfo(d);
+   const offerLabel=bundle?(rule?.label||String(d.promotion_type||"").trim()):
      d.is_loyalty?"Let op: app- of klantenkaartvoorwaarden":String(d.promotion_type||"").trim();
    const expiring=d.valid_until&&d.valid_until>=today&&
      (new Date(d.valid_until+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/(24*3600*1000)<=3;
-   return `<article class="deal"><div><span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span>
+   const relevant=DealRelevantie.relevance(d);
+   const query=dealRecipeQuery(d.name);
+   return `<article class="deal"><div>${relevant>=90?
+      '<span class="deal-category">Relevant voor jou · '+esc(DealRelevantie.reason(d))+'</span>':""}
+     <span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span>
     ${d.valid_from&&d.valid_from>today?'<span class="deal-category" style="background:#fff2d8;color:#724800">Vanaf '+esc(d.valid_from)+' · nog niet geldig</span>':''}
-    <div><strong>${esc(d.variantNames.length>1?d.campaign+" ("+d.variantNames.length+" varianten)":d.name)}</strong></div>${d.variantNames.length>1?`<details><summary>Bekijk ${d.variantNames.length} afzonderlijke producten</summary>${d.variantNames.map((name,i)=>`<div class="sub"><a href="${safeURL(d.variantLinks[i])}" target="_blank" rel="noopener noreferrer">${esc(name)}</a></div>`).join("")}</details>`:""}<div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
+    <div><strong>${esc(d.variantNames.length>1?d.campaign+" ("+d.variantNames.length+" varianten)":d.name)}</strong></div>${d.variantNames.length>1?`<details><summary>Bekijk ${d.variantNames.length} afzonderlijke producten</summary>${d.variantNames.map((name,i)=>`<div class="sub"><a href="${safeURL(d.variantLinks[i])}" target="_blank" rel="noopener noreferrer">${esc(name)}</a></div>`).join("")}</details>`:""}<div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a>
+      ${query?`<button type="button" class="btn outline small" data-deal-recipe="${esc(query)}">Zoek bijpassende recepten</button>`:""}</div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
   }).join(""):"<div class='notice'>Geen aanbiedingen gevonden met deze filters of deze geldigheidsperiode. De bron kan ook nog geen toekomstige acties leveren. Probeer een andere keuze of controleer de winkelwebsite.</div>";
  }
 
@@ -1023,7 +1078,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    $("selection").value="all";
  }
  $("sort").addEventListener("change",resetAndRender);
- for(const id of ["deal-period","deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
+ for(const id of ["extra-store","deal-interest","deal-period","deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
   $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals()});
  }
  document.querySelectorAll("[data-deal-category]").forEach(b=>b.addEventListener("click",()=>{
@@ -1066,6 +1121,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
  });
  $("library-load-more").addEventListener("click",()=>{state.libraryVisible+=24;renderLibraryResults()});
+ $("deals").addEventListener("click",event=>{
+   const btn=event.target.closest("[data-deal-recipe]");if(!btn)return;
+   state.mode="recipes";clearRecipeFilters();$("search").value=btn.dataset.dealRecipe;
+   state.visible=10;render();$("recipes").scrollIntoView({behavior:"smooth",block:"start"});
+ });
  $("cart").addEventListener("click",e=>{
   const b=e.target.closest("[data-cart-recipe]");
   if(b)openChosenRecipe(b.dataset.cartRecipe);
