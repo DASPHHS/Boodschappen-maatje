@@ -584,7 +584,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const mode=$("source-priority").value;
    const filtered=entries.filter(x=>
      (cuisine==="all"||(x.cuisine||"Internationaal")===cuisine)&&
-     (!query||(x.title+" "+(x.title_nl||"")+" "+(x.match_terms||[]).join(" ")).toLocaleLowerCase("nl").includes(query))&&
+     (!query||RecipeSearch.matches({
+       title:(x.title||"")+" "+(x.title_nl||""),
+       ingredients:(x.match_terms||[]).map(term=>({key:term,label:term}))
+     },query))&&
      (mode!=="strict"||x.health_priority==="kansrijk voor controle")&&
      (mode==="all"||x.health_priority!=="lage prioriteit"));
    const rank=x=>x.health_priority==="kansrijk voor controle"?0:
@@ -605,7 +608,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    }
    const selected=filtered.slice(0,state.sourceVisible);
    $("source-count").textContent=selected.length+" van "+filtered.length+
-     " voorlopige suggesties"+(cuisine==="all"?"":" · "+cuisine);
+     " bronreceptideeën, nog niet volledig geprijsd"+(cuisine==="all"?"":" · "+cuisine);
    $("source-loadmore").hidden=state.sourceVisible>=filtered.length;
    $("source-loadmore").textContent="Toon "+Math.min(8,filtered.length-state.sourceVisible)+" extra ideeën";
    $("source-matches").innerHTML=selected.map(r=>{
