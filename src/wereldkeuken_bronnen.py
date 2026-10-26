@@ -16,6 +16,9 @@ USER_AGENT="BoodschappenMaatjeRecipeIndex/1.1 (personal recipe discovery; https:
 # Naam, keuken, inhoudelijke bronpagina. Het register claimt geen automatische
 # toegang tot iedere site: foutstatus wordt expliciet bijgehouden.
 WORLD_SOURCES=[
+ ("AH Allerhande · Tonijn","Internationaal","https://www.ah.nl/allerhande/recepten/tonijn"),
+ ("Jumbo · Tonijn","Internationaal","https://www.jumbo.com/recepten/vis/tonijn"),
+ ("Jumbo · Tonijnsalade","Internationaal","https://www.jumbo.com/recepten/salade/tonijnsalade"),
  ("AH Allerhande · Surinaams","Surinaams","https://www.ah.nl/allerhande/recepten/surinaamse-recepten"),
  ("Jumbo · Surinaams","Surinaams","https://www.jumbo.com/recepten/zoeken/surinaams"),
  ("Faja Lobi · Sandhia","Surinaams","https://www.fajalobi.nl/recepten"),
