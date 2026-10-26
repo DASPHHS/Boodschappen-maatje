@@ -100,15 +100,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
 <div id="alerts"></div>
 <div class="favourites-tools"><button type="button" id="only-favorites" aria-pressed="false" class="btn outline small">☆ Alleen mijn favorieten</button><a class="btn outline small" href="./watchlist.html">Mijn productenwatchlist</a></div>
-<section id="personal-weekmenu" class="panel" style="margin:12px 0 18px" aria-label="Mijn weekmenu">
-<div class="row"><div><h2>Mijn weekmenu</h2><p class="sub">Plan je favoriete gerechten per dag en open ze direct tijdens het koken.</p></div></div>
+<details id="personal-weekmenu" class="weekmenu-panel" style="margin:12px 0 18px" aria-label="Mijn weekmenu">
+<summary id="personal-weekmenu-summary">Mijn weekmenu · tik om te plannen of te openen</summary>
+<div class="panel" style="margin-top:8px"><p class="sub">Kies hieronder recepten en voeg ze per dag toe. Open je gekozen recept hier wanneer je gaat koken.</p>
 <label>Porties per kookmoment <input id="planner-servings" type="number" min="1" max="8" step="1" value="4" style="max-width:90px"></label>
 <p class="sub">Je koopt hele verpakkingen, maar gebruikt alleen de benodigde hoeveelheid. Eventuele restanten worden apart vermeld.</p>
-<div id="planner-days" class="weekmenu-stores" aria-live="polite"></div><p id="planner-note" class="sub"></p></section>
-<details id="weekmenu-panel" class="weekmenu-panel" hidden>
- <summary>Voorbeeldweekmenu vergelijken bij AH, Jumbo en Lidl</summary>
- <div id="weekmenu-content" aria-live="polite"></div>
-</details>
+<div id="planner-days" class="weekmenu-stores" aria-live="polite"></div><p id="planner-note" class="sub"></p></div></details>
+
 <section class="discovery" id="recipe-filters" aria-label="Vind jouw maaltijd">
  <div class="search-primary"><label for="search">Wat wil je eten? Combineer gerust ingrediënten.</label>
   <div class="search-row"><input id="search" type="search" enterkeyhint="search" autocomplete="off" placeholder="Bijv. tonijn pasta zwarte olijven, kip broccoli of linzen curry"><button id="clear-search" type="button" class="btn outline small">Wis</button></div>
@@ -232,7 +230,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 </div>
 </section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear" title="Wis de mand en het weekmenu van deze supermarkt">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
-<div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div><div class="wrap" style="margin-top:24px"><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
+<div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div><div class="wrap" style="margin-top:24px">
+<details id="weekmenu-panel" class="weekmenu-panel" hidden>
+ <summary>Optioneel: vergelijk de prijs van een automatisch voorbeeldmenu (niet jouw planning)</summary>
+ <div id="weekmenu-content" aria-live="polite"></div>
+</details>
+<details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
 <footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
@@ -290,6 +293,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(old&&!plannedPortions(state.store,old.id))
    state.selected=state.selected.filter(x=>String(x.id)!==String(old.id));
   save();persistPlan();render();
+  $("personal-weekmenu").open=true;
   $("personal-weekmenu").scrollIntoView({behavior:"smooth",block:"start"});
  }
  function reconcileStoredRecipes(){
@@ -325,6 +329,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     '<div class="sub">Nog leeg</div>')+'</div>';
   }).join("");
   const count=Object.keys(planned).length,servings=Object.values(planned).reduce((n,x)=>n+x.portions,0);
+  $("personal-weekmenu-summary").textContent="Mijn weekmenu · "+count+" kookmomenten · "+servings+" porties · tik om "+(count?"te bekijken":"te plannen");
   $("planner-note").textContent=count+" kookmomenten · "+servings+" porties · "+
    state.data.store_names[state.store]+". Recepten in het weekmenu staan ook in de boodschappenmand.";
  }
