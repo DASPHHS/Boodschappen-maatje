@@ -1,6 +1,6 @@
 {
   "status": "indicative_recipe_comparison",
-  "source_updated_at": "2026-10-26T14:49:49.869346+01:00",
+  "source_updated_at": "2026-10-26T15:47:19.497567+01:00",
   "recommended": {
     "store": "Jumbo",
     "complete": true,
@@ -76,7 +76,7 @@
     "persoonlijke kortingen en lokale winkelvoorraad"
   ],
   "notice": "Vergelijking voor exact dezelfde geprijsde recepten bij AH, Jumbo en Lidl. Geen volledige huishoudelijke weekmand. Online schapprijzen en aanbiedingen kunnen afwijken van lokale winkelvoorraad.",
-  "generated_at": "2026-10-26T14:49:50.040865+01:00",
+  "generated_at": "2026-10-26T15:47:19.763245+01:00",
   "budget_eur": 150,
   "comparison_type": "identieke gerechten uit de huidige Recepten Radar"
 }
