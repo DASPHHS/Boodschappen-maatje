@@ -396,6 +396,39 @@ class PrijsTest(unittest.TestCase):
     def test_onbekende_schapprijs_niet_geschat(self):
         self.assertIsNone(ingredient_price("kipfilet",600,"g",[],[]))
 
+    def test_naan_is_geen_banaan_en_grammen_zijn_geen_stuks(self):
+        banaan={"norm":"jumbo banaan 300 g","name":"Jumbo Banaan 300 g",
+                "unit":"g","quantity":300,"price":1.50,"size_label":"300 g","url":""}
+        naan_grams={"norm":"jumbo naanbrood 300 g","name":"Jumbo Naanbrood 300 g",
+                    "unit":"g","quantity":300,"price":2.0,"size_label":"300 g","url":""}
+        naan_count={"norm":"jumbo naanbrood 2 stuks 300 g",
+                    "name":"Jumbo Naanbrood 2 stuks 300 g","unit":"g",
+                    "quantity":300,"price":2.0,"size_label":"300 g","url":""}
+        self.assertFalse(match_ingredient(banaan,"naan"))
+        self.assertTrue(match_ingredient(naan_count,"naan"))
+        self.assertIsNone(ingredient_price("naan",4,"st",[banaan,naan_grams],[]))
+        priced=ingredient_price("naan",4,"st",[naan_count],[])
+        self.assertEqual(priced["packages"],2)
+        self.assertEqual(priced["required"],4)
+        self.assertEqual(priced["cash_price"],4.0)
+        self.assertEqual(priced["package_size"],2)
+
+    def test_nieuwe_wereldgerechten_hebben_een_compleet_gerecht(self):
+        titles=("Tandoori-kip met naan, broccoli en yoghurtsaus",
+                "Kip Madras met paprika en zilvervliesrijst",
+                "Vegetarische linzen-tofucurry met naan en spinazie",
+                "Mexicaanse burrito's met kipgehakt, paprika en bonen",
+                "Risotto met kipgehakt, champignons en spinazie")
+        for title in titles:
+            recipe=next((x for x in RECIPES if x[0]==title),None)
+            self.assertIsNotNone(recipe,title)
+            _,category,minutes,ings=recipe
+            self.assertFalse(validate_dish_ingredients(title,ings))
+            self.assertFalse(dish_quality_issues(title,category,ings))
+            self.assertTrue(cooking_instructions(title,ings,RECIPE_METHODS.get(title,"")))
+        veg=next(x for x in RECIPES if x[0]==titles[2])
+        self.assertGreaterEqual(nutrition_profile(veg[3])["protein_g_per_serving_estimate"],30)
+
     def test_meerdere_verpakkingen(self):
         p={"norm":"ah kipfilet 400 g","name":"AH Kipfilet 400 g","quantity":400,
            "unit":"g","price":4.0,"size_label":"400 g","url":"https://ah.nl/"}
