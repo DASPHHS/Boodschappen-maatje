@@ -837,12 +837,18 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      const c=r.cuisine||"Internationaal";
      counts[c]??={priced:0,inspiration:0};counts[c].inspiration++;
    }
+   for(const item of state.library||[]){
+     if(item.kind==="collection"||!item.title)continue;
+     const c=item.cuisine||"Internationaal";
+     counts[c]??={priced:0,inspiration:0};
+     counts[c].inspiration++;
+   }
    const order=["Surinaams","Indonesisch","Indiaas","Thais","Vietnamees","Koreaans",
      "Japans","Chinees","Turks","Marokkaans","Libanees","Grieks","Italiaans",
      "Mexicaans","Spaans","Nederlands","Frans","Caribisch","Ethiopisch",
      "Peruaans","Braziliaans","Costa Ricaans","West-Afrikaans","Midden-Oosters",
      "Mediterraan","Amerikaans","Internationaal"];
-   const entries=Object.entries(counts).filter(([,c])=>c.priced>0).sort((a,b)=>{
+   const entries=Object.entries(counts).filter(([,c])=>c.priced>0||c.inspiration>0).sort((a,b)=>{
      const ai=order.indexOf(a[0]),bi=order.indexOf(b[0]);
      if(ai>=0&&bi>=0)return ai-bi;
      if(ai>=0)return -1;if(bi>=0)return 1;
@@ -850,7 +856,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    });
    $("cuisine").innerHTML='<option value="all">Alle wereldkeukens</option>'+
      entries.map(([name,c])=>'<option value="'+esc(name)+'">'+esc(name)+
-       ' ('+c.priced+' complete recepten)</option>').join("");
+       ' ('+c.priced+' geprijsd, '+c.inspiration+' bronideeën)</option>').join("");
    $("cuisine").value=Object.hasOwn(counts,current)?current:"all";
    const featured=["all",...order.filter(c=>counts[c]?.priced>0&&c!=="Internationaal").slice(0,12)];
    $("cuisine-shortcuts").innerHTML=featured.map(c=>
@@ -1076,7 +1082,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    }catch(e){state.libraryError=true}
    finally{
      state.libraryLoading=false;
-     if(state.data&&state.mode==="recipes"){renderLibraryResults();renderWeeklyCandidates()}
+     if(state.data&&state.mode==="recipes"){updateCuisineOptions();renderLibraryResults();renderWeeklyCandidates()}
    }
  }
  function renderLibraryResults(){
