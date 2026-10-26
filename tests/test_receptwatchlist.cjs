@@ -64,6 +64,8 @@ const jumbo=W.bestRows(json,"jumbo",p("xxl"),TEST_DAY);
 assert.equal(jumbo[0].packages,2);
 assert.equal(jumbo[0].price,1.99);
 assert.equal(jumbo[0].promoKind,"1+1 gratis");
+assert.equal(W.bestStores(json,p("xxl"),TEST_DAY).stores.jumbo.hasDeal,true);
+assert.equal(W.bestStores(json,p("xxl"),TEST_DAY).stores.ah.hasDeal,false);
 assert.equal(jumbo[0].discountPct,50);
 assert.equal(jumbo[0].previousTotal,3.98);
 assert.equal(jumbo[0].savings,1.99);
@@ -88,6 +90,7 @@ assert(ahVariants.some(x=>x.sku==="AH-wi556289"&&x.price===1.39));
 assert(ahVariants.some(x=>x.sku==="AH-wi585919"&&x.price===1.99&&x.quantity===450));
 assert(ahVariants.some(x=>x.sku==="AH-wi585929")===true || W.bestRows(json,"ah",p("knijp"),TEST_DAY).some(x=>x.sku==="AH-wi585929"));
 assert.equal(W.bestRows(json,"ah",p("highprotein"),"2026-10-28").some(x=>x.verifiedDirect),false);
+assert.equal(W.bestRows(json,"ah",p("highprotein"),"2026-10-28").some(x=>x.sku==="AH-wi585919"),false,"Verouderde AH-prijs wordt niet als actueel gebruikt");
 
 assert.equal(W.bestStores(json,p("knijp"),TEST_DAY).winner.store,"jumbo");
 assert.equal(W.bestStores(json,p("knijp"),TEST_DAY).winner.price,1.79);
@@ -114,8 +117,10 @@ assert.equal(W.bestStores(json,p("skuum"),TEST_DAY).stores.ah.best.quantity,1800
 const milkNoPromo=W.bestRows(json,"jumbo",p("vollemelk"),TEST_DAY);
 assert.equal(milkNoPromo.length,1,"Verlopen acties niet gebruiken");
 for(const name of ["watchlist_engine.js","watchlist_app.js"])assert(html.includes('src="./'+name+'"'));
-for(const id of ["watch-grid","toggle-followed","custom","custom-unit","add","freshness","favorites-list","save-status"])assert(html.includes('id="'+id+'"'));
+for(const id of ["watch-grid","toggle-followed","toggle-deals","custom","custom-unit","add","freshness","favorites-list","save-status"])assert(html.includes('id="'+id+'"'));
 assert(app.includes("bm_favoriete_producten_v1"));
 assert(app.includes("Minimaal kassabedrag"));
+assert(app.includes("onlyDeals"));
+assert(app.includes("Bekijk alleen aanbiedingen"));
 assert(!html.includes("1799.9999999999998"));
 console.log("Watchlist SKU, 1+1, kcal/eiwit, melk, knijpzuivel, Skuumkoppe en weergave: geslaagd");
