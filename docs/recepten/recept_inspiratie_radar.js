@@ -26,12 +26,19 @@ function dishType(recipe){
  return "anders";
 }
 function find(items,options={}){
- const {query="",category="all",cuisine="all",format="all",duration="all",origin="all",limit=24}=options;
+ const {query="",category="all",cuisine="all",format="all",duration="all",origin="all",meal="all",limit=24}=options;
  if(!norm(query))return {total:0,items:[]}; // Index met duizenden titels niet blind tonen.
  const candidates=[];
  const seen=new Set();
  for(const x of Array.isArray(items)?items:[]){
   if(!x||x.kind==="collection"||!x.title)continue;
+  const lowerTitle=norm(x.title);
+  if(meal==="Avondeten"&&
+   ((x.meal_type&&x.meal_type!=="Avondeten")||
+    x.category==="Ontbijt en snacks"||
+    /^(?:ontbijt|breakfast|dessert|smoothie|koek|cake|pudding|koffie|coffee|pannenkoek)\b/.test(lowerTitle)||
+    /\b(?:filter coffee|chocolademelk|cupcake)\b/.test(lowerTitle)))continue;
+  if(meal!=="all"&&meal!=="Avondeten"&&x.meal_type&&x.meal_type!==meal)continue;
   if(category!=="all"&&CATS[category]&&!CATS[category].includes(x.category))continue;
   if(cuisine!=="all"&&x.cuisine!==cuisine)continue;
   if(format!=="all"&&dishType(x)!==format)continue;
@@ -86,9 +93,18 @@ function offerIdeas(deals,today,limit=8){
    discount_verified:x.discount_verified===true,
    promotion_type:String(x.promotion_type||"").slice(0,100),
    verified_discount_pct:Number(x.verified_discount_pct)||0});
-  if(found.length>=limit)break;
  }
- return found;
+ const priority={pakket:0,brood:1,saus:2,ingredient:3};
+ found.sort((a,b)=>(priority[a.kind]??4)-(priority[b.kind]??4)||
+   Number(b.discount_verified)-Number(a.discount_verified)||
+   a.label.localeCompare(b.label,"nl"));
+ const counts={};
+ return found.filter(x=>{
+   const max=x.kind==="pakket"?3:x.kind==="ingredient"?3:2;
+   if((counts[x.kind]||0)>=max)return false;
+   counts[x.kind]=(counts[x.kind]||0)+1;
+   return true;
+ }).slice(0,Math.max(1,Math.min(20,Number(limit)||8)));
 }
 const api={norm,hasTerm,matchWords,find,offerIdeas,dishType};
 root.ReceptInspiratieRadar=api;
