@@ -7,6 +7,7 @@ const SOURCE="https://www.jumbo.com/producten/xxl-nutrition-fit-yoghurt-granola-
 const AHXXL="https://www.ah.nl/producten/product/wi583038/xxl-nutrition-fit-yoghurt-protein-strawberry";
 const AHPRO="https://www.ah.nl/producten/product/wi555458/ah-protein-kwark-met-yoghurt-framboos";
 const MELK="https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK";
+const POUCH="https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK";
 const p=id=>W.WATCH.find(x=>x.id===id);
 assert(p("knijp")&&p("xxl")&&p("highprotein")&&p("on_the_go"));
 assert.equal(W.sku(SOURCE),"Jumbo-660840CUP");
@@ -16,6 +17,8 @@ assert.equal(W.nutrition("AH Protein kwark met yoghurt framboos",200,"g",AHPRO).
 assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Granola Aardbei 750g",750,"g",SOURCE),null,"200g-SKU is geen 750g-variant");
 assert.equal(W.nutrition("Melkunie Breaker high protein vanille yoghurt",200,"g","https://www.ah.nl/producten/product/wi225290/melkunie-breaker-high-protein-vanille-yoghurt"),null);
 assert.equal(W.nutrition("XXL Fit Yoghurt Granola 200g",200,"g","https://example.com/xxl"),null);
+assert(W.matchProduct("Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",p("knijp"),POUCH));
+assert.equal(W.nutrition("Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",205,"g",POUCH).proteinPerPackage,24.6);
 assert(W.matchProduct("Melkunie Protein Yoghurt perzik framboos",p("on_the_go"),MELK));
 assert(!W.matchProduct("Melkunie Protein Yoghurt perzik framboos",p("knijp"),MELK));
 assert(!W.matchProduct("Halfvolle melk",p("vollemelk")));
@@ -39,10 +42,12 @@ const json={updated_at:new Date().toISOString(),stores:{
   ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",1.99,200,"g",SOURCE],
   ["Jumbo Volle Melk",0.89,1000,"ml","https://www.jumbo.com/vol"],
   ["Melkunie Protein Yoghurt perzik framboos",1.79,200,"g",MELK],
+  ["Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",1.79,205,"g",POUCH],
   ["Texels Skuumkoppe Bier Fles 6 x 300 ml",9.99,1800,"ml","https://www.jumbo.com/sku"]
  ],promotions:[
   ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",1,200,"g",1.99,2,1.99,"1+1 gratis","2099-10-27",SOURCE,false],
   ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",0.8,200,"g",1.99,2,null,"1+1 gratis","2099-10-27",SOURCE,false],
+  ["Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",0.895,205,"g",1.79,2,1.79,"1+1 gratis","2099-10-27",POUCH,false],
   ["Jumbo Volle Melk",0.2,1000,"ml",0.89,2,0.4,"2 voor","2020-01-01","https://www.jumbo.com/vol",false]
  ]},
  lidl:{ordinary:[
@@ -62,7 +67,9 @@ assert.equal(result.winner.store,"jumbo");
 assert.equal(result.stores.ah.best.pricePerUnit,0.995);
 assert.equal(W.bestStores(json,p("highprotein")).winner.store,"ah");
 assert.equal(W.bestStores(json,p("highprotein")).winner.protein,26);
-assert.equal(W.bestStores(json,p("knijp")).winner,null);
+assert.equal(W.bestStores(json,p("knijp")).winner.store,"jumbo");
+assert.equal(W.bestStores(json,p("knijp")).winner.price,1.79);
+assert.equal(W.bestStores(json,p("knijp")).winner.packages,2);
 assert.equal(W.bestStores(json,p("on_the_go")).winner.store,"jumbo");
 assert.equal(W.bestStores(json,p("vollemelk")).winner.store,"jumbo");
 assert.equal(W.bestStores(json,p("skuum")).stores.lidl.best,null);
