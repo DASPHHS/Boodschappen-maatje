@@ -238,7 +238,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   <div class="row"><h2>Meer passende recepten voor deze week</h2></div>
   <p class="sub">Automatisch gekozen uit honderden bronrecepten op basis van actuele acties en bekende supermarktproducten.
   Gevonden titels zijn inspiratie totdat ingrediënten, hoeveelheden en kassaprijzen echt zijn gecontroleerd.</p>
-  <div id="week-source-count" class="sub" aria-live="polite"></div>
+  <label class="sub">Aanbiedingen gebruiken van
+ <select id="week-retailer-context" aria-label="Supermarkt voor deze receptideeën">
+   <option value="basis">Mijn gekozen AH, Jumbo of Lidl</option>
+   <option value="dirk">Dirk</option><option value="plus">PLUS</option><option value="hoogvliet">Hoogvliet</option>
+   <option value="aldi">Aldi</option><option value="dekamarkt">DekaMarkt</option><option value="vomar">Vomar</option>
+ </select>
+</label>
+<div id="week-source-count" class="sub" aria-live="polite"></div>
   <div id="week-source-cards" class="cards"></div>
   <button id="week-source-more" type="button" class="btn outline small" hidden>Toon meer suggesties</button>
 </section>
@@ -637,7 +644,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    if(!data?.stores)throw Error("Geen winkelindex");
    state.extraDeals=data;
   }catch(e){state.extraDealsError=true}
-  finally{state.extraDealsLoading=false;if(state.data&&state.mode==="deals")renderDeals()}
+  finally{state.extraDealsLoading=false;if(state.data){if(state.mode==="deals")renderDeals();else renderWeeklyCandidates()}}
  }
  const EXTRA_STORES={dirk:"Dirk",plus:"PLUS",hoogvliet:"Hoogvliet",aldi:"Aldi",dekamarkt:"DekaMarkt",vomar:"Vomar"};
  function dealRecipeQuery(name){
@@ -965,16 +972,23 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    return;
   }
   const date=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
-  const result=WeekselectieEngine.weekly(state.library,state.data?.deals?.[state.store]||[],
-    storeData(),{date,limit:600,category:$("category").value,cuisine:$("cuisine").value,
+  const retailer=$("week-retailer-context").value;
+  const extra=retailer!=="basis";
+  if(extra&&!state.extraDeals&&!state.extraDealsLoading&&!state.extraDealsError)void ensureExtraDeals();
+  const retailerOffers=extra?(state.extraDeals?.stores?.[retailer]||[]):(state.data?.deals?.[state.store]||[]);
+  const retailerName=extra?(EXTRA_STORES[retailer]||retailer):state.data.store_names[state.store];
+  const result=WeekselectieEngine.weekly(state.library,retailerOffers,
+    extra?[]:storeData(),{date,limit:600,category:$("category").value,cuisine:$("cuisine").value,
     format:$("format").value,origin:$("origin").value,meal:$("mealtype").value,maxMinutes:$("duration").value});
   const existing=new Set(storeData().map(r=>WeekselectieEngine.N(r.title)));
   const suggestions=result.items.filter(x=>!existing.has(WeekselectieEngine.N(x.recipe.title)));
   const visible=suggestions.slice(0,state.weekVisible);
   $("week-source-count").textContent=result.total.toLocaleString("nl-NL")+
-   " passende inspiratievermeldingen gevonden bij "+state.data.store_names[state.store]+
+   " passende inspiratievermeldingen gevonden bij "+retailerName+
    " · "+result.withOffer+" met mogelijk actieverband · "+
-   result.checkedIngredients+" met herkende broningrediënten. Geen externe maaltijdprijzen verzonnen.";
+   result.checkedIngredients+" met herkende broningrediënten. "+
+   (extra?"Volledige winkelmandprijzen voor deze supermarkt nog niet gecontroleerd. ":"")+
+   "Geen externe maaltijdprijzen verzonnen.";
   $("week-source-cards").innerHTML=visible.map(({recipe:x,evidence,sourceIngredientMatches,possibleOfferMatches,shelfMatches,healthyIndicative})=>{
    const url=x.url?safeURL(x.url):"#";
    const canOpen=url!=="#";
@@ -1209,6 +1223,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  });
  $("library-load-more").addEventListener("click",()=>{state.libraryVisible+=24;renderLibraryResults()});
  $("week-source-more").addEventListener("click",()=>{state.weekVisible+=24;renderWeeklyCandidates()});
+ $("week-retailer-context").addEventListener("change",()=>{state.weekVisible=12;renderWeeklyCandidates()});
  $("week-source-cards").addEventListener("click",e=>{
    const b=e.target.closest("[data-source-save]");if(!b)return;
    toggleSourceFavorite(b.dataset.sourceSave,b.dataset.sourceTitle,b.dataset.sourceName);
