@@ -33,6 +33,20 @@ button.on,button:hover{background:#195d40;color:white}button:focus-visible,input
 .warning{color:#7a5229;background:#fff6e4;padding:10px;border-radius:8px;font-size:13px}
 #custom-unit{padding:10px;border:1px solid #b8d3c2;border-radius:9px;background:white}
 #toggle-followed[aria-pressed=true]{background:#176747;color:white}
+
+/* Status van de winkelactie staat direct boven de prijs, ook op mobiel. */
+.deal-status{font-size:12px;font-weight:700;border-radius:8px;padding:9px 10px;margin:1px 0 9px;display:flex;flex-wrap:wrap;gap:4px}
+.deal-active{color:#126436;background:#dbf4e4;border:1px solid #a5daba}
+.deal-regular{color:#576f60;background:#eef3ef;border:1px solid #dde8df}
+.deal-savings{border-left:3px solid #1e9453;padding:7px 10px;margin:9px 0 6px;background:#ecf8f0;font-size:13px}
+.deal-savings strong{color:#126436}.sku{font-size:11px;color:#718173;margin-top:4px}
+.product-title{font-size:14px;line-height:1.4;display:block}
+.watch .product .price{font-size:23px;letter-spacing:-.45px}
+.winner{border:1px solid #b8dbbf}.winner .pill{margin-bottom:6px}
+.alternatives{margin:12px 0 3px;border-top:1px solid #d9e8dc;padding-top:8px}
+.alternatives summary{font-size:13px;font-weight:700;color:#176747;cursor:pointer}
+.alternatives .product{background:#f9fbf9;border:1px solid #e4ece5}
+@media(max-width:570px){.watch .row-top{align-items:baseline}.watch .row-top span{font-size:12px}}
 </style></head><body><header><div class="wrap"><div><a href="./">← Recepten en aanbiedingen</a> · <a href="./boodschappen.html">Boodschappenassistent</a></div><h1>Mijn favorieten en prijswatchlist</h1><p>Alleen prijs- en eiwitclaims van de juiste productvariant. Bundels, losse prijzen en verpakkingen worden apart getoond.</p></div></header>
 <main><section class="panel"><h2>Mijn terugkerende producten</h2>
 <div id="freshness" class="freshness" aria-live="polite">Prijsgegevens ophalen…</div>
@@ -41,7 +55,7 @@ button.on,button:hover{background:#195d40;color:white}button:focus-visible,input
 <div class="form-row"><input id="custom" placeholder="Voeg zelf een product toe, bijvoorbeeld koffiebonen" maxlength="100" aria-label="Extra product op watchlist"><select id="custom-unit" aria-label="Prijs vergelijken per"><option value="g">Per 100 g</option><option value="ml">Per liter</option></select><button id="add">Product toevoegen</button></div>
 <p class="note">Eigen producten: vergelijk op exact de opgegeven zoekwoorden en eenheid. Controleer het gevonden artikel voordat je het koopt.</p>
 <div id="favorites-list"></div></section>
-<section class="panel"><h2>Vergelijk producten</h2><p class="note">Vergelijk het minimum kassabedrag én de prijs per 100 g, liter of 20 g eiwit. 1+1-acties vereisen aankoop van twee verpakkingen. Bij ontbrekende voedingswaarden of twijfelachtige inhoud verschijnt geen winnaar.</p>
+<section class="panel"><h2>Vergelijk producten</h2><p class="note"><strong>Groen = geldige aanbieding.</strong> Grijs = normale prijs. Per aanbieding zie je de actieperiode, de normale totaalprijs, je besparing en het aantal verpakkingen dat je moet kopen. Open bij iedere supermarkt ook de andere verpakkingsvarianten.</p>
 <div id="watch-grid" class="grid" aria-live="polite"></div></section></main>
 <script src="./watchlist_engine.js"></script>
 <script src="./watchlist_app.js"></script></body></html>
