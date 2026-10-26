@@ -40,7 +40,7 @@ class AlternativeTests(unittest.TestCase):
         index={"items":[{"title":"Erwtenschotel met zelfgemaakte croutons",
            "url":"https://www.example.org/recepten/erwten","source":"Testbron",
            "cuisine":"Nederlands","category":"Vegetarisch"}]}
-        result=source_suggestions(index,[],{},NOW)
+        result=source_suggestions(index,[],{},NOW,include_curated=False)
         self.assertEqual(len(result),1)
         self.assertEqual(result[0]["category"],"Vegetarisch")
         self.assertNotIn("checkout",result[0])
@@ -75,18 +75,26 @@ class AlternativeTests(unittest.TestCase):
           {"title":"Tonijn met komkommer","source":"AH","url":"http://wrong.example/not-secure"},
           {"title":"Kip met rijst","source":"Jumbo","url":"https://www.jumbo.com/recepten/kip-rijst"}
         ]}
-        found=source_suggestions(src,[],{},NOW)
+        found=source_suggestions(src,[],{},NOW,include_curated=False)
         self.assertEqual(len(found),2)
         self.assertTrue(any("tonijn" in candidate["focus"] for candidate in found))
         self.assertTrue(all("checkout" not in candidate for candidate in found))
         self.assertTrue(all("prijs niet gecontroleerd" in candidate["status"] for candidate in found))
+
+    def test_curated_health_sites_keep_source_provenance(self):
+        from receptalternatieven import TRUSTED_RECIPE_LINKS
+        self.assertGreaterEqual(len(TRUSTED_RECIPE_LINKS),5)
+        self.assertTrue(any(x["source"]=="Voedingscentrum" for x in TRUSTED_RECIPE_LINKS))
+        result=source_suggestions({"items":[]},[],{},NOW)
+        self.assertTrue(all(x["status"].startswith("inspiratie") for x in result))
+        self.assertTrue(all("checkout" not in x for x in result))
 
     def test_expired_old_ideas_disappear(self):
         stale={"inspiration":[{
           "title":"Tuna Salad","source":"Bron","url":"https://example.com/tuna",
           "seen_at":(NOW-timedelta(days=30)).date().isoformat()
         }]}
-        self.assertEqual(source_suggestions({"items":[]},[],stale,NOW),[])
+        self.assertEqual(source_suggestions({"items":[]},[],stale,NOW,include_curated=False),[])
 
     @patch("receptalternatieven.robots_allowed",return_value=False)
     def test_respects_robots_and_limits_requests(self, mocked):
