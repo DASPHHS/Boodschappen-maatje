@@ -51,8 +51,23 @@ const safeLink=url=>{try{const u=new URL(url);return u.protocol==="https:"?u.hre
 const norm=v=>String(v||"").toLocaleLowerCase("nl").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 let data=null,pLimit=12,iLimit=12;
 const urlParams=new URLSearchParams(location.search);
-if(urlParams.has("focus")&&[...$("focus").options].some(o=>o.value===urlParams.get("focus")))$("focus").value=urlParams.get("focus");
+
 if(urlParams.has("winkel")&&Object.hasOwn(names,urlParams.get("winkel")))$("store").value=urlParams.get("winkel");
+function updateOptions(){
+ if(!data)return;
+ const wanted=urlParams.get("focus")||$("focus").value;
+ const label=k=>(data.focus_labels||{})[k]||k.replaceAll("_"," ");
+ const tags=Object.entries(data.focus_counts||{}).filter(([key,counts])=>Object.values(counts).some(Boolean));
+ tags.sort((a,b)=>label(a[0]).localeCompare(label(b[0]),"nl"));
+ $("focus").innerHTML='<option value="all">Alle ingrediënten en productgroepen</option>'+tags.map(([key,c])=>
+  '<option value="'+esc(key)+'">'+esc(label(key))+'</option>').join("");
+ if([...$("focus").options].some(o=>o.value===wanted))$("focus").value=wanted;
+ const cuisines=new Set([...(data.suggestions||[]),...(data.inspiration||[])].map(r=>r.cuisine).filter(Boolean));
+ const previous=$("cuisine").value;
+ $("cuisine").innerHTML='<option value="all">Alle keukens</option>'+[...cuisines].sort((a,b)=>a.localeCompare(b,"nl")).map(c=>
+  '<option value="'+esc(c)+'">'+esc(c)+'</option>').join("");
+ if([...$("cuisine").options].some(o=>o.value===previous))$("cuisine").value=previous;
+}
 function scoreSort(a,b,kind){
  const price=x=>x.complete&&x.checkout!=null?Number(x.checkout):Infinity;
  if(kind==="price")return price(a)-price(b)||Number(b.health_priority)-Number(a.health_priority);
@@ -152,6 +167,7 @@ $("moreIdeas").addEventListener("click",()=>{iLimit+=12;render()});
 fetch("./alternatieven.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(payload=>{
  if(!Array.isArray(payload.suggestions)||!Array.isArray(payload.inspiration))throw Error("Onvolledige bronindex");
  data=payload;
+ updateOptions();
  const stamp=new Date(payload.updated_at);
  $("status").textContent="Laatst gecontroleerd: "+(Number.isFinite(stamp.getTime())?stamp.toLocaleString("nl-NL",{dateStyle:"medium",timeStyle:"short",timeZone:"Europe/Amsterdam"}):"onbekend")+
  " · "+Number(payload.registered_collections||0)+" broncollecties in rotatie · "+Number(payload.checked_collections_this_run||0)+" gecontroleerd in de laatste ronde."+
