@@ -33,7 +33,7 @@ function sku(url){
 function nutrition(name,quantity,unit,url){
  const id=sku(url);
  const match=VERIFIED.find(v=>v.id.toLowerCase()===String(id||"").toLowerCase());
- if(!match||unit!=="g"||!Number.isFinite(Number(quantity))||quantity<=0)return null;
+ if(!match||unit!=="g"||!Number.isFinite(Number(quantity))||quantity!==match.portion)return null;
  const n=norm(name);
  // Aanbiedingsbron en voedingsspecificatie moeten hetzelfde SKU én productsoort zijn.
  if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|yoghurt)|(kwark|yoghurt).*(protein|fit)/.test(n))return null;
@@ -135,7 +135,7 @@ function normalizeRow(row,watch){
  const calcUnit=watch.unit==="any"?row.unit:watch.unit;
  const unitScale=calcUnit==="g"?100:calcUnit==="ml"?1000:1;
  const nutrient=watch.protein?nutrition(row.name,amount,row.unit,row.url):null;
- if(watch.protein&&(!nutrient||nutrient.proteinPerPackage<20))return null;
+ if(watch.protein&&(!nutrient||nutrient.proteinPer100g*nutrient.serving/100<20))return null;
  const eurosPer20=nutrient?round(row.price*20/(nutrient.proteinPerPackage*bundles),3):null;
  return {...row,unit:calcUnit,quantity:amount,
   pricePerUnit:round(row.price*unitScale/totalContent,3),
