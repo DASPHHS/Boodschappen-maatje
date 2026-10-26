@@ -60,7 +60,7 @@ ING = {
  "kwark": ("magere kwark", r"(magere(?:\s+milde)?\s+kwark|kwark naturel|skyr(?:\s|$)|high protein kwark|proteinekwark|proteïnekwark)", r"drink|knijp|toetje|dessert|vla|pudding|cheesecake|mousse|roomkwark"),
  "kaas": ("geraspte kaas", r"(geraspte (oude|belegen|jong|kaas)|kaas geraspt)", r"pizza|maaltijd|saus"),
  "kokosmelk": ("kokosmelk", r"kokosmelk", r"drank|shampoo|haar|dessert|rijst"),
- "naan": ("naanbrood", r"(naanbrood|naan brood|naan)", r"pizza|maaltijd"),
+ "naan": ("naanbrood", r"\bnaan(?:brood(?:jes)?|s)?\b|\bnaan\s+brood(?:jes)?\b", r"pizza|maaltijd|chips|crackers|saus|kruidenmix"),
 }
 
 # (titel, categorie, minuten, [(ingrediëntsleutel, hoeveelheid, eenheid), ...])
