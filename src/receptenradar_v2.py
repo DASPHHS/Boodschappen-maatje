@@ -192,7 +192,12 @@ def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
                             continue
                         destination=upcoming[store]
                     else:
-                        if status=="upcoming":continue
+                        # Externe feeds actualiseren promotion_status soms later
+                        # dan de officiële ingangsdatum. Een expliciet geldige
+                        # datumrange gaat daarom vóór de verouderde 'upcoming'
+                        # status. Zonder beide datums nooit zelf activeren.
+                        if status=="upcoming" and (not start or not until):
+                            continue
                         destination=offers[store]
                     name=str(r.get("name") or "").strip()
                     price=num(r.get("price"))
