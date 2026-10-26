@@ -30,12 +30,12 @@ function dateNL(text){
   weekday:"long",day:"numeric",month:"long",timeZone:"Europe/Amsterdam"
  }):String(text);
 }
-function htmlItem(item){
+function htmlItem(item,unverified=false){
  const quantity=Math.round(item.quantity*100)/100;
  const volume=item.packages+" × "+quantity+" "+item.unit;
  const total=W.money(item.price);
  const offer=item.discount;
- let result="<div class='product'>";
+ let result="<div class='product'>"+(unverified?"<div class='unverified-label'>Eiwit per portie nog niet gecontroleerd · telt niet mee in winnaar</div>":"");
  result+="<div class='deal-status "+(offer?"deal-active":"deal-regular")+"'>"+
   (offer?"<strong>"+esc(item.promoKind||"AANBIEDING").toUpperCase()+"</strong>"+
    " · <strong>−"+item.discountPct+"%</strong>"+
@@ -99,7 +99,20 @@ function htmlWatch(p){
       " of aanbiedingen bij "+names[store]+"</summary>"+
       more.map(htmlItem).join("")+"</details>";
    }
-  }else out+="<p class='notfound'>Geen betrouwbare match in deze prijsimport. Dit bewijst niet dat het product niet verkrijgbaar is.</p>";
+   if(p.protein&&entry.unverified?.length){
+    out+="<details class='unverified-products'><summary>"+
+      entry.unverified.length+" extra eiwitproducten · voedingswaarde nog niet bevestigd"+
+      "</summary><div class='note'>Deze producten zijn wel in de prijslijst gevonden, maar voldoen nog niet aantoonbaar aan minimaal 20 g eiwit per portie.</div>"+
+      entry.unverified.map(x=>htmlItem(x,true)).join("")+"</details>";
+   }
+  }else {
+   out+="<p class='notfound'>Geen betrouwbare eiwitmatch in deze prijsimport. Dit bewijst niet dat het product niet verkrijgbaar is.</p>";
+   if(p.protein&&entry.unverified?.length){
+    out+="<details class='unverified-products'><summary>"+entry.unverified.length+
+      " gevonden alternatieven zonder gecontroleerde voedingswaarde</summary>"+
+      entry.unverified.map(x=>htmlItem(x,true)).join("")+"</details>";
+   }
+  }
   out+="</section>";
  }
  if(p.id.startsWith("custom_"))out+="<button class='delete' type='button' data-remove='"+
