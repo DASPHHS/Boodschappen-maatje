@@ -880,7 +880,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const result=ReceptInspiratieRadar.find(state.library,{
      query,category:$("category").value,cuisine:$("cuisine").value,
      format:$("format").value,duration:$("duration").value,
-     origin:$("origin").value,limit:state.libraryVisible
+     meal:$("mealtype").value,origin:$("origin").value,limit:state.libraryVisible
    });
    const duplicates=new Set([
      ...storeData().map(r=>ReceptInspiratieRadar.norm(r.title)),
