@@ -123,7 +123,7 @@ function filteredIdeas(){
    pools.get(key).push(entry);
  }
  const groups=[...pools.entries()].sort((a,b)=>a[0].localeCompare(b[0],"nl"));
- for(const [,group] of groups)group.sort((a,b)=>a.title.localeCompare(b.title,"nl"));
+ for(const [,group] of groups)group.sort((a,b)=>Number(b.verification_level==="bronrecept_4_personen")-Number(a.verification_level==="bronrecept_4_personen")||Number(b.verification_level==="broningrediënten_beschikbaar")-Number(a.verification_level==="broningrediënten_beschikbaar")||a.title.localeCompare(b.title,"nl"));
  const spread=[];
  while(spread.length<entries.length){
    let added=false;
@@ -153,7 +153,13 @@ function recipeCard(r){
 function inspirationCard(r){
  return '<article class="card"><div class="badges"><span class="badge uncertain">Prijs niet doorgerekend</span><span class="badge">'+esc(r.cuisine)+'</span></div>'+
  '<h3>'+esc(r.title)+'</h3><small>'+esc(r.source)+'</small>'+
- '<p class="meta">Bekijk ingrediënten en porties bij de oorspronkelijke bron voordat je boodschappen berekent.</p>'+
+ (r.verification_level==="bronrecept_4_personen"?
+   '<div class="badges"><span class="badge good">Ingrediënten en 4 porties bevestigd bij bron</span></div>':
+   r.verification_level==="broningrediënten_beschikbaar"?
+   '<div class="badges"><span class="badge">Broningrediënten bekend · porties controleren</span></div>':
+   '<div class="meta">Broningrediënten niet volledig gecontroleerd</div>')+
+ (r.source_rating?'<div class="meta">Bronbeoordeling '+Number(r.source_rating).toFixed(1).replace(".",",")+'/5</div>':'')+
+ '<p class="meta">Een bronrecept is nog geen volledige kassaprijs bij AH, Jumbo of Lidl. Bekijk originele hoeveelheden en varianten.</p>'+
  '<a class="more" target="_blank" rel="noopener noreferrer" href="'+safeLink(r.url)+'">Bekijk origineel recept</a></article>';
 }
 function render(){
@@ -176,7 +182,7 @@ fetch("./alternatieven.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("
  updateOptions();
  const stamp=new Date(payload.updated_at);
  $("status").textContent="Laatst gecontroleerd: "+(Number.isFinite(stamp.getTime())?stamp.toLocaleString("nl-NL",{dateStyle:"medium",timeStyle:"short",timeZone:"Europe/Amsterdam"}):"onbekend")+
- " · "+Number(payload.registered_collections||0)+" broncollecties in rotatie · "+Number(payload.checked_collections_this_run||0)+" gecontroleerd in de laatste ronde."+
+ " · "+Number(payload.registered_collections||0)+" broncollecties in rotatie · "+Number(payload.checked_collections_this_run||0)+" collecties in deze ronde · "+Number(payload.source_recipes_with_ingredients||0)+" bronrecepten met gecontroleerde ingrediënten."+
  (payload.prices_updated_at?" · Prijzen uit scan "+new Date(payload.prices_updated_at).toLocaleDateString("nl-NL",{timeZone:"Europe/Amsterdam"}):"");
  render();
 }).catch(e=>{$("status").textContent="De alternatievenindex is nog niet beschikbaar: "+e.message+". Bekijk voorlopig de bestaande recepten.";});
