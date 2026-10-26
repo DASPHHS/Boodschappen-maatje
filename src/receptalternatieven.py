@@ -207,11 +207,28 @@ def source_suggestions(index, new_links, previous, now):
     pools = defaultdict(list)
     for item in unique.values():
         pools[(item["source"], item["cuisine"])].append(item)
+    def alternate_topics(items):
+        """Spreid ook BINNEN één groot archief over alle bekende onderwerpen."""
+        from collections import defaultdict, deque
+        groups = defaultdict(list)
+        for item in items:
+            tags = [tag for tag in item["focus"] if tag not in ("vis", "kip", "groenten")]
+            # Elk recept wordt eenmaal ingedeeld; het blijft vindbaar onder
+            # alle eigen filters via het ongewijzigde focus-veld.
+            key = min(tags, key=lambda tag: (sum(tag in x["focus"] for x in items), tag)) if tags else (item["focus"][0] if item["focus"] else "_overig")
+            groups[key].append(item)
+        pending = {key: deque(sorted(vals, key=lambda x: normalized(x["title"])))
+                   for key, vals in groups.items()}
+        ordered = []
+        while any(pending.values()):
+            for key in sorted(pending):
+                if pending[key]:
+                    ordered.append(pending[key].popleft())
+        return ordered
+
     queues = {}
     for key, items in pools.items():
-        # Bekende hoofdingrediënten eerst, zonder overige gerechten te schrappen.
-        items.sort(key=lambda item: (not bool(item["focus"]), normalized(item["title"])))
-        queues[key] = deque(items)
+        queues[key] = deque(alternate_topics(items))
     diversified = []
     source_count = defaultdict(int)
     sorted_keys = sorted(queues, key=lambda key: (key[0], key[1]))
