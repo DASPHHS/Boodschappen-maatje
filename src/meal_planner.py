@@ -8,16 +8,16 @@ from collections import defaultdict
 from datetime import date
 
 RECIPES=[
- ("Harissa-kipwraps",["kip","wrap","paprika","spinazie"],"Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten."),
+ ("Harissa-kipwraps",["kipfilet","wrap","paprika","spinazie"],"Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten."),
  ("Groenterijke nasi met ei",["rijst","ei","prei","wortel"],"Kook rijst, wok groenten en roerbak het ei erdoor."),
  ("Kip met geroosterde groenten",["kip","courgette","paprika"],"Rooster gekruide kip en groenten in de oven."),
  ("Shakshuka",["ei","tomaat","paprika"],"Stoof de groenten en gaar eieren in de saus."),
  ("Tonijnbonensalade",["tonijn","bonen","tomaat"],"Meng tonijn, bonen en groenten."),
  ("Zalm met broccoli",["zalm","broccoli"],"Bak zalm en stoom broccoli."),
- ("Kip-kerrie met bloemkoolrijst",["kip","bloemkool","kerrie"],"Bak kip met kerrie, bereid bloemkoolrijst."),
+ ("Kip-kerrie met bloemkoolrijst",["kipfilet","bloemkool","kerrie"],"Bak kip met kerrie, bereid bloemkoolrijst."),
  ("Vegetarische chili",["bonen","paprika","tomaat"],"Laat bonen en groenten met kruiden sudderen."),
  ("Kip uit de airfryer",["kip","sla","aardappel"],"Bereid gekruide kip in de airfryer en maak een salade."),
- ("Volkoren pastasalade",["pasta","tomaat","kip"],"Kook pasta en meng met kip en groenten."),
+ ("Volkoren pastasalade",["pasta","tomaat","kipfilet"],"Kook pasta en meng met kip en groenten."),
  ("Frittata met groenten",["ei","spinazie","champignon"],"Bak de groenten, voeg ei toe en laat stollen."),
  ("Gevulde paprika met gehakt",["paprika","gehakt","tomaat"],"Vul paprika's met gebakken gehakt en groenten en gaar in de oven."),
  ("Wraps met tofu",["tofu","wrap","komkommer"],"Bak tofu en serveer met rauwkost in wraps."),
@@ -25,7 +25,7 @@ RECIPES=[
  ("Kruidige linzensoep",["linzen","wortel","tomaat"],"Kook linzen met groenten en specerijen.")
 ]
 ALIASES={
- "kip":("kip","kipfilet","kipdij"),"wrap":("wrap","wraps","tortilla"),
+ "kip":("kip","kipfilet","kipdij"),"kipfilet":("kipfilet","kipfiletblokjes","kipborstfilet"),"wrap":("wrap","wraps","tortilla"),
  "ei":("eieren","ei "," eieren"),"tomaat":("tomaat","tomaten"),
  "bonen":("bonen","kidney","black beans"),"pasta":("pasta","penne","fusilli"),
  "rijst":("rijst","basmati"),"kerrie":("kerrie","curry"),
@@ -47,6 +47,16 @@ def eligible(offer,day=None):
     return True
 
 def matches(text,ingredient):
+    """Avoid false positives for incompatible cuts and product categories."""
+    lower = text.casefold()
+    if ingredient == "kipfilet" and re.search(r"drumsticks?|hele kip|kippenpoten?|kipvleugels?|kipdij|kippendij", lower):
+        return False
+    if ingredient == "kip" and re.search(r"kippenbouillon|kippensoep|kipkruiden|kip smaak|kiparoma", lower):
+        return False
+    if ingredient == "rijst" and re.search(r"rijstwafels?|rijstdrank|rijstmelk|rijstebloem", lower):
+        return False
+    if ingredient == "ei" and re.search(r"eierkoeken|eiersalade|eierpasta|eiermie", lower):
+        return False
     name=" "+re.sub(r"[^a-z0-9 ]+"," ",text.lower())+" "
     return any(re.search(r"(?<![a-z])"+re.escape(alias)+r"(?![a-z])",name) for alias in ALIASES.get(ingredient,(ingredient,)))
 
