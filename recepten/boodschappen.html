@@ -64,6 +64,18 @@ function incompatibility(query,product){
 }
 function relevance(query,product){
  if(incompatibility(query,product))return -1;
+ const q=norm(query),p=norm(product);
+ // Prijs is onbruikbaar wanneer de productsoort niet overeenkomt. Een
+ // samengesteld gerecht, babyvoeding of smeersel is geen losse grondstof.
+ if(!/\b(baby|fruitspread|jam|puree|smoothie|chips|knijpfruit)\b/.test(q)&&
+    /\b(olvarit|ella s kitchen|baby|babyvoeding|fruitspread|jam|confituur|\w+soep|knijpfruit|maaltijdmix|kruidenmix)\b/.test(p))return -1;
+ if(/\b(blauwe bessen|blauwebessen|bosbessen|aardbeien|aardbei)\b/.test(q)&&
+    /\b(yoghurt|kwark|gurt|soja|siroop|dessert|fruitmix|muesli|ontbijt|gedroogd|compote)\b/.test(p))return -1;
+ if(/\b(kipfilet|kipdij|kipgehakt|rundergehakt|gehakt)\b/.test(q)&&
+    /\b(knorr|maggi|trattoria|maaltijd|schotel|kruiden|mix|saus|broodbeleg)\b/.test(p))return -1;
+ if(/\b(rundergehakt)\b/.test(q)&&/\b(half om half|halfomhalf|varken)\b/.test(p))return -1;
+ if(/\b(uien|ui)\b/.test(q)&&/\b(amsterdamse|zoetzure|ingelegde|zilveruitjes)\b/.test(p))return -1;
+
  const qt=tokens(query),pt=tokens(product);
  if(!qt.length)return -1;
  const aliases={melk:["melk","melkpak","koemelk"],kipfilet:["kipfilet","kipfilets"],bananen:["banaan","bananen"],eieren:["ei","eieren"],aardappelen:["aardappel","aardappelen"]};
