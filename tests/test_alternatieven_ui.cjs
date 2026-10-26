@@ -17,4 +17,19 @@ assert.equal(api.norm('Toníjn'),'tonijn');
 assert(html.includes('Volledige kassaprijs'),'Prijszekerheid moet zichtbaar zijn');
 assert(html.includes('Prijs niet doorgerekend'),'Bronideeën zonder verzonnen kosten');
 assert(html.includes('checked_collections_this_run'),'Laat gecontroleerde brondekking zien');
+const begin=js.indexOf('function bestRecipePerTitle('),finish=js.indexOf('function filteredPriced(',begin);
+assert(begin>=0&&finish>begin,'Ontdubbeling per winkel ontbreekt');
+const bestRecipePerTitle=new Function('norm',js.slice(begin,finish)+';return bestRecipePerTitle;')(api.norm);
+const samples=[
+ {title:'Tonijnpasta',store:'ah',complete:true,checkout:7.89,health_priority:true},
+ {title:'Tonijnpasta',store:'jumbo',complete:true,checkout:6.99,health_priority:true},
+ {title:'Tonijnpasta',store:'lidl',complete:false,checkout:null,health_priority:true},
+ {title:'Tonijnwraps',store:'jumbo',complete:true,checkout:5.55,health_priority:false}
+];
+const grouped=bestRecipePerTitle(samples,'all');
+assert.equal(grouped.length,2,'Elke maaltijd één keer tonen');
+const tuna=grouped.find(x=>x.title==='Tonijnpasta');
+assert.equal(tuna.store,'jumbo','Goedkoopste volledig geprijsde winkel tonen');
+assert.equal(tuna.comparisons.length,3,'Andere supermarktprijzen blijven beschikbaar');
+assert.equal(bestRecipePerTitle(samples,'ah').length,4,'Winkelgerichte lijst mag niet onterecht dedupliceren');
 console.log('Alternatieven-UI, navigatie, bronstatus en prijslabels: OK');
