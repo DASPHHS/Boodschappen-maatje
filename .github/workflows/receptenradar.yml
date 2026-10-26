@@ -59,6 +59,8 @@ on:
       - 'recepten/recept_inspiratie_radar.js'
       - 'recepten/weekselectie_engine.js'
       - 'recepten/deal_relevantie.js'
+      - 'recepten/deal_search.js'
+      - 'tests/test_deal_search.cjs'
       - 'tests/test_weekselectie_engine.cjs'
       - 'tests/test_deal_relevantie.cjs'
       - 'tests/test_recept_inspiratie_radar.cjs'
@@ -134,6 +136,7 @@ jobs:
           node tests/test_recept_inspiratie_radar.cjs
           node tests/test_weekselectie_engine.cjs
           node tests/test_deal_relevantie.cjs
+          node tests/test_deal_search.cjs
           node tests/test_shared_recipe_hits.cjs
           node tests/test_scan_status.cjs
           node tests/test_mealprep_ui.cjs
@@ -159,7 +162,8 @@ jobs:
           cp recepten/persoonlijk_weekmenu.js docs/recepten/persoonlijk_weekmenu.js
           cp recepten/recept_inspiratie_radar.js docs/recepten/recept_inspiratie_radar.js
           cp recepten/weekselectie_engine.js docs/recepten/weekselectie_engine.js
-          cp recepten/deal_relevantie.js docs/recepten/deal_relevantie.js
+          cp recepten/deal_relevantie.js docs/recepten/deal_relevantie.js docs/recepten/deal_search.js
+          cp recepten/deal_search.js docs/recepten/deal_search.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
           cp recepten/data.json docs/recepten/data.json
