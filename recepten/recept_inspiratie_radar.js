@@ -7,7 +7,7 @@ function norm(v){return String(v||"").toLocaleLowerCase("nl").normalize("NFD").r
 function tokens(v){return norm(v).split(/\s+/).filter(Boolean)}
 function hasTerm(text,needle){
  const words=tokens(text);const q=norm(needle);
- return words.some(w=>w===q||(q.length>=5&&w.startsWith(q)));
+ return words.some(w=>w===q||(q==="naan"&&/^naan(?:brood|broodjes)?$/.test(w))||(q.length>=5&&w.startsWith(q)));
 }
 function matchWords(text,query){
  return tokens(query).filter(t=>!["met","en","de","een","in","op","voor","graag"].includes(t))
