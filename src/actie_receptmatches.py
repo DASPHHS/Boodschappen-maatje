@@ -148,7 +148,7 @@ def select_candidates(index_items,promotion_keys,limit=80):
         sources[choice["source"]]=sources.get(choice["source"],0)+1
     return result
 
-def build_action_title_candidates(offers_by_store,index_path=RECIPE_INDEX,limit=80):
+def build_action_title_candidates(offers_by_store,index_path=RECIPE_INDEX,limit=80,shelves_by_store=None):
     from receptenradar_v2 import match_ingredient,verified_discount
     try:
         index=json.loads(Path(index_path).read_text(encoding="utf-8"))
@@ -166,7 +166,33 @@ def build_action_title_candidates(offers_by_store,index_path=RECIPE_INDEX,limit=
             for ingredient in ING:
                 if match_ingredient(offer,ingredient):keys.add(ingredient)
         candidates=select_candidates(items,keys,limit)
-        result[store]={"candidates":candidates,"possible_title_matches":len(candidates),
+        # Ook reguliere goedkope ingrediënten geven nuttige receptenideeën.
+        # Vergelijkbare verpakkingen worden uitsluitend binnen hetzelfde ingrediënt
+        # op bekende hoeveelheid en eenheid gerangschikt; geen fictieve korting.
+        budget_keys=set()
+        if shelves_by_store:
+            from receptenradar_v2 import match_ingredient
+            for ingredient in ING:
+                matches=[]
+                for product in shelves_by_store.get(store,[]):
+                    quantity=product.get("quantity")
+                    price=product.get("price")
+                    if not quantity or not price or quantity<=0 or price<=0:
+                        continue
+                    if product.get("unit") not in ("g","ml"):
+                        continue
+                    if match_ingredient(product,ingredient):
+                        matches.append(price*1000/quantity)
+                if matches and min(matches)<=8:
+                    budget_keys.add(ingredient)
+        budget_candidates=select_candidates(items,budget_keys,limit)
+        for item in budget_candidates:
+            item["possible_budget_keys"]=item.pop("possible_offer_keys",[])
+            item["verification"]="Alleen titelmatch met betaalbare reguliere producten; geen bevestigde receptprijs"
+            item["match_type"]="budget_inspiration"
+        result[store]={"candidates":candidates,"budget_candidates":budget_candidates,
+                       "budget_ingredient_keys":len(budget_keys),
+                       "possible_title_matches":len(candidates),
                        "verified_promotion_keys":len(keys),
                        "disclaimer":"Titelmatch is GEEN gecontroleerde recept- of kortingscombinatie; zonder broningrediënten en porties wordt geen kassaprijs berekend."}
     return result
