@@ -46,6 +46,8 @@ ING = {
  "courgette": ("courgette", r"\bcourgette\b", r"soep|saus|maaltijd|mix"),
  "champignons": ("champignons", r"(kastanjechampignons|champignons)", r"soep|saus|maaltijd|mix|wok|roerbakgroente|roerbakmix"),
  "tomaten": ("tomaten", r"(trostomaten|cherrytomaten|romatomaten|tomaten)", r"puree|saus|blokjes|blik|soep|ketchup|pasta|sap|zongedroogd|gepeld|gezeefd|passata|bonen|tomatens|tomatensap|pulp|polpa|ciliegini|conserven"),
+ "olijven": ("zwarte olijven zonder pit", r"(zwarte olijven|olijven zwart|zwarte olijf|olijven zonder pit)", r"tapenade|olie|dip|saus|brood|pizza|mix"),
+ "kappertjes": ("kappertjes", r"\\bkappertjes\\b", r"saus|dressing|tapenade|chips"),
  "tomatenblokjes": ("tomatenblokjes", r"(tomatenblokjes|tomaten in blokjes|tomaten pulp|tomatenpulp)", r"soep|saus|maaltijd"),
  "ui": ("uien", r"(gele uien|uien|rode uien|sjalotten)", r"saus|soep|kruiden|gebakken|poeder|snippers"),
  "komkommer": ("komkommer", r"\bkomkommer\b", r"zuur|saus|soep|salade|plakjes"),
@@ -86,6 +88,12 @@ RECIPES = [
  ("Tonijnpastasalade","Vis",20,[("tonijn",320,"g"),("pasta",320,"g"),("komkommer",1,"st"),("tomaten",400,"g"),("yoghurt",250,"g")]),
  ("Mediterrane tonijnrijst","Vis",25,[("tonijn",320,"g"),("rijst",320,"g"),("paprika",2,"st"),("tomaten",400,"g")]),
  ("Tonijn-zoeteaardappelschotel","Vis",40,[("tonijn",320,"g"),("zoete_aardappel",850,"g"),("spinazie",450,"g"),("kaas",150,"g")]),
+ # Vierpersoonsvariant gebaseerd op een daadwerkelijk bestaand Allerhande-recept.
+ # Volkoren pasta, tonijngewicht en tomatenblokjes zijn bewust gekozen
+ # varianten; originele bron blijft zichtbaar op de receptenkaart.
+ ("Volkoren tonijnpasta met zwarte olijven en kappertjes","Vis",25,[
+   ("tonijn",480,"g"),("pasta",320,"g"),("courgette",2,"st"),
+   ("tomatenblokjes",400,"g"),("ui",150,"g"),("olijven",100,"g"),("kappertjes",35,"g")]),
  # Nieuwe gevarieerde tonijnrecepten; alle vier porties, prijzen pas na exacte productmatch.
  ("Tonijn-broccolipasta met tomatensaus","Vis",25,[("tonijn",500,"g"),("broccoli",700,"g"),("pasta",320,"g"),("tomatenblokjes",800,"g")]),
  ("Tonijn-paprikafrittata met spinazie","Vis",30,[("tonijn",450,"g"),("eieren",8,"st"),("paprika",3,"st"),("spinazie",500,"g")]),
@@ -292,6 +300,26 @@ RECIPE_METHODS = {
 }
 
 # Meer volwaardige tonijngerechten, zonder bestaande gerechten of prijsregels te vervangen.
+# Bronvermelding, originele bronreceptuur blijft de referentie voor controle.
+RECIPE_SOURCES = {
+ "Volkoren tonijnpasta met zwarte olijven en kappertjes": {
+   "name": "Allerhande · Pasta met mediterrane tonijnsaus",
+   "url": "https://www.ah.nl/allerhande/recept/R-R369914/pasta-met-mediterrane-tonijnsaus",
+   "status": "Eigen gezondere variant van bestaand recept, ingrediënten aangepast"
+ }
+}
+
 from tonijn_varianten import TUNA_RECIPES, TUNA_METHODS
 RECIPES.extend(TUNA_RECIPES)
 RECIPE_METHODS.update(TUNA_METHODS)
+RECIPE_METHODS["Volkoren tonijnpasta met zwarte olijven en kappertjes"] = (
+ "Kook de volkoren penne volgens de verpakking beetgaar. Snipper de ui, "
+ "snijd de courgettes in blokjes en fruit de ui kort in olijfolie. Bak de "
+ "courgette ongeveer 5 minuten mee. Voeg tomatenblokjes, uitgelekte olijven "
+ "en kappertjes toe en laat 7 minuten zacht pruttelen. Laat de tonijn "
+ "goed uitlekken en verwarm de tonijn in de laatste 2 minuten mee, "
+ "zodat hij sappig blijft. Meng met de pasta en verdeel over vier borden. "
+ "Olijfolie, peper en optionele knoflook komen uit de voorraad. Dit is "
+ "een aangepaste variant van een bestaand Allerhande-recept."
+)
+
