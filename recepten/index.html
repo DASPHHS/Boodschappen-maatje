@@ -84,7 +84,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .recipe .visual{height:55px}.recipe .visual>span:first-child{font-size:27px}
 @media(max-width:700px){.primary-filters,.advanced-grid{grid-template-columns:1fr 1fr}.discovery{padding:14px}}
 @media(max-width:500px){.primary-filters,.advanced-grid{grid-template-columns:1fr}.search-row input{font-size:16px}.search-shortcuts{flex-wrap:nowrap;overflow:auto;scrollbar-width:thin}.search-shortcuts button{white-space:nowrap}.discovery{padding:12px}}
-</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./chat.html">Vraag het Maatje ↗</a><a href="./alternatieven.html">Meer receptopties ↗</a><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./inspiratie.html">Receptbronnen ↗</a><a href="./status.html">Controleer scanstatus ↗</a></span></div>
+#source-matches-panel{display:none!important}
+.favourites-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.favourites-tools a{text-decoration:none}
+.recipe-headline{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.recipe-headline h3{min-width:0}
+.recipe-favourite{flex-shrink:0;font-size:13px;border:1px solid #cadbd0;background:#fff;border-radius:9px;padding:7px 9px;color:#225c40}
+.recipe-favourite[aria-pressed=true]{background:#176745;color:#fff;border-color:#176745}
+</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./chat.html">Vraag het Maatje ↗</a><a href="./alternatieven.html">Meer receptopties ↗</a><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./watchlist.html">★ Favorieten & prijswatchlist</a><a href="./inspiratie.html">Receptbronnen ↗</a><a href="./status.html">Controleer scanstatus ↗</a></span></div>
 <div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
 <p>Kies wat je lekker vindt en vergelijk echte vierpersoonsmaaltijden met de actuele prijzen van AH, Jumbo en Lidl. Gezonde gerechten, aanbiedingen die echt voordeel opleveren en één duidelijke kassaprijs.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
@@ -92,6 +99,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
 <div id="alerts"></div>
+<div class="favourites-tools"><button type="button" id="only-favorites" aria-pressed="false" class="btn outline small">☆ Alleen mijn favorieten</button><a class="btn outline small" href="./watchlist.html">Mijn productenwatchlist</a></div>
 <details id="weekmenu-panel" class="weekmenu-panel" hidden>
  <summary>Weekmenu: drie kookmomenten · vergelijk AH, Jumbo en Lidl</summary>
  <div id="weekmenu-content" aria-live="polite"></div>
@@ -227,7 +235,20 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
       (typeof x.id==="string"||typeof x.id==="number")).slice(0,100):[];
   }catch{return []}
  }
- let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection()};
+ let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection(),favoriteOnly:false};
+ function readFavorites(){
+   try{const value=JSON.parse(localStorage.getItem("bm_recept_favorieten_v1")||"[]");
+     return Array.isArray(value)?value.filter(x=>typeof x==="string").slice(0,300):[]}
+   catch{return []}
+ }
+ let favoriteTitles=readFavorites();
+ function isFavorite(r){return favoriteTitles.includes(r.title)}
+ function toggleFavorite(title){
+   if(!title||!state.data?.recipes?.[state.store]?.some(r=>r.title===title))return;
+   favoriteTitles=isFavorite({title})?favoriteTitles.filter(x=>x!==title):favoriteTitles.concat(title);
+   try{localStorage.setItem("bm_recept_favorieten_v1",JSON.stringify(favoriteTitles))}catch{}
+   render();
+ }
  const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
  // Filters uit de alternatievenpagina toepassen na initialisatie van de browserstatus.
  const recipeLinkParams=new URLSearchParams(location.search);
@@ -249,7 +270,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
-  let rs=storeData().filter(r=>RecipeSearch.matches(r,q));
+  let rs=storeData().filter(r=>RecipeSearch.matches(r,q)&&
+     (!state.favoriteOnly||isFavorite(r)));
   const meal=$("mealtype").value;
   if(meal!=="all")rs=rs.filter(r=>(r.meal_type||"Avondeten")===meal);
   const format=$("format").value;
@@ -304,7 +326,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Er worden geen recepten zonder de gevraagde korting getoond. Zet het actiefilter uit voor reguliere recepten of bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
     <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.deal_basket?.used_actions>r.sale_count?`${r.deal_basket.used_actions} acties mogelijk · ${r.sale_count} in goedkoopste mand`:`${r.sale_count} gebruikte acties`}</span></div>
-    <div class="recipe-body"><h3>${esc(r.title)}</h3>
+    <div class="recipe-body"><div class="recipe-headline"><h3>${esc(r.title)}</h3>
+    <button type="button" class="recipe-favourite" data-favorite="${esc(r.title)}" aria-pressed="${isFavorite(r)}" title="Bewaar dit recept op dit apparaat">${isFavorite(r)?"★ Bewaard":"☆ Bewaar"}</button></div>
     <div class="chips"><span class="chip">${esc(r.meal_type||"Avondeten")}</span><span class="chip">${esc(r.cuisine||"Overig")}</span>${r.portable?`<span class="chip">Mee te nemen ✓</span>`:""}${r.mealprep?`<span class="chip">Geschikt als mealprep-basis</span>`:""}<span class="chip">${r.nutrition?.kcal_per_serving_estimate!=null?`≈ ${r.nutrition.kcal_per_serving_estimate} kcal/portie (${r.nutrition.kcal_total_estimate} kcal totaal, 4 porties)`:"Kcal niet volledig berekenbaar"}</span><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_g_per_serving_estimate!=null?`≈ ${Number(r.nutrition.protein_g_per_serving_estimate).toLocaleString("nl-NL")} g eiwit/portie · ${r.nutrition.protein_source?"≥30 g ✓":"<30 g"}`:"Eiwit niet berekend"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_g_per_serving_estimate!=null?`≈ ${r.nutrition.vegetable_g_per_serving_estimate} g groenten/portie · ${r.nutrition.vegetable_forward?"≥250 g ✓":"<250 g"}`:"Groenten niet berekend"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${r.nutrition?.health_note?`<div class="notice warn"><strong>Voedingsadvies</strong><p>${esc(r.nutrition.health_note)}</p><p>Gezonder alternatief: <strong>boerenkoolstamppot met kruidige kip</strong>. Zoek daarop in de receptenlijst; de prijzen worden per supermarkt berekend.</p></div>`:""}
     ${recipePrice(r)}
@@ -667,7 +690,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(state.mode==="deals")renderDeals();else renderRecipes();
   document.querySelectorAll("#cuisine-shortcuts [data-cuisine]").forEach(b=>
     b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
-  renderSourceMatches();
+  // Losse bronideeën horen niet in de hoofdranglijst totdat ingrediënten, porties en prijzen compleet zijn.
   renderWeekmenu();
   renderCart();
   renderAudit();
@@ -746,7 +769,17 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    updateCuisineOptions();save();render();
    $("cart-panel").scrollIntoView({behavior:"smooth",block:"start"});
  });
- $("recipes").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")});
+ $("recipes").addEventListener("click",e=>{
+  const fav=e.target.closest("[data-favorite]");
+  if(fav){toggleFavorite(fav.dataset.favorite);return}
+  const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")
+ });
+ $("only-favorites").addEventListener("click",()=>{
+   state.favoriteOnly=!state.favoriteOnly;
+   $("only-favorites").setAttribute("aria-pressed",String(state.favoriteOnly));
+   $("only-favorites").textContent=state.favoriteOnly?"★ Mijn favorieten (filter uit)":"☆ Alleen mijn favorieten";
+   state.visible=10;render();
+ });
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
  $("clear").addEventListener("click",()=>{state.selected=[];save();render()});
  $("copy").addEventListener("click",async()=>{
