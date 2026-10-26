@@ -488,7 +488,7 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
 # tellen niet mee, om niet stilzwijgend eiwitten te verzinnen.
 PROTEIN_PER_100G={
  "kipfilet":20.0,"kipdij":17.0,"kipgehakt":17.0,"shoarma":16.0,
- "gehakt":17.0,"varkenshaas":20.0,"rookworst":12.0,"zalm":19.0,"gerookte_zalm":18.0,
+ "gehakt":17.0,"varkenshaas":20.0,"garnalen":19.0,"rookworst":12.0,"zalm":19.0,"gerookte_zalm":18.0,
  "tonijn":22.0,"olijven":0.8,"kappertjes":2.4,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
  "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
  "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
