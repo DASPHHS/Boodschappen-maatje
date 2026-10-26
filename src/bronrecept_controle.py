@@ -84,11 +84,24 @@ def verify_source_urls(inspiration,previous,now=None,limit=3,session=None):
               x.get("url","").startswith("https://") and x.get("title")]
     # Roteer ieder half uur én bezoek een site niet meerdere keren binnen
     # drie dagen. Zo wordt de controle over de hele bibliotheek verdeeld.
-    eligible.sort(key=lambda x:(x.get("source",""),x["url"]))
+    from collections import defaultdict
+    pools=defaultdict(list)
+    for item in eligible:
+        pools[item.get("source") or "Onbekende bron"].append(item)
+    for key in pools:pools[key].sort(key=lambda x:x["url"])
+    # Verschillende aanbieders per run. Wikibooks gebruikt veel pagina's
+    # zonder Recipe-JSON-LD; geef actieve receptenwebsites voorrang.
+    sources=sorted(pools,key=lambda x:(x=="Wikibooks",x))
     slot=int(now.timestamp()//1800)
-    if eligible:
-        offset=(slot*7)%len(eligible)
-        eligible=eligible[offset:]+eligible[:offset]
+    if sources:
+        turn=slot%len(sources)
+        sources=sources[turn:]+sources[:turn]
+    eligible=[]
+    for i in range(max((len(v) for v in pools.values()),default=0)):
+        for source in sources:
+            candidates=pools[source]
+            if not candidates:continue
+            eligible.append(candidates[(i+slot//max(len(sources),1))%len(candidates)])
     checked=[]
     http=session or requests.Session()
     for candidate in eligible:
