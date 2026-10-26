@@ -15,6 +15,7 @@ ING = {
  "melk": ("halfvolle melk", r"(halfvolle melk|melk halfvol)", r"chocolade|drank smaak|poeder|lactosevrij"),
  "hummus": ("hummus naturel", r"(hummus|humus)", r"chips|wrap|salade|broodje|maaltijd|dipmix|kruiden"),
  "rookworst": ("rookworst", r"\brookworst\b", r"vegetar|vegan|plantaardig|soep|saus|chips|smaak|kruiden|broodbeleg|maaltijd|stamppot"),
+ "garnalen": ("gepelde garnalen", r"(?:\bgarnalen\b|\bgarnaal\b|\bshrimp\b|\bprawns?\b|\bscampi\b)", r"salade|chips|kroepoek|soep|saus|smaak|bouillon|pizza|maaltijd|kant.en.klaar|gepaneerd|tempura|surimi|imitatie|dierenvoer"),
  "varkenshaas": ("varkenshaas", r"varkenshaas", r"rollade|broodbeleg|gevuld|saus|maaltijd|reepjes|medaillon|vleeswaren|salade"),
  "kipfilet": ("kipfilet", r"\bkipfilet\b", r"vegetar|vegan|plantaardig|wortel|erwt|maaltijd|mix|salade|broodbeleg|soep|smaak|pizza|spread|pepersaus|roomsaus|saus|ragout|gepocheerd|gebakken"),
  "kipdij": ("kipdijfilet", r"kipdij(filet)?", r"vegetar|vegan|salade|broodbeleg|soep|smaak"),
@@ -63,8 +64,13 @@ ING = {
 }
 
 # (titel, categorie, minuten, [(ingrediëntsleutel, hoeveelheid, eenheid), ...])
+# Garnalen zijn ook als diepvriesproduct geschikt; de matcher controleert de productvariant.
 # Kernrecepten; kruiden, olie, zout en peper naar smaak uit eigen voorraad.
 RECIPES = [
+ ("Knoflookgarnalen met volkorenpasta en spinazie","Vis",25,[("garnalen",800,"g"),("pasta",320,"g"),("spinazie",600,"g"),("tomaten",400,"g")]),
+ ("Garnalencurry met bloemkool en rijst","Vis",35,[("garnalen",800,"g"),("bloemkool",1,"st"),("kokosmelk",400,"ml"),("rijst",280,"g"),("ui",150,"g")]),
+ ("Garnalenwok met groenten en zilvervliesrijst","Vis",25,[("garnalen",800,"g"),("wok",900,"g"),("rijst",300,"g")]),
+
  ("Kip teriyaki met wokgroenten","Kip",25,[("kipfilet",600,"g"),("wok",800,"g"),("rijst",320,"g"),("ui",150,"g")]),
  ("Romige kip-spinaziepasta","Kip",30,[("kipfilet",600,"g"),("spinazie",500,"g"),("pasta",350,"g"),("yoghurt",250,"g")]),
  ("Kip-curry met bloemkool","Kip",35,[("kipfilet",600,"g"),("bloemkool",1,"st"),("kokosmelk",400,"ml"),("rijst",300,"g")]),
