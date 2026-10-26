@@ -26,6 +26,33 @@ ROOT = Path(__file__).resolve().parents[1]
 PRICES = ROOT / "recepten" / "data.json"
 INDEX = ROOT / "recepten" / "inspiratie.json"
 OUTPUT = ROOT / "recepten" / "alternatieven.json"
+# Handmatig op bestaande bronpagina's gecontroleerde links voor kwalitatieve
+# dekking; bedragen, ingrediënten en porties blijven afzonderlijk te verifiëren.
+# Nieuwe titels worden nooit automatisch vertaald naar een kassaprijs.
+TRUSTED_RECIPE_LINKS = [
+ {"title":"Penne met tonijn en roerbakgroente",
+  "source":"Voedingscentrum","cuisine":"Internationaal",
+  "url":"https://www.voedingscentrum.nl/recepten/gezond-recept/penne-met-tonijn-en-roerbakgroente.aspx"},
+ {"title":"Pastasalade met broccoli en tonijn",
+  "source":"Voedingscentrum","cuisine":"Internationaal",
+  "url":"https://www.voedingscentrum.nl/recepten/gezond-recept/pastasalade-met-broccoli-en-tonijn.aspx"},
+ {"title":"Pasta met tonijn, garnalen en tomatensaus",
+  "source":"Voedingscentrum","cuisine":"Mediterraan",
+  "url":"https://www.voedingscentrum.nl/recepten/gezond-recept/pasta-met-tonijn-garnalen-en-tomatensaus.aspx"},
+ {"title":"Tonijn-bonensalade",
+  "source":"Voedingscentrum","cuisine":"Internationaal",
+  "url":"https://www.voedingscentrum.nl/recepten/gezond-recept/tonijn-bonensalade.aspx"},
+ {"title":"Pasta met tonijn en spinazie",
+  "source":"LeukeRecepten","cuisine":"Internationaal",
+  "url":"https://www.leukerecepten.nl/recepten/pasta-met-tonijn-en-spinazie/"},
+ {"title":"Pasta met tonijn, tomatensaus en rucola",
+  "source":"AH Allerhande","cuisine":"Internationaal",
+  "url":"https://www.ah.nl/allerhande/recept/R-R1198991/pasta-met-tonijn-tomatensaus-en-rucola"},
+ {"title":"Gezonde pastasalade met tonijn",
+  "source":"AH Allerhande","cuisine":"Internationaal",
+  "url":"https://www.ah.nl/allerhande/recept/R-R1195652/gezonde-pastasalade-met-tonijn"},
+]
+
 
 # Dynamische dekking: alle ingrediënten die de echte recept- en prijsmotor kent
 # krijgen een zoekcategorie. Dit is niet beperkt tot één voorbeeld (tonijn).
@@ -173,6 +200,7 @@ def source_suggestions(index, new_links, previous, now):
         if item.get("kind") == "collection" or item.get("category") == "Broncollectie":
             continue
         collected.append(item)
+    collected.extend(TRUSTED_RECIPE_LINKS)
     collected.extend(new_links)
     # Behoud succesvolle externe bronnen wanneer één website tijdelijk offline is.
     collected.extend(x for x in previous_candidates
