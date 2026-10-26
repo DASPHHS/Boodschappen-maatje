@@ -18,6 +18,7 @@ assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Granola Aardbei 750g",750,"g
 const XL750="https://www.jumbo.com/producten/xxl-nutrition-fit-yoghurt-aardbei-750g-735993EM";
 assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Aardbei 750g",750,"g",XL750).proteinPerPackage,75);
 assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Aardbei 750g",750,"g",XL750).serving,200);
+assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Aardbei 750g",750,"g",XL750).proteinPerServing,20);
 assert.equal(W.nutrition("Melkunie Breaker high protein vanille yoghurt",200,"g","https://www.ah.nl/producten/product/wi225290/melkunie-breaker-high-protein-vanille-yoghurt"),null);
 assert.equal(W.nutrition("XXL Fit Yoghurt Granola 200g",200,"g","https://example.com/xxl"),null);
 assert(W.matchProduct("Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",p("knijp"),POUCH));
