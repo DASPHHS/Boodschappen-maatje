@@ -14,6 +14,7 @@ from product_compatibiliteit import compatible, recipe_line_errors
 from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
+from scan_kwaliteitscontrole import inspect_snapshot
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 from portie_flexibiliteit import needed_quantity
 from verpakkingscombinaties import mixed_pack_option
@@ -958,6 +959,7 @@ def main():
     if not any(counts.values()):
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors,upcoming=load_deals(include_upcoming=True)
+    source_quality=inspect_snapshot(shelves,offers,errors)
     # Externe recepten zoeken vanuit daadwerkelijke actieproducten.
     # Losse bronresultaten zijn geen berekende vierpersoonsmaaltijden.
     try:
@@ -1045,6 +1047,8 @@ def main():
       "local_inventory_checked":False,
       "email_delivery_verified_by_this_scan":False,
       "source_errors":errors,
+      "source_quality":source_quality,
+      "source_warnings":source_quality["warnings"],
     }
     path=ROOT/"recepten"/"status.json"
     path.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
