@@ -273,3 +273,8 @@ RECIPE_METHODS = {
         "en zijn niet in de getoonde kassaprijs opgenomen."
     )
 }
+
+# Meer volwaardige tonijngerechten, zonder bestaande gerechten of prijsregels te vervangen.
+from tonijn_varianten import TUNA_RECIPES, TUNA_METHODS
+RECIPES.extend(TUNA_RECIPES)
+RECIPE_METHODS.update(TUNA_METHODS)
