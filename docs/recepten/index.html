@@ -129,9 +129,9 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   <div class="advanced-grid">
    <label>Wereldkeuken<select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select></label>
    <label>Eetmoment<select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select></label>
-   <label>Soort gerecht<select id="category" aria-label="Soort recept"><option value="all">Vlees, vis en vegetarisch</option><option value="meat">Vlees en kip</option><option value="redmeat">Vlees</option><option value="chicken">Kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select></label>
+   <label>Eiwitbron<select id="category" aria-label="Soort recept"><option value="all">Vlees, vis en vegetarisch</option><option value="meat">Vlees en kip</option><option value="redmeat">Vlees</option><option value="chicken">Kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select></label>
    <label>Bereidingstijd<select id="duration" aria-label="Maximale bereidingstijd"><option value="all">Alle bereidingstijden</option><option value="20">Tot 20 minuten</option><option value="30">Tot 30 minuten</option><option value="45">Tot 45 minuten bereiding</option></select></label>
-   <label>Gerechtvorm<select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select></label>
+   <label>Type gerecht<select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="stamppot">Stamppot en hutspot</option><option value="curry">Curry en dahl</option><option value="pasta">Pasta en risotto</option><option value="wok">Wok en roerbak</option><option value="oven">Oven en traybake</option><option value="stoof">Stoofschotels</option><option value="rijst">Rijstgerechten</option><option value="soep">Soep en ramen</option><option value="wrap">Wraps, taco’s en burrito’s</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select></label>
    <label>Vooruit bereiden<select id="mealprep-filter" aria-label="Geschikt voor voorbereiden"><option value="all">Alle recepten</option><option value="yes">Mealprep: vooruit bereiden</option></select></label>
    <label>Herkomst<select id="origin" aria-label="Receptbron"><option value="all">Alle recepten</option><option value="Actiegestuurde maaltijd">Samengesteld uit acties</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen of op echte recepten gebaseerde varianten</option></select></label>
   </div>
@@ -361,7 +361,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(meal!=="all")rs=rs.filter(r=>(r.meal_type||"Avondeten")===meal);
   const format=$("format").value;
   if(format!=="all"){
-    const type=r=>/wrap/i.test(r.title)?"wrap":/bowl|gallo pinto/i.test(r.title)?"bowl":/salade/i.test(r.title)?"salade":"anders";
+    const type=r=>PersonalWeekmenu.dishType(r)==="overig"?"anders":PersonalWeekmenu.dishType(r);
     rs=rs.filter(r=>type(r)===format);
   }
   const maxMinutes=$("duration").value;
