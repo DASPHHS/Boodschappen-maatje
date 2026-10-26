@@ -23,7 +23,7 @@ function inputItems(text){
  // Zonder hoeveelheid gebruikt de vergelijker een expliciete standaardmaat
  // voor melk in plaats van '1 stuk'. Melkprijzen zijn in ml opgeslagen;
  // zonder deze stap kon geen enkele winkel een gewone liter melk vinden.
- if(!m && /\\bmelk\\b/i.test(norm(q)) && !/\\b(melkpoeder|melkchocolade)\\b/i.test(norm(q))){
+ if(!m && /\bmelk\b/i.test(norm(q)) && !/\b(melkpoeder|melkchocolade)\b/i.test(norm(q))){
    qty=1000;unit="ml";
  }
  return {raw,q,qty,unit};
@@ -71,7 +71,7 @@ function pick(item,store){
  let score=relevance(item.q,name);if(score<0)return;
  const normalized=norm(name);
  if(norm(item.q).includes("magere")&&!normalized.includes("mager"))return;
- if(/\\bvolle?\\b/.test(norm(item.q))&&!/\\bvolle?\\b/.test(normalized))return;
+ if(/\bvolle?\b/.test(norm(item.q))&&!/\bvolle?\b/.test(normalized))return;
  if(norm(item.q).includes("zero")&&!normalized.includes("zero"))return;
  let n=Math.ceil(item.qty/size),amount=n*price,bought=n;
  if(sale){
