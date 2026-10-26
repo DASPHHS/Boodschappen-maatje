@@ -289,6 +289,9 @@ def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
                          "valid_until":"2026-10-27","ean":"",
                          "source":"Jumbo officiële campagnepagina","is_loyalty":False})
             offers["jumbo"].append(item)
+    # Officieel gedateerde Lidl-prijzen als beperkte aanvulling op missende bulkdata.
+    from lidl_officiele_acties import supplement as supplement_lidl
+    supplement_lidl(offers,upcoming,day,horizon_days)
     return (offers,errors,upcoming) if include_upcoming else (offers,errors)
 
 def match_ingredient(product,ingredient):
