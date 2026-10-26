@@ -246,6 +246,8 @@ RECIPES = [
  ("Lunch: linzen- en eiersalade met geroosterde paprika","Vegetarisch",20,[("linzen",800,"g"),("eieren",8,"st"),("paprika",3,"st"),("tomaten",450,"g")]),
  ("Ontbijt: overnight oats met aardbeien en skyr","Vegetarisch",10,[("kwark",1400,"g"),("havermout",160,"g"),("aardbeien",450,"g"),("melk",200,"ml")]),
  ("Ontbijt: skyr met banaan, havermout en noten","Vegetarisch",5,[("kwark",1400,"g"),("havermout",150,"g"),("banaan",480,"g"),("noten",80,"g")]),
+ ("Ontbijt: kwark 450 g met blauwe bessen en havermout","Vegetarisch",5,[
+    ("kwark",1800,"g"),("blauwe_bessen",400,"g"),("havermout",120,"g")]),
  ("Ontbijt: kwark met blauwe bessen en aardbeien","Vegetarisch",5,[("kwark",1600,"g"),("blauwe_bessen",350,"g"),("aardbeien",450,"g")]),
  ("Ontbijt: hartige eiwrap met spinazie","Vegetarisch",15,[("eieren",12,"st"),("wraps",4,"st"),("spinazie",450,"g"),("kwark",650,"g")]),
  ("Ontbijt: kwark met havermout, banaan en aardbeien","Vegetarisch",5,[("kwark",1400,"g"),("havermout",160,"g"),("banaan",360,"g"),("aardbeien",400,"g")]),
@@ -312,6 +314,12 @@ RECIPE_SOURCES = {
 from tonijn_varianten import TUNA_RECIPES, TUNA_METHODS
 RECIPES.extend(TUNA_RECIPES)
 RECIPE_METHODS.update(TUNA_METHODS)
+RECIPE_METHODS["Ontbijt: kwark 450 g met blauwe bessen en havermout"] = (
+ "Verdeel per persoon 450 g magere kwark over een kom. Voeg 100 g gewassen "
+ "blauwe bessen toe (vers of ontdooide diepvriesbessen) en strooi "
+ "30 g havermout erover. Serveer meteen. De volledige aankoopprijs "
+ "betreft alle verpakkingen; de verbruikskosten zijn voor vier kommen."
+)
 RECIPE_METHODS["Volkoren tonijnpasta met zwarte olijven en kappertjes"] = (
  "Kook de volkoren penne volgens de verpakking beetgaar. Snipper de ui, "
  "snijd de courgettes in blokjes en fruit de ui kort in olijfolie. Bak de "
