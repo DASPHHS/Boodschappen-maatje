@@ -103,6 +103,24 @@ jobs:
           git add docs/recepten/index.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
-            git pull --rebase origin main
-            git push
+            # Deze commit bevat uitsluitend gegenereerde data en een Pages-kopie.
+            # Andere scanners wijzigen dezelfde JSON-bestanden. Bij een rebase
+            # behouden we de vers gegenereerde versie in plaats van de oudere
+            # remote regels. In 'git rebase' betekent -X theirs de replayed
+            # commit (dus ONZE nieuwe gecontroleerde scanoutput).
+            for attempt in 1 2 3 4; do
+              git fetch origin main
+              if ! git rebase -X theirs origin/main; then
+                echo "::error::Onverwacht rebaseconflict; geen onvolledige gegevens publiceren."
+                git rebase --abort || true
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "Actuele recepten, acties en kassaprijzen succesvol gepubliceerd."
+                exit 0
+              fi
+              sleep 5
+            done
+            echo "::error::Publicatie mislukt na vier veilige pogingen."
+            exit 1
           fi
