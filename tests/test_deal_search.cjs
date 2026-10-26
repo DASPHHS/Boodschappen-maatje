@@ -1,0 +1,10 @@
+const assert=require("assert");
+const s=require("../recepten/deal_search.js");
+assert(s.matches("XXL Nutrition Protein Fitkwark","eiwitrijk"));
+assert(s.matches("Skyr naturel 450 g","eiwitrijk"));
+assert(s.matches("Kruidvat vaatwastabletten","schoonmaak"));
+assert(s.matches("Knorr Wereldgerechten Madras","maaltijdpakket"));
+assert(s.matches("Huismerk kipfilet","goedkoop kipfilet")===false);
+assert(s.matches("Koffie bonen","kwark")===false);
+assert(s.matches("AH Broccoli vers","broccoli"));
+console.log("Zoekfiltertests geslaagd");
