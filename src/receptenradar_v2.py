@@ -15,6 +15,7 @@ from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
 from scan_kwaliteitscontrole import inspect_snapshot
+from product_contract import normalized_offer,compare_sources
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 from portie_flexibiliteit import needed_quantity
 from verpakkingscombinaties import mixed_pack_option
@@ -960,6 +961,22 @@ def main():
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors,upcoming=load_deals(include_upcoming=True)
     source_quality=inspect_snapshot(shelves,offers,errors)
+    # Eén gedeeld prijscontract; behoud ruwe bronnen voor exacte mandberekening.
+    normalized=[]
+    for store in STORES:
+        for item in offers[store]:
+            row=normalized_offer(item,store,item.get("source") or "onbekend",
+                                 datetime.now(TZ).isoformat())
+            if row:normalized.append(row)
+    agreements=compare_sources(normalized)
+    source_quality["normalized_products"]=len(agreements)
+    source_quality["conflicting_products"]=sum(
+        x["status"]=="conflicting_sources" for x in agreements)
+    source_quality["independently_confirmed"]=sum(
+        x["status"]=="confirmed_by_two_sources" for x in agreements)
+    source_quality["single_source_products"]=sum(
+        x["status"]=="single_source" for x in agreements)
+
     # Bewaar de laatst goede publicatie wanneer een bestaande grote bron
     # plots meer dan 80% van haar aanbiedingen verliest.
     if OUT.exists():
