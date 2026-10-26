@@ -182,12 +182,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
       (typeof x.id==="string"||typeof x.id==="number")).slice(0,100):[];
   }catch{return []}
  }
+ let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection()};
+ const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
+ // Filters uit de alternatievenpagina toepassen na initialisatie van de browserstatus.
  const recipeLinkParams=new URLSearchParams(location.search);
  if(recipeLinkParams.has("zoek"))$("search").value=recipeLinkParams.get("zoek").slice(0,140);
  if(recipeLinkParams.get("alle")==="1")$("selection").value="all";
- const linkedStore=["ah","jumbo","lidl"].includes(recipeLinkParams.get("winkel"))?recipeLinkParams.get("winkel"):"ah";
- let state={data:null,store:linkedStore,mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection()};
- const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
+ if(["ah","jumbo","lidl"].includes(recipeLinkParams.get("winkel")))state.store=recipeLinkParams.get("winkel");
+
  const storeData=()=>state.data?.recipes?.[state.store]||[];
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
  function save(){try{localStorage.setItem("koopkracht_v2_selection",JSON.stringify(state.selected))}catch{}}
