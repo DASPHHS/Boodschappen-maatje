@@ -287,6 +287,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   }catch{return []}
  }
  let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection(),favoriteOnly:false};
+ state.extraDeals=null;state.extraDealsLoading=false;state.extraDealsError=false;
  function readFavorites(){
    try{const value=JSON.parse(localStorage.getItem("bm_recept_favorieten_v1")||"[]");
      return Array.isArray(value)?value.filter(x=>typeof x==="string").slice(0,300):[]}
@@ -626,7 +627,6 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    }
    return [...unique.values()];
  }
- state.extraDeals=null;state.extraDealsLoading=false;state.extraDealsError=false;
  async function ensureExtraDeals(){
   if(state.extraDeals||state.extraDealsLoading||state.extraDealsError)return;
   state.extraDealsLoading=true;
