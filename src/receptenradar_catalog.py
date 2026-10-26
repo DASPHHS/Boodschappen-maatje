@@ -22,7 +22,7 @@ ING = {
  "gehakt": ("rundergehakt", r"(rundergehakt|mager gehakt|half.om.half gehakt)", r"vegetar|vegan|kruiden|vervanger|gehaktbal"),
  "shoarma": ("kipshoarma", r"(kipshoarma|shoarmareepjes kip)", r"vegetar|vegan|saus|kruiden|pizza"),
  "zalm": ("zalmfilet", r"(verse zalmfilet|zalmfilet|diepvries zalmfilet)", r"gerookt|salade|broodbeleg|spread|hond|kat|saus"),
- "tonijn": ("tonijn in blik", r"(?:\\btonijn(?:stukken|filets?|mootjes)?\\b.{0,45}\\b(?:blik|water|eigen nat|olijfolie|zonnebloemolie|olie|naturel)\\b|\\btonijnstukken\\b)", r"salade|pizza|broodje|hond|kat|twist|diner|maaltijd|saus|spread|sushi|hamburger|kruidenmix"),
+ "tonijn": ("tonijn in blik", r"(?:\btonijn(?:stukken|filets?|mootjes)?\b.{0,45}\b(?:blik|water|eigen nat|olijfolie|zonnebloemolie|olie|naturel)\b|\btonijnstukken\b)", r"salade|pizza|broodje|hond|kat|twist|diner|maaltijd|saus|spread|sushi|hamburger|kruidenmix"),
  "eieren": ("eieren", r"(vrije uitloop eieren|scharreleieren|scharrel eieren|biologische eieren|eieren maat|eieren [0-9])", r"chocolade|salade|koek"),
  "tofu": ("tofu", r"\btofu\b", r"saus|kruiden|soep"),
  "kikkererwten": ("kikkererwten", r"kikkererwten", r"chips|crackers|soep|falafel|saus|gedroog|droge|linzen|mix"),
