@@ -39,4 +39,16 @@ assert.equal(words("Crème").trim(), "creme", "Accentnormalisatie werkt");
 assert.equal(dealPromotion({is_loyalty: true, multi_buy_quantity: 2, multi_buy_price: 3}), "loyalty");
 assert.equal(dealPromotion({multi_buy_quantity: 2, multi_buy_price: 3}), "bundle");
 assert.equal(dealPromotion({multi_buy_quantity: 0}), "other");
+// Acties van de komende actieweek mogen de dag na de scan niet verdwijnen.
+const {offersForPeriod}=new Function(script.slice(first,end)+";return {offersForPeriod};")();
+const previous=[{name:"Oude actie",price:1.20,valid_from:"2026-10-19",valid_until:"2026-10-25"}];
+const promoted=[{name:"Nieuwe AH Bonus",price:1,valid_from:"2026-10-26",valid_until:"2026-11-01",ean:"871000"}];
+const upcoming=[{name:"Jumbo vanaf woensdag",price:2,valid_from:"2026-10-28",valid_until:"2026-11-03"}];
+assert.deepEqual(offersForPeriod("today","2026-10-26",previous,[...promoted,...upcoming]).map(x=>x.name),["Nieuwe AH Bonus"]);
+assert.deepEqual(offersForPeriod("tomorrow","2026-10-27",previous,[...promoted,...upcoming]).map(x=>x.name),["Nieuwe AH Bonus","Jumbo vanaf woensdag"]);
+assert.deepEqual(offersForPeriod("upcoming","2026-10-26",previous,[...promoted,...upcoming]).map(x=>x.name),["Jumbo vanaf woensdag"]);
+assert.equal(offersForPeriod("today","2026-10-26",previous,[]).length,0,"Verlopen acties niet als geldig tonen");
+assert.equal(offersForPeriod("today","2026-10-26",[],[{name:"Onbekende einddatum",price:1,valid_from:"2026-10-26"}]).length,0);
+assert.equal(offersForPeriod("today","2026-10-26",promoted,promoted).length,1,"Dubbele bronvermelding niet dubbel tellen");
+
 console.log("Aanbiedingenfilters: HTML, weergavemodus en categorieën gecontroleerd.");
