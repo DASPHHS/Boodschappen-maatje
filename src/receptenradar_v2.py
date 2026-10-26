@@ -369,8 +369,9 @@ def offer_price(ing,amount,unit,offers):
     Voor complexe combinaties/bonuskaarten wordt geen kassaprijs verzonnen.
     """
     options=[]
-    for o in offers:
-        if o["unit"]!=unit or not o["quantity"] or not match_ingredient(o,ing):continue
+    for original in offers:
+        o=priced_product_units(original,ing,unit)
+        if o is None or not o["quantity"] or not match_ingredient(o,ing):continue
         if o.get("is_loyalty") or not verified_discount(o):continue
         typ=normalize(o.get("promotion_type",""))
         is_bundle=bool(o.get("multi_buy_quantity") and o.get("multi_buy_price"))
@@ -445,10 +446,30 @@ def fresh_spinach_required(title,ing):
             any(x in name for x in ("wrap","salade")) and
             not any(x in name for x in ("roerei","eiwrap","ei wraps","warm","frittata")))
 
+def priced_product_units(product, ingredient, requested_unit):
+    """Gebruik voor naan uitsluitend een expliciet vermeld aantal stuks.
+
+    Een verpakking van 300 g zonder stukaantal is géén bewijs voor twee naan.
+    De verkoopeenheid/prijs van het product blijft ongewijzigd.
+    """
+    if product.get("unit") == requested_unit:
+        return product
+    if ingredient != "naan" or requested_unit != "st" or product.get("unit") != "g":
+        return None
+    label = normalize(str(product.get("name") or "") + " " + str(product.get("size_label") or ""))
+    match = re.search(r"\b([1-9]|1[0-2])\s*(?:st|stuks|stukken)\b", label)
+    if not match or not match_ingredient(product, "naan"):
+        return None
+    count = int(match.group(1))
+    return {**product, "unit":"st", "quantity":count,
+            "size_label":str(product.get("size_label") or "") + " (" + str(count) + " st)"}
+
+
 def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
     options=[]
-    for p in shelves:
-        if p["unit"]!=unit or not match_ingredient(p,ing):continue
+    for original in shelves:
+        p=priced_product_units(original,ing,unit)
+        if p is None or not match_ingredient(p,ing):continue
         if fresh_only and product_context(p,ing)["frozen"]:continue
         if unit=="g" and p["quantity"]>5000:continue
         if unit=="ml" and p["quantity"]>4000:continue
@@ -457,7 +478,7 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
         n=math.ceil(actual/p["quantity"])
         if n>20:continue
         regular=round(n*p["price"],2)
-        promo=promo_for(p,offers)
+        promo=promo_for(original,offers)
         cost,packs=total_for(n,p["price"],promo)
         if cost>=regular:
             cost,packs,promo=regular,n,None
