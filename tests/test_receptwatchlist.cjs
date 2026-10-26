@@ -9,6 +9,7 @@ const AHPRO="https://www.ah.nl/producten/product/wi555458/ah-protein-kwark-met-y
 const MELK="https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK";
 const POUCH="https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK";
 const p=id=>W.WATCH.find(x=>x.id===id);
+const TEST_DAY="2026-10-26";
 assert(p("knijp")&&p("xxl")&&p("highprotein")&&p("on_the_go"));
 assert.equal(W.sku(SOURCE),"Jumbo-660840CUP");
 assert.equal(W.sku(AHPRO),"AH-wi555458");
@@ -59,35 +60,58 @@ const json={updated_at:new Date().toISOString(),stores:{
   ["Verse volle melk PP",0.94,1000,"ml","https://boodschaapje.nl/product/6606808"]
  ],promotions:[]}
 }};
-const jumbo=W.bestRows(json,"jumbo",p("xxl"));
+const jumbo=W.bestRows(json,"jumbo",p("xxl"),TEST_DAY);
 assert.equal(jumbo[0].packages,2);
 assert.equal(jumbo[0].price,1.99);
+assert.equal(jumbo[0].promoKind,"1+1 gratis");
+assert.equal(jumbo[0].discountPct,50);
+assert.equal(jumbo[0].previousTotal,3.98);
+assert.equal(jumbo[0].savings,1.99);
+assert.equal(jumbo[0].validUntil,"2099-10-27");
+
 assert.equal(jumbo[0].quantity,200);
 assert.equal(jumbo[0].pricePerUnit,0.498);
 assert.equal(jumbo[0].eurosPer20,0.995);
 assert.equal(jumbo[1].packages,1);
-const result=W.bestStores(json,p("xxl"));
+const result=W.bestStores(json,p("xxl"),TEST_DAY);
 assert.equal(result.winner.store,"jumbo");
 assert.equal(result.stores.ah.best.pricePerUnit,0.995);
-assert.equal(W.bestStores(json,p("highprotein")).winner.store,"jumbo");
-assert.equal(W.bestStores(json,p("highprotein")).winner.protein,25);
-assert.equal(W.bestStores(json,p("highprotein")).stores.ah.best.protein,26);
-assert.equal(W.bestStores(json,p("knijp")).winner.store,"jumbo");
-assert.equal(W.bestStores(json,p("knijp")).winner.price,1.79);
-assert.equal(W.bestStores(json,p("knijp")).winner.packages,2);
-assert.equal(W.bestStores(json,p("on_the_go")).winner.store,"jumbo");
-assert.equal(W.bestStores(json,p("vollemelk")).winner.store,"jumbo");
-assert.equal(W.bestStores(json,p("skuum")).stores.lidl.best,null);
+assert.equal(W.bestStores(json,p("highprotein"),TEST_DAY).winner.store,"jumbo");
+assert.equal(W.bestStores(json,p("highprotein"),TEST_DAY).winner.protein,25);
+assert.equal(W.bestStores(json,p("highprotein"),TEST_DAY).stores.ah.best.protein,26);
+const AH450="https://www.ah.nl/producten/product/wi585919/ah-protein-kwark-met-yoghurt-framboos";
+assert.equal(W.nutrition("AH Protein kwark met yoghurt framboos",450,"g",AH450).proteinPerPackage,45);
+assert.equal(W.nutrition("AH Protein kwark met yoghurt framboos",450,"g",AH450).proteinPerServing,20);
+const ahVariants=W.bestRows(json,"ah",p("highprotein"),TEST_DAY);
+assert(ahVariants.some(x=>x.sku==="AH-wi555458"&&x.price===0.95));
+assert(ahVariants.some(x=>x.sku==="AH-wi556289"&&x.price===1.39));
+assert(ahVariants.some(x=>x.sku==="AH-wi585919"&&x.price===1.99&&x.quantity===450));
+assert(ahVariants.some(x=>x.sku==="AH-wi585929")===true || W.bestRows(json,"ah",p("knijp"),TEST_DAY).some(x=>x.sku==="AH-wi585929"));
+assert.equal(W.bestRows(json,"ah",p("highprotein"),"2026-10-28").some(x=>x.verifiedDirect),false);
+
+assert.equal(W.bestStores(json,p("knijp"),TEST_DAY).winner.store,"jumbo");
+assert.equal(W.bestStores(json,p("knijp"),TEST_DAY).winner.price,1.79);
+assert.equal(W.bestStores(json,p("knijp"),TEST_DAY).winner.packages,2);
+assert.equal(W.bestStores(json,p("on_the_go"),TEST_DAY).winner.store,"jumbo");
+assert.equal(W.bestStores(json,p("vollemelk"),TEST_DAY).winner.store,"jumbo");
+assert.equal(W.bestStores(json,p("skuum"),TEST_DAY).stores.lidl.best,null);
 const bulk=JSON.parse(JSON.stringify(json));
 bulk.stores.jumbo.ordinary.push(["XXL Nutrition Fit Yoghurt Aardbei 750g",3.99,750,"g",XL750]);
 bulk.stores.jumbo.promotions.push(["XXL Nutrition Fit Yoghurt Aardbei 750g",1.995,750,"g",3.99,2,3.99,"1+1 gratis","2099-10-27",XL750,false]);
-assert.equal(W.bestStores(bulk,p("xxl")).winner.price,3.99);
-assert.equal(W.bestStores(bulk,p("xxl")).winner.quantity,750);
-assert.equal(W.bestStores(bulk,p("xxl")).winner.protein,75);
-assert.equal(W.bestStores(bulk,p("xxl")).winner.eurosPer20,0.532);
+assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.price,3.99);
+assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.quantity,750);
+assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.protein,75);
+assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.eurosPer20,0.532);
+const large=W.bestStores(bulk,p("xxl"),TEST_DAY);
+assert.equal(large.stores.jumbo.regular.sku,large.stores.jumbo.best.sku,
+ "Geen verkeerde 205g-losseprijs bij de 750g-voordeelbak tonen");
+const noAction=W.bestRows(bulk,"jumbo",p("xxl"),"2100-01-01");
+assert(noAction.every(item=>!item.discount),
+ "Actie mag niet na einddatum blijven gelden");
 
-assert.equal(W.bestStores(json,p("skuum")).stores.ah.best.quantity,1800);
-const milkNoPromo=W.bestRows(json,"jumbo",p("vollemelk"));
+
+assert.equal(W.bestStores(json,p("skuum"),TEST_DAY).stores.ah.best.quantity,1800);
+const milkNoPromo=W.bestRows(json,"jumbo",p("vollemelk"),TEST_DAY);
 assert.equal(milkNoPromo.length,1,"Verlopen acties niet gebruiken");
 for(const name of ["watchlist_engine.js","watchlist_app.js"])assert(html.includes('src="./'+name+'"'));
 for(const id of ["watch-grid","toggle-followed","custom","custom-unit","add","freshness","favorites-list","save-status"])assert(html.includes('id="'+id+'"'));
