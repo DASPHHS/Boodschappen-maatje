@@ -32,7 +32,7 @@ button.on,button:hover{background:#195d40;color:white}button:focus-visible,input
 .regular,.protein,.notfound{font-size:12px;color:#597061;margin-top:5px}
 .warning{color:#7a5229;background:#fff6e4;padding:10px;border-radius:8px;font-size:13px}
 #custom-unit{padding:10px;border:1px solid #b8d3c2;border-radius:9px;background:white}
-#toggle-followed[aria-pressed=true]{background:#176747;color:white}
+#toggle-followed[aria-pressed=true],#toggle-deals[aria-pressed=true]{background:#176747;color:white}
 
 /* Status van de winkelactie staat direct boven de prijs, ook op mobiel. */
 .deal-status{font-size:12px;font-weight:700;border-radius:8px;padding:9px 10px;margin:1px 0 9px;display:flex;flex-wrap:wrap;gap:4px}
@@ -56,7 +56,7 @@ button.on,button:hover{background:#195d40;color:white}button:focus-visible,input
 <main><section class="panel"><h2>Mijn terugkerende producten</h2>
 <div id="freshness" class="freshness" aria-live="polite">Prijsgegevens ophalen…</div>
 <p class="note">Druk op 'Volgen' om deze keuze op dit apparaat op te slaan. Je favorieten blijven staan als de supermarktprijzen veranderen. Deze website synchroniseert niet tussen apparaten en verzendt geen persoonsgegevens.</p>
-<div class="actions"><button id="toggle-followed" type="button" aria-pressed="false">Alleen mijn favorieten</button></div><p id="save-status" class="note" role="status"></p>
+<div class="actions"><button id="toggle-deals" type="button" aria-pressed="false">Bekijk alleen aanbiedingen</button><button id="toggle-followed" type="button" aria-pressed="false">Alleen mijn favorieten</button></div><p id="save-status" class="note" role="status"></p>
 <div class="form-row"><input id="custom" placeholder="Voeg zelf een product toe, bijvoorbeeld koffiebonen" maxlength="100" aria-label="Extra product op watchlist"><select id="custom-unit" aria-label="Prijs vergelijken per"><option value="g">Per 100 g</option><option value="ml">Per liter</option></select><button id="add">Product toevoegen</button></div>
 <p class="note">Eigen producten: vergelijk op exact de opgegeven zoekwoorden en eenheid. Controleer het gevonden artikel voordat je het koopt.</p>
 <div id="favorites-list"></div></section>
