@@ -212,8 +212,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div id="offer-idea-list" class="cards"></div>
 </section>
 <section id="weekly-highlights" class="panel" hidden aria-label="Bijzondere maaltijdaanbiedingen" style="margin:12px 0">
-<h2>Bijzondere aanbiedingen voor het avondeten</h2>
-<p class="sub">Maximaal vier verschillende recepten met een daadwerkelijk gebruikte korting. De overige recepten blijven hieronder doorzoekbaar.</p>
+<h2>Jouw weekaanraders: lekker, gezond en voordelig</h2>
+<p class="sub">Vier gevarieerde avondmaaltijden met echte kortingen waar mogelijk. Als een passende korting ontbreekt, tonen we de scherpste bekende reguliere recepten. De rest blijft doorzoekbaar.</p>
 <div id="highlight-list" class="cards"></div>
 </section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
@@ -449,15 +449,27 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     query:q,cuisine,category:cat,duration:maxMinutes,selection,
     strictHealth:health==="only",onlyShared:!!state.sharedOnly,meal,format,origin,mealprep:$("mealprep-filter").value==="yes"
   }).filter(r=>!state.favoriteOnly||isFavorite(r));
-  const highlights=(!q&&selection==="all"&&sort==="value"&&!state.sharedOnly&&!state.favoriteOnly)?
-   PersonalWeekmenu.diversify(rs.filter(r=>r.complete&&r.nutrition?.priority&&Number(r.saving)>0&&Number(r.sale_count)>0)
-    .sort((a,b)=>(Number(b.saving)/Math.max(1,Number(b.checkout)))-
-                 (Number(a.saving)/Math.max(1,Number(a.checkout))))).slice(0,4):[];
+  let highlights=[];
+  if(!q&&selection==="all"&&sort==="value"&&!state.sharedOnly&&!state.favoriteOnly){
+    const suitable=rs.filter(r=>r.complete&&r.nutrition?.priority&&Number(r.checkout)>0);
+    const discounted=suitable.filter(r=>Number(r.saving)>0&&Number(r.sale_count)>0)
+      .sort((a,b)=>(Number(b.saving)/Math.max(1,Number(b.checkout)))-
+                   (Number(a.saving)/Math.max(1,Number(a.checkout))));
+    highlights=PersonalWeekmenu.diversify(discounted).slice(0,4);
+    if(highlights.length<4){
+      const used=new Set(highlights.map(r=>String(r.id)));
+      const regular=suitable.filter(r=>!used.has(String(r.id)))
+        .sort((a,b)=>Number(a.checkout)-Number(b.checkout));
+      highlights.push(...PersonalWeekmenu.diversify(regular).slice(0,4-highlights.length));
+    }
+  }
   $("weekly-highlights").hidden=!highlights.length;
   $("highlight-list").innerHTML=highlights.map(r=>`<article class="recipe"><div class="recipe-body">
    <strong>${esc(r.title)}</strong>
    <p class="sub">${esc(r.cuisine||"Internationaal")} · ${esc(r.category)} · ${r.minutes} minuten</p>
-   <p><strong>${euro(r.checkout)} voor 4 porties</strong> · ${euro(r.saving)} berekende besparing · ${r.sale_count} gebruikte actie(s)</p>
+   <p><strong>${euro(r.checkout)} voor 4 porties</strong> · ${Number(r.saving)>0&&r.sale_count>0?
+      euro(r.saving)+" berekende besparing · "+r.sale_count+" gebruikte actie(s)":
+      "Geen geverifieerde korting · reguliere kassaprijs"}</p>
    <button type="button" class="btn outline small" data-open-highlight="${esc(r.id)}">Bekijk recept en ingrediënten</button>
    </div></article>`).join("");
   const featuredIds=new Set(highlights.map(r=>String(r.id)));
