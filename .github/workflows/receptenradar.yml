@@ -55,6 +55,7 @@ on:
       - 'recepten/recipe_search.js'
       - 'recepten/persoonlijk_weekmenu.js'
       - 'tests/test_persoonlijk_weekmenu.cjs'
+      - 'tests/test_shared_recipe_hits.cjs'
       - 'tests/test_receptzoeker.cjs'
       - 'recepten/status.html'
       - 'tests/test_scan_status.cjs'
@@ -121,6 +122,7 @@ jobs:
           node tests/test_keuken_filters.cjs
           node tests/test_weekmenu_ui.cjs
           node tests/test_persoonlijk_weekmenu.cjs
+          node tests/test_shared_recipe_hits.cjs
           node tests/test_scan_status.cjs
           node tests/test_mealprep_ui.cjs
       - name: Haal echte schap- en actieprijzen op en bereken recepten
