@@ -361,7 +361,7 @@ def main():
     old = load_json(OUTPUT)
     new_links, status = rotating_sources(now)
     candidates=source_suggestions(index,new_links,old,now)
-    verified,checks=verify_source_urls(candidates,old.get("source_verifications"),now,limit=3)
+    verified,checks=verify_source_urls(candidates,old.get("source_verifications"),now,limit=8)
     result = generate(prices, index, old, new_links, status, now,verified,checks)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
