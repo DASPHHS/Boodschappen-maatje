@@ -71,7 +71,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <summary>Weekmenu: drie kookmomenten · vergelijk AH, Jumbo en Lidl</summary>
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
-<details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="promos">Alle recepten met acties</option><option value="two">Minstens 2 actieproducten</option><option value="all">Alle recepten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="duration" aria-label="Maximale bereidingstijd">
+<details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><div class="filters" id="recipe-filters"><select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select><select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="wrap">Wraps</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select><input id="search" placeholder="Zoek bijvoorbeeld boerenkool, curry, zalm…" type="search"><select id="category" aria-label="Soort recept"><option value="all">Alle soorten</option><option value="meat">Vlees en kip</option><option value="redmeat">Alleen vlees</option><option value="chicken">Alleen kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select><select id="selection" aria-label="Actievoorkeur"><option value="all">Alle recepten, acties eerst</option><option value="promos">Alleen recepten met actieproducten</option><option value="two">Minstens 2 actieproducten</option></select><select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">70% eiwitgericht, groenterijk en koolhydraatbewust</option><option value="only">Alleen passende recepten</option><option value="off">Geen voedingsfilter</option></select><select id="origin" aria-label="Receptbron"><option value="all">Alle receptenbronnen</option><option value="Actiegestuurde maaltijd">Samengesteld uit aanbiedingen</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen varianten</option></select><select id="duration" aria-label="Maximale bereidingstijd">
    <option value="45">Tot 45 minuten bereiding</option>
    <option value="20">Tot 20 minuten</option>
    <option value="30">Tot 30 minuten</option>
@@ -80,6 +80,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    <option value="all">Alle recepten</option>
    <option value="yes">Mealprep: vooruit bereiden</option>
   </select><select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select><select id="sort"><option value="deals">Meeste actie-ingrediënten</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste portieprijs</option><option value="time">Kortste bereidingstijd</option></select></div>
+<div class="cuisine-shortcuts" aria-label="Snel alle tonijnrecepten bekijken"><button id="tuna-all" type="button" aria-label="Bekijk alle tonijnrecepten, ook zonder aanbieding">Alle tonijnrecepten (ook zonder actie)</button></div>
 <div id="cuisine-shortcuts" class="cuisine-shortcuts" aria-label="Snel filteren op wereldkeuken"></div>
 <section id="deal-filters" class="deal-filter-area" hidden aria-label="Aanbiedingen filteren">
  <div class="deal-intro"><strong>Alle supermarktacties, overzichtelijk gesorteerd</strong><span id="deal-count" class="sub" aria-live="polite"></span></div>
@@ -189,7 +190,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  function isSelected(r){return state.selected.some(x=>x.store===state.store&&x.id===r.id)}
  function toggle(id,variant="cheapest"){state.selected=state.selected.filter(x=>x.store===state.store);let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0&&((state.selected[i].variant||"cheapest")===variant))state.selected.splice(i,1);else if(i>=0)state.selected[i]={store:state.store,id,variant};else state.selected.push({store:state.store,id,variant});save();render()}
  function recipePrice(r){
-  if(r.complete)return `<div class="cash">${euro(r.checkout)} <small>geprijsde producten, hele verpakkingen</small></div><div class="tagline">${euro(r.per_serving)} per portie op basis van gebruikte hoeveelheden · zonder smaakmakers · 4 porties</div>`;
+  if(r.complete)return `<div class="cash">${euro(r.checkout)} <small>geprijsde producten, hele verpakkingen</small></div><div class="tagline">${euro(r.checkout/4)} per portie bij aankoop van alle verpakkingen · ${euro(r.per_serving)} geschatte verbruikskosten per portie · zonder smaakmakers · 4 porties</div>`;
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
  }
  function lineHtml(l){
@@ -260,6 +261,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
       // van een verborgen ingreep in de gekozen rangorde.
     }
   }
+  // Volledige kassabedragen altijd vóór recepten met ontbrekende prijzen.
+  rs.sort((a,b)=>Number(b.complete)-Number(a.complete));
   const total=rs.length;
   const visible=rs.slice(0,state.visible);
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
@@ -655,6 +658,18 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    updateCuisineOptions();resetAndRender();
  }));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
+ $("tuna-all").addEventListener("click",()=>{
+   state.mode="recipes";
+   $("search").value="tonijn";$("selection").value="all";$("category").value="fish";
+   $("mealtype").value="all";$("format").value="all";$("origin").value="all";
+   $("duration").value="all";$("mealprep-filter").value="all";$("cuisine").value="all";
+   state.visible=20;render();
+ });
+ const initialSearch=new URLSearchParams(location.search).get("zoek");
+ if(initialSearch){
+   $("search").value=initialSearch.slice(0,100);
+   $("selection").value="all";
+ }
  $("sort").addEventListener("change",resetAndRender);
  for(const id of ["deal-period","deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
   $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals()});
