@@ -28,7 +28,7 @@ ALIASES={
  "kip":("kip","kipfilet","kipdij"),"kipfilet":("kipfilet","kipfiletblokjes","kipborstfilet"),"wrap":("wrap","wraps","tortilla"),
  "ei":("eieren","ei "," eieren"),"tomaat":("tomaat","tomaten"),
  "bonen":("bonen","kidney","black beans"),"pasta":("pasta","penne","fusilli"),
- "rijst":("rijst","basmati"),"kerrie":("kerrie","curry"),
+ "rijst":("rijst","basmati","zilvervliesrijst","volkorenrijst","basmatirijst","risottorijst"),"kerrie":("kerrie","curry"),
  "gehakt":("gehakt",),"sla":("sla","slamelange"),
  "aardappel":("aardappel","krieltjes"),"wortel":("wortel","winterpeen"),
  "tonijn":("tonijn",),"spinazie":("spinazie",),"tofu":("tofu",),
