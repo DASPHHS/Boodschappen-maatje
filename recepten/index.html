@@ -219,6 +219,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <p class="sub">Ook naan, maaltijdpakketten en smaakmakers geven ideeën. Een actieproduct telt pas mee in de maaltijdprijs als de juiste variant en hoeveelheid gecontroleerd zijn.</p>
 <div id="offer-idea-list" class="cards"></div>
 </section>
+<section id="official-store-candidates" class="panel" hidden aria-label="Aanvullende officiële winkelproducten" style="margin:12px 0">
+<h2>Extra winkelvondsten · Action, Xenos, Zeeman en Lidl</h2>
+<p class="sub">Gegevens van officiële winkelpagina's; waargenomen prijzen zijn niet automatisch geverifieerde kortingen. Voorraad per filiaal is onbekend.</p>
+<div id="official-store-summary" class="sub"></div><div id="official-store-cards" class="cards"></div>
+</section>
 <div id="other-store-links" class="other-stores" hidden>
   <h3>Overige winkels · aanbod nog niet automatisch geprijsd</h3>
   <p class="sub">Deze officiële actiepagina's zijn nog niet automatisch in de prijsvergelijking geïntegreerd. Aanbiedingen hier tellen dus niet mee in de huidige AH-, Jumbo- of Lidl-kassaprijzen.</p>
@@ -658,6 +663,33 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   for(const cue of ["tandoori","madras","risotto","burrito","enchilada","taco","lasagne","bobotie","roti","teriyaki","paella","siam","pok","naan","garnalen","pastinaak"])
    if(new RegExp("\\b"+cue+"\\b").test(text))return cue==="pok"?"bowl":cue;
   return "";
+ }
+ function renderOfficialStoreProducts(){
+  const panel=$("official-store-candidates");
+  panel.hidden=state.mode!=="deals";
+  if(panel.hidden)return;
+  if(!state.officialStores){$("official-store-summary").textContent="Aanvullende officiële productscan nog niet gepubliceerd.";return}
+  const stores=state.officialStores.stores||{},checks=state.officialStores.status||{};
+  const names={lidl:"Lidl",action:"Action",xenos:"Xenos",zeeman:"Zeeman"};
+  $("official-store-summary").textContent=Object.keys(names).map(k=>
+    names[k]+": "+(checks[k]?.products||0)+" productvermeldingen ("+(checks[k]?.state||"onbekend")+")").join(" · ");
+  const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
+  const items=Object.keys(names).flatMap(store=>(stores[store]||[]).map(p=>({...p,store})))
+   .filter(p=>!query||String(p.name||"").toLocaleLowerCase("nl").includes(query)).slice(0,24);
+  $("official-store-cards").innerHTML=items.map(p=>'<article class="recipe"><div class="recipe-body">'+
+   '<strong>'+esc(p.name)+'</strong><p class="sub">'+esc(names[p.store])+
+   ' · productvermelding, korting niet vastgesteld</p>'+
+   (p.price!=null?'<p><strong>'+euro(p.price)+'</strong> · waargenomen productprijs</p>':
+    '<p class="sub">Geen productprijs gecontroleerd</p>')+
+   '<a href="'+esc(safeURL(p.url))+'" target="_blank" rel="noopener noreferrer">Bekijk product</a>'+
+   '</div></article>').join("")||'<p class="sub">Nog geen bruikbare gestructureerde productvermeldingen; officiële winkellinks staan hieronder.</p>';
+ }
+ async function loadOfficialStoreProducts(){
+  try{
+   const response=await fetch("./officiele-winkels.json",{cache:"no-store"});
+   if(response.ok)state.officialStores=await response.json();
+  }catch{}
+  if(state.data)renderOfficialStoreProducts();
  }
  function renderDeals(){
   const period=$("deal-period").value;
@@ -1127,6 +1159,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
+  renderOfficialStoreProducts();
   renderOfferIdeas();
   renderWeeklyCandidates();
   renderLibraryResults();
@@ -1296,6 +1329,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      save();
    }
    render();
+   void loadOfficialStoreProducts();
   }catch(e){
    $("update").textContent="Nog geen actuele scan";$("coverage").textContent="Databronnen nog niet bevestigd";
    $("recipes").innerHTML="";$("alerts").innerHTML=`<div class="notice warn"><b>Geen actuele prijzen beschikbaar.</b><br>${esc(e.message)}. We tonen geen fictieve receptenprijzen. Kijk bij de GitHub Actions-workflow 'Receptenradar prijzen en recepten'.</div>`;
