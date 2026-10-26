@@ -30,6 +30,7 @@ form{display:flex;gap:9px;padding:15px;border-top:1px solid #deebe1}input{font:i
 <form id="form"><input id="question" aria-label="Vraag over recepten of prijzen" placeholder="Bijv. Wat kan ik gezond koken met zalm bij Jumbo?" autocomplete="off" required><button class="send" type="submit">Verstuur</button></form>
 </section><p class="note" id="status">Prijs- en receptbestanden laden…</p>
 <p class="note">Dit is een op de beschikbare product- en receptgegevens gebaseerde chatassistent. Geen generatieve AI-chat. Hij toont uitsluitend controleerbare producten en berekende bedragen. Winkelvoorraad en persoonlijke app-aanbiedingen worden niet geverifieerd.</p></main>
+<script src="./deal_search.js"></script>
 <script>
 const $=id=>document.getElementById(id);
 const storeNames={ah:"Albert Heijn",jumbo:"Jumbo",lidl:"Lidl"};
@@ -188,7 +189,9 @@ function searchDeals(question,store){
  for(const s of stores)for(const d of recipes.deals[s]||[]){
   if(!d.valid_from||d.valid_from>now)continue;
   if(!d.valid_until||d.valid_until<now)continue;
-  if(ing&&!clean(d.name).includes(ing))continue;
+  const intent=n.replace(/\\b(aanbiedingen?|deals?|acties?|kortingen?|beste|goedkoopste|goedkope|vandaag|bij|van|in|de|het|een|voor|toon|laat|zien|welke|zijn|er|producten|product)\\b/g," ").trim();
+  if(ing&&!clean(d.name).includes(ing)&&!DealSearch.matches(d,intent))continue;
+  if(!ing&&intent&&!DealSearch.matches(d,intent))continue;
   if(minPct&&(!d.discount_verified||Number(d.verified_discount_pct)<minPct))continue;
   out.push({...d,store:s});
  }
