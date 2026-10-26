@@ -1,5 +1,5 @@
 {
-  "last_attempt": "2026-10-26T16:21:31+00:00",
+  "last_attempt": "2026-10-26T16:28:26.763089+00:00",
   "status": "failed",
-  "error": "GitHub Actions-runner ontvangt HTTP 403 op officiële Action-productpagina’s. Vorige prijzen niet vernieuwd door deze mislukte run."
+  "error": "Action leverde geen bevestigde productprijzen: ['403 Client Error: Forbidden for url: https://www.action.com/nl-nl/p/3225112/superfinn-all-in-one-vaatwastabletten/']"
 }
