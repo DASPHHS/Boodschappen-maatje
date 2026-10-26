@@ -137,9 +137,8 @@ function promoKind(type,quantity){
  if(/percent|percentage|korting/.test(n))return "Korting";
  return "Aanbieding";
 }
-function sourceRows(src,watch,store=""){
+function sourceRows(src,watch,store="",today=isoDate()){
  const found=[];
- const today=isoDate();
  // Gebruik directe winkelcontrole alleen op de daadwerkelijke controledag.
  const direct=store==="ah"&&today==="2026-10-26"?DIRECT_PRICES.filter(x=>matchProduct(x.name,watch,x.url)):[];
  for(const raw of src.ordinary||[]){
@@ -225,15 +224,15 @@ function compare(rows,watch){
    a.cartCost-b.cartCost :a.pricePerUnit-b.pricePerUnit||
    a.cartCost-b.cartCost);
 }
-function bestRows(snapshot,store,watch){
+function bestRows(snapshot,store,watch,asOf=isoDate()){
  const data=snapshot?.stores?.[store];
  if(!data)return [];
- return compare(sourceRows(data,watch,store),watch);
+ return compare(sourceRows(data,watch,store,asOf),watch);
 }
-function bestStores(snapshot,watch){
+function bestStores(snapshot,watch,asOf=isoDate()){
  const stores={};
  for(const store of ["ah","jumbo","lidl"]){
-  const options=bestRows(snapshot,store,watch);
+  const options=bestRows(snapshot,store,watch,asOf);
   const best=options[0]||null;
   const sameSkuRegular=best&&best.discount?options.find(x=>!x.discount&&
     x.sku&&x.sku===best.sku&&x.quantity===best.quantity):null;
