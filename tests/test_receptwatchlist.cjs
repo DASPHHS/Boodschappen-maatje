@@ -13,7 +13,7 @@ assert.equal(W.sku(SOURCE),"Jumbo-660840CUP");
 assert.equal(W.sku(AHPRO),"AH-wi555458");
 assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Granola Aardbei 200g",200,"g",SOURCE).proteinPerPackage,20);
 assert.equal(W.nutrition("AH Protein kwark met yoghurt framboos",200,"g",AHPRO).proteinPerPackage,26);
-assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Granola Aardbei 750g",750,"g",SOURCE).proteinPerPackage,75);
+assert.equal(W.nutrition("XXL Nutrition Fit Yoghurt Granola Aardbei 750g",750,"g",SOURCE),null,"200g-SKU is geen 750g-variant");
 assert.equal(W.nutrition("Melkunie Breaker high protein vanille yoghurt",200,"g","https://www.ah.nl/producten/product/wi225290/melkunie-breaker-high-protein-vanille-yoghurt"),null);
 assert.equal(W.nutrition("XXL Fit Yoghurt Granola 200g",200,"g","https://example.com/xxl"),null);
 assert(W.matchProduct("Melkunie Protein Yoghurt perzik framboos",p("on_the_go"),MELK));
