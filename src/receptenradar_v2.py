@@ -14,6 +14,7 @@ from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
+from portie_flexibiliteit import needed_quantity
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"data.json"
@@ -373,14 +374,15 @@ def offer_price(ing,amount,unit,offers):
             if k<2 or o["multi_buy_price"]>=k*(original or o["price"]):continue
         elif original is not None and original<=o["price"]:
             continue
-        n=math.ceil(amount/o["quantity"])
+        actual=needed_quantity(ing,amount,unit,o["quantity"])
+        n=math.ceil(actual/o["quantity"])
         if n>15:continue
         cost,packs=total_for(n,original or o["price"],o)
         if is_bundle and cost>=round(n*(original or o["price"]),2):continue
-        options.append((cost,{"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
+        options.append((cost,{"key":ing,"label":ING[ing][0],"required":actual,"original_required":amount,"adjusted":actual<amount,"unit":unit,
              "product":o["name"],"package":o["size_label"] or (str(o["quantity"])+" "+unit),
              "package_size":o["quantity"],"packages":packs,"cash_price":cost,
-             "used_price":round(amount/o["quantity"]*(cost/packs),2),
+             "used_price":round(actual/o["quantity"]*(cost/packs),2),
              "regular_cash":round(n*(original or o["price"]),2),"sale":True,
              "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
                  "multi_buy_quantity":o.get("multi_buy_quantity"),"multi_buy_price":o.get("multi_buy_price"),"url":o["url"]},
@@ -442,15 +444,16 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
         if unit=="g" and p["quantity"]>5000:continue
         if unit=="ml" and p["quantity"]>4000:continue
         if unit=="st" and p["quantity"]>30:continue
-        n=math.ceil(amount/p["quantity"])
+        actual=needed_quantity(ing,amount,unit,p["quantity"])
+        n=math.ceil(actual/p["quantity"])
         if n>20:continue
         regular=round(n*p["price"],2)
         promo=promo_for(p,offers)
         cost,packs=total_for(n,p["price"],promo)
         if cost>=regular:
             cost,packs,promo=regular,n,None
-        used=round(amount/p["quantity"]*(cost/packs),2) if packs else None
-        options.append({"key":ing,"label":ING[ing][0],"required":amount,"unit":unit,
+        used=round(actual/p["quantity"]*(cost/packs),2) if packs else None
+        options.append({"key":ing,"label":ING[ing][0],"required":actual,"original_required":amount,"adjusted":actual<amount,"unit":unit,
                        "product":p["name"],"package":p["size_label"],"package_size":p["quantity"],
                        "packages":packs,"cash_price":cost,"used_price":used,"regular_cash":regular,
                        "sale":bool(promo),"action":promo and {"name":promo["name"],"price":promo["price"],
@@ -674,7 +677,9 @@ def make_recipes(shelves,offers):
             saving=round(sum(max(0,x["regular_cash"]-x["cash_price"]) for x in lines),2)
             meal_type=("Ontbijt" if title.startswith("Ontbijt:") else
                        "Lunch" if title.startswith("Lunch:") else "Avondeten")
-            nutrition=nutrition_profile(ings,meal_type=meal_type)
+            adjusted_ings=[(key,next((line["required"] for line in lines if line["key"]==key),amount),unit)
+                           for key,amount,unit in ings]
+            nutrition=nutrition_profile(adjusted_ings,meal_type=meal_type)
             # Bron toont bij natte conserven doorgaans het nettogewicht van de
             # verpakking. Uitlekgewicht is niet algemeen beschikbaar.
             # Benoem dit expliciet: zonder etiket is exact benodigde
@@ -724,6 +729,8 @@ def make_recipes(shelves,offers):
                                if mealprep else "Bewaarbaarheid voor meerdere dagen "
                                "niet bevestigd; bereid bij voorkeur vers."),
               "instructions":instructions,"pantry":pantry,
+              "portion_adjustments":[{"ingredient":line["label"],"from":line["original_required"],
+                 "to":line["required"],"unit":line["unit"]} for line in lines if line.get("adjusted")],
               "price_excludes_pantry":True,
               "drained_weight_unverified":drained_uncertain,
               "servings":4,"ingredient_count":len(ings),"sale_count":discounts,
