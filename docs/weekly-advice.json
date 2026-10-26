@@ -1,29 +1,29 @@
 {
   "status": "indicative_recipe_comparison",
-  "source_updated_at": "2026-10-26T17:24:25.915587+01:00",
+  "source_updated_at": "2026-10-26T17:31:43.055238+01:00",
   "recommended": {
-    "store": "Jumbo",
+    "store": "Albert Heijn",
     "complete": true,
-    "total_eur": 28.57,
+    "total_eur": 36.12,
     "within_budget": true
   },
   "stores": [
     {
-      "store": "Jumbo",
+      "store": "Albert Heijn",
       "complete": true,
-      "total_eur": 28.57,
+      "total_eur": 36.12,
       "within_budget": true
     },
     {
-      "store": "Albert Heijn",
+      "store": "Jumbo",
       "complete": true,
-      "total_eur": 29.54,
+      "total_eur": 39.01,
       "within_budget": true
     },
     {
       "store": "Lidl",
       "complete": true,
-      "total_eur": 35.72,
+      "total_eur": 46.34,
       "within_budget": true
     },
     {
@@ -66,17 +66,27 @@
       "protein_min_g_per_portion": 37.7,
       "vegetable_min_g_per_portion": 300,
       "passes_nutrition_preference": true
+    },
+    {
+      "title": "Tonijn-bonensalade met spinazie en tomaat",
+      "category": "Vis",
+      "cuisine": "Internationaal",
+      "minutes": 15,
+      "portions": 4,
+      "protein_min_g_per_portion": 39.1,
+      "vegetable_min_g_per_portion": 200,
+      "passes_nutrition_preference": true
     }
   ],
-  "recipe_count": 3,
-  "portion_count": 12,
+  "recipe_count": 4,
+  "portion_count": 16,
   "price_exclusions": [
     "kruiden en andere standaardvoorraad",
     "bezorgkosten en eventuele minimale bestelkosten",
     "persoonlijke kortingen en lokale winkelvoorraad"
   ],
   "notice": "Vergelijking voor exact dezelfde geprijsde recepten bij AH, Jumbo en Lidl. Geen volledige huishoudelijke weekmand. Online schapprijzen en aanbiedingen kunnen afwijken van lokale winkelvoorraad.",
-  "generated_at": "2026-10-26T17:24:26.101476+01:00",
+  "generated_at": "2026-10-26T17:31:43.240237+01:00",
   "budget_eur": 150,
   "comparison_type": "identieke gerechten uit de huidige Recepten Radar"
 }
