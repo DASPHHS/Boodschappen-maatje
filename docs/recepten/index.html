@@ -301,16 +301,34 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(Number(d.multi_buy_quantity)>=2&&Number(d.multi_buy_price)>0)return "bundle";
   return "other";
  }
+ function offersForPeriod(period,today,running,future){
+   // Combineer de laatst bekende actieve en toekomstige aanbiedingen.
+   // Dit voorkomt dat acties die gisteren 'morgen' waren vandaag verdwijnen.
+   const tomorrow=new Date(new Date(today+"T12:00:00Z").getTime()+86400000).toISOString().slice(0,10);
+   const endOfWeek=new Date(new Date(today+"T12:00:00Z").getTime()+7*86400000).toISOString().slice(0,10);
+   const unique=new Map();
+   for(const d of [...(running||[]),...(future||[])]){
+     if(!d||!d.name)continue;
+     const start=String(d.valid_from||"").slice(0,10),end=String(d.valid_until||"").slice(0,10);
+     // Zonder bevestigde einddatum geen betrouwbare geldigheid.
+     if(!end)continue;
+     const applies=period==="today"?
+       (!start||start<=today)&&end>=today:
+       period==="tomorrow"?
+       (!start||start<=tomorrow)&&end>=tomorrow:
+       Boolean(start&&start>today&&start<=endOfWeek&&end>=start);
+     if(!applies)continue;
+     const key=[d.ean||d.name,d.price,d.valid_from,d.valid_until].join("|");
+     if(!unique.has(key))unique.set(key,d);
+   }
+   return [...unique.values()];
+ }
  function renderDeals(){
   const period=$("deal-period").value;
   const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
-  const tomorrow=new Date(new Date(today+"T12:00:00Z").getTime()+86400000).toISOString().slice(0,10);
   const running=state.data?.deals?.[state.store]||[];
   const future=state.data?.upcoming_deals?.[state.store]||[];
-  const original=period==="today"?running:period==="tomorrow"?
-    running.filter(d=>d.valid_until&&d.valid_until>=tomorrow)
-      .concat(future.filter(d=>d.valid_from===tomorrow)):
-    future;
+  const original=offersForPeriod(period,today,running,future);
   const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
   const category=$("deal-category").value,status=$("deal-status").value;
   const promotion=$("deal-promotion").value,minimum=Number($("deal-minimum").value)||0;
@@ -329,7 +347,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(sort==="expiry")ds.sort((a,b)=>(a.valid_until||"9999-12-31").localeCompare(b.valid_until||"9999-12-31")||value(b)-value(a));
   if(sort==="name")ds.sort((a,b)=>a.name.localeCompare(b.name,"nl"));
   const count=original.filter(verified).length,filteredVerified=ds.filter(verified).length;
-  $("deal-count").textContent=ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
+  const scanDay=state.data?.updated_at?new Date(state.data.updated_at).toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"}):"";
+  const stale=Boolean(scanDay&&scanDay<today);
+  $("deal-count").textContent=(stale?"Voorlopig: laatste scan "+scanDay+" · ":"")+
+    ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
     (period==="upcoming"?" · Nog niet geldig":period==="tomorrow"?" · Morgen geldig":"");
   $("deal-confidence").textContent=count.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" kortingen berekenbaar; "+filteredVerified.toLocaleString("nl-NL")+" binnen huidige selectie.";
   $("store-status").textContent=ds.length+" gefilterde aanbiedingen · "+count+
