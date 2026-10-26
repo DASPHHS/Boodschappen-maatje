@@ -60,7 +60,7 @@ WORLD_SOURCES=[
 # Bron kan opnieuw toegankelijk worden; een tijdelijke 403/timeout geeft geen
 # recht om willekeurig een URL als verifieerbaar recept te behandelen.
 LINK_RULES={
- "www.voedingscentrum.nl":r"^/recepten/gezond-recept/[^?#]+\\.aspx$",
+ "www.voedingscentrum.nl":r"^/recepten/gezond-recept/[^?#]+\.aspx$",
  "www.ah.nl":r"^/allerhande/recept/R-[A-Za-z0-9-]+",
  "www.jumbo.com":r"^/recepten/(?!zoeken|surinaams|$)[^?#]+",
  "www.fajalobi.nl":r"^/recepten/[^?#]+",
