@@ -23,24 +23,44 @@ function catalog(){
  return W.WATCH.concat(custom.map(x=>({id:x.id,name:x.name,unit:x.unit,
   type:"custom",protein:false,note:"Handmatig toegevoegd. Producttype en prijseenheid zelf controleren."})));
 }
+function dateNL(text){
+ if(!text)return "";
+ const date=new Date(String(text)+"T12:00:00");
+ return Number.isFinite(date.getTime())?date.toLocaleDateString("nl-NL",{
+  weekday:"long",day:"numeric",month:"long",timeZone:"Europe/Amsterdam"
+ }):String(text);
+}
 function htmlItem(item){
  const quantity=Math.round(item.quantity*100)/100;
  const volume=item.packages+" × "+quantity+" "+item.unit;
  const total=W.money(item.price);
- let result="<div class='product'><a target='_blank' rel='noopener noreferrer' href='"+
+ const offer=item.discount;
+ let result="<div class='product'>";
+ result+="<div class='deal-status "+(offer?"deal-active":"deal-regular")+"'>"+
+  (offer?"<strong>"+esc(item.promoKind||"AANBIEDING").toUpperCase()+"</strong>"+
+   " · <strong>−"+item.discountPct+"%</strong>"+
+   (item.validUntil?" · geldig t/m "+esc(dateNL(item.validUntil)):""):
+   "<strong>NORMALE PRIJS</strong> · geen bevestigde actie")+"</div>";
+ result+="<a class='product-title' target='_blank' rel='noopener noreferrer' href='"+
   esc(safeLink(item.url))+"'>"+esc(item.name)+"</a>";
  result+="<div class='row-top'><strong class='price'>"+total+"</strong>"+
   "<span>"+W.money(item.pricePerUnit)+" "+esc(item.unitLabel)+"</span></div>";
- result+="<div class='small'>"+
-  (item.packages>1?
-    "<strong class='bundle'>"+esc(item.source)+": koop minimaal "+volume+
-     ". Totale kassaprijs "+total+".</strong>":
-    "Totale kassaprijs "+total+" voor "+volume+".")+"</div>";
- if(item.discount)result+="<span class='pill sale'>Aanbieding</span>";
- if(item.protein!==null)result+="<div class='protein'>Bevestigd: "+item.protein+
-  " g eiwit per verpakking, "+item.proteinPerServing+" g per "+item.proteinServing+" g portie. <strong>"+W.money(item.eurosPer20)+
+ result+="<div class='small'><strong>Te betalen: "+total+"</strong> voor "+
+    volume+"</div>";
+ if(offer){
+  result+="<div class='deal-savings'>Normaal "+
+   "<s>"+W.money(item.previousTotal)+"</s> · <strong>Je bespaart "+W.money(item.savings)+
+   "</strong> bij aankoop van "+item.packages+" verpakking"+
+   (item.packages===1?"":"en")+".</div>";
+ }else{
+  result+="<div class='small'>"+esc(item.source||"Schapprijs")+"</div>";
+ }
+ if(item.sku)result+="<div class='sku'>Productnummer: "+esc(item.sku)+"</div>";
+ if(item.protein!==null)result+="<div class='protein'>"+
+  item.protein+" g eiwit per verpakking, "+item.proteinPerServing+
+  " g per "+item.proteinServing+" g portie. <strong>"+W.money(item.eurosPer20)+
   " per 20 g eiwit</strong> · <a target='_blank' rel='noopener noreferrer' href='"+
-  esc(safeLink(item.proteinSource))+"'>Etiketgegevens</a></div>";
+  esc(safeLink(item.proteinSource))+"'>Productinformatie</a></div>";
  return result+"</div>";
 }
 function htmlWatch(p){
@@ -52,11 +72,11 @@ function htmlWatch(p){
   isFollowed+"'>"+(isFollowed?"★ Volgend":"☆ Volgen")+"</button></div>"+
   "<p class='note'>"+esc(p.note||"")+"</p>";
  if(winner&&!stale){
-  out+="<div class='winner'><span class='pill'>Voordeligste gecontroleerde optie</span>"+
+  out+="<div class='winner'><span class='pill'>"+(winner.discount?"VOORDEEL DOOR ACTIE":"GOEDKOOPSTE NORMALE PRIJS")+"</span>"+
    "<strong>"+names[winner.store]+" · "+W.money(p.protein?winner.eurosPer20:winner.pricePerUnit)+
    " "+(p.protein?"per 20 g eiwit":p.unit==="ml"?"per liter":"per 100 g")+
    "</strong><div class='small'>Minimaal kassabedrag: "+W.money(winner.price)+
-   (winner.packages>1?" voor "+winner.packages+" verpakkingen":"")+"</div></div>";
+   (winner.packages>1?" voor "+winner.packages+" verpakkingen":"")+"</div>"+(winner.discount?"<div class='small'><strong>"+esc(winner.promoKind)+" · Je bespaart "+W.money(winner.savings)+" · "+winner.discountPct+"% korting</strong></div>":"")+"</div>";
  }else{
   out+="<div class='warning'>"+(stale?"De prijzen zijn verouderd. Daarom geen actuele winnaar.":
    "Geen betrouwbaar geprijsd product met de vereiste kenmerken gevonden.")+"</div>";
@@ -66,9 +86,18 @@ function htmlWatch(p){
   out+="<section class='store'><h4>"+names[store]+"</h4>";
   if(entry.best){
    out+=htmlItem(entry.best);
-   if(entry.best.packages>1&&entry.regular){
-    out+="<div class='regular'>Zonder bundel: "+W.money(entry.regular.price)+
-     " voor "+entry.regular.quantity+" "+entry.regular.unit+"</div>";
+   if(entry.best.discount&&entry.regular){
+    out+="<div class='regular'><strong>Deze zelfde verpakking zonder actie:</strong> "+
+     W.money(entry.regular.price)+" per "+entry.regular.quantity+
+     " "+entry.regular.unit+".</div>";
+   }
+   const more=entry.alternatives.filter(x=>x!==entry.best&&
+     !(entry.best.discount&&entry.regular&&x===entry.regular));
+   if(more.length){
+    out+="<details class='alternatives'><summary>Vergelijk "+more.length+
+      " andere productvariant"+(more.length===1?"":"en")+
+      " of aanbiedingen bij "+names[store]+"</summary>"+
+      more.map(htmlItem).join("")+"</details>";
    }
   }else out+="<p class='notfound'>Geen betrouwbare match in deze prijsimport. Dit bewijst niet dat het product niet verkrijgbaar is.</p>";
   out+="</section>";
