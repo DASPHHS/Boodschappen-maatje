@@ -93,20 +93,26 @@ function bestRecipePerTitle(rows,selectedStore){
 function filteredPriced(){
  if(!data)return [];
  const topic=$("focus").value,shop=$("store").value,q=norm($("query").value.trim()),status=$("statusFilter").value;
+ const cuisine=$("cuisine").value,category=$("category").value;
  const matches=(data.suggestions||[]).filter(r=>
   (topic==="all"||r.focus?.includes(topic))&&
   (shop==="all"||r.store===shop)&&
+  (cuisine==="all"||r.cuisine===cuisine)&&
+  (category==="all"||r.category===category)&&
   (status==="all"||(status==="complete"?r.complete:!r.complete))&&
-  (!q||norm(r.title+" "+r.cuisine+" "+(names[r.store]||"")).includes(q))
+  (!q||norm(r.title+" "+r.cuisine+" "+(names[r.store]||"")+" "+(r.focus||[]).join(" ")).includes(q))
  );
  return bestRecipePerTitle(matches,shop).sort((a,b)=>scoreSort(a,b,$("sort").value));
 }
 function filteredIdeas(){
  if(!data||$("statusFilter").value==="complete")return [];
  const topic=$("focus").value,q=norm($("query").value.trim());
+ const cuisine=$("cuisine").value,category=$("category").value;
  const entries=(data.inspiration||[]).filter(r=>
    (topic==="all"||r.focus?.includes(topic))&&
-   (!q||norm(r.title+" "+r.cuisine+" "+r.source).includes(q))
+   (cuisine==="all"||r.cuisine===cuisine)&&
+   (category==="all"||r.category===category)&&
+   (!q||norm(r.title+" "+r.title_original+" "+r.cuisine+" "+r.source+" "+(r.focus||[]).join(" ")).includes(q))
  );
  // Om-en-om per receptenbron: geen twaalf vrijwel identieke resultaten
  // achter elkaar van dezelfde website of hetzelfde kookschrift.
@@ -161,7 +167,7 @@ function render(){
  $("morePriced").textContent="Toon 12 extra recepten ("+(priced.length-pLimit)+" resterend)";
  $("moreIdeas").textContent="Toon 12 extra ideeën ("+(inspiration.length-iLimit)+" resterend)";
 }
-for(const id of ["focus","store","statusFilter","sort","query"])$(id).addEventListener(id==="query"?"input":"change",()=>{pLimit=12;iLimit=12;render()});
+for(const id of ["focus","store","cuisine","category","statusFilter","sort","query"])$(id).addEventListener(id==="query"?"input":"change",()=>{pLimit=12;iLimit=12;render()});
 $("morePriced").addEventListener("click",()=>{pLimit+=12;render()});
 $("moreIdeas").addEventListener("click",()=>{iLimit+=12;render()});
 fetch("./alternatieven.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(payload=>{
