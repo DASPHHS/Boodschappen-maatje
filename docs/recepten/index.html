@@ -224,15 +224,18 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <a href="https://www.da.nl/aanbiedingen" target="_blank" rel="noopener noreferrer"><strong>DA</strong><small>Actieartikelen · zelf controleren</small></a>
   </div>
 </div>
-<section id="offer-inspiration" class="panel" hidden aria-label="Kookideeën uit actuele aanbiedingen">
-<h2>Wat kun je maken met de aanbiedingen?</h2>
-<p class="sub">Ook naan, maaltijdpakketten en smaakmakers geven ideeën. Een actieproduct telt pas mee in de maaltijdprijs als de juiste variant en hoeveelheid gecontroleerd zijn.</p>
-<div id="offer-idea-list" class="cards"></div>
-</section>
 <section id="weekly-highlights" class="panel" hidden aria-label="Bijzondere maaltijdaanbiedingen" style="margin:12px 0">
 <h2>Jouw weekaanraders: lekker, gezond en voordelig</h2>
 <p class="sub">Vier gevarieerde avondmaaltijden met echte kortingen waar mogelijk. Als een passende korting ontbreekt, tonen we de scherpste bekende reguliere recepten. De rest blijft doorzoekbaar.</p>
 <div id="highlight-list" class="cards"></div>
+</section>
+<div class="row" id="recipe-results-heading" style="margin:18px 0 11px"><div><h2>Alle recepten voor jouw supermarkt</h2><p id="recipe-results-count" class="sub" aria-live="polite">Recepten selecteren op prijs, korting en voeding…</p></div></div>
+<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
+<div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div>
+<section id="offer-inspiration" class="panel" hidden aria-label="Kookideeën uit actuele aanbiedingen">
+<h2>Wat kun je maken met de aanbiedingen?</h2>
+<p class="sub">Ook naan, maaltijdpakketten en smaakmakers geven ideeën. Een actieproduct telt pas mee in de maaltijdprijs als de juiste variant en hoeveelheid gecontroleerd zijn.</p>
+<div id="offer-idea-list" class="cards"></div>
 </section>
 <section id="week-source-recommendations" class="panel" hidden aria-label="Wekelijks aanbevolen recepten uit online bronnen">
   <div class="row"><h2>Meer passende recepten voor deze week</h2></div>
@@ -249,7 +252,6 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   <div id="week-source-cards" class="cards"></div>
   <button id="week-source-more" type="button" class="btn outline small" hidden>Toon meer suggesties</button>
 </section>
-<div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section id="library-results" class="panel" hidden aria-label="Overige recepten uit alle kookbronnen">
 <h2>Meer recepten uit de volledige verzameling</h2>
 <p class="sub" id="library-status">Ook HelloFresh, kookschriften en halfuurlijks ontdekte bronrecepten. Titels zonder gecontroleerde ingrediënten zijn uitsluitend inspiratie.</p>
@@ -273,7 +275,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <button id="source-loadmore" class="btn outline small" type="button" hidden>Meer inspiratie tonen</button>
  <a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a>
 </div>
-</section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
+</section><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear" title="Wis de mand en het weekmenu van deze supermarkt">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div><div class="wrap" style="margin-top:24px">
 <details id="weekmenu-panel" class="weekmenu-panel" hidden>
@@ -513,6 +515,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
   const portion=visible.length?Math.round(100*suitable/visible.length):0;
   $("store-status").textContent=highlights.length+" uitgelicht · "+visible.length+" van "+total+" overige recepten · "+suitable+" van "+visible.length+" passen bij voedingsvoorkeur · "+state.data.counts.promotions[state.store]+" actievermeldingen";
+  $("recipe-results-count").textContent=state.sharedOnly?"Jouw gedeelde HelloFresh-recepten voor "+state.data.store_names[state.store]:highlights.length+" weekaanraders en "+total+" overige recepten beschikbaar. Open een recept voor ingrediënten en kassaprijs.";
 
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
@@ -1115,6 +1118,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   document.querySelector(".layout").classList.toggle("deal-mode",state.mode==="deals");
   $("cart-panel").hidden=state.mode==="deals";
   $("recipes").hidden=state.mode==="deals";
+  $("recipe-results-heading").hidden=state.mode==="deals";
   if(state.mode==="deals")$("weekly-highlights").hidden=true;
   $("deals").hidden=state.mode!=="deals";
   $("other-store-links").hidden=state.mode!=="deals";
