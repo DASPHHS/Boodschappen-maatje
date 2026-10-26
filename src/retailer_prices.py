@@ -84,6 +84,9 @@ def collect(limit=24,session=None):
    product=parse_product(get(url),url)
    if product:products.append(product)
    else:errors.append('Geen bevestigde Product-prijs: '+url)
+  except requests.HTTPError as e:
+   errors.append(str(e)[:180])
+   if e.response is not None and e.response.status_code in (401,403,429):break
   except Exception as e:errors.append(str(e)[:180])
  if not products:raise RuntimeError('Action leverde geen bevestigde productprijzen: '+str(errors))
  return {'updated_at':datetime.now(timezone.utc).isoformat(),'source':'Officiële Action Product JSON-LD',
@@ -91,6 +94,13 @@ def collect(limit=24,session=None):
          'products':products,'errors':errors,'discovered_product_urls':len(urls)}
 
 def main():
- report=collect();dest=ROOT/'docs/koopjes/retailer-prices.json';tmp=dest.with_suffix('.tmp');tmp.write_text(json.dumps(report,ensure_ascii=False,indent=2));tmp.replace(dest)
+ status_path=ROOT/'docs/koopjes/retailer-status.json'
+ try:
+  report=collect()
+ except Exception as exc:
+  status_path.write_text(json.dumps({'last_attempt':datetime.now(timezone.utc).isoformat(),'status':'failed','error':str(exc)[:600]},ensure_ascii=False,indent=2))
+  raise
+ dest=ROOT/'docs/koopjes/retailer-prices.json';tmp=dest.with_suffix('.tmp');tmp.write_text(json.dumps(report,ensure_ascii=False,indent=2));tmp.replace(dest)
+ status_path.write_text(json.dumps({'last_attempt':report['updated_at'],'status':'ok','products':len(report['products']),'errors':report['errors']},ensure_ascii=False,indent=2))
  print(json.dumps({'products':len(report['products']),'discovered':report['discovered_product_urls'],'errors':report['errors']},ensure_ascii=False))
 if __name__=='__main__':main()

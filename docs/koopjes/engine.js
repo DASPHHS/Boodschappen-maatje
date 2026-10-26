@@ -7,7 +7,11 @@ function day(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return null;const d=new Da
 function status(start,end,today){start=day(start);end=day(end);if(end&&end<today)return 'expired';if(start&&start>today)return 'upcoming';if(!start||!end||start>end)return 'unknown';return 'active';}
 function measure(name,q,unit){
  const text=String(name).toLowerCase().replace(/,/g,'.');let m;
- if(/vaatwas/.test(text)&&(m=text.match(/(\d+)\s*(?:tabletten|tabs|capsules|stuks)/)))return {amount:+m[1],unit:'tablet'};
+ if(/vaatwas/.test(text)){
+  m=text.match(/(\d+)\s*(?:tabletten|tabs|capsules|stuks|st)\b/)||text.match(/(\d+)\s*[x×]\s*\d+(?:\.\d+)?\s*g\b/);
+  if(m)return {amount:+m[1],unit:'tablet'};
+  if(unit==='st'&&Number(q)>0)return {amount:Number(q),unit:'tablet'};
+ }
  if(/wasmiddel|waspoeder|wasgel|wasverzachter|pods|wascapsule|geurbooster/.test(text)&&(m=text.match(/(\d+)\s*(?:wasbeurten|wasbeurt|wassen)/)))return {amount:+m[1],unit:'wasbeurt'};
  if(/toiletpapier/.test(text)&&(m=text.match(/(\d+)\s*(?:rollen|rol)\s*(?:x|van)\s*(\d+)\s*(?:vellen|vel)/)))return {amount:+m[1]*+m[2],unit:'vel'};
  if(/toiletpapier/.test(text))return null;

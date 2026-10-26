@@ -97,6 +97,8 @@ function pick(item,store){
  if(norm(item.q).includes("zero")&&!normalized.includes("zero"))return;
  let n=item.unit?Math.ceil(item.qty/size):1,amount=n*price,bought=n;
  if(sale){
+  const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+  if(!row[8]||!row[11]||row[11]>today||row[8]<today||row[11]>row[8])return;
   const k=Number(row[5]),bundle=Number(row[6]);
   if(k>=2&&bundle>0){
    const base=Number(row[4])||price;

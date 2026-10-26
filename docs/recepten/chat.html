@@ -122,6 +122,8 @@ function findPrices(question,store){
     const count=item.unit?Math.ceil(item.quantity/size):1;
     let total=+(count*Number(price)).toFixed(2),bought=count;
     if(kind==="promotions"){
+      const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+      if(!row[8]||!row[11]||row[11]>today||row[8]<today||row[11]>row[8])continue;
       const packCount=Number(row[5]),bundlePrice=Number(row[6]);
       if(packCount>=2&&bundlePrice>0){
        const loose=Number(row[4])||Number(price);
@@ -184,7 +186,7 @@ function searchDeals(question,store){
  const now=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
  const out=[];
  for(const s of stores)for(const d of recipes.deals[s]||[]){
-  if(d.valid_from&&d.valid_from>now)continue;
+  if(!d.valid_from||d.valid_from>now)continue;
   if(!d.valid_until||d.valid_until<now)continue;
   if(ing&&!clean(d.name).includes(ing))continue;
   if(minPct&&(!d.discount_verified||Number(d.verified_discount_pct)<minPct))continue;

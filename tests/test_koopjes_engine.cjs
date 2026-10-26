@@ -13,3 +13,6 @@ assert.equal(rows.length,2);const sale=rows.find(x=>x.state==='active');assert.e
 assert.equal(E.search(rows,{q:'spinazie',sale:true}).length,1);
 assert.equal(E.search(rows,{q:'kipfilet'}).length,0);
 console.log('Koopjes: datums, bundels, eenheden, zoeken en filters geslaagd');
+
+assert.deepEqual(E.measure('Jumbo vaatwastabletten 40 x 19g',760,'g'),{amount:40,unit:'tablet'});
+assert.deepEqual(E.measure('AH vaatwastabletten',60,'st'),{amount:60,unit:'tablet'});

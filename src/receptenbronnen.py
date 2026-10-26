@@ -8,7 +8,7 @@ from datetime import datetime,timezone,timedelta
 from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
-from wereldkeuken_bronnen import WORLD_SOURCES,collect_world_links
+from wereldkeuken_bronnen import WORLD_SOURCES,collect_world_links,robots_allowed
 from recept_keukens import infer_cuisine,dutch_title
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -43,6 +43,9 @@ def extra_mealprep_links():
     result=[]
     for source,landing,host in SOURCES:
         try:
+            if not robots_allowed(landing):
+                print(source,"robots.txt weigert of niet controleerbaar",file=sys.stderr)
+                continue
             response=requests.get(landing,headers=HEADERS,timeout=25)
             response.raise_for_status()
             soup=BeautifulSoup(response.text,"html.parser")

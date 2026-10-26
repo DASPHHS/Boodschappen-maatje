@@ -30,8 +30,11 @@ def parse_yield(value):
             result=parse_yield(item)
             if result:return result
         return None
-    if isinstance(value,(int,float)) and 1<=value<=40:return int(value)
+    if isinstance(value,bool):return None
+    if isinstance(value,(int,float)):
+        return int(value) if 1<=value<=40 and int(value)==value else None
     text=str(value or "").lower()
+    if re.search(r"\b(?:loaf|loaves|cake|cakes|brood|broden|taart|taarten)\b",text) and not re.search(r"personen|porties|servings|people",text):return None
     match=re.search(r"(\d{1,2})\s*(?:personen|porties|servings?|people|personen?)?\b",text)
     return int(match.group(1)) if match and 1<=int(match.group(1))<=40 else None
 
@@ -56,7 +59,12 @@ def parse_recipe_page(html):
         ingredients=r.get("recipeIngredient") or []
         if isinstance(ingredients,str):ingredients=[ingredients]
         if not isinstance(ingredients,list) or len(ingredients)<3:continue
-        items=[str(x).strip() for x in ingredients if isinstance(x,str) and x.strip()]
+        items=[]
+        for x in ingredients:
+            if isinstance(x,str) and x.strip():items.append(x.strip())
+            elif isinstance(x,dict) and isinstance(x.get("name"),str):
+                # Schema.org also permits PropertyValue ingredients.
+                items.append(" ".join(str(x.get(k) or "") for k in ("value","unitText","name")).strip())
         if len(items)<3:continue
         servings=parse_yield(r.get("recipeYield"))
         rating=None

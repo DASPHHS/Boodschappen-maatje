@@ -11,12 +11,13 @@ function render(){matches=E.search(rows,{q:$('q').value,brand:$('brand').value,s
  if(x.end)card.append(el('p','Geldig '+x.start+' t/m '+x.end,'muted'));
  if(/^https:\/\//.test(x.url||'')){const a=el('a','Bekijk product bij bron →');a.href=x.url;a.target='_blank';a.rel='noopener noreferrer';card.append(a);}return card;}));$('more').hidden=matches.length<=limit;}
 for(const id of ['q','brand','store','cat','sale','loyalty','discount','sort'])$(id).addEventListener(['q','brand'].includes(id)?'input':'change',()=>{limit=60;render();});$('more').onclick=()=>{limit+=60;render();};
-Promise.all([fetch('../recepten/winkelprijzen.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}),fetch('./retailer-prices.json').then(r=>{if(!r.ok)throw Error();return r.json();}).catch(()=>null)]).then(([data,extra])=>{
+Promise.all([fetch('../recepten/winkelprijzen.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}),fetch('./retailer-prices.json').then(r=>{if(!r.ok)throw Error();return r.json();}).catch(()=>null),fetch('./retailer-status.json').then(r=>r.ok?r.json():null).catch(()=>null)]).then(([data,extra,sourceStatus])=>{
  const age=extra?(Date.now()-Date.parse(extra.updated_at))/3600000:Infinity;
  if(extra&&age>=0&&age<36){data.stores={...data.stores,...extra.stores};$('updated').textContent='Action gecontroleerd: '+extra.updated_at+'. ';}
  else $('updated').textContent='Action-prijzen ontbreken of zijn ouder dan 36 uur. ';
 
- rows=E.catalog(data,today);$('updated').textContent+='Prijsimport: '+data.updated_at+' · controledag '+today;
+ rows=E.catalog(data,today);if(sourceStatus?.status==='failed')$('updated').textContent+='Laatste automatische Action-controle mislukt; eerdere prijscontrole blijft apart vermeld. ';
+ $('updated').textContent+='Prijsimport: '+data.updated_at+' · controledag '+today;
  for(const [store,src] of Object.entries(data.stores||{})){const opt=el('option',names[store]||store);opt.value=store;$('store').append(opt);const tr=el('tr');for(const text of [names[store]||store,(src.ordinary||[]).length,rows.filter(x=>x.store===store&&x.state==='active').length])tr.append(el('td',String(text)));$('coverage').append(tr);}
  for(const cat of [...new Set(rows.map(x=>x.category))].sort()){const o=el('option',cat);o.value=cat;$('cat').append(o);}const q=new URLSearchParams(location.search).get('q');if(q)$('q').value=q;render();
 }).catch(()=>{$('status').textContent='Productprijzen konden niet worden geladen. Probeer opnieuw of bekijk Scanstatus.';$('status').className='error';});

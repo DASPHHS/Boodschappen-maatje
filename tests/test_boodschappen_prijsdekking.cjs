@@ -23,3 +23,11 @@ lidl:{ordinary:[['Milbona Volle Melk',1.19,1000,'ml','']],promotions:[]}};
 vm.runInContext('data='+JSON.stringify({stores}),context);
 for(const key of ['ah','jumbo','lidl'])assert(context.test.pick(milk,key),'Geen match bij '+key);
 console.log('Melkparser, variantenfilter en 3 supermarktprijzen: OK');
+// An attractive price with future, expired or missing dates must never win.
+stores.ah.promotions=[
+ ['AH Volle Melk',0.01,1000,'ml',1.39,null,null,'korting','2100-01-07','',false,'2100-01-01'],
+ ['AH Volle Melk',0.01,1000,'ml',1.39,null,null,'korting','2020-01-07','',false,'2020-01-01'],
+ ['AH Volle Melk',0.01,1000,'ml',1.39,null,null,'korting',null,'',false,null]
+];
+vm.runInContext('data='+JSON.stringify({stores}),context);
+assert.equal(context.test.pick(milk,'ah').discount,false);

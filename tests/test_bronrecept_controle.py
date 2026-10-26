@@ -27,6 +27,19 @@ class RecipeSourceTests(unittest.TestCase):
         self.assertIn("olijven",data["recognized_ingredients"])
         self.assertIn("kappertjes",data["recognized_ingredients"])
 
+    def test_property_values_and_non_serving_yields(self):
+        import json
+        data={"@type":"Recipe","recipeYield":"1 loaf","recipeIngredient":[
+            {"@type":"PropertyValue","value":300,"name":"volkoren penne"},
+            {"@type":"PropertyValue","value":320,"name":"tonijn"},
+            {"@type":"PropertyValue","value":2,"name":"courgettes"}]}
+        result=parse_recipe_page('<script type="application/ld+json">'+json.dumps(data)+'</script>')
+        self.assertEqual(result["ingredient_count"],3)
+        self.assertIn("pasta",result["recognized_ingredients"])
+        self.assertIsNone(result["servings"])
+        self.assertIsNone(parse_yield(True))
+        self.assertIsNone(parse_yield(1.5))
+
     def test_no_fake_verification_from_title_only(self):
         self.assertIsNone(parse_recipe_page("<h1>Pasta met tonijn</h1>"))
         self.assertIsNone(parse_yield("onbekend"))

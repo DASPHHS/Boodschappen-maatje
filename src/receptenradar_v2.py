@@ -190,6 +190,11 @@ def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
                     status=r.get("promotion_status")
                     start=str(r.get("valid_from") or "")[:10]
                     until=str(r.get("valid_until") or "")[:10]
+                    try:
+                        date.fromisoformat(start);date.fromisoformat(until)
+                    except ValueError:
+                        continue
+                    if start>until:continue
                     if status not in (None,"active","upcoming") or (until and until<today):
                         continue
                     if store_code(r.get("retailer",slug))!=store:continue
@@ -951,7 +956,8 @@ def main():
     audit=audit_promotions(offers,recipes)
     quality=audit_recipe_quality(recipes)
     from weekmenu_advies import build_weekmenu
-    weekmenu_advice=build_weekmenu(recipes)
+    weekmenu_advice=build_weekmenu(recipes,target=json.loads(
+        (ROOT/"config"/"shopping-agent.json").read_text()).get("recipes_per_week",4))
     result={"updated_at":datetime.now(TZ).isoformat(),"shelf_source_modified":last_modified,
             "sources":{"ordinary":"Checkjebon open dataset","promotions":"PrijsProfeet gratis aanbiedingen-API"},
             "source_links":{"ordinary":"https://github.com/supermarkt/checkjebon",
