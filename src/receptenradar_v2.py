@@ -466,7 +466,9 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
     if not options:return None
     # De goedkoopste mand is ook echt de laagste kassaprijs.
     # Acties die iets duurder zijn blijven apart zichtbaar als actie-alternatief.
-    return min(options,key=lambda x:(x["cash_price"],not x["sale"],x["used_price"]))
+    return min(options,key=lambda x:(x["cash_price"],
+        max(0,x["packages"]*x["package_size"]-x["required"]),
+        not x["sale"],x["used_price"]))
 
 
 # Indicatieve, bewust conservatieve eiwitwaarden van gangbare producten.
