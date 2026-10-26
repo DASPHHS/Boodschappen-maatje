@@ -58,7 +58,7 @@ let snapshot=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(active));localStorage.setItem(CKEY,JSON.stringify(custom))}catch{$("freshness").textContent+=" · Opslaan op dit apparaat is geblokkeerd";}}
 function inStore(product,p){
  const n=norm(product);
- if(/\b(baby|olvarit|knorr|maaltijd|dessert|saus|mix|muesli|smoothie)\b/.test(n))return false;
+ if(/\b(baby|olvarit|knorr|maaltijd|saus|mix|smoothie)\b/.test(n))return false;
  if(p.id==="knijp")return /(knijpkwark|knijp kwark|breaker|squeeze.*quark|kwark.*knijp)/.test(n)&&!/(baby|fruit|chocolade)/.test(n);
  if(p.id==="xxl")return /(xxl|zuivelhoeve)/.test(n)&&/(fit.?yog|fit.?yogh|fityogurt|fit yogurt|yogurt granola)/.test(n);
  if(p.id==="highprotein")return /(protein|proteine|prote n|hipro|high protein|fit.?yog|fit.?quark|skyr|kwark)/.test(n)&&
