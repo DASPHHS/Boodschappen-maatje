@@ -60,15 +60,31 @@ function scoreSort(a,b,kind){
  if(kind==="time")return Number(a.minutes||999)-Number(b.minutes||999)||price(a)-price(b);
  return Number(b.health_priority)-Number(a.health_priority)||price(a)-price(b)||Number(b.used_actions||0)-Number(a.used_actions||0);
 }
+function bestRecipePerTitle(rows,selectedStore){
+ if(selectedStore!=="all")return rows.map(item=>({...item,comparisons:[item]}));
+ const groups=new Map();
+ for(const item of rows){
+  const key=norm(item.title).replace(/[^a-z0-9]+/g," ").trim();
+  if(!groups.has(key))groups.set(key,[]);
+  groups.get(key).push(item);
+ }
+ return [...groups.values()].map(choices=>{
+  const ranked=[...choices].sort((a,b)=>Number(b.complete)-Number(a.complete)||
+   (a.checkout??Infinity)-(b.checkout??Infinity)||
+   Number(b.health_priority)-Number(a.health_priority));
+  return {...ranked[0],comparisons:ranked};
+ });
+}
 function filteredPriced(){
  if(!data)return [];
  const topic=$("focus").value,shop=$("store").value,q=norm($("query").value.trim()),status=$("statusFilter").value;
- return (data.suggestions||[]).filter(r=>
+ const matches=(data.suggestions||[]).filter(r=>
   (topic==="all"||r.focus?.includes(topic))&&
   (shop==="all"||r.store===shop)&&
   (status==="all"||(status==="complete"?r.complete:!r.complete))&&
   (!q||norm(r.title+" "+r.cuisine+" "+(names[r.store]||"")).includes(q))
- ).sort((a,b)=>scoreSort(a,b,$("sort").value));
+ );
+ return bestRecipePerTitle(matches,shop).sort((a,b)=>scoreSort(a,b,$("sort").value));
 }
 function filteredIdeas(){
  if(!data||$("statusFilter").value==="complete")return [];
@@ -106,6 +122,11 @@ function recipeCard(r){
  '<div class="badges"><span class="badge">'+Number(r.used_actions||0)+' gebruikte acties</span>'+
  (r.health_priority?'<span class="badge good">Past bij voedingsvoorkeur</span>':'<span class="badge">Alternatief</span>')+
  (r.minutes?'<span class="badge">'+esc(r.minutes)+' min</span>':'')+'</div>'+
+ (r.comparisons?.length>1?'<div class="meta"><strong>Prijzen bij andere winkels:</strong> '+
+  r.comparisons.filter(choice=>choice.store!==r.store).map(choice=>
+   esc(names[choice.store]||choice.store)+': '+
+   (choice.complete&&choice.checkout!=null?money(choice.checkout):'prijs onvolledig')
+  ).join(' · ')+'</div>':'')+
  '<a class="more" href="'+link+'">Bekijk het recept en de ingrediënten</a></article>';
 }
 function inspirationCard(r){
