@@ -47,7 +47,7 @@ ING = {
  "champignons": ("champignons", r"(kastanjechampignons|champignons)", r"soep|saus|maaltijd|mix|wok|roerbakgroente|roerbakmix"),
  "tomaten": ("tomaten", r"(trostomaten|cherrytomaten|romatomaten|tomaten)", r"puree|saus|blokjes|blik|soep|ketchup|pasta|sap|zongedroogd|gepeld|gezeefd|passata|bonen|tomatens|tomatensap|pulp|polpa|ciliegini|conserven"),
  "olijven": ("zwarte olijven zonder pit", r"(zwarte olijven|olijven zwart|zwarte olijf|olijven zonder pit)", r"tapenade|olie|dip|saus|brood|pizza|mix"),
- "kappertjes": ("kappertjes", r"\\bkappertjes\\b", r"saus|dressing|tapenade|chips"),
+ "kappertjes": ("kappertjes", r"\bkappertjes\b", r"saus|dressing|tapenade|chips"),
  "tomatenblokjes": ("tomatenblokjes", r"(tomatenblokjes|tomaten in blokjes|tomaten pulp|tomatenpulp)", r"soep|saus|maaltijd"),
  "ui": ("uien", r"(gele uien|uien|rode uien|sjalotten)", r"saus|soep|kruiden|gebakken|poeder|snippers"),
  "komkommer": ("komkommer", r"\bkomkommer\b", r"zuur|saus|soep|salade|plakjes"),
