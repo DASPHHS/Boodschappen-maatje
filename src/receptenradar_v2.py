@@ -16,6 +16,7 @@ from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_qualit
 from receptenradar_checks import validate_publication
 from scan_kwaliteitscontrole import inspect_snapshot
 from product_contract import normalized_offer,compare_sources
+from feed_paginering import pagination_issue,page_fingerprint
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 from portie_flexibiliteit import needed_quantity
 from verpakkingscombinaties import mixed_pack_option
@@ -181,12 +182,14 @@ def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
     limit=(day+timedelta(days=horizon_days)).isoformat()
     for store,slug in (("ah","albert_heijn"),("jumbo","jumbo"),("lidl","lidl")):
         try:
-            page=1;seen=set()
+            page=1;seen=set();seen_pages=set()
             while page<=100:
                 response=fetch(DEALS,{"retailer":slug,"page":page,"page_size":100})
                 data=response.json()
                 rows=data.get("results") or data.get("products") or data.get("items") or []
-                if not isinstance(rows,list):raise ValueError("Onbekend PrijsProfeet-resultaatformaat")
+                issue=pagination_issue(rows,seen_pages,page,data.get("total"))
+                if issue:raise ValueError(f"PrijsProfeet paginering ongeldig: {issue}, pagina {page}")
+                if rows:seen_pages.add(page_fingerprint(rows))
                 for r in rows:
                     if not isinstance(r,dict):continue
                     status=r.get("promotion_status")
