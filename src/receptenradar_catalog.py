@@ -326,6 +326,11 @@ RECIPE_METHODS["Ontbijt: kwark 450 g met blauwe bessen en havermout"] = (
  "30 g havermout erover. Serveer meteen. De volledige aankoopprijs "
  "betreft alle verpakkingen; de verbruikskosten zijn voor vier kommen."
 )
+RECIPE_METHODS.update({
+ "Knoflookgarnalen met volkorenpasta en spinazie": "Kook de volkorenpasta. Bak de garnalen kort met knoflook en paprikapoeder. Voeg tomaten toe en laat de spinazie slinken. Meng met de pasta en verdeel over vier porties. Gebruik alleen de in het recept vermelde hoeveelheden.",
+ "Garnalencurry met bloemkool en rijst": "Kook de rijst. Fruit de ui en currykruiden, voeg bloemkool en kokosmelk toe en laat garen. Voeg de garnalen pas op het einde toe en verhit volledig. Verdeel over vier borden.",
+ "Garnalenwok met groenten en zilvervliesrijst": "Kook de rijst. Roerbak de wokgroenten, voeg knoflook en gember toe en bak de garnalen kort mee tot ze gaar zijn. Serveer met rijst en een beetje sojasaus."
+})
 RECIPE_METHODS["Volkoren tonijnpasta met zwarte olijven en kappertjes"] = (
  "Kook de volkoren penne volgens de verpakking beetgaar. Snipper de ui, "
  "snijd de courgettes in blokjes en fruit de ui kort in olijfolie. Bak de "
