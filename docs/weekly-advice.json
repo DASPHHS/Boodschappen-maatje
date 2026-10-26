@@ -1,6 +1,6 @@
 {
   "status": "indicative_recipe_comparison",
-  "source_updated_at": "2026-10-26T20:35:48.746758+01:00",
+  "source_updated_at": "2026-10-26T21:07:44.779715+01:00",
   "recommended": {
     "store": "Albert Heijn",
     "complete": true,
@@ -86,7 +86,7 @@
     "persoonlijke kortingen en lokale winkelvoorraad"
   ],
   "notice": "Vergelijking voor exact dezelfde geprijsde recepten bij AH, Jumbo en Lidl. Geen volledige huishoudelijke weekmand. Online schapprijzen en aanbiedingen kunnen afwijken van lokale winkelvoorraad.",
-  "generated_at": "2026-10-26T20:35:48.941342+01:00",
+  "generated_at": "2026-10-26T21:07:44.972862+01:00",
   "budget_eur": 150,
   "comparison_type": "identieke gerechten uit de huidige Recepten Radar"
 }
