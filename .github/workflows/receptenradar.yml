@@ -7,6 +7,8 @@ on:
       - 'src/product_compatibiliteit.py'
       - 'tests/test_product_compatibiliteit.py'
       - 'recepten/watchlist.html'
+      - 'recepten/watchlist_engine.js'
+      - 'recepten/watchlist_app.js'
       - 'tests/test_receptwatchlist.cjs'
       - 'src/lidl_officiele_acties.py'
       - 'src/portie_flexibiliteit.py'
@@ -124,6 +126,8 @@ jobs:
           mkdir -p docs/recepten
           cp recepten/index.html docs/recepten/index.html
           cp recepten/watchlist.html docs/recepten/watchlist.html
+          cp recepten/watchlist_engine.js docs/recepten/watchlist_engine.js
+          cp recepten/watchlist_app.js docs/recepten/watchlist_app.js
           cp recepten/recipe_search.js docs/recepten/recipe_search.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
@@ -137,6 +141,7 @@ jobs:
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
           git add docs/recepten/recipe_search.js
           git add docs/recepten/watchlist.html
+          git add docs/recepten/watchlist_engine.js docs/recepten/watchlist_app.js
           git add docs/recepten/index.html docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
