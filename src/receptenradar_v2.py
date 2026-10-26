@@ -972,7 +972,7 @@ def main():
     # Recepten uit ALLE publieke en eigen bronindexen vinden op basis van de
     # actuele aanbiedingen. Deze titelmatches zijn nadrukkelijk NIET geprijsd.
     from actie_receptmatches import build_action_title_candidates
-    source_recipe_matches=build_action_title_candidates(offers)
+    source_recipe_matches=build_action_title_candidates(offers,shelves_by_store=shelves)
     recipes=make_recipes(shelves,offers)
     validate_publication(recipes)
     export_shopping_index(shelves,offers)
@@ -1036,6 +1036,7 @@ def main():
       "fully_priced_recipes":{s:sum(bool(r["complete"]) for r in recipes[s]) for s in STORES},
       "recipes_with_used_discount":{s:sum(r["sale_count"]>0 for r in recipes[s]) for s in STORES},
       "health_review_needed":{s:quality[s]["review_needed"] for s in STORES},
+      "budget_recipe_title_candidates":{s:len(source_recipe_matches[s].get("budget_candidates",[])) for s in STORES},
       "source_recipe_title_candidates":{s:source_recipe_matches[s].get("possible_title_matches",0)
                                          for s in STORES},
       "external_recipe_results":{s:discovered[s].get("source_results",0) for s in STORES},
