@@ -17,7 +17,9 @@ const VERIFIED=[
  {id:"AH-wi555458",protein100:13,portion:200,source:"https://www.ah.nl/producten/product/wi555458/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"AH-wi556289",protein100:13,portion:200,source:"https://www.ah.nl/producten/product/wi556289/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"Jumbo-590777CUP",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-aardbei-kwark-200-g-590777CUP"},
- {id:"Jumbo-735508ZK",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK"}
+ {id:"Jumbo-735508ZK",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK"},
+ {id:"Jumbo-685838ZK",protein100:12,portion:205,source:"https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK"},
+ {id:"Jumbo-685839ZK",protein100:12,portion:205,source:"https://www.jumbo.com/producten/xxl-nutrition-fit-high-protein-kwark-perzik-passievrucht-205g-685839ZK"}
 ];
 // Houd de identiteit van het artikel aan, niet alleen 'protein' in een naam.
 // Bronvoedingswaarde geldt per artikel; een 450g familiebak of andere smaak
@@ -60,8 +62,8 @@ function matchProduct(name,watch,url=''){
  const rejects=/\b(?:babyvoeding|baby|olvarit|knorr|maaltijd|poeder|soep|kruidenmix|smoothie)\b/;
  if(rejects.test(s))return false;
  switch(watch.type){
- case "squeezequark":return /(knijpkwark|knijp kwark|quark pouch|kwark pouch|kwark zakje)/.test(s)&&!/(yoghurt|yogurt|drink)/.test(s);
- case "squeeze":return (/(knijp|breaker|pouch|zakje)/.test(s)||sku(url)==="Jumbo-735508ZK")&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
+ case "squeezequark":return (/(knijpkwark|knijp kwark|quark pouch|kwark pouch|kwark zakje)/.test(s)||["Jumbo-685838ZK","Jumbo-685839ZK"].includes(sku(url)))&&!/(yoghurt|yogurt|drink)/.test(s);
+ case "squeeze":return (/(knijp|breaker|pouch|zakje)/.test(s)||["Jumbo-735508ZK","Jumbo-685838ZK","Jumbo-685839ZK"].includes(sku(url)))&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
  case "xxl":return /(xxl|zuivelhoeve)/.test(s)&&/(fit yog|fit yoghurt|fit yogurt|fityogurt)/.test(s);
  case "protein":return /(protein|proteine|hipro|high protein|fit yog|fit yoghurt|fit yogurt|skyr|kwark|quark)/.test(s)&&
    /(kwark|quark|yoghurt|yogurt|skyr|protein pudding|proteine pudding)/.test(s)&&!/\b(drank|shake|poeder|snackreep)\b/.test(s);
