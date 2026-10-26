@@ -38,8 +38,14 @@
   const terms=tokens(query);
   if(!terms.length)return true;
   const bag=recipeWords(r);
-  return terms.every(term=>bag.some(word=>
-   canonical(word)===term || word===term || word.startsWith(term) && term.length>=4));
+  const ingredientWords=words((r.ingredients||[]).flatMap(x=>[x.label||"",x.key||""]).join(" "));
+  return terms.every(term=>{
+   // Zoektermen die een concreet ingrediënt aanduiden moeten werkelijk in
+   // de ingrediëntenlijst voorkomen. 'Knorr mix voor kip' is geen kipvlees.
+   const source=Object.prototype.hasOwnProperty.call(alias,term)?ingredientWords:bag;
+   return source.some(word=>canonical(word)===term||word===term||
+      (word.startsWith(term)&&term.length>=4));
+  });
  }
  function score(r){
   // Echte kassaprijzen boven onbevestigde subtotalen. Voordeel is
