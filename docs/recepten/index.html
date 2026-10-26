@@ -100,6 +100,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
 <div id="alerts"></div>
 <div class="favourites-tools"><button type="button" id="only-favorites" aria-pressed="false" class="btn outline small">☆ Alleen mijn favorieten</button><a class="btn outline small" href="./watchlist.html">Mijn productenwatchlist</a></div>
+<details id="source-favorites-panel" class="weekmenu-panel" hidden>
+ <summary id="source-favorites-summary">Bewaarde bronrecepten</summary>
+ <div id="source-favorites-items"></div>
+</details>
 <details id="personal-weekmenu" class="weekmenu-panel" style="margin:12px 0 18px" aria-label="Mijn weekmenu">
 <summary id="personal-weekmenu-summary">Mijn weekmenu · tik om te plannen of te openen</summary>
 <div class="panel" style="margin-top:8px"><p class="sub">Kies hieronder recepten en voeg ze per dag toe. Open je gekozen recept hier wanneer je gaat koken.</p>
@@ -229,6 +233,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <h2>Jouw weekaanraders: lekker, gezond en voordelig</h2>
 <p class="sub">Vier gevarieerde avondmaaltijden met echte kortingen waar mogelijk. Als een passende korting ontbreekt, tonen we de scherpste bekende reguliere recepten. De rest blijft doorzoekbaar.</p>
 <div id="highlight-list" class="cards"></div>
+</section>
+<section id="week-source-recommendations" class="panel" hidden aria-label="Wekelijks aanbevolen recepten uit online bronnen">
+  <div class="row"><h2>Meer passende recepten voor deze week</h2></div>
+  <p class="sub">Automatisch gekozen uit honderden bronrecepten op basis van actuele acties en bekende supermarktproducten.
+  Gevonden titels zijn inspiratie totdat ingrediënten, hoeveelheden en kassaprijzen echt zijn gecontroleerd.</p>
+  <div id="week-source-count" class="sub" aria-live="polite"></div>
+  <div id="week-source-cards" class="cards"></div>
+  <button id="week-source-more" type="button" class="btn outline small" hidden>Toon meer suggesties</button>
 </section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section id="library-results" class="panel" hidden aria-label="Overige recepten uit alle kookbronnen">
@@ -912,7 +924,80 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  // Receptindex wordt pas geladen als de gebruiker zoekt; dit voorkomt
  // dat duizenden onvolledig geprijsde bronvermeldingen de weekradar overspoelen.
- state.library=null;state.libraryLoading=false;state.libraryError=false;state.libraryVisible=24;
+ state.library=null;state.libraryLoading=false;state.libraryError=false;state.libraryVisible=24;state.weekVisible=12;
+ function readSourceFavorites(){
+  try{
+   const rows=JSON.parse(localStorage.getItem("bm_bronrecept_favorieten_v1")||"[]");
+   return Array.isArray(rows)?rows.filter(x=>x&&typeof x.title==="string"&&typeof x.url==="string").slice(0,120):[];
+  }catch{return []}
+ }
+ let sourceFavorites=readSourceFavorites();
+ function saveSourceFavorites(){
+  try{localStorage.setItem("bm_bronrecept_favorieten_v1",JSON.stringify(sourceFavorites))}catch{}
+ }
+ function toggleSourceFavorite(url,title,source){
+  if(!url||!title)return;
+  if(sourceFavorites.some(r=>r.url===url))sourceFavorites=sourceFavorites.filter(r=>r.url!==url);
+  else sourceFavorites.unshift({url,title,source});
+  sourceFavorites=sourceFavorites.slice(0,120);saveSourceFavorites();renderSourceFavorites();
+  renderWeeklyCandidates();
+ }
+ function renderSourceFavorites(){
+  $("source-favorites-panel").hidden=!sourceFavorites.length||state.mode==="deals";
+  $("source-favorites-summary").textContent="Bewaarde bronrecepten · "+sourceFavorites.length;
+  $("source-favorites-items").innerHTML=sourceFavorites.map(x=>
+   '<div class="sub"><a target="_blank" rel="noopener noreferrer" href="'+safeURL(x.url)+'">'+esc(x.title)+'</a> · '+
+    esc(x.source||"Receptenbron")+' <button type="button" class="btn outline small" data-remove-source="'+esc(x.url)+'">Verwijder</button></div>').join("");
+ }
+ function renderWeeklyCandidates(){
+  const panel=$("week-source-recommendations");
+  if(state.mode!=="recipes"||$("search").value.trim()||state.favoriteOnly||state.sharedOnly){
+   panel.hidden=true;return;
+  }
+  panel.hidden=false;
+  if(!state.library){
+   $("week-source-count").textContent=state.libraryError?
+     "Receptenindex tijdelijk niet bereikbaar. De volledig geprijsde recepten blijven beschikbaar.":
+     "Aanbiedingen en de online receptenbibliotheek worden gecombineerd…";
+   $("week-source-cards").innerHTML="";
+   $("week-source-more").hidden=true;
+   if(!state.libraryError)void ensureLibrary();
+   return;
+  }
+  const date=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+  const result=WeekselectieEngine.weekly(state.library,state.data?.deals?.[state.store]||[],
+    storeData(),{date,limit:600,category:$("category").value,cuisine:$("cuisine").value,
+    format:$("format").value,origin:$("origin").value,meal:$("mealtype").value,maxMinutes:$("duration").value});
+  const existing=new Set(storeData().map(r=>WeekselectieEngine.N(r.title)));
+  const suggestions=result.items.filter(x=>!existing.has(WeekselectieEngine.N(x.recipe.title)));
+  const visible=suggestions.slice(0,state.weekVisible);
+  $("week-source-count").textContent=result.total.toLocaleString("nl-NL")+
+   " passende inspiratievermeldingen gevonden bij "+state.data.store_names[state.store]+
+   " · "+result.withOffer+" met mogelijk actieverband · "+
+   result.checkedIngredients+" met herkende broningrediënten. Geen externe maaltijdprijzen verzonnen.";
+  $("week-source-cards").innerHTML=visible.map(({recipe:x,evidence,sourceIngredientMatches,possibleOfferMatches,shelfMatches,healthyIndicative})=>{
+   const url=x.url?safeURL(x.url):"#";
+   const canOpen=url!=="#";
+   const saved=sourceFavorites.some(r=>r.url===x.url);
+   return `<article class="recipe"><div class="recipe-body">
+      <h3>${esc(x.title_nl||x.title)}</h3>
+      <p class="sub">${esc(x.source||"Receptenbron")} · ${esc(x.cuisine||"Keuken onbekend")} ·
+       ${esc(x.category||"Categorie nog niet ingedeeld")}</p>
+      <p class="sub">${esc(evidence)}</p>
+      ${sourceIngredientMatches.length?
+       `<p class="sub">Actieproduct in ingrediënten herkend: ${esc(sourceIngredientMatches.map(z=>z.product).join(", "))}</p>`:
+       possibleOfferMatches.length?`<p class="sub">Mogelijke inspiratie uit: ${esc(possibleOfferMatches.map(z=>z.product).join(", "))}</p>`:""}
+      <p class="sub">${healthyIndicative?"Groente en eiwitbron genoemd · 30 g eiwit niet bewezen.":"Voedingsprofiel nog niet gecontroleerd."}
+       ${shelfMatches.length?" · "+shelfMatches.length+" ingrediëntsoorten met een bekende schapprijs.":""}</p>
+      ${canOpen?`<a href="${url}" target="_blank" rel="noopener noreferrer">Bekijk origineel recept</a>
+       <button class="btn outline small" type="button" data-source-save="${esc(x.url)}" data-source-title="${esc(x.title)}" data-source-name="${esc(x.source||"Receptenbron")}">${saved?"★ Bewaard":"☆ Bewaar recept"}</button>`:
+       `<p class="sub">Privé-kookboek: ${esc(x.source_note||"Geen openbare receptlink.")}</p>`}
+     </div></article>`;
+  }).join("")||"<p class='sub'>Nog geen passende bronrecepten voor deze combinatie. Kies eventueel ruimere filters.</p>";
+  $("week-source-more").hidden=state.weekVisible>=suggestions.length;
+  $("week-source-more").textContent="Toon meer online recepten ("+Math.max(0,suggestions.length-state.weekVisible)+" beschikbaar in deze selectie)";
+ }
+
  async function ensureLibrary(){
    if(state.library||state.libraryLoading||state.libraryError)return;
    state.libraryLoading=true;
@@ -937,7 +1022,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    }catch(e){state.libraryError=true}
    finally{
      state.libraryLoading=false;
-     if(state.data&&state.mode==="recipes")renderLibraryResults();
+     if(state.data&&state.mode==="recipes"){renderLibraryResults();renderWeeklyCandidates()}
    }
  }
  function renderLibraryResults(){
@@ -1020,7 +1105,9 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
   renderOfferIdeas();
+  renderWeeklyCandidates();
   renderLibraryResults();
+  renderSourceFavorites();
   document.querySelectorAll("#cuisine-shortcuts [data-cuisine]").forEach(b=>
     b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
   // Losse bronideeën horen niet in de hoofdranglijst totdat ingrediënten, porties en prijzen compleet zijn.
@@ -1121,6 +1208,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
  });
  $("library-load-more").addEventListener("click",()=>{state.libraryVisible+=24;renderLibraryResults()});
+ $("week-source-more").addEventListener("click",()=>{state.weekVisible+=24;renderWeeklyCandidates()});
+ $("week-source-cards").addEventListener("click",e=>{
+   const b=e.target.closest("[data-source-save]");if(!b)return;
+   toggleSourceFavorite(b.dataset.sourceSave,b.dataset.sourceTitle,b.dataset.sourceName);
+ });
+ $("source-favorites-items").addEventListener("click",e=>{
+  const b=e.target.closest("[data-remove-source]");if(!b)return;
+  sourceFavorites=sourceFavorites.filter(x=>x.url!==b.dataset.removeSource);
+  saveSourceFavorites();renderSourceFavorites();renderWeeklyCandidates();
+ });
  $("deals").addEventListener("click",event=>{
    const btn=event.target.closest("[data-deal-recipe]");if(!btn)return;
    state.mode="recipes";clearRecipeFilters();$("search").value=btn.dataset.dealRecipe;
