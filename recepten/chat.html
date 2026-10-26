@@ -36,7 +36,7 @@ const storeNames={ah:"Albert Heijn",jumbo:"Jumbo",lidl:"Lidl"};
 const clean=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
 const euro=x=>"€ "+Number(x).toFixed(2).replace(".",",");
 const cuisines=["Surinaams","Indonesisch","Indiaas","Thais","Vietnamees","Koreaans","Japans","Chinees","Turks","Marokkaans","Libanees","Grieks","Italiaans","Mexicaans","Spaans","Nederlands","Frans","Caribisch","Ethiopisch","Peruaans","Braziliaans","West-Afrikaans","Mediterraan"];
-let prices=null,recipes=null,previousStore=null;
+let prices=null,recipes=null,previousStore=null,lastTopic="";
 function detectStore(q){
  const n=clean(q);
  if(/\b(jumbo)\b/.test(n))return "jumbo";
@@ -150,7 +150,7 @@ function searchRecipes(question,store){
  const vegetarian=/vegetarisch|vegan|zonder vlees|vega/.test(n);
  const fish=/\bvis\b/.test(n);
  const time=n.match(/(?:binnen|onder|maximaal|minder dan)\s*(\d+)\s*min/);
- const maxPrice=n.match(/(?:onder|maximaal|minder dan)\s*(?:€|euro\s*)?\s*(\d+(?:[,.]\d+)?)\s*(?:euro|€)?/);
+ const maxPrice=n.match(/(?:onder|maximaal|minder dan)\s*(?:€\s*|euro\s*)(\d+(?:[,.]\d+)?)/);
  const stores=store?[store]:Object.keys(storeNames);
  const results=[];
  for(const s of stores){
@@ -169,7 +169,9 @@ function searchRecipes(question,store){
    results.push({...r,store:s});
   }
  }
- return results.sort((a,b)=>(b.sale_count||0)-(a.sale_count||0)||(a.checkout-b.checkout));
+ const prioritizePrice=/goedkoop|laagste prijs|budget|voordelig/.test(n);
+ return results.sort((a,b)=>prioritizePrice?(a.checkout-b.checkout):
+  (b.sale_count||0)-(a.sale_count||0)||(a.checkout-b.checkout));
 }
 function searchDeals(question,store){
  if(!recipes?.deals)return [];
@@ -191,8 +193,11 @@ function searchDeals(question,store){
   .sort((a,b)=>(b.discount_verified?Number(b.verified_discount_pct)||0:0)-(a.discount_verified?Number(a.verified_discount_pct)||0:0));
 }
 function interpret(question){
+ const shorthand=/^(?:en\s+)?(?:bij|van)\s+(?:ah|jumbo|lidl|albert heijn)[?.!\s]*$/i.test(question.trim());
+ if(shorthand&&lastTopic){question=lastTopic.replace(/\b(bij|van)\s+(ah|jumbo|lidl|albert heijn)\b/gi,"").trim()+" "+question.trim();}
  const q=clean(question);
  const store=detectStore(question)||previousStore;
+ if(!shorthand)lastTopic=question;
  if(detectStore(question))previousStore=detectStore(question);
  if(!q)return {text:"Typ een vraag over een recept, aanbieding of boodschappenprijs."};
  if(!prices&&!recipes)return {text:"De gegevens zijn nog niet geladen. Controleer de verbinding en probeer opnieuw."};
@@ -205,7 +210,7 @@ function interpret(question){
  }
  if(dealIntent){
   const hits=searchDeals(question,store);
-  return hits.length?{text:"Dit zijn actuele aanbiedingen volgens de laatst geladen brongegevens:",lines:hits.slice(0,6).map(x=>storeNames[x.store]+" · "+x.name+" · "+euro(x.price)+(x.discount_verified?" · "+Math.round(Number(x.verified_discount_pct))+"% berekend voordeel":" · korting niet bevestigd")),links:[{label:"Bekijk alle aanbiedingen",href:"./?weergave=deals"}]}:{text:"Geen actuele aanbiedingen gevonden voor deze selectie. Bekijk eventueel de huidige weekacties per winkel.",links:[{label:"Bekijk aanbiedingen",href:"./"}]};
+  return hits.length?{text:"Dit zijn actuele aanbiedingen volgens de laatst geladen brongegevens. Bij meerstuksacties geldt de prijs alleen bij de vermelde aankoophoeveelheid:",lines:hits.slice(0,6).map(x=>storeNames[x.store]+" · "+x.name+" · "+(Number(x.multi_buy_quantity)>=2&&Number(x.multi_buy_price)>0?Math.round(Number(x.multi_buy_quantity))+" voor "+euro(x.multi_buy_price):euro(x.price))+(x.discount_verified?" · "+Math.round(Number(x.verified_discount_pct))+"% berekend voordeel":" · korting niet bevestigd")),links:[{label:"Bekijk alle aanbiedingen",href:"./?weergave=deals"}]}:{text:"Geen actuele aanbiedingen gevonden voor deze selectie. Bekijk eventueel de huidige weekacties per winkel.",links:[{label:"Bekijk aanbiedingen",href:"./"}]};
  }
  const hits=searchRecipes(question,store);
  if(hits.length){
