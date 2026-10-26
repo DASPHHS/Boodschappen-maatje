@@ -310,7 +310,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   for(const d of deals){
     const family=campaignFamily(d);
     const key=family?[family,dealCategory(d),d.price,d.valid_from,d.valid_until,
-      d.multi_buy_quantity||"",d.multi_buy_price||"",d.is_loyalty||false,d.size_label||""].join("|"):
+      d.multi_buy_quantity||"",d.multi_buy_price||"",d.is_loyalty||false,d.size_label||"",
+      d.promotion_type||"",d.verified_discount_pct??"unknown"].join("|"):
       [words(d.name).trim(),d.quantity||"",d.unit||"",d.price,d.valid_from,d.valid_until].join("|");
     if(!grouped.has(key))grouped.set(key,{...d,variantNames:[],variantLinks:[],campaign:family});
     const group=grouped.get(key);
