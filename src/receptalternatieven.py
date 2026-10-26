@@ -209,13 +209,15 @@ def source_suggestions(index, new_links, previous, now):
         pools[(item["source"], item["cuisine"])].append(item)
     def alternate_topics(items):
         """Spreid ook BINNEN één groot archief over alle bekende onderwerpen."""
-        from collections import defaultdict, deque
+        from collections import defaultdict, deque, Counter
         groups = defaultdict(list)
+        topic_counts = Counter(tag for item in items for tag in item["focus"]
+                               if tag not in ("vis", "kip", "groenten"))
         for item in items:
             tags = [tag for tag in item["focus"] if tag not in ("vis", "kip", "groenten")]
             # Elk recept wordt eenmaal ingedeeld; het blijft vindbaar onder
             # alle eigen filters via het ongewijzigde focus-veld.
-            key = min(tags, key=lambda tag: (sum(tag in x["focus"] for x in items), tag)) if tags else (item["focus"][0] if item["focus"] else "_overig")
+            key = min(tags, key=lambda tag: (topic_counts[tag], tag)) if tags else (item["focus"][0] if item["focus"] else "_overig")
             groups[key].append(item)
         pending = {key: deque(sorted(vals, key=lambda x: normalized(x["title"])))
                    for key, vals in groups.items()}
