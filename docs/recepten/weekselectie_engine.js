@@ -127,7 +127,7 @@ function weekly(items,deals,pricedRecipes,options={}){
  for(const x of items||[]){
   if(!x||!x.title||x.kind==="collection"||x.category==="Broncollectie")continue;
   const title=N(x.title);
-  if(meal==="Avondeten"&&(EXCLUDE_TITLE.test(title)||x.meal_type&&x.meal_type!=="Avondeten"))continue;
+  if(meal==="Avondeten"&&(EXCLUDE_TITLE.test(title)||/\b(?:cake|muffins?|brownies?|dessert|ijs|smoothie|milkshake)\b/.test(title)||x.meal_type&&x.meal_type!=="Avondeten"))continue;
   if(category!=="all"&&matchCats[category]&&!matchCats[category].includes(x.category))continue;
   if(cuisine!=="all"&&x.cuisine!==cuisine)continue;
   if(format!=="all"&&root.ReceptInspiratieRadar?.dishType&&
