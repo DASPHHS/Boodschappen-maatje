@@ -10,6 +10,7 @@ on:
       - 'tests/test_verpakkingscombinaties.py'
       - 'recepten/boodschappen.html'
       - 'tests/test_boodschappen_prijsdekking.cjs'
+      - 'tests/test_generieke_producten_en_deals.cjs'
       - 'tests/test_portie_flexibiliteit.py'
       - 'tests/test_lidl_officiele_acties.py'
       - 'src/receptenradar_catalog.py'
@@ -87,6 +88,7 @@ jobs:
           PY
           node --check /tmp/receptenradar_check.js
           node tests/test_boodschappen_prijsdekking.cjs
+          node tests/test_generieke_producten_en_deals.cjs
           node tests/test_deal_filters.cjs
           node tests/test_keuken_filters.cjs
           node tests/test_weekmenu_ui.cjs
