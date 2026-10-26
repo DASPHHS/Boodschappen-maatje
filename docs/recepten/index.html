@@ -510,7 +510,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const counts={};
    for(const r of priced){
      const c=r.cuisine||"Internationaal";
-     counts[c]??={priced:0,inspiration:0};counts[c].priced++;
+     counts[c]??={priced:0,inspiration:0};
+     if(r.complete)counts[c].priced++;
    }
    for(const r of matches){
      const c=r.cuisine||"Internationaal";
@@ -521,7 +522,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      "Mexicaans","Spaans","Nederlands","Frans","Caribisch","Ethiopisch",
      "Peruaans","Braziliaans","Costa Ricaans","West-Afrikaans","Midden-Oosters",
      "Mediterraan","Amerikaans","Internationaal"];
-   const entries=Object.entries(counts).sort((a,b)=>{
+   const entries=Object.entries(counts).filter(([,c])=>c.priced>0).sort((a,b)=>{
      const ai=order.indexOf(a[0]),bi=order.indexOf(b[0]);
      if(ai>=0&&bi>=0)return ai-bi;
      if(ai>=0)return -1;if(bi>=0)return 1;
@@ -529,9 +530,9 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    });
    $("cuisine").innerHTML='<option value="all">Alle wereldkeukens</option>'+
      entries.map(([name,c])=>'<option value="'+esc(name)+'">'+esc(name)+
-       ' ('+c.priced+' geprijsd · '+c.inspiration+' inspiratie)</option>').join("");
+       ' ('+c.priced+' complete recepten)</option>').join("");
    $("cuisine").value=Object.hasOwn(counts,current)?current:"all";
-   const featured=["all",...order.filter(c=>counts[c]&&c!=="Internationaal").slice(0,12)];
+   const featured=["all",...order.filter(c=>counts[c]?.priced>0&&c!=="Internationaal").slice(0,12)];
    $("cuisine-shortcuts").innerHTML=featured.map(c=>
      '<button type="button" data-cuisine="'+esc(c)+'" aria-pressed="'+
      (c===$("cuisine").value)+'">'+(c==="all"?"Alle keukens":esc(c))+
