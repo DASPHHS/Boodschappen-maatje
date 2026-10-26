@@ -25,6 +25,7 @@ li{margin:4px 0}.extra{background:#f5f7ff;border:1px solid #dce1ef;padding:14px;
 <div class="extra"><strong>Waarom zijn er twee soorten recepten?</strong>
 <p class="hint">Volledig geprijsde recepten hebben herkenbare producten en verpakkingsprijzen voor vier porties. Externe bronmatches kunnen op titel zijn gevonden of op ingrediënten uit het oorspronkelijke recept. Zonder betrouwbare bronporties en een volledige prijsmatch worden daarvoor geen kassaprijzen geclaimd.</p>
 <p class="hint">Alle getoonde prijzen zijn online waarnemingen. Een actie kan lokaal uitverkocht zijn of alleen voor een klantenkaart gelden. Controleer de exacte productvariant voordat je betaalt.</p></div>
+<section class="notice"><h2>Bronkwaliteit per winkel</h2><div id="feed-quality">Broncontrole laden…</div></section>
 </main>
 <script>
 const $=id=>document.getElementById(id);
@@ -83,6 +84,17 @@ function run(s){
  $("limitations").innerHTML=unresolved.length?'<ul>'+unresolved.join("")+'</ul>':
    '<p>Geen bekende waarschuwingen volgens deze gegevensscan.</p>';
 }
+fetch("./bronkwaliteit.json?v="+Date.now(),{cache:"no-store"})
+ .then(r=>{if(!r.ok)throw Error("Nog geen actuele broncontrole gepubliceerd");return r.json()})
+ .then(d=>{
+   const labels={ah:"Albert Heijn",jumbo:"Jumbo",lidl:"Lidl",aldi:"Aldi",dirk:"Dirk",plus:"PLUS",hoogvliet:"Hoogvliet",dekamarkt:"DekaMarkt",vomar:"Vomar",action:"Action",xenos:"Xenos",zeeman:"Zeeman"};
+   $("feed-quality").innerHTML='<p class="hint">Een complete API-download garandeert niet dat alle aanbiedingen van een winkel bekend zijn.</p>'+
+      Object.entries(d.retailers||{}).map(([id,v])=>'<div class="data"><span>'+esc(labels[id]||id)+
+       ' · '+esc((v.issues||[]).join(", ")||"Geen aanvullende waarschuwingen")+
+       '</span><strong>'+esc(v.quality==="needs_attention"?"Controle nodig":
+                      v.quality==="partial"?"Gedeeltelijk":"Niet volledig bewezen")+'</strong></div>').join("");
+ })
+ .catch(e=>{$("feed-quality").textContent=e.message+"; niet als volledig gecontroleerd beschouwen.";});
 fetch("./status.json?v="+Date.now(),{cache:"no-store"})
  .then(r=>{if(!r.ok)throw Error("Statusbestand ontbreekt (HTTP "+r.status+")");return r.json()})
  .then(run).catch(err=>{
