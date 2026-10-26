@@ -219,7 +219,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <section id="library-results" class="panel" hidden aria-label="Overige recepten uit alle kookbronnen">
 <h2>Meer recepten uit de volledige verzameling</h2>
-<p class="sub" id="library-status">Ook eigen HelloFresh-kaarten, kookschriften en receptensites. Bij titel-only recepten zijn ingrediënten, voedingswaarden en prijzen nog niet bevestigd.</p>
+<p class="sub" id="library-status">Ook HelloFresh, kookschriften en halfuurlijks ontdekte bronrecepten. Titels zonder gecontroleerde ingrediënten zijn uitsluitend inspiratie.</p>
 <div id="library-cards" class="cards"></div>
 <button type="button" id="library-load-more" class="btn outline small" hidden>Toon meer bronrecepten</button>
 <a class="btn outline small" href="./inspiratie.html">Open alle receptenbronnen</a>
@@ -850,11 +850,23 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    if(state.library||state.libraryLoading||state.libraryError)return;
    state.libraryLoading=true;
    try{
-     const response=await fetch("./inspiratie.json",{cache:"no-store"});
-     if(!response.ok)throw Error("Bronnenindex niet beschikbaar");
-     const data=await response.json();
-     if(!Array.isArray(data.items))throw Error("Ongeldige receptenindex");
-     state.library=data.items;
+     const [index,halfHour]=await Promise.all([
+       fetch("./inspiratie.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+       fetch("./alternatieven.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+     ]);
+     if(!Array.isArray(index?.items)&&!Array.isArray(halfHour?.inspiration))
+       throw Error("Receptenbronnen niet bereikbaar");
+     const checks=halfHour?.source_verifications||{};
+     const originals=[...(Array.isArray(index?.items)?index.items:[]),
+       ...(Array.isArray(halfHour?.inspiration)?halfHour.inspiration:[])];
+     state.library=originals.map(item=>{
+       const confirmed=checks[item.url];
+       if(item.ingredients?.length||!Array.isArray(confirmed?.recognized_ingredients)||
+          !["broningrediënten_beschikbaar","bronrecept_4_personen"].includes(confirmed.level))
+          return item;
+       return {...item,ingredients:confirmed.recognized_ingredients.map(name=>({name})),
+         source_note:"Enkele ingrediëntnamen uit de oorspronkelijke bron gecontroleerd; hoeveelheden en kassaprijs nog onbekend."};
+     });
    }catch(e){state.libraryError=true}
    finally{
      state.libraryLoading=false;
