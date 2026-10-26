@@ -50,7 +50,7 @@ const helpers=new Function("state","$","esc","safeURL",
 helpers.updateCuisineOptions();
 assert.ok(elements.cuisine.innerHTML.includes("Surinaams (1 complete recepten)"));
 assert.ok(!elements.cuisine.innerHTML.includes("Marokkaans"),"Geen keuken zonder volledig geprijsde gerechten aanbieden");
-assert.ok(elements.cuisine.innerHTML.includes("Internationaal"));
+assert.ok(!elements.cuisine.innerHTML.includes("Internationaal"),"Geen ongeprijsde generieke keuken aanbieden");
 assert.ok(elements["cuisine-shortcuts"].innerHTML.includes("Surinaams"));
 
 helpers.renderSourceMatches();
