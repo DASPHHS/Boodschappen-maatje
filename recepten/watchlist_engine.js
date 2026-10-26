@@ -55,13 +55,13 @@ const WATCH=[
  {id:"skuum",name:"Texels Skuumkoppe (origineel)",unit:"ml",type:"skuum",protein:false,note:"Alcoholhoudend speciaalbier; 0.0 wordt afzonderlijk vergeleken."},
  {id:"skuum0",name:"Texels Skuumkoppe 0.0",unit:"ml",type:"skuum0",protein:false,note:"Alcoholvrije variant."}
 ];
-function matchProduct(name,watch){
+function matchProduct(name,watch,url=''){
  const s=norm(name);
  const rejects=/\b(?:babyvoeding|baby|olvarit|knorr|maaltijd|poeder|soep|kruidenmix|smoothie)\b/;
  if(rejects.test(s))return false;
  switch(watch.type){
  case "squeezequark":return /(knijpkwark|knijp kwark|quark pouch|kwark pouch|kwark zakje)/.test(s)&&!/(yoghurt|yogurt|drink)/.test(s);
- case "squeeze":return /(knijp|breaker|pouch|zakje)/.test(s)&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
+ case "squeeze":return (/(knijp|breaker|pouch|zakje)/.test(s)||sku(url)==="Jumbo-735508ZK")&&/(protein|proteine|kwark|quark|yoghurt|yogurt)/.test(s);
  case "xxl":return /(xxl|zuivelhoeve)/.test(s)&&/(fit yog|fit yoghurt|fit yogurt|fityogurt)/.test(s);
  case "protein":return /(protein|proteine|hipro|high protein|fit yog|fit yoghurt|fit yogurt|skyr|kwark|quark)/.test(s)&&
    /(kwark|quark|yoghurt|yogurt|skyr|protein pudding|proteine pudding)/.test(s)&&!/\b(drank|shake|poeder|snackreep)\b/.test(s);
@@ -99,14 +99,14 @@ function sourceRows(src,watch){
  const found=[];
  for(const raw of src.ordinary||[]){
   const [name,price,quantity,unit,url]=raw;
-  if(!matchProduct(name,watch)||!Number(price)||!Number(quantity)||watch.unit!=="any"&&unit!==watch.unit)continue;
+  if(!matchProduct(name,watch,url)||!Number(price)||!Number(quantity)||watch.unit!=="any"&&unit!==watch.unit)continue;
   if(!volumeConsistent(name,quantity,unit,Number(price),watch))continue;
   found.push({name,unit,quantity:exactQty(quantity),url,price:round(price),packages:1,
     source:"Reguliere prijs",discount:false});
  }
  for(const raw of src.promotions||[]){
   const [name,unitPrice,quantity,unit,previous,k,bundlePrice,type,until,url,loyalty,from]=raw;
-  if(!matchProduct(name,watch)||!Number(unitPrice)||!Number(quantity)||watch.unit!=="any"&&unit!==watch.unit)continue;
+  if(!matchProduct(name,watch,url)||!Number(unitPrice)||!Number(quantity)||watch.unit!=="any"&&unit!==watch.unit)continue;
   if(loyalty)continue;
   const now=isoDate();
   if(until&&String(until)<now||from&&String(from)>now)continue;
