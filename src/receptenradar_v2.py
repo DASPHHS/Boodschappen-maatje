@@ -968,6 +968,33 @@ def main():
             row=normalized_offer(item,store,item.get("source") or "onbekend",
                                  datetime.now(TZ).isoformat())
             if row:normalized.append(row)
+    # Tweede bron alleen gebruiken als de officiële waarneming recent,
+    # product-identiek en in dezelfde geldigheidscontext is.
+    official_status={}
+    official_path=ROOT/"recepten"/"officiele-winkels.json"
+    if official_path.exists():
+        try:
+            official=json.loads(official_path.read_text(encoding="utf-8"))
+            observed=datetime.fromisoformat(official.get("updated_at",""))
+            age_hours=(datetime.now(timezone.utc)-observed.astimezone(timezone.utc)).total_seconds()/3600
+            official_status=official.get("status",{})
+            source_quality["official_snapshot_age_hours"]=round(age_hours,1)
+            source_quality["official_snapshot_fresh"]=0<=age_hours<=36
+            if 0<=age_hours<=36:
+                for store in STORES:
+                    for item in official.get("stores",{}).get(store,[]):
+                        # Zonder exacte verpakking en gedateerde actie is dit
+                        # wel een bronhit, maar geen onafhankelijk bewijs voor
+                        # dezelfde kortingsprijs. Niet als bevestiging tellen.
+                        if not (item.get("quantity") and item.get("unit") and
+                                item.get("valid_from") and item.get("valid_until")):
+                            continue
+                        record=normalized_offer(item,store,"official_"+store,
+                                                official.get("updated_at"))
+                        if record:normalized.append(record)
+        except (ValueError,OSError,TypeError) as exc:
+            source_quality["official_snapshot_error"]=type(exc).__name__
+    source_quality["official_source_status"]=official_status
     agreements=compare_sources(normalized)
     source_quality["normalized_products"]=len(agreements)
     source_quality["conflicting_products"]=sum(
