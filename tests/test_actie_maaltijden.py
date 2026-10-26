@@ -67,6 +67,21 @@ class OfferDrivenTest(unittest.TestCase):
   kip["multi_buy_price"]=5
   self.assertTrue(meal_candidates([kip,broccoli]))
 
+ def test_naan_aanbiedingen_koppelen_aan_passende_eiwitten_en_groenten(self):
+  products=[sale("kipfilet"),sale("broccoli"),sale("naanbrood 2 st",unit="st",amount=2)]
+  recipes=meal_candidates(products)
+  self.assertTrue(any(
+   {"kipfilet","broccoli","naan"} == {i[0] for i in x[3]} for x in recipes
+  ))
+ def test_maaltijdpakket_is_nooit_kip_of_andere_eiwitbron(self):
+  products=[sale("Knorr Wereldgerechten Kip Tandoori maaltijdpakket"),
+            sale("broccoli"),sale("naanbrood 2 st",unit="st",amount=2)]
+  self.assertFalse(meal_candidates(products))
+ def test_garnalen_als_zelfstandige_eiwitbron(self):
+  products=[sale("garnalen"),sale("wokgroenten"),sale("naanbrood 2 st",unit="st",amount=2)]
+  self.assertTrue(any(x[1]=="Vis" and "garnalen" in {i[0] for i in x[3]}
+                      for x in meal_candidates(products)))
+
  def test_variatie(self):
   items=[sale("kipfilet"),sale("varkenshaas"),sale("broccoli"),sale("spruitjes"),sale("krieltjes")]
   cs=meal_candidates(items)
