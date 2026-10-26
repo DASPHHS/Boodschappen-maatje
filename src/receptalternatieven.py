@@ -192,7 +192,7 @@ def priced_suggestions(data):
         -r["used_actions"], normalized(r["title"]), r["store"]
     ))
 
-def source_suggestions(index, new_links, previous, now):
+def source_suggestions(index, new_links, previous, now, include_curated=True):
     collected = []
     previous_candidates = previous.get("inspiration", [])
     cutoff = (now - timedelta(days=14)).date().isoformat()
@@ -200,7 +200,8 @@ def source_suggestions(index, new_links, previous, now):
         if item.get("kind") == "collection" or item.get("category") == "Broncollectie":
             continue
         collected.append(item)
-    collected.extend(TRUSTED_RECIPE_LINKS)
+    if include_curated:
+        collected.extend(TRUSTED_RECIPE_LINKS)
     collected.extend(new_links)
     # Behoud succesvolle externe bronnen wanneer één website tijdelijk offline is.
     collected.extend(x for x in previous_candidates
