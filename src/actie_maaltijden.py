@@ -14,7 +14,7 @@ PROTEINS={
  "gehakt":("Gehakt","Vlees",800,"g"),
  "zalm":("Zalm","Vis",800,"g"),
  "gerookte_zalm":("Gerookte zalm","Vis",400,"g"),
- "tonijn":("Tonijn","Vis",500,"g"),
+ "tonijn":("Tonijn","Vis",500,"g"),"garnalen":("Garnalen","Vis",800,"g"),
  "tofu":("Tofu","Vegetarisch",800,"g"),
  "kikkererwten":("Kikkererwten","Vegetarisch",850,"g"),
  "linzen":("Linzen","Vegetarisch",850,"g"),
@@ -34,7 +34,7 @@ SIDES={
  "aardappel":("krieltjes",400,"g"),"zoete_aardappel":("zoete aardappel",400,"g"),
  "rijst":("zilvervliesrijst",140,"g"),"pasta":("volkoren pasta",140,"g"),
  "couscous":("volkoren couscous",140,"g"),
- "wraps":("volkoren wraps",4,"st"),
+ "wraps":("volkoren wraps",4,"st"),"naan":("naanbrood",4,"st"),
 }
 SELECTION_EXCLUSIONS=re.compile(
  r"vegetar|vegan|plantaardig|maaltijd|pizza|broodbeleg|saus|kruiden|spread|"
@@ -45,7 +45,7 @@ GROUPS={"proteine":PROTEINS,"groente":VEGETABLES,"bijgerecht":SIDES}
 
 # Beproefde combinatiegroepen: een kortingspercentage is geen recept.
 PAIRINGS={
- "kipfilet":("broccoli bloemkool spinazie wok courgette paprika champignons wortel tomaten sla spruiten","aardappel rijst pasta wraps"),
+ "kipfilet":("broccoli bloemkool spinazie wok courgette paprika champignons wortel tomaten sla spruiten","aardappel rijst pasta wraps naan"),
  "kipdij":("broccoli bloemkool spinazie wok courgette paprika champignons wortel tomaten spruiten","aardappel rijst zoete_aardappel"),
  "kipgehakt":("spinazie courgette paprika champignons tomaten wok broccoli","rijst pasta wraps"),
  "shoarma":("wok paprika courgette sla tomaten komkommer","wraps aardappel rijst"),
@@ -54,7 +54,8 @@ PAIRINGS={
  "zalm":("broccoli bloemkool spinazie courgette spruiten wortel","aardappel rijst pasta"),
  "gerookte_zalm":("spinazie courgette sla komkommer tomaten","pasta wraps"),
  "tonijn":("paprika tomaten sla komkommer courgette","pasta rijst wraps"),
- "tofu":("broccoli wok paprika courgette champignons wortel spinazie","rijst couscous"),
+ "garnalen":("wok broccoli spinazie courgette paprika","rijst naan"),
+ "tofu":("broccoli wok paprika courgette champignons wortel spinazie","rijst couscous naan"),
  "kikkererwten":("spinazie bloemkool tomaten paprika courgette wortel","rijst couscous"),
  "linzen":("spinazie tomaten wortel courgette paprika champignons","rijst pasta"),
  "bonen":("paprika tomaten sla courgette wok","rijst wraps"),
@@ -88,6 +89,9 @@ def sensible_meal(protein,veg,side=None,veg2=None):
 # (eiwit, hoofdgroente, bijgerecht, extra groente, titel, kookaanpak)
 # None betekent dat er géén bijgerecht of tweede groente nodig is.
 DISH_TEMPLATES=[
+ ("kipfilet","broccoli","naan",None,"Tandoorikip met broccoli en naan","Kruid de kip met tandoorikruiden en bak volledig gaar. Stoom of rooster de broccoli beetgaar. Verwarm naan volgens de verpakking en serveer met de kip en groenten."),
+ ("tofu","spinazie","naan",None,"Tandoori-tofu met spinazie en naan","Bak tofu krokant met tandoorikruiden. Laat spinazie in een aparte pan slinken en verwarm naan volgens de verpakking. Serveer samen."),
+ ("garnalen","wok","naan",None,"Garnalenwok met groenten en naan","Roerbak de groenten beetgaar en voeg ontdooide garnalen op het einde toe. Verhit volledig en serveer met verwarmde naan."),
  ("kipfilet","broccoli","aardappel",None,"Ovenkip met broccoli en geroosterde krieltjes","Kruid kip en krieltjes met paprikapoeder, knoflook, peper en wat olie. Rooster in de oven, voeg broccoli later toe."),
  ("kipfilet","broccoli",None,None,"Knoflookkip met geroosterde broccoli","Bak gekruide kipfilet goudbruin. Rooster broccoli met knoflook en citroen."),
  ("kipfilet","broccoli","aardappel","paprika","Ovenkip met paprika, broccoli en krieltjes","Rooster kip, paprika, broccoli en krieltjes met olie, knoflook en paprikapoeder. Voeg broccoli later toe."),
