@@ -9,7 +9,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
-from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, validate_dish_ingredients
+from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, RECIPE_SOURCES, validate_dish_ingredients
 from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
@@ -481,7 +481,7 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
 PROTEIN_PER_100G={
  "kipfilet":20.0,"kipdij":17.0,"kipgehakt":17.0,"shoarma":16.0,
  "gehakt":17.0,"varkenshaas":20.0,"rookworst":12.0,"zalm":19.0,"gerookte_zalm":18.0,
- "tonijn":22.0,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
+ "tonijn":22.0,"olijven":0.8,"kappertjes":2.4,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
  "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
  "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
  "tomaten":0.5,"tomatenblokjes":0.7,"ui":0.7,"sla":1.0,
@@ -499,7 +499,7 @@ PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
 KCAL_PER_100G={
  "kipfilet":110,"kipdij":140,"kipgehakt":155,"shoarma":170,
  "gehakt":190,"varkenshaas":120,"rookworst":280,"zalm":205,"gerookte_zalm":165,
- "tonijn":115,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
+ "tonijn":115,"olijven":115,"kappertjes":23,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
  "rijst":355,"risottorijst":360,"pasta":350,"couscous":350,"aardappel":80,
  "zoete_aardappel":85,"wok":35,"boerenkool":35,"spruiten":43,
  "spinazie":25,"broccoli":34,"champignons":25,"tomaten":20,
@@ -723,7 +723,7 @@ def make_recipes(shelves,offers):
                          else "Mealprep-variant" if title.startswith("Mealprep:")
                          else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
-              "inspiration":inspiration,"offer_driven":idx>=len(RECIPES),
+              "inspiration":inspiration,"source_recipe":RECIPE_SOURCES.get(title),"offer_driven":idx>=len(RECIPES),
               "mealprep":mealprep,
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
