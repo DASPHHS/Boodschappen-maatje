@@ -52,6 +52,14 @@ function run(s){
     rows.map(([label,value])=>'<div class="data"><span>'+esc(label)+'</span><strong>'+esc(value)+'</strong></div>').join("")+
     '</article>';
  }).join("");
+ const quality=s.source_quality||{};
+ const warnings=Array.isArray(quality.warnings)?quality.warnings:[];
+ if(warnings.length){
+   const section=document.createElement("section");
+   section.className="notice";
+   section.innerHTML="<h2>Automatische kwaliteitscontrole</h2><p class='hint'>Een geslaagde import garandeert geen volledige folder- of assortimentdekking.</p><ul>"+warnings.map(v=>"<li>"+esc(v)+"</li>").join("")+"</ul>";
+   $("limitations").before(section);
+ }
  const unresolved=[
   [s.weekmenu_status!=="indicative_online_comparison","Identiek weekmenu niet volledig beschikbaar bij alle drie winkels."],
   [!s.other_stores_automatically_priced,"Action, Kruidvat en andere drogisterijen: productprijzen worden nog niet automatisch gecontroleerd."],
