@@ -4,6 +4,11 @@ on:
   push:
     paths:
       - 'src/receptenradar_v2.py'
+      - 'src/shared_hellofresh_hits.py'
+      - 'recepten/shared_recipe_hits.js'
+      - 'recepten/hello-fresh-kaarten.json'
+      - 'recepten/hello-fresh-maart-archief.json'
+      - 'recepten/eigen-archief.json'
       - 'src/product_compatibiliteit.py'
       - 'tests/test_product_compatibiliteit.py'
       - 'recepten/watchlist.html'
@@ -118,7 +123,9 @@ jobs:
       - name: Haal echte schap- en actieprijzen op en bereken recepten
         env:
           PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
-        run: python src/receptenradar_v2.py
+        run: |
+          python src/receptenradar_v2.py
+          python src/shared_hellofresh_hits.py
       - name: Publiceer geverifieerde prijsgegevens naar GitHub Pages
         run: |
           # Receptberekening en bronnenindex zijn TWEE onafhankelijke workflows.
@@ -126,6 +133,7 @@ jobs:
           # Anders kan een vertraagde prijsscan de nieuwere wereldkeukenindex
           # en eigen kookboekindexen per ongeluk weer overschrijven.
           mkdir -p docs/recepten
+          cp recepten/shared_recipe_hits.js docs/recepten/shared_recipe_hits.js
           cp recepten/index.html docs/recepten/index.html
           cp recepten/watchlist.html docs/recepten/watchlist.html
           cp recepten/watchlist_engine.js docs/recepten/watchlist_engine.js
@@ -140,6 +148,7 @@ jobs:
           cp recepten/status.html docs/recepten/status.html
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add recepten/shared-hellofresh-hits.json docs/recepten/shared-hellofresh-hits.json recepten/shared_recipe_hits.js docs/recepten/shared_recipe_hits.js
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
           git add docs/recepten/recipe_search.js
           git add docs/recepten/watchlist.html
@@ -161,10 +170,10 @@ jobs:
               fi
               # Haal na rebase de nieuwste interface uit de bronbestanden.
               # Een scan gestart vóór een UI-wijziging mag die niet terugdraaien.
-              for file in index.html watchlist.html watchlist_engine.js watchlist_app.js recipe_search.js chat.html boodschappen.html status.html; do
+              for file in shared_recipe_hits.js index.html watchlist.html watchlist_engine.js watchlist_app.js recipe_search.js chat.html boodschappen.html status.html; do
                 cp "recepten/$file" "docs/recepten/$file"
               done
-              git add docs/recepten/index.html docs/recepten/watchlist.html docs/recepten/watchlist_engine.js docs/recepten/watchlist_app.js docs/recepten/recipe_search.js docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/status.html
+              git add docs/recepten/shared_recipe_hits.js docs/recepten/index.html docs/recepten/watchlist.html docs/recepten/watchlist_engine.js docs/recepten/watchlist_app.js docs/recepten/recipe_search.js docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/status.html
               if ! git diff --cached --quiet; then
                 git commit --amend --no-edit
               fi

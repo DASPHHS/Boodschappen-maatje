@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),H=require('../recepten/shared_recipe_hits.js');
+const row={title:'Knolselderijstamppot met boerenworst',search_text:'knolselderij aardappelen boerenworst spinazie kastanjechampignons',category:'Vlees',cuisine:'Nederlands',minutes:null,has_possible_offer:true};
+assert.equal(H.select([row],{query:'knolselderij boerenworst'}).length,1);
+assert.equal(H.select([row],{category:'vega'}).length,0);
+assert.equal(H.select([row],{duration:'30'}).length,0);
+assert.equal(H.select([row],{selection:'promos'}).length,0);
+assert.equal(H.select([row],{strictHealth:true}).length,0);
+assert.equal(H.select([row],{meal:'Ontbijt'}).length,0);
+assert.equal(H.select([row],{format:'wrap'}).length,0);
+assert.equal(H.select([{...row,has_possible_offer:false}],{onlyShared:true}).length,1);
+assert.equal(H.select([{...row,has_possible_offer:false}],{}).length,0);
+console.log('Gedeelde HelloFresh-hits: zoekcombinatie, filters en onbekende prijs/tijd correct');

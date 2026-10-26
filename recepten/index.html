@@ -108,7 +108,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div class="search-primary"><label for="search">Wat wil je eten? Combineer gerust ingrediënten.</label>
   <div class="search-row"><input id="search" type="search" enterkeyhint="search" autocomplete="off" placeholder="Bijv. tonijn pasta zwarte olijven, kip broccoli of linzen curry"><button id="clear-search" type="button" class="btn outline small">Wis</button></div>
   <div id="search-shortcuts" class="search-shortcuts" aria-label="Snelle receptzoekopdrachten">
-   <button type="button" id="quick-savings">Snel avondeten met korting</button><a href="./inspiratie.html?group=hellofresh">HelloFresh & mijn kaarten ↗</a><button type="button" data-recipe-query="tonijn pasta">Tonijn + pasta</button>
+   <button type="button" id="quick-savings">Snel avondeten met korting</button><button type="button" id="shared-hits-only" aria-pressed="false">Mijn HelloFresh-hits</button><a href="./inspiratie.html?group=hellofresh">Alle kaarten ↗</a><button type="button" data-recipe-query="tonijn pasta">Tonijn + pasta</button>
    <button type="button" data-recipe-query="kip broccoli">Kip + broccoli</button>
    <button type="button" data-recipe-query="zalm">Zalmgerechten</button>
    <button type="button" data-recipe-query="linzen">Linzen</button>
@@ -223,7 +223,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 </section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script>(function pageLogic(){
+<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -318,11 +318,17 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("search-help").textContent=q?
     'Zoeken op alle woorden, ook als ze op verschillende plaatsen in de ingrediëntenlijst staan. Alleen de volledige combinatie telt; ontbrekende prijzen blijven zichtbaar.':
     'Eerst volledige kassaprijzen en gezonde opties. Geldige acties tellen mee wanneer ze de werkelijke aankoop goedkoper maken.';
+  if(state.sharedOnly)rs=[];
+  const sharedHits=SharedRecipeHits.select(state.sharedHits?.stores?.[state.store]||[],{
+    query:q,cuisine,category:cat,duration:maxMinutes,selection,
+    strictHealth:health==="only",onlyShared:!!state.sharedOnly,meal,format,origin,mealprep:$("mealprep-filter").value==="yes"
+  }).filter(r=>!state.favoriteOnly||isFavorite(r));
   const total=rs.length;
   const visible=rs.slice(0,state.visible);
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
   const portion=visible.length?Math.round(100*suitable/visible.length):0;
   $("store-status").textContent=visible.length+" van "+total+" recepten · "+suitable+" van "+visible.length+" passen bij voedingsvoorkeur · "+state.data.counts.promotions[state.store]+" actievermeldingen";
+  $("store-status").textContent+=" · "+sharedHits.length+" gedeelde HelloFresh-hits";
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Er worden geen recepten zonder de gevraagde korting getoond. Zet het actiefilter uit voor reguliere recepten of bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
@@ -343,6 +349,21 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     ${(r.missing||[]).map(x=>`<div class="line"><span>${esc(x.label)} (${x.amount} ${x.unit})</span><strong>Prijs onbekend</strong></div>`).join("")}
     <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief genoemde smaakmakers. ${r.nutrition?.product_nutrition_unverified?.length?"Let op: voor gearomatiseerde zuivel zijn suiker, eiwitten en kcal nog niet gecontroleerd op het productetiket. ":""}${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
     </div></article>`).join(""):"<div class='notice warn'>Er zijn geen recepten die aan alle filters voldoen. Kies bijvoorbeeld 'Alle recepten' of controleer het eetmoment. Ontbrekende actie-matches worden afzonderlijk gecontroleerd.</div>");
+  const sharedVisible=sharedHits.slice(0,state.sharedOnly?state.visible:4);
+  if(sharedVisible.length){
+    if(!rs.length)$("recipes").innerHTML="";
+    $("recipes").innerHTML+=sharedVisible.map(r=>`<article class="recipe shared-hit"><div class="recipe-body">
+      <span class="pill">Jouw gedeelde HelloFresh-recept</span><h3>${esc(r.title)}</h3>
+      <p class="sub">${esc(r.source)} · ${esc(r.category)}${r.local_page?" · kaart/pagina "+r.local_page:""}</p>
+      <p><strong>Maaltijdprijs nog niet volledig gecontroleerd</strong></p>
+      <p class="sub">${r.has_possible_offer?"Mogelijke actiematch op "+esc(r.match_evidence)+": "+esc(r.possible_offers.map(x=>x.name).join(", ")):"Geen passende actuele korting bevestigd."}</p>
+      <p class="sub">Dit is een recept-hit; aantallen verpakkingen, totale besparing en voedingswaarden zijn nog niet vastgesteld.</p>
+      ${r.ingredient_names.length?`<p class="sub">Ingrediënten van jouw kaart: ${esc(r.ingredient_names.join(", "))}</p>`:""}
+      ${r.source_note?`<p class="sub">${esc(r.source_note)}</p>`:""}
+      ${r.url?`<a href="${esc(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">Bekijk verwant bronrecept ↗</a>`:`<p class="sub">Originele kaart: jouw gedeelde HelloFresh-archief${r.local_page?", pagina "+r.local_page:""}.</p>`}
+    </div></article>`).join("");
+  }
+  if(state.sharedOnly){$("loadmore").hidden=sharedHits.length<=state.visible;$("loadmore").textContent="Meer gedeelde HelloFresh-hits";}
  }
 
  // Categorieën zijn een indicatie op basis van de productnaam, geen geverifieerde productspecificaties.
@@ -719,7 +740,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    state.store=b.dataset.store;state.dealVisible=50;state.sourceVisible=8;
    updateCuisineOptions();resetAndRender();
  }));
- $("quick-savings").addEventListener("click",()=>{$("search").value="";$("mealtype").value="Avondeten";$("duration").value="30";$("selection").value="promos";$("sort").value="saving";state.visible=10;if(state.data)render();});
+ $("shared-hits-only").addEventListener("click",()=>{state.sharedOnly=!state.sharedOnly;$("shared-hits-only").setAttribute("aria-pressed",String(state.sharedOnly));$("selection").value="all";$("duration").value="all";$("health").value="prefer";state.visible=10;if(state.data)render();});
+ $("quick-savings").addEventListener("click",()=>{state.sharedOnly=false;$("search").value="";$("mealtype").value="Avondeten";$("duration").value="30";$("selection").value="promos";$("sort").value="saving";state.visible=10;if(state.data)render();});
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("search-shortcuts").addEventListener("click",event=>{
    const button=event.target.closest("[data-recipe-query]");
@@ -795,6 +817,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const response=await fetch("data.json?v="+Date.now(),{cache:"no-store"});
    if(!response.ok)throw Error("Geen geldige dagelijkse gegevens (HTTP "+response.status+")");
    state.data=await response.json();
+   try{const hits=await fetch("./shared-hellofresh-hits.json",{cache:"no-store"});if(hits.ok)state.sharedHits=await hits.json();}catch{}
+
    if(!state.data?.recipes||!state.data?.counts)throw Error("Geen geldige prijs- en receptgegevens");
    const t=new Date(state.data.updated_at);
    $("update").textContent="Gecontroleerd op "+t.toLocaleString("nl-NL",{dateStyle:"medium",timeStyle:"short",timeZone:"Europe/Amsterdam"});
