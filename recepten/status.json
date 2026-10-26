@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T12:09:45.364200+01:00",
+  "updated_at": "2026-10-26T12:15:30.246098+01:00",
   "source_last_modified": null,
   "shelf_products": {
     "ah": 15657,
@@ -32,12 +32,12 @@
     "lidl": 36
   },
   "recipes_with_used_discount": {
-    "ah": 70,
-    "jumbo": 29,
+    "ah": 77,
+    "jumbo": 25,
     "lidl": 0
   },
   "health_review_needed": {
-    "ah": 152,
+    "ah": 151,
     "jumbo": 161,
     "lidl": 151
   },
