@@ -174,11 +174,18 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const safeURL=x=>{try{const u=new URL(x);return /^https?:$/.test(u.protocol)?u.href:"#"}catch{return "#"}};
- let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]")};
+ function savedSelection(){
+  try{
+    const value=JSON.parse(localStorage.getItem("koopkracht_v2_selection")||"[]");
+    return Array.isArray(value)?value.filter(x=>x&&["ah","jumbo","lidl"].includes(x.store)&&
+      (typeof x.id==="string"||typeof x.id==="number")).slice(0,100):[];
+  }catch{return []}
+ }
+ let state={data:null,store:"ah",mode:"recipes",visible:10,dealVisible:50,sourceVisible:8,selected:savedSelection()};
  const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
  const storeData=()=>state.data?.recipes?.[state.store]||[];
  const active=()=>state.selected.filter(s=>state.data?.recipes?.[s.store]?.some(r=>r.id===s.id));
- function save(){localStorage.setItem("koopkracht_v2_selection",JSON.stringify(state.selected))}
+ function save(){try{localStorage.setItem("koopkracht_v2_selection",JSON.stringify(state.selected))}catch{}}
  function isSelected(r){return state.selected.some(x=>x.store===state.store&&x.id===r.id)}
  function toggle(id,variant="cheapest"){state.selected=state.selected.filter(x=>x.store===state.store);let i=state.selected.findIndex(x=>x.store===state.store&&x.id===id);if(i>=0&&((state.selected[i].variant||"cheapest")===variant))state.selected.splice(i,1);else if(i>=0)state.selected[i]={store:state.store,id,variant};else state.selected.push({store:state.store,id,variant});save();render()}
  function recipePrice(r){
