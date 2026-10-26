@@ -9,6 +9,8 @@ on:
       - 'src/verpakkingscombinaties.py'
       - 'tests/test_verpakkingscombinaties.py'
       - 'recepten/boodschappen.html'
+      - 'recepten/chat.html'
+      - 'tests/test_chatbot.cjs'
       - 'tests/test_boodschappen_prijsdekking.cjs'
       - 'tests/test_generieke_producten_en_deals.cjs'
       - 'tests/test_portie_flexibiliteit.py'
@@ -87,6 +89,7 @@ jobs:
           Path("/tmp/receptenradar_check.js").write_text("\n".join(scripts), encoding="utf-8")
           PY
           node --check /tmp/receptenradar_check.js
+          node tests/test_chatbot.cjs
           node tests/test_boodschappen_prijsdekking.cjs
           node tests/test_generieke_producten_en_deals.cjs
           node tests/test_deal_filters.cjs
