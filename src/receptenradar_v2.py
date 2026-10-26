@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from receptenradar_catalog import ING, RECIPES, RECIPE_METHODS, RECIPE_SOURCES, validate_dish_ingredients
+from product_compatibiliteit import compatible, recipe_line_errors
 from recept_keukens import infer_cuisine
 from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_quality_issues
 from receptenradar_checks import validate_publication
@@ -299,7 +300,9 @@ def load_deals(include_upcoming=False,as_of=None,horizon_days=7):
 def match_ingredient(product,ingredient):
     label,pattern,exclude=ING[ingredient]
     name=product["norm"]
-    return bool(re.search(pattern,name,re.I)) and not bool(re.search(exclude,name,re.I))
+    return (bool(re.search(pattern,name,re.I)) and
+            not bool(re.search(exclude,name,re.I)) and
+            compatible(product.get("name") or name, ingredient))
 
 def total_for(n,unit_price,promo=None):
     if not promo:return round(n*unit_price,2),n
@@ -673,6 +676,10 @@ def make_recipes(shelves,offers):
                     deal_lines.append(best)
                 else:
                     deal_lines.append({k:v for k,v in line.items() if k!="offer_alternatives"})
+            for item in lines+deal_lines:
+                if not compatible(item["product"],item["key"]):
+                    raise ValueError("Producttype wijkt af van ingrediënt: "+
+                                     title+" / "+item["key"]+" / "+item["product"])
             deal_used=sum(bool(l.get("sale")) for l in deal_lines)
             deal_cash=round(sum(l["cash_price"] for l in deal_lines),2)
             deal_extra=round(deal_cash-sum(l["cash_price"] for l in lines),2)
@@ -749,6 +756,11 @@ def make_recipes(shelves,offers):
               "per_serving":round(consumed/4,2) if complete else None,
               "saving":saving,"ingredients":lines,"missing":missing,
               "optional_pantry":"Smaakmakers staan per recept apart vermeld; niet inbegrepen in de prijs of voedingswaardeschatting."})
+        # Publicatie mag geen enkel gerecht bevatten waarin een saus, babyhapje,
+        # ontbijtspread of vleesvervanger als los hoofdingrediënt wordt verkocht.
+        for item in all_recipes:
+            wrong=recipe_line_errors(item)
+            if wrong:raise ValueError("Ongeldige supermarktmatch: "+str(wrong[:4]))
         # Beste ACTIECOMBINATIES voorop, daarbinnen kleinste complete prijs per portie.
         all_recipes.sort(key=lambda r:(
                not r["complete"],
