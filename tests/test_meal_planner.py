@@ -9,7 +9,7 @@ class TestMealPlanner(unittest.TestCase):
           {"store":"Lidl","text":"Paprika mix","price":1.0,"valid_from":"2026-10-20","valid_until":"2026-10-27"}]
         plans=plan_one_store(offers,"2026-10-23")
         p=next(x for x in plans if x["name"]=="Harissa-kipwraps" and x["store"]=="Jumbo")
-        self.assertEqual({m["ingredient"] for m in p["matches"]},{"kip","wrap"})
+        self.assertEqual({m["ingredient"] for m in p["matches"]},{"kipfilet","wrap"})
         self.assertIn("paprika",p["missing"])
         self.assertIsNone(p["total_price"])
     def test_expired_excluded(self):

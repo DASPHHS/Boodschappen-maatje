@@ -46,7 +46,7 @@ def _cost_of_lines(lines):
         promo_id=(action or {}).get("url") if action else None
         # Product/variant en prijsstructuur moeten identiek zijn om te combineren.
         key=(str(line["product"]).casefold(),unit_size,line["unit"],regular,
-             actual,promo_id,bool(action))
+             None if action else actual,promo_id,bool(action))
         g=groups.setdefault(key,{"label":line["label"],"product":line["product"],
                      "package":line["package"],"package_size":unit_size,
                      "unit":line["unit"],"required":0.0,

@@ -792,7 +792,7 @@ def export_shopping_index(shelves,offers):
             promos.append([p["name"],p["price"],p["quantity"],p["unit"],
                 p.get("original_price"),p.get("multi_buy_quantity"),
                 p.get("multi_buy_price"),p.get("promotion_type",""),
-                p.get("valid_until"),p.get("url",""),p.get("is_loyalty",False)])
+                p.get("valid_until"),p.get("url",""),p.get("is_loyalty",False),p.get("valid_from")])
         result[store]={"ordinary":ordinary,"promotions":promos}
     path=ROOT/"recepten"/"winkelprijzen.json"
     temp=path.with_suffix(".tmp")
@@ -945,9 +945,9 @@ def main():
     # actuele aanbiedingen. Deze titelmatches zijn nadrukkelijk NIET geprijsd.
     from actie_receptmatches import build_action_title_candidates
     source_recipe_matches=build_action_title_candidates(offers)
-    export_shopping_index(shelves,offers)
     recipes=make_recipes(shelves,offers)
     validate_publication(recipes)
+    export_shopping_index(shelves,offers)
     audit=audit_promotions(offers,recipes)
     quality=audit_recipe_quality(recipes)
     from weekmenu_advies import build_weekmenu

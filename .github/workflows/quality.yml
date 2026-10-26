@@ -1,0 +1,35 @@
+name: Platform kwaliteit
+on:
+  workflow_dispatch:
+  push:
+    paths: ['src/**', 'tests/**', 'recepten/**.html', 'recepten/**.js', 'docs/koopjes/**', '.github/workflows/quality.yml']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  regressie:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - name: Alle JavaScript regressietests
+        run: |
+          for test in tests/*.cjs; do node "$test"; done
+      - name: Syntax van alle JavaScript modules
+        run: |
+          find docs recepten -name '*.js' -exec node --check {} \;
+      - name: Mobiele en desktop browsertest
+        run: |
+          npm install --no-save --prefix /tmp/bm-browser playwright
+          /tmp/bm-browser/node_modules/.bin/playwright install --with-deps chromium
+          python -m http.server 8765 --directory docs > /tmp/bm-server.log 2>&1 &
+          NODE_PATH=/tmp/bm-browser/node_modules node tests/browser_smoke.js

@@ -74,6 +74,16 @@ function nutrition(name,quantity,unit,url){
   proteinPerServing:match.serving?round(match.protein100*match.serving/100,1):match.proteinPerPortion??round(match.protein100*match.portion/100,1)};
 }
 const WATCH=[
+ {"id": "skyr", "name": "Skyr", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "magerekwark", "name": "Magere kwark", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "kipfilet", "name": "Kipfilet", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "kipdijfilet", "name": "Kipdijfilet", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "eieren", "name": "Eieren", "unit": "any", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "spinazie", "name": "Spinazie", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "bessen", "name": "Blauwe bessen", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "bananen", "name": "Bananen", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "wraps", "name": "Volkoren wraps", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
+ {"id": "koffiebonen", "name": "Koffiebonen", "unit": "g", "type": "custom", "protein": false, "note": "Zoekwoordselectie; controleer variant en inhoud bij het product."},
  {id:"knijp",name:"Knijpkwark ≥20 g eiwit per verpakking",unit:"g",type:"squeezequark",protein:true,
   note:"Alleen echte knijpkwarkzakjes met minimaal 20 g geverifieerd eiwit. Andere eiwitrijke knijpzuivel staat apart."},
  {id:"on_the_go",name:"Eiwitrijke knijpzuivel ≥20 g",unit:"g",type:"squeeze",protein:true,
@@ -161,7 +171,7 @@ function sourceRows(src,watch,store="",today=isoDate()){
   const [name,unitPrice,quantity,unit,previous,k,bundlePrice,type,until,url,loyalty,from]=raw;
   if(!matchProduct(name,watch,url)||!Number(unitPrice)||!Number(quantity)||watch.unit!=="any"&&unit!==watch.unit)continue;
   if(loyalty)continue;
-  if(until&&String(until)<today||from&&String(from)>today)continue;
+  if(!until||!from||String(until)<today||String(from)>today||String(from)>String(until))continue;
   const id=sku(url);
   const checked=directPriceFor({url,quantity},store,today);
   const regular=found.find(x=>x.sku&&x.sku===id&&x.quantity===exactQty(quantity)&&!x.discount);

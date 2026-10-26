@@ -176,5 +176,21 @@ async function load(){
  }
  render();
 }
+$("export-favorites").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({version:1,followed,custom},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="boodschappen-favorieten.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+$("import-favorites").addEventListener("change",async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{
+  if(file.size>100000)throw Error("Bestand is te groot");
+  const data=JSON.parse(await file.text());
+  if(data.version!==1||!Array.isArray(data.custom)||!Array.isArray(data.followed))throw Error("Onjuist favorietenbestand");
+  const valid=data.custom.filter(x=>x&&typeof x.id==="string"&&x.id.startsWith("custom_")&&x.id.length<=100&&typeof x.name==="string"&&x.name.length<=100&&["g","ml"].includes(x.unit)).slice(0,30);
+  custom=[...new Map([...custom,...valid].map(x=>[x.id,x])).values()].slice(0,30);
+  const ids=new Set(catalog().map(x=>x.id));followed=[...new Set([...followed,...data.followed.filter(x=>ids.has(x))])];save();render();
+ }catch(err){$("save-status").textContent="Import niet uitgevoerd: "+err.message;}
+ e.target.value="";
+});
 render();load();
 })();

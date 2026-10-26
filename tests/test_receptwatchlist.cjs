@@ -50,9 +50,9 @@ const json={updated_at:new Date().toISOString(),stores:{
   ["Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",1.79,205,"g",POUCH],
   ["Texels Skuumkoppe Bier Fles 6 x 300 ml",9.99,1800,"ml","https://www.jumbo.com/sku"]
  ],promotions:[
-  ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",1,200,"g",1.99,2,1.99,"1+1 gratis","2099-10-27",SOURCE,false],
-  ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",0.8,200,"g",1.99,2,null,"1+1 gratis","2099-10-27",SOURCE,false],
-  ["Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",0.895,205,"g",1.79,2,1.79,"1+1 gratis","2099-10-27",POUCH,false],
+  ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",1,200,"g",1.99,2,1.99,"1+1 gratis","2099-10-27",SOURCE,false,"2026-10-20"],
+  ["XXL Nutrition Fit Yoghurt Granola Aardbei 200g",0.8,200,"g",1.99,2,null,"1+1 gratis","2099-10-27",SOURCE,false,"2026-10-20"],
+  ["Zuivelhoeve XXL Nutrition Fit Quark Strawberry Protein Quark 205g",0.895,205,"g",1.79,2,1.79,"1+1 gratis","2099-10-27",POUCH,false,"2026-10-20"],
   ["Jumbo Volle Melk",0.2,1000,"ml",0.89,2,0.4,"2 voor","2020-01-01","https://www.jumbo.com/vol",false]
  ]},
  lidl:{ordinary:[
@@ -100,7 +100,7 @@ assert.equal(W.bestStores(json,p("vollemelk"),TEST_DAY).winner.store,"jumbo");
 assert.equal(W.bestStores(json,p("skuum"),TEST_DAY).stores.lidl.best,null);
 const bulk=JSON.parse(JSON.stringify(json));
 bulk.stores.jumbo.ordinary.push(["XXL Nutrition Fit Yoghurt Aardbei 750g",3.99,750,"g",XL750]);
-bulk.stores.jumbo.promotions.push(["XXL Nutrition Fit Yoghurt Aardbei 750g",1.995,750,"g",3.99,2,3.99,"1+1 gratis","2099-10-27",XL750,false]);
+bulk.stores.jumbo.promotions.push(["XXL Nutrition Fit Yoghurt Aardbei 750g",1.995,750,"g",3.99,2,3.99,"1+1 gratis","2099-10-27",XL750,false,"2026-10-20"]);
 assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.price,3.99);
 assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.quantity,750);
 assert.equal(W.bestStores(bulk,p("xxl"),TEST_DAY).winner.protein,75);
@@ -124,3 +124,6 @@ assert(app.includes("onlyDeals"));
 assert(app.includes("Bekijk alleen aanbiedingen"));
 assert(!html.includes("1799.9999999999998"));
 console.log("Watchlist SKU, 1+1, kcal/eiwit, melk, knijpzuivel, Skuumkoppe en weergave: geslaagd");
+
+const undated=JSON.parse(JSON.stringify(json)); undated.stores.jumbo.promotions=undated.stores.jumbo.promotions.map(x=>x.slice(0,11));
+assert(W.bestRows(undated,"jumbo",p("xxl"),TEST_DAY).every(x=>!x.discount),"Geen actie zonder begindatum");

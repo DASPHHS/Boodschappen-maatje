@@ -489,7 +489,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     })):[l]);
     for(const piece of pieces){
       const k=selected.store+"|"+piece.product+"|"+piece.package_size+"|"+piece.unit;
-      const regularUnit=piece.unit_price??piece.regular_cash/Math.max(1,piece.packages);
+      const regularUnit=piece.unit_price??piece.regular_cash/Math.max(1,Math.ceil(piece.required/piece.package_size));
       if(!groups.has(k))groups.set(k,{...piece,store:selected.store,required:0,unit_price:regularUnit});
       groups.get(k).required+=piece.required;
     }
@@ -508,7 +508,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
       if(k>=2&&b>0){
         const full=Math.ceil(n/k)*k,choice=[[n,Math.floor(n/k)*b+(n%k)*l.unit_price],[full,full/k*b]].sort((a,b)=>a[1]-b[1])[0];
         if(choice[1]<normal){packages=choice[0];cost=choice[1]}
-      }else if(!k&&l.action.price*n<normal){cost=l.action.price*n}
+      }else if(!k&&!/gratis|multi|bundle|one.plus|\d+\s+voor|1\s*\+\s*1/i.test(l.action.promotion_type||"")&&l.action.price*n<normal){cost=l.action.price*n}
     }
     return {...l,packages,cash_price:Math.round(cost*100)/100};
   });

@@ -5,7 +5,8 @@ and ingredient quantities are missing.
 """
 import re
 from collections import defaultdict
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 RECIPES=[
  ("Harissa-kipwraps",["kipfilet","wrap","paprika","spinazie"],"Kruid kip met harissa, bak en serveer in volkoren wraps met verse groenten."),
@@ -39,8 +40,9 @@ ALIASES={
  "bloemkool":("bloemkool",)
 }
 def eligible(offer,day=None):
-    today=day or date.today().isoformat()
+    today=day or datetime.now(ZoneInfo("Europe/Amsterdam")).date().isoformat()
     if offer.get("price") is None:return False
+    if not offer.get("valid_from") or not offer.get("valid_until"):return False
     if offer.get("promotion_status")=="historical":return False
     if offer.get("valid_from") and str(offer["valid_from"])[:10]>today:return False
     if offer.get("valid_until") and str(offer["valid_until"])[:10]<today:return False
