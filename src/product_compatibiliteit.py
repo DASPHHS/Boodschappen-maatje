@@ -76,12 +76,30 @@ RULES={
  "rookworst":{"reject":r"\b(?:plantaardig|vega|vegetarisch|smaak|maaltijd)\b"}
 }
 
+# Algemene uitsluiting voor samengestelde gerechten bij losse ingrediënten.
+# Niet gebruiken voor receptcategorieën zoals wokgroente of maaltijdpakketten:
+# die vragen om een afzonderlijk product- en gebruiksmodel.
+COMPOSITE_MEAL=re.compile(
+ r"\\b(?:bereide\\s+rijst|rijstmaaltijd|rijstgerecht|pasta\\s+met|"
+ r"maaltijdsalade|kant\\s+en\\s+klaar|ready\\s+meal|"
+ r"complete\\s+maaltijd|ovenschotel|eenpansgerecht|"
+ r"rijst\\s+(?:met|en)\\s+|(?:kip|rund|vis|shoarma)\\s+met\\s+rijst|"
+ r"nasi\\s+(?:met|goreng)|bami\\s+(?:met|goreng))\\b"
+)
+WHOLE_INGREDIENTS={
+ "shoarma","kipfilet","kipdij","kipgehakt","gehakt","zalm","tonijn",
+ "garnalen","rijst","pasta","risottorijst","aardappel","broccoli",
+ "spinazie","boerenkool","bloemkool","paprika","ui","tomaten",
+ "champignons","tofu","eieren","bonen","linzen","kikkererwten"
+}
+
 def compatible(name,ingredient):
     name=norm(name)
     if not name:return False
     # Voor kruiden, olie en houdbare bewerkte basissauzen is productnaamtoets
     # nog steeds relevant; het gevaar is grootst voor hele ingrediënten.
     if PREPARED.search(name):return False
+    if ingredient in WHOLE_INGREDIENTS and COMPOSITE_MEAL.search(name):return False
     rule=RULES.get(ingredient)
     if not rule:return True
     return (not rule.get("positive") or bool(re.search(rule["positive"],name))) and not bool(
