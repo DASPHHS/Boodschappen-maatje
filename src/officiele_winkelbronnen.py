@@ -20,7 +20,7 @@ USER_AGENT="BoodschappenMaatje/1.0 (public offer discovery)"
 SOURCES={
  "lidl":"https://www.lidl.nl/c/aanbiedingen/a10008785",
  "action":"https://www.action.com/nl-nl/weekactie/",
- "xenos":"https://www.xenos.nl/folder",
+ "xenos":"https://www.xenos.nl/acties",
  "zeeman":"https://www.zeeman.com/nl-nl/weekaanbiedingen",
 }
 INTEREST=re.compile(r"\b(voeding|food|eten|snack|chocolade|snoep|rijst|pasta|saus|"
