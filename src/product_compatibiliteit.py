@@ -38,7 +38,7 @@ RULES={
            r"muesli|ontbijt|gebak|vla|dessert|ijs|repen)\b"
  },
  "banaan":{"reject":r"\b(?:yoghurt|kwark|reep|gedroogd|chips|nectar|ijs|melk|vla)\b"},
- "wortel":{"reject":r"\b(?:doperwten|erwten|mais|ma is|mix|zoetzuur|pickle|ingemaakt)\b"},
+ "wortel":{"reject":r"\b(?:doperwten|doperwtjes|erwten|erwtjes|mais|ma is|mix|zoetzuur|pickle|ingemaakt)\b"},
  "ui":{"reject":r"\b(?:amsterdamse|zilveruitjes|zilveruien|zoetzure|"
       r"ingelegde|ingelegd|gebakken|krokant|uitjes|uienringen|poeder|mix)\b"},
  "kipfilet":{"reject":r"\b(?:knorr|maggi|romana|trattoria|"
