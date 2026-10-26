@@ -37,6 +37,21 @@ class AanbiedingenVooruitTests(unittest.TestCase):
         self.assertTrue(future["ah"][0]["valid_until"])
 
     @patch("receptenradar_v2.fetch")
+    def test_nieuwe_actieweek_vanaf_maandag_ondanks_verouderde_upcoming_status(self,fetch):
+        fetch.side_effect=lambda url,params:FakeResponse([
+            deal("AH Bonus vanaf maandag","2026-10-26","2026-11-01","upcoming"),
+            deal("Zaterdag pas geldig","2026-10-31","2026-11-01","upcoming"),
+            deal("Zonder einddatum","2026-10-26","","upcoming"),
+            deal("Verlopen vrijdag","2026-10-19","2026-10-25","active"),
+        ] if params["retailer"]=="albert_heijn" else [])
+        active,errors,future=load_deals(include_upcoming=True,as_of=date(2026,10,26))
+        self.assertEqual(errors,[])
+        self.assertEqual([p["name"] for p in active["ah"]],["AH Bonus vanaf maandag"])
+        self.assertEqual([p["name"] for p in future["ah"]],["Zaterdag pas geldig"])
+        self.assertEqual(active["ah"][0]["valid_from"],"2026-10-26")
+        self.assertEqual(active["ah"][0]["valid_until"],"2026-11-01")
+
+    @patch("receptenradar_v2.fetch")
     def test_bestaand_contract_en_onbevestigde_startdatum(self,fetch):
         fetch.side_effect=lambda url,params:FakeResponse([
             deal("Onbekende startdatum","","2026-11-01","upcoming"),
