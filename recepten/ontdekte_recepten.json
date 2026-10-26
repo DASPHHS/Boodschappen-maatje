@@ -200,41 +200,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
-        "title_nl": "Honey Balsamic Chicken with Crispy Broccoli & Potatoes",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.themealdb.com/meal/52993",
-        "match_terms": [
-          "aardappel",
-          "broccoli",
-          "kipfilet"
-        ],
-        "matched_title_terms": 3,
-        "ingredient_keys": [
-          "aardappel",
-          "broccoli",
-          "kipfilet"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "broccoli": [
-            "Broccoli"
-          ],
-          "kipfilet": [
-            "Chicken Breast"
-          ]
-        },
-        "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Kaspressknödel - Cheese Dumplings",
         "title_nl": "Kaspressknödel - Cheese Dumplings",
         "source": "TheMealDB",
@@ -710,37 +675,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Broccoli & Stilton soup",
-        "title_nl": "Broccoli & Stilton soup",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.bbcgoodfood.com/recipes/1940679/broccoli-and-stilton-soup",
-        "match_terms": [
-          "aardappel",
-          "broccoli"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "aardappel",
-          "broccoli",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "broccoli": [
-            "Broccoli"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Chicken & mushroom Hotpot",
         "title_nl": "Chicken & mushroom Hotpot",
         "source": "TheMealDB",
@@ -763,38 +697,6 @@
           ],
           "mais": [
             "Sweetcorn"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Chicken Alfredo Primavera",
-        "title_nl": "Chicken Alfredo Primavera",
-        "source": "TheMealDB",
-        "cuisine": "Italiaans",
-        "url": "https://www.themealdb.com/meal/52796",
-        "match_terms": [
-          "broccoli",
-          "melk"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "broccoli",
-          "champignons",
-          "melk",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "broccoli": [
-            "Broccoli"
-          ],
-          "melk": [
-            "milk"
           ]
         },
         "health_priority": "nader beoordelen",
@@ -1175,8 +1077,8 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       }
     ],
-    "ingredient_confirmed_count": 35,
-    "source_results": 58,
+    "ingredient_confirmed_count": 32,
+    "source_results": 53,
     "verified_matches": 0,
     "errors": []
   },

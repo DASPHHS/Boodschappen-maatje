@@ -1,29 +1,29 @@
 {
   "status": "indicative_recipe_comparison",
-  "source_updated_at": "2026-10-26T12:49:12.173958+01:00",
+  "source_updated_at": "2026-10-26T13:13:46.758555+01:00",
   "recommended": {
     "store": "Jumbo",
     "complete": true,
-    "total_eur": 30.14,
+    "total_eur": 27.4,
     "within_budget": true
   },
   "stores": [
     {
       "store": "Jumbo",
       "complete": true,
-      "total_eur": 30.14,
+      "total_eur": 27.4,
       "within_budget": true
     },
     {
       "store": "Albert Heijn",
       "complete": true,
-      "total_eur": 33.19,
+      "total_eur": 28.28,
       "within_budget": true
     },
     {
       "store": "Lidl",
       "complete": true,
-      "total_eur": 40.26,
+      "total_eur": 35.72,
       "within_budget": true
     },
     {
@@ -48,6 +48,16 @@
       "passes_nutrition_preference": true
     },
     {
+      "title": "Marokkaanse tonijnstoof met kikkererwten en wortel",
+      "category": "Vis",
+      "cuisine": "Marokkaans",
+      "minutes": 35,
+      "portions": 4,
+      "protein_min_g_per_portion": 34.8,
+      "vegetable_min_g_per_portion": 400,
+      "passes_nutrition_preference": true
+    },
+    {
       "title": "Kipgehaktballetjes met tomatensaus",
       "category": "Kip",
       "cuisine": "Internationaal",
@@ -55,16 +65,6 @@
       "portions": 4,
       "protein_min_g_per_portion": 37.7,
       "vegetable_min_g_per_portion": 300,
-      "passes_nutrition_preference": true
-    },
-    {
-      "title": "Boerenkoolstamppot met rundergehakt",
-      "category": "Vlees",
-      "cuisine": "Internationaal",
-      "minutes": 35,
-      "portions": 4,
-      "protein_min_g_per_portion": 33.0,
-      "vegetable_min_g_per_portion": 200,
       "passes_nutrition_preference": true
     }
   ],
@@ -76,7 +76,7 @@
     "persoonlijke kortingen en lokale winkelvoorraad"
   ],
   "notice": "Vergelijking voor exact dezelfde geprijsde recepten bij AH, Jumbo en Lidl. Geen volledige huishoudelijke weekmand. Online schapprijzen en aanbiedingen kunnen afwijken van lokale winkelvoorraad.",
-  "generated_at": "2026-10-26T12:49:12.338435+01:00",
+  "generated_at": "2026-10-26T13:13:46.935395+01:00",
   "budget_eur": 150,
   "comparison_type": "identieke gerechten uit de huidige Recepten Radar"
 }
