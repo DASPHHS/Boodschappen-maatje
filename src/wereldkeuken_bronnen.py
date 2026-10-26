@@ -137,8 +137,10 @@ def parse_links(html,landing,source,cuisine,limit=60):
 def collect_world_links(session=None,limit_per_source=50,max_sources=None):
     http=session or requests.Session()
     results=[];status=[]
-    # Dagelijkse rotatie: elke drie dagen komt iedere bron aan bod.
-    shard=datetime.now(timezone.utc).date().toordinal()%3
+    # Halfuurlijkse rotatie over drie brontranches: alle bronnen binnen 90 minuten.
+    # Per run blijven robots.txt en begrensde aantallen requests leidend.
+    now=datetime.now(timezone.utc)
+    shard=(now.hour*2+now.minute//30)%3
     sources=WORLD_SOURCES[shard::3] if max_sources is None else WORLD_SOURCES[:max_sources]
     for source,cuisine,url in sources:
         if not robots_allowed(url):
