@@ -73,10 +73,27 @@ function filteredPriced(){
 function filteredIdeas(){
  if(!data||$("statusFilter").value==="complete")return [];
  const topic=$("focus").value,q=norm($("query").value.trim());
- return (data.inspiration||[]).filter(r=>
+ const entries=(data.inspiration||[]).filter(r=>
    (topic==="all"||r.focus?.includes(topic))&&
    (!q||norm(r.title+" "+r.cuisine+" "+r.source).includes(q))
- ).sort((a,b)=>a.source.localeCompare(b.source,"nl")||a.title.localeCompare(b.title,"nl"));
+ );
+ // Om-en-om per receptenbron: geen twaalf vrijwel identieke resultaten
+ // achter elkaar van dezelfde website of hetzelfde kookschrift.
+ const pools=new Map();
+ for(const entry of entries){
+   const key=entry.source||"Onbekende bron";
+   if(!pools.has(key))pools.set(key,[]);
+   pools.get(key).push(entry);
+ }
+ const groups=[...pools.entries()].sort((a,b)=>a[0].localeCompare(b[0],"nl"));
+ for(const [,group] of groups)group.sort((a,b)=>a.title.localeCompare(b.title,"nl"));
+ const spread=[];
+ while(spread.length<entries.length){
+   let added=false;
+   for(const [,group] of groups)if(group.length){spread.push(group.shift());added=true}
+   if(!added)break;
+ }
+ return spread;
 }
 function recipeCard(r){
  const link="./?zoek="+encodeURIComponent(r.title)+"&winkel="+encodeURIComponent(r.store)+"&alle=1";
