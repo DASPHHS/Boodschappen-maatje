@@ -186,7 +186,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
  }
  function lineHtml(l){
-  return `<div class="line"><div>${esc(l.label)} <span class="sub">(${l.required} ${esc(l.unit)})</span>${l.adjusted?`<div class="sub">Aangepast van ${l.original_required} naar ${l.required} ${esc(l.unit)} om een extra verpakking te voorkomen.</div>`:""}<div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.packages} verpakking(en) · ${esc(l.source)}${l.sale?` <span class="pill">ACTIE</span>`:""}${l.frozen?` <span class="pill">DIEPVRIES</span>`:""}${l.flavoured_dairy?` <span class="pill">SMAAKVARIANT · CHECK ETIKET</span>`:""}</div>${(l.offer_alternatives||[]).map(a=>`<div class="sub">Ook in de aanbieding: ${esc(a.product)} · ${a.packages} verpakking(en) voor ${euro(a.cash_price)}${a.more_expensive_than_selected?" (duurder dan geselecteerde optie)":""}${a.url?` · <a target="_blank" rel="noopener noreferrer" href="${esc(a.url)}">Aanbieding</a>`:""}</div>`).join("")}</div><strong>${euro(l.cash_price)}</strong></div>`;
+  return `<div class="line"><div>${esc(l.label)} <span class="sub">(${l.required} ${esc(l.unit)})</span>${l.adjusted?`<div class="sub">Aangepast van ${l.original_required} naar ${l.required} ${esc(l.unit)} om een extra verpakking te voorkomen.</div>`:""}<div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.components?.length?"verpakkingscombinatie":l.packages+" verpakking(en)"} · ${esc(l.source)}${l.sale?` <span class="pill">ACTIE</span>`:""}${l.frozen?` <span class="pill">DIEPVRIES</span>`:""}${l.flavoured_dairy?` <span class="pill">SMAAKVARIANT · CHECK ETIKET</span>`:""}</div>${(l.offer_alternatives||[]).map(a=>`<div class="sub">Ook in de aanbieding: ${esc(a.product)} · ${a.packages} verpakking(en) voor ${euro(a.cash_price)}${a.more_expensive_than_selected?" (duurder dan geselecteerde optie)":""}${a.url?` · <a target="_blank" rel="noopener noreferrer" href="${esc(a.url)}">Aanbieding</a>`:""}</div>`).join("")}</div><strong>${euro(l.cash_price)}</strong></div>`;
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
@@ -378,9 +378,20 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const r=state.data.recipes[selected.store].find(x=>x.id===selected.id);
    const ingredientLines=selected.variant==="deals"&&r.deal_basket?.ingredients?r.deal_basket.ingredients:r.ingredients;
    for(const l of ingredientLines){
-    const k=selected.store+"|"+l.product+"|"+l.package_size+"|"+l.unit;
-    if(!groups.has(k))groups.set(k,{...l,store:selected.store,required:0,unit_price:l.regular_cash/Math.ceil(l.required/l.package_size)});
-    groups.get(k).required+=l.required;
+    // Een gemengde receptregel bestaat uit afzonderlijke kassa-artikelen.
+    // Tel de werkelijk gekozen verpakkingen, niet de samengestelde labelregel.
+    const pieces=(l.components?.length?l.components.map(c=>({
+      ...c,key:l.key,label:l.label,unit:l.unit,
+      required:c.packages*c.package_size,
+      regular_cash:c.unit_price*c.packages,
+      unit_price:c.unit_price
+    })):[l]);
+    for(const piece of pieces){
+      const k=selected.store+"|"+piece.product+"|"+piece.package_size+"|"+piece.unit;
+      const regularUnit=piece.unit_price??piece.regular_cash/Math.max(1,piece.packages);
+      if(!groups.has(k))groups.set(k,{...piece,store:selected.store,required:0,unit_price:regularUnit});
+      groups.get(k).required+=piece.required;
+    }
    }
    for(const l of r.missing){
     const existing=missing.find(x=>x.store===selected.store&&x.label===l.label&&x.unit===l.unit);
