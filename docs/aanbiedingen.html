@@ -37,5 +37,5 @@ if(tab==="recipes")$("#results").innerHTML=rows.map(x=>'<article class="item"><s
 if(!$("#results").innerHTML)$("#results").innerHTML='<div class="empty">Geen resultaten voor deze selectie.</div>';
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));tab=b.dataset.tab;render()}));
-["search","store","sort"].forEach(id=>$("#"+id).addEventListener(id==="search"?"input":"change",render));render();
+["search","store","sort","category"].forEach(id=>$("#"+id).addEventListener(id==="search"?"input":"change",render));render();
 </script><script>document.addEventListener("DOMContentLoaded",()=>{const q=new URLSearchParams(location.search).get("q"),input=document.getElementById("search"),category=document.getElementById("category");if(q&&input){input.value=q;input.dispatchEvent(new Event("input",{bubbles:true}));input.dispatchEvent(new Event("change",{bubbles:true}))}if(category&&input)category.addEventListener("change",()=>{input.value="";input.dispatchEvent(new Event("input",{bubbles:true}));input.dispatchEvent(new Event("change",{bubbles:true}));})});</script></body></html>
