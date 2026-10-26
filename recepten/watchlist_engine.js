@@ -43,7 +43,8 @@ function nutrition(name,quantity,unit,url){
  if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|yoghurt)|(kwark|yoghurt).*(protein|fit)/.test(n))return null;
  if(id?.startsWith("Jumbo-")&&!/(protein|xxl|fit).*(kwark|quark|yoghurt|yogurt)|(kwark|quark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
  return {proteinPer100g:match.protein100,proteinPerPackage:match.proteinPerPortion??round(match.protein100*quantity/100,1),
-   proteinSource:match.source,serving:match.serving??match.portion};
+   proteinSource:match.source,serving:match.serving??match.portion,
+  proteinPerServing:match.serving?round(match.protein100*match.serving/100,1):match.proteinPerPortion??round(match.protein100*match.portion/100,1)};
 }
 const WATCH=[
  {id:"knijp",name:"Knijpkwark ≥20 g eiwit per verpakking",unit:"g",type:"squeezequark",protein:true,
@@ -51,7 +52,7 @@ const WATCH=[
  {id:"on_the_go",name:"Eiwitrijke knijpzuivel ≥20 g",unit:"g",type:"squeeze",protein:true,
   note:"Alternatief voor knijpkwark: een drink- of knijpverpakking met 20 g eiwit, expliciet herkend."},
  {id:"xxl",name:"XXL Nutrition / Zuivelhoeve Fit yoghurt",unit:"g",type:"xxl",protein:true,
-  note:"De exacte 200g-verpakking bevat 20 g eiwit; een 750g-bak telt pas na bronverificatie mee."},
+  note:"200g-bekers bevatten 20g eiwit. De 750g-voordeelbak bevat 75g, oftewel 20g per zelf gekozen portie van 200g."},
  {id:"highprotein",name:"Eiwitrijke zuivel ≥20 g per portie",unit:"g",type:"protein",protein:true,
   note:"Alleen productvarianten waarvan voedingswaarden per SKU geverifieerd zijn."},
  {id:"vollemelk",name:"Volle koemelk",unit:"ml",type:"milk",protein:false,note:"Geen halfvolle, plantaardige of chocolademelk."},
@@ -145,6 +146,8 @@ function normalizeRow(row,watch){
   pricePerUnit:round(row.price*unitScale/totalContent,3),
   unitLabel:calcUnit==="g"?"per 100 g":calcUnit==="ml"?"per liter":"per stuk",
   protein: nutrient?.proteinPerPackage??null,
+  proteinServing: nutrient?.serving??null,
+  proteinPerServing: nutrient?.proteinPerServing??null,
   proteinSource:nutrient?.proteinSource??null,
   eurosPer20,cartCost:row.price};
 }
