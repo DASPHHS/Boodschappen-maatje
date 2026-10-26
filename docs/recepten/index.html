@@ -216,9 +216,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(selection==="two")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>=2);
   if(selection==="promos")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>0);
   const noMatchingPromotions=(selection!=="all" && rs.length===0 && withoutPromoFilter.length>0);
-  // Behoud het inzicht in reguliere kassaprijzen bij een mislukte actiematch,
-  // maar toon dit uitsluitend met een expliciete waarschuwing.
-  if(noMatchingPromotions)rs=withoutPromoFilter;
+  // Actiefilter is strikt: toon geen recepten zonder gebruikte korting
+  // wanneer de gebruiker expliciet op aanbiedingen filtert.
   const sort=$("sort").value;
   if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
   if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
@@ -261,7 +260,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("store-status").textContent=visible.length+" van "+total+" recepten · "+portion+"% voedingsvoorkeur volgens ingrediëntscreening · "+state.data.counts.promotions[state.store]+" actievermeldingen (korting niet altijd bevestigd)";
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
-  $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Hieronder staan recepten ter inspiratie (zonder bevestigde korting). Bij ieder recept staat of de totaalprijs volledig is of nog prijzen ontbreken. Bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
+  $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Er worden geen recepten zonder de gevraagde korting getoond. Zet het actiefilter uit voor reguliere recepten of bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
     <div class="visual"><span>${emoji[r.category]||"🍲"}</span><span class="pill">${r.deal_basket?.used_actions>r.sale_count?`${r.deal_basket.used_actions} acties mogelijk · ${r.sale_count} in goedkoopste mand`:`${r.sale_count} gebruikte acties`}</span></div>
     <div class="recipe-body"><h3>${esc(r.title)}</h3>
     <div class="chips"><span class="chip">${esc(r.meal_type||"Avondeten")}</span><span class="chip">${esc(r.cuisine||"Overig")}</span>${r.portable?`<span class="chip">Mee te nemen ✓</span>`:""}${r.mealprep?`<span class="chip">Geschikt als mealprep-basis</span>`:""}<span class="chip">${r.nutrition?.kcal_per_serving_estimate!=null?`≈ ${r.nutrition.kcal_per_serving_estimate} kcal/portie (${r.nutrition.kcal_total_estimate} kcal totaal, 4 porties)`:"Kcal niet volledig berekenbaar"}</span><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_g_per_serving_estimate!=null?`≈ ${Number(r.nutrition.protein_g_per_serving_estimate).toLocaleString("nl-NL")} g eiwit/portie · ${r.nutrition.protein_source?"≥30 g ✓":"<30 g"}`:"Eiwit niet berekend"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_g_per_serving_estimate!=null?`≈ ${r.nutrition.vegetable_g_per_serving_estimate} g groenten/portie · ${r.nutrition.vegetable_forward?"≥250 g ✓":"<250 g"}`:"Groenten niet berekend"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
