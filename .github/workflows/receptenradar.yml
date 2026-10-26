@@ -53,6 +53,8 @@ on:
       - 'tests/test_deal_filters.cjs'
       - 'recepten/index.html'
       - 'recepten/recipe_search.js'
+      - 'recepten/persoonlijk_weekmenu.js'
+      - 'tests/test_persoonlijk_weekmenu.cjs'
       - 'tests/test_receptzoeker.cjs'
       - 'recepten/status.html'
       - 'tests/test_scan_status.cjs'
@@ -118,6 +120,7 @@ jobs:
           node tests/test_deal_filters.cjs
           node tests/test_keuken_filters.cjs
           node tests/test_weekmenu_ui.cjs
+          node tests/test_persoonlijk_weekmenu.cjs
           node tests/test_scan_status.cjs
           node tests/test_mealprep_ui.cjs
       - name: Haal echte schap- en actieprijzen op en bereken recepten
@@ -139,6 +142,7 @@ jobs:
           cp recepten/watchlist_engine.js docs/recepten/watchlist_engine.js
           cp recepten/watchlist_app.js docs/recepten/watchlist_app.js
           cp recepten/recipe_search.js docs/recepten/recipe_search.js
+          cp recepten/persoonlijk_weekmenu.js docs/recepten/persoonlijk_weekmenu.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
           cp recepten/data.json docs/recepten/data.json
@@ -150,7 +154,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add recepten/shared-hellofresh-hits.json docs/recepten/shared-hellofresh-hits.json recepten/shared_recipe_hits.js docs/recepten/shared_recipe_hits.js
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
-          git add docs/recepten/recipe_search.js
+          git add docs/recepten/recipe_search.js docs/recepten/persoonlijk_weekmenu.js
           git add docs/recepten/watchlist.html
           git add docs/recepten/watchlist_engine.js docs/recepten/watchlist_app.js
           git add docs/recepten/index.html docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
