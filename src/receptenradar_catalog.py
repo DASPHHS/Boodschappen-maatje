@@ -67,10 +67,6 @@ ING = {
 # Garnalen zijn ook als diepvriesproduct geschikt; de matcher controleert de productvariant.
 # Kernrecepten; kruiden, olie, zout en peper naar smaak uit eigen voorraad.
 RECIPES = [
- ("Knoflookgarnalen met volkorenpasta en spinazie","Vis",25,[("garnalen",800,"g"),("pasta",320,"g"),("spinazie",600,"g"),("tomaten",400,"g")]),
- ("Garnalencurry met bloemkool en rijst","Vis",35,[("garnalen",800,"g"),("bloemkool",1,"st"),("kokosmelk",400,"ml"),("rijst",280,"g"),("ui",150,"g")]),
- ("Garnalenwok met groenten en zilvervliesrijst","Vis",25,[("garnalen",800,"g"),("wok",900,"g"),("rijst",300,"g")]),
-
  ("Kip teriyaki met wokgroenten","Kip",25,[("kipfilet",600,"g"),("wok",800,"g"),("rijst",320,"g"),("ui",150,"g")]),
  ("Romige kip-spinaziepasta","Kip",30,[("kipfilet",600,"g"),("spinazie",500,"g"),("pasta",350,"g"),("yoghurt",250,"g")]),
  ("Kip-curry met bloemkool","Kip",35,[("kipfilet",600,"g"),("bloemkool",1,"st"),("kokosmelk",400,"ml"),("rijst",300,"g")]),
@@ -261,6 +257,10 @@ RECIPES = [
  ("Ontbijt: groenteomelet met skyr ernaast","Vegetarisch",15,[("eieren",12,"st"),("spinazie",450,"g"),("paprika",2,"st"),("kwark",1000,"g")]),
  ("Boerenkoolstamppot met rookworst (af en toe)","Vlees",35,[("boerenkool",1200,"g"),("aardappel",600,"g"),("rookworst",400,"g"),("ui",150,"g")]),
  ("Boerenkoolstamppot met kruidige kip (lichter alternatief)","Kip",35,[("boerenkool",1200,"g"),("aardappel",600,"g"),("kipfilet",750,"g"),("ui",150,"g")]),
+ ("Knoflookgarnalen met volkorenpasta en spinazie","Vis",25,[("garnalen",800,"g"),("pasta",320,"g"),("spinazie",600,"g"),("tomaten",400,"g")]),
+ ("Garnalencurry met bloemkool en rijst","Vis",35,[("garnalen",800,"g"),("bloemkool",1,"st"),("kokosmelk",400,"ml"),("rijst",280,"g"),("ui",150,"g")]),
+ ("Garnalenwok met groenten en zilvervliesrijst","Vis",25,[("garnalen",800,"g"),("wok",900,"g"),("rijst",300,"g")]),
+
 
 ]
 
