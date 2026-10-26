@@ -26,6 +26,7 @@ assert.equal(items[0].unit,null,'Onbekende productsoort mag geen onterechte stuk
 assert(relevance('volle melk','AH Volle Melk')>0);
 assert.equal(relevance('volle melk','Arla Lactofree volle melk'),-1);
 assert.equal(relevance('volle melk','AH Halfvolle Melk'),-1);
+for(const [q,p] of [['blauwe bessen','Hero Fruitspread blauwe bessen'],['blauwe bessen',"Ella s Kitchen baby bosbessen"],['aardbeien','AH Terra Plantaardige soja gurt aardbeien'],['kipfilet','Knorr Trattoria kipfilet romana'],['rundergehakt','AH Half om half gehakt']])assert.equal(relevance(q,p),-1,'Onjuiste boodschappenproductmatch '+q+' / '+p);
 const milk=inputItems('volle melk')[0];
 vm.runInContext('data='+JSON.stringify({stores:{
  ah:{ordinary:[['AH Volle Melk',1.35,1000,'ml','']],promotions:[]},
