@@ -82,7 +82,7 @@ def priced_suggestions(data):
             if not focus:
                 continue
             price = price_number(recipe.get("checkout")) if recipe.get("complete") else None
-            amount_used = int(recipe.get("deal_basket", {}).get("used_actions") or recipe.get("sale_count") or 0)
+            amount_used = int((recipe.get("deal_basket") or {}).get("used_actions") or recipe.get("sale_count") or 0)
             result = {
                 "title": title, "store": store, "focus": focus,
                 "cuisine": recipe.get("cuisine") or "Internationaal",
@@ -91,11 +91,11 @@ def priced_suggestions(data):
                 "complete": price is not None, "checkout": price,
                 "per_serving": price_number(recipe.get("per_serving")),
                 "used_actions": amount_used,
-                "health_priority": bool(recipe.get("nutrition", {}).get("priority")),
-                "protein_per_serving": recipe.get("nutrition", {}).get("protein_g_per_serving_estimate"),
-                "vegetables_per_serving": recipe.get("nutrition", {}).get("vegetable_g_per_serving_estimate"),
+                "health_priority": bool((recipe.get("nutrition") or {}).get("priority")),
+                "protein_per_serving": (recipe.get("nutrition") or {}).get("protein_g_per_serving_estimate"),
+                "vegetables_per_serving": (recipe.get("nutrition") or {}).get("vegetable_g_per_serving_estimate"),
                 "id": recipe.get("id"),
-                "missing_count": len(recipe.get("missing", [])),
+                "missing_count": len(recipe.get("missing") or []),
                 "origin": recipe.get("inspiration") or "Eigen recept",
                 "status": "volledig geprijsd" if price is not None else "niet volledig geprijsd",
             }
@@ -221,7 +221,7 @@ def main():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print("Halfuurcontrole", now.isoformat(), "geprijsde", len(result["suggestions"]),
-          "inspiratie", len(result["inspiration"]), "bronnen", status)
+          "inspiratie", len(result["inspiration"]), "tonijn", result["focus_counts"]["tonijn"], "bronnen", status)
 
 if __name__ == "__main__":
     main()
