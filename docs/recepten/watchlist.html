@@ -19,166 +19,29 @@ button.on,button:hover{background:#195d40;color:white}button:focus-visible,input
 .small{font-size:12px}#favorites-list{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:840px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:570px){.grid{grid-template-columns:1fr}.panel{padding:15px}main{padding:0 10px}}
-</style></head><body><header><div class="wrap"><div><a href="./">← Recepten en aanbiedingen</a> · <a href="./boodschappen.html">Boodschappenassistent</a></div><h1>Mijn favorieten en prijswatchlist</h1><p>Vergelijk elke supermarkt op echte productsoort, verpakkingsgrootte en prijs per eenheid. Alleen vastgestelde voedingswaarden mogen voldoen aan jouw eiwitminimum.</p></div></header>
+
+.watch-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.watch-top button{white-space:nowrap;flex-shrink:0}
+.watch h3{font-size:16px;line-height:1.35}.watch .product{background:#f6faf7;border-radius:10px;padding:12px;margin-top:7px}
+.watch .product a{color:#176747;font-weight:700;text-decoration:underline;overflow-wrap:anywhere}
+.row-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline;margin:6px 0 4px}
+.row-top .price{font-size:20px}.pill{display:inline-block;background:#dcefe1;color:#1a633c;border-radius:5px;padding:2px 6px;font-size:11px;font-weight:730}
+.pill.sale{background:#fff0d5;color:#825716}.winner{background:#eaf6ed;border-radius:9px;padding:11px;margin:11px 0}
+.winner strong{display:block;font-size:18px}.winner .small{color:#507461}
+.watch .store{border-top:1px solid #dbe5dc;margin-top:13px;padding-top:10px}
+.watch .store h4{font-size:14px;margin:0 0 6px}.watch .bundle{color:#735027}
+.regular,.protein,.notfound{font-size:12px;color:#597061;margin-top:5px}
+.warning{color:#7a5229;background:#fff6e4;padding:10px;border-radius:8px;font-size:13px}
+#custom-unit{padding:10px;border:1px solid #b8d3c2;border-radius:9px;background:white}
+#toggle-followed[aria-pressed=true]{background:#176747;color:white}
+</style></head><body><header><div class="wrap"><div><a href="./">← Recepten en aanbiedingen</a> · <a href="./boodschappen.html">Boodschappenassistent</a></div><h1>Mijn favorieten en prijswatchlist</h1><p>Alleen prijs- en eiwitclaims van de juiste productvariant. Bundels, losse prijzen en verpakkingen worden apart getoond.</p></div></header>
 <main><section class="panel"><h2>Mijn terugkerende producten</h2>
 <div id="freshness" class="freshness" aria-live="polite">Prijsgegevens ophalen…</div>
 <p class="note">Druk op 'Volgen' om deze keuze op dit apparaat op te slaan. Je favorieten blijven staan als de supermarktprijzen veranderen. Deze website synchroniseert niet tussen apparaten en verzendt geen persoonsgegevens.</p>
-<div class="form-row"><input id="custom" placeholder="Voeg zelf een product toe, bijvoorbeeld koffiebonen" maxlength="100" aria-label="Extra product op watchlist"><button id="add">Product toevoegen</button></div>
-<p class="note">Handmatig toegevoegde producten worden op productnaam gevonden; exacte samenstelling moet nog worden geverifieerd.</p>
+<div class="actions"><button id="toggle-followed" type="button" aria-pressed="false">Alleen mijn favorieten</button></div><p id="save-status" class="note" role="status"></p>
+<div class="form-row"><input id="custom" placeholder="Voeg zelf een product toe, bijvoorbeeld koffiebonen" maxlength="100" aria-label="Extra product op watchlist"><select id="custom-unit" aria-label="Prijs vergelijken per"><option value="g">Per 100 g</option><option value="ml">Per liter</option></select><button id="add">Product toevoegen</button></div>
+<p class="note">Eigen producten: vergelijk op exact de opgegeven zoekwoorden en eenheid. Controleer het gevonden artikel voordat je het koopt.</p>
 <div id="favorites-list"></div></section>
-<section class="panel"><h2>Vergelijk producten</h2><p class="note">Laagste vergelijkbare prijs per 100 g of liter. Bij eiwitproducten tonen we alleen een winnaar als minimaal 20 g eiwit per portieverpakking uit gecontroleerde specificaties volgt. Onbekende etiketten zijn geen bewezen match.</p>
+<section class="panel"><h2>Vergelijk producten</h2><p class="note">Vergelijk het minimum kassabedrag én de prijs per 100 g, liter of 20 g eiwit. 1+1-acties vereisen aankoop van twee verpakkingen. Bij ontbrekende voedingswaarden of twijfelachtige inhoud verschijnt geen winnaar.</p>
 <div id="watch-grid" class="grid" aria-live="polite"></div></section></main>
-<script>
-(function(){
-"use strict";
-const $=id=>document.getElementById(id);
-const STORE=["ah","jumbo","lidl"], NAMES={ah:"Albert Heijn",jumbo:"Jumbo",lidl:"Lidl"};
-const P=[
- {id:"knijp",name:"Knijpkwark: minstens 20 g eiwit",unit:"g",portion:200,protein:true,
-  note:"Eiwit per knijpverpakking vereist. Andere kwarkbakjes zijn geen knijpkwark."},
- {id:"xxl",name:"XXL Nutrition / Zuivelhoeve Fit Yogurt",unit:"g",portion:200,protein:true,
-  note:"XXL Fit Yogurt 200 g bevat 20 g eiwit, bevestigd door fabrikant."},
- {id:"highprotein",name:"Andere eiwitrijke zuivel: minstens 20 g",unit:"g",portion:200,protein:true,
-  note:"Alternatieven van andere merken, mits voedingswaarde van precies deze verpakking bevestigd is."},
- {id:"vollemelk",name:"Volle koemelk",unit:"ml",portion:1000,protein:false,note:"Geen halfvolle, plantaardige of chocolademelk."},
- {id:"gingerbeer",name:"Gemberbier 0,0%",unit:"ml",portion:1000,protein:false,
-  note:"Alleen expliciet alcoholvrij aangeduide producten. Gemberbier zonder alcoholvermelding blijft ongecontroleerd."},
- {id:"skuum",name:"Texels Skuumkoppe (origineel)",unit:"ml",portion:1000,protein:false,note:"Vergelijk de originele variant, niet met Skuumkoppe 0.0."},
- {id:"skuum0",name:"Texels Skuumkoppe 0.0",unit:"ml",portion:1000,protein:false,note:"Alcoholvrije variant wordt apart vergeleken."}
-];
-const KEY="bm_favoriete_producten_v1",CKEY="bm_eigen_watchlist_v1";
-const norm=x=>String(x||"").toLocaleLowerCase("nl").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();
-const money=x=>"€ "+Number(x).toLocaleString("nl-NL",{minimumFractionDigits:2,maximumFractionDigits:2});
-const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const link=x=>{try{const u=new URL(x);return /^https?:$/.test(u.protocol)?u.href:"#"}catch{return "#"}};
-function read(key,fallback){try{const value=JSON.parse(localStorage.getItem(key)||"null");return Array.isArray(value)?value:fallback}catch{return fallback}}
-let active=read(KEY,["knijp","xxl","highprotein","vollemelk","gingerbeer","skuum","skuum0"]);
-let custom=read(CKEY,[]).filter(x=>x&&typeof x.name==="string"&&typeof x.id==="string").slice(0,35);
-let snapshot=null;
-function save(){try{localStorage.setItem(KEY,JSON.stringify(active));localStorage.setItem(CKEY,JSON.stringify(custom))}catch{$("freshness").textContent+=" · Opslaan op dit apparaat is geblokkeerd";}}
-function inStore(product,p){
- const n=norm(product);
- if(/\b(baby|olvarit|knorr|maaltijd|saus|mix|smoothie)\b/.test(n))return false;
- if(p.id==="knijp")return /(knijpkwark|knijp kwark|breaker|squeeze.*quark|kwark.*knijp)/.test(n)&&!/(baby|fruit|chocolade)/.test(n);
- if(p.id==="xxl")return /(xxl|zuivelhoeve)/.test(n)&&/(fit.?yog|fit.?yogh|fityogurt|fit yogurt|yogurt granola)/.test(n);
- if(p.id==="highprotein")return /(protein|proteine|prote n|hipro|high protein|fit.?yog|fit.?quark|skyr|kwark)/.test(n)&&
-   /(yoghurt|yogurt|kwark|quark|protein|proteine|pudding|skyr)/.test(n)&&!/\b(drank|shake|melk|poeder|snackreep)\b/.test(n);
- if(p.id==="vollemelk")return /(volle melk|vollemelk|volle houdbare melk)/.test(n)&&!/(halfvol|karnemelk|chocolade|geit|lactosevrij|kokos|soja|amandel|haver|plantaardig|magere|melkpoeder|melkdrank)/.test(n);
- if(p.id==="gingerbeer")return /(ginger beer|gingerbeer|gemberbier)/.test(n)&&/(alcoholvrij|0 0|0 procent|zero|non alcoholic)/.test(n);
- if(p.id==="skuum")return /skuumkoppe/.test(n)&&!/(alcoholvrij|0 0|zero)/.test(n);
- if(p.id==="skuum0")return /skuumkoppe/.test(n)&&/(alcoholvrij|0 0|zero)/.test(n);
- return norm(p.name).split(" ").filter(Boolean).every(t=>n.split(" ").includes(t));
-}
-// Alleen concrete merk+portie specificaties, geen eiwitschatting uit namen
-// zoals 'high protein', 'skyr' of 'proteïne'. Nooit 20 g afleiden uit enkel 20g inhoud.
-function proteinPerPortion(name,quantity,unit){
- if(unit!=="g")return null;
- const n=norm(name);
- if(/(xxl|zuivelhoeve)/.test(n)&&/(fit.?yog|fit.?yogh|fityogurt|yogurt granola)/.test(n)&&quantity>=200&&quantity%200===0)return 20;
- if(/melkunie/.test(n)&&/protein/.test(n)&&/kwark|quark/.test(n)&&quantity===200)return 20;
- if(/milbona/.test(n)&&/(high protein|protein)/.test(n)&&/(yoghurt|yogurt|pudding|kwark)/.test(n)&&quantity===200)return 20;
- if(/ehrmann/.test(n)&&/high protein/.test(n)&&/pudding/.test(n)&&quantity===200)return 20;
- if(/ah protein kwark/.test(n)&&quantity===200)return 20;
- return null;
-}
-function rows(store,p){
- if(!snapshot?.stores?.[store])return [];
- const output=[];
- const src=snapshot.stores[store];
- for(const row of src.ordinary||[]){
-   const [name,price,quantity,unit,url]=row;
-   if(!inStore(name,p)||!Number(price)||!Number(quantity)||unit!==p.unit)continue;
-   output.push({name,price:Number(price),quantity:Number(quantity),unit,url,source:"schapprijs",count:1});
- }
- for(const row of src.promotions||[]){
-   const [name,price,quantity,unit,original,bundleQty,bundlePrice,type,validUntil,url,loyalty]=row;
-   if(!inStore(name,p)||!Number(price)||!Number(quantity)||unit!==p.unit||loyalty)continue;
-   const now=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
-   if(validUntil&&validUntil<now)continue;
-   const k=Number(bundleQty),combo=Number(bundlePrice),was=Number(original);
-   const goodBundle=k>=2&&combo>0&&combo<k*(was||Number(price));
-   const goodUnit=was>Number(price)&&!/(1 ?\+ ?1|gratis|2 ?voor|3 ?voor|bundle)/i.test(String(type||""));
-   if(!goodBundle&&!goodUnit)continue;
-   output.push({name,price:goodBundle?combo:Number(price),quantity:Number(quantity),unit,url,
-                 count:goodBundle?k:1,source:goodBundle?k+" stuks actie":"actie"});
- }
- return output.map(x=>{
-   const known=proteinPerPortion(x.name,x.quantity,x.unit);
-   const portions=x.quantity/p.portion;
-   return {...x,protein:known,perUnit:x.price* (p.unit==="g"?100:1000)/(x.quantity*x.count),
-           unitLabel:p.unit==="g"?"per 100 g":"per liter",
-           perServing:p.protein&&portions>=1?(x.price/(portions*x.count)):null};
- }).filter(x=>!p.protein||x.protein!==null&&x.protein>=20)
-   .sort((a,b)=>a.perUnit-b.perUnit||a.price-b.price);
-}
-function card(p){
- const followed=active.includes(p.id);
- let result=[],comparisons=[];
- for(const store of STORE){
-  const options=rows(store,p),best=options[0];
-  if(best)comparisons.push({...best,store});
-  result.push("<div class='store'><strong>"+NAMES[store]+"</strong><div class='small'>"+
-    (best?"<a href='"+esc(link(best.url))+"' rel='noopener noreferrer' target='_blank'>"+esc(best.name)+"</a>"+
-     " · <b>"+money(best.price)+"</b> voor "+best.count+" × "+best.quantity+" "+esc(best.unit)+
-     " · "+money(best.perUnit)+" "+best.unitLabel+
-     (best.protein?" · ≥20 g eiwit per portie":"")+" · "+esc(best.source):
-     "<span class='bad'>Geen passende, controleerbare prijs gevonden</span>")+"</div></div>");
- }
- comparisons.sort((a,b)=>a.perUnit-b.perUnit);
- const best=comparisons[0];
- return "<article class='watch "+(followed?"favorite":"")+"'><h3>"+esc(p.name)+"</h3>"+
- "<p class='sub'>"+esc(p.note||"Prijsvergelijking op exacte naam, controleer samenstelling.")+"</p>"+
- "<div class='actions'><button type='button' data-follow='"+esc(p.id)+"' aria-pressed='"+followed+"'>"+(followed?"★ Volgend":"☆ Volgen")+"</button>"+
- (p.id.startsWith("custom_")?"<button data-remove='"+esc(p.id)+"' type='button'>Verwijderen</button>":"")+"</div>"+
- (best?"<p class='good'><strong>Goedkoopste gecontroleerde optie: "+NAMES[best.store]+"</strong><br><strong class='price'>"+money(best.perUnit)+"</strong> "+best.unitLabel+"</p>":
- "<p class='bad'>Nog geen geverifieerde winnaar. Geen prijs of voedingswaarde verzonnen.</p>")+
- result.join("")+"</article>";
-}
-function render(){
- const all=P.concat(custom.map(x=>({...x,unit:"g",portion:200,protein:false,note:"Eigen zoekterm; geen inhoudelijke ingrediëntcontrole."})));
- const selected=all.filter(x=>active.includes(x.id));
- $("favorites-list").innerHTML=selected.length?selected.map(x=>"<span>"+esc(x.name)+"</span>").join(" · "):
-  "<span class='note'>Je volgt momenteel geen producten. Kies bij een kaart 'Volgen'.</span>";
- $("watch-grid").innerHTML=all.map(card).join("");
-}
-$("watch-grid").addEventListener("click",event=>{
- const btn=event.target.closest("button");if(!btn)return;
- if(btn.dataset.follow){
-   const id=btn.dataset.follow;
-   active=active.includes(id)?active.filter(x=>x!==id):active.concat(id);
-   save();render();
- }else if(btn.dataset.remove){
-   const id=btn.dataset.remove;custom=custom.filter(x=>x.id!==id);
-   active=active.filter(x=>x!==id);save();render();
- }
-});
-$("add").addEventListener("click",()=>{
- const value=$("custom").value.trim();
- if(value.length<3)return;
- const id="custom_"+norm(value).replace(/\s+/g,"_").slice(0,75);
- if(!custom.some(x=>x.id===id)&&custom.length<35)custom.push({id,name:value});
- if(!active.includes(id))active.push(id);
- $("custom").value="";save();render();
-});
-async function load(){
- try{
-  const response=await fetch("./winkelprijzen.json",{cache:"no-store"});
-  if(!response.ok)throw Error("HTTP "+response.status);
-  const json=await response.json();
-  if(!json||!json.stores)throw Error("Onjuist gegevensformaat");
-  snapshot=json;
-  const parsed=Date.parse(json.updated_at||"");
-  const age=Number.isFinite(parsed)?Math.round((Date.now()-parsed)/3600000):null;
-  $("freshness").textContent="Prijsstand: "+(json.updated_at?
-    new Date(json.updated_at).toLocaleString("nl-NL"):"onbekend")+
-    (age!=null&&age>36?" · VEROUDERD: geen actuele winnaar garandeerbaar":"")+
-    " · Online schap- en aantoonbare actieprijzen, geen actuele winkelvoorraad";
-  render();
- }catch(error){
-  $("freshness").textContent="Prijsindex niet beschikbaar: "+error.message+". Geen bedragen getoond.";
-  render();
- }
-}
-render();load();
-})();
-</script></body></html>
+<script src="./watchlist_engine.js"></script>
+<script src="./watchlist_app.js"></script></body></html>
