@@ -17,7 +17,8 @@ STORES=["albert_heijn","jumbo","lidl","aldi","dirk","hoogvliet","plus","dekamark
 NAMES={"albert_heijn":"AH","jumbo":"Jumbo","lidl":"Lidl","aldi":"Aldi","dirk":"Dirk","hoogvliet":"Hoogvliet","plus":"PLUS","dekamarkt":"DekaMarkt","vomar":"Vomar"}
 WATCH={
 "Volle melk":[r"\bvolle melk\b",r"\bvolle houdbare melk\b"],
-"Kwark, skyr en yoghurt":[r"\b(skyr|magere yoghurt|magere kwark|high protein|proteine kwark|protein kwark|knijpkwark)\b"],
+"Kwark, skyr en yoghurt":[r"\\b(skyr|magere yoghurt|magere kwark|high protein|highprotein|proteine kwark|proteïne kwark|protein kwark|knijpkwark|fitquark|fitkwark|xxl nutrition|kvarg|protein yoghurt)\\b"],
+"Maaltijdpakketten":[r"\\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix|risotteria|spaghetteria|foodtrips)\\b"],
 "Cola zero":[r"\b(coca.cola zero|pepsi max|pepsi zero|cola zero)\b"],
 "Texels en bier":[r"\b(texels|texelse|bier|pils|alcoholvrij)\b"],
 "Diepvriesfruit":[r"(diepvries|bevroren).*(fruit|bessen|bosvruchten|aardbei|mango|framboos)",r"diepvriesfruit"],
@@ -120,6 +121,57 @@ def compare(rows,today):
     return {"date":str(today),"scanned":len(rows),"confirmed":confirmed[:20],
       "candidates":candidates[:25],"next_week":upcoming[:25]}
 
+def meal_offer_export(rows,today,coverage,max_per_store=350):
+    """Extra-supermarktacties zichtbaar maken zonder kassaprijzen te verzinnen.
+
+    De scan bevat alleen producten uit de actieve catalogus met geldige
+    datums. Aanbiedingen van andere winkels zijn géén complete receptmandjes.
+    Bundels: toon de losse prijs en de voorwaarden, zonder een foutief
+    gemiddeld stuksbedrag bij één aankoop te claimen.
+    """
+    store_map={"albert_heijn":"ah","jumbo":"jumbo","lidl":"lidl",
+               "aldi":"aldi","dirk":"dirk","hoogvliet":"hoogvliet",
+               "plus":"plus","dekamarkt":"dekamarkt","vomar":"vomar"}
+    by_store={name:[] for name in store_map.values()}
+    selected=[item for row in rows if (item:=normalize(row,today)) is not None]
+    for item in selected:
+        store=store_map.get(item["retailer"])
+        if store is None:continue
+        name=item["name"].casefold()
+        kit=bool(re.search(r"\\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix)\\b",name))
+        protein=bool(re.search(r"\\b(fitquark|fitkwark|xxl nutrition|high protein|highprotein|protein kwark|skyr|kvarg|knijpkwark|proteine kwark|proteïne kwark)\\b",name))
+        healthy=any(k in item["tags"] for k in ("Maaltijden","Kwark, skyr en yoghurt","Diepvriesfruit","Diepvriesgroenten","Maaltijdpakketten")) 
+        has_deal=item["discount_pct"] is not None and item["discount_pct"]>=20
+        if not (kit or protein or healthy or has_deal):continue
+        multi=item.get("multi_buy_quantity")
+        multi_price=item.get("multi_buy_price")
+        # Een gepubliceerde actieprijs kan de losse kassaprijs zijn.
+        # Markeer als controleerbare korting uitsluitend simpele, individuele acties.
+        verified=bool(not multi and item["normal"] is not None and item["discount_pct"] is not None and
+                      item["normal"]>item["price"] and item["status"]=="active")
+        relevance=(110 if kit else 105 if protein else 65 if healthy else 15)+min(35,item["discount_pct"] or 0)
+        by_store[store].append({
+            "name":item["name"],"retailer":store,"price":item["price"],
+            "normal_price":item["normal"],"verified_discount_pct":item["discount_pct"] if verified else None,
+            "discount_verified":verified,"size_label":item["quantity"] or "Verpakkingsinhoud niet bevestigd",
+            "quantity_label":item["quantity"],"unit":item["unit"],
+            "valid_from":item["valid_from"],"valid_until":item["valid_until"],
+            "status":item["status"],"multi_buy_quantity":multi,
+            "multi_buy_price":multi_price,"promotion_type":"Meerverpakkingen" if multi else "Actie",
+            "url":item["url"],"category_hint":"maaltijdpakket" if kit else "eiwitrijk" if protein else "overig",
+            "relevance":round(relevance,1),"price_source":"PrijsProfeet",
+            "retailer_coverage_complete":bool(coverage.get(item["retailer"],{}).get("complete"))
+        })
+    for store,items in by_store.items():
+        items.sort(key=lambda x:(-x["relevance"],x["status"]!="active",x["name"].casefold()))
+        seen=set()
+        by_store[store]=[x for x in items if not (x["name"].casefold(),x["valid_until"]) in seen
+                         and not seen.add((x["name"].casefold(),x["valid_until"]))][:max_per_store]
+    return {"updated_at":dt.datetime.now(ZoneInfo("Europe/Amsterdam")).isoformat(),
+            "note":"Per winkel geselecteerde actieproducten; reguliere prijzen en volledige receptmandjes alleen waar afzonderlijk bevestigd. Bundels niet per stuk afgeprijsd bij losse aankoop.",
+            "coverage":coverage,"stores":by_store}
+
+
 def euros(price): return ("€ %.2f"%price).replace(".",",")
 def safe(s): return html.escape(str(s),quote=True)
 
@@ -156,8 +208,12 @@ def main():
         raise SystemExit("Basisscan onvolledig; geen e-mail met misleidende data: "+json.dumps(quality))
     result=compare(data,today)
     result["coverage"]=quality
+    retailer_offers=meal_offer_export(data,today,quality)
     ROOT.joinpath("data").mkdir(exist_ok=True)
     ROOT.joinpath("docs").mkdir(exist_ok=True)
+    ROOT.joinpath("docs/recepten").mkdir(parents=True,exist_ok=True)
+    ROOT.joinpath("docs/recepten/extra-supermarkt-deals.json").write_text(
+        json.dumps(retailer_offers,ensure_ascii=False,separators=(",",":"))+"\\n",encoding="utf8")
     ROOT.joinpath("data/buitenkansjes.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
     ROOT.joinpath("docs/buitenkansjes.html").write_text(render(result),encoding="utf8")
     print("ECHTE",len(result["confirmed"]),"TE CONTROLEREN",len(result["candidates"]),"VOLGENDE WEEK",len(result["next_week"]))
