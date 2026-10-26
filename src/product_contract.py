@@ -42,8 +42,15 @@ def compare_sources(rows):
     output=[]
     for (retailer,identity),items in grouped.items():
         independent={x["source"] for x in items}
+        # Vergelijk uitsluitend dezelfde verkoopcondities en geldigheidsperiode.
+        # Twee onafhankelijke waarnemingen van verschillende actieperiodes
+        # zijn geen bevestiging of weerlegging van dezelfde prijs.
+        signatures={(x.get("valid_from"),x.get("valid_until"),
+                     x.get("multi_buy_quantity"),x.get("multi_buy_price"),
+                     bool(x.get("is_loyalty"))) for x in items}
         prices={x["price"] for x in items}
-        status=("confirmed_by_two_sources" if len(independent)>=2 and len(prices)==1
+        status=("different_terms" if len(signatures)>1 else
+                "confirmed_by_two_sources" if len(independent)>=2 and len(prices)==1
                 else "conflicting_sources" if len(independent)>=2 and len(prices)>1
                 else "single_source")
         output.append({"retailer":retailer,"identity":identity,"status":status,
