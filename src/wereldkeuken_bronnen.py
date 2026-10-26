@@ -16,6 +16,8 @@ USER_AGENT="BoodschappenMaatjeRecipeIndex/1.1 (personal recipe discovery; https:
 # Naam, keuken, inhoudelijke bronpagina. Het register claimt geen automatische
 # toegang tot iedere site: foutstatus wordt expliciet bijgehouden.
 WORLD_SOURCES=[
+ ("Voedingscentrum · Gezonde recepten","Nederland","https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"),
+ ("Voedingscentrum · Tonijn en volkorenpasta","Internationaal","https://www.voedingscentrum.nl/recepten/gezond-recept/penne-met-tonijn-en-roerbakgroente.aspx"),
  ("AH Allerhande · Tonijn","Internationaal","https://www.ah.nl/allerhande/recepten/tonijn"),
  ("Jumbo · Tonijn","Internationaal","https://www.jumbo.com/recepten/vis/tonijn"),
  ("Jumbo · Tonijnsalade","Internationaal","https://www.jumbo.com/recepten/salade/tonijnsalade"),
@@ -58,6 +60,7 @@ WORLD_SOURCES=[
 # Bron kan opnieuw toegankelijk worden; een tijdelijke 403/timeout geeft geen
 # recht om willekeurig een URL als verifieerbaar recept te behandelen.
 LINK_RULES={
+ "www.voedingscentrum.nl":r"^/recepten/gezond-recept/[^?#]+\\.aspx$",
  "www.ah.nl":r"^/allerhande/recept/R-[A-Za-z0-9-]+",
  "www.jumbo.com":r"^/recepten/(?!zoeken|surinaams|$)[^?#]+",
  "www.fajalobi.nl":r"^/recepten/[^?#]+",
