@@ -15,6 +15,7 @@ from receptkwaliteit import pantry_for_recipe, cooking_instructions, dish_qualit
 from receptenradar_checks import validate_publication
 from actie_maaltijden import meal_candidates, DISH_BY_KEYS, DISH_TEMPLATES
 from portie_flexibiliteit import needed_quantity
+from verpakkingscombinaties import mixed_pack_option
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"recepten"/"data.json"
@@ -464,6 +465,8 @@ def ingredient_price(ing,amount,unit,shelves,offers,fresh_only=False):
     promo_options=offer_price(ing,amount,unit,offers)
     options.extend(x for x in promo_options if not fresh_only or not x.get("frozen"))
     if not options:return None
+    mixed=mixed_pack_option(ing,amount,unit,options)
+    if mixed is not None:options.append(mixed)
     # De goedkoopste mand is ook echt de laagste kassaprijs.
     # Acties die iets duurder zijn blijven apart zichtbaar als actie-alternatief.
     return min(options,key=lambda x:(x["cash_price"],
