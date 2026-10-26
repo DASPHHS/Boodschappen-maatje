@@ -12,7 +12,8 @@ const unsafe=["saus","smaak","kruiden","snoep","chips","toetje","kant en klaar"]
 // Zoekopdrachten zonder maat gebruiken een herkenbare standaardhoeveelheid.
 // Onbekende producten gebruiken een enkele verpakking, niet ten onrechte 1 stuk.
 const DEFAULT_QUANTITIES=[
- [/(^| )(melk|karnemelk|yoghurt|kwark|skyr|vla|water|sap|frisdrank)( |$)/,1000,"ml"],
+ [/(^| )(melk|karnemelk|water|sap|frisdrank)( |$)/,1000,"ml"],
+ [/(^| )(yoghurt|kwark|skyr|vla)( |$)/,1000,"g"],
  [/(^| )(rijst|pasta|spaghetti|havermout|couscous|muesli)( |$)/,500,"g"],
  [/(^| )(kipfilet|kipdij|kipshoarma|gehakt|rundergehakt|visfilet|zalm|broccoli|spinazie|spruiten|wortelen|tomaten|champignons)( |$)/,500,"g"],
  [/(^| )(bananen|appels|peren|aardappelen|uien)( |$)/,1000,"g"],
