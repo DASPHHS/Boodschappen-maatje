@@ -65,6 +65,28 @@ class SemanticProductTest(unittest.TestCase):
         self.assertIsNotNone(chosen)
         self.assertEqual(chosen["product"],"AH Scharrel kip shoarma")
         self.assertFalse(chosen["sale"])
+    def test_generic_composite_meals_are_not_raw_ingredients(self):
+        cases=[
+            ("Kip met rijst en groenten","kipfilet"),
+            ("Zalm met rijst","zalm"),
+            ("Nasi goreng met kip","rijst"),
+            ("Bami met kip","kipdij"),
+            ("Pasta met tonijn","tonijn"),
+            ("Verse rijstmaaltijd met groenten","rijst"),
+            ("Bereide rijst met kip","rijst"),
+            ("Complete maaltijd met kikkererwten","kikkererwten"),
+            ("Ovengerecht ovenschotel broccoli","broccoli")
+        ]
+        for name,key in cases:
+            self.assertFalse(compatible(name,key),(name,key))
+        for name,key in [
+            ("AH Verse kipfilet","kipfilet"),
+            ("AH Rauwe zalmfilet","zalm"),
+            ("AH Basmati rijst","rijst"),
+            ("AH Verse broccoli","broccoli"),
+            ("AH Kipshoarma gekruid","shoarma")
+        ]:
+            self.assertTrue(compatible(name,key),(name,key))
     def test_cheapest_real_berries_not_spread(self):
         shelves=[
             p("Hero Fruitspread blauwe bessen",1.99,350),
