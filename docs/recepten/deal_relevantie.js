@@ -33,6 +33,10 @@ function bundleInfo(d){
  return null;
 }
 function isVerified(d){
+ // Bundelpercentages gelden niet bij de aankoop van één artikel.
+ // Ook een geverifieerd kortingspercentage kan bij 2+3 misleidend zijn
+ // zolang het exacte mandje en de deelnemende varianten onbekend zijn.
+ if(bundleInfo(d))return false;
  return d.discount_verified===true && Number.isFinite(Number(d.verified_discount_pct)) &&
   Number(d.verified_discount_pct)>0;
 }
