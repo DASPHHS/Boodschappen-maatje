@@ -18,7 +18,7 @@ function save(){
 }
 let followed=read(KEY,["knijp","on_the_go","xxl","highprotein","vollemelk","gingerbeer","skuum","skuum0"]);
 let custom=read(CUSTOM,[]).filter(x=>x&&typeof x.name==="string"&&typeof x.id==="string"&&["g","ml"].includes(x.unit)).slice(0,30);
-let snapshot=null,stale=true,onlyFollowed=false;
+let snapshot=null,stale=true,onlyFollowed=false,onlyDeals=false;
 function catalog(){
  return W.WATCH.concat(custom.map(x=>({id:x.id,name:x.name,unit:x.unit,
   type:"custom",protein:false,note:"Handmatig toegevoegd. Producttype en prijseenheid zelf controleren."})));
@@ -121,15 +121,20 @@ function htmlWatch(p){
 }
 function render(){
  const all=catalog();
- const shown=all.filter(x=>!onlyFollowed||followed.includes(x.id));
+ const activeDeals=all.filter(p=>Object.values(W.bestStores(snapshot,p).stores).some(x=>x.hasDeal));
+ const shown=all.filter(p=>(!onlyFollowed||followed.includes(p.id))&&
+   (!onlyDeals||activeDeals.some(x=>x.id===p.id)));
  $("watch-grid").innerHTML=shown.length?shown.map(htmlWatch).join(""):
-  "<p>Geen gevolgde producten. Kies ‘Toon alle producten’ om iets te volgen.</p>";
+  "<p class='warning'>Geen producten binnen deze filters met een bevestigde lopende aanbieding. Gebruik ‘Bekijk alle producten’ om normale prijzen te vergelijken.</p>";
  $("favorites-list").textContent=all.filter(x=>followed.includes(x.id)).map(x=>x.name).join(" · ")||
   "Je volgt momenteel geen producten.";
  $("toggle-followed").textContent=onlyFollowed?"Toon alle producten":"Alleen mijn favorieten";
  $("toggle-followed").setAttribute("aria-pressed",String(onlyFollowed));
+ $("toggle-deals").textContent=onlyDeals?"✓ Alleen aanbiedingen ("+activeDeals.length+")":"Bekijk alleen aanbiedingen ("+activeDeals.length+")";
+ $("toggle-deals").setAttribute("aria-pressed",String(onlyDeals));
 }
 $("toggle-followed").addEventListener("click",()=>{onlyFollowed=!onlyFollowed;render()});
+$("toggle-deals").addEventListener("click",()=>{onlyDeals=!onlyDeals;render()});
 $("watch-grid").addEventListener("click",event=>{
  const btn=event.target.closest("button");if(!btn)return;
  if(btn.dataset.follow){
