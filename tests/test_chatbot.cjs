@@ -29,6 +29,10 @@ const catalog={recipes:{
   id:'1',title:'Kip met broccoli',category:'Kip',cuisine:'Nederlands',
   checkout:8.50,complete:true,minutes:25,sale_count:2,
   nutrition:{priority:true},ingredients:[{label:'kipfilet',product:'Jumbo kipfilet'},{label:'broccoli',product:'broccoli'}]
+ },{
+  id:'2',title:'Tonijnsalade met komkommer',category:'Vis',cuisine:'Mediterraan',
+  checkout:6.20,complete:true,minutes:15,sale_count:0,
+  nutrition:{priority:true},ingredients:[{key:'tonijn',label:'tonijn in blik',product:'Jumbo Tonijn in water'},{key:'komkommer',label:'komkommer',product:'Jumbo komkommer'}]
  }],lidl:[]
 },deals:{ah:[],jumbo:[],lidl:[]}};
 vm.runInContext('prices='+JSON.stringify(data)+';recipes='+JSON.stringify(catalog),context);
@@ -36,6 +40,12 @@ assert.equal(api.findPrices('volle melk 2 liter')[0].total,2.3);
 assert.equal(api.findPrices('volle melk 2 liter').length,3);
 const result=api.interpret('Goedkoopste gezonde recepten bij Jumbo');
 assert(result.lines?.some(x=>x.includes('Kip met broccoli')),'Receptantwoord ontbreekt');
+const tuna=api.searchRecipes('tonijn','jumbo');
+assert.equal(tuna.length,1,'Tonijnvraag moet alleen passende tonijnrecepten selecteren');
+assert.equal(tuna[0].title,'Tonijnsalade met komkommer');
+const tunaReply=api.interpret('Wat kan ik met tonijn maken bij Jumbo?');
+assert(tunaReply.lines?.some(x=>x.includes('Tonijnsalade')));
+assert(!tunaReply.lines?.some(x=>x.includes('Kip met broccoli')));
 const missing=api.interpret('Wat kost een onbestaand product 3 kg?');
 assert(/geen betrouwbare prijs/i.test(missing.text));
 const byStore=api.interpret('Recepten bij AH');
