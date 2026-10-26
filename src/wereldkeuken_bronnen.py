@@ -56,6 +56,17 @@ WORLD_SOURCES=[
  ("BBC Good Food · Caribisch","Caribisch","https://www.bbcgoodfood.com/recipes/collection/caribbean-recipes"),
  ("BBC Good Food · Marokkaans","Marokkaans","https://www.bbcgoodfood.com/recipes/collection/moroccan-recipes"),
  ("24Kitchen · Familierecepten","Wereldkeukens","https://www.24kitchen.nl/thema/zoals-alleen-oma-dat-kan-recepten"),
+ # Grote, actuele verzamelingen. Alleen links/titels van toegestane recepten
+ # worden opgeslagen; porties, volledige recepttekst en prijzen niet.
+ ("Francesca Kookt · Gezond","Wereldkeukens","https://www.francescakookt.nl/gezonde-recepten/"),
+ ("Francesca Kookt · Makkelijk","Wereldkeukens","https://www.francescakookt.nl/makkelijke-recepten/"),
+ ("Francesca Kookt · Koolhydraatarm","Wereldkeukens","https://www.francescakookt.nl/koolhydraatarme-recepten/"),
+ ("Foodies · Gezond","Wereldkeukens","https://www.foodiesmagazine.nl/gezonde-recepten/"),
+ ("HelloFresh · Populair","Wereldkeukens","https://www.hellofresh.nl/recipes/populairste-recepten"),
+ ("HelloFresh · Makkelijk","Wereldkeukens","https://www.hellofresh.nl/recipes/makkelijke-recepten"),
+ ("HelloFresh · Traditioneel","Nederlands","https://www.hellofresh.nl/recipes/traditionele-recepten"),
+ ("HelloFresh · Fusion","Wereldkeukens","https://www.hellofresh.nl/recipes/fusion-recepten"),
+ ("BBC Good Food · Gezonde avondmaaltijden","Wereldkeukens","https://www.bbcgoodfood.com/recipes/collection/healthy-dinner-recipes"),
 ]
 # Bron kan opnieuw toegankelijk worden; een tijdelijke 403/timeout geeft geen
 # recht om willekeurig een URL als verifieerbaar recept te behandelen.
@@ -74,6 +85,7 @@ LINK_RULES={
  "www.plus.nl":r"^/recepten/[^?#]+",
  "www.dirk.nl":r"^/meer/recepten/[^?#]+",
  "www.bbcgoodfood.com":r"^/recipes/(?!collection/)[^?#]+",
+ "www.hellofresh.nl":r"^/recipes/[^/?]+-[a-f0-9]{16,}(?:/)?$",
 }
 BANNED_TITLE=re.compile(r"^(recepten|naar het recept|bekijk recept|lees meer|read more|bekijk alle|"
                         r"meer informatie|gerelateerde recepten|maak dit recept|toon meer|"
