@@ -38,7 +38,7 @@ function htmlItem(item){
     "Totale kassaprijs "+total+" voor "+volume+".")+"</div>";
  if(item.discount)result+="<span class='pill sale'>Aanbieding</span>";
  if(item.protein!==null)result+="<div class='protein'>Bevestigd: "+item.protein+
-  " g eiwit per verpakking. <strong>"+W.money(item.eurosPer20)+
+  " g eiwit per verpakking, "+item.proteinPerServing+" g per "+item.proteinServing+" g portie. <strong>"+W.money(item.eurosPer20)+
   " per 20 g eiwit</strong> · <a target='_blank' rel='noopener noreferrer' href='"+
   esc(safeLink(item.proteinSource))+"'>Etiketgegevens</a></div>";
  return result+"</div>";
