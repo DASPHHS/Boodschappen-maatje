@@ -1222,7 +1222,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  $("sort").addEventListener("change",resetAndRender);
  for(const id of ["extra-store","deal-interest","deal-period","deal-search","deal-category","deal-status","deal-promotion","deal-minimum","deal-sort"]){
-  $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals()});
+  $(id).addEventListener(id==="deal-search"?"input":"change",()=>{state.dealVisible=50;renderDeals();renderOfficialStoreProducts()});
  }
  document.querySelectorAll("[data-deal-category]").forEach(b=>b.addEventListener("click",()=>{
   $("deal-category").value=b.dataset.dealCategory;state.dealVisible=50;renderDeals();
