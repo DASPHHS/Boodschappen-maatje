@@ -660,6 +660,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const otherStore=$("extra-store").value;
   if(otherStore!=="basis"&&!state.extraDeals&&!state.extraDealsLoading&&!state.extraDealsError)void ensureExtraDeals();
   const extra=otherStore!=="basis";
+  $("title").textContent=extra?"Aanbiedingen · "+EXTRA_STORES[otherStore]:
+    "Actuele aanbiedingen · "+state.data.store_names[state.store];
   const running=extra?(state.extraDeals?.stores?.[otherStore]||[]):(state.data?.deals?.[state.store]||[]);
   const future=extra?[]:(state.data?.upcoming_deals?.[state.store]||[]);
   const original=offersForPeriod(period,today,running,future);
@@ -668,7 +670,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const interest=$("deal-interest").value;
   const promotion=$("deal-promotion").value,minimum=Number($("deal-minimum").value)||0;
   const sort=$("deal-sort").value;
-  const verified=d=>Boolean(d.discount_verified)&&Number.isFinite(Number(d.verified_discount_pct))&&Number(d.verified_discount_pct)>0;
+  const verified=d=>DealRelevantie.isVerified(d);
   let ds=original.filter(d=>
    (!query||String(d.name||"").toLocaleLowerCase("nl").includes(query))&&
    (interest==="all"||DealRelevantie.classify(d)===interest)&&
