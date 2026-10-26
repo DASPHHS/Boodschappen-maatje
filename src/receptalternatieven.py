@@ -196,6 +196,7 @@ def source_suggestions(index, new_links, previous, now):
             "title_nl": title_nl if translated else None,
             "source": source,
             "cuisine": infer_cuisine(title, entry.get("cuisine")),
+            "category": entry.get("category") or "Onbekend",
             "url": href, "focus": focus,
             "status": "inspiratie, ingrediënten en prijs niet gecontroleerd",
             "seen_at": entry.get("discovered_at") or entry.get("seen_at") or now.date().isoformat()
