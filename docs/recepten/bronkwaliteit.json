@@ -1,0 +1,182 @@
+{
+  "updated_at": "2026-10-26T23:43:27.009768+00:00",
+  "scope": "online_landelijk_met_lokale_winkelprioriteit",
+  "primary_age_hours": 0.5,
+  "extra_age_hours": 3.9,
+  "official_age_hours": null,
+  "retailers": {
+    "ah": {
+      "shelf_records": 15657,
+      "primary_promotion_records": 3225,
+      "extra_promotion_records": 350,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "jumbo": {
+      "shelf_records": 9713,
+      "primary_promotion_records": 1617,
+      "extra_promotion_records": 350,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "lidl": {
+      "shelf_records": 5369,
+      "primary_promotion_records": 28,
+      "extra_promotion_records": 2,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "weinig_acties_voor_weekdekking",
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "aldi": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 2,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "dirk": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 81,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "plus": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 350,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "hoogvliet": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 133,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "dekamarkt": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 126,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "vomar": {
+      "shelf_records": 0,
+      "primary_promotion_records": 0,
+      "extra_promotion_records": 19,
+      "official_product_records": 0,
+      "primary_age_hours": 0.5,
+      "extra_age_hours": 3.9,
+      "official_age_hours": null,
+      "api_pagination_complete": true,
+      "retailer_coverage_complete": false,
+      "official_status": "unknown",
+      "issues": [
+        "geen_officiele_productverificatie"
+      ],
+      "quality": "needs_attention"
+    },
+    "action": {
+      "official_product_records": 0,
+      "official_status": "unknown",
+      "retailer_coverage_complete": false,
+      "quality": "needs_attention",
+      "issues": [
+        "geen_recente_gecontroleerde_productfeed"
+      ]
+    },
+    "xenos": {
+      "official_product_records": 0,
+      "official_status": "unknown",
+      "retailer_coverage_complete": false,
+      "quality": "needs_attention",
+      "issues": [
+        "geen_recente_gecontroleerde_productfeed"
+      ]
+    },
+    "zeeman": {
+      "official_product_records": 0,
+      "official_status": "unknown",
+      "retailer_coverage_complete": false,
+      "quality": "needs_attention",
+      "issues": [
+        "geen_recente_gecontroleerde_productfeed"
+      ]
+    }
+  },
+  "warning": "API-paginering compleet is geen bewijs van volledige weekfolder of assortiment."
+}
