@@ -100,11 +100,16 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div class="row"><div><h2 id="title">Recepten uit de aanbiedingen</h2><div class="sub" id="store-status">Bronnen laden…</div></div><button id="switch" class="btn outline small">Bekijk alle deals</button></div>
 <div id="alerts"></div>
 <div class="favourites-tools"><button type="button" id="only-favorites" aria-pressed="false" class="btn outline small">☆ Alleen mijn favorieten</button><a class="btn outline small" href="./watchlist.html">Mijn productenwatchlist</a></div>
+<section id="personal-weekmenu" class="panel" style="margin:12px 0 18px" aria-label="Mijn weekmenu">
+<div class="row"><div><h2>Mijn weekmenu</h2><p class="sub">Plan je favoriete gerechten per dag en open ze direct tijdens het koken.</p></div></div>
+<label>Porties per kookmoment <input id="planner-servings" type="number" min="1" max="8" step="1" value="4" style="max-width:90px"></label>
+<p class="sub">Je koopt hele verpakkingen, maar gebruikt alleen de benodigde hoeveelheid. Eventuele restanten worden apart vermeld.</p>
+<div id="planner-days" class="weekmenu-stores" aria-live="polite"></div><p id="planner-note" class="sub"></p></section>
 <details id="weekmenu-panel" class="weekmenu-panel" hidden>
- <summary>Weekmenu · vergelijk AH, Jumbo en Lidl</summary>
+ <summary>Voorbeeldweekmenu vergelijken bij AH, Jumbo en Lidl</summary>
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
-<details id="audit-panel" class="notice" hidden><summary id="audit-summary">Controle op gemiste aanbiedingen</summary><div id="audit-body"></div></details><section class="discovery" id="recipe-filters" aria-label="Vind jouw maaltijd">
+<section class="discovery" id="recipe-filters" aria-label="Vind jouw maaltijd">
  <div class="search-primary"><label for="search">Wat wil je eten? Combineer gerust ingrediënten.</label>
   <div class="search-row"><input id="search" type="search" enterkeyhint="search" autocomplete="off" placeholder="Bijv. tonijn pasta zwarte olijven, kip broccoli of linzen curry"><button id="clear-search" type="button" class="btn outline small">Wis</button></div>
   <div id="search-shortcuts" class="search-shortcuts" aria-label="Snelle receptzoekopdrachten">
@@ -222,8 +227,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 </div>
 </section><div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
 </section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
-<div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
+<div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div><div class="wrap" style="margin-top:24px"><details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
+<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -249,7 +254,51 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    try{localStorage.setItem("bm_recept_favorieten_v1",JSON.stringify(favoriteTitles))}catch{}
    render();
  }
- const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
+const DAYS=PersonalWeekmenu.DAYS;
+ let weekPlan=PersonalWeekmenu.parse((()=>{try{return localStorage.getItem("bm_weekmenu_v1")}catch{return null}})());
+ function persistPlan(){try{localStorage.setItem("bm_weekmenu_v1",JSON.stringify(weekPlan))}catch{}}
+ function plannedPortions(store,id){return PersonalWeekmenu.portions(weekPlan,store,id)}
+ function clearRecipeFilters(){
+  $("selection").value="all";$("duration").value="all";$("category").value="all";
+  $("cuisine").value="all";$("format").value="all";$("mealtype").value="all";
+  $("origin").value="all";$("health").value="off";$("mealprep-filter").value="all";
+  state.favoriteOnly=false;state.sharedOnly=false;state.visible=10;
+ }
+ function openChosenRecipe(id){
+  const r=storeData().find(r=>String(r.id)===String(id));if(!r)return;
+  clearRecipeFilters();$("search").value=r.title;state.mode="recipes";render();
+  $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
+ }
+ function addRecipeToWeek(id,day){
+  const r=storeData().find(x=>String(x.id)===String(id));if(!r)return;
+  const portions=Number($("planner-servings").value);
+  if(!Number.isInteger(portions)||portions<1||portions>8){$("planner-servings").value=4;return}
+  const old=weekPlan[state.store]?.[day];
+  weekPlan=PersonalWeekmenu.set(weekPlan,state.store,day,r,portions);
+  state.selected=state.selected.filter(x=>x.store===state.store);
+  if(!state.selected.some(x=>String(x.id)===String(r.id)))
+   state.selected.push({store:state.store,id:r.id,variant:"cheapest"});
+  if(old&&!plannedPortions(state.store,old.id))
+   state.selected=state.selected.filter(x=>String(x.id)!==String(old.id));
+  save();persistPlan();render();
+  $("personal-weekmenu").scrollIntoView({behavior:"smooth",block:"start"});
+ }
+ function renderPersonalWeekmenu(){
+  $("personal-weekmenu").hidden=state.mode==="deals";if(state.mode==="deals")return;
+  const planned=weekPlan[state.store]||{};
+  $("planner-days").innerHTML=DAYS.map((day,i)=>{
+   const entry=planned[i],r=entry&&storeData().find(x=>String(x.id)===String(entry.id));
+   return '<div class="weekmenu-store" style="padding:10px"><strong>'+day+'</strong>'+
+    (entry?'<div><button class="btn outline small" data-open-plan="'+esc(entry.id)+'">'+esc(r?.title||entry.title)+'</button>'+
+    '<div class="sub">'+entry.portions+' porties'+(r?'':' · tijdelijk niet gevonden')+'</div>'+
+    '<button class="btn outline small" data-remove-plan="'+i+'">Verwijder</button></div>':
+    '<div class="sub">Nog leeg</div>')+'</div>';
+  }).join("");
+  const count=Object.keys(planned).length,servings=Object.values(planned).reduce((n,x)=>n+x.portions,0);
+  $("planner-note").textContent=count+" kookmomenten · "+servings+" porties · "+
+   state.data.store_names[state.store]+". Recepten in het weekmenu staan ook in de boodschappenmand.";
+ }
+  const emoji={"Kip":"🍗","Vlees":"🥘","Vis":"🐟","Vegetarisch":"🥬"};
  // Filters uit de alternatievenpagina toepassen na initialisatie van de browserstatus.
  const recipeLinkParams=new URLSearchParams(location.search);
  if(recipeLinkParams.has("zoek"))$("search").value=recipeLinkParams.get("zoek").slice(0,140);
@@ -343,7 +392,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     ${r.drained_weight_unverified?.length?`<p class="sub"><strong>Let op bij uitgelekte conserven:</strong> ${esc(r.drained_weight_unverified.join(", "))}. De berekende verpakkingenaantallen gebruiken het opgegeven nettogewicht; bij een lager uitlekgewicht kunnen meer verpakkingen nodig zijn. Ook de voedingswaardeschatting kan afwijken.</p>`:""}
     ${r.deal_basket?.used_actions>r.sale_count&&r.deal_basket.extra_vs_cheapest<=0?`<div class="notice" style="margin:8px 0 12px"><strong>Ook mogelijk: echte actiemand met ${r.deal_basket.used_actions} gebruikte acties</strong><div> ${r.complete?euro(r.deal_basket.checkout)+" voor alle verpakkingen":euro(r.deal_basket.known_subtotal)+" bekend subtotaal"} · ${r.deal_basket.extra_vs_cheapest>0?euro(r.deal_basket.extra_vs_cheapest)+" duurder dan de goedkoopste mand": "niet duurder dan de goedkoopste mand"}</div><details><summary>Bekijk de ingrediënten van de actiemand</summary>${r.deal_basket.ingredients.map(l=>`<div class="line"><div>${esc(l.label)}: ${esc(l.product)}${l.sale?" · ACTIE":""} ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Bron</a>`:""}</div><strong>${euro(l.cash_price)}</strong></div>`).join("")}</details></div>`:""}
     ${r.complete&&r.saving>0?`<p class="sub"><strong>Besparing op deze mand: ${euro(r.saving)}</strong> vergeleken met de reguliere bronprijzen van deze producten.</p>`:""}
-    <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn outline" data-add="${esc(r.id)}" data-variant="cheapest">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&(x.variant||"cheapest")==="cheapest")?"✓ Goedkoopste gekozen":"+ Goedkoopste mand"}</button>${r.deal_basket?.used_actions>r.sale_count?`<button class="btn" data-add="${esc(r.id)}" data-variant="deals">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&x.variant==="deals")?"✓ Actiemand gekozen":"+ Kies actiemand"}</button>`:""}</div>
+    <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap"><select data-plan-day="${esc(r.id)}" aria-label="Kies dag voor weekmenu">${DAYS.map((d,i)=>'<option value="'+i+'">'+d+'</option>').join("")}</select><button type="button" class="btn outline" data-plan-add="${esc(r.id)}">+ Weekmenu</button><button class="btn outline" data-add="${esc(r.id)}" data-variant="cheapest">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&(x.variant||"cheapest")==="cheapest")?"✓ Goedkoopste gekozen":"+ Goedkoopste mand"}</button>${r.deal_basket?.used_actions>r.sale_count?`<button class="btn" data-add="${esc(r.id)}" data-variant="deals">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&x.variant==="deals")?"✓ Actiemand gekozen":"+ Kies actiemand"}</button>`:""}</div>
     ${r.instructions?`<details><summary>Zo maak je dit gerecht</summary><p>${esc(r.instructions)}</p><p class="sub"><strong>Smaakmakers, buiten de prijs:</strong> ${esc((r.pantry||[]).join(", ")||"geen extra")}. Bereidingstijd is indicatief; actieve tijd wordt nog niet afzonderlijk gemeten. Volg verpakkingsinstructies waar nodig.</p>
       <p class="sub"><strong>Bewaren/mealprep:</strong> ${esc(r.mealprep_note||"Bereid bij voorkeur vers.")}</p></details>`:""}<details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
     ${(r.missing||[]).map(x=>`<div class="line"><span>${esc(x.label)} (${x.amount} ${x.unit})</span><strong>Prijs onbekend</strong></div>`).join("")}
@@ -720,6 +769,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
   // Losse bronideeën horen niet in de hoofdranglijst totdat ingrediënten, porties en prijzen compleet zijn.
   renderWeekmenu();
+  renderPersonalWeekmenu();
   renderCart();
   renderAudit();
  }
@@ -802,18 +852,25 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("recipes").addEventListener("click",e=>{
   const fav=e.target.closest("[data-favorite]");
   if(fav){toggleFavorite(fav.dataset.favorite);return}
+  const p=e.target.closest("[data-plan-add]");
+  if(p){const day=$("recipes").querySelector('[data-plan-day="'+CSS.escape(p.dataset.planAdd)+'"]')?.value||"0";addRecipeToWeek(p.dataset.planAdd,day);return}
   const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")
  });
  $("cart").addEventListener("click",e=>{
-   const button=e.target.closest("[data-cart-recipe]");if(!button)return;
-   const recipe=state.data.recipes[state.store]?.find(r=>String(r.id)===button.dataset.cartRecipe);
-   if(!recipe)return;
-   $("search").value=recipe.title;
-   $("selection").value="all";$("duration").value="all";$("category").value="all";$("cuisine").value="all";$("format").value="all";$("mealtype").value="all";$("health").value="off";
-   state.favoriteOnly=false;state.sharedOnly=false;state.visible=10;render();
-   $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
+  const b=e.target.closest("[data-cart-recipe]");
+  if(b)openChosenRecipe(b.dataset.cartRecipe);
  });
- $("only-favorites").addEventListener("click",()=>{
+ $("personal-weekmenu").addEventListener("click",e=>{
+  const open=e.target.closest("[data-open-plan]");
+  if(open){openChosenRecipe(open.dataset.openPlan);return}
+  const remove=e.target.closest("[data-remove-plan]");if(!remove)return;
+  const previous=weekPlan[state.store][remove.dataset.removePlan];
+  weekPlan=PersonalWeekmenu.remove(weekPlan,state.store,remove.dataset.removePlan);
+  if(previous&&!plannedPortions(state.store,previous.id))
+    state.selected=state.selected.filter(x=>String(x.id)!==String(previous.id));
+  persistPlan();save();render();
+ });
+  $("only-favorites").addEventListener("click",()=>{
    state.favoriteOnly=!state.favoriteOnly;
    $("only-favorites").setAttribute("aria-pressed",String(state.favoriteOnly));
    $("only-favorites").textContent=state.favoriteOnly?"★ Mijn favorieten (filter uit)":"☆ Alleen mijn favorieten";
