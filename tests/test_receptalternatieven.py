@@ -51,9 +51,9 @@ class AlternativeTests(unittest.TestCase):
         ]}
         found=source_suggestions(src,[],{},NOW)
         self.assertEqual(len(found),2)
-        self.assertIn("tonijn",found[0]["focus"])
-        self.assertNotIn("checkout",found[0])
-        self.assertIn("prijs niet gecontroleerd",found[0]["status"])
+        self.assertTrue(any("tonijn" in candidate["focus"] for candidate in found))
+        self.assertTrue(all("checkout" not in candidate for candidate in found))
+        self.assertTrue(all("prijs niet gecontroleerd" in candidate["status"] for candidate in found))
 
     def test_expired_old_ideas_disappear(self):
         stale={"inspiration":[{
