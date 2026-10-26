@@ -41,7 +41,7 @@ RULES={
  "wortel":{"reject":r"\b(?:doperwten|doperwtjes|erwten|erwtjes|mais|ma is|mix|zoetzuur|pickle|ingemaakt)\b"},
  "ui":{"reject":r"\b(?:amsterdamse|zilveruitjes|zilveruien|zoetzure|"
       r"ingelegde|ingelegd|gebakken|krokant|uitjes|uienringen|poeder|mix)\b"},
- "shoarma":{"reject":r"\\b(?:rijst|rice|bami|nasi|pasta|orzo|maaltijd|maaltijdsalade|diner|schotel|wrap|broodje|pizza|soep|saus|topping|kant en klaar|kant klare)\\b"},
+ "shoarma":{"reject":r"\b(?:rijst|rice|bami|nasi|pasta|orzo|maaltijd|maaltijdsalade|diner|schotel|wrap|broodje|pizza|soep|saus|topping|kant en klaar|kant klare)\b"},
  "kipfilet":{"reject":r"\b(?:knorr|maggi|romana|trattoria|"
       r"saus|mix|bereiding|schotel|maaltijd|diner|kruiden|beleg|"
       r"kipfiletstukjes in saus|gegrilde kip salade|pizza|soep)\b"},
