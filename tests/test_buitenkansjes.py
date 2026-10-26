@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
-from buitenkansjes import compare,normalize,render,pull
+from buitenkansjes import compare,normalize,render,pull,meal_offer_export
 
 DAY=dt.date(2026,10,23)
 
@@ -45,6 +45,30 @@ class TestVerifiedDeals(unittest.TestCase):
         self.assertEqual(meta["received"],5700)
         self.assertEqual(len(rows),5700)
         self.assertEqual(api.call_count,57)
+
+    def test_negen_winkels_actie_relevantie_en_bundelvoorwaarden(self):
+        quality={name:{"complete":True} for name in
+                 ("albert_heijn","jumbo","lidl","dirk","plus","aldi","hoogvliet","dekamarkt","vomar")}
+        knorr=offer("jumbo",3.65,4.55,name="Knorr Wereldgerechten Kip Tandoori 303 g")
+        knorr["promotion_type"]="2+3 gratis"
+        fit=offer("plus",1.49,1.99,name="XXL Nutrition Fitquark Aardbei 200 ml")
+        regular=offer("dirk",1.49,2.39,name="Melkunie Protein kwark")
+        later=offer("aldi",3.65,4.55,name="Knorr Wereldgerechten Madras",
+                    start="2026-10-25",end="2026-10-27")
+        data=meal_offer_export([knorr,fit,regular,later],DAY,quality)
+        self.assertEqual(len(data["stores"]["jumbo"]),1)
+        self.assertFalse(data["stores"]["jumbo"][0]["discount_verified"],
+                         "Geen fictieve losse korting bij 2+3 gratis")
+        self.assertEqual(data["stores"]["jumbo"][0]["promotion_type"],"2+3 gratis")
+        self.assertTrue(data["stores"]["plus"][0]["discount_verified"])
+        self.assertEqual(data["stores"]["plus"][0]["category_hint"],"eiwitrijk")
+        self.assertEqual(data["stores"]["aldi"][0]["status"],"upcoming")
+        self.assertEqual(len(data["stores"]["lidl"]),0)
+    def test_aanbieding_buiten_geldigheid_niet_exporteren(self):
+        quality={"jumbo":{"complete":True}}
+        old=offer("jumbo",2.0,3.2,name="Knorr Wereldgerechten Madras",end="2026-10-20")
+        data=meal_offer_export([old],DAY,quality)
+        self.assertEqual(len(data["stores"]["jumbo"]),0)
 
     def test_html_safe(self):
         r=compare([offer("jumbo",5,12,name="Wasmiddel <extra> 2 liter")],DAY)
