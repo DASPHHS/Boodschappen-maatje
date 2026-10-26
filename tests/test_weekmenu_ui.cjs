@@ -9,7 +9,10 @@ for(const id of ["weekmenu-panel","weekmenu-content","deal-period","cart-panel"]
  assert.ok(html.includes('id="'+id+'"'),"Ontbrekend element "+id);
 }
 assert.ok(code.includes('state.data?.upcoming_deals?.[state.store]'),"Toekomstige deals in eigen dataset");
-assert.ok(code.includes('d.valid_from===tomorrow'),"Preview alleen morgen geldige acties");
+assert.ok(code.includes('function offersForPeriod('),"Acties controleren op kalenderdag");
+assert.ok(code.includes('start<=tomorrow')&&code.includes('end>=tomorrow'),
+          "Preview bevat uitsluitend aanbiedingen die op morgen geldig zijn");
+assert.ok(code.includes('end>=today'),"Verlopen aanbiedingen niet als huidig presenteren");
 assert.ok(code.includes('valid_from')&&code.includes('Nog niet geldig'),"Startdatum gemarkeerd");
 assert.ok(code.includes('m.meals.map'),"Exact dezelfde menu's per winkel");
 assert.ok(code.includes('data-weekmenu-choose'),"Eén-klik winkelmand aanwezig");
