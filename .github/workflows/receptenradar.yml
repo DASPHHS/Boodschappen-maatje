@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'src/receptenradar_v2.py'
+      - 'src/product_compatibiliteit.py'
+      - 'tests/test_product_compatibiliteit.py'
+      - 'recepten/watchlist.html'
+      - 'tests/test_receptwatchlist.cjs'
       - 'src/lidl_officiele_acties.py'
       - 'src/portie_flexibiliteit.py'
       - 'src/verpakkingscombinaties.py'
@@ -68,12 +72,13 @@ jobs:
         run: python -m pip install 'requests>=2.31,<3'
       - name: Controleer syntax
         run: |
-          python -m compileall -q src/verpakkingscombinaties.py src/portie_flexibiliteit.py src/lidl_officiele_acties.py src/receptenradar_v2.py src/receptenradar_catalog.py src/tonijn_varianten.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/recept_keukens.py src/weekmenu_advies.py src/weekly_advice.py src/actie_maaltijden.py
+          python -m compileall -q src/verpakkingscombinaties.py src/portie_flexibiliteit.py src/lidl_officiele_acties.py src/receptenradar_v2.py src/product_compatibiliteit.py src/receptenradar_catalog.py src/tonijn_varianten.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/recept_keukens.py src/weekmenu_advies.py src/weekly_advice.py src/actie_maaltijden.py
           python -m unittest discover -s tests -p "test_verpakkingscombinaties.py" -v
           python -m unittest discover -s tests -p "test_portie_flexibiliteit.py" -v
           python -m unittest discover -s tests -p "test_lidl_officiele_acties.py" -v
           python -m unittest discover -s tests -p "test_tonijn_varianten.py" -v
           python -m unittest discover -s tests -p "test_receptenradar_v2.py" -v
+          python -m unittest discover -s tests -p "test_product_compatibiliteit.py" -v
           python -m unittest discover -s tests -p "test_receptenradar_checks.py" -v
           python -m unittest discover -s tests -p "test_actie_maaltijden.py" -v
           python -m unittest discover -s tests -p "test_actie_receptmatches.py" -v
@@ -97,6 +102,7 @@ jobs:
           node --check /tmp/receptenradar_check.js
           node tests/test_filter_contract.cjs
           node tests/test_receptzoeker.cjs
+          node tests/test_receptwatchlist.cjs
           node tests/test_chatbot.cjs
           node tests/test_boodschappen_prijsdekking.cjs
           node tests/test_generieke_producten_en_deals.cjs
@@ -117,6 +123,7 @@ jobs:
           # en eigen kookboekindexen per ongeluk weer overschrijven.
           mkdir -p docs/recepten
           cp recepten/index.html docs/recepten/index.html
+          cp recepten/watchlist.html docs/recepten/watchlist.html
           cp recepten/recipe_search.js docs/recepten/recipe_search.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
@@ -129,6 +136,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
           git add docs/recepten/recipe_search.js
+          git add docs/recepten/watchlist.html
           git add docs/recepten/index.html docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
