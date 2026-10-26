@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'src/receptalternatieven.py'
+      - 'recepten/hello-fresh-kaarten.json'
       - 'src/bronrecept_controle.py'
       - 'tests/test_bronrecept_controle.py'
       - 'src/wereldkeuken_bronnen.py'

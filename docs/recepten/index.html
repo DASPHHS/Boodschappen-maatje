@@ -108,7 +108,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div class="search-primary"><label for="search">Wat wil je eten? Combineer gerust ingrediënten.</label>
   <div class="search-row"><input id="search" type="search" enterkeyhint="search" autocomplete="off" placeholder="Bijv. tonijn pasta zwarte olijven, kip broccoli of linzen curry"><button id="clear-search" type="button" class="btn outline small">Wis</button></div>
   <div id="search-shortcuts" class="search-shortcuts" aria-label="Snelle receptzoekopdrachten">
-   <button type="button" data-recipe-query="tonijn pasta">Tonijn + pasta</button>
+   <button type="button" id="quick-savings">Snel avondeten met korting</button><a href="./inspiratie.html?group=hellofresh">HelloFresh & mijn kaarten ↗</a><button type="button" data-recipe-query="tonijn pasta">Tonijn + pasta</button>
    <button type="button" data-recipe-query="kip broccoli">Kip + broccoli</button>
    <button type="button" data-recipe-query="zalm">Zalmgerechten</button>
    <button type="button" data-recipe-query="linzen">Linzen</button>
@@ -117,7 +117,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  </div>
  <div class="primary-filters">
   <label>Voordeel deze week<select id="selection" aria-label="Welke aanbiedingen?"><option value="all">Goedkoopste maaltijden, acties meewegen</option><option value="promos">Alleen recepten met gebruikte korting</option><option value="two">Minstens twee gebruikte kortingen</option></select></label>
-  <label>Wat vind je belangrijk?<select id="sort" aria-label="Sorteer recepten"><option value="value">Beste keuze deze week</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste verbruikskosten per portie</option><option value="deals">Meeste gebruikte acties</option><option value="time">Kortste bereidingstijd</option></select></label>
+  <label>Wat vind je belangrijk?<select id="sort" aria-label="Sorteer recepten"><option value="value">Beste keuze deze week</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste verbruikskosten per portie</option><option value="saving">Grootste berekende besparing in euro</option><option value="deals">Meeste gebruikte acties</option><option value="time">Kortste bereidingstijd</option></select></label>
   <label>Voeding<select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">Gezond en groenterijk bovenaan</option><option value="only">Alleen passend bij voedingsvoorkeur</option><option value="off">Alle voedingsprofielen</option></select></label>
  </div>
  <details id="advanced-filters" class="advanced-filters"><summary>Meer filters <span>Keuken, tijd, vlees/vis/vega, lunch en mealprep</span></summary>
@@ -310,6 +310,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
     if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
     if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
+    if(sort==="saving")rs.sort((a,b)=>(b.saving||0)-(a.saving||0)||(a.checkout??1e9)-(b.checkout??1e9));
     if(sort==="deals")rs.sort((a,b)=>b.sale_count-a.sale_count||(a.checkout??1e9)-(b.checkout??1e9));
     // Incomplete prijs kan nooit de goedkoopste kassamand winnen.
     rs.sort((a,b)=>Number(b.complete)-Number(a.complete));
@@ -335,6 +336,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <p class="sub"><strong>Smaakmakers (niet meegerekend):</strong> ${esc((r.pantry||[]).join(", ")||"geen extra smaakmakers")}</p>
     ${r.drained_weight_unverified?.length?`<p class="sub"><strong>Let op bij uitgelekte conserven:</strong> ${esc(r.drained_weight_unverified.join(", "))}. De berekende verpakkingenaantallen gebruiken het opgegeven nettogewicht; bij een lager uitlekgewicht kunnen meer verpakkingen nodig zijn. Ook de voedingswaardeschatting kan afwijken.</p>`:""}
     ${r.deal_basket?.used_actions>r.sale_count&&r.deal_basket.extra_vs_cheapest<=0?`<div class="notice" style="margin:8px 0 12px"><strong>Ook mogelijk: echte actiemand met ${r.deal_basket.used_actions} gebruikte acties</strong><div> ${r.complete?euro(r.deal_basket.checkout)+" voor alle verpakkingen":euro(r.deal_basket.known_subtotal)+" bekend subtotaal"} · ${r.deal_basket.extra_vs_cheapest>0?euro(r.deal_basket.extra_vs_cheapest)+" duurder dan de goedkoopste mand": "niet duurder dan de goedkoopste mand"}</div><details><summary>Bekijk de ingrediënten van de actiemand</summary>${r.deal_basket.ingredients.map(l=>`<div class="line"><div>${esc(l.label)}: ${esc(l.product)}${l.sale?" · ACTIE":""} ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Bron</a>`:""}</div><strong>${euro(l.cash_price)}</strong></div>`).join("")}</details></div>`:""}
+    ${r.complete&&r.saving>0?`<p class="sub"><strong>Besparing op deze mand: ${euro(r.saving)}</strong> vergeleken met de reguliere bronprijzen van deze producten.</p>`:""}
     <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn outline" data-add="${esc(r.id)}" data-variant="cheapest">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&(x.variant||"cheapest")==="cheapest")?"✓ Goedkoopste gekozen":"+ Goedkoopste mand"}</button>${r.deal_basket?.used_actions>r.sale_count?`<button class="btn" data-add="${esc(r.id)}" data-variant="deals">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&x.variant==="deals")?"✓ Actiemand gekozen":"+ Kies actiemand"}</button>`:""}</div>
     ${r.instructions?`<details><summary>Zo maak je dit gerecht</summary><p>${esc(r.instructions)}</p><p class="sub"><strong>Smaakmakers, buiten de prijs:</strong> ${esc((r.pantry||[]).join(", ")||"geen extra")}. Bereidingstijd is indicatief; actieve tijd wordt nog niet afzonderlijk gemeten. Volg verpakkingsinstructies waar nodig.</p>
       <p class="sub"><strong>Bewaren/mealprep:</strong> ${esc(r.mealprep_note||"Bereid bij voorkeur vers.")}</p></details>`:""}<details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
@@ -717,6 +719,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    state.store=b.dataset.store;state.dealVisible=50;state.sourceVisible=8;
    updateCuisineOptions();resetAndRender();
  }));
+ $("quick-savings").addEventListener("click",()=>{$("search").value="";$("mealtype").value="Avondeten";$("duration").value="30";$("selection").value="promos";$("sort").value="saving";state.visible=10;if(state.data)render();});
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
  $("search-shortcuts").addEventListener("click",event=>{
    const button=event.target.closest("[data-recipe-query]");

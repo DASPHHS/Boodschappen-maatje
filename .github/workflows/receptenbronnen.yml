@@ -11,6 +11,7 @@ on:
       - 'tests/test_recept_keukens.py'
       - 'recepten/surinaams-archief.json'
       - 'recepten/hello-fresh-maart-archief.json'
+      - 'recepten/hello-fresh-kaarten.json'
       - 'recepten/eigen-archief.json'
       - 'recepten/inspiratie.html'
       - '.github/workflows/receptenbronnen.yml'
@@ -43,12 +44,14 @@ jobs:
       - name: Synchroniseer naar beide Pages-locaties
         run: |
           mkdir -p docs/recepten
+          cp recepten/hello-fresh-kaarten.json docs/recepten/hello-fresh-kaarten.json
           cp recepten/inspiratie.json docs/recepten/inspiratie.json
           cp recepten/inspiratie.html docs/recepten/inspiratie.html
       - name: Bewaar herbruikbare receptenindex
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/recepten/hello-fresh-kaarten.json
           git add recepten/inspiratie.json docs/recepten/inspiratie.json docs/recepten/inspiratie.html
           if ! git diff --cached --quiet; then
             git commit -m "Open receptenbibliotheek bijwerken"

@@ -356,6 +356,8 @@ def main():
     now = datetime.now(timezone.utc)
     prices = load_json(PRICES, required=True)
     index = load_json(INDEX)
+    cards=load_json(ROOT / "recepten" / "hello-fresh-kaarten.json")
+    index={**index,"items":index.get("items",[])+cards.get("items",[])}
     old = load_json(OUTPUT)
     new_links, status = rotating_sources(now)
     candidates=source_suggestions(index,new_links,old,now)

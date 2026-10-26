@@ -55,7 +55,9 @@ on:
       - 'tests/test_mealprep_ui.cjs'
       - '.github/workflows/receptenradar.yml'
   schedule:
-    - cron: '31 5 * * *'
+    # Volledige actieprijzen en receptmandjes twee keer per uur.
+    # GitHub kan geplande runs vertragen; geen exacte tijdgarantie.
+    - cron: '17,47 * * * *'
 permissions:
   contents: write
 concurrency:

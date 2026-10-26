@@ -110,7 +110,7 @@ def main():
     own=ROOT/"recepten"/"eigen-archief.json"
     if own.exists():
         items.extend(json.loads(own.read_text(encoding="utf-8")).get("items",[]))
-    for archive in ("surinaams-archief.json","hello-fresh-maart-archief.json"):
+    for archive in ("surinaams-archief.json","hello-fresh-maart-archief.json","hello-fresh-kaarten.json"):
         path=ROOT/"recepten"/archive
         if path.exists():
             try:
