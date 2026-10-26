@@ -46,20 +46,18 @@ function inputItems(text){
 // uitwisselbaar met gewone volle melk.
 function incompatibility(query,product){
  const q=norm(query),p=norm(product);
- const characteristic=[
-   /\b(lactosevrij|lactosevrije|lactofree|lacto free)\b/,
-   /\b(biologisch|bio|organic)\b/,
-   /\b(halfvol|halfvolle)\b/,
-   /\b(mager|magere)\b/,
-   /\b(vol|volle|vollemelk)\b/,
-   /\b(houdbaar|houdbare|uht)\b/,
-   /\b(plantaardig|vegan|vegetarisch)\b/,
-   /\b(ongezoet|zonder suiker)\b/,
-   /\b(zero|suikervrij)\b/
+ // Alleen expliciet gevraagde producteigenschappen zijn verplicht.
+ // Lactosevrij en plantaardig worden nooit stilzwijgend gesubstitueerd.
+ const mandatory=[
+  /\b(lactosevrij|lactosevrije|lactofree|lacto free)\b/,
+  /\b(plantaardig|vegan|vegetarisch)\b/,
+  /\b(zero|suikervrij)\b/
  ];
- for(const pattern of characteristic){
-   if(pattern.test(q)!==pattern.test(p))return true;
- }
+ if(mandatory.some(re=>re.test(q)!==re.test(p)))return true;
+ const specific=[/\b(halfvol|halfvolle)\b/,/\b(mager|magere)\b/,/\b(vol|volle|vollemelk)\b/];
+ if(specific.some(re=>re.test(q))&&specific.some(re=>re.test(q)!==re.test(p)))return true;
+ const optional=[/\b(biologisch|bio|organic)\b/,/\b(houdbaar|houdbare|uht)\b/,/\b(ongezoet|zonder suiker)\b/];
+ if(optional.some(re=>re.test(q)&&!re.test(p)))return true;
  if(/\bmelk\b/.test(q)&&/\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\b/.test(p)
     &&!/\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\b/.test(q))return true;
  return false;
