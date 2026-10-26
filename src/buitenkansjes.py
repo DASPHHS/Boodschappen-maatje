@@ -90,6 +90,7 @@ def normalize(p,today):
       "quantity":str(p.get("quantity") or ""), "unit":p.get("unit"),
       "unit_price":number(p.get("unit_price")),"loyalty_price":p.get("loyalty_price"),
       "multi_buy_quantity":p.get("multi_buy_quantity"),"multi_buy_price":p.get("multi_buy_price"),
+      "promotion_type":str(p.get("promotion_type") or ""),
       "status":"upcoming" if start>today else "active","valid_from":str(start),"valid_until":str(end),
       "tags":tags,"url":p.get("product_url") or "https://www.prijsprofeet.nl"}
 
@@ -147,7 +148,9 @@ def meal_offer_export(rows,today,coverage,max_per_store=350):
         multi_price=item.get("multi_buy_price")
         # Een gepubliceerde actieprijs kan de losse kassaprijs zijn.
         # Markeer als controleerbare korting uitsluitend simpele, individuele acties.
-        verified=bool(not multi and item["normal"] is not None and item["discount_pct"] is not None and
+        promotion=item.get("promotion_type") or ""
+        needs_bundle=bool(multi or re.search(r"(?:[1-9]\s*\+\s*[1-9]\s*gratis|[2-9]\s*voor|gratis|multibuy|bundle|meer\s*voor)",promotion,re.I))
+        verified=bool(not needs_bundle and item["normal"] is not None and item["discount_pct"] is not None and
                       item["normal"]>item["price"] and item["status"]=="active")
         relevance=(110 if kit else 105 if protein else 65 if healthy else 15)+min(35,item["discount_pct"] or 0)
         by_store[store].append({
@@ -157,7 +160,7 @@ def meal_offer_export(rows,today,coverage,max_per_store=350):
             "quantity_label":item["quantity"],"unit":item["unit"],
             "valid_from":item["valid_from"],"valid_until":item["valid_until"],
             "status":item["status"],"multi_buy_quantity":multi,
-            "multi_buy_price":multi_price,"promotion_type":"Meerverpakkingen" if multi else "Actie",
+            "multi_buy_price":multi_price,"promotion_type":promotion or ("Meerverpakkingen" if multi else "Actie"),
             "url":item["url"],"category_hint":"maaltijdpakket" if kit else "eiwitrijk" if protein else "overig",
             "relevance":round(relevance,1),"price_source":"PrijsProfeet",
             "retailer_coverage_complete":bool(coverage.get(item["retailer"],{}).get("complete"))
