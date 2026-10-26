@@ -174,12 +174,12 @@ function render(){
  $("cards").innerHTML=filtered.slice(0,limit).map(x=>{
    const link=safeUrl(x.url),collection=x.kind==="collection",found=store!=="all"&&!collection?offerTitleMatches(x.title,store):[];
    return '<article class="card"><span class="pill '+(collection?"collection":"")+'">'+esc(inferCuisine(x))+(collection?" · Broncollectie":" · Receptidee")+'</span>'+
-      '<h3>'+esc(x.title_nl||x.title)+'</h3>'+(x.title_nl&&x.title_nl!==x.title?'<div class="small">Originele titel: '+esc(x.title)+'</div>':'<div class="small">Titel zoals bij de bron</div>')+'<div class="source">'+esc(x.source)+'</div>'+
+      '<h3>'+esc(x.title_nl||x.title)+'</h3>'+(x.title_nl&&x.title_nl!==x.title?'<div class="small">Originele titel: '+esc(x.title)+'</div>':'<div class="small">'+(x.source==="Mijn HelloFresh-kaarten"?"Beschrijving van jouw kaart":"Titel zoals bij de bron")+'</div>')+'<div class="source">'+esc(x.source)+'</div>'+
       (!collection?'<div class="small">'+esc(x.category||"Soort nog niet gecontroleerd")+(x.minutes?" · "+Number(x.minutes)+" minuten":"")+'</div>':"")+
       (x.source_note?'<p class="small">'+esc(x.source_note)+'</p>':"")+
       (x.ingredients?.length?'<p class="small"><strong>Ingrediënten:</strong> '+esc(x.ingredients.map(i=>typeof i==="string"?i:i.name).join(", "))+'</p>':"")+
       (found.length?'<div class="action"><strong>Mogelijke actiematch:</strong> '+esc(found.join(", "))+'<br>Alleen op receptnaam; volledige ingrediënten en prijs nog controleren.</div>':"")+
-      (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(collection?"Open receptenbron ↗":"Bekijk oorspronkelijk recept ↗")+'</a>':
+      (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(collection?"Open receptenbron ↗":x.source==="Mijn HelloFresh-kaarten"?"Bekijk verwant HelloFresh-recept ↗":"Bekijk oorspronkelijk recept ↗")+'</a>':
        '<div class="small">Opgenomen uit je eigen PDF; originele receptkaart staat niet openbaar.</div>')+'</article>';
  }).join("")||'<div class="hint">Geen overeenkomsten gevonden. Kies een andere keuken, zoekterm of filter. Bij actiematches tellen alleen expliciet in de receptnaam genoemde ingrediënten.</div>';
  $("more").hidden=filtered.length<=limit;
@@ -212,6 +212,7 @@ Promise.all([
 ]).then(([data,price,cards])=>{
  items=[...(Array.isArray(data.items)?data.items:[]).filter(x=>x.source!=="Mijn HelloFresh-kaarten"),...(cards?.items||[])];deals=price;meta=data;
  setupFilters();
+ if(new URLSearchParams(location.search).get("group")==="hellofresh")document.querySelector("h1").textContent="HelloFresh & mijn receptkaarten";
  const query=new URLSearchParams(window.location.search).get("q");if(query)$("q").value=query;
  const requested=new URLSearchParams(window.location.search).get("store");
  if(["ah","jumbo","lidl"].includes(requested))$("actionstore").value=requested;
