@@ -19,31 +19,75 @@ from wereldkeuken_bronnen import (
     WORLD_SOURCES, USER_AGENT, parse_links, robots_allowed
 )
 from recept_keukens import infer_cuisine, dutch_title
+from receptenradar_catalog import ING
 
 ROOT = Path(__file__).resolve().parents[1]
 PRICES = ROOT / "recepten" / "data.json"
 INDEX = ROOT / "recepten" / "inspiratie.json"
 OUTPUT = ROOT / "recepten" / "alternatieven.json"
 
-# Bezoek per run slechts twee collecties; alle geregistreerde collecties komen
-# cyclisch aan bod. Geen zware, dagelijkse API- of prijsimport elk halfuur.
-FOCUS = (
-    "tonijn", "kip", "zalm", "gehakt", "broccoli", "boerenkool",
-    "tofu", "kikkererwten", "eieren", "rijst", "pasta", "spinazie"
-)
+# Dynamische dekking: alle ingrediënten die de echte recept- en prijsmotor kent
+# krijgen een zoekcategorie. Dit is niet beperkt tot één voorbeeld (tonijn).
+# Niet-herkende ingrediënten blijven via titel-/vrije-tekstzoekopdrachten vindbaar.
+FOCUS = tuple(dict.fromkeys((*ING.keys(), "kip", "vis", "groenten")))
 SYNONYMS = {
-    "tonijn": ("tonijn", "tuna"),
-    "kip": ("kip", "chicken", "pollo", "ayam"),
-    "zalm": ("zalm", "salmon"),
-    "gehakt": ("gehakt", "minced beef", "ground beef"),
-    "broccoli": ("broccoli",),
-    "boerenkool": ("boerenkool", "kale"),
-    "tofu": ("tofu",),
-    "kikkererwten": ("kikkererwten", "chickpea"),
-    "eieren": ("eieren", "egg", "omelet", "frittata"),
-    "rijst": ("rijst", "rice"),
-    "pasta": ("pasta", "spaghetti", "penne", "fusilli"),
-    "spinazie": ("spinazie", "spinach"),
+ "tonijn": ("tonijn", "tuna"),
+ "kip": ("kip", "chicken", "pollo", "ayam"),
+ "kipfilet": ("kipfilet", "chicken breast"),
+ "kipdij": ("kipdij", "chicken thighs", "chicken thigh"),
+ "kipgehakt": ("kipgehakt", "ground chicken"),
+ "shoarma": ("shoarma", "shawarma"),
+ "zalm": ("zalm", "salmon"),
+ "gerookte_zalm": ("gerookte zalm", "smoked salmon"),
+ "vis": ("vis", "fish", "seafood", "tonijn", "tuna", "zalm", "salmon",
+         "kabeljauw", "cod", "garnalen", "shrimp", "prawns", "tilapia"),
+ "gehakt": ("gehakt", "minced beef", "ground beef", "mince"),
+ "varkenshaas": ("varkenshaas", "pork tenderloin"),
+ "rookworst": ("rookworst",),
+ "broccoli": ("broccoli",),
+ "boerenkool": ("boerenkool", "kale"),
+ "bloemkool": ("bloemkool", "cauliflower"),
+ "spinazie": ("spinazie", "spinach"),
+ "spruiten": ("spruitjes", "spruiten", "brussels sprouts"),
+ "paprika": ("paprika", "bell pepper", "bell peppers"),
+ "courgette": ("courgette", "zucchini"),
+ "champignons": ("champignons", "mushroom", "mushrooms"),
+ "tomaten": ("tomaat", "tomaten", "tomato", "tomatoes"),
+ "tomatenblokjes": ("tomatenblokjes", "diced tomatoes", "chopped tomatoes"),
+ "ui": ("uien", "rode ui", "onion", "onions", "sjalot"),
+ "wortel": ("wortel", "wortelen", "carrot", "carrots"),
+ "komkommer": ("komkommer", "cucumber"),
+ "sla": ("sla", "lettuce", "rucola", "salad leaves"),
+ "wok": ("wokgroenten", "roerbakgroenten", "stir fry vegetables"),
+ "zoete_aardappel": ("zoete aardappel", "sweet potato", "sweet potatoes"),
+ "aardappel": ("aardappel", "aardappelen", "potato", "potatoes", "krieltjes"),
+ "bonen": ("bonen", "beans", "kidney beans", "black beans"),
+ "kikkererwten": ("kikkererwten", "chickpea", "chickpeas"),
+ "linzen": ("linzen", "lentils", "lentil"),
+ "tofu": ("tofu",),
+ "rijst": ("rijst", "rice", "brown rice"),
+ "risottorijst": ("risotto", "arborio", "carnaroli"),
+ "pasta": ("pasta", "spaghetti", "penne", "fusilli", "macaroni"),
+ "couscous": ("couscous",),
+ "wraps": ("wrap", "wraps", "tortilla", "tortillas"),
+ "naan": ("naan", "naanbrood"),
+ "eieren": ("ei", "eieren", "eggs", "egg", "omelet", "frittata"),
+ "mais": ("maïs", "mais", "corn", "sweetcorn"),
+ "kaas": ("kaas", "cheese", "parmesan"),
+ "yoghurt": ("yoghurt", "yogurt"),
+ "kwark": ("kwark", "quark", "skyr"),
+ "melk": ("melk", "milk"),
+ "kokosmelk": ("kokosmelk", "coconut milk"),
+ "hummus": ("hummus",),
+ "havermout": ("havermout", "oats", "oatmeal"),
+ "noten": ("noten", "nuts", "walnuts", "almonds"),
+ "banaan": ("banaan", "bananen", "banana", "bananas"),
+ "aardbeien": ("aardbei", "aardbeien", "strawberry", "strawberries"),
+ "blauwe_bessen": ("blauwe bessen", "bosbessen", "blueberries"),
+ "avocado": ("avocado", "avocados"),
+ "groenten": ("groenten", "vegetables", "vegetable", "salad",
+              "broccoli", "spinazie", "courgette", "wokgroenten", "bloemkool",
+              "paprika", "tomaten", "wortel"),
 }
 
 def normalized(value):
@@ -52,10 +96,16 @@ def normalized(value):
                                     if not unicodedata.combining(c))).strip()
 
 def matching_focus(title):
+    """Bepaal onderwerp, onafhankelijk van de voorbeeldproducten op de startpagina."""
     value = " " + normalized(title) + " "
-    return [key for key, aliases in SYNONYMS.items()
-            if any(re.search(r"\b" + re.escape(normalized(alias)) + r"\b", value)
-                   for alias in aliases)]
+    found = []
+    for key in FOCUS:
+        aliases = (*SYNONYMS.get(key, ()), key.replace("_", " "),
+                   ING[key][0] if key in ING else key)
+        if any(re.search(r"\b" + re.escape(normalized(alias)) + r"\b", value)
+               for alias in aliases if alias):
+            found.append(key)
+    return found
 
 def price_number(value):
     try:
@@ -78,9 +128,15 @@ def priced_suggestions(data):
         for recipe in data.get("recipes", {}).get(store, []):
             title = str(recipe.get("title") or "")
             keys = [str(line.get("key", "")) for line in recipe.get("ingredients", [])]
-            focus = sorted(set(matching_focus(title) + [k for k in FOCUS if k in keys]))
-            if not focus:
-                continue
+            focus = sorted(set(matching_focus(title) + [k for k in keys if k in ING]))
+            if recipe.get("category") == "Vis":
+                focus = sorted(set((*focus, "vis")))
+            if recipe.get("category") == "Kip":
+                focus = sorted(set((*focus, "kip")))
+            if any(k in keys for k in ("broccoli", "spinazie", "courgette", "paprika", "bloemkool", "wortel", "wok")):
+                focus = sorted(set((*focus, "groenten")))
+            # Geen recept laten verdwijnen omdat geen specifiek trefwoord in
+            # de productnaam staat: 'alle ingrediënten' moet alles tonen.
             price = price_number(recipe.get("checkout")) if recipe.get("complete") else None
             amount_used = int((recipe.get("deal_basket") or {}).get("used_actions") or recipe.get("sale_count") or 0)
             result = {
@@ -128,8 +184,8 @@ def source_suggestions(index, new_links, previous, now):
         if len(title) < 7 or url.scheme != "https" or not url.netloc:
             continue
         focus = matching_focus(title + " " + str(entry.get("title") or ""))
-        if not focus:
-            continue
+        # Bronrecepten zonder bekende trefwoorden zijn óók receptalternatieven.
+        # De titel blijft doorzoekbaar; we claimen geen geverifieerde ingrediënten.
         source = str(entry.get("source") or "Onbekende bron")
         key = href.rstrip("/").split("?")[0].casefold()
         if key in unique:
@@ -144,20 +200,33 @@ def source_suggestions(index, new_links, previous, now):
             "status": "inspiratie, ingrediënten en prijs niet gecontroleerd",
             "seen_at": entry.get("discovered_at") or entry.get("seen_at") or now.date().isoformat()
         }
-    all_items = list(unique.values())
-    # Spreid weergave over bronnen i.p.v. honderden links van één website.
-    all_items.sort(key=lambda x:(normalized(x["title"]),x["source"]))
-    count = {}
+    # Bewaar variatie in bron en wereldkeuken. Eén groot Engelstalig archief
+    # mag niet de gehele lijst verdringen; maximaal 90 resultaten per bron.
+    from collections import defaultdict, deque
+    pools = defaultdict(list)
+    for item in unique.values():
+        pools[(item["source"], item["cuisine"])].append(item)
+    queues = {}
+    for key, items in pools.items():
+        # Bekende hoofdingrediënten eerst, zonder overige gerechten te schrappen.
+        items.sort(key=lambda item: (not bool(item["focus"]), normalized(item["title"])))
+        queues[key] = deque(items)
     diversified = []
-    for x in all_items:
-        for key in x["focus"]:
-            pair = (key, x["source"])
-            if count.get(pair, 0) >= 16:
+    source_count = defaultdict(int)
+    sorted_keys = sorted(queues, key=lambda key: (key[0], key[1]))
+    while len(diversified) < 2500 and any(queues.values()):
+        changed = False
+        for key in sorted_keys:
+            if not queues[key] or source_count[key[0]] >= 90:
                 continue
-            count[pair] = count.get(pair, 0) + 1
-            diversified.append(x)
+            diversified.append(queues[key].popleft())
+            source_count[key[0]] += 1
+            changed = True
+            if len(diversified) >= 2500:
+                break
+        if not changed:
             break
-    return diversified[:1100]
+    return diversified
 
 def rotating_sources(now=None, session=None, max_sources=2):
     now = now or datetime.now(timezone.utc)
@@ -196,6 +265,8 @@ def generate(prices, index, prior, discovered, source_status, now):
         "unpriced": sum(f in r["focus"] and not r["complete"] for r in matches),
         "inspiration": sum(f in r["focus"] for r in external)
     } for f in FOCUS}
+    focus_labels = {f: ING[f][0] if f in ING else {"kip":"Kip", "vis":"Vis en zeevruchten", "groenten":"Groenten"}[f]
+                    for f in FOCUS}
     return {
         "updated_at": now.isoformat(timespec="seconds"),
         "prices_updated_at": prices.get("updated_at"),
@@ -207,6 +278,9 @@ def generate(prices, index, prior, discovered, source_status, now):
         "checked_collections_this_run": len(source_status),
         "full_prices_by_store": complete,
         "focus_counts": focus_counts,
+        "focus_labels": focus_labels,
+        "total_recipes": len(matches),
+        "total_source_ideas": len(external),
         "suggestions": matches,
         "inspiration": external
     }
@@ -221,7 +295,9 @@ def main():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print("Halfuurcontrole", now.isoformat(), "geprijsde", len(result["suggestions"]),
-          "inspiratie", len(result["inspiration"]), "tonijn", result["focus_counts"]["tonijn"], "bronnen", status)
+          "inspiratie", len(result["inspiration"]),
+          "categorieen", sum(any(c.values()) for c in result["focus_counts"].values()),
+          "bronnen", status)
 
 if __name__ == "__main__":
     main()
