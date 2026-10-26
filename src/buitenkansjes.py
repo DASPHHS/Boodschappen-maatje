@@ -139,8 +139,8 @@ def meal_offer_export(rows,today,coverage,max_per_store=350):
         store=store_map.get(item["retailer"])
         if store is None:continue
         name=item["name"].casefold()
-        kit=bool(re.search(r"\\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix)\\b",name))
-        protein=bool(re.search(r"\\b(fitquark|fitkwark|xxl nutrition|high protein|highprotein|protein kwark|skyr|kvarg|knijpkwark|proteine kwark|proteïne kwark)\\b",name))
+        kit=bool(re.search(r"\b(knorr|wereldgerechten|wereldgerecht|maaltijdpakket|maaltijdmix)\b",name))
+        protein=bool(re.search(r"\b(fitquark|fitkwark|xxl nutrition|high protein|highprotein|protein kwark|skyr|kvarg|knijpkwark|proteine kwark|proteïne kwark)\b",name))
         healthy=any(k in item["tags"] for k in ("Maaltijden","Kwark, skyr en yoghurt","Diepvriesfruit","Diepvriesgroenten","Maaltijdpakketten")) 
         has_deal=item["discount_pct"] is not None and item["discount_pct"]>=20
         if not (kit or protein or healthy or has_deal):continue
