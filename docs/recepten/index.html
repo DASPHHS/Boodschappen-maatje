@@ -609,7 +609,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function dealPromotion(d){
   if(d.is_loyalty)return "loyalty";
-  if(DealRelevantie.bundleInfo(d))return "bundle";
+  if(Number(d.multi_buy_quantity)>=2&&Number(d.multi_buy_price)>0)return "bundle";
+  if(/\\b[1-9]\\s*\\+\\s*[1-9]\\s*gratis\\b/i.test(String(d.promotion_type||"")))return "bundle";
   return "other";
  }
  function offersForPeriod(period,today,running,future){
