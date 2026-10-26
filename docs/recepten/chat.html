@@ -53,6 +53,7 @@ function detectIngredient(q){
  ["kipfilet",/\b(kipfilet)\b/],
  ["kip",/\b(kip|chicken)\b/],
  ["zalm",/\b(zalm|salmon)\b/],
+ ["tonijn",/\b(tonijn|tuna)\b/],
  ["gehakt",/\bgehakt\b/],
  ["broccoli",/\bbroccoli\b/],
  ["rijst",/\brijst\b/],
@@ -72,6 +73,7 @@ function defaultMeasure(q){
  if(/\b(melk|water|frisdrank|sap)\b/.test(n))return [1000,"ml"];
  if(/\b(eieren|ei)\b/.test(n))return [10,"st"];
  if(/\b(brood)\b/.test(n))return [1,"st"];
+ if(/\btonijn\b/.test(n))return [320,"g"];
  if(/\b(kwark|yoghurt|pasta|rijst|kip|zalm|gehakt|broccoli|spinazie|tofu)\b/.test(n))return [500,"g"];
  return [1,null];
 }
