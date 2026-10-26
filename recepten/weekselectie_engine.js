@@ -148,22 +148,34 @@ function weekly(items,deals,pricedRecipes,options={}){
  }
  candidates.sort((a,b)=>Number(b.hasOffer)-Number(a.hasOffer)||b.score-a.score||
   String(a.recipe.title).localeCompare(String(b.recipe.title),"nl"));
- const selected=[],groupCount=new Map();
+ const selected=[],groupCount=new Map(),proteinCount=new Map(),sourceCount=new Map();
  const pool=candidates.slice(0,1400);
+ const mainProtein=r=>{
+  const text=N(r.title+" "+(r.ingredients||[]).map(i=>i.name||"").join(" "));
+  for(const k of ["garnalen","tonijn","zalm","kipfilet","kipgehakt","kipdij","tofu","linzen","kikkererwten","bonen","gehakt","eieren"])
+   if(matchKey(text,k))return k;
+  return "overig";
+ };
  while(pool.length&&selected.length<Math.min(700,Math.max(24,Number(limit)||240))){
    let index=0,lowest=Infinity;
-   for(let i=0;i<Math.min(45,pool.length);i++){
-     const c=pool[i],key=(c.recipe.category||"onbekend")+"|"+
-       (root.ReceptInspiratieRadar?.dishType?.(c.recipe)||"overig");
-     const penalty=(groupCount.get(key)||0)*8;
-     const score=i*0.9+penalty+(c.hasOffer?0:4);
+   for(let i=0;i<Math.min(50,pool.length);i++){
+     const c=pool[i],r=c.recipe,key=(r.category||"onbekend")+"|"+
+       (root.ReceptInspiratieRadar?.dishType?.(r)||"overig");
+     const protein=mainProtein(r),source=String(r.source||"onbekend");
+     const penalty=(groupCount.get(key)||0)*7+
+       (proteinCount.get(protein)||0)*(protein==="overig"?1:12)+
+       (sourceCount.get(source)||0)*3;
+     const score=i*0.8+penalty+(c.hasOffer?0:6);
      if(score<lowest){index=i;lowest=score}
    }
    const [picked]=pool.splice(index,1);
    selected.push(picked);
-   const key=(picked.recipe.category||"onbekend")+"|"+
-     (root.ReceptInspiratieRadar?.dishType?.(picked.recipe)||"overig");
+   const r=picked.recipe,key=(r.category||"onbekend")+"|"+
+     (root.ReceptInspiratieRadar?.dishType?.(r)||"overig");
    groupCount.set(key,(groupCount.get(key)||0)+1);
+   const protein=mainProtein(r),source=String(r.source||"onbekend");
+   proteinCount.set(protein,(proteinCount.get(protein)||0)+1);
+   sourceCount.set(source,(sourceCount.get(source)||0)+1);
  }
  return {total:candidates.length,withOffer:candidates.filter(x=>x.hasOffer).length,
   available:items?.length||0,checkedIngredients:candidates.filter(x=>x.sourceIngredientMatches.length).length,
