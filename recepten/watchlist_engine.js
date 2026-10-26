@@ -39,7 +39,7 @@ function nutrition(name,quantity,unit,url){
  const n=norm(name);
  // Aanbiedingsbron en voedingsspecificatie moeten hetzelfde SKU én productsoort zijn.
  if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|yoghurt)|(kwark|yoghurt).*(protein|fit)/.test(n))return null;
- if(id?.startsWith("Jumbo-")&&!/(protein|xxl|fit).*(kwark|yoghurt|yogurt)|(kwark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
+ if(id?.startsWith("Jumbo-")&&!/(protein|xxl|fit).*(kwark|quark|yoghurt|yogurt)|(kwark|quark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
  return {proteinPer100g:match.protein100,proteinPerPackage:round(match.protein100*quantity/100,1),
    proteinSource:match.source,serving:match.portion};
 }
