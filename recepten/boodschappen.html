@@ -23,10 +23,35 @@ function inputItems(text){
  return {raw,q,qty,unit};
  });
 }
+// Exacte producteigenschappen gaan voor merk en laagste prijs.
+// Een lactosevrije, plantaardige of halfvolle variant is niet automatisch
+// uitwisselbaar met gewone volle melk.
+function incompatibility(query,product){
+ const q=norm(query),p=norm(product);
+ const characteristic=[
+   /\\b(lactosevrij|lactosevrije|lactofree|lacto free)\\b/,
+   /\\b(biologisch|bio|organic)\\b/,
+   /\\b(halfvol|halfvolle)\\b/,
+   /\\b(mager|magere)\\b/,
+   /\\b(vol|volle|vollemelk)\\b/,
+   /\\b(houdbaar|houdbare|uht)\\b/,
+   /\\b(plantaardig|vegan|vegetarisch)\\b/,
+   /\\b(ongezoet|zonder suiker)\\b/,
+   /\\b(zero|suikervrij)\\b/
+ ];
+ for(const pattern of characteristic){
+   if(pattern.test(q)!==pattern.test(p))return true;
+ }
+ if(/\\bmelk\\b/.test(q)&&/\\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\\b/.test(p)
+    &&!/\\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\\b/.test(q))return true;
+ return false;
+}
 function relevance(query,product){
+ if(incompatibility(query,product))return -1;
  const qt=tokens(query),pt=tokens(product);
  if(!qt.length)return -1;
- const hits=qt.filter(t=>pt.includes(t)||pt.some(p=>p===t+"en"||t===p+"en"));
+ const aliases={melk:["melk","melkpak","koemelk"],kipfilet:["kipfilet","kipfilets"],bananen:["banaan","bananen"],eieren:["ei","eieren"],aardappelen:["aardappel","aardappelen"]};
+ const hits=qt.filter(t=>pt.some(p=>p===t||p===t+"en"||t===p+"en"||(aliases[t]||[]).includes(p)));
  if(hits.length!==qt.length)return -1;
  const forbidden=["plantaardig","vegetarisch","vegan","soep","pizza","vulling","poeder","drank","broodbeleg","saus","salade","mix","reep"];
  if(!qt.some(t=>forbidden.includes(t))&&pt.some(t=>forbidden.includes(t)))return -1;
@@ -70,7 +95,8 @@ function compare(){
  const items=inputItems($("list").value);if(!items.length){$("warnings").innerHTML="<div class='error'>Vul eerst minimaal één product in.</div>";return}
  const rows=items.map(item=>({item,offers:Object.fromEntries(stores.map(s=>[s,pick(item,s)]))}));
  const totals={};for(const s of stores){const found=rows.filter(r=>r.offers[s]);totals[s]={sum:found.reduce((n,r)=>n+r.offers[s].amount,0),found:found.length,complete:found.length===rows.length}}
- $("warnings").innerHTML='<div class="error">Automatische productmatching kan merken en varianten verwarren. Controleer de getoonde productnamen, vooral bij specifieke wensen. Bij onbekende producten wordt geen prijs geschat.</div>';
+ const absent=stores.map(s=>({store:s,items:rows.filter(r=>!r.offers[s]).map(r=>r.item.raw)})).filter(x=>x.items.length);
+ $("warnings").innerHTML='<div class="error">Productmatching controleert productsoort en varianten. Vergelijk alleen gecontroleerde artikelen; onbekende prijzen zijn geen € 0,00. '+(absent.length?'Ontbrekende prijsdekking: '+absent.map(x=>esc(names[x.store])+' ('+x.items.length+'): '+esc(x.items.join(", "))).join(' · ')+'.':'Alle gevraagde producten hebben een prijsvermelding.')+'</div>';
  $("matches").innerHTML='<div class="line"><strong>Product</strong><strong class="price">AH</strong><strong class="price">Jumbo</strong><strong class="price">Lidl</strong></div>'+rows.map(r=>'<div class="result"><div class="line"><div><b>'+esc(r.item.raw)+'</b></div>'+stores.map(s=>{const x=r.offers[s];return x?'<div class="price"><strong>'+money(x.amount)+'</strong><small>'+x.bought+' × '+x.size+x.unit+(x.discount?' · actie':'')+'</small></div>':'<div class="price muted">Onbekend</div>'}).join("")+'</div><div class="small">'+stores.map(s=>{const x=r.offers[s];return x?names[s]+': '+esc(x.name):names[s]+': geen betrouwbare match'}).join('<br>')+'</div></div>').join("");
  $("totals").innerHTML=stores.map(s=>'<div class="stat"><span>'+names[s]+' <small>('+totals[s].found+'/'+rows.length+' prijzen)</small></span><strong>'+money(totals[s].sum)+(totals[s].complete?'':' + ?')+'</strong></div>').join("");
  const complete=stores.filter(s=>totals[s].complete).sort((a,b)=>totals[a].sum-totals[b].sum);
