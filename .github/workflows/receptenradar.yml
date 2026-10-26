@@ -55,6 +55,10 @@ on:
       - 'recepten/recipe_search.js'
       - 'recepten/persoonlijk_weekmenu.js'
       - 'recepten/recept_inspiratie_radar.js'
+      - 'recepten/weekselectie_engine.js'
+      - 'recepten/deal_relevantie.js'
+      - 'tests/test_weekselectie_engine.cjs'
+      - 'tests/test_deal_relevantie.cjs'
       - 'tests/test_recept_inspiratie_radar.cjs'
       - 'tests/test_persoonlijk_weekmenu.cjs'
       - 'tests/test_shared_recipe_hits.cjs'
@@ -125,6 +129,8 @@ jobs:
           node tests/test_weekmenu_ui.cjs
           node tests/test_persoonlijk_weekmenu.cjs
           node tests/test_recept_inspiratie_radar.cjs
+          node tests/test_weekselectie_engine.cjs
+          node tests/test_deal_relevantie.cjs
           node tests/test_shared_recipe_hits.cjs
           node tests/test_scan_status.cjs
           node tests/test_mealprep_ui.cjs
@@ -149,6 +155,8 @@ jobs:
           cp recepten/recipe_search.js docs/recepten/recipe_search.js
           cp recepten/persoonlijk_weekmenu.js docs/recepten/persoonlijk_weekmenu.js
           cp recepten/recept_inspiratie_radar.js docs/recepten/recept_inspiratie_radar.js
+          cp recepten/weekselectie_engine.js docs/recepten/weekselectie_engine.js
+          cp recepten/deal_relevantie.js docs/recepten/deal_relevantie.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
           cp recepten/data.json docs/recepten/data.json
@@ -160,7 +168,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add recepten/shared-hellofresh-hits.json docs/recepten/shared-hellofresh-hits.json recepten/shared_recipe_hits.js docs/recepten/shared_recipe_hits.js
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
-          git add docs/recepten/recipe_search.js docs/recepten/persoonlijk_weekmenu.js docs/recepten/recept_inspiratie_radar.js
+          git add docs/recepten/recipe_search.js docs/recepten/persoonlijk_weekmenu.js docs/recepten/recept_inspiratie_radar.js docs/recepten/weekselectie_engine.js docs/recepten/deal_relevantie.js
           git add docs/recepten/watchlist.html
           git add docs/recepten/watchlist_engine.js docs/recepten/watchlist_app.js
           git add docs/recepten/index.html docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
