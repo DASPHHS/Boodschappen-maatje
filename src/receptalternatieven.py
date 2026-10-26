@@ -19,6 +19,7 @@ from wereldkeuken_bronnen import (
     WORLD_SOURCES, USER_AGENT, parse_links, robots_allowed
 )
 from recept_keukens import infer_cuisine, dutch_title
+from bronrecept_controle import verify_source_urls
 from receptenradar_catalog import ING
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -273,11 +274,23 @@ def rotating_sources(now=None, session=None, max_sources=2):
         time.sleep(0.1)
     return new, status
 
-def generate(prices, index, prior, discovered, source_status, now):
+def generate(prices, index, prior, discovered, source_status, now, verifications=None, checked=None):
     if not isinstance(prices.get("recipes"), dict):
         raise RuntimeError("Prijsbron zonder recepten: niets publiceren")
     matches = priced_suggestions(prices)
     external = source_suggestions(index, discovered, prior, now)
+    verifications=verifications or {}
+    checked=checked or []
+    for item in external:
+        check=verifications.get(item["url"])
+        if not check:continue
+        item["verification_level"]=check.get("level","niet_gecontroleerd")
+        item["verified_ingredient_count"]=check.get("ingredient_count")
+        item["recognized_ingredient_keys"]=check.get("recognized_ingredients") or []
+        item["verified_portions"]=check.get("servings")
+        item["source_rating"]=check.get("rating")
+        item["source_checked_at"]=check.get("checked_at")
+
     complete = {store: len([r for r in matches if r["store"] == store and r["complete"]])
                 for store in ("ah", "jumbo", "lidl")}
     focus_counts = {f: {
@@ -294,6 +307,11 @@ def generate(prices, index, prior, discovered, source_status, now):
         "note": "Elke 30 minuten controle op een deel van geregistreerde bronnen. "
                 "Een onvolledig geprijsd of extern recept is nooit een kassaprijsadvies.",
         "source_status": source_status,
+        "source_recipe_checks": checked,
+        "source_verifications": verifications,
+        "source_recipes_with_ingredients": sum(x.get("verification_level") in
+            ("bronrecept_4_personen","broningrediënten_beschikbaar") for x in external),
+
         "registered_collections": len(WORLD_SOURCES),
         "checked_collections_this_run": len(source_status),
         "full_prices_by_store": complete,
@@ -311,13 +329,15 @@ def main():
     index = load_json(INDEX)
     old = load_json(OUTPUT)
     new_links, status = rotating_sources(now)
-    result = generate(prices, index, old, new_links, status, now)
+    candidates=source_suggestions(index,new_links,old,now)
+    verified,checks=verify_source_urls(candidates,old.get("source_verifications"),now,limit=3)
+    result = generate(prices, index, old, new_links, status, now,verified,checks)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print("Halfuurcontrole", now.isoformat(), "geprijsde", len(result["suggestions"]),
           "inspiratie", len(result["inspiration"]),
           "categorieen", sum(any(c.values()) for c in result["focus_counts"].values()),
-          "bronnen", status)
+          "bronnen", status,"bronrecepten_controles",checks)
 
 if __name__ == "__main__":
     main()
