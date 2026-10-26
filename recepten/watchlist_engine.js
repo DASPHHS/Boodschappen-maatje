@@ -18,8 +18,8 @@ const VERIFIED=[
  {id:"AH-wi556289",protein100:13,portion:200,source:"https://www.ah.nl/producten/product/wi556289/ah-protein-kwark-met-yoghurt-framboos"},
  {id:"Jumbo-590777CUP",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-aardbei-kwark-200-g-590777CUP"},
  {id:"Jumbo-735508ZK",protein100:10,portion:200,source:"https://www.jumbo.com/producten/melkunie-protein-yoghurt-perzik-framboos-735508ZK"},
- {id:"Jumbo-685838ZK",protein100:12,portion:205,source:"https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK"},
- {id:"Jumbo-685839ZK",protein100:12,portion:205,source:"https://www.jumbo.com/producten/xxl-nutrition-fit-high-protein-kwark-perzik-passievrucht-205g-685839ZK"}
+ {id:"Jumbo-685838ZK",protein100:12,portion:205,proteinPerPortion:25,source:"https://www.jumbo.com/producten/zuivelhoeve-xxl-nutrition-fit-quark-strawberry-protein-quark-205-g-685838ZK"},
+ {id:"Jumbo-685839ZK",protein100:12,portion:205,proteinPerPortion:25,source:"https://www.jumbo.com/producten/xxl-nutrition-fit-high-protein-kwark-perzik-passievrucht-205g-685839ZK"}
 ];
 // Houd de identiteit van het artikel aan, niet alleen 'protein' in een naam.
 // Bronvoedingswaarde geldt per artikel; een 450g familiebak of andere smaak
@@ -40,7 +40,7 @@ function nutrition(name,quantity,unit,url){
  // Aanbiedingsbron en voedingsspecificatie moeten hetzelfde SKU én productsoort zijn.
  if(id?.startsWith("AH-")&&!/(protein|xxl|fit).*(kwark|yoghurt)|(kwark|yoghurt).*(protein|fit)/.test(n))return null;
  if(id?.startsWith("Jumbo-")&&!/(protein|xxl|fit).*(kwark|quark|yoghurt|yogurt)|(kwark|quark|yoghurt|yogurt).*(protein|fit)/.test(n))return null;
- return {proteinPer100g:match.protein100,proteinPerPackage:round(match.protein100*quantity/100,1),
+ return {proteinPer100g:match.protein100,proteinPerPackage:match.proteinPerPortion??round(match.protein100*quantity/100,1),
    proteinSource:match.source,serving:match.portion};
 }
 const WATCH=[
@@ -137,7 +137,7 @@ function normalizeRow(row,watch){
  const calcUnit=watch.unit==="any"?row.unit:watch.unit;
  const unitScale=calcUnit==="g"?100:calcUnit==="ml"?1000:1;
  const nutrient=watch.protein?nutrition(row.name,amount,row.unit,row.url):null;
- if(watch.protein&&(!nutrient||nutrient.proteinPer100g*nutrient.serving/100<20))return null;
+ if(watch.protein&&(!nutrient||nutrient.proteinPerPackage<20))return null;
  const eurosPer20=nutrient?round(row.price*20/(nutrient.proteinPerPackage*bundles),3):null;
  return {...row,unit:calcUnit,quantity:amount,
   pricePerUnit:round(row.price*unitScale/totalContent,3),
