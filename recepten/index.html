@@ -249,7 +249,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
-  let rs=storeData().filter(r=>(r.title+" "+r.category+" "+r.ingredients.map(x=>x.label).join(" ")).toLocaleLowerCase("nl").includes(q));
+  let rs=storeData().filter(r=>RecipeSearch.matches(r,q));
   const meal=$("mealtype").value;
   if(meal!=="all")rs=rs.filter(r=>(r.meal_type||"Avondeten")===meal);
   const format=$("format").value;
@@ -272,53 +272,34 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(origin!=="all")rs=rs.filter(r=>r.inspiration===origin);
   const selection=$("selection").value;
   const withoutPromoFilter=rs;
-  if(selection==="two")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>=2);
-  if(selection==="promos")rs=rs.filter(r=>(r.deal_basket?.used_actions??r.sale_count)>0);
+  if(selection==="two")rs=rs.filter(r=>r.sale_count>=2&&r.saving>0);
+  if(selection==="promos")rs=rs.filter(r=>r.sale_count>0&&r.saving>0);
   const noMatchingPromotions=(selection!=="all" && rs.length===0 && withoutPromoFilter.length>0);
   // Actiefilter is strikt: toon geen recepten zonder gebruikte korting
   // wanneer de gebruiker expliciet op aanbiedingen filtert.
   const sort=$("sort").value;
-  if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
-  if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
-  if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
-  if(sort==="deals")rs.sort((a,b)=>(b.deal_basket?.used_actions??b.sale_count)-(a.deal_basket?.used_actions??a.sale_count)||(a.deal_basket?.checkout??1e9)-(b.deal_basket?.checkout??1e9));
   const health=$("health").value;
   if(health==="only")rs=rs.filter(r=>r.nutrition?.priority);
-  if(health==="prefer"){
-    // Prioriteer 70% voedingsvoorkeur ZONDER de gekozen sortering te breken.
-    // Bij 'Meeste actie-ingrediënten' rangschikken we eerst strikt op actieaantal.
-    const mixHealth=items=>{
-      const healthy=items.filter(r=>r.nutrition?.priority);
-      const other=items.filter(r=>!r.nutrition?.priority);
-      const mixed=[];
-      while(healthy.length||other.length){
-        mixed.push(...healthy.splice(0,7),...other.splice(0,3));
-        if(!healthy.length&&other.length)mixed.push(...other.splice(0,10));
-        if(!other.length&&healthy.length)mixed.push(...healthy.splice(0,10));
-      }
-      return mixed;
-    };
-    if(sort==="deals"){
-      const groups=new Map();
-      for(const recipe of rs){
-        const count=recipe.deal_basket?.used_actions??recipe.sale_count;
-        if(!groups.has(count))groups.set(count,[]);
-        groups.get(count).push(recipe);
-      }
-      rs=[...groups.keys()].sort((a,b)=>b-a).flatMap(count=>mixHealth(groups.get(count)));
-    }else{
-      // Prijs en bereidingstijd blijven hun eigen, exacte sortering houden.
-      // De voedingsvoorkeur is dan zichtbaar als badge/filter in plaats
-      // van een verborgen ingreep in de gekozen rangorde.
-    }
+  if(sort==="value"){
+    rs.sort((a,b)=>health==="off"?
+      Number(b.complete)-Number(a.complete)||RecipeSearch.score(a)-RecipeSearch.score(b):
+      RecipeSearch.rank(a,b));
+  }else{
+    if(sort==="price")rs.sort((a,b)=>(a.checkout??1e9)-(b.checkout??1e9));
+    if(sort==="portion")rs.sort((a,b)=>(a.per_serving??1e9)-(b.per_serving??1e9));
+    if(sort==="time")rs.sort((a,b)=>a.minutes-b.minutes);
+    if(sort==="deals")rs.sort((a,b)=>b.sale_count-a.sale_count||(a.checkout??1e9)-(b.checkout??1e9));
+    // Incomplete prijs kan nooit de goedkoopste kassamand winnen.
+    rs.sort((a,b)=>Number(b.complete)-Number(a.complete));
   }
-  // Volledige kassabedragen altijd vóór recepten met ontbrekende prijzen.
-  rs.sort((a,b)=>Number(b.complete)-Number(a.complete));
+  $("search-help").textContent=q?
+    'Zoeken op alle woorden, ook als ze op verschillende plaatsen in de ingrediëntenlijst staan. Alleen de volledige combinatie telt; ontbrekende prijzen blijven zichtbaar.':
+    'Eerst volledige kassaprijzen en gezonde opties. Geldige acties tellen mee wanneer ze de werkelijke aankoop goedkoper maken.';
   const total=rs.length;
   const visible=rs.slice(0,state.visible);
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
   const portion=visible.length?Math.round(100*suitable/visible.length):0;
-  $("store-status").textContent=visible.length+" van "+total+" recepten · "+portion+"% voedingsvoorkeur volgens ingrediëntscreening · "+state.data.counts.promotions[state.store]+" actievermeldingen (korting niet altijd bevestigd)";
+  $("store-status").textContent=visible.length+" van "+total+" recepten · "+suitable+" van "+visible.length+" passen bij voedingsvoorkeur · "+state.data.counts.promotions[state.store]+" actievermeldingen";
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
   $("recipes").innerHTML=(noMatchingPromotions?`<div class="notice warn" style="grid-column:1/-1"><strong>Geen geverifieerde actie-matches voor deze selectie.</strong> Er worden geen recepten zonder de gevraagde korting getoond. Zet het actiefilter uit voor reguliere recepten of bekijk de controle op niet-gekoppelde acties.</div>`:"")+(rs.length?visible.map(r=>`<article class="recipe ${isSelected(r)?"selected":""}">
@@ -327,6 +308,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <div class="chips"><span class="chip">${esc(r.meal_type||"Avondeten")}</span><span class="chip">${esc(r.cuisine||"Overig")}</span>${r.portable?`<span class="chip">Mee te nemen ✓</span>`:""}${r.mealprep?`<span class="chip">Geschikt als mealprep-basis</span>`:""}<span class="chip">${r.nutrition?.kcal_per_serving_estimate!=null?`≈ ${r.nutrition.kcal_per_serving_estimate} kcal/portie (${r.nutrition.kcal_total_estimate} kcal totaal, 4 porties)`:"Kcal niet volledig berekenbaar"}</span><span class="chip">${esc(r.category)}</span><span class="chip">${esc(r.inspiration||"Eigen recept")}</span><span class="chip">${r.nutrition?.protein_g_per_serving_estimate!=null?`≈ ${Number(r.nutrition.protein_g_per_serving_estimate).toLocaleString("nl-NL")} g eiwit/portie · ${r.nutrition.protein_source?"≥30 g ✓":"<30 g"}`:"Eiwit niet berekend"}</span><span class="chip">${r.nutrition?.lower_carb?"Koolhydraatbewust ✓":"Meer zetmeel"}</span><span class="chip">${r.nutrition?.vegetable_g_per_serving_estimate!=null?`≈ ${r.nutrition.vegetable_g_per_serving_estimate} g groenten/portie · ${r.nutrition.vegetable_forward?"≥250 g ✓":"<250 g"}`:"Groenten niet berekend"}</span><span class="chip">${r.nutrition?.priority?"Past bij voorkeur":"Alternatief"}</span><span class="chip">${r.minutes} min</span><span class="chip promo">${r.covered_count}/${r.ingredient_count} prijzen</span></div>
     ${r.nutrition?.health_note?`<div class="notice warn"><strong>Voedingsadvies</strong><p>${esc(r.nutrition.health_note)}</p><p>Gezonder alternatief: <strong>boerenkoolstamppot met kruidige kip</strong>. Zoek daarop in de receptenlijst; de prijzen worden per supermarkt berekend.</p></div>`:""}
     ${recipePrice(r)}
+    ${r.source_recipe?.url?`<div class="product"><strong>Receptbasis:</strong> <a href="${safeURL(r.source_recipe.url)}" rel="noopener noreferrer" target="_blank">${esc(r.source_recipe.name)}</a> · ${esc(r.source_recipe.status)}</div>`:""}
     <p class="sub"><strong>Smaakmakers (niet meegerekend):</strong> ${esc((r.pantry||[]).join(", ")||"geen extra smaakmakers")}</p>
     ${r.drained_weight_unverified?.length?`<p class="sub"><strong>Let op bij uitgelekte conserven:</strong> ${esc(r.drained_weight_unverified.join(", "))}. De berekende verpakkingenaantallen gebruiken het opgegeven nettogewicht; bij een lager uitlekgewicht kunnen meer verpakkingen nodig zijn. Ook de voedingswaardeschatting kan afwijken.</p>`:""}
     ${r.deal_basket?.used_actions>r.sale_count?`<div class="notice" style="margin:8px 0 12px"><strong>Ook mogelijk: echte actiemand met ${r.deal_basket.used_actions} gebruikte acties</strong><div> ${r.complete?euro(r.deal_basket.checkout)+" voor alle verpakkingen":euro(r.deal_basket.known_subtotal)+" bekend subtotaal"} · ${r.deal_basket.extra_vs_cheapest>0?euro(r.deal_basket.extra_vs_cheapest)+" duurder dan de goedkoopste mand": "niet duurder dan de goedkoopste mand"}</div><details><summary>Bekijk de ingrediënten van de actiemand</summary>${r.deal_basket.ingredients.map(l=>`<div class="line"><div>${esc(l.label)}: ${esc(l.product)}${l.sale?" · ACTIE":""} ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Bron</a>`:""}</div><strong>${euro(l.cash_price)}</strong></div>`).join("")}</details></div>`:""}
@@ -709,12 +691,23 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    updateCuisineOptions();resetAndRender();
  }));
  $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
- $("tuna-all").addEventListener("click",()=>{
+ $("search-shortcuts").addEventListener("click",event=>{
+   const button=event.target.closest("[data-recipe-query]");
+   if(!button)return;
+   $("search").value=button.dataset.recipeQuery;
+   $("selection").value="all";
+   $("cuisine").value="all";
+   $("category").value="all";
+   $("duration").value="all";
    state.mode="recipes";
-   $("search").value="tonijn";$("selection").value="all";$("category").value="fish";
-   $("mealtype").value="all";$("format").value="all";$("origin").value="all";
-   $("duration").value="all";$("mealprep-filter").value="all";$("cuisine").value="all";
-   state.visible=20;render();
+   state.visible=10;
+   render();
+ });
+ $("clear-search").addEventListener("click",()=>{
+   $("search").value="";
+   state.visible=10;
+   render();
+   $("search").focus();
  });
  const initialSearch=new URLSearchParams(location.search).get("zoek");
  if(initialSearch){
