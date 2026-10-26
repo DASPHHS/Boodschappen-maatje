@@ -58,7 +58,7 @@ RULES={
       r"dessert|kwarktaart|drank|knijp|roomkwark|vla)\b"},
  "yoghurt":{"reject":r"\b(?:plantaardig|soja|vegan|alpro|"
       r"yoghurtdrank|gurt|dessert|vla|melkdrank)\b"},
- "tomaten":{"reject":r"\b(?:tomatensap|tomaten saus|"
+ "tomaten":{"reject":r"\b(?:tomatensoep|tomaten soep|tomatensap|tomaten saus|"
       r"passata|gezeefd|polpa|puree|concentraat|salsa|ketchup)\b"},
  "paprika":{"reject":r"\b(?:paprikapoeder|paprika poeder|"
       r"kruiden|wokmix|chips|mix|saus|pesto)\b"},
