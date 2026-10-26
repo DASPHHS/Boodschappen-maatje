@@ -285,8 +285,41 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   care:"Verzorging & huishouden",other:"Overige producten"
  };
  const words=name=>" "+String(name||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ")+" ";
+ function campaignFamily(d){
+  const n=words(d.name).trim();
+  const families=[
+   [/^knorr (airfryer mix|maaltijdmix|wereldgerechten|cup a soup|good noodles|drinkbouillon)/,"Knorr maaltijdproducten"],
+   [/^robijn (color|quickwash|klein krachtig|vloeibaar|specials)/,"Robijn wasmiddel"],
+   [/^ariel (4 in 1|4in1|pods|vloeibaar)/,"Ariel wasmiddel"],
+   [/^witte reus toiletblok/,"Witte Reus toiletblokken"],
+   [/^lenor (fresh air|wasverzachter)/,"Lenor wasverzachter"],
+   [/^john west twist diner tonijn/,"John West Twist Diner"],
+   [/^bonduelle (edamame|rode kidneybonen|kikkererwten|crispy mais)/,"Bonduelle conserven"]
+  ];
+  return families.find(([r])=>r.test(n))?.[1]||"";
+ }
+ function groupDealVariants(deals){
+  const grouped=new Map();
+  for(const d of deals){
+    const family=campaignFamily(d);
+    const key=family?[family,dealCategory(d),d.price,d.valid_from,d.valid_until,
+      d.multi_buy_quantity||"",d.multi_buy_price||"",d.is_loyalty||false].join("|"):
+      [words(d.name).trim(),d.quantity||"",d.unit||"",d.price,d.valid_from,d.valid_until].join("|");
+    if(!grouped.has(key))grouped.set(key,{...d,variantNames:[],variantLinks:[],campaign:family});
+    const group=grouped.get(key);
+    if(!group.variantNames.includes(d.name)){
+      group.variantNames.push(d.name);
+      group.variantLinks.push(d.url);
+    }
+  }
+  return [...grouped.values()];
+ }
  function dealCategory(d){
   const n=words(d.name),any=items=>items.some(w=>n.includes(" "+w+" "));
+  // Bereide gerechten, kruidenmixen en huishoudproducten gaan vóór losse
+  // ingrediëntenwoorden zoals kip, ham, vis, was of vegan.
+  if(any(["geurglas","geurkaars","raapzaadwas","kaars","toiletblok","wc blok"]))return "care";
+  if(any(["maaltijdmix","wereldgerechten","airfryer mix","mix voor","soep","bouillon","noodles","noedels","trattoria","tratorria","cup a soup","good noodles","good potatoes"]))return "pantry";
   if(any(["wasmiddel","waspoeder","wasverzachter","vaatwastabletten","vaatwasmiddel","toiletpapier","keukenpapier","schoonmaakmiddel","allesreiniger","afwasmiddel","shampoo","conditioner","douchegel","deodorant","tandpasta","tandenborstel","scheermes","scheergel","huidcreme","dagcreme","zonnebrand","reinigingsdoekjes","handzeep","zeep","luchtverfrisser","luier","luiers"]))return "care";
   if(any(["koffie","koffiecups","thee","cola","frisdrank","limonade","vruchtensap","sinaasappelsap","appelsap","water","mineraalwater","bier","wijn","energiedrank","energy","red bull","redbull","pepsi","fanta","coca cola","smoothie","drank","ice tea","ijsthee"]))return "drinks";
   if(any(["chips","koek","koeken","koekjes","chocolade","snoep","noten","amandelen","cashewnoten","walnoten","pinda","pindas","olijfolie","zonnebloemolie","saus","pastasaus","tomatensaus","ketchup","mayonaise","bonen","kidneybonen","kikkererwten","linzen","blik","conserven","pesto","hagelslag","jam","honing","crackers","beschuit"]))return "pantry";
@@ -346,20 +379,21 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(sort==="price")ds.sort((a,b)=>(Number(a.price)||Infinity)-(Number(b.price)||Infinity));
   if(sort==="expiry")ds.sort((a,b)=>(a.valid_until||"9999-12-31").localeCompare(b.valid_until||"9999-12-31")||value(b)-value(a));
   if(sort==="name")ds.sort((a,b)=>a.name.localeCompare(b.name,"nl"));
+  const grouped=groupDealVariants(ds);
   const count=original.filter(verified).length,filteredVerified=ds.filter(verified).length;
   const scanDay=state.data?.updated_at?new Date(state.data.updated_at).toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"}):"";
   const stale=Boolean(scanDay&&scanDay<today);
   $("deal-count").textContent=(stale?"Voorlopig: laatste scan "+scanDay+" · ":"")+
-    ds.length.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
+    grouped.length.toLocaleString("nl-NL")+" acties ("+ds.length.toLocaleString("nl-NL")+" varianten) van "+original.length.toLocaleString("nl-NL")+" vermeldingen"+
     (period==="upcoming"?" · Nog niet geldig":period==="tomorrow"?" · Morgen geldig":"");
   $("deal-confidence").textContent=count.toLocaleString("nl-NL")+" van "+original.length.toLocaleString("nl-NL")+" kortingen berekenbaar; "+filteredVerified.toLocaleString("nl-NL")+" binnen huidige selectie.";
-  $("store-status").textContent=ds.length+" gefilterde aanbiedingen · "+count+
+  $("store-status").textContent=grouped.length+" acties · "+ds.length+" varianten · "+count+
     " met berekenbaar voordeel van "+original.length+" vermeldingen"+
     (period==="today"?"":" · Let op startdatum");
   document.querySelectorAll("[data-deal-category]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.dealCategory===category)));
-  $("moredeals").hidden=ds.length<=state.dealVisible;
-  $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,ds.length-state.dealVisible)+" resterend)";
-  $("deals").innerHTML=ds.length?ds.slice(0,state.dealVisible).map(d=>{
+  $("moredeals").hidden=grouped.length<=state.dealVisible;
+  $("moredeals").textContent="Toon 50 extra acties ("+Math.max(0,grouped.length-state.dealVisible)+" resterend)";
+  $("deals").innerHTML=grouped.length?grouped.slice(0,state.dealVisible).map(d=>{
    const valid=verified(d);
    const bundle=dealPromotion(d)==="bundle";
    const offerLabel=bundle?Math.round(Number(d.multi_buy_quantity))+" voor "+euro(d.multi_buy_price):
@@ -368,7 +402,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      (new Date(d.valid_until+"T12:00:00Z")-new Date(today+"T12:00:00Z"))/(24*3600*1000)<=3;
    return `<article class="deal"><div><span class="deal-category">${esc(DEAL_CATEGORIES[dealCategory(d)])}</span>
     ${d.valid_from&&d.valid_from>today?'<span class="deal-category" style="background:#fff2d8;color:#724800">Vanaf '+esc(d.valid_from)+' · nog niet geldig</span>':''}
-    <div><strong>${esc(d.name)}</strong></div><div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
+    <div><strong>${esc(d.variantNames.length>1?d.campaign+" ("+d.variantNames.length+" varianten)":d.name)}</strong></div>${d.variantNames.length>1?`<details><summary>Bekijk ${d.variantNames.length} afzonderlijke producten</summary>${d.variantNames.map((name,i)=>`<div class="sub"><a href="${safeURL(d.variantLinks[i])}" target="_blank" rel="noopener noreferrer">${esc(name)}</a></div>`).join("")}</details>`:""}<div class="sub">${esc(d.size_label||"Verpakkingsinhoud onbekend")} · ${d.valid_until?"t/m "+esc(d.valid_until):"Einddatum onbekend"}${expiring?" · Loopt binnenkort af":""}</div>${offerLabel?`<div class="deal-condition">${esc(offerLabel)}</div>`:""}<a href="${safeURL(d.url)}" target="_blank" rel="noopener noreferrer">Controleer winkelactie ↗</a></div><div class="dealprice"><b>${euro(d.price)}</b><small>${valid?"−"+Number(d.verified_discount_pct).toLocaleString("nl-NL",{maximumFractionDigits:0})+"% korting berekend uit bronprijzen":"Voordeel niet bevestigd"}${d.is_loyalty?" · Controleer appvoorwaarden":""}</small></div></article>`;
   }).join(""):"<div class='notice'>Geen aanbiedingen gevonden met deze filters of deze geldigheidsperiode. De bron kan ook nog geen toekomstige acties leveren. Probeer een andere keuze of controleer de winkelwebsite.</div>";
  }
 
