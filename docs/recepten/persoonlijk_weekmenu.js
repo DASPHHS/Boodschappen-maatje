@@ -36,7 +36,8 @@ function dishType(recipe){
  ["stamppot",/stamppot|hutspot|stoemp/],["curry",/curry|dahl|dal\b|masala/],
  ["pasta",/pasta|spaghetti|penne|lasagne|orzo|macaroni|risotto/],
  ["wok",/wok|roerbak|bami|nasi/],["soep",/soep|ramen|saoto/],
- ["oven",/oven|traybake|gratin/],["wrap",/wrap|taco|burrito|quesadilla/],
+ ["oven",/oven|traybake|gratin/],["stoof",/stoof|ragout/],
+ ["rijst",/rijst|pilav|paella|poké|poke/],["wrap",/wrap|taco|burrito|quesadilla/],
  ["salade",/salade|bowl/]])if(pattern.test(title))return type;
  return "overig";
 }
