@@ -54,6 +54,17 @@ class SemanticProductTest(unittest.TestCase):
             ("De Zaanse Hoeve Magere kwark","kwark")
         ]:
             self.assertTrue(compatible(name,ing),name)
+    def test_warung_prepared_meal_not_shoarma_ingredient(self):
+        product="Warung Turkse rijst kipshoarma"
+        self.assertFalse(compatible(product,"shoarma"))
+        self.assertFalse(match_ingredient(p(product,4.99,450),"shoarma"))
+        self.assertEqual(offer_price("shoarma",600,"g",[o(product,4.99,6.39,450)]),[])
+        chosen=ingredient_price("shoarma",600,"g",
+             [p(product,6.39,450),p("AH Scharrel kip shoarma",5.79,400)],
+             [o(product,4.99,6.39,450)])
+        self.assertIsNotNone(chosen)
+        self.assertEqual(chosen["product"],"AH Scharrel kip shoarma")
+        self.assertFalse(chosen["sale"])
     def test_cheapest_real_berries_not_spread(self):
         shelves=[
             p("Hero Fruitspread blauwe bessen",1.99,350),
