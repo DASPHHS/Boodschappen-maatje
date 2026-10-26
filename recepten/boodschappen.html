@@ -29,21 +29,21 @@ function inputItems(text){
 function incompatibility(query,product){
  const q=norm(query),p=norm(product);
  const characteristic=[
-   /\\b(lactosevrij|lactosevrije|lactofree|lacto free)\\b/,
-   /\\b(biologisch|bio|organic)\\b/,
-   /\\b(halfvol|halfvolle)\\b/,
-   /\\b(mager|magere)\\b/,
-   /\\b(vol|volle|vollemelk)\\b/,
-   /\\b(houdbaar|houdbare|uht)\\b/,
-   /\\b(plantaardig|vegan|vegetarisch)\\b/,
-   /\\b(ongezoet|zonder suiker)\\b/,
-   /\\b(zero|suikervrij)\\b/
+   /\b(lactosevrij|lactosevrije|lactofree|lacto free)\b/,
+   /\b(biologisch|bio|organic)\b/,
+   /\b(halfvol|halfvolle)\b/,
+   /\b(mager|magere)\b/,
+   /\b(vol|volle|vollemelk)\b/,
+   /\b(houdbaar|houdbare|uht)\b/,
+   /\b(plantaardig|vegan|vegetarisch)\b/,
+   /\b(ongezoet|zonder suiker)\b/,
+   /\b(zero|suikervrij)\b/
  ];
  for(const pattern of characteristic){
    if(pattern.test(q)!==pattern.test(p))return true;
  }
- if(/\\bmelk\\b/.test(q)&&/\\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\\b/.test(p)
-    &&!/\\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\\b/.test(q))return true;
+ if(/\bmelk\b/.test(q)&&/\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\b/.test(p)
+    &&!/\b(karnemelk|chocolademelk|geitenmelk|havermelk|sojamelk|amandelmelk|kokosmelk|rijstmelk|melkdrank|melkpoeder)\b/.test(q))return true;
  return false;
 }
 function relevance(query,product){
