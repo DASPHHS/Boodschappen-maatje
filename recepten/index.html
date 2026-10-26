@@ -164,7 +164,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <option value="tomorrow">Morgen geldig</option>
     <option value="upcoming">Komende 7 dagen (nog niet gestart)</option>
   </select>
-  <input id="deal-search" type="search" placeholder="Zoek product, merk of ingrediënt…" aria-label="Zoek in aanbiedingen">
+  <input id="deal-search" type="search" placeholder="Bijv. eiwitrijk, schoonmaak, maaltijdpakket, kwark…" aria-label="Zoek op product, behoefte of categorie">
   <select id="deal-category" aria-label="Aanbiedingscategorie">
    <option value="all">Alle productcategorieën</option>
    <option value="produce">Groente &amp; fruit</option>
@@ -290,7 +290,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
 <details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./deal_relevantie.js"></script><script src="./weekselectie_engine.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
+<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./deal_relevantie.js"></script><script src="./deal_search.js"></script><script src="./weekselectie_engine.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -675,7 +675,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     names[k]+": "+(checks[k]?.products||0)+" productvermeldingen ("+(checks[k]?.state||"onbekend")+")").join(" · ");
   const query=$("deal-search").value.trim().toLocaleLowerCase("nl");
   const items=Object.keys(names).flatMap(store=>(stores[store]||[]).map(p=>({...p,store})))
-   .filter(p=>!query||String(p.name||"").toLocaleLowerCase("nl").includes(query)).slice(0,24);
+   .filter(p=>!query||DealSearch.matches(p,query)).slice(0,24);
   $("official-store-cards").innerHTML=items.map(p=>'<article class="recipe"><div class="recipe-body">'+
    '<strong>'+esc(p.name)+'</strong><p class="sub">'+esc(names[p.store])+
    ' · productvermelding, korting niet vastgesteld</p>'+
@@ -709,7 +709,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const sort=$("deal-sort").value;
   const verified=d=>DealRelevantie.isVerified(d);
   let ds=original.filter(d=>
-   (!query||String(d.name||"").toLocaleLowerCase("nl").includes(query))&&
+   (!query||DealSearch.matches(d,query))&&
    (interest==="all"||DealRelevantie.classify(d)===interest)&&
    (category==="all"||dealCategory(d)===category)&&
    (status==="all"||(status==="verified"?verified(d):!verified(d)))&&
