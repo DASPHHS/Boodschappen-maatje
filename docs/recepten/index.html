@@ -1226,8 +1226,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("weekly-highlights").addEventListener("click",e=>{const button=e.target.closest("[data-open-highlight]");if(button)openChosenRecipe(button.dataset.openHighlight)});
  $("offer-inspiration").addEventListener("click",e=>{
   const b=e.target.closest("[data-idea-query]");if(!b)return;
-  $("search").value=b.dataset.ideaQuery;
-  clearRecipeFilters();$("sort").value="value";state.libraryVisible=24;render();
+  state.mode="recipes";clearRecipeFilters();
+  $("search").value=b.dataset.ideaQuery;$("sort").value="value";state.libraryVisible=24;render();
   $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
  });
  $("library-load-more").addEventListener("click",()=>{state.libraryVisible+=24;renderLibraryResults()});
