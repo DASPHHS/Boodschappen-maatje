@@ -224,6 +224,17 @@ function compare(rows,watch){
    a.cartCost-b.cartCost :a.pricePerUnit-b.pricePerUnit||
    a.cartCost-b.cartCost);
 }
+function unverifiedRows(snapshot,store,watch,asOf=isoDate()){
+ if(!watch.protein)return [];
+ const data=snapshot?.stores?.[store];
+ if(!data)return [];
+ return sourceRows(data,watch,store,asOf)
+  .filter(row=>nutrition(row.name,row.quantity,row.unit,row.url)===null)
+  .map(row=>({...normalizeRow(row,{...watch,protein:false}),
+    protein:null,verificationStatus:"Eiwitinhoud per productvariant nog niet bevestigd"}))
+  .sort((a,b)=>a.pricePerUnit-b.pricePerUnit||a.price-b.price)
+  .slice(0,8);
+}
 function bestRows(snapshot,store,watch,asOf=isoDate()){
  const data=snapshot?.stores?.[store];
  if(!data)return [];
@@ -237,7 +248,8 @@ function bestStores(snapshot,watch,asOf=isoDate()){
   const sameSkuRegular=best&&best.discount?options.find(x=>!x.discount&&
     x.sku&&x.sku===best.sku&&x.quantity===best.quantity):null;
   stores[store]={best,regular:sameSkuRegular||null,
-   alternatives:options.slice(0,6),total:options.length};
+   alternatives:options.slice(0,8),total:options.length,
+   unverified:unverifiedRows(snapshot,store,watch,asOf)};
  }
  const candidates=Object.entries(stores).filter(([,v])=>Boolean(v.best))
   .map(([store,v])=>({store,...v.best}));
@@ -247,7 +259,7 @@ function bestStores(snapshot,watch,asOf=isoDate()){
  return {stores,winner:candidates[0]||null};
 }
 const API={WATCH,VERIFIED,DIRECT_PRICES,norm,money,sku,nutrition,matchProduct,volumeConsistent,
- sourceRows,promoKind,normalizeRow,compare,bestRows,bestStores,isoDate};
+ sourceRows,promoKind,normalizeRow,compare,unverifiedRows,bestRows,bestStores,isoDate};
 root.BMWatchlist=API;
 if(typeof module!=="undefined"&&module.exports)module.exports=API;
 })(typeof globalThis!=="undefined"?globalThis:this);
