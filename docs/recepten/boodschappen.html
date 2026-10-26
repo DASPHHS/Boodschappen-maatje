@@ -9,6 +9,21 @@ const stop=new Set(["de","het","een","van","en","vers","verse","normaal","gewone
 const norm=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
 const tokens=x=>norm(x).split(" ").filter(t=>t.length>1&&!stop.has(t)&&!/^\d+$/.test(t));
 const unsafe=["saus","smaak","kruiden","snoep","chips","toetje","kant en klaar"];
+// Zoekopdrachten zonder maat gebruiken een herkenbare standaardhoeveelheid.
+// Onbekende producten gebruiken een enkele verpakking, niet ten onrechte 1 stuk.
+const DEFAULT_QUANTITIES=[
+ [/(^| )(melk|karnemelk|yoghurt|kwark|skyr|vla|water|sap|frisdrank)( |$)/,1000,"ml"],
+ [/(^| )(rijst|pasta|spaghetti|havermout|couscous|muesli)( |$)/,500,"g"],
+ [/(^| )(kipfilet|kipdij|kipshoarma|gehakt|rundergehakt|visfilet|zalm|broccoli|spinazie|spruiten|wortelen|tomaten|champignons)( |$)/,500,"g"],
+ [/(^| )(bananen|appels|peren|aardappelen|uien)( |$)/,1000,"g"],
+ [/(^| )(eieren|ei)( |$)/,10,"st"],
+ [/(^| )(brood)( |$)/,1,"st"]
+];
+function defaultMeasure(q){
+ const cleaned=norm(q);
+ const found=DEFAULT_QUANTITIES.find(([re])=>re.test(cleaned));
+ return found?{qty:found[1],unit:found[2],assumed:true}:{qty:1,unit:null,assumed:true};
+}
 function inputItems(text){
  return text.split(/[\n;,]+/).map(x=>x.trim()).filter(Boolean).slice(0,35).map(raw=>{
  let q=raw,qty=1,unit="st";
@@ -20,13 +35,9 @@ function inputItems(text){
  else if(unit.startsWith("stuk")||unit.startsWith("pak")||unit.startsWith("fles"))unit="st";
  q=(q.slice(0,m.index)+" "+q.slice(m.index+m[0].length)).trim();
  }
- // Zonder hoeveelheid gebruikt de vergelijker een expliciete standaardmaat
- // voor melk in plaats van '1 stuk'. Melkprijzen zijn in ml opgeslagen;
- // zonder deze stap kon geen enkele winkel een gewone liter melk vinden.
- if(!m && /\bmelk\b/i.test(norm(q)) && !/\b(melkpoeder|melkchocolade)\b/i.test(norm(q))){
-   qty=1000;unit="ml";
- }
- return {raw,q,qty,unit};
+ let assumed=false;
+ if(!m){const d=defaultMeasure(q);qty=d.qty;unit=d.unit;assumed=true}
+ return {raw,q,qty,unit,assumed};
  });
 }
 // Exacte producteigenschappen gaan voor merk en laagste prijs.
@@ -67,13 +78,13 @@ function pick(item,store){
  const raw=data.stores[store],matches=[];
  function add(row,sale){
  const [name,price,size,unit]=row;
- if(unit!==item.unit||!Number(size)||!Number(price))return;
+ if((item.unit&&unit!==item.unit)||!Number(size)||!Number(price))return;
  let score=relevance(item.q,name);if(score<0)return;
  const normalized=norm(name);
  if(norm(item.q).includes("magere")&&!normalized.includes("mager"))return;
  if(/\bvolle?\b/.test(norm(item.q))&&!/\bvolle?\b/.test(normalized))return;
  if(norm(item.q).includes("zero")&&!normalized.includes("zero"))return;
- let n=Math.ceil(item.qty/size),amount=n*price,bought=n;
+ let n=item.unit?Math.ceil(item.qty/size):1,amount=n*price,bought=n;
  if(sale){
   const k=Number(row[5]),bundle=Number(row[6]);
   if(k>=2&&bundle>0){
