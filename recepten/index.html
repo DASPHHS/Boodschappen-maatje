@@ -206,12 +206,24 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     <a href="https://www.da.nl/aanbiedingen" target="_blank" rel="noopener noreferrer"><strong>DA</strong><small>Actieartikelen · zelf controleren</small></a>
   </div>
 </div>
+<section id="offer-inspiration" class="panel" hidden aria-label="Kookideeën uit actuele aanbiedingen">
+<h2>Wat kun je maken met de aanbiedingen?</h2>
+<p class="sub">Ook naan, maaltijdpakketten en smaakmakers geven ideeën. Een actieproduct telt pas mee in de maaltijdprijs als de juiste variant en hoeveelheid gecontroleerd zijn.</p>
+<div id="offer-idea-list" class="cards"></div>
+</section>
 <section id="weekly-highlights" class="panel" hidden aria-label="Bijzondere maaltijdaanbiedingen" style="margin:12px 0">
 <h2>Bijzondere aanbiedingen voor het avondeten</h2>
 <p class="sub">Maximaal vier verschillende recepten met een daadwerkelijk gebruikte korting. De overige recepten blijven hieronder doorzoekbaar.</p>
 <div id="highlight-list" class="cards"></div>
 </section>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
+<section id="library-results" class="panel" hidden aria-label="Overige recepten uit alle kookbronnen">
+<h2>Meer recepten uit de volledige verzameling</h2>
+<p class="sub" id="library-status">Ook eigen HelloFresh-kaarten, kookschriften en receptensites. Bij titel-only recepten zijn ingrediënten, voedingswaarden en prijzen nog niet bevestigd.</p>
+<div id="library-cards" class="cards"></div>
+<button type="button" id="library-load-more" class="btn outline small" hidden>Toon meer bronrecepten</button>
+<a class="btn outline small" href="./inspiratie.html">Open alle receptenbronnen</a>
+</section>
 <section class="source-matches-panel" id="source-matches-panel" hidden>
   <div class="row"><div><h3>Meer wereldkeukens vanuit deze aanbiedingen</h3><p class="sub">Extra wereldkeukens vanuit actuele aanbiedingen: sommige recepten zijn alleen op titel gekoppeld, bij andere zijn actieproducten daadwerkelijk teruggevonden in de oorspronkelijke ingrediëntenlijst. Vierpersoonsporties, voedingswaarden en kassaprijzen worden pas bevestigd na volledige controle.</p></div></div>
   <div class="source-match-actions">
@@ -236,7 +248,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
 <details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
+<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -831,7 +843,87 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    const rows=(report.unlinked||[]).slice(0,25).map(x=>`<div class="line"><div><strong>${esc(x.name)}</strong><div class="sub">${esc(x.group)} · ${esc(x.reason)}</div></div><div class="dealprice">${euro(x.price)}${x.url?`<small><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">Bekijk bron</a></small>`:""}</div></div>`).join("");
    $("audit-body").innerHTML=`<p class="sub">Dit is een diagnose, geen lijst bewezen gemiste kortingen: ook duurdere actieproducten kunnen terecht buiten recepten vallen. Je ziet maximaal 25 voorbeelden.</p>${qualityHtml}${summary}<h3 style="margin-top:16px">Voorbeelden voor controle</h3>${rows||"<p>Geen herkende, niet-gekoppelde producten.</p>"}`;
  }
- function render(){
+ // Receptindex wordt pas geladen als de gebruiker zoekt; dit voorkomt
+ // dat duizenden onvolledig geprijsde bronvermeldingen de weekradar overspoelen.
+ state.library=null;state.libraryLoading=false;state.libraryError=false;state.libraryVisible=24;
+ async function ensureLibrary(){
+   if(state.library||state.libraryLoading||state.libraryError)return;
+   state.libraryLoading=true;
+   try{
+     const response=await fetch("./inspiratie.json",{cache:"no-store"});
+     if(!response.ok)throw Error("Bronnenindex niet beschikbaar");
+     const data=await response.json();
+     if(!Array.isArray(data.items))throw Error("Ongeldige receptenindex");
+     state.library=data.items;
+   }catch(e){state.libraryError=true}
+   finally{
+     state.libraryLoading=false;
+     if(state.data&&state.mode==="recipes")renderLibraryResults();
+   }
+ }
+ function renderLibraryResults(){
+   const panel=$("library-results");
+   const query=$("search").value.trim();
+   if(state.mode!=="recipes"||query.length<2||state.favoriteOnly){
+     panel.hidden=true;return;
+   }
+   panel.hidden=false;
+   if(!state.library){
+     $("library-status").textContent=state.libraryError?
+       "De aanvullende receptenbibliotheek is tijdelijk niet bereikbaar.":
+       "De volledige receptenbibliotheek wordt doorzocht…";
+     $("library-cards").innerHTML="";
+     $("library-load-more").hidden=true;
+     if(!state.libraryError)void ensureLibrary();
+     return;
+   }
+   const result=ReceptInspiratieRadar.find(state.library,{
+     query,category:$("category").value,cuisine:$("cuisine").value,
+     format:$("format").value,duration:$("duration").value,
+     origin:$("origin").value,limit:state.libraryVisible
+   });
+   const duplicates=new Set([
+     ...storeData().map(r=>ReceptInspiratieRadar.norm(r.title)),
+     ...(state.sharedHits?.stores?.[state.store]||[]).map(r=>ReceptInspiratieRadar.norm(r.title))
+   ]);
+   const shown=result.items.filter(x=>!duplicates.has(ReceptInspiratieRadar.norm(x.recipe.title)));
+   $("library-status").textContent=result.total+" bronvermeldingen passen bij deze zoekopdracht. "+
+     "Dit zijn extra recepten, niet automatisch geprijsde maaltijden. Alleen bekende ingrediënten worden als zodanig getoond.";
+   $("library-cards").innerHTML=shown.map(({recipe:r,evidence})=>{
+     const source=String(r.source||"Receptenbron");
+     const url=r.url?safeURL(r.url):null;
+     const known=Array.isArray(r.ingredients)&&r.ingredients.length;
+     return `<article class="recipe"><div class="recipe-body">
+       <span class="pill">Inspiratie · ${esc(source)}</span>
+       <h3>${esc(r.title)}</h3>
+       <p class="sub">${esc(r.cuisine||"Keuken onbekend")} · ${esc(r.category||"Categorie onbekend")} · ${esc(evidence)}</p>
+       <p class="sub">Nog geen geverifieerde kassaprijs of gebruikte korting.
+        ${known?"Ingredienten aanwezig, hoeveelheden en matches kunnen nog ontbreken.":"Ingrediënten en eiwitwaarde nog niet gecontroleerd."}</p>
+       ${known?`<p class="sub">Bekende ingrediënten: ${esc(r.ingredients.map(i=>typeof i==="string"?i:i.name||"").filter(Boolean).join(", "))}</p>`:""}
+       ${url&&url!=="#"?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open het oorspronkelijke recept</a>`:
+         `<p class="sub">${esc(r.source_note||"Recept uit een eigen kookschrift of archief; origineel niet publiek beschikbaar.")}</p>`}
+     </div></article>`;
+   }).join("")||'<p class="sub">Geen aanvullende bronrecepten naast de al getoonde resultaten.</p>';
+   $("library-load-more").hidden=state.libraryVisible>=result.total;
+ }
+ function renderOfferIdeas(){
+   const panel=$("offer-inspiration");
+   if(state.mode!=="recipes"){panel.hidden=true;return}
+   const q=$("search").value.trim();
+   const today=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Amsterdam"});
+   const ideas=ReceptInspiratieRadar.offerIdeas(state.data?.deals?.[state.store]||[],today,8)
+      .filter(x=>!q||ReceptInspiratieRadar.matchWords(x.product+" "+x.query,q));
+   panel.hidden=!ideas.length;
+   $("offer-idea-list").innerHTML=ideas.map(x=>`<article class="recipe"><div class="recipe-body">
+     <strong>${esc(x.label)}</strong>
+     <p class="sub">Actieproduct: ${esc(x.product)}</p>
+     <p class="sub">${x.kind==="pakket"?"Maaltijdpakket is geen vlees, vis of groente. Alleen geverifieerde pakketinhoud kan apart worden doorgerekend.":"Bekijk recepten die dit product kunnen gebruiken."}
+     ${x.discount_verified?"De actie is op productniveau berekenbaar; gebruik in de maaltijd nog niet bevestigd.":"Actievoordeel voor dit gerecht niet doorgerekend."}</p>
+     <div class="actions"><button type="button" class="btn outline small" data-idea-query="${esc(x.query)}">Zoek recepten met ${esc(x.query)}</button>
+     ${x.url&&safeURL(x.url)!=="#"?`<a href="${esc(safeURL(x.url))}" target="_blank" rel="noopener noreferrer">Bekijk actie</a>`:""}</div>
+   </div></article>`).join("");
+ }
+  function render(){
   document.querySelectorAll("[data-store]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.store===state.store)));
   $("store-status").textContent=`${state.data.counts.ordinary[state.store]||0} gewone productprijzen · ${state.data.counts.promotions[state.store]||0} aanbiedingen`;
   $("title").textContent=state.mode==="recipes"?"Recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
@@ -848,6 +940,8 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   $("moredeals").hidden=state.mode!=="deals";
   $("loadmore").hidden=state.mode==="deals";
   if(state.mode==="deals")renderDeals();else renderRecipes();
+  renderOfferIdeas();
+  renderLibraryResults();
   document.querySelectorAll("#cuisine-shortcuts [data-cuisine]").forEach(b=>
     b.setAttribute("aria-pressed",String(b.dataset.cuisine===$("cuisine").value)));
   // Losse bronideeën horen niet in de hoofdranglijst totdat ingrediënten, porties en prijzen compleet zijn.
@@ -880,7 +974,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  }));
  $("shared-hits-only").addEventListener("click",()=>{state.sharedOnly=!state.sharedOnly;$("shared-hits-only").setAttribute("aria-pressed",String(state.sharedOnly));$("selection").value="all";$("duration").value="all";$("health").value="prefer";state.visible=10;if(state.data)render();});
  $("quick-savings").addEventListener("click",()=>{state.sharedOnly=false;$("search").value="";$("mealtype").value="Avondeten";$("duration").value="30";$("selection").value="promos";$("sort").value="saving";state.visible=10;if(state.data)render();});
- $("search").addEventListener("input",()=>{state.dealVisible=50;resetAndRender()});
+ $("search").addEventListener("input",()=>{state.dealVisible=50;state.libraryVisible=24;resetAndRender()});
  $("search-shortcuts").addEventListener("click",event=>{
    const button=event.target.closest("[data-recipe-query]");
    if(!button)return;
@@ -941,6 +1035,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const b=e.target.closest("[data-add]");if(b)toggle(b.dataset.add,b.dataset.variant||"cheapest")
  });
  $("weekly-highlights").addEventListener("click",e=>{const button=e.target.closest("[data-open-highlight]");if(button)openChosenRecipe(button.dataset.openHighlight)});
+ $("offer-inspiration").addEventListener("click",e=>{
+  const b=e.target.closest("[data-idea-query]");if(!b)return;
+  $("search").value=b.dataset.ideaQuery;
+  clearRecipeFilters();$("sort").value="value";state.libraryVisible=24;render();
+  $("recipes").scrollIntoView({behavior:"smooth",block:"start"});
+ });
+ $("library-load-more").addEventListener("click",()=>{state.libraryVisible+=24;renderLibraryResults()});
  $("cart").addEventListener("click",e=>{
   const b=e.target.closest("[data-cart-recipe]");
   if(b)openChosenRecipe(b.dataset.cartRecipe);
