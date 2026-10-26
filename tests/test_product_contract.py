@@ -1,5 +1,8 @@
 """Herbruikbare kwaliteitschecks voor genormaliseerde aanbiedingen."""
 import unittest
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"src"))
 from product_contract import normalized_offer, compare_sources, product_identity
 
 class ProductContractTests(unittest.TestCase):
