@@ -41,6 +41,8 @@ on:
       - 'tests/test_keuken_filters.cjs'
       - 'tests/test_deal_filters.cjs'
       - 'recepten/index.html'
+      - 'recepten/recipe_search.js'
+      - 'tests/test_receptzoeker.cjs'
       - 'recepten/status.html'
       - 'tests/test_scan_status.cjs'
       - 'tests/test_mealprep_labels.py'
@@ -94,6 +96,7 @@ jobs:
           PY
           node --check /tmp/receptenradar_check.js
           node tests/test_filter_contract.cjs
+          node tests/test_receptzoeker.cjs
           node tests/test_chatbot.cjs
           node tests/test_boodschappen_prijsdekking.cjs
           node tests/test_generieke_producten_en_deals.cjs
@@ -114,6 +117,7 @@ jobs:
           # en eigen kookboekindexen per ongeluk weer overschrijven.
           mkdir -p docs/recepten
           cp recepten/index.html docs/recepten/index.html
+          cp recepten/recipe_search.js docs/recepten/recipe_search.js
           cp recepten/chat.html docs/recepten/chat.html
           cp recepten/boodschappen.html docs/recepten/boodschappen.html
           cp recepten/data.json docs/recepten/data.json
@@ -124,6 +128,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add recepten/data.json recepten/winkelprijzen.json recepten/ontdekte_recepten.json recepten/status.json docs/weekly-advice.json
+          git add docs/recepten/recipe_search.js
           git add docs/recepten/index.html docs/recepten/chat.html docs/recepten/boodschappen.html docs/recepten/data.json docs/recepten/winkelprijzen.json docs/recepten/ontdekte_recepten.json docs/recepten/status.json docs/recepten/status.html
           if ! git diff --cached --quiet; then
             git commit -m "Dagelijkse recepten en kassaprijzen bijwerken"
