@@ -11,7 +11,7 @@ const LABELS={maaltijdpakket:"Maaltijdpakket · kookidee",proteine:"Eiwitrijk pr
 function classify(value){
  const name=norm(typeof value==="string"?value:value?.name);
  if(PACKAGE.test(name))return "maaltijdpakket";
- if(PROTEIN.test(name)&&/(?:kwark|quark|skyr|pudding|yoghurt|shake|drink|protein|nutrition|kvarg)/.test(name))return "proteine";
+ if(PROTEIN.test(name)&&/(?:kwark|quark|skyr|pudding|yoghurt|yogurt|shake|drink|kvarg)/.test(name))return "proteine";
  if(STARTER.test(name))return "basis";
  if(FRESH.test(name))return "vers";
  return "overig";
@@ -21,8 +21,8 @@ function validToday(d,today){
  return Boolean(today&&end&&end>=today&&(!start||start<=today));
 }
 function bundleInfo(d){
- const n=norm(d.promotion_type);
- let match=n.match(/\b([1-9])\s*\+\s*([1-9])\s*gratis\b/);
+ const n=String(d.promotion_type||"").toLowerCase();
+ let match=n.match(/\b([1-9])\s*(?:\+|plus)\s*([1-9])\s*gratis\b/);
  if(match){
    const paid=Number(match[1]),free=Number(match[2]);
    return {required:paid+free,paid,free,label:paid+"+"+free+" gratis · koop "+(paid+free)};
