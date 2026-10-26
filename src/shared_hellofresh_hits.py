@@ -1,5 +1,5 @@
 """Turn user-shared HelloFresh indexes into visible hits, without invented prices."""
-import json
+import json,re
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -38,6 +38,10 @@ def build(offers_by_store,archives=None,today=None):
     if not (offer.get('valid_from','9999')<=today<=offer.get('valid_until','')):continue
     if not verified_discount(offer):continue
     keys=[key for key in recipe['ingredient_keys'] if match_ingredient(offer,key)]
+    # A spinach word in bread, juice or a ready-made bowl is not loose spinach.
+    whole={'spinazie','broccoli','bloemkool','aardappel','zoete_aardappel','boerenkool','paprika','courgette','wortel','champignons','tomaten','kipfilet','kipdij','gehakt','zalm','tonijn'}
+    if re.search(r'brood|groentesap|vruchtensap|\bsap\b|smoothie|drink|salad|bowl|wrap|saus|pasta|pizza|soep|chips|schotel|snack|quiche|lasagne|stamppot',offer.get('name',''),re.I):
+     keys=[key for key in keys if key not in whole]
     if keys:matches.append({'name':offer['name'],'keys':keys,'valid_until':offer['valid_until'],'url':offer.get('url')})
    mapped.append({**recipe,'possible_offers':matches,'has_possible_offer':bool(matches)})
   stores[store]=mapped

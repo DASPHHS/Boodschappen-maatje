@@ -16,3 +16,9 @@ class SharedHits(unittest.TestCase):
  def test_all_archives_included_without_source_ranking_limit(self):
   a={'items':[{'title':f'Spinazie gerecht {i}','source':'Mijn HelloFresh-archief'} for i in range(90)]}
   self.assertEqual(build({'ah':[]},[a])['shared_recipe_count'],90)
+
+ def test_spinach_bread_juice_and_salad_are_not_ingredient_hits(self):
+  archive={'items':[{'title':'Stamppot met spinazie','source':'Mijn HelloFresh-kaarten'}]}
+  offers=[{'name':name,'norm':name.lower(),'price':1,'original_price':2,'quantity':500,'unit':'g','valid_from':'2026-10-26','valid_until':'2026-11-01'} for name in ['AH Borrelbrood feta spinazie','AH Groentesap komkommer spinazie','AH Saladbowl feta spinazie']]
+  hit=build({'ah':offers},[archive],today='2026-10-26')['stores']['ah'][0]
+  self.assertFalse(hit['has_possible_offer'])
