@@ -350,8 +350,23 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(r.complete)return `<div class="cash">${euro(r.checkout)} <small>geprijsde producten, hele verpakkingen</small></div><div class="tagline">${euro(r.checkout/4)} per portie bij aankoop van alle verpakkingen · ${euro(r.per_serving)} geschatte verbruikskosten per portie · zonder smaakmakers · 4 porties</div>`;
   return `<div class="cash">${euro(r.known_subtotal)} <small>bekend subtotaal</small></div><div class="tagline">Onvolledig: ${r.missing.length} ingrediënt(en) zonder prijs</div>`;
  }
- function lineHtml(l){
-  return `<div class="line"><div>${esc(l.label)} <span class="sub">(${l.required} ${esc(l.unit)})</span>${l.adjusted?`<div class="sub">Aangepast van ${l.original_required} naar ${l.required} ${esc(l.unit)} om een extra verpakking te voorkomen.</div>`:""}<div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.components?.length?"verpakkingscombinatie":l.packages+" verpakking(en)"} · ${esc(l.source)}${l.sale?` <span class="pill">ACTIE</span>`:""}${l.frozen?` <span class="pill">DIEPVRIES</span>`:""}${l.flavoured_dairy?` <span class="pill">SMAAKVARIANT · CHECK ETIKET</span>`:""}</div>${(l.offer_alternatives||[]).map(a=>`<div class="sub">Ook in de aanbieding: ${esc(a.product)} · ${a.packages} verpakking(en) voor ${euro(a.cash_price)}${a.more_expensive_than_selected?" (duurder dan geselecteerde optie)":""}${a.url?` · <a target="_blank" rel="noopener noreferrer" href="${esc(a.url)}">Aanbieding</a>`:""}</div>`).join("")}</div><strong>${euro(l.cash_price)}</strong></div>`;
+ function lineHtml(l,servings=4){
+  const used=Number(l.required||0)*servings/4;
+  const pkg=Number(l.package_size||0);
+  const packs=pkg>0?Math.ceil(used/pkg):Number(l.packages||0);
+  const leftover=pkg>0?Math.max(0,packs*pkg-used):null;
+  const quantity=x=>Number(x.toFixed(1)).toLocaleString("nl-NL");
+  return `<div class="line"><div><strong>${esc(l.label)}</strong>
+    <div class="sub"><strong>Gebruik ${quantity(used)} ${esc(l.unit)}</strong> voor ${servings} porties${pkg>0?
+      " · koop "+packs+" × "+esc(l.package)+" · bewaar "+quantity(leftover)+" "+esc(l.unit):""}</div>
+    ${l.adjusted?`<div class="sub">Bij 4 porties aangepast van ${l.original_required} naar ${l.required} ${esc(l.unit)} om een extra verpakking te voorkomen.</div>`:""}
+    <div class="product">${esc(l.product)} · ${esc(l.package)} · ${l.components?.length?"verpakkingscombinatie":l.packages+" verpakking(en) bij 4 porties"} · ${esc(l.source)}
+    ${l.sale?` <span class="pill">ACTIE</span>`:""}${l.frozen?` <span class="pill">DIEPVRIES</span>`:""}</div>
+    ${(l.offer_alternatives||[]).length?`<details><summary>${l.offer_alternatives.length} andere aanbiedingen (mogelijk duurder)</summary>
+      ${l.offer_alternatives.map(a=>`<div class="sub">${esc(a.product)} · ${a.packages} verpakking(en) voor ${euro(a.cash_price)}
+      ${a.more_expensive_than_selected?" · duurder dan de gekozen optie":""}
+      ${a.url?` · <a target="_blank" rel="noopener noreferrer" href="${safeURL(a.url)}">Aanbieding</a>`:""}</div>`).join("")}</details>`:""}
+  </div><strong>${servings===4?euro(l.cash_price):"Prijs zie mand"}</strong></div>`;
  }
  function renderRecipes(){
   const q=$("search").value.trim().toLocaleLowerCase("nl");
@@ -425,13 +440,14 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     ${r.nutrition?.health_note?`<div class="notice warn"><strong>Voedingsadvies</strong><p>${esc(r.nutrition.health_note)}</p><p>Gezonder alternatief: <strong>boerenkoolstamppot met kruidige kip</strong>. Zoek daarop in de receptenlijst; de prijzen worden per supermarkt berekend.</p></div>`:""}
     ${recipePrice(r)}
     ${r.source_recipe?.url?`<div class="product"><strong>Receptbasis:</strong> <a href="${safeURL(r.source_recipe.url)}" rel="noopener noreferrer" target="_blank">${esc(r.source_recipe.name)}</a> · ${esc(r.source_recipe.status)}</div>`:""}
+    <p class="sub"><strong>Let op:</strong> gebruik alleen de vermelde recepthoeveelheden, niet automatisch alle inhoud van gekochte verpakkingen. Een rest gaat naar je volgende gerecht.</p>
     <p class="sub"><strong>Smaakmakers (niet meegerekend):</strong> ${esc((r.pantry||[]).join(", ")||"geen extra smaakmakers")}</p>
     ${r.drained_weight_unverified?.length?`<p class="sub"><strong>Let op bij uitgelekte conserven:</strong> ${esc(r.drained_weight_unverified.join(", "))}. De berekende verpakkingenaantallen gebruiken het opgegeven nettogewicht; bij een lager uitlekgewicht kunnen meer verpakkingen nodig zijn. Ook de voedingswaardeschatting kan afwijken.</p>`:""}
     ${r.deal_basket?.used_actions>r.sale_count&&r.deal_basket.extra_vs_cheapest<=0?`<div class="notice" style="margin:8px 0 12px"><strong>Ook mogelijk: echte actiemand met ${r.deal_basket.used_actions} gebruikte acties</strong><div> ${r.complete?euro(r.deal_basket.checkout)+" voor alle verpakkingen":euro(r.deal_basket.known_subtotal)+" bekend subtotaal"} · ${r.deal_basket.extra_vs_cheapest>0?euro(r.deal_basket.extra_vs_cheapest)+" duurder dan de goedkoopste mand": "niet duurder dan de goedkoopste mand"}</div><details><summary>Bekijk de ingrediënten van de actiemand</summary>${r.deal_basket.ingredients.map(l=>`<div class="line"><div>${esc(l.label)}: ${esc(l.product)}${l.sale?" · ACTIE":""} ${l.url?`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Bron</a>`:""}</div><strong>${euro(l.cash_price)}</strong></div>`).join("")}</details></div>`:""}
     ${r.complete&&r.saving>0?`<p class="sub"><strong>Besparing op deze mand: ${euro(r.saving)}</strong> vergeleken met de reguliere bronprijzen van deze producten.</p>`:""}
     <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap"><select data-plan-day="${esc(r.id)}" aria-label="Kies dag voor weekmenu">${DAYS.map((d,i)=>'<option value="'+i+'">'+d+'</option>').join("")}</select><button type="button" class="btn outline" data-plan-add="${esc(r.id)}">+ Weekmenu</button><button class="btn outline" data-add="${esc(r.id)}" data-variant="cheapest">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&(x.variant||"cheapest")==="cheapest")?"✓ Goedkoopste gekozen":"+ Goedkoopste mand"}</button>${r.deal_basket?.used_actions>r.sale_count?`<button class="btn" data-add="${esc(r.id)}" data-variant="deals">${isSelected(r)&&state.selected.some(x=>x.store===state.store&&x.id===r.id&&x.variant==="deals")?"✓ Actiemand gekozen":"+ Kies actiemand"}</button>`:""}</div>
     ${r.instructions?`<details><summary>Zo maak je dit gerecht</summary><p>${esc(r.instructions)}</p><p class="sub"><strong>Smaakmakers, buiten de prijs:</strong> ${esc((r.pantry||[]).join(", ")||"geen extra")}. Bereidingstijd is indicatief; actieve tijd wordt nog niet afzonderlijk gemeten. Volg verpakkingsinstructies waar nodig.</p>
-      <p class="sub"><strong>Bewaren/mealprep:</strong> ${esc(r.mealprep_note||"Bereid bij voorkeur vers.")}</p></details>`:""}<details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(lineHtml).join("")}
+      <p class="sub"><strong>Bewaren/mealprep:</strong> ${esc(r.mealprep_note||"Bereid bij voorkeur vers.")}</p></details>`:""}<details><summary>Toon producten, hoeveelheden en prijzen</summary>${(r.ingredients||[]).map(l=>lineHtml(l,plannedPortions(state.store,r.id)||4)).join("")}
     ${(r.missing||[]).map(x=>`<div class="line"><span>${esc(x.label)} (${x.amount} ${x.unit})</span><strong>Prijs onbekend</strong></div>`).join("")}
     <p class="sub">${esc(r.optional_pantry)} · Calorieën exclusief genoemde smaakmakers. ${r.nutrition?.product_nutrition_unverified?.length?"Let op: voor gearomatiseerde zuivel zijn suiker, eiwitten en kcal nog niet gecontroleerd op het productetiket. ":""}${r.nutrition?.kcal_unknown?.length?"Ontbrekende voedingswaarden: "+esc(r.nutrition.kcal_unknown.join(", "))+". ":""}${r.saving?` · Berekening actiebesparing: ${euro(r.saving)}`:""}</p></details>
     </div></article>`).join(""):"<div class='notice warn'>Geen recepten voor deze filters. <button type='button' class='btn outline small' data-show-all>Toon alle avondrecepten</button></div>");
