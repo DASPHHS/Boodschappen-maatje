@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T14:23:18.045506+01:00",
+  "updated_at": "2026-10-26T14:35:42.635165+01:00",
   "source_last_modified": null,
   "shelf_products": {
     "ah": 15657,
@@ -27,18 +27,18 @@
     "lidl": 0
   },
   "fully_priced_recipes": {
-    "ah": 145,
-    "jumbo": 91,
-    "lidl": 42
+    "ah": 146,
+    "jumbo": 92,
+    "lidl": 43
   },
   "recipes_with_used_discount": {
-    "ah": 87,
+    "ah": 54,
     "jumbo": 26,
     "lidl": 0
   },
   "health_review_needed": {
-    "ah": 193,
-    "jumbo": 207,
+    "ah": 207,
+    "jumbo": 208,
     "lidl": 195
   },
   "source_recipe_title_candidates": {
@@ -47,7 +47,7 @@
     "lidl": 0
   },
   "external_recipe_results": {
-    "ah": 53,
+    "ah": 56,
     "jumbo": 41,
     "lidl": 0
   },
@@ -57,7 +57,7 @@
     "lidl": 0
   },
   "external_recipe_ingredient_checked": {
-    "ah": 32,
+    "ah": 25,
     "jumbo": 15,
     "lidl": 0
   },

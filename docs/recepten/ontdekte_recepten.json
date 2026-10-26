@@ -200,6 +200,42 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
+        "title": "Boxty Breakfast",
+        "title_nl": "Boxty Breakfast",
+        "source": "TheMealDB",
+        "cuisine": "Internationaal",
+        "url": "https://www.bbcgoodfood.com/recipes/boxty-bacon-eggs-tomatoes",
+        "match_terms": [
+          "aardappel",
+          "melk",
+          "tomaten"
+        ],
+        "matched_title_terms": 3,
+        "ingredient_keys": [
+          "aardappel",
+          "eieren",
+          "melk",
+          "tomaten"
+        ],
+        "source_ingredient_names": {
+          "aardappel": [
+            "Potatoes"
+          ],
+          "melk": [
+            "Milk"
+          ],
+          "tomaten": [
+            "Cherry Tomatoes"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
         "title": "Kaspressknödel - Cheese Dumplings",
         "title_nl": "Kaspressknödel - Cheese Dumplings",
         "source": "TheMealDB",
@@ -309,42 +345,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Salmon Avocado Salad",
-        "title_nl": "Zalm avocado salade",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://www.bbcgoodfood.com/recipes/4521/salmon-avocado-and-cucumber-salad",
-        "match_terms": [
-          "avocado",
-          "komkommer",
-          "spinazie"
-        ],
-        "matched_title_terms": 3,
-        "ingredient_keys": [
-          "avocado",
-          "komkommer",
-          "spinazie",
-          "zalm"
-        ],
-        "source_ingredient_names": {
-          "avocado": [
-            "Avocado"
-          ],
-          "komkommer": [
-            "Cucumber"
-          ],
-          "spinazie": [
-            "Spinach"
-          ]
-        },
-        "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Stuffed Bell Peppers with Quinoa and Black Beans",
         "title_nl": "Stuffed Bell Peppers with Quinoa and Black Beans",
         "source": "TheMealDB",
@@ -410,42 +410,6 @@
           ]
         },
         "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Vegan Lasagna",
-        "title_nl": "Vegan Lasagna",
-        "source": "TheMealDB",
-        "cuisine": "Italiaans",
-        "url": "https://www.themealdb.com/meal/52775",
-        "match_terms": [
-          "courgette",
-          "spinazie",
-          "wortel"
-        ],
-        "matched_title_terms": 3,
-        "ingredient_keys": [
-          "courgette",
-          "spinazie",
-          "ui",
-          "wortel"
-        ],
-        "source_ingredient_names": {
-          "courgette": [
-            "zucchini"
-          ],
-          "spinazie": [
-            "spinach"
-          ],
-          "wortel": [
-            "Carrots"
-          ]
-        },
-        "health_priority": "nader beoordelen",
         "verification_level": "ingredient_names_only",
         "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
         "servings_verified": false,
@@ -583,36 +547,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Authentic Laos Tapioca Pudding with Bananas",
-        "title_nl": "Authentic Laos Tapioca Pudding with Bananas",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://cookingwithlane.com/laos-banana-tapioca-pudding-nam-van-mak-kuay/",
-        "match_terms": [
-          "banaan",
-          "kokosmelk"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "banaan",
-          "kokosmelk"
-        ],
-        "source_ingredient_names": {
-          "banaan": [
-            "Banana"
-          ],
-          "kokosmelk": [
-            "Coconut Milk"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Beef Brisket Pot Roast",
         "title_nl": "Beef Brisket Pot Roast",
         "source": "TheMealDB",
@@ -668,6 +602,37 @@
           ]
         },
         "health_priority": "nader beoordelen",
+        "verification_level": "ingredient_names_only",
+        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
+        "servings_verified": false,
+        "price_verified": false,
+        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
+      },
+      {
+        "title": "Brazilian carrot cake",
+        "title_nl": "Brazilian carrot cake",
+        "source": "TheMealDB",
+        "cuisine": "Braziliaans",
+        "url": "https://www.bbcgoodfood.com/recipes/brazilian-carrot-cake",
+        "match_terms": [
+          "melk",
+          "wortel"
+        ],
+        "matched_title_terms": 2,
+        "ingredient_keys": [
+          "eieren",
+          "melk",
+          "wortel"
+        ],
+        "source_ingredient_names": {
+          "melk": [
+            "Milk"
+          ],
+          "wortel": [
+            "Carrots"
+          ]
+        },
+        "health_priority": "kansrijk voor controle",
         "verification_level": "ingredient_names_only",
         "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
         "servings_verified": false,
@@ -799,37 +764,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Curried Spinach from Botswana",
-        "title_nl": "Curried Spinach from Botswana",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "https://kosherworldkitchen.com/morogo-curried-spinach/#recipe",
-        "match_terms": [
-          "spinazie",
-          "tomaten"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "spinazie",
-          "tomaten",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "spinazie": [
-            "Spinach"
-          ],
-          "tomaten": [
-            "Tomato"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Oatmeal pancakes",
         "title_nl": "Oatmeal pancakes",
         "source": "TheMealDB",
@@ -894,98 +828,6 @@
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       },
       {
-        "title": "Potato Gratin with Chicken",
-        "title_nl": "Potato Gratin with Chicken",
-        "source": "TheMealDB",
-        "cuisine": "Italiaans",
-        "url": "https://www.instagram.com/p/BHxR7hYBJ6P",
-        "match_terms": [
-          "aardappel",
-          "spinazie"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "aardappel",
-          "spinazie",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "aardappel": [
-            "Potatoes"
-          ],
-          "spinazie": [
-            "Spinach"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Shakshuka Feta Cheese",
-        "title_nl": "Shakshuka Feta Cheese",
-        "source": "TheMealDB",
-        "cuisine": "Midden-Oosters",
-        "url": "https://cookpad.com/eng/recipes/22551672?ref=search&search_term=saudi+arabia",
-        "match_terms": [
-          "paprika",
-          "spinazie"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "eieren",
-          "paprika",
-          "spinazie"
-        ],
-        "source_ingredient_names": {
-          "paprika": [
-            "Red Pepper"
-          ],
-          "spinazie": [
-            "Spinach"
-          ]
-        },
-        "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Spinach & Ricotta Cannelloni",
-        "title_nl": "Spinach & Ricotta Cannelloni",
-        "source": "TheMealDB",
-        "cuisine": "Italiaans",
-        "url": "https://www.bbcgoodfood.com/recipes/531632/spinach-and-ricotta-cannelloni",
-        "match_terms": [
-          "melk",
-          "spinazie"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "melk",
-          "spinazie"
-        ],
-        "source_ingredient_names": {
-          "melk": [
-            "Milk"
-          ],
-          "spinazie": [
-            "Spinach"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
         "title": "Strawberry Rhubarb Pie",
         "title_nl": "Strawberry Rhubarb Pie",
         "source": "TheMealDB",
@@ -1014,71 +856,10 @@
         "servings_verified": false,
         "price_verified": false,
         "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Thai pork & peanut curry",
-        "title_nl": "Thai pork & peanut curry",
-        "source": "TheMealDB",
-        "cuisine": "Thais",
-        "url": "https://www.bbcgoodfood.com/recipes/thai-pork-peanut-curry",
-        "match_terms": [
-          "kokosmelk",
-          "mais"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "kokosmelk",
-          "mais"
-        ],
-        "source_ingredient_names": {
-          "kokosmelk": [
-            "Coconut Milk"
-          ],
-          "mais": [
-            "Sweetcorn"
-          ]
-        },
-        "health_priority": "nader beoordelen",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
-      },
-      {
-        "title": "Tunisian Lamb Soup",
-        "title_nl": "Tunisian Lamb Soup",
-        "source": "TheMealDB",
-        "cuisine": "Internationaal",
-        "url": "http://allrecipes.co.uk/recipe/16694/tunisian-lamb-soup.aspx",
-        "match_terms": [
-          "kikkererwten",
-          "spinazie"
-        ],
-        "matched_title_terms": 2,
-        "ingredient_keys": [
-          "kikkererwten",
-          "spinazie",
-          "ui"
-        ],
-        "source_ingredient_names": {
-          "kikkererwten": [
-            "Chickpeas"
-          ],
-          "spinazie": [
-            "Spinach"
-          ]
-        },
-        "health_priority": "kansrijk voor controle",
-        "verification_level": "ingredient_names_only",
-        "verification": "Actieproducten daadwerkelijk genoemd in ingrediëntenlijst van bron",
-        "servings_verified": false,
-        "price_verified": false,
-        "health_review": "Nog geen controle op hoeveelheden, kcal of eiwit per portie"
       }
     ],
-    "ingredient_confirmed_count": 32,
-    "source_results": 53,
+    "ingredient_confirmed_count": 25,
+    "source_results": 56,
     "verified_matches": 0,
     "errors": []
   },
