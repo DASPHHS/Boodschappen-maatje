@@ -21,7 +21,7 @@ SHELVES="https://raw.githubusercontent.com/supermarkt/checkjebon/main/data/super
 DEALS="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
 HEADERS={"User-Agent":"BoodschappenMaatjeRecepten/3.0 (+https://github.com/DASPHHS/Boodschappen-maatje)","Accept":"application/json"}
 KEY=os.getenv("PRIJS_PROFEET_KEY")
-if KEY: HEADERS["X-API-Key"]=KEY
+# De API-sleutel hoort uitsluitend bij PrijsProfeet, nooit bij Checkjebon.
 STORES={"ah":"Albert Heijn","jumbo":"Jumbo","lidl":"Lidl"}
 TZ=ZoneInfo("Europe/Amsterdam")
 
@@ -36,7 +36,10 @@ def fetch(url,params=None,tries=9):
                 if wait:time.sleep(wait)
                 # Snelheidslimiet voor bulk-endpoints: geen API-key vereist.
                 _next_request_at=time.monotonic()+2.9
-            r=requests.get(url,params=params,headers=HEADERS,timeout=30)
+            request_headers=HEADERS.copy()
+            if KEY and url.startswith("https://www.prijsprofeet.nl/"):
+                request_headers["X-API-Key"]=KEY
+            r=requests.get(url,params=params,headers=request_headers,timeout=30)
             if r.status_code==429:
                 delay=min(110,max(8,int(r.headers.get("Retry-After","65"))))
                 last_error=f"PrijsProfeet HTTP 429, retry after {delay}s, URL {r.url}"
