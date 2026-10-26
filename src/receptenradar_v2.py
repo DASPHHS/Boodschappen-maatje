@@ -960,6 +960,21 @@ def main():
         raise RuntimeError("Geen reguliere prijzen terug uit Checkjebon: geen misleidende lege publicatie")
     offers,errors,upcoming=load_deals(include_upcoming=True)
     source_quality=inspect_snapshot(shelves,offers,errors)
+    # Bewaar de laatst goede publicatie wanneer een bestaande grote bron
+    # plots meer dan 80% van haar aanbiedingen verliest.
+    if OUT.exists():
+        try:
+            previous=json.loads(OUT.read_text(encoding="utf-8"))
+            previous_counts=previous.get("counts",{}).get("promotions",{})
+            for store in STORES:
+                before=int(previous_counts.get(store,0))
+                current=len(offers[store])
+                if before>=100 and current<max(20,int(before*.2)):
+                    raise RuntimeError(
+                        f"{store}: feed teruggevallen van {before} naar {current} aanbiedingen; "
+                        "vorige publicatie behouden")
+        except (OSError,ValueError,TypeError,json.JSONDecodeError):
+            pass
     # Externe recepten zoeken vanuit daadwerkelijke actieproducten.
     # Losse bronresultaten zijn geen berekende vierpersoonsmaaltijden.
     try:
