@@ -362,7 +362,7 @@ def main():
     for folder in (ROOT / "winkelhulp", ROOT / "docs/winkelhulp"):
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "data.json").write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")
-    for asset in ("index.html", "style.css", "engine.js", "app.js"):
+    for asset in ("index.html", "style.css", "engine.js", "deals.js", "app.js"):
         shutil.copyfile(ROOT / "winkelhulp" / asset, ROOT / "docs/winkelhulp" / asset)
     print(json.dumps({s: {"recipes": len(rows), "complete": sum(r["complete"] for r in rows),
                          "with_actions": sum(r["sale_count"] > 0 for r in rows)}
