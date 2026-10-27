@@ -1122,6 +1122,16 @@ def main():
       "verified_upcoming_discounts":{s:sum(bool(o["discount_verified"]) for o in result["upcoming_deals"][s])
                             for s in STORES},
       "fully_priced_recipes":{s:sum(bool(r["complete"]) for r in recipes[s]) for s in STORES},
+      "cuisine_price_coverage":{store:{
+          cuisine:{"complete":sum(bool(r.get("complete")) for r in entries),
+                   "incomplete":sum(not bool(r.get("complete")) for r in entries),
+                   "missing_ingredients":sorted({m.get("label","")
+                     for r in entries if not r.get("complete") for m in r.get("missing",[])})[:24]}
+          for cuisine in sorted({r.get("cuisine") or "Overig" for r in recipes[store]})
+          for entries in [[r for r in recipes[store]
+                           if (r.get("cuisine") or "Overig")==cuisine]]}
+          for store in STORES},
+
       "estimated_base_variants":{s:len(estimated_variants[s]) for s in STORES},
       "recipes_with_used_discount":{s:sum(r["sale_count"]>0 for r in recipes[s]) for s in STORES},
       "health_review_needed":{s:quality[s]["review_needed"] for s in STORES},
