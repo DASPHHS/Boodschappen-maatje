@@ -170,7 +170,7 @@ def classify_offers(offers):
                         grouped[role].setdefault(key,[]).append(offer)
     return grouped
 
-def meal_candidates(offers,limit=100):
+def meal_candidates(offers,limit=100,expand=False):
     """Alle passende maaltijdtemplates als kandidaten, niet slechts twee actieproducten.
 
     Maak eerst het complete recept, en bereken de werkelijke korting pas later
@@ -180,6 +180,7 @@ def meal_candidates(offers,limit=100):
     """
     groups=classify_offers(offers)
     on_sale={key for group in groups.values() for key in group}
+    if not expand and (not groups["proteine"] or not groups["groente"]):return []
     scored=[]
     seen=set()
     for pk,vk,sk,vk2,title,method in DISH_TEMPLATES:
@@ -196,6 +197,8 @@ def meal_candidates(offers,limit=100):
         if title in seen:continue
         seen.add(title)
         hits=sum(key in on_sale for key,_,_ in ingredients)
+        if expand and not hits:continue
+        if not expand and (pk not in groups["proteine"] or vk not in groups["groente"]):continue
         scored.append((hits,title,(title,PROTEINS[pk][1],35,ingredients)))
     # Kandidaatselectie ≠ bewijs voor een actie. De kassaprijsengine bepaalt
     # daarna welke acties echt voordeliger zijn en telt ze afzonderlijk.
