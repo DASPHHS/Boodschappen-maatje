@@ -244,6 +244,12 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 <div class="row" id="recipe-results-heading" style="margin:18px 0 11px"><div><h2>Alle recepten voor jouw supermarkt</h2><p id="recipe-results-count" class="sub" aria-live="polite">Recepten selecteren op prijs, korting en voeding…</p></div></div>
 <div id="recipes" class="cards"><div class="notice">Recepten laden…</div></div>
 <div class="row" style="justify-content:center;margin:20px 0"><button id="loadmore" class="btn outline" hidden>Toon 10 meer</button></div>
+<section id="estimated-meals" class="panel" hidden style="margin:18px 0;padding:16px">
+ <h2>Indicatieve basisvarianten uit andere wereldkeukens</h2>
+ <p class="sub">Alleen ingrediënten die daadwerkelijk in de recepttitel staan. Ontbrekende saus, kruiden of bijgerechten zijn NIET geprijsd. Dit is geen complete receptmand.</p>
+ <p id="estimated-count" class="sub"></p>
+ <div id="estimated-cards" class="cards"></div>
+</section>
 <section id="week-source-recommendations" class="panel" hidden aria-label="Wekelijks aanbevolen recepten uit online bronnen">
   <div class="row"><h2>Meer passende recepten voor deze week</h2></div>
   <p class="sub">Automatisch gekozen uit honderden bronrecepten op basis van actuele acties en bekende supermarktproducten.
@@ -1002,6 +1008,25 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
    '<div class="sub"><a target="_blank" rel="noopener noreferrer" href="'+safeURL(x.url)+'">'+esc(x.title)+'</a> · '+
     esc(x.source||"Receptenbron")+' <button type="button" class="btn outline small" data-remove-source="'+esc(x.url)+'">Verwijder</button></div>').join("");
  }
+ function renderEstimatedMeals(){
+   const panel=$("estimated-meals");
+   const all=state.data?.estimated_variants?.[state.store]||[];
+   const cuisine=$("cuisine").value;
+   const query=$("search").value.trim().toLocaleLowerCase("nl");
+   const selected=all.filter(r=>(cuisine==="all"||r.cuisine===cuisine)&&
+       (!query||RecipeSearch.matches({title:r.title,ingredients:r.ingredients},query)));
+   panel.hidden=state.mode!=="recipes"||!selected.length;
+   if(panel.hidden)return;
+   $("estimated-count").textContent=selected.length+" geprijsde BASISvarianten; geen complete bronreceptprijzen.";
+   $("estimated-cards").innerHTML=selected.slice(0,12).map(r=>
+      '<article class="recipe"><div class="recipe-body"><h3>'+esc(r.title)+'</h3>'+
+      '<p class="sub">'+esc(r.cuisine||"Internationaal")+' · '+esc(r.source||"Bronarchief")+'</p>'+
+      '<p><strong>'+euro(r.checkout)+'</strong> voor 4 porties, uitsluitend genoemde basisproducten</p>'+
+      '<p class="sub">'+r.sale_count+' werkelijk gebruikte kortingsproducten · prijs exclusief overige ingrediënten</p>'+
+      '<p class="sub">Gerekend: '+r.ingredients.map(l=>esc(l.label)+': '+esc(l.required)+' '+esc(l.unit)).join(", ")+'</p>'+
+      '<p class="sub">Niet compleet: er kunnen nog noodzakelijke ingrediënten ontbreken.</p>'+
+      '</div></article>').join("");
+ }
  function renderWeeklyCandidates(){
   const panel=$("week-source-recommendations");
   if(state.mode!=="recipes"||$("search").value.trim()||state.favoriteOnly||state.sharedOnly){
@@ -1168,6 +1193,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(state.mode==="deals")renderDeals();else renderRecipes();
   renderOfficialStoreProducts();
   renderOfferIdeas();
+  renderEstimatedMeals();
   renderWeeklyCandidates();
   renderLibraryResults();
   renderSourceFavorites();
