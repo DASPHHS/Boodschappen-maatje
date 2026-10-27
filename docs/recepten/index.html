@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164a36"><title>Boodschappen Maatje | Recepten Radar</title>
+<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164a36"><title>Koken met voordeel | Recepten Radar</title>
 <style>
 :root{--dark:#173d2f;--green:#176745;--cream:#f6f8f5;--grey:#718077;--border:#e3ebe5;--white:#fff}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:#1a3329;font:15px/1.5 system-ui,-apple-system,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--green)}.wrap{max-width:1190px;margin:0 auto;padding:0 18px}
@@ -302,7 +302,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <div id="weekmenu-content" aria-live="polite"></div>
 </details>
 <details id="audit-panel" class="notice" hidden><summary id="audit-summary">Technische prijs- en actiecontrole</summary><div id="audit-body"></div></details></div></main>
-<footer class="wrap">Actieprijzen: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./deal_relevantie.js"></script><script src="./deal_search.js"></script><script src="./weekselectie_engine.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
+<footer class="wrap">Indicatieve online prijsgegevens: <a href="https://www.prijsprofeet.nl" target="_blank" rel="noopener">PrijsProfeet</a>. Normale online prijzen: <a href="https://github.com/supermarkt/checkjebon" target="_blank" rel="noopener">Checkjebon</a> (open data, MIT). Bedragen zijn indicatief, niet gegarandeerd de kassaprijzen in Bleiswijk. Ontbrekende gegevens worden niet geschat. Persoonlijke app-coupons en genoemde smaakmakers, olie, kruiden en bezorgkosten zijn niet inbegrepen.</footer><script src="./recipe_search.js"></script><script src="./persoonlijk_weekmenu.js"></script><script src="./recept_inspiratie_radar.js"></script><script src="./deal_relevantie.js"></script><script src="./deal_search.js"></script><script src="./weekselectie_engine.js"></script><script src="./shared_recipe_hits.js?v=1"></script><script>(function pageLogic(){
  const $=id=>document.getElementById(id);
  const euro=x=>"€ "+Number(x||0).toFixed(2).replace(".",",");
  const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -1365,7 +1365,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  $("switch").addEventListener("click",()=>{state.mode=state.mode==="recipes"?"deals":"recipes";resetAndRender()});
  $("clear").addEventListener("click",()=>{state.selected=[];weekPlan[state.store]={};persistPlan();save();render()});
  $("copy").addEventListener("click",async()=>{
-  const c=calcCart();const text=["Boodschappenlijst Boodschappen Maatje",""].concat(c.items.map(x=>`${x.packages} × ${x.product} (${state.data.store_names[x.store]}) ${euro(x.cash_price)}`),c.missing.map(x=>`Prijs onbekend: ${x.label}, ${x.amount} ${x.unit} (${state.data.store_names[x.store]})`),["","Smaakmakers (niet geprijsd): "+(c.pantry.join(", ")||"geen"),"","Berekend totaal: "+euro(c.total)+(c.missing.length?" + ontbrekende bedragen":"")]).join("\n");
+  const c=calcCart();const text=["Winkelmand Koken met voordeel",""].concat(c.items.map(x=>`${x.packages} × ${x.product} (${state.data.store_names[x.store]}) ${euro(x.cash_price)}`),c.missing.map(x=>`Prijs onbekend: ${x.label}, ${x.amount} ${x.unit} (${state.data.store_names[x.store]})`),["","Smaakmakers (niet geprijsd): "+(c.pantry.join(", ")||"geen"),"","Berekend totaal: "+euro(c.total)+(c.missing.length?" + ontbrekende bedragen":"")]).join("\n");
   try{await navigator.clipboard.writeText(text);$("copy").textContent="Gekopieerd ✓"}catch{window.prompt("Kopieer deze boodschappenlijst",text)}
  });
  $("print").addEventListener("click",()=>window.print());
