@@ -8,7 +8,7 @@ from pathlib import Path
 from receptenradar_catalog import ING
 
 ROOT=Path(__file__).resolve().parents[1]
-ARCHIVES=("hello-fresh-kaarten.json","hello-fresh-maart-archief.json",
+ARCHIVES=("geverifieerde_bronrecepten.json","hello-fresh-kaarten.json","hello-fresh-maart-archief.json",
           "eigen-archief.json","surinaams-archief.json","inspiratie.json")
 
 def norm(text):
