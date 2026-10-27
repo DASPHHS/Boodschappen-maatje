@@ -22,6 +22,14 @@ class StructuredRecipesTests(unittest.TestCase):
        {"name":"spinazie","quantity":200,"unit":"g"}]})
   self.assertIsNone(r)
   self.assertEqual(reason,"unmapped_ingredient")
+ def test_bb_met_r_own_variant_has_both_bean_types(self):
+  from receptenradar_catalog import RECIPES,ING
+  recipes=[r for r in RECIPES if "bruine bonen met rijst" in r[0].lower()]
+  self.assertTrue(recipes)
+  keys={k for k,_,_ in recipes[-1][3]}
+  self.assertTrue({"bruine_bonen","sperziebonen","kipdij","rijst"}<=keys)
+  self.assertIn("bruine_bonen",ING)
+  self.assertIn("sperziebonen",ING)
  def test_repo_archive_has_rejections(self):
   accepted,rejections=load()
   self.assertGreater(rejections.get("no_complete_ingredient_list",0),50)
