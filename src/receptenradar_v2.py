@@ -96,23 +96,9 @@ def measure(text):
     return(q,"st")
 
 def measure_offer(offer):
-    """Gebruik voor vlees/vis met '1 stuk ca. 405 g' het nettogewicht.
-
-    Een los aantal stuks zegt niets over de hoeveelheid gram die het recept
-    vereist. Lees expliciet gewicht uit naam/maat voordat een '1 stuk'-veld
-    het product onterecht als niet-prijsbaar uitsluit.
-    """
-    name=str(offer.get("name") or "")
-    size=str(offer.get("size") or "")
-    for value in (size,name):
-        match=re.search(r"\\b(?:ca\\.?\\s*)?(\\d+(?:[,.]\\d+)?)\\s*(kg|gram|gr|g|ml|liter|l)\\b",value,re.I)
-        if match:
-            q,unit=measure(match.group(0))
-            if q and unit:return q,unit
-    for value in (offer.get("quantity"),offer.get("size"),offer.get("name")):
-        q,unit=measure(value)
-        if q and unit:return q,unit
-    return None,None
+    """Uniforme productverpakkingparser voor alle supermarkten en actieperiodes."""
+    from verpakking_parser import parse_packaging
+    return parse_packaging(offer)
 
 def offer_size_label(product,quantity,unit):
     """Presenteer altijd de gemeten maat met eenheid, ook bij numerieke API-velden."""
