@@ -43,6 +43,8 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_winkelhulp.py' -v
           node tests/test_winkelhulp_engine.cjs
+          node tests/test_winkelhulp_deals.cjs
+          node --check winkelhulp/deals.js
           node --check winkelhulp/app.js
           python src/build_winkelhulp.py
           npm install --no-save --prefix /tmp/winkelhulp-browser playwright
