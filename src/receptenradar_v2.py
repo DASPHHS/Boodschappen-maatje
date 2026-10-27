@@ -1045,6 +1045,14 @@ def main():
     source_recipe_matches=build_action_title_candidates(offers,shelves_by_store=shelves)
     recipes=make_recipes(shelves,offers)
     validate_publication(recipes)
+    # Titel-only archieven krijgen uitsluitend een gescheiden indicatieve
+    # BASISvariant: nooit vermengen met complete bronreceptkassaprijzen.
+    try:
+        from indicatieve_receptprijzen import build as build_estimated
+        estimated_variants=build_estimated(shelves,offers)
+    except (OSError,ValueError,TypeError) as exc:
+        errors.append("Indicatieve basisvarianten niet beschikbaar: "+str(exc))
+        estimated_variants={store:[] for store in STORES}
     export_shopping_index(shelves,offers)
     audit=audit_promotions(offers,recipes)
     quality=audit_recipe_quality(recipes)
@@ -1063,7 +1071,7 @@ def main():
                          not d["discount_verified"],
                          -(d.get("verified_discount_pct") or 0))) for s in STORES},
             "upcoming_counts":{s:len(upcoming[s]) for s in STORES},
-            "recipes":recipes,"discovered_recipes":discovered,
+            "recipes":recipes,"estimated_variants":estimated_variants,"discovered_recipes":discovered,
             "source_recipe_matches":source_recipe_matches,
             "weekmenu_advice":weekmenu_advice,
             "audit":audit,"quality_audit":quality,
@@ -1104,6 +1112,7 @@ def main():
       "verified_upcoming_discounts":{s:sum(bool(o["discount_verified"]) for o in result["upcoming_deals"][s])
                             for s in STORES},
       "fully_priced_recipes":{s:sum(bool(r["complete"]) for r in recipes[s]) for s in STORES},
+      "estimated_base_variants":{s:len(estimated_variants[s]) for s in STORES},
       "recipes_with_used_discount":{s:sum(r["sale_count"]>0 for r in recipes[s]) for s in STORES},
       "health_review_needed":{s:quality[s]["review_needed"] for s in STORES},
       "budget_recipe_title_candidates":{s:len(source_recipe_matches[s].get("budget_candidates",[])) for s in STORES},
