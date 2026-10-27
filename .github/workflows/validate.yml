@@ -1,0 +1,24 @@
+name: Controleer dagelijkse publicatie
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/**'
+      - 'docs/app.js'
+      - 'scripts/validate.mjs'
+      - '.github/workflows/validate.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '30 8 * * *'
+permissions:
+  contents: read
+jobs:
+  validatie:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Controleer feedstructuur
+        run: node scripts/validate.mjs

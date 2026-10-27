@@ -1,50 +1,72 @@
 # Boodschappenmaatje
 
-**[Open de winkelhulp](https://dasphhs.github.io/Boodschappen-maatje/)**
+Een nieuwe mobiele GitHub Pages-app voor Lidl, Jumbo en Albert Heijn. **De gebruiker bekijkt alle drie winkels en kiest zelf één winkel voor de boodschappenronde.** Er wordt nooit stilzwijgend één winnaar gekozen.
 
-1. Kies AH, Jumbo of Lidl.
-2. Kies Kip, Vlees, Vis of Vega.
-3. Open één gerecht en vink je boodschappen af.
+**App:** https://dasphhs.github.io/Boodschappen-maatje/
 
-Vier royale porties voor twee personen, twee dagen. Doel: €10 per bereiding, meestal €10–€13 voor vier porties. Eerst de volledig geprijsde recepten binnen €13, daarbinnen de meeste voordelige actieproducten en daarna de laagste portieprijs. Duurdere en onvolledige opties staan apart ingeklapt; €20 is alleen een uitzondering. Verbruik en kassabedrag voor hele verpakkingen staan apart.
+## Navigatie
 
-De nieuwe startpagina staat in `docs/winkelhulp/`; de bronbestanden staan in `winkelhulp/`. Beide Pages-configuraties (root en `/docs`) openen de winkelhulp. Er is geen server of account nodig. Vinkjes en de laatst gekozen winkel worden alleen lokaal bewaard.
+- **Vandaag**: aparte statuskaarten voor de drie supermarkten.
+- **Aanbiedingen**: echte actieve acties per winkel, met prijsvergelijking en geldigheidscontrole.
+- **Recepten**: dagelijkse en wekelijkse, winkelgebonden recepten plus een bestaande algemene receptenbibliotheek.
+- **Mijn lijst**: één gekozen supermarkt, gekozen recepten en afvinkbare samengevoegde ingrediënten.
 
-## Receptenbasis
+De eerdere implementatie is bewaard op branch \`backup/voor-herbouw-2026-10-28\`. De nieuwe hoofdbranch bevat uitsluitend het overzichtelijke platform.
 
-De 40 geselecteerde gerechten zijn eigen aanpassingen van concrete recepten uit de Drive-map: HelloFresh-kaarten, het mealprep-boek en het Surinaamse receptenboek. Elk gerecht bevat de originele recepttitel, het bronbestand, de Drive-link en uitleg over de aanpassing. Het zijn 40 recepten met 120 winkelkaarten. De hoeveelheden zijn **eigen vierportiesbewerkingen**, geen letterlijk overgenomen HelloFresh-porties.
+## Dagelijkse publicatie vanuit ChatGPT-taken
 
-`winkelhulp/recipes.json` bevat uitsluitend receptfeiten en eigen korte bereidingen. Volledige boekteksten, scans en OCR-teksten worden niet gepubliceerd. Het bronoverzicht vermeldt alle 28 bestanden: de ZIP van 2,1 GB is niet verwerkt en OCR blijft controle vereisen. De selectie is geen claim dat elk recept uit ieder bestand is gevalideerd.
+Schrijf op elke dagelijkse uitvoering **docs/data/daily.json**; schrijf op de wekelijkse uitvoering **docs/data/weekly.json**. Gebruik de GitHub-connector om het bestaande bestand te lezen en vervolgens te vervangen. GitHub Pages toont na publicatie automatisch de nieuwe JSON. **Er is geen aparte server of API-sleutel nodig om de gepubliceerde gegevens te lezen**. De inhoud moet wel door de taken van correcte, actuele bronnen worden voorzien. Als een taak niet naar GitHub kan schrijven, is de website niet bijgewerkt: dat moet expliciet worden gemeld.
 
-## Prijzen en acties
+De taken in ChatGPT moeten toegang behouden tot GitHub. Omdat toekomstige schrijfacties pas bij uitvoering gebeuren, kan hun slagen niet vooraf worden gegarandeerd. De initiële bestanden zijn bewust leeg: **geen verzonnen aanbiedingen of prijzen**.
 
-`python src/build_winkelhulp.py` leest de bestaande gedateerde prijssnapshot uit `recepten/winkelprijzen.json`. De dagelijkse receptenprijsscan bouwt de compacte gegevens mee. Geen aanvullende prijsfeed of verzonnen fallback.
+### JSON-contract, \`docs/data/daily.json\` en \`docs/data/weekly.json\`
 
-- Exacte eenheden en volledige verpakkingen, zonder stilzwijgende portieverkleining.
-- Alleen gedateerde, geldige en rekenkundig bevestigde kortingen tellen als actie.
-- AH Bonus en Lidl Plus kunnen worden meegenomen; persoonlijke coupons zijn niet aangenomen.
-- Een goedkoper passend regulier product wordt direct gekozen boven een duurder actieproduct. Geen extra kosten om een actieaantal op te krikken.
-- Geen maaltijdtotaal bij ontbrekende prijs, onbekend uitlekgewicht of niet-bevestigde visvorm.
-- De browser trekt verlopen acties in en markeert snapshots ouder dan 36 uur.
-- Winkelvoorraad, persoonlijke coupons en de exacte filiaalkassa zijn niet bevestigd.
+\`\`\`json
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-28T08:00:00+01:00",
+  "stores": {
+    "lidl": {"checked_at": "2026-10-28", "offers": [], "recipes": []},
+    "jumbo": {"checked_at": "2026-10-28", "offers": [], "recipes": []},
+    "ah": {"checked_at": "2026-10-28", "offers": [], "recipes": []}
+  }
+}
+\`\`\`
 
-## Controleren
+Beide bestanden bevatten **altijd alle drie de supermarktkeys**, ook als voor één winkel data ontbreekt. Voeg expliciet een status of toelichting toe bij ontbrekende controle. Nooit ontbrekende velden als bevestiging interpreteren.
 
-```sh
-python src/build_winkelhulp.py
-python -m unittest discover -s tests -p 'test_winkelhulp.py' -v
-node tests/test_winkelhulp_engine.cjs
-python -m http.server 8765 --directory docs
-# Met Playwright beschikbaar:
-node tests/winkelhulp_browser.cjs
-```
+**Offer-model:**
 
-## Prijsverwerking
+\`\`\`json
+{"id":"lidl-voorbeeld","name":"Groente 500 g","category":"vega","price":0.99,"regular_price":1.39,"pack_label":"500 g","unit_price":1.98,"unit":"kg","start_date":"2026-10-26","end_date":"2026-11-01","verified":true,"member_required":false,"source":{"label":"Officiële folder","url":"https://www.lidl.nl/"},"cheapest_alternative":{"name":"Goedkoopste passende reguliere variant","price":1.09}}
+\`\`\`
 
-De bestaande bronnenlezers (`load_shelves` en `load_deals`) worden hergebruikt. De winkelhulp gebruikt een eigen strenge productselectie en de afzonderlijke workflow **Eenvoudige winkelhulp**. Die draait om circa 08:05 Nederlandse tijd en kan ook handmatig gestart worden. Bij bronuitval blijft de vorige publicatie staan. De eerste meegeleverde gegevens zijn berekend uit de gedateerde prijssnapshot in de repository.
+Dit is **alleen een schema-voorbeeld, geen actuele deal**. \`verified:true\` betekent dat prijs en actieperiode controleerbaar zijn, niet dat voorraad of filiaalkassa zijn gegarandeerd. Als producten een ander gewicht hebben, vergelijk eerst de prijs per kg/liter en het eetbare of uitlekgewicht. \`cheapest_alternative\` alleen invullen als producten daadwerkelijk vergelijkbaar zijn.
 
-Lunch, ontbijt en snacks worden in deze nieuwe interface nog niet als ingevulde productselectie aangeboden. De app vermeldt dit expliciet.
+**Recipe-model:**
 
-## Budgetoptimalisatie
+\`\`\`json
+{"id":"ah-2026-10-28-1","title":"Groentrijke kiproerbak","category":"kip","cuisine":"Aziatisch","servings":4,"minutes":25,"ingredients":[{"name":"Kipfilet","quantity":800,"unit":"g","department":"Eiwitbronnen","pack_price":7.99},{"name":"Wokgroenten","quantity":1200,"unit":"g","department":"Groente & fruit","pack_price":3.99}],"instructions":["Snij en bereid de ingrediënten.","Bak en serveer."],"cost":{"basket_total":11.98,"estimated":false},"macros":{"kcal":410,"protein_g":48,"carbs_g":18,"fat_g":16},"macro_status":"estimated"}
+\`\`\`
 
-Kipgerechten bevatten nu expliciet 150 g rauwe kip per persoon en minimaal 300 g groente. Dit is zichtbaar in de boodschappen en de bronaanpassing. Groente wordt niet verkleind om het budget te halen. `winkelhulp/verified-offers.json` vult de prijsfeed aan met gedateerde, onderling gecontroleerde folderwaarnemingen. Deze vervallen automatisch na hun einddatum. De aanvullende Lidl-waarnemingen zijn foldergegevens, geen gecontroleerde filiaalkassa.
+Ook dit is een **schema-voorbeeld, geen geverifieerd gerecht**. Gebruik uitsluitend echte prijzen voor \`basket_total\`. Dat is de **kassaprijs voor alle volledige benodigde verpakkingen**, niet alleen de kosten van gebruikte grammen. Macro's moeten per portie voor vier porties zijn en als schatting worden gelabeld tenzij werkelijk berekend met bekende productsamenstelling. Richtcriteria: minimaal 300 g groente en 150 tot 200 g kip/vlees/vis per portie, of passende plantaardige eiwitten; streef naar ≤ € 10 kassabedrag per vier porties. Toon budgetoverschrijdingen eerlijk.
+
+**Aandachtspunt:** als één supermarkt slechts gedeeltelijk geverifieerde producten heeft, mag dat niet als een volledig geprijsd menu worden gepresenteerd. Vergelijk actieprijzen met goedkoopste passende reguliere alternatieven.
+
+## Bestanden
+
+- \`docs/index.html\`, \`docs/style.css\`, \`docs/app.js\`: volledige statische applicatie.
+- \`docs/data/daily.json\`: dagelijkse brongecontroleerde aanbiedingen en bijbehorende recepten.
+- \`docs/data/weekly.json\`: wekelijkse nieuwe budgetrecepten per winkel.
+- \`docs/data/library.json\`: 40 bestaande algemene recepten uit de oude repository, **zonder actuele prijsclaims**.
+- \`scripts/validate.mjs\`: controle van de JSON-contracten.
+- \`.github/workflows/validate.yml\`: valideert publicatie bij wijzigingen.
+
+## Lokale controle
+
+\`\`\`sh
+node scripts/validate.mjs
+python -m http.server 8000 --directory docs
+\`\`\`
+
+Ga naar http://localhost:8000. GitHub Pages moet op branch \`main\` met bron \`/docs\` ingesteld staan; de bestaande repository gebruikte \`/docs\`. Bij het opnieuw koppelen van Pages de bron eventueel controleren.

@@ -1,0 +1,2494 @@
+{
+  "schema_version": 1,
+  "notes": "Bestaande bronrecepten, prijzen en macro's nog niet geverifieerd.",
+  "recipes": [
+    {
+      "id": "drive-01",
+      "title": "Kip-champignonpan",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "champignons",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kip gaar",
+        "bak champignons mee",
+        "Stoom broccoli",
+        "Roer cottage cheese buiten het vuur door de pan."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kipfilet in champignonroomsaus"
+    },
+    {
+      "id": "drive-02",
+      "title": "Mosterdkip met courgette",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kip en groente gaar",
+        "Meng cottage cheese met mosterd en wat kookwater",
+        "voeg buiten het vuur toe."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kipfilet in mosterdroomsaus"
+    },
+    {
+      "id": "drive-03",
+      "title": "Kippensoep met prei en wortel",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "volkoren pasta, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kip, wortel en prei met kerrie",
+        "Voeg 1,2 l water toe en laat kip en pasta gaar worden."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Goedgevulde kippensoep met orecchiette"
+    },
+    {
+      "id": "drive-04",
+      "title": "Rozemarijnkip van de bakplaat",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rozemarijn",
+          "quantity": 4,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster gesneden groente met olie en rozemarijn op 200 °C",
+        "Bak kip gaar en wel de couscous."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kip in rozemarijnkorst met geroosterde groenten"
+    },
+    {
+      "id": "drive-05",
+      "title": "Bami met kip en spitskool",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook noedels",
+        "Roerbak kip gaar met kool, wortel en knoflook",
+        "meng met saus en noedels",
+        "Serveer komkommer erbij."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Bami in Surinaamse stijl met kippendijreepjes"
+    },
+    {
+      "id": "drive-06",
+      "title": "Snelle Marokkaanse kippenpan",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kikkererwten, uitgelekt",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "harissa",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "ras el hanout",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kaneel",
+          "quantity": 2,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kipfilet met de kruiden gaar",
+        "Laat tomaat, dunne wortelschijfjes, kikkererwten en harissa zachtjes meekoken",
+        "Wel de couscous apart en verdeel alles over vier porties."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "MOROCCAN SPICED CHICKEN TAGINE"
+    },
+    {
+      "id": "drive-07",
+      "title": "Groene kipcurry",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "groene currypasta",
+          "quantity": 50,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 200,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst",
+        "Bak kip met currypasta",
+        "voeg groente, kokosmelk en water toe en gaar volledig."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kipfilet met kruidige groene curry"
+    },
+    {
+      "id": "drive-08",
+      "title": "Kip in stroganoffstijl",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "champignons",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kip, paprika en champignons",
+        "Laat tomaat en paprikapoeder meekoken",
+        "roer cottage cheese buiten het vuur erdoor."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kip in smokey stroganoff-stijl saus"
+    },
+    {
+      "id": "drive-09",
+      "title": "Kipsaté-bowl met koolsla",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "pindakaas",
+          "quantity": 80,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "limoen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak kip gaar",
+        "Maak saus van pindakaas, soja, limoensap en warm water",
+        "Snijd de groente tot rauwkost."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Fusion kipsaté-stijl taco's"
+    },
+    {
+      "id": "drive-10",
+      "title": "Citroenkip met kleine rijstportie",
+      "category": "kip",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst",
+        "Bak kip en courgette gaar",
+        "voeg tomaat en knoflook toe",
+        "Serveer met citroen en cottage cheese."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kipfilet op romige citroenrijst"
+    },
+    {
+      "id": "drive-11",
+      "title": "Orzo met mager rundergehakt",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "orzo, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak gehakt met groente en paprika",
+        "Kook orzo en meng",
+        "voeg cottage cheese buiten het vuur toe."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Orzo à la Fata Morgana"
+    },
+    {
+      "id": "drive-12",
+      "title": "Bulgogi-varkensreepjes",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "hamlappen, dun gesneden",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd hamlap dwars op de draad dun",
+        "Roerbak met knoflook en gember tot gaar",
+        "voeg kool, wortel, soja en gekookte noedels toe."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Bulgogi stir-fry met noedels en varkensvlees"
+    },
+    {
+      "id": "drive-13",
+      "title": "Surinaamse rundvleespan",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "biefstuk, dun gesneden",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sperziebonen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "ui",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "Beef Surinam-roerbaksaus",
+          "quantity": 180,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de sperziebonen bijna gaar",
+        "Bak dunne rundvleesreepjes met ui en paprika",
+        "voeg roerbaksaus en wat water toe",
+        "Laat de bonen kort meegaren en verdeel over vier porties."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Beef Surinam (Surinaams rundvlees)"
+    },
+    {
+      "id": "drive-14",
+      "title": "Teriyakiballetjes met groente",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "eieren",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "haver",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Meng gehakt met ei en haver en vorm balletjes",
+        "Bak gaar",
+        "voeg soja, gember en knoflook met wat water toe",
+        "Serveer met groente."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Teriyakigehaktballetjes met geroerbakte groenten"
+    },
+    {
+      "id": "drive-15",
+      "title": "Biefstuk met citroen en courgette",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "biefstuk",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak courgette en tomaat",
+        "wel couscous",
+        "Bak biefstuk naar voorkeur",
+        "Meng kwark en citroen tot saus."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Steak met citroenmayonaise"
+    },
+    {
+      "id": "drive-16",
+      "title": "Mexicaanse gehaktbowl",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "verse tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak gehakt en paprika met kruiden gaar",
+        "Serveer met tomaat, fijn gesneden kool en kwark."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Fajita's met rundergehakt"
+    },
+    {
+      "id": "drive-17",
+      "title": "Bolognese met courgettelinten",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "Italiaanse kruiden",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak gehakt met wortel en knoflook",
+        "Laat tomaat en kruiden inkoken",
+        "Bak courgettelinten kort en serveer als basis."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Miljuschka's snelle eenpansbolognese"
+    },
+    {
+      "id": "drive-18",
+      "title": "Varkenshaas in mosterdsaus",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "varkenshaas",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sperziebonen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Gaar groente en bak vlees",
+        "Meng cottage cheese, mosterd en wat kookwater buiten het vuur tot saus."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Varkenshaas in romige mosterdsaus"
+    },
+    {
+      "id": "drive-19",
+      "title": "Gehakt-groenteschotel uit de oven",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "sperziebonen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "eieren",
+          "quantity": 4,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak gehakt en wortel gaar",
+        "kook bonen",
+        "Meng met ei en cottage cheese en bak circa 20 minuten op 180 °C tot gestold."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Hartige gehakt-groentetaart"
+    },
+    {
+      "id": "drive-20",
+      "title": "Hamburgerbowl met pesto",
+      "category": "vlees",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse tomaten",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "vegetarische groene pesto",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Vorm burgers en bak gaar",
+        "Snijd rauwkost",
+        "serveer burgers in kommen met cottage cheese en pesto."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Hamburgerbowl met orzo"
+    },
+    {
+      "id": "drive-21",
+      "title": "Kokos-witvisstoof",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "witvisfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 200,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst",
+        "Stoof groente met kokosmelk, kerrie en water",
+        "laat vis de laatste minuten volledig garen."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Kruidige kokos-visstoof"
+    },
+    {
+      "id": "drive-22",
+      "title": "Gevulde paprika met tonijn",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "tonijn in water, uitgelekt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "volkoren couscous, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Wel couscous en meng met uitgelekte tonijn, spinazie, kruiden en cottage cheese",
+        "Vul paprikahelften en bak 20-25 minuten op 200 °C."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Gevulde paprika met tonijn en witte kaas"
+    },
+    {
+      "id": "drive-23",
+      "title": "Zalm met venkel-appelsalade",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "zalmfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "venkel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "appel",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "dille",
+          "quantity": 4,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak zalm gaar",
+        "Snijd venkel, komkommer en appel dun",
+        "meng kwark, citroen en dille tot dressing."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Zalmfilet met krieltjes-venkelsalade"
+    },
+    {
+      "id": "drive-24",
+      "title": "Zalm met dillekwark",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "zalmfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "dille",
+          "quantity": 4,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster groente op 200 °C en bak zalm gaar",
+        "Meng dille en citroen door de kwark."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Zalm met dillemayonaise"
+    },
+    {
+      "id": "drive-25",
+      "title": "Knoflook-citroengarnalenbowl",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "gepelde garnalen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 16,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst",
+        "Bak paprika en knoflook",
+        "voeg garnalen toe en gaar volgens verpakking",
+        "Serveer met komkommer en citroen."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Tortilla's met knoflook-citroengarnalen"
+    },
+    {
+      "id": "drive-26",
+      "title": "Harissawitvis met wortel",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "witvisfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "wortel",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "harissa",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst en groente",
+        "Bestrijk vis met harissa en bak gaar",
+        "Maak kwark-knoflooksaus."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Harissakabeljauw met yoghurt-knoflooksaus"
+    },
+    {
+      "id": "drive-27",
+      "title": "Milde viscurry met broccoli",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "witvisfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 200,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Gaar groente in kokosmelk, kerrie en water",
+        "Voeg vis toe en gaar",
+        "serveer met gekookte noedels."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Milde viscurry met koolvis en noedels"
+    },
+    {
+      "id": "drive-28",
+      "title": "Witvis met wortel-linzenpuree",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "witvisfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode linzen, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook wortel en droge rode linzen samen gaar",
+        "pureer grof",
+        "Gaar spinazie en bak vis",
+        "serveer met citroen."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Heekfilet à la meunière met wortel-linzenpuree"
+    },
+    {
+      "id": "drive-29",
+      "title": "Tonijnbowl met edamame",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tonijn in water, uitgelekt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "edamame",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst en edamame",
+        "Verdeel met uitgelekte tonijn en gesneden rauwkost over kommen",
+        "voeg soja toe."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Tonijnbowl met avocado en furikake"
+    },
+    {
+      "id": "drive-30",
+      "title": "Zalm met za’atar en tahin",
+      "category": "vis",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "zalmfilet, zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tahin",
+          "quantity": 50,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "za’atar",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster groente",
+        "bak zalm met za’atar gaar",
+        "Meng tahin, citroensap en water tot dressing."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Gebakken zalm met za’atarkorst en tahindressing"
+    },
+    {
+      "id": "drive-31",
+      "title": "Tofu-noedelsoep met champignons",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1200,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "champignons",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak tofu en champignons",
+        "voeg 1,2 l water, soja en gember toe",
+        "Gaar overige groente en noedels in de soep."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Noedelsoep met champignons en zachtgekookt eitje"
+    },
+    {
+      "id": "drive-32",
+      "title": "Aubergine met tofu en tahinsaus",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1200,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tahin",
+          "quantity": 60,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komijn",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster aubergine en tomaat op 200 °C",
+        "Bak tofu",
+        "serveer met tahin, citroen en water als saus."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Geroosterde aubergine met tahinsaus"
+    },
+    {
+      "id": "drive-33",
+      "title": "Groentelasagne met tofu",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "Italiaanse kruiden",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak verkruimelde tofu met wortel en tomaat",
+        "Gebruik courgetteplakken als lagen met cottage cheese",
+        "bak 25 minuten op 200 °C."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Groentelasagne met vers basilicum"
+    },
+    {
+      "id": "drive-34",
+      "title": "Miso-tofu met champignons",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1200,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "champignons",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "miso",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sesamzaad",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak tofu en champignons",
+        "Roer miso los met warm water",
+        "voeg met spinazie toe",
+        "Serveer met noedels en sesam."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Conchiglie met misochampignons"
+    },
+    {
+      "id": "drive-35",
+      "title": "Chipotle-tofu-bonenbowl",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "kidneybonen, uitgelekt",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "verse paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "chipotle",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak tofu en paprika",
+        "Voeg tomaat, uitgelekte bonen en chipotle toe",
+        "serveer met kwark."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Wraps met chipotle-bonen en avocado"
+    },
+    {
+      "id": "drive-36",
+      "title": "Dahl met tofu en komkommer",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "rode linzen, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 200,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook droge linzen met kerrie, gember, kokosmelk en water",
+        "Bak tofu",
+        "laat spinazie slinken en serveer komkommer erbij."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Dahl met naanbrood en komkommersalsa"
+    },
+    {
+      "id": "drive-37",
+      "title": "Pittige tempeh-roerbak",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tempeh",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli, met eetbare stronk",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sambal",
+          "quantity": 15,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook rijst",
+        "Bak tempeh goudbruin",
+        "roerbak groente gaar",
+        "Voeg soja, sambal en een beetje water toe."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Roerbak met tempeh en pittige saus"
+    },
+    {
+      "id": "drive-38",
+      "title": "Bloemkool-tofucurry",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1200,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "groene currypasta",
+          "quantity": 50,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 200,
+          "unit": "ml",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst, droog",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster bloemkool op 200 °C",
+        "Bak tofu",
+        "voeg curry, kokosmelk en paksoi toe",
+        "Serveer met bloemkool en rijst."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Geroosterde bloemkool in groene currysaus"
+    },
+    {
+      "id": "drive-39",
+      "title": "Shakshuka met cottage cheese",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "eieren",
+          "quantity": 12,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Laat tomaat, spinazie en paprikapoeder inkoken",
+        "Maak kuiltjes en gaar eieren onder een deksel",
+        "schep cottage cheese erbij."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Shakshuka met verse geitenkaas"
+    },
+    {
+      "id": "drive-40",
+      "title": "Romige tofu-tomaat-bonenstoof",
+      "category": "vega",
+      "cuisine": "Inspiratie",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "tofu",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "kidneybonen, uitgelekt",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "courgette",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "vegetarische groene pesto",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bak tofu en courgette",
+        "Voeg tomaat en uitgelekte bonen toe",
+        "laat pruttelen",
+        "Roer cottage cheese en pesto buiten het vuur erdoor."
+      ],
+      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend",
+      "source_name": "Romige tomaat-bonenstoof met rijst"
+    }
+  ]
+}

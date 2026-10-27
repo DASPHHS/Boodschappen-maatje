@@ -1,1 +1,48 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=./winkelhulp/"><title>Boodschappenmaatje</title></head><body><a href="./winkelhulp/">Open je boodschappenmaatje</a></body></html>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f6f1">
+<meta name="description" content="Alle aanbiedingen en recepten van Lidl, Jumbo en Albert Heijn. Jij kiest de winkel, wij maken de lijst.">
+<title>Boodschappenmaatje | Slim kiezen, lekker eten</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" aria-label="Hoofdnavigatie">
+ <a href="#vandaag" class="brand" data-view="vandaag"><span class="brand-mark">b<span>✳</span></span><span>boodschappen<em>maatje</em><small>GOED ETEN. SLIM KOPEN.</small></span></a>
+ <div class="sidebar-label">MENU</div>
+ <nav class="main-nav" id="main-nav">
+  <button type="button" data-view="vandaag" class="nav-link active"><span class="nav-icon">◫</span> Vandaag</button>
+  <button type="button" data-view="aanbiedingen" class="nav-link"><span class="nav-icon">％</span> Aanbiedingen</button>
+  <button type="button" data-view="recepten" class="nav-link"><span class="nav-icon">♧</span> Recepten</button>
+  <button type="button" data-view="lijst" class="nav-link"><span class="nav-icon">☑</span> Boodschappenlijst <span id="nav-count" class="count"></span></button>
+ </nav>
+ <div class="sidebar-bottom"><div class="sidebar-illustration" aria-hidden="true">✳<span>◡</span></div><strong>Meer smaak.<br>Minder gedoe.</strong><p>Drie winkels vol inspiratie. Jij kiest er één.</p></div>
+ <div class="sidebar-foot">Lidl · Jumbo · Albert Heijn</div>
+</aside>
+<div class="main-wrap">
+ <header class="topbar">
+  <button class="mobile-brand" data-view="vandaag">✳ <strong>boodschappenmaatje</strong></button>
+  <div class="topbar-right"><span id="feed-status" class="status-pill">Bronstatus controleren</span><span id="clock" class="today-label"></span></div>
+ </header>
+ <main id="main" tabindex="-1">
+  <section id="page-intro" class="intro"></section>
+  <section id="view-vandaag" class="view"></section>
+  <section id="view-aanbiedingen" class="view hidden"></section>
+  <section id="view-recepten" class="view hidden"></section>
+  <section id="view-lijst" class="view hidden"></section>
+ </main>
+</div>
+<nav class="mobile-nav" aria-label="Mobiele navigatie">
+ <button data-view="vandaag" class="active"><span>◫</span>Vandaag</button>
+ <button data-view="aanbiedingen"><span>％</span>Deals</button>
+ <button data-view="recepten"><span>♧</span>Recepten</button>
+ <button data-view="lijst"><span>☑</span>Mijn lijst</button>
+</nav>
+</div>
+<dialog id="recipe-dialog"><div id="dialog-content"></div><button id="dialog-close" type="button" class="dialog-close" aria-label="Sluit recept">✕</button></dialog>
+<footer class="page-footer">Prijswaarnemingen zijn momentopnames. Een aanbieding is niet automatisch de goedkoopste keuze. Controleer de kassaprijs.</footer>
+</body>
+</html>

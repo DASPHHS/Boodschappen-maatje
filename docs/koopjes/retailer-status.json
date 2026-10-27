@@ -1,5 +1,0 @@
-{
-  "last_attempt": "2026-10-27T11:00:28.604520+00:00",
-  "status": "failed",
-  "error": "Action leverde geen bevestigde productprijzen: ['403 Client Error: Forbidden for url: https://www.action.com/nl-nl/p/3229095/dreft-wasverzachter-soft-orange/']"
-}
