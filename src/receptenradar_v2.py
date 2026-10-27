@@ -663,7 +663,14 @@ def make_recipes(shelves,offers):
     for store in STORES:
         all_recipes=[]
         dynamic=meal_candidates(offers[store])
-        proposals=list(RECIPES)+dynamic
+        # Bronkaarten met volledig controleerbare ingrediënten kunnen meteen
+        # op dezelfde echte winkelprijzen worden doorgerekend.
+        from gestructureerde_recepten import load as load_structured_recipes
+        archive_recipes,archive_rejections=load_structured_recipes()
+        archives=[(r["title"],r["category"],r["minutes"],r["ingredients"])
+                  for r in archive_recipes if isinstance(r.get("minutes"),(int,float))
+                  and 0<r["minutes"]<=120]
+        proposals=list(RECIPES)+dynamic+archives
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
             problems=validate_dish_ingredients(title,ings)+dish_quality_issues(title,category,ings)
@@ -756,12 +763,13 @@ def make_recipes(shelves,offers):
             portable=meal_type=="Lunch"
             mealprep=mealprep_suitable(title,meal_type,category)
             prep_ahead=mealprep
-            inspiration=("Actiegestuurde maaltijd" if idx>=len(RECIPES)
+            inspiration=("Gecontroleerd bronrecept" if idx>=len(RECIPES)+len(dynamic)
+                         else "Actiegestuurde maaltijd" if idx>=len(RECIPES)
                          else "HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
                          else "Eigen recept")
             all_recipes.append({"id":str(idx+1),"title":title,"category":category,"minutes":minutes,
-              "inspiration":inspiration,"source_recipe":RECIPE_SOURCES.get(title),"offer_driven":idx>=len(RECIPES),
+              "inspiration":inspiration,"source_recipe":RECIPE_SOURCES.get(title),"offer_driven":len(RECIPES)<=idx<len(RECIPES)+len(dynamic),
               "mealprep":mealprep,
               "nutrition":nutrition,"meal_type":meal_type,"cuisine":cuisine,
               "portable":portable,"prep_ahead":prep_ahead,
