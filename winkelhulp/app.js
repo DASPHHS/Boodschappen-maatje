@@ -5,7 +5,7 @@
   const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(n);
   const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   const storage={get(k){try{return JSON.parse(localStorage.getItem(k));}catch{return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}};
-  let data,store=storage.get('bm-store')||'ah',category='kip',selected,oldPrices=false;
+  let data,store=storage.get('bm-store')||'ah',category='kip',selected,oldPrices=false,offerFeed=null,offerError=false,offerCategory='alle';
   if(!names[store])store='ah';
   function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
   function link(text,url){const n=el('a',text);try{const u=new URL(url);if(u.protocol!=='https:')return el('span',text);n.href=u.href;n.target='_blank';n.rel='noopener noreferrer';}catch{return el('span',text);}return n;}
@@ -13,20 +13,42 @@
   function sourceName(r){const f=r.source.file_name;return /surinaam/i.test(f)?'Uit je Surinaamse receptenboek':/meal.prep/i.test(f)?'Uit je mealprep-boek':'Gebaseerd op jouw HelloFresh-recept';}
   function renderOffers(){
     const host=$('offers');host.replaceChildren();
-    const found=oldPrices?[]:E.offers(data,store,day());
-    $('offers-heading').textContent='Bevestigde aanbiedingen · '+names[store];
-    $('offers-count').textContent=found.length+' actief in onze gecontroleerde receptproducten';
-    if(!found.length){host.append(el('p',oldPrices?'De prijswaarneming is ouder dan 36 uur. Acties worden verborgen totdat actuele gegevens zijn bevestigd.':'Voor deze supermarkt zijn momenteel geen geldige aanbiedingen bevestigd in onze receptproducten. Dit betekent niet dat de winkel geen aanbiedingen heeft.','notice'));return;}
-    for(const p of found){
+    $('offers-heading').textContent='Aanbiedingen · '+names[store];
+    const D=window.WinkelDeals;
+    const fresh=offerFeed&&D&&D.fresh(offerFeed.updated_at);
+    if(!fresh){
+      $('offers-count').textContent=offerError?'Actiebron niet bereikbaar':'Geen recente actiegegevens';
+      host.append(el('p',offerError?'De bredere aanbiedingenbron kon niet worden geladen.':'Er is geen prijsscan jonger dan 36 uur beschikbaar. Daarom tonen we geen onbevestigde aanbiedingen.','notice'));
+      return;
+    }
+    const all=D.choose(offerFeed,store,day(),offerCategory);
+    $('offers-count').textContent=all.length+' mathematisch gecontroleerde kortingen · scan '+new Date(offerFeed.updated_at).toLocaleDateString('nl-NL');
+    if(!all.length){host.append(el('p','Geen bevestigde korting voor deze supermarkt en categorie. Actievermeldingen zonder bewezen besparing worden niet als koopje getoond.','notice'));return;}
+    for(const p of all.slice(0,36)){
       const card=el('article',undefined,'offer-card'),main=el('div'),price=el('div',undefined,'offer-price');
-      main.append(el('strong',p.product),el('small',p.condition||'Actie'));
-      main.append(el('small','Geldig t/m '+p.valid_until+(p.loyalty?' · klantenkaart nodig':'')));
-      if(p.source)main.append(el('small','Bron: '+p.source));
-      if(p.url)main.append(link('Bekijk bron',p.url));
-      price.append(el('strong',money(p.packPrice)+' / verpakking'));
-      if(p.unitPrice!==null)price.append(el('small',money(p.unitPrice)+' / '+(p.unit==='g'?'kg':p.unit==='ml'?'liter':p.unit)));
+      main.append(el('strong',p.name),el('small',p.required>1?p.required+' stuks samen voor '+money(p.checkout):'1 verpakking in de aanbieding'));
+      main.append(el('small','Normaal '+money(p.regularTotal)+' bij dezelfde afname · besparing '+money(p.saving)));
+      main.append(el('small','Geldig van '+p.valid_from+' t/m '+p.valid_until));
+      if(p.price_source)main.append(el('small','Bron: '+p.price_source+' · controleer de kassa'));
+      if(p.url)main.append(link('Bekijk winkelproduct',p.url));
+      price.append(el('strong',money(p.checkout)+(p.required>1?' totaal':' per verpakking')));
+      if(p.unitPrice)price.append(el('small',money(p.unitPrice.value)+' / '+p.unitPrice.unit+' (bij actieafname)'));
       card.append(main,price);host.append(card);
     }
+    if(all.length>36)host.append(el('small','De eerste 36 kortingen worden getoond. Verfijn op productcategorie voor andere aanbiedingen.'));
+  }
+  async function loadOfferFeed(){
+    offerError=false;
+    for(const url of ['../recepten/extra-supermarkt-deals.json','../docs/recepten/extra-supermarkt-deals.json']){
+      try{
+        const response=await fetch(url,{cache:'no-store'});
+        if(!response.ok)continue;
+        const parsed=await response.json();
+        if(!parsed.stores||!parsed.updated_at)continue;
+        offerFeed=parsed;renderOffers();return;
+      }catch{}
+    }
+    offerError=true;renderOffers();
   }
   function render(){
     if(!data)return;
@@ -110,10 +132,12 @@
     render();
   }
   $('stores').addEventListener('click',e=>{const b=e.target.closest('[data-store]');if(!b)return;store=b.dataset.store;storage.set('bm-store',store);render();});
+  $('offer-category').addEventListener('change',e=>{offerCategory=e.target.value;renderOffers();});
   $('categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;category=b.dataset.category;render();});
   for(const b of document.querySelectorAll('[data-close]'))b.addEventListener('click',()=>$(b.dataset.close).close());
   $('sources-button').addEventListener('click',()=>$('sources').showModal());$('retry').addEventListener('click',load);
   $('reset-list').addEventListener('click',()=>{if(selected){storage.set(checkKey(selected),[]);openRecipe(selected);}});
   $('copy-list').addEventListener('click',async()=>{if(!selected)return;try{await navigator.clipboard.writeText(E.listText(selected,names[store]));$('copy-status').textContent='Gekopieerd. Plak de lijst in je notities.';}catch{$('copy-status').textContent='Kopiëren lukt hier niet. Je kunt de producten in deze lijst afvinken.';}});
   load();
+  loadOfferFeed();
 })();
