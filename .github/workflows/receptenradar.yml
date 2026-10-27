@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'src/receptenradar_v2.py'
+      - 'src/verpakking_parser.py'
+      - 'tests/test_verpakking_parser.py'
       - 'tests/test_jumbo_gewicht_actie.py'
       - 'src/gestructureerde_recepten.py'
       - 'src/receptvarianten_schatting.py'
@@ -104,7 +106,7 @@ jobs:
         run: python -m pip install 'requests>=2.31,<3'
       - name: Controleer syntax
         run: |
-          python -m compileall -q src/verpakkingscombinaties.py src/portie_flexibiliteit.py src/lidl_officiele_acties.py src/scan_kwaliteitscontrole.py src/product_contract.py src/feed_paginering.py src/receptenradar_v2.py src/receptvarianten_schatting.py src/indicatieve_receptprijzen.py src/gestructureerde_recepten.py src/product_compatibiliteit.py src/receptenradar_catalog.py src/tonijn_varianten.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/recept_keukens.py src/weekmenu_advies.py src/weekly_advice.py src/actie_maaltijden.py
+          python -m compileall -q src/verpakkingscombinaties.py src/portie_flexibiliteit.py src/lidl_officiele_acties.py src/scan_kwaliteitscontrole.py src/product_contract.py src/feed_paginering.py src/verpakking_parser.py src/receptenradar_v2.py src/receptvarianten_schatting.py src/indicatieve_receptprijzen.py src/gestructureerde_recepten.py src/product_compatibiliteit.py src/receptenradar_catalog.py src/tonijn_varianten.py src/receptkwaliteit.py src/receptenradar_checks.py src/recepten_ontdekker.py src/actie_receptmatches.py src/recept_keukens.py src/weekmenu_advies.py src/weekly_advice.py src/actie_maaltijden.py
           python -m unittest discover -s tests -p "test_verpakkingscombinaties.py" -v
           python -m unittest discover -s tests -p "test_portie_flexibiliteit.py" -v
           python -m unittest discover -s tests -p "test_lidl_officiele_acties.py" -v
@@ -117,6 +119,7 @@ jobs:
           python -m unittest discover -s tests -p "test_indicatieve_receptprijzen.py" -v
           python -m unittest discover -s tests -p "test_product_compatibiliteit.py" -v
           python -m unittest discover -s tests -p "test_jumbo_gewicht_actie.py" -v
+          python -m unittest discover -s tests -p "test_verpakking_parser.py" -v
           python -m unittest discover -s tests -p "test_receptenradar_checks.py" -v
           python -m unittest discover -s tests -p "test_actie_maaltijden.py" -v
           python -m unittest discover -s tests -p "test_actie_receptmatches.py" -v
