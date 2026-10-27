@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-26T23:43:27.009768+00:00",
+  "updated_at": "2026-10-27T02:39:56.758521+00:00",
   "scope": "online_landelijk_met_lokale_winkelprioriteit",
-  "primary_age_hours": 0.5,
-  "extra_age_hours": 3.9,
+  "primary_age_hours": 3.4,
+  "extra_age_hours": 6.8,
   "official_age_hours": null,
   "retailers": {
     "ah": {
@@ -10,13 +10,14 @@
       "primary_promotion_records": 3225,
       "extra_promotion_records": 350,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -26,13 +27,14 @@
       "primary_promotion_records": 1617,
       "extra_promotion_records": 350,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -42,14 +44,15 @@
       "primary_promotion_records": 28,
       "extra_promotion_records": 2,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
         "weinig_acties_voor_weekdekking",
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -59,13 +62,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 2,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -75,13 +79,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 81,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -91,13 +96,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 350,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -107,13 +113,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 133,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -123,13 +130,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 126,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
@@ -139,13 +147,14 @@
       "primary_promotion_records": 0,
       "extra_promotion_records": 19,
       "official_product_records": 0,
-      "primary_age_hours": 0.5,
-      "extra_age_hours": 3.9,
+      "primary_age_hours": 3.4,
+      "extra_age_hours": 6.8,
       "official_age_hours": null,
       "api_pagination_complete": true,
       "retailer_coverage_complete": false,
       "official_status": "unknown",
       "issues": [
+        "aanvullende_aanvoer_verouderd",
         "geen_officiele_productverificatie"
       ],
       "quality": "needs_attention"
