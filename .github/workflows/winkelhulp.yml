@@ -1,0 +1,83 @@
+name: Eenvoudige winkelhulp
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['winkelhulp/**', 'src/build_winkelhulp.py', 'tests/test_winkelhulp*', 'tests/winkelhulp_browser.cjs', '.github/workflows/winkelhulp.yml']
+  schedule:
+    # One of these is 08:05 in Amsterdam, accounting for summer/winter time.
+    - cron: '5 6,7 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: winkelhulp-publicatie
+  cancel-in-progress: false
+jobs:
+  controleren-en-verversen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Alleen de Amsterdamse ochtendrun
+        id: timing
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          enabled = os.environ['GITHUB_EVENT_NAME'] != 'schedule' or datetime.now(ZoneInfo('Europe/Amsterdam')).hour == 8
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('enabled=' + str(enabled).lower() + '\n')
+          PY
+      - uses: actions/setup-python@v5
+        if: steps.timing.outputs.enabled == 'true'
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        if: steps.timing.outputs.enabled == 'true'
+        with:
+          node-version: '22'
+      - name: Controleer bronkoppelingen, prijzen en interface
+        if: steps.timing.outputs.enabled == 'true'
+        run: |
+          python -m unittest discover -s tests -p 'test_winkelhulp.py' -v
+          node tests/test_winkelhulp_engine.cjs
+          node --check winkelhulp/app.js
+          python src/build_winkelhulp.py
+          npm install --no-save --prefix /tmp/winkelhulp-browser playwright
+          /tmp/winkelhulp-browser/node_modules/.bin/playwright install --with-deps chromium
+          NODE_PATH=/tmp/winkelhulp-browser/node_modules node tests/winkelhulp_browser.cjs
+      - name: Lees actuele winkelprijzen en acties
+        if: steps.timing.outputs.enabled == 'true'
+        env:
+          PRIJS_PROFEET_KEY: ${{ secrets.PRIJS_PROFEET_KEY }}
+        run: |
+          python -m pip install -r requirements.txt
+          python src/build_winkelhulp.py --refresh
+      - name: Publiceer alleen de compacte winkelgegevens
+        if: steps.timing.outputs.enabled == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          catalog_sha=$(git hash-object winkelhulp/recipes.json)
+          builder_sha=$(git hash-object src/build_winkelhulp.py)
+          git add winkelhulp/data.json docs/winkelhulp/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Actuele winkelhulpprijzen bijwerken'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if [ "$catalog_sha" != "$(git rev-parse origin/main:winkelhulp/recipes.json)" ] || [ "$builder_sha" != "$(git rev-parse origin/main:src/build_winkelhulp.py)" ]; then
+              echo '::error::Bronrecepten of rekenregels gewijzigd; volgende scan publiceert de nieuwe versie.'
+              exit 1
+            fi
+            # A concurrent recipe change requires rebuilding; never overwrite it
+            # with an older calculation or force-push another scanner's work.
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo '::error::Gelijktijdige wijziging: vorige publicatie behouden.'
+              exit 1
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1

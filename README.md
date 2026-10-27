@@ -1,64 +1,46 @@
-# Boodschappen Maatje — Recepten Radar, aanbiedingen en boodschappen
+# Boodschappenmaatje
 
-**Nieuwe projectnaam:** [DASPHHS/Boodschappen-maatje](https://github.com/DASPHHS/Boodschappen-maatje).
+**[Open de winkelhulp](https://dasphhs.github.io/Boodschappen-maatje/)**
 
-**Startpagina:** https://dasphhs.github.io/Boodschappen-maatje/ — opent de uitgebreide groene Recepten Radar met Albert Heijn, Jumbo en Lidl.
+1. Kies AH, Jumbo of Lidl.
+2. Kies Kip, Vlees, Vis of Vega.
+3. Open één gerecht en vink je boodschappen af.
 
-**Aanbiedingen en folders:** https://dasphhs.github.io/Boodschappen-maatje/docs/aanbiedingen.html — apart bewaard, niet meer de hoofdpagina.
+Vier royale porties voor twee personen, twee dagen. Binnen elke categorie staan eerst de gerechten met de meeste verschillende geldige actieproducten, daarna de laagste volledige verbruikskosten per portie. Richtbedrag: €20 per bereiding. Verbruik en kassabedrag voor hele verpakkingen staan apart.
 
-**Direct naar Recepten Radar:** https://dasphhs.github.io/Boodschappen-maatje/docs/recepten/
+De nieuwe startpagina staat in `docs/winkelhulp/`; de bronbestanden staan in `winkelhulp/`. Beide Pages-configuraties (root en `/docs`) openen de winkelhulp. Er is geen server of account nodig. Vinkjes en de laatst gekozen winkel worden alleen lokaal bewaard.
 
-De broncode voor de reeds bestaande aanbiedingenmodule behoudt voorlopig historische bestandsnamen zoals `koopkracht.py`; deze namen zijn interne implementatiedetails. De dagelijkse aanbiedingenverwerking schrijft de afzonderlijke aanbiedingenpagina en **overschrijft de startpagina niet meer**.
+## Receptenbasis
 
----
+De 40 geselecteerde gerechten zijn eigen aanpassingen van concrete recepten uit de Drive-map: HelloFresh-kaarten, het mealprep-boek en het Surinaamse receptenboek. Elk gerecht bevat de originele recepttitel, het bronbestand, de Drive-link en uitleg over de aanpassing. Het zijn 40 recepten met 120 winkelkaarten. De hoeveelheden zijn **eigen vierportiesbewerkingen**, geen letterlijk overgenomen HelloFresh-porties.
 
-## Technische achtergrond: de oorspronkelijke Koopkracht scanner
+`winkelhulp/recipes.json` bevat uitsluitend receptfeiten en eigen korte bereidingen. Volledige boekteksten, scans en OCR-teksten worden niet gepubliceerd. Het bronoverzicht vermeldt alle 28 bestanden: de ZIP van 2,1 GB is niet verwerkt en OCR blijft controle vereisen. De selectie is geen claim dat elk recept uit ieder bestand is gevalideerd.
 
-**Actieve productiescan:** `src/prijsprofeet_v1.py`. De dagelijkse GitHub Actions-workflow gebruikt nu de openbare PrijsProfeet-API in plaats van de niet-functionerende AlleFolders-afbeeldingenscan.
+## Prijzen en acties
 
-- **Gratis basis:** aanbiedingen van Albert Heijn, Jumbo, Lidl, Aldi, Dirk en andere ondersteunde ketens.
-- **Geen sleutel vereist:** publieke endpoints, optioneel `PRIJS_PROFEET_KEY` als GitHub Actions-secret voor hogere limieten.
-- **Uitvoer:** een vernieuwd dashboard met acties, kortingspercentages en geldigheidsdatums waar beschikbaar.
-- **Geen volledige mandprijs:** normale schapprijzen, uitgebreide matching en historische prijsreeksen vallen buiten de gratis laag.
-- **Bron:** [PrijsProfeet](https://www.prijsprofeet.nl). Gebruik van de API is onderworpen aan de [voorwaarden](https://www.prijsprofeet.nl/api-voorwaarden); gebruik de data niet om een concurrerende ruwe kopiedatabase op te bouwen.
-- **Test:** Actions → Dagelijkse Koopkracht Scan → Run workflow. De eerste live API-run moet aantonen dat alle drie prioriteitsketens data leveren. Bij onvoldoende data wordt de workflow rood in plaats van een leeg succes te melden.
+`python src/build_winkelhulp.py` leest de bestaande gedateerde prijssnapshot uit `recepten/winkelprijzen.json`. De dagelijkse receptenprijsscan bouwt de compacte gegevens mee. Geen aanvullende prijsfeed of verzonnen fallback.
 
-De oude AlleFolders-parser blijft als experimentele module in de repository maar maakt geen deel meer uit van de dagelijkse productiescan.
+- Exacte eenheden en volledige verpakkingen, zonder stilzwijgende portieverkleining.
+- Alleen gedateerde, geldige en rekenkundig bevestigde kortingen tellen als actie.
+- AH Bonus en Lidl Plus kunnen worden meegenomen; persoonlijke coupons zijn niet aangenomen.
+- Een goedkoper regulier alternatief blijft zichtbaar als een actieproduct duurder is.
+- Geen maaltijdtotaal bij ontbrekende prijs, onbekend uitlekgewicht of niet-bevestigde visvorm.
+- De browser trekt verlopen acties in en markeert snapshots ouder dan 36 uur.
+- Winkelvoorraad, persoonlijke coupons en de exacte filiaalkassa zijn niet bevestigd.
 
----
+## Controleren
 
-## Oorspronkelijke folderscanner
-
-Open-source koopjesradar voor Nederlandse reclamefolders. Gebruikt een automatische GitHub Actions-scan en publiceert een statisch doorzoekbaar dashboard.
-
-## Starten
-1. Ga naar **Actions** > **Dagelijkse Koopkracht Scan** > **Run workflow**. GitHub Actions moet voor de repository ingeschakeld zijn.
-2. De workflow vindt winkels, folders en aanbiedingen; het oude dashboard wordt in `docs/aanbiedingen.html` gebouwd. `docs/index.html` blijft de doorverwijzing naar de Recepten Radar.
-3. Om het dashboard openbaar bereikbaar te maken: **Settings > Pages > Deploy from a branch > main /docs**.
-4. Voor e-mail: zet repository Actions-secrets `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_TO`. Zonder deze gegevens wordt geen e-mail verstuurd.
-
-**Belangrijk:** dit project is een complete technische basis, maar niet een garantie dat iedere folder en ieder product beschikbaar is. De website kan veranderen of downloads blokkeren. De extractiekwaliteit van OCR varieert. In de dashboardstatus staat welke bronvelden daadwerkelijk zijn verkregen.
-
-## Wat zit erin?
-- Dynamische ontdekking van winkel- en folderlinks vanaf AlleFolders (zonder vaste lijst als voorwaarde).
-- Paginaverwijzingen naar folderafbeeldingen en herkenning van tekstuele aanbiedingen.
-- Optionele OCR van folderafbeeldingen in dagelijkse batches met gratis Tesseract. OCR-resultaten staan als **onbevestigd**, nooit als gecontroleerde winkelprijs.
-- Deduplicatie, dagstempels, oude en toekomstige folderverwijzingen.
-- Doorzoekbaar HTML-dashboard en JSON-data; prijsvergelijking alleen bij vergelijkbare geregistreerde prijzen.
-- Basisrecepten die echte geïndexeerde aanbiedingen als inspiratie gebruiken. Receptprijzen worden niet verzonnen.
-- Dagelijks scannen; optionele SMTP-mail op zaterdag, maandag en woensdag.
-
-## Beperkingen
-Een volledige, gecontroleerde prijsvergelijking vereist betrouwbare artikelidentificatie, verpakkingshoeveelheden, actievoorwaarden en reguliere prijzen. **OCR is geen garantie op correcte prijsextractie.** Zonder account- of API-toegang zijn Picnic en persoonlijke prijzen niet volledig beschikbaar. Coupons worden niet automatisch geverifieerd. Er is bewust geen fictieve prijsinformatie.
-
-## Lokaal uitvoeren
-```bash
-pip install -r requirements.txt
-python src/koopkracht.py --max-stores 50 --max-folders 150 --ocr-pages 10
-python -m unittest discover -s tests
+```sh
+python src/build_winkelhulp.py
+python -m unittest discover -s tests -p 'test_winkelhulp.py' -v
+node tests/test_winkelhulp_engine.cjs
+python -m http.server 8765 --directory docs
+# Met Playwright beschikbaar:
+node tests/winkelhulp_browser.cjs
 ```
 
-Variabelen: `MAX_STORES`, `MAX_FOLDERS`, `OCR_PAGES`, `SCAN_TIMEOUT`, `REQUEST_DELAY`. Bij een eerste test zijn lage maxima verstandig om bronservers niet te overbelasten.
+## Prijsverwerking
 
-## Privacy en stabiliteit
-De repository is openbaar. Zet nooit e-mailwachtwoorden, API-sleutels of privégegevens in code of data; gebruik GitHub Actions Secrets. De scanner gebruikt begrensde verzoeken, tijdslimieten en backoff bij fouten. Respecteer robots.txt en gebruiksvoorwaarden. Er kan aanvullende toestemming nodig zijn voor grootschalige reproductie van folderinhoud.
+De bestaande bronnenlezers (`load_shelves` en `load_deals`) worden hergebruikt. De winkelhulp gebruikt een eigen strenge productselectie en de afzonderlijke workflow **Eenvoudige winkelhulp**. Die draait om circa 08:05 Nederlandse tijd en kan ook handmatig gestart worden. Bij bronuitval blijft de vorige publicatie staan. De eerste meegeleverde gegevens zijn berekend uit de gedateerde prijssnapshot in de repository.
+
+Lunch, ontbijt en snacks worden in deze nieuwe interface nog niet als ingevulde productselectie aangeboden. De app vermeldt dit expliciet.

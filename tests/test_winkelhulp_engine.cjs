@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const E=require('../winkelhulp/engine.js');
+const p={sale:true,valid_from:'2026-10-21',valid_until:'2026-10-27',used:2,checkout:4,form_verified:true};
+const r={title:'A',ingredients:[{key:'kip',price:p}]};
+assert.equal(E.refresh(r,'2026-10-27').sale_count,1);
+assert.equal(E.refresh(r,'2026-10-28').complete,false);
+assert.equal(E.refresh(r,'2026-10-28').per_serving,null);
+assert.equal(r.ingredients[0].price.sale,true,'refresh may not mutate evidence');
+const expired={...p,ordinary_alternative:{sale:false,used:3,checkout:5,form_verified:true}};
+assert.equal(E.refresh({title:'B',ingredients:[{price:expired}]},'2026-10-28').per_serving,.75);
+const rows=[{title:'Goedkoop',sale_count:0,complete:true,per_serving:1},{title:'Actie',sale_count:2,complete:true,per_serving:3}];
+assert.equal(rows.sort(E.compare)[0].title,'Actie');
+assert.ok(E.stale('2026-10-20',Date.parse('2026-10-27')));
+assert.equal(E.stale('bad date'),true);
+assert.equal(E.quantity(1200,'g'),'1.200 g');
+console.log('Winkelhulp: expiry, partial prices and ordering passed');
