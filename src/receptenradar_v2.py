@@ -669,7 +669,7 @@ def make_recipes(shelves,offers):
     final={}
     for store in STORES:
         all_recipes=[]
-        dynamic=meal_candidates(offers[store])
+        dynamic=meal_candidates(offers[store],expand=True)
         proposals=list(RECIPES)+dynamic+archives
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
