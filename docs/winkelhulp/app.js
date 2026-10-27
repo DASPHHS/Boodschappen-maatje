@@ -11,8 +11,26 @@
   function link(text,url){const n=el('a',text);try{const u=new URL(url);if(u.protocol!=='https:')return el('span',text);n.href=u.href;n.target='_blank';n.rel='noopener noreferrer';}catch{return el('span',text);}return n;}
   function badge(text,cls=''){return el('span',text,'tag '+cls);}
   function sourceName(r){const f=r.source.file_name;return /surinaam/i.test(f)?'Uit je Surinaamse receptenboek':/meal.prep/i.test(f)?'Uit je mealprep-boek':'Gebaseerd op jouw HelloFresh-recept';}
+  function renderOffers(){
+    const host=$('offers');host.replaceChildren();
+    const found=E.offers(data,store,day());
+    $('offers-heading').textContent='Bevestigde aanbiedingen · '+names[store];
+    $('offers-count').textContent=found.length+' actief in onze gecontroleerde receptproducten';
+    if(!found.length){host.append(el('p','Voor deze supermarkt zijn momenteel geen geldige aanbiedingen bevestigd in onze receptproducten. Dit betekent niet dat de winkel geen aanbiedingen heeft.','notice'));return;}
+    for(const p of found){
+      const card=el('article',undefined,'offer-card'),main=el('div'),price=el('div',undefined,'offer-price');
+      main.append(el('strong',p.product),el('small',p.condition||'Actie'));
+      main.append(el('small','Geldig t/m '+p.valid_until+(p.loyalty?' · klantenkaart nodig':'')));
+      if(p.source)main.append(el('small','Bron: '+p.source));
+      if(p.url)main.append(link('Bekijk bron',p.url));
+      price.append(el('strong',money(p.packPrice)+' / verpakking'));
+      if(p.unitPrice!==null)price.append(el('small',money(p.unitPrice)+' / '+(p.unit==='g'?'kg':p.unit==='ml'?'liter':p.unit)));
+      card.append(main,price);host.append(card);
+    }
+  }
   function render(){
     if(!data)return;
+    renderOffers();
     for(const b of document.querySelectorAll('[data-store]'))b.setAttribute('aria-pressed',String(b.dataset.store===store));
     for(const b of document.querySelectorAll('[data-category]'))b.setAttribute('aria-pressed',String(b.dataset.category===category));
     $('results-heading').textContent=categories[category]+' bij '+names[store];
