@@ -28,6 +28,8 @@ ING = {
  "tofu": ("tofu", r"\btofu\b", r"saus|kruiden|soep"),
  "kikkererwten": ("kikkererwten", r"kikkererwten", r"chips|crackers|soep|falafel|saus|gedroog|droge|linzen|mix"),
  "linzen": ("linzen", r"\blinzen\b", r"chips|soep|gedroog|droge|kikkererwten|mix|noedel"),
+ "bruine_bonen": ("bruine bonen", r"(bruine bonen|bruinebonen)", r"soep|saus|chips|droog|gedroog|maaltijd|mix"),
+ "sperziebonen": ("sperziebonen", r"(sperziebonen|sperzieboontjes|haricots verts)", r"mix|schotel|soep|maaltijd|saus|kruiden"),
  "bonen": ("zwarte bonen", r"(zwarte bonen|kidneybonen)", r"saus|soep|burgers|gedroog"),
  "rijst": ("zilvervliesrijst", r"(zilvervliesrijst|bruine rijst|volkorenrijst)", r"wafels|melk|drank|pudding|cracker|saus"),
  "risottorijst": ("risottorijst (Arborio of Carnaroli)", r"(risottorijst|risotto rijst|arborio|carnaroli|vialone nano|risotto rice|riso per risotti)", r"kant.en.klaar|maaltijd|saus|soep|risottomix|risotto mix|met kip|met champignons|mix voor"),
@@ -366,3 +368,20 @@ RECIPE_METHODS["Volkoren tonijnpasta met zwarte olijven en kappertjes"] = (
  "een aangepaste variant van een bestaand Allerhande-recept."
 )
 
+
+# Nieuwe eigen variant, niet voorgesteld als letterlijke transcriptie van
+# het titel-only Surinaamse archief. Hoeveelheden: vier personen.
+_BB_VARIANT="Surinaamse bruine bonen met rijst, kip en sperziebonen (eigen variant)"
+RECIPES.append((_BB_VARIANT,"Kip",35,[
+ ("bruine_bonen",600,"g"),("rijst",300,"g"),("kipdij",600,"g"),
+ ("sperziebonen",400,"g"),("ui",150,"g"),("tomatenblokjes",400,"g")
+]))
+RECIPE_METHODS[_BB_VARIANT]=(
+ "Kook de rijst volgens de verpakking. Fruit de ui met knoflook en Surinaamse "
+ "kruiden naar smaak. Bak de kipdij volledig gaar. Voeg tomatenblokjes, "
+ "uitgelekte bruine bonen en sperziebonen toe en laat de bonen en groenten "
+ "goed warm en gaar worden. Serveer met de rijst. Controleer bij bonen "
+ "het uitlekgewicht: de prijsberekening gebruikt het opgegeven nettogewicht."
+)
+RECIPE_SOURCES[_BB_VARIANT]={"name":"Eigen BB met R-variant (geen exact bronrecept)",
+ "status":"Eigen uitgewerkte variant gebaseerd op de gerechtnaam; hoeveelheden niet uit oorspronkelijke kookboek bevestigd"}
