@@ -39,6 +39,7 @@ on:
       - 'recepten/chat.html'
       - 'tests/test_chatbot.cjs'
       - 'tests/test_filter_contract.cjs'
+      - 'tests/test_compact_recept_filters.cjs'
       - 'tests/test_boodschappen_prijsdekking.cjs'
       - 'tests/test_generieke_producten_en_deals.cjs'
       - 'tests/test_portie_flexibiliteit.py'
@@ -145,6 +146,7 @@ jobs:
           PY
           node --check /tmp/receptenradar_check.js
           node tests/test_filter_contract.cjs
+          node tests/test_compact_recept_filters.cjs
           node tests/test_receptzoeker.cjs
           node tests/test_receptwatchlist.cjs
           node tests/test_chatbot.cjs
