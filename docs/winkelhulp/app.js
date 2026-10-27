@@ -13,10 +13,10 @@
   function sourceName(r){const f=r.source.file_name;return /surinaam/i.test(f)?'Uit je Surinaamse receptenboek':/meal.prep/i.test(f)?'Uit je mealprep-boek':'Gebaseerd op jouw HelloFresh-recept';}
   function renderOffers(){
     const host=$('offers');host.replaceChildren();
-    const found=E.offers(data,store,day());
+    const found=oldPrices?[]:E.offers(data,store,day());
     $('offers-heading').textContent='Bevestigde aanbiedingen · '+names[store];
     $('offers-count').textContent=found.length+' actief in onze gecontroleerde receptproducten';
-    if(!found.length){host.append(el('p','Voor deze supermarkt zijn momenteel geen geldige aanbiedingen bevestigd in onze receptproducten. Dit betekent niet dat de winkel geen aanbiedingen heeft.','notice'));return;}
+    if(!found.length){host.append(el('p',oldPrices?'De prijswaarneming is ouder dan 36 uur. Acties worden verborgen totdat actuele gegevens zijn bevestigd.':'Voor deze supermarkt zijn momenteel geen geldige aanbiedingen bevestigd in onze receptproducten. Dit betekent niet dat de winkel geen aanbiedingen heeft.','notice'));return;}
     for(const p of found){
       const card=el('article',undefined,'offer-card'),main=el('div'),price=el('div',undefined,'offer-price');
       main.append(el('strong',p.product),el('small',p.condition||'Actie'));
