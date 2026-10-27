@@ -20,7 +20,7 @@
     const unique=new Map();
     for(const recipe of data.stores?.[store]||[])for(const ing of recipe.ingredients||[]){
       const p=ing.price;
-      if(!active(p,day)||!Number.isFinite(p.checkout)||p.checkout<=0||!Number.isFinite(p.packages)||p.packages<=0)continue;
+      if(!active(p,day)||p.form_verified===false||!Number.isFinite(p.checkout)||p.checkout<=0||!Number.isFinite(p.packages)||p.packages<=0)continue;
       const key=[p.product,p.valid_until,p.condition,p.loyalty].join('|');
       if(!unique.has(key)){
         const packPrice=p.checkout/p.packages;
