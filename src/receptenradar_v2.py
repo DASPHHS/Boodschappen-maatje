@@ -672,18 +672,22 @@ def make_recipes(shelves,offers):
     archives=[(r["title"],r["category"],r["minutes"],r["ingredients"])
               for r in archive_recipes if isinstance(r.get("minutes"),(int,float))
               and 0<r["minutes"]<=120]
+    from brede_maaltijdvarianten import DISHES,expanded_variants,cooking_steps
+    variants=expanded_variants()
+    variant_cuisines={title:cuisine for cuisine,title,*_ in DISHES}
+    variant_titles=set(variant_cuisines)
     final={}
     for store in STORES:
         all_recipes=[]
         dynamic=meal_candidates(offers[store],expand=True)
-        proposals=list(RECIPES)+dynamic+archives
+        proposals=list(RECIPES)+dynamic+variants+archives
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
             problems=validate_dish_ingredients(title,ings)+dish_quality_issues(title,category,ings)
             if problems:
                 if idx>=len(RECIPES)+len(dynamic):
-                    # Eén afgekeurd extern recept mag de bestaande catalogus
-                    # niet onbeschikbaar maken.
+                    # Bron- en aanvullende eigen varianten afzonderlijk afkeuren,
+                    # zonder de eerdere correct geprijsde maaltijden te verliezen.
                     continue
                 raise ValueError("Recept bevat onjuist hoofdingrediënt: "+"; ".join(problems))
             lines=[];missing=[];discounts=0
@@ -761,8 +765,10 @@ def make_recipes(shelves,offers):
                 nutrition["protein_g_per_serving_estimate"]=None
                 nutrition["protein_source"]=False
                 nutrition["priority"]=False
-            cuisine=infer_cuisine(title)
+            cuisine=variant_cuisines.get(title) or infer_cuisine(title)
             instructions=RECIPE_METHODS.get(title,"")
+            if title in variant_titles:
+                instructions=cooking_steps(title,ings)
             if idx>=len(RECIPES):
                 for p,v,side,other,template_title,method in DISH_TEMPLATES:
                     if template_title==title:
@@ -773,7 +779,8 @@ def make_recipes(shelves,offers):
             portable=meal_type=="Lunch"
             mealprep=mealprep_suitable(title,meal_type,category)
             prep_ahead=mealprep
-            inspiration=("Gecontroleerd bronrecept" if idx>=len(RECIPES)+len(dynamic)
+            inspiration=("Eigen wereldkeukenvariant" if title in variant_titles
+                         else "Gecontroleerd bronrecept" if idx>=len(RECIPES)+len(dynamic)+len(variants)
                          else "Actiegestuurde maaltijd" if idx>=len(RECIPES)
                          else "HelloFresh-variant" if title.startswith("HelloFresh-geïnspireerd:")
                          else "Mealprep-variant" if title.startswith("Mealprep:")
