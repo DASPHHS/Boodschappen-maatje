@@ -1,12 +1,12 @@
 (function(root){
 'use strict';
 const CATEGORIES={
-  vlees:/\\b(kip|kipfilet|kipdij|rund|gehakt|biefstuk|varkens|schnitzel|filetlap|shoarma|hamburger)\\b/i,
-  vis:/\\b(zalm|tonijn|kabeljauw|koolvis|visfilet|garnalen|makreel|haring|pangasius)\\b/i,
-  groente:/\\b(broccoli|bloemkool|paprika|courgette|wortel|spinazie|sla|komkommer|tomaat|champignons|sperziebonen|wokgroenten|groentemix|prei|ui|uien|andijvie)\\b/i,
-  zuivel:/\\b(kwark|yoghurt|skyr|hüttenkäse|cottage cheese|melk|eieren|kaas)\\b/i,
-  koolhydraten:/\\b(pasta|rijst|aardappel|volkoren|wrap|tortilla|havermout|brood|noedels|couscous)\\b/i,
-  vega:/\\b(tofu|tempeh|vegetarisch|vegan|vega |plantaardig|vivera)\\b/i
+  vlees:/\b(kip|kipfilet|kipdij|rund|gehakt|biefstuk|varkens|schnitzel|filetlap|shoarma|hamburger)\b/i,
+  vis:/\b(zalm|tonijn|kabeljauw|koolvis|visfilet|garnalen|makreel|haring|pangasius)\b/i,
+  groente:/\b(broccoli|bloemkool|paprika|courgette|wortel|spinazie|sla|komkommer|tomaat|champignons|sperziebonen|wokgroenten|groentemix|prei|ui|uien|andijvie)\b/i,
+  zuivel:/\b(kwark|yoghurt|skyr|hüttenkäse|cottage cheese|melk|eieren|kaas)\b/i,
+  koolhydraten:/\b(pasta|rijst|aardappel|volkoren|wrap|tortilla|havermout|brood|noedels|couscous)\b/i,
+  vega:/\b(tofu|tempeh|vegetarisch|vegan|vega |plantaardig|vivera)\b/i
 };
 function categoryOf(name){
  for(const [key,re] of Object.entries(CATEGORIES))if(re.test(name||''))return key;
@@ -25,7 +25,7 @@ function calc(x){
  return null;
 }
 function unitPrice(x,each){
- const match=String(x.size_label||x.quantity_label||'').match(/(\\d+(?:[.,]\\d+)?)\\s*(kg|g|gram|l|liter|ml)\\b/i);
+ const match=String(x.size_label||x.quantity_label||'').match(/(\d+(?:[.,]\d+)?)\s*(kg|g|gram|l|liter|ml)\b/i);
  if(!match)return null;
  const n=Number(match[1].replace(',','.')),u=match[2].toLowerCase();
  const size=(u==='kg'||u==='l'||u==='liter')?n:n/1000;
