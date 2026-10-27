@@ -12,11 +12,11 @@ from receptenradar_catalog import ING
 PORTION={"vegetables":(1200,"g"),"protein":(700,"g"),"beans":(600,"g"),
          "rice":(300,"g"),"pasta":(320,"g"),"potato":(800,"g")}
 VEG={"sperziebonen","spinazie","broccoli","bloemkool","wortel","paprika",
-     "courgette","boerenkool","champignons","tomaten","ui","wok"}
+     "courgette","boerenkool","champignons","tomaten","ui","wok","paksoi","aubergine","sperziebonen"}
 PROTEIN={"kipfilet","kipdij","kipgehakt","shoarma","gehakt","zalm",
-         "tonijn","tofu","garnalen","varkenshaas","rookworst"}
+         "tonijn","tofu","tempeh","garnalen","varkenshaas","rookworst"}
 BEANS={"bruine_bonen","bonen","kikkererwten","linzen"}
-STARCH={"rijst","pasta","aardappel","zoete_aardappel","risottorijst","couscous"}
+STARCH={"rijst","pasta","noedels","bulgur","parelcouscous","aardappel","zoete_aardappel","risottorijst","couscous"}
 
 def mentioned(title):
     name=" "+norm(title)+" "
