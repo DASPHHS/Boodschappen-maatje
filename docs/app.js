@@ -47,22 +47,32 @@ x+='<div class="info-banner warning"><strong>Bronstatus:</strong> '+safe(status(
 $('#view-vandaag').innerHTML=x;
 }
 function offersView(){
-header('Alle deals per supermarkt','Aanbiedingen die <span style="color:#719b66">echt tellen.</span>','Bekijk Lidl, Jumbo en Albert Heijn afzonderlijk of naast elkaar. Actie is niet automatisch de beste prijs.');
+header('Alle deals per supermarkt','Aanbiedingen die <span style="color:#719b66">echt tellen.</span>','Bekijk de deals van Lidl, Jumbo en Albert Heijn los van elkaar. Een actie is niet automatisch de voordeligste variant.');
 let out=storeControls()+kindControls();
-let arr=ORDER.filter(s=>state.store==='alle'||state.store===s).flatMap(s=>offers(s).map(o=>({...o,store:s})));
-arr=arr.filter(o=>(state.kind==='alle'||o.category===state.kind)&&(!state.query||(o.name||'').toLowerCase().includes(state.query.toLowerCase())));
-out+='<p class="muted" style="margin:0 0 14px">'+arr.length+' actuele, gedateerde en gecontroleerde aanbiedingen in deze selectie</p>';
-out+=arr.length?'<div class="cards">'+arr.sort((a,b)=>(a.price||0)-(b.price||0)).map(o=>dealCard(o,o.store)).join('')+'</div>':empty('Nog geen gecontroleerde aanbiedingen','Acties verschijnen hier zodra een actuele publicatie met bron, prijs en geldigheidsdatum beschikbaar is.');
-out+='<div class="info-banner">We tonen alleen aanbiedingen met bevestigde prijs én lopende geldigheid. Controleer altijd de verpakking en eventuele voorwaarden voor klantenkaarten.</div>';
+let any=false;
+for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
+const arr=offers(s).filter(o=>(state.kind==='alle'||o.category===state.kind)&&(!state.query||(o.name||'').toLowerCase().includes(state.query.toLowerCase()))).sort((a,b)=>a.price-b.price);
+if(arr.length)any=true;
+out+=title(NAMES[s],arr.length+' gecontroleerde aanbiedingen met geldige actieperiode');
+out+=arr.length?'<div class="cards">'+arr.map(o=>dealCard(o,s)).join('')+'</div>':empty('Nog geen gecontroleerde aanbiedingen voor '+NAMES[s],'De actuele deals verschijnen zodra deze winkel een nieuwe geverifieerde publicatie heeft.');
+}
+out+='<div class="info-banner">We tonen alleen aanbiedingen met bevestigde prijs én lopende geldigheid. Een actie bij een andere winkel is geen reden om een extra winkel te bezoeken.</div>';
 $('#view-aanbiedingen').innerHTML=out;
 }
 function allRecipes(){let found=ORDER.filter(s=>state.store==='alle'||state.store===s).flatMap(s=>recipes(s));let known=new Set(found.map(r=>r.title?.toLowerCase()));let suggestions=state.library.filter(r=>!known.has(r.title?.toLowerCase())).map(r=>({...r,store:null,origin:'bibliotheek'}));return found.concat(suggestions)}
 function recipeView(){
-header('Wereldkeuken op budget','Lekker koken.<br><span style="color:#719b66">Vier royale porties.</span>','Kip, vlees, vis of vega. Minimaal 300 g groente per persoon als doel. Kies je winkel zelf op basis van recepten.');
-let all=allRecipes().filter(r=>(state.kind==='alle'||r.category===state.kind)&&(!state.query||(r.title+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).toLowerCase().includes(state.query.toLowerCase())));
-let fresh=all.filter(r=>r.origin!=='bibliotheek').length;
-let out=storeControls()+kindControls()+'<div class="info-banner">'+fresh+' nieuwe winkelgebonden recepten · '+(all.length-fresh)+' recepten uit de bestaande bibliotheek. Bibliotheekrecepten hebben nog geen gevalideerde winkelprijs.</div>';
-out+=all.length?'<div class="cards">'+all.map(recipeCard).join('')+'</div>':empty('Geen recepten gevonden','Kies een ander filter of kijk bij de algemene inspiratie.');
+header('Wereldkeuken op budget','Lekker koken.<br><span style="color:#719b66">Vier royale porties.</span>','Kip, vlees, vis of vega. Bekijk de recepten van elke supermarkt afzonderlijk en bepaal zelf waar je gaat winkelen.');
+let out=storeControls()+kindControls();
+let query=r=>(state.kind==='alle'||r.category===state.kind)&&(!state.query||(r.title+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).toLowerCase().includes(state.query.toLowerCase()));
+for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
+let found=recipes(s).filter(query);
+out+=title(NAMES[s]+' recepten',found.length+' nieuwe recepten specifiek voor deze winkel');
+out+=found.length?'<div class="cards">'+found.map(recipeCard).join('')+'</div>':empty('Nieuwe recepten voor '+NAMES[s]+' volgen','Hier verschijnen gerechten op basis van de nieuwste acties en prijzen voor deze supermarkt.');
+}
+let library=state.library.filter(query);
+out+=title('Extra inspiratie','40 recepten uit je bestaande collectie. Actuele winkelprijzen en macro’s ontbreken nog.');
+out+='<div class="info-banner warning">Deze algemene gerechten zijn niet als actuele aanbieding of bevestigd € 10-recept gemarkeerd. Voeg ze aan de lijst van jouw gekozen supermarkt toe.</div>';
+out+=library.length?'<div class="cards">'+library.map(recipeCard).join('')+'</div>':empty('Geen extra recepten gevonden','Probeer een ander filter.');
 $('#view-recepten').innerHTML=out;
 }
 function normalize(r){return (r.ingredients||[]).map(i=>({name:i.name||i.label||'Ingrediënt',quantity:Number(i.quantity||0),unit:i.unit||'',department:i.department||'Overig',price:typeof i.pack_price==='number'?i.pack_price:null}));}
@@ -97,7 +107,7 @@ $('#dialog-content').innerHTML=x;$('#recipe-dialog').showModal();
 }
 function setView(v){if(!['vandaag','aanbiedingen','recepten','lijst'].includes(v))return;state.view=v;state.kind='alle';state.query='';history.replaceState(null,'','#'+v);render();window.scrollTo(0,0)}
 function render(){clearPage();if(state.view==='vandaag')overview();if(state.view==='aanbiedingen')offersView();if(state.view==='recepten')recipeView();if(state.view==='lijst')shoppingView();let total=Object.values(state.selected).reduce((x,y)=>x+(y?.length||0),0);$('#nav-count').textContent=total||'';const st=$('#feed-status');st.textContent=status();st.classList.toggle('warn',!state.daily?.generated_at||String(state.daily.generated_at).slice(0,10)<today())}
-function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k)||{quantity:0,...i};old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
+function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k);if(!old){old={...i,quantity:0};m.set(k,old)}old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
 if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
