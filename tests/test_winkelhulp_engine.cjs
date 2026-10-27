@@ -15,3 +15,12 @@ assert.equal(E.stale('bad date'),true);
 assert.equal(E.quantity(1200,'g'),'1.200 g');
 console.log('Winkelhulp: expiry, partial prices and ordering passed');
 assert.equal(E.compare({title:'budget',complete:true,used_total:12,sale_count:0,per_serving:3},{title:'luxe',complete:true,used_total:19,sale_count:5,per_serving:4.75})<0,true,'budget beats expensive action counts');
+
+const offer={product:'Broccoli diepvries',sale:true,valid_from:'2026-10-25',valid_until:'2026-11-01',checkout:1.38,packages:2,package_quantity:500,unit:'g',form_verified:true};
+const data={stores:{lidl:[{ingredients:[{label:'broccoli',price:offer}]},{ingredients:[{label:'groente',price:offer}]}],jumbo:[]}};
+assert.equal(E.offers(data,'lidl','2026-10-27').length,1,'duplicate offers must merge');
+assert.equal(E.offers(data,'lidl','2026-10-27')[0].unitPrice,1.38,'correct euro per kg');
+assert.equal(E.offers(data,'lidl','2026-11-02').length,0,'expired offers must disappear');
+assert.equal(E.offers(data,'jumbo','2026-10-27').length,0,'no phantom deals');
+assert.equal(E.offers({stores:{lidl:[{ingredients:[{price:{...offer,form_verified:false}}]}]}},'lidl','2026-10-27').length,0,'unverified forms cannot be offers');
+console.log('Actieoverzicht: geldigheid, deduplicatie, kilogramprijs en verificatie passed');
