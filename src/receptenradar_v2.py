@@ -659,17 +659,17 @@ def mealprep_suitable(title,meal_type="Avondeten",category=None):
 
 
 def make_recipes(shelves,offers):
+    # Dezelfde gecontroleerde bronrecepten voor alle drie winkels;
+    # prijzen en gebruikte acties blijven per winkel verschillend.
+    from gestructureerde_recepten import load as load_structured_recipes
+    archive_recipes,archive_rejections=load_structured_recipes()
+    archives=[(r["title"],r["category"],r["minutes"],r["ingredients"])
+              for r in archive_recipes if isinstance(r.get("minutes"),(int,float))
+              and 0<r["minutes"]<=120]
     final={}
     for store in STORES:
         all_recipes=[]
         dynamic=meal_candidates(offers[store])
-        # Bronkaarten met volledig controleerbare ingrediënten kunnen meteen
-        # op dezelfde echte winkelprijzen worden doorgerekend.
-        from gestructureerde_recepten import load as load_structured_recipes
-        archive_recipes,archive_rejections=load_structured_recipes()
-        archives=[(r["title"],r["category"],r["minutes"],r["ingredients"])
-                  for r in archive_recipes if isinstance(r.get("minutes"),(int,float))
-                  and 0<r["minutes"]<=120]
         proposals=list(RECIPES)+dynamic+archives
         price_cache={}
         for idx,(title,category,minutes,ings) in enumerate(proposals):
