@@ -11,6 +11,20 @@ def sale(name,unit="g",amount=600,discount=30):
          "multi_buy_quantity":None,"multi_buy_price":None,"is_loyalty":False}
 
 class OfferDrivenTest(unittest.TestCase):
+ def test_varkenshaas_with_discounted_krieltjes_without_discounted_meat(self):
+  only_potatoes=[sale("Jumbo Minikrieltjes",amount=600)]
+  standard=meal_candidates(only_potatoes)
+  self.assertEqual(standard,[])
+  expanded=meal_candidates(only_potatoes,expand=True)
+  self.assertTrue(any("Varkenshaas met broccoli" in r[0]
+       and {"varkenshaas","broccoli","aardappel"}=={x[0] for x in r[3]}
+       for r in expanded))
+ def test_broader_discovery_does_not_fabricate_action_count(self):
+  # De generator produceert kandidaten. Alleen de afzonderlijke
+  # prijsengine mag gebruikte kortingen berekenen.
+  candidates=meal_candidates([sale("Jumbo Minikrieltjes",amount=600)],expand=True)
+  self.assertTrue(candidates)
+  self.assertEqual(len(candidates[0]),4)
  def test_drie_aanbiedingen_geven_complete_maaltijd(self):
   products=[sale("varkenshaas",amount=400),sale("broccoli",amount=800),
             sale("krieltjes",amount=600)]
