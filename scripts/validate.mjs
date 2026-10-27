@@ -1,4 +1,4 @@
-const fs=require('node:fs');
+import fs from 'node:fs';
 for(const f of ['daily','weekly']){
 const d=JSON.parse(fs.readFileSync('docs/data/'+f+'.json','utf8'));
 if(d.schema_version!==1||!d.stores||typeof d.stores!=='object')throw Error(f+': ongeldig schema');
