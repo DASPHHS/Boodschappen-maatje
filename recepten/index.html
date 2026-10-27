@@ -123,19 +123,19 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   </div>
  </div>
  <div class="primary-filters">
-  <label>Voordeel deze week<select id="selection" aria-label="Welke aanbiedingen?"><option value="all">Goedkoopste maaltijden, acties meewegen</option><option value="promos">Alleen recepten met gebruikte korting</option><option value="two">Minstens twee gebruikte kortingen</option></select></label>
   <label>Wat vind je belangrijk?<select id="sort" aria-label="Sorteer recepten"><option value="value">Beste keuze deze week</option><option value="price">Laagste kassaprijs</option><option value="portion">Laagste verbruikskosten per portie</option><option value="saving">Grootste berekende besparing in euro</option><option value="deals">Meeste gebruikte acties</option><option value="time">Kortste bereidingstijd</option></select></label>
+  <label>Wereldkeuken<select id="cuisine" aria-label="Filter op wereldkeuken"><option value="all">Alle wereldkeukens</option></select></label>
+  <label>Wat wil je eten?<select id="category" aria-label="Eiwitbron kiezen"><option value="all">Alles: kip, vlees, vis en vegetarisch</option><option value="chicken">Kip</option><option value="redmeat">Ander vlees</option><option value="fish">Vis en zeevruchten</option><option value="vega">Vegetarisch</option><option value="tofu">Tofu of tempeh</option><option value="meat">Alle vlees en kip</option></select></label>
   <label>Voeding<select id="health" aria-label="Voedingsvoorkeur"><option value="prefer">Gezond en groenterijk bovenaan</option><option value="only">Alleen passend bij voedingsvoorkeur</option><option value="off">Alle voedingsprofielen</option></select></label>
  </div>
- <details id="advanced-filters" class="advanced-filters"><summary>Meer filters <span>Keuken, tijd, vlees/vis/vega, lunch en mealprep</span></summary>
+ <details id="advanced-filters" class="advanced-filters"><summary>Meer filters <span>Acties, bereidingstijd en overige voorkeuren</span></summary>
   <div class="advanced-grid">
-   <label>Wereldkeuken<select id="cuisine" aria-label="Filter op specifieke keuken"><option value="all">Alle wereldkeukens</option></select></label>
+   <label>Acties deze week<select id="selection" aria-label="Welke aanbiedingen?"><option value="all">Goedkoopste maaltijden, acties meewegen</option><option value="promos">Alleen recepten met gebruikte korting</option><option value="two">Minstens twee gebruikte kortingen</option></select></label>
    <label>Eetmoment<select id="mealtype" aria-label="Eetmoment"><option value="all">Alle eetmomenten</option><option value="Ontbijt">Ontbijt</option><option value="Lunch">Lunch</option><option value="Avondeten">Avondeten</option></select></label>
-   <label>Eiwitbron<select id="category" aria-label="Soort recept"><option value="all">Vlees, vis en vegetarisch</option><option value="meat">Vlees en kip</option><option value="redmeat">Vlees</option><option value="chicken">Kip</option><option value="fish">Vis</option><option value="vega">Vegetarisch</option></select></label>
    <label>Bereidingstijd<select id="duration" aria-label="Maximale bereidingstijd"><option value="all">Alle bereidingstijden</option><option value="20">Tot 20 minuten</option><option value="30">Tot 30 minuten</option><option value="45">Tot 45 minuten bereiding</option></select></label>
    <label>Type gerecht<select id="format" aria-label="Receptvorm"><option value="all">Alle soorten gerechten</option><option value="stamppot">Stamppot en hutspot</option><option value="curry">Curry en dahl</option><option value="pasta">Pasta en risotto</option><option value="wok">Wok en roerbak</option><option value="oven">Oven en traybake</option><option value="stoof">Stoofschotels</option><option value="rijst">Rijstgerechten</option><option value="soep">Soep en ramen</option><option value="wrap">Wraps, taco’s en burrito’s</option><option value="bowl">Bowls</option><option value="salade">Salades</option><option value="anders">Overige gerechten</option></select></label>
    <label>Vooruit bereiden<select id="mealprep-filter" aria-label="Geschikt voor voorbereiden"><option value="all">Alle recepten</option><option value="yes">Mealprep: vooruit bereiden</option></select></label>
-   <label>Herkomst<select id="origin" aria-label="Receptbron"><option value="all">Alle recepten</option><option value="Actiegestuurde maaltijd">Samengesteld uit acties</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen of op echte recepten gebaseerde varianten</option></select></label>
+   <label>Herkomst<select id="origin" aria-label="Receptbron"><option value="all">Alle recepten</option><option value="Actiegestuurde maaltijd">Samengesteld uit acties</option><option value="Eigen wereldkeukenvariant">Eigen wereldkeukenvarianten</option><option value="Gecontroleerd bronrecept">Gecontroleerde bronrecepten</option><option value="HelloFresh-variant">HelloFresh-geïnspireerd</option><option value="Mealprep-variant">Mealprep-geïnspireerd</option><option value="Eigen recept">Eigen recepten</option></select></label>
   </div>
  </details>
  <p class="discovery-note" id="search-help" aria-live="polite">Eerst de complete kassaprijzen en gezonde opties. Een aanbieding telt alleen mee als die echt gebruikt wordt.</p>
@@ -464,6 +464,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(cat==="chicken")rs=rs.filter(r=>r.category==="Kip");
   if(cat==="fish")rs=rs.filter(r=>r.category==="Vis");
   if(cat==="vega")rs=rs.filter(r=>r.category==="Vegetarisch");
+  if(cat==="tofu")rs=rs.filter(r=>r.category==="Vegetarisch" && (r.ingredients||[]).some(i=>["tofu","tempeh"].includes(i.key)));
   const origin=$("origin").value;
   if(origin!=="all")rs=rs.filter(r=>r.inspiration===origin);
   const selection=$("selection").value;
@@ -502,7 +503,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const sharedHits=SharedRecipeHits.select(state.sharedHits?.stores?.[state.store]||[],{
     query:q,cuisine,category:cat,duration:maxMinutes,selection,
     strictHealth:health==="only",onlyShared:!!state.sharedOnly,meal,format,origin,mealprep:$("mealprep-filter").value==="yes"
-  }).filter(r=>!state.favoriteOnly||isFavorite(r));
+  }).filter(r=>(cat!=="tofu"||((r.ingredients||[]).some(i=>["tofu","tempeh"].includes(i.key))||/\b(tofu|tempeh)\b/i.test(r.title||"")))&&(!state.favoriteOnly||isFavorite(r)));
   let highlights=[];
   if(!q&&selection==="all"&&sort==="value"&&!state.sharedOnly&&!state.favoriteOnly){
     const suitable=rs.filter(r=>r.complete&&r.nutrition?.priority&&Number(r.checkout)>0);
