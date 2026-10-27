@@ -675,6 +675,10 @@ def make_recipes(shelves,offers):
         for idx,(title,category,minutes,ings) in enumerate(proposals):
             problems=validate_dish_ingredients(title,ings)+dish_quality_issues(title,category,ings)
             if problems:
+                if idx>=len(RECIPES)+len(dynamic):
+                    # Eén afgekeurd extern recept mag de bestaande catalogus
+                    # niet onbeschikbaar maken.
+                    continue
                 raise ValueError("Recept bevat onjuist hoofdingrediënt: "+"; ".join(problems))
             lines=[];missing=[];discounts=0
             for key,amount,unit in ings:
