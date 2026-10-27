@@ -10,9 +10,9 @@ MASS=re.compile(r"(?<![\d\w])(\d+(?:[.,]\d+)?)\s*(kg|gram|gr|g|liter|l|ml|cl)\b"
 PIECES=re.compile(r"(?<!\d)(\d+(?:[.,]\d+)?)\s*(stuks?|st|stukken)\b",re.I)
 UNIT={"kg":("g",1000),"gram":("g",1),"gr":("g",1),"g":("g",1),
       "liter":("ml",1000),"l":("ml",1000),"cl":("ml",10),"ml":("ml",1)}
-def _weight(match,multiple=1):
-    n=float(match.group(2 if multiple!=1 else 1).replace(",","."))
-    u=match.group(3 if multiple!=1 else 2).lower()
+def _weight(match,multiple=1,is_multi=False):
+    n=float(match.group(2 if is_multi else 1).replace(",","."))
+    u=match.group(3 if is_multi else 2).lower()
     unit,factor=UNIT[u]
     q=n*factor*multiple
     return (round(q,4),unit) if math.isfinite(q) and 0<q<=100000 else (None,None)
@@ -25,7 +25,7 @@ def parse_packaging(product):
         multi=MULTI.search(value)
         if multi:
             count=int(multi.group(1))
-            q,unit=_weight(multi,count)
+            q,unit=_weight(multi,count,is_multi=True)
             if q:return q,unit
         single=MASS.search(value)
         if single:
