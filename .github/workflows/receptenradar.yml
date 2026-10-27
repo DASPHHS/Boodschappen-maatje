@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'src/receptenradar_v2.py'
+      - 'tests/test_jumbo_gewicht_actie.py'
       - 'src/gestructureerde_recepten.py'
       - 'src/receptvarianten_schatting.py'
       - 'src/indicatieve_receptprijzen.py'
@@ -115,6 +116,7 @@ jobs:
           python -m unittest discover -s tests -p "test_gestructureerde_recepten.py" -v
           python -m unittest discover -s tests -p "test_indicatieve_receptprijzen.py" -v
           python -m unittest discover -s tests -p "test_product_compatibiliteit.py" -v
+          python -m unittest discover -s tests -p "test_jumbo_gewicht_actie.py" -v
           python -m unittest discover -s tests -p "test_receptenradar_checks.py" -v
           python -m unittest discover -s tests -p "test_actie_maaltijden.py" -v
           python -m unittest discover -s tests -p "test_actie_receptmatches.py" -v
