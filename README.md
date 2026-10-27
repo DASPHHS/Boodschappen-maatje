@@ -6,7 +6,7 @@
 2. Kies Kip, Vlees, Vis of Vega.
 3. Open één gerecht en vink je boodschappen af.
 
-Vier royale porties voor twee personen, twee dagen. Binnen elke categorie staan eerst de gerechten met de meeste verschillende geldige actieproducten, daarna de laagste volledige verbruikskosten per portie. Richtbedrag: €20 per bereiding. Verbruik en kassabedrag voor hele verpakkingen staan apart.
+Vier royale porties voor twee personen, twee dagen. Doel: €10 per bereiding, meestal €10–€13 voor vier porties. Eerst de volledig geprijsde recepten binnen €13, daarbinnen de meeste voordelige actieproducten en daarna de laagste portieprijs. Duurdere en onvolledige opties staan apart ingeklapt; €20 is alleen een uitzondering. Verbruik en kassabedrag voor hele verpakkingen staan apart.
 
 De nieuwe startpagina staat in `docs/winkelhulp/`; de bronbestanden staan in `winkelhulp/`. Beide Pages-configuraties (root en `/docs`) openen de winkelhulp. Er is geen server of account nodig. Vinkjes en de laatst gekozen winkel worden alleen lokaal bewaard.
 
@@ -23,7 +23,7 @@ De 40 geselecteerde gerechten zijn eigen aanpassingen van concrete recepten uit 
 - Exacte eenheden en volledige verpakkingen, zonder stilzwijgende portieverkleining.
 - Alleen gedateerde, geldige en rekenkundig bevestigde kortingen tellen als actie.
 - AH Bonus en Lidl Plus kunnen worden meegenomen; persoonlijke coupons zijn niet aangenomen.
-- Een goedkoper regulier alternatief blijft zichtbaar als een actieproduct duurder is.
+- Een goedkoper passend regulier product wordt direct gekozen boven een duurder actieproduct. Geen extra kosten om een actieaantal op te krikken.
 - Geen maaltijdtotaal bij ontbrekende prijs, onbekend uitlekgewicht of niet-bevestigde visvorm.
 - De browser trekt verlopen acties in en markeert snapshots ouder dan 36 uur.
 - Winkelvoorraad, persoonlijke coupons en de exacte filiaalkassa zijn niet bevestigd.
@@ -44,3 +44,7 @@ node tests/winkelhulp_browser.cjs
 De bestaande bronnenlezers (`load_shelves` en `load_deals`) worden hergebruikt. De winkelhulp gebruikt een eigen strenge productselectie en de afzonderlijke workflow **Eenvoudige winkelhulp**. Die draait om circa 08:05 Nederlandse tijd en kan ook handmatig gestart worden. Bij bronuitval blijft de vorige publicatie staan. De eerste meegeleverde gegevens zijn berekend uit de gedateerde prijssnapshot in de repository.
 
 Lunch, ontbijt en snacks worden in deze nieuwe interface nog niet als ingevulde productselectie aangeboden. De app vermeldt dit expliciet.
+
+## Budgetoptimalisatie
+
+Kipgerechten bevatten nu expliciet 150 g rauwe kip per persoon en minimaal 300 g groente. Dit is zichtbaar in de boodschappen en de bronaanpassing. Groente wordt niet verkleind om het budget te halen. `winkelhulp/verified-offers.json` vult de prijsfeed aan met gedateerde, onderling gecontroleerde folderwaarnemingen. Deze vervallen automatisch na hun einddatum. De aanvullende Lidl-waarnemingen zijn foldergegevens, geen gecontroleerde filiaalkassa.

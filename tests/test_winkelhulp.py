@@ -71,6 +71,14 @@ class ShoppingView(unittest.TestCase):
         self.assertTrue(matches("kip", "Jumbo Scharrel Kipfilet 800 g"))
         self.assertTrue(matches("broccoli", "AH Broccoliroosjes"))
 
+    def test_regular_housebrand_beats_expensive_promotion(self):
+        ing = {"key": "broccoli", "quantity": 600, "unit": "g"}
+        regular = ["Broccoli", 1, 500, "g", "https://example.com/regular"]
+        promotion = ["Broccoli", 2, 500, "g", 3, None, None, "percentage", "2026-11-01", "https://example.com/sale", False, "2026-10-26"]
+        result = price_line(ing, {"ordinary": [regular], "promotions": [promotion]}, date(2026, 10, 27))
+        self.assertFalse(result["price"]["sale"])
+        self.assertEqual(result["price"]["used"], 1.2)
+
     def test_missing_cost_is_not_a_full_price(self):
         recipe = {"id": "test", "title": "Kip", "category": "kip", "ingredients": [
             {"key": "kip", "quantity": 800, "unit": "g", "label": "kipfilet"},

@@ -16,21 +16,29 @@
     for(const b of document.querySelectorAll('[data-store]'))b.setAttribute('aria-pressed',String(b.dataset.store===store));
     for(const b of document.querySelectorAll('[data-category]'))b.setAttribute('aria-pressed',String(b.dataset.category===category));
     $('results-heading').textContent=categories[category]+' bij '+names[store];
-    const recipes=E.select(data,store,category,day()),host=$('recipes');host.replaceChildren();
+    const recipes=E.select(data,store,category,day()),host=$('recipes');host.replaceChildren();$('luxury-recipes').replaceChildren();$('pending-recipes').replaceChildren();
     $('status').textContent=recipes.length+' gerechten · '+recipes.filter(r=>r.complete).length+' volledig geprijsd'+(oldPrices?' op de waarnemingsdatum':'');
+    if(recipes.every(r=>!r.sale_count))$('status').textContent+=' · geen voordeligere actie bevestigd';
     if(!recipes.length){host.append(el('p','Voor deze keuze zijn nog geen gecontroleerde bronrecepten beschikbaar.'));return;}
     for(const r of recipes){
       const card=el('article',undefined,'recipe'),left=el('div'),badges=el('div',undefined,'badges');
-      badges.append(badge((oldPrices?'Eerder: ':'')+r.sale_count+' actieproduct'+(r.sale_count===1?'':'en'),r.sale_count?'sale':''),badge('± '+r.minutes+' min'));
-      if(r.complete&&r.used_total>20)badges.append(badge('Boven €20','warn'));
+      if(r.sale_count)badges.append(badge((oldPrices?'Eerder: ':'')+r.sale_count+' actieproduct'+(r.sale_count===1?'':'en'),'sale'));
+      badges.append(badge('± '+r.minutes+' min'));
+      if(r.portion_note)badges.append(badge('150 g kip p.p.'));
+      if(r.complete)badges.append(badge(r.used_total<=10?'Doel gehaald':r.used_total<=13?'Binnen budget':r.used_total<=20?'Boven €13':'Uitzondering · boven €20',r.used_total>13?'warn':''));
       left.append(badges,el('h3',r.title));
       const price=el('div',undefined,'price'+(!r.complete?' pending':''));
-      if(r.complete){price.append(document.createTextNode(money(r.per_serving)),el('small',(oldPrices?'eerder, ':'')+'per portie'));}
+      if(r.complete){price.append(document.createTextNode(money(r.per_serving)),el('small',(oldPrices?'eerder, ':'')+'per portie'),el('small',money(r.used_total)+' voor 4'));}
       else price.append(document.createTextNode('Prijs nog open'),el('small','mist prijs of productcontrole'));
       const bottom=el('div',undefined,'recipe-bottom');bottom.append(el('span',sourceName(r),'provenance'));
       const button=el('button','Boodschappen →','open-list');button.setAttribute('aria-label','Boodschappen voor '+r.title);button.addEventListener('click',()=>openRecipe(r));bottom.append(button);
-      card.append(left,price,bottom);host.append(card);
+      card.append(left,price,bottom);(r.complete?(r.used_total<=13?host:$('luxury-recipes')):$('pending-recipes')).append(card);
     }
+    const luxury=recipes.filter(r=>r.complete&&r.used_total>13).length,pending=recipes.filter(r=>!r.complete).length;
+    $('luxury-section').hidden=!luxury;$('pending-section').hidden=!pending;
+    $('luxury-heading').textContent='Duurder dan €13 · '+luxury+' gerechten voor af en toe';
+    $('pending-heading').textContent='Nog te prijzen · '+pending+' gerechten';
+    if(!host.children.length)host.append(el('p','Nog geen volledig geprijsd gerecht binnen €13. Bekijk de andere opties hieronder.','notice'));
   }
   function checkKey(r){return 'bm-checked:'+store+':'+r.id;}
   function showTotals(r){
@@ -53,6 +61,7 @@
         label.append(el('span','Pak '+p.packages+' × '+E.quantity(p.package_quantity,p.unit)+' · '+p.product,'product'));
         label.append(badge(p.sale?'ACTIE · '+p.condition+(p.loyalty?' · klantenkaart':''):'Reguliere prijs',p.sale?'sale':''));
         if(p.sale)label.append(el('span','Geldig t/m '+p.valid_until,'product'));
+        if(p.sale&&p.source==='Foldercontrole')label.append(link('Gecontroleerde folderprijs',p.url));
         if(p.form_note)label.append(el('span',p.form_note,'product form-warning'));
         if(p.leftover)label.append(el('span','Over: '+E.quantity(p.leftover,p.unit),'product'));
         if(p.cheaper_regular)label.append(el('span','Goedkoper regulier alternatief: '+p.cheaper_regular.product+' · '+money(p.cheaper_regular.used)+' verbruik.','alternative'));
@@ -62,6 +71,7 @@
     }
     const info=$('recipe-info');info.replaceChildren();
     info.append(el('p',r.instructions),el('p','Aanpassing: '+r.adaptation),el('p','De hoeveelheden zijn een eigen vierportiesvariant; de aanpassingen staan hierboven.'));
+    if(r.portion_note)info.append(el('p',r.portion_note));
     info.append(el('strong','Oorspronkelijk recept'),el('p',r.source.title),link('Open '+r.source.file_name,r.source.url));
     $('shopping').querySelector('.recipe-info').open=false;
     if(!$('shopping').open)$('shopping').showModal();

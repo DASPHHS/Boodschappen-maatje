@@ -13,13 +13,14 @@
     r.used_total=r.complete?r.known_used:null;r.checkout=r.complete?r.known_checkout:null;
     return r;
   }
-  function compare(a,b){return b.sale_count-a.sale_count||Number(b.complete)-Number(a.complete)||(a.complete&&b.complete?a.per_serving-b.per_serving:0)||a.title.localeCompare(b.title,'nl');}
+  function budgetTier(r){return !r.complete?3:r.used_total<=13?0:r.used_total<=20?1:2;}
+  function compare(a,b){return budgetTier(a)-budgetTier(b)||b.sale_count-a.sale_count||(a.complete&&b.complete?a.per_serving-b.per_serving:0)||a.title.localeCompare(b.title,'nl');}
   function select(data,store,category,day){return(data.stores[store]||[]).filter(x=>x.category===category).map(x=>refresh(x,day)).sort(compare).slice(0,10);}
   function stale(observed,now=Date.now()){const t=Date.parse(observed);return !Number.isFinite(t)||now-t>36*3600*1000||t-now>3600*1000;}
   function quantity(n,unit){return new Intl.NumberFormat('nl-NL',{maximumFractionDigits:2}).format(n)+' '+(unit==='st'?'stuks':unit);}
   function listText(r,store){return [r.title+' · '+store,'Voor vier royale porties',...r.ingredients.map(x=>{
     const p=x.price;return '- '+x.label+': '+quantity(x.quantity,x.unit)+(p?' | '+p.packages+' × '+quantity(p.package_quantity,p.unit)+' | '+p.product+(p.sale?' | ACTIE '+(p.condition||'')+' t/m '+p.valid_until:' | regulier'):' | prijs nog controleren');
   })].join('\n');}
-  const api={active,refresh,compare,select,stale,quantity,listText};root.Winkelhulp=api;
+  const api={active,refresh,compare,select,stale,quantity,listText,budgetTier};root.Winkelhulp=api;
   if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof globalThis==='object'?globalThis:this);

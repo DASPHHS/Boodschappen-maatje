@@ -26,12 +26,14 @@ ALIASES = {"kip": "kipfilet", "ei": "eieren", "bonen": "sperziebonen",
            "paprikavers": "paprika", "tomaat": "tomatenblokjes",
            "tomaatvers": "tomaten", "haver": "havermout", "linzen": "linzen_rood"}
 EXTRA = {
+    "paprikavers": (r"\b(paprika|paprikas|puntpaprika|puntpaprikas)\b", r"poeder|chips|saus|soep|maaltijd|smaak|kruiden|tortilla|wrap|snack|salsa"),
+    "rijst": (r"\b(zilvervliesrijst|zilvervlies rijst|bruine rijst|volkorenrijst|volkoren rijst)\b", r"wafel|melk|drank|drink|pudding|cracker|saus|maaltijd|mix|noedel|soep"),
     "kip": (r"\bkipfilet(?:blokjes|haasjes)?\b", r"vegetar|vegan|plantaardig|beleg|gerookt|gebakken|gebraden|gegrild|voorgegaard|krokant|gepaneerd|nuggets|tuinkruiden|saus"),
     "broccoli": (r"\b(broccoli|broccoliroosjes)\b", r"soep|saus|mix|maaltijd"),
     "cottage": (r"\b(cottage cheese|huttenkase)\b", r"salade|saus|spread"),
     "olie": (r"\bzonnebloemolie\b", r"tonijn|frituur|bakolie|olijfolie"),
     "paprika": (r"\b(paprikapoeder|paprika mild gemalen|milde paprika|paprika gemalen)\b", r"chips|saus|snack|mix"),
-    "kerrie": (r"\b(kerriepoeder|kerrie gemalen|kerrie kruidig|milde kerrie)\b", r"saus|pasta|maaltijd"),
+    "kerrie": (r"\b(kerriepoeder|kerriekruiden|kerrie gemalen|kerrie kruidig|milde kerrie)\b", r"saus|pasta|maaltijd"),
     "ham": (r"\bhamlappen\b", r"gekruid|gemarineerd|maaltijd"),
     "biefstuk": (r"\b(biefstuk|kogelbiefstuk|runderbiefstuk)\b", r"reepjes|saus|maaltijd|burger|tartaar|varken|duitse"),
     "witvis": (r"\b(koolvisfilet|kabeljauwfilet|heekfilet|pangasiusfilet|tilapiafilet)\b", r"gepaneerd|saus|maaltijd|met huid|krokant|burger|sticks"),
@@ -110,7 +112,7 @@ SPICE_KEYS = {"rozemarijn", "dille", "komijn", "italiaans", "raselhanout", "kane
 RAW_WORDS = set("ah jumbo lidl terra vivera iglo blue planet basic biologisch biologische bio scharrel "
     "vers verse vriesvers vriesverse diepvries bevroren gesneden gewassen grootverpakking voordeelverpakking "
     "kleinverpakking voordeel voordeelpak xxl xl extra fijn fijne hele halve mini witte wit hollandse nederlandse "
-    "rode rood geel gele groene groen los zak bak doos net voordeelverp stuk stuks st gram gr g kilo kg ml l "
+    "rode rood geel gele groene groen zoete los zak bak doos net voordeelverp stuk stuks st gram gr g kilo kg ml l "
     "naturel naturelverse rauw rauwe mild malse mager magere gemengd gemengde stevig stevige blok blokjes scharrelkip halal ca circa lezziz "
     "roosjes schijfjes reepjes gehakte gehakt bonen boontjes gepeld gepelde wild wilde noorse alaska "
     "kogel schotse ierse rund runder duitse klasse a a b c uitloop vrije vrijeuitloop grote klein groteklein "
@@ -250,6 +252,7 @@ def option(ingredient, row, promo=False):
             # A promotion mention without a verifiable discount is not an action.
             return None
     skin = key in ("zalm", "witvis") and not re.search(r"zonder huid|huidloos", norm(row[0]))
+    evidence = row[12] if promo and len(row) > 12 else {}
     return {"product": row[0], "package_quantity": size, "unit": unit, "packages": packs,
             "checkout": cash, "used": money(amount / (packs * size) * cash),
             "leftover": round(packs * size - amount, 3), "sale": sale,
@@ -257,7 +260,8 @@ def option(ingredient, row, promo=False):
             "valid_until": row[8] if promo else None,
             "loyalty": bool(row[10]) if promo else False,
             "url": row[9] if promo else row[4],
-            "source": "PrijsProfeet" if promo else "Checkjebon",
+            "source": evidence.get("source", "PrijsProfeet") if promo else "Checkjebon",
+            "evidence": evidence.get("references", []),
             "form_note": "Controleer: zonder huid en graten" if skin else None,
             "form_verified": not skin}
 
@@ -266,24 +270,35 @@ def price_line(ingredient, products, today):
     ordinary = [x for row in products.get("ordinary", []) if (x := option(ingredient, row))]
     promos = [x for row in products.get("promotions", [])
               if active_offer(row, today) and (x := option(ingredient, row, True))]
-    # User preference: actual action products first. A cheaper regular alternative
-    # is still displayed to make the extra spending visible.
-    candidates = promos or ordinary
+    # Saving money is the goal: a promotion must never displace a cheaper
+    # suitable regular product merely to inflate the recipe's action count.
+    candidates = promos + ordinary
     if not candidates:
         return {**ingredient, "price": None}
-    chosen = min(candidates, key=lambda x: (x["used"], x["checkout"]))
+    chosen = min(candidates, key=lambda x: (x["used"], x["checkout"], not x["sale"]))
     cheapest = min(ordinary, key=lambda x: (x["used"], x["checkout"])) if ordinary else None
     cheaper = cheapest if chosen["sale"] and cheapest and cheapest["used"] < chosen["used"] else None
     return {**ingredient, "price": {**chosen, "cheaper_regular": cheaper, "ordinary_alternative": cheapest}}
 
 
+def budget_tier(recipe):
+    if not recipe["complete"]:
+        return 3
+    return 0 if recipe["used_total"] <= 13 else 1 if recipe["used_total"] <= 20 else 2
+
+
 def rank(recipe):
-    return (-recipe["sale_count"], not recipe["complete"],
+    return (budget_tier(recipe), -recipe["sale_count"],
             recipe["per_serving"] if recipe["complete"] else math.inf, recipe["title"])
 
 
-def build(catalog, snapshot, today=None):
+def build(catalog, snapshot, today=None, supplemental=None):
     today = today or datetime.now(TZ).date()
+    snapshot = copy.deepcopy(snapshot)
+    for record in supplemental or []:
+        row = record["row"]
+        if active_offer(row, today):
+            snapshot.setdefault("stores", {}).setdefault(record["store"], {}).setdefault("promotions", []).append(row)
     stores = {}
     for code in STORES:
         products = snapshot.get("stores", {}).get(code, {})
@@ -320,6 +335,8 @@ def main():
     parser.add_argument("--refresh", action="store_true", help="Fetch current price evidence; fail without shelf data")
     args = parser.parse_args()
     catalog = json.loads((ROOT / "winkelhulp/recipes.json").read_text())
+    supplemental_path = ROOT / "winkelhulp/verified-offers.json"
+    supplemental = json.loads(supplemental_path.read_text()) if supplemental_path.exists() else []
     if args.refresh:
         # Reuse only the mature feed readers; the new shopping view has its own
         # conservative ingredient/product matching and never uses title-only hits.
@@ -341,7 +358,7 @@ def main():
         snapshot = {"updated_at": datetime.now(TZ).isoformat(), "stores": stores}
     else:
         snapshot = json.loads((ROOT / "recepten/winkelprijzen.json").read_text())
-    result = build(catalog, snapshot, args.as_of)
+    result = build(catalog, snapshot, args.as_of, supplemental)
     for folder in (ROOT / "winkelhulp", ROOT / "docs/winkelhulp"):
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "data.json").write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")

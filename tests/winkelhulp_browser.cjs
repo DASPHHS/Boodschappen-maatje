@@ -28,12 +28,14 @@ const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
       await page.clock.install({time:asOf});
       await page.goto(base+'/');
       await page.waitForURL('**/winkelhulp/');
-      await page.waitForSelector('#recipes article');
+      await page.waitForSelector('article.recipe');
       for(const store of ['ah','jumbo','lidl']){
         await page.locator('[data-store="'+store+'"]').click();
         for(const category of ['kip','vlees','vis','vega']){
           await page.locator('[data-category="'+category+'"]').click();
-          assert.equal(await page.locator('#recipes article').count(),10);
+          assert.equal(await page.locator('article.recipe').count(),10);
+          const totals=await page.locator('#recipes article .price small:last-child').allTextContents();
+          assert.ok(totals.every(t=>Number(t.replace(/[^\d,]/g,'').replace(',','.'))<=13));
           assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
         }
       }
@@ -63,11 +65,11 @@ const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
         await page.keyboard.press('Escape');
       }
       await page.route('**/data.json',route=>route.abort());
-      await page.reload();await page.waitForSelector('#recipes article');
+      await page.reload();await page.waitForSelector('article.recipe');
       assert.match(await page.locator('#freshness').innerText(),/bewaard overzicht/);
       await page.unroute('**/data.json');
       await page.clock.setSystemTime(afterExpiry);
-      await page.reload();await page.waitForSelector('#recipes article');
+      await page.reload();await page.waitForSelector('article.recipe');
       assert.match(await page.locator('#freshness').innerText(),/ouder dan 36 uur/);
       assert.equal(await page.locator('#recipes .tag.sale').count(),0,'expired actions are withdrawn');
       assert.deepEqual(errors,[]);

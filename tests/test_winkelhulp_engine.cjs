@@ -14,3 +14,4 @@ assert.ok(E.stale('2026-10-20',Date.parse('2026-10-27')));
 assert.equal(E.stale('bad date'),true);
 assert.equal(E.quantity(1200,'g'),'1.200 g');
 console.log('Winkelhulp: expiry, partial prices and ordering passed');
+assert.equal(E.compare({title:'budget',complete:true,used_total:12,sale_count:0,per_serving:3},{title:'luxe',complete:true,used_total:19,sale_count:5,per_serving:4.75})<0,true,'budget beats expensive action counts');

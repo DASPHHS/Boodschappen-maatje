@@ -13,7 +13,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -24,7 +24,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 600,
           "unit": "g"
         },
@@ -48,7 +48,7 @@
         }
       ],
       "instructions": "Bak kip gaar; bak champignons mee. Stoom broccoli. Roer cottage cheese buiten het vuur door de pan.",
-      "adaptation": "Room vervangen door cottage cheese; aardappelen vervangen door extra broccoli.",
+      "adaptation": "Room vervangen door cottage cheese; aardappelen vervangen door extra broccoli. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "19XyYIeW-Y5UdHWGhI0Ktv461KIIBhpuo",
@@ -57,7 +57,8 @@
         "url": "https://drive.google.com/file/d/19XyYIeW-Y5UdHWGhI0Ktv461KIIBhpuo/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-02",
@@ -69,7 +70,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -104,7 +105,7 @@
         }
       ],
       "instructions": "Bak kip en groente gaar. Meng cottage cheese met mosterd en wat kookwater; voeg buiten het vuur toe.",
-      "adaptation": "Kleine roomsaus vervangen door cottagecheesesaus; meer groente.",
+      "adaptation": "Kleine roomsaus vervangen door cottagecheesesaus; meer groente. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "17-q8THPjxmfnW8XQ9BocxFE8Hqrz5L1n",
@@ -113,7 +114,8 @@
         "url": "https://drive.google.com/file/d/17-q8THPjxmfnW8XQ9BocxFE8Hqrz5L1n/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-03",
@@ -125,7 +127,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -160,7 +162,7 @@
         }
       ],
       "instructions": "Bak kip, wortel en prei met kerrie. Voeg 1,2 l water toe en laat kip en pasta gaar worden.",
-      "adaptation": "Volkoren pasta, 40 g droog per portie; meer kip en groente.",
+      "adaptation": "Volkoren pasta, 40 g droog per portie; meer kip en groente. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX",
@@ -169,7 +171,8 @@
         "url": "https://drive.google.com/file/d/1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-04",
@@ -181,12 +184,12 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 600,
           "unit": "g"
         },
@@ -216,7 +219,7 @@
         }
       ],
       "instructions": "Rooster gesneden groente met olie en rozemarijn op 200 °C. Bak kip gaar en wel de couscous.",
-      "adaptation": "Korst weggelaten; bescheiden volkoren couscousportie.",
+      "adaptation": "Korst weggelaten; bescheiden volkoren couscousportie. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX",
@@ -225,7 +228,8 @@
         "url": "https://drive.google.com/file/d/1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-05",
@@ -237,7 +241,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -284,7 +288,7 @@
         }
       ],
       "instructions": "Kook noedels. Roerbak kip gaar met kool, wortel en knoflook; meng met saus en noedels. Serveer komkommer erbij.",
-      "adaptation": "Kipfilet in plaats van dij; geen gefrituurde uitjes; extra groente.",
+      "adaptation": "Kipfilet in plaats van dij; geen gefrituurde uitjes; extra groente. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX",
@@ -293,7 +297,8 @@
         "url": "https://drive.google.com/file/d/1rQootR2MXBpVgPZoAPbj0-bTxgv4tjiX/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-06",
@@ -305,7 +310,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -358,7 +363,7 @@
         }
       ],
       "instructions": "Bak kipfilet met de kruiden gaar. Laat tomaat, dunne wortelschijfjes, kikkererwten en harissa zachtjes meekoken. Wel de couscous apart en verdeel alles over vier porties.",
-      "adaptation": "Snelle panvariant met kipfilet in plaats van de lange tajinebereiding met kippendij. Minder couscous, geen honing of rozijnen en extra groente; de ingrediëntenlijst is een eigen bewerking.",
+      "adaptation": "Snelle panvariant met kipfilet in plaats van de lange tajinebereiding met kippendij. Minder couscous, geen honing of rozijnen en extra groente; de ingrediëntenlijst is een eigen bewerking. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1ECHiTYwjiIG_uGkz79h2Mix3PE_bS1e4",
@@ -367,7 +372,8 @@
         "url": "https://drive.google.com/file/d/1ECHiTYwjiIG_uGkz79h2Mix3PE_bS1e4/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-07",
@@ -379,12 +385,12 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 800,
           "unit": "g"
         },
@@ -420,7 +426,7 @@
         }
       ],
       "instructions": "Kook rijst. Bak kip met currypasta; voeg groente, kokosmelk en water toe en gaar volledig.",
-      "adaptation": "40 g droge zilvervliesrijst en 300 g groente per portie.",
+      "adaptation": "40 g droge zilvervliesrijst en 300 g groente per portie. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "14b8-UD55CPWFFrR0YDEfWU0pN0lx2HL_",
@@ -429,7 +435,8 @@
         "url": "https://drive.google.com/file/d/14b8-UD55CPWFFrR0YDEfWU0pN0lx2HL_/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-08",
@@ -441,7 +448,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -482,7 +489,7 @@
         }
       ],
       "instructions": "Bak kip, paprika en champignons. Laat tomaat en paprikapoeder meekoken; roer cottage cheese buiten het vuur erdoor.",
-      "adaptation": "Rijst weggelaten; saus en groente vullen de maaltijd.",
+      "adaptation": "Rijst weggelaten; saus en groente vullen de maaltijd. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1oXDtcIHAcwB3-DNOio6Ypn8FePTT-8FQ",
@@ -491,7 +498,8 @@
         "url": "https://drive.google.com/file/d/1oXDtcIHAcwB3-DNOio6Ypn8FePTT-8FQ/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-09",
@@ -503,7 +511,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -550,7 +558,7 @@
         }
       ],
       "instructions": "Bak kip gaar. Maak saus van pindakaas, soja, limoensap en warm water. Snijd de groente tot rauwkost.",
-      "adaptation": "Taco’s en gefrituurde uitjes vervangen door groentebowl.",
+      "adaptation": "Taco’s en gefrituurde uitjes vervangen door groentebowl. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1oXDtcIHAcwB3-DNOio6Ypn8FePTT-8FQ",
@@ -559,7 +567,8 @@
         "url": "https://drive.google.com/file/d/1oXDtcIHAcwB3-DNOio6Ypn8FePTT-8FQ/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-10",
@@ -571,7 +580,7 @@
         {
           "key": "kip",
           "label": "kipfilet",
-          "quantity": 800,
+          "quantity": 600,
           "unit": "g"
         },
         {
@@ -618,7 +627,7 @@
         }
       ],
       "instructions": "Kook rijst. Bak kip en courgette gaar; voeg tomaat en knoflook toe. Serveer met citroen en cottage cheese.",
-      "adaptation": "Zilvervliesrijst 40 g droog per portie; meer groente.",
+      "adaptation": "Zilvervliesrijst 40 g droog per portie; meer groente. Budgetvariant: 150 g rauwe kip per portie in plaats van 200 g; de groentehoeveelheid blijft behouden.",
       "source": {
         "type": "drive_pdf",
         "file_id": "1AXbV7L9OcVe_g0aetLv2G3E0Up1OQWdn",
@@ -627,7 +636,8 @@
         "url": "https://drive.google.com/file/d/1AXbV7L9OcVe_g0aetLv2G3E0Up1OQWdn/view?usp=drivesdk",
         "verification": "title_and_recipe_context_read",
         "quantity_status": "own_four_portion_adaptation"
-      }
+      },
+      "portion_note": "150 g rauwe kip per portie; minimaal 300 g groente."
     },
     {
       "id": "drive-11",
@@ -830,7 +840,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 600,
           "unit": "g"
         },
@@ -1468,7 +1478,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 800,
           "unit": "g"
         },
@@ -1598,7 +1608,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 400,
           "unit": "g"
         },
@@ -1660,7 +1670,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 800,
           "unit": "g"
         },
@@ -2298,7 +2308,7 @@
         },
         {
           "key": "broccoli",
-          "label": "broccoli",
+          "label": "broccoli, met eetbare stronk",
           "quantity": 600,
           "unit": "g"
         },
