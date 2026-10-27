@@ -37,7 +37,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Installeer requests
-        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5'
+        run: python -m pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5' 'recipe-scrapers>=14,<18'
       - name: Controleer bronlinks, robotstoegang en inspiratie JavaScript
         run: |
           python -m compileall -q src/wereldkeuken_bronnen.py src/schema_recept_extractie.py src/bronrecepten_verificatie.py src/receptenbronnen.py src/recept_keukens.py
