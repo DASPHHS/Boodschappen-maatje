@@ -8,7 +8,8 @@
   <title>Boodschappenmaatje · Wat eten we?</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="engine.js?v=offers-1"></script>
-  <script defer src="app.js?v=offers-1"></script>
+  <script defer src="deals.js?v=broader-1"></script>
+  <script defer src="app.js?v=broader-1"></script>
 </head>
 <body>
   <header><div class="brand">boodschappen<span>maatje</span><span class="brand-icon" aria-hidden="true">✳</span></div><button id="sources-button" class="quiet">Receptenbasis</button></header>
@@ -26,6 +27,8 @@
     </section>
     <section class="offers-section" aria-labelledby="offers-heading">
       <div class="offers-header"><div><h2 id="offers-heading">Bevestigde aanbiedingen</h2><p id="offers-count"></p></div><span class="tag">Alleen geverifieerd</span></div>
+      <label for="offer-category" class="offer-filter-label">Filter aanbiedingen</label>
+      <select id="offer-category" class="offer-filter"><option value="alle">Alle categorieën</option><option value="vlees">Vlees en kip</option><option value="vis">Vis</option><option value="groente">Groente</option><option value="zuivel">Zuivel en eieren</option><option value="koolhydraten">Pasta, rijst en aardappelen</option><option value="vega">Vegetarisch</option><option value="overig">Overig</option></select>
       <div id="offers" class="offers"></div>
     </section>
     <div class="list-top"><div><h2 id="results-heading">Kip bij AH</h2><p>4 porties · voor twee personen, twee dagen</p></div><span class="budget">Doel €10 · meestal €10–€13</span></div>
