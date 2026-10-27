@@ -16,11 +16,27 @@
   function budgetTier(r){return !r.complete?3:r.used_total<=13?0:r.used_total<=20?1:2;}
   function compare(a,b){return budgetTier(a)-budgetTier(b)||b.sale_count-a.sale_count||(a.complete&&b.complete?a.per_serving-b.per_serving:0)||a.title.localeCompare(b.title,'nl');}
   function select(data,store,category,day){return(data.stores[store]||[]).filter(x=>x.category===category).map(x=>refresh(x,day)).sort(compare).slice(0,10);}
+  function offers(data,store,day){
+    const unique=new Map();
+    for(const recipe of data.stores?.[store]||[])for(const ing of recipe.ingredients||[]){
+      const p=ing.price;
+      if(!active(p,day)||!Number.isFinite(p.checkout)||p.checkout<=0||!Number.isFinite(p.packages)||p.packages<=0)continue;
+      const key=[p.product,p.valid_until,p.condition,p.loyalty].join('|');
+      if(!unique.has(key)){
+        const packPrice=p.checkout/p.packages;
+        const unitPrice=Number.isFinite(p.package_quantity)&&p.package_quantity>0
+          ?packPrice/(p.unit==='g'||p.unit==='ml'?p.package_quantity/1000:p.package_quantity)
+          :null;
+        unique.set(key,{...p,packPrice,unitPrice,ingredient:ing.label});
+      }
+    }
+    return [...unique.values()].sort((a,b)=>a.packPrice-b.packPrice||a.product.localeCompare(b.product,'nl'));
+  }
   function stale(observed,now=Date.now()){const t=Date.parse(observed);return !Number.isFinite(t)||now-t>36*3600*1000||t-now>3600*1000;}
   function quantity(n,unit){return new Intl.NumberFormat('nl-NL',{maximumFractionDigits:2}).format(n)+' '+(unit==='st'?'stuks':unit);}
   function listText(r,store){return [r.title+' · '+store,'Voor vier royale porties',...r.ingredients.map(x=>{
     const p=x.price;return '- '+x.label+': '+quantity(x.quantity,x.unit)+(p?' | '+p.packages+' × '+quantity(p.package_quantity,p.unit)+' | '+p.product+(p.sale?' | ACTIE '+(p.condition||'')+' t/m '+p.valid_until:' | regulier'):' | prijs nog controleren');
   })].join('\n');}
-  const api={active,refresh,compare,select,stale,quantity,listText,budgetTier};root.Winkelhulp=api;
+  const api={active,refresh,compare,select,offers,stale,quantity,listText,budgetTier};root.Winkelhulp=api;
   if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof globalThis==='object'?globalThis:this);
