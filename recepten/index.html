@@ -468,6 +468,11 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   if(origin!=="all")rs=rs.filter(r=>r.inspiration===origin);
   const selection=$("selection").value;
   const withoutPromoFilter=rs;
+  const promoCounts={
+    none:withoutPromoFilter.filter(r=>!(Number(r.sale_count)>0&&Number(r.saving)>0)).length,
+    one:withoutPromoFilter.filter(r=>Number(r.sale_count)===1&&Number(r.saving)>0).length,
+    multiple:withoutPromoFilter.filter(r=>Number(r.sale_count)>=2&&Number(r.saving)>0).length
+  };
   if(selection==="two")rs=rs.filter(r=>r.sale_count>=2&&r.saving>0);
   if(selection==="promos")rs=rs.filter(r=>r.sale_count>0&&r.saving>0);
   const noMatchingPromotions=(selection!=="all" && rs.length===0 && withoutPromoFilter.length>0);
@@ -528,7 +533,13 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   const suitable=visible.filter(r=>r.nutrition?.priority).length;
   const portion=visible.length?Math.round(100*suitable/visible.length):0;
   $("store-status").textContent=highlights.length+" uitgelicht · "+visible.length+" van "+total+" overige recepten · "+suitable+" van "+visible.length+" passen bij voedingsvoorkeur · "+state.data.counts.promotions[state.store]+" actievermeldingen";
-  $("recipe-results-count").textContent=state.sharedOnly?"Jouw gedeelde HelloFresh-recepten voor "+state.data.store_names[state.store]:highlights.length+" weekaanraders en "+total+" overige recepten beschikbaar. Open een recept voor ingrediënten en kassaprijs.";
+  $("recipe-results-count").textContent=state.sharedOnly?
+    "Jouw gedeelde HelloFresh-recepten voor "+state.data.store_names[state.store]:
+    (selection==="two"||selection==="promos"?
+      total+" recepten voldoen aan het actiefilter · "+promoCounts.multiple+" met minstens 2 gebruikte kortingen · "+
+      promoCounts.one+" met 1 korting · "+promoCounts.none+" zonder berekende korting bij de overige keuzes. " +
+      "Alleen acties die de gekozen mand goedkoper maken tellen.":
+      highlights.length+" weekaanraders en "+total+" overige recepten beschikbaar. Open een recept voor ingrediënten en kassaprijs.");
 
   $("loadmore").hidden=total<=state.visible;
   $("loadmore").textContent="Toon 10 meer ("+Math.min(10,Math.max(0,total-state.visible))+" van "+(total-state.visible)+" resterend)";
