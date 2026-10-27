@@ -388,7 +388,15 @@ def offer_price(ing,amount,unit,offers):
     for original in offers:
         o=priced_product_units(original,ing,unit)
         if o is None or not o["quantity"] or not match_ingredient(o,ing):continue
-        if o.get("is_loyalty") or not verified_discount(o):continue
+        if o.get("is_loyalty"):continue
+        is_discount=verified_discount(o)
+        # Een betrouwbare actuele verkoopprijs is bruikbaar zonder
+        # bewezen korting; toon die dan zonder actie- of besparingsclaim.
+        today=datetime.now(TZ).date().isoformat()
+        if not is_discount and not (
+            o.get("valid_from") and o.get("valid_until") and
+            o["valid_from"]<=today<=o["valid_until"]):
+            continue
         typ=normalize(o.get("promotion_type",""))
         is_bundle=bool(o.get("multi_buy_quantity") and o.get("multi_buy_price"))
         if not is_bundle and any(z in typ for z in ("multi","one_plus_one","gratis","bundle","2 1","1 1")):continue
@@ -396,6 +404,7 @@ def offer_price(ing,amount,unit,offers):
         # Bij 2-voor-acties blijft de getoonde losse stukprijs vaak gelijk
         # aan de normale prijs; controleer daarom de TOTALE bundelkorting.
         if is_bundle:
+            if not is_discount:continue
             k=o["multi_buy_quantity"]
             if k<2 or o["multi_buy_price"]>=k*(original or o["price"]):continue
         elif original is not None and original<=o["price"]:
@@ -409,7 +418,7 @@ def offer_price(ing,amount,unit,offers):
              "product":o["name"],"package":o["size_label"] or (str(o["quantity"])+" "+unit),
              "package_size":o["quantity"],"packages":packs,"cash_price":cost,
              "used_price":round(actual/o["quantity"]*(cost/packs),2),
-             "regular_cash":round(n*(original or o["price"]),2),"sale":True,
+             "regular_cash":round(n*(original or o["price"]),2),"sale":is_discount,
              "action":{"name":o["name"],"price":o["price"],"valid_until":o.get("valid_until"),
                  "multi_buy_quantity":o.get("multi_buy_quantity"),"multi_buy_price":o.get("multi_buy_price"),"url":o["url"]},
              "source":"PrijsProfeet","url":o["url"],**product_context(o,ing)}))
