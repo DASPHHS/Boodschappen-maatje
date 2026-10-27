@@ -170,64 +170,34 @@ def classify_offers(offers):
                         grouped[role].setdefault(key,[]).append(offer)
     return grouped
 
-def meal_candidates(offers,limit=65):
-    """Selecteer gevarieerde complete maaltijden op basis van ACTIECOMBINATIES.
+def meal_candidates(offers,limit=100):
+    """Alle passende maaltijdtemplates als kandidaten, niet slechts twee actieproducten.
 
-    Alleen combinations met 2+ verschillende soorten actieproducten.
-    Productprijzen worden niet afgeleid; alle regels zijn 4 porties.
+    Maak eerst het complete recept, en bereken de werkelijke korting pas later
+    met ingredient_price. Een korting op alleen krieltjes kan dus een gerecht
+    met varkenshaas en reguliere broccoli relevant maken. De bestaande
+    compatibiliteitsregels blijven van kracht.
     """
     groups=classify_offers(offers)
-    def strength(key,role):
-        o=groups[role].get(key,[])
-        return min(45,max((x.get("discount") or 0 for x in o),default=0))
-    proteins=sorted(groups["proteine"],key=lambda x:-strength(x,"proteine"))
-    veggies=sorted(groups["groente"],key=lambda x:-strength(x,"groente"))
-    sides=sorted(groups["bijgerecht"],key=lambda x:-strength(x,"bijgerecht"))
-    if not proteins or not veggies:return []
+    on_sale={key for group in groups.values() for key in group}
     scored=[]
-    for pk in proteins:
-        pname,cat,pamount,punit=PROTEINS[pk]
-        for vk in veggies:
-            if pk==vk or not sensible_meal(pk,vk):continue
-            vname,vamount,vunit=VEGETABLES[vk]
-            selected_sides=[None]+sides
-            # Ook een tweede afgeprijsde groente kan een maaltijd compleet maken.
-            # Alleen vaste recepten/templates worden daarna geselecteerd.
-            second_vegetables=[None]+[x for x in veggies if x!=vk]
-            for sk in selected_sides:
-                for vk2 in second_vegetables:
-                    if not sensible_meal(pk,vk,sk,vk2):continue
-                    template=DISH_BY_KEYS.get((pk,vk,sk,vk2))
-                    if not template:continue
-                    # Een tweede groente zonder bijgerecht is zinvol als
-                    # koolhydraatbewuste maaltijd. Met bijgerecht max. 4 items.
-                    # Bij twee groenten behoudt het gerecht circa 1,1 kg groenten
-                    # totaal in plaats van twee volledige porties te stapelen.
-                    main_amount=round(vamount*0.72) if vk2 and vunit=="g" else vamount
-                    ings=[(pk,pamount,punit),(vk,main_amount,vunit)]
-                    title,method=template
-                    if vk2:
-                        v2name,v2amount,v2unit=VEGETABLES[vk2]
-                        v2amount=round(v2amount*0.35) if v2unit=="g" else max(1,round(v2amount*0.65))
-                        ings.append((vk2,v2amount,v2unit))
-                    if sk:
-                        sname,samount,sunit=SIDES[sk]
-                        ings.append((sk,samount,sunit))
-                    offer_keys=2+bool(sk)+bool(vk2)
-                    score=offer_keys*30+strength(pk,"proteine")+strength(vk,"groente")+(
-                        strength(sk,"bijgerecht") if sk else 3)+(
-                        strength(vk2,"groente") if vk2 else 0)
-                    scored.append((score,pk,vk,sk,vk2,(title,cat,35,ings)))
-    scored.sort(key=lambda x:(-x[0],x[1],x[2],str(x[3]),str(x[4])))
-    # Beperk repetitieve varianten van hetzelfde eiwit & groente.
-    selected=[];pair_count={};protein_count={};side_count={}
-    for score,pk,vk,sk,vk2,recipe in scored:
-        pair=(pk,vk)
-        if pair_count.get(pair,0)>=3 or protein_count.get(pk,0)>=15:continue
-        if sk and side_count.get(sk,0)>=20:continue
-        pair_count[pair]=pair_count.get(pair,0)+1
-        protein_count[pk]=protein_count.get(pk,0)+1
-        if sk:side_count[sk]=side_count.get(sk,0)+1
-        selected.append(recipe)
-        if len(selected)>=limit:break
-    return selected
+    seen=set()
+    for pk,vk,sk,vk2,title,method in DISH_TEMPLATES:
+        if not sensible_meal(pk,vk,sk,vk2):continue
+        ingredients=[(pk,PROTEINS[pk][2],PROTEINS[pk][3])]
+        veg_amount=VEGETABLES[vk][1]
+        veg_unit=VEGETABLES[vk][2]
+        if vk2 and veg_unit=="g":veg_amount=round(veg_amount*.72)
+        ingredients.append((vk,veg_amount,veg_unit))
+        if vk2:
+            a,u=VEGETABLES[vk2][1:]
+            ingredients.append((vk2,round(a*.35) if u=="g" else max(1,round(a*.65)),u))
+        if sk:ingredients.append((sk,SIDES[sk][1],SIDES[sk][2]))
+        if title in seen:continue
+        seen.add(title)
+        hits=sum(key in on_sale for key,_,_ in ingredients)
+        scored.append((hits,title,(title,PROTEINS[pk][1],35,ingredients)))
+    # Kandidaatselectie ≠ bewijs voor een actie. De kassaprijsengine bepaalt
+    # daarna welke acties echt voordeliger zijn en telt ze afzonderlijk.
+    scored.sort(key=lambda x:(-x[0],x[1]))
+    return [item for _,_,item in scored[:limit]]
