@@ -501,7 +501,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
     'Eerst volledige kassaprijzen en gezonde opties. Geldige acties tellen mee wanneer ze de werkelijke aankoop goedkoper maken.';
   if(state.sharedOnly)rs=[];
   const sharedHits=SharedRecipeHits.select(state.sharedHits?.stores?.[state.store]||[],{
-    query:q,cuisine,category:cat,duration:maxMinutes,selection,
+    query:q,cuisine,category:cat==="tofu"?"vega":cat,duration:maxMinutes,selection,
     strictHealth:health==="only",onlyShared:!!state.sharedOnly,meal,format,origin,mealprep:$("mealprep-filter").value==="yes"
   }).filter(r=>(cat!=="tofu"||((r.ingredients||[]).some(i=>["tofu","tempeh"].includes(i.key))||/\b(tofu|tempeh)\b/i.test(r.title||"")))&&(!state.favoriteOnly||isFavorite(r)));
   let highlights=[];
