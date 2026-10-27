@@ -91,9 +91,15 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
 .recipe-headline h3{min-width:0}
 .recipe-favourite{flex-shrink:0;font-size:13px;border:1px solid #cadbd0;background:#fff;border-radius:9px;padding:7px 9px;color:#225c40}
 .recipe-favourite[aria-pressed=true]{background:#176745;color:#fff;border-color:#176745}
-</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Boodschappen <span>Maatje</span> / recepten</div><span style="display:flex;gap:12px;flex-wrap:wrap"><a href="./chat.html">Vraag het Maatje ↗</a><a href="./alternatieven.html">Meer receptopties ↗</a><a href="./boodschappen.html">Boodschappenassistent ↗</a><a href="./watchlist.html">★ Favorieten & prijswatchlist</a><a href="./inspiratie.html">Receptbronnen ↗</a><a href="./status.html">Controleer scanstatus ↗</a></span></div>
-<div class="eyebrow">Besparen met lekker eten</div><h1>De lekkerste recepten.<br>De scherpste totaalprijs.</h1>
-<p>Kies wat je lekker vindt en vergelijk echte vierpersoonsmaaltijden met de actuele prijzen van AH, Jumbo en Lidl. Gezonde gerechten, aanbiedingen die echt voordeel opleveren en één duidelijke kassaprijs.</p>
+
+/* Mobiel, simpel: recepten, acties en winkelmand. Bronverzameling blijft intern actief. */
+.simple-nav{display:flex;gap:8px;flex-wrap:wrap}.simple-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 13px;border:1px solid #cddcd3;border-radius:11px;color:#164a36;background:#fff;text-decoration:none;font-weight:700}.simple-nav #nav-cart{background:#164a36;color:#fff}.cartitem a{color:#164a36;font-weight:700;text-decoration:underline}
+#source-matches-panel,#week-source-recommendations,#library-results,#estimated-meals,#offer-inspiration,#official-store-candidates,#other-store-links,#source-favorites-panel,#search-shortcuts,.favourites-tools,#personal-weekmenu,#weekmenu-panel,#audit-panel{display:none!important}
+#cart-panel,#recipe-filters,#deal-filters{scroll-margin-top:15px}
+@media(max-width:700px){.simple-nav{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.simple-nav a{padding:9px 4px;font-size:13px}}
+</style></head><body><header><div class="wrap"><div class="top"><div class="brand">Koken met voordeel</div><nav class="simple-nav" aria-label="Navigatie"><a href="#recipe-filters" id="nav-recipes">Recepten</a><a href="#deal-filters" id="nav-deals">Acties</a><a href="#cart-panel" id="nav-cart">Winkelmand <span id="nav-cart-count"></span></a></nav></div>
+<h1>Wat eten we deze week?</h1>
+<p>Gezonde en lekkere recepten voor vier personen, met actuele AH-, Jumbo- en Lidl-prijzen. Voeg je keuze toe aan de winkelmand.</p>
 <div class="statrow"><span id="update">Actuele bronnen ophalen…</span><span id="coverage">Prijsdekking bepalen…</span><span>4 porties per gerecht</span></div></div></header>
 <main class="wrap"><div class="layout"><section class="panel mainpanel">
 <nav class="tabs"><button class="tab" data-store="ah" aria-selected="true">Albert Heijn</button><button class="tab" data-store="jumbo">Jumbo</button><button class="tab" data-store="lidl">Lidl</button></nav>
@@ -289,7 +295,7 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
  <a id="source-more-link" href="./inspiratie.html">Doorzoek alle wereldkeukens en eigen kookboeken ↗</a>
 </div>
 </section><div id="deals" hidden></div><div class="row" style="justify-content:center;margin:16px 0"><button id="moredeals" class="btn outline" hidden>Toon meer aanbiedingen</button></div>
-</section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn boodschappenlijst</h2><button class="btn small outline" id="clear" title="Wis de mand en het weekmenu van deze supermarkt">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
+</section><aside class="panel cartpanel" id="cart-panel"><div class="row"><h2>Mijn winkelmand</h2><button class="btn small outline" id="clear" title="Wis de mand en het weekmenu van deze supermarkt">Wissen</button></div><div class="sub" id="cart-count">Kies een of meer recepten.</div><div id="cart"><div class="notice">De lijst voegt overlappende ingrediënten samen en telt hele verpakkingen.</div></div>
 <div class="price-row"><span>Te betalen</span><strong id="total">€ 0,00</strong></div><p class="fine" id="cart-hint">Olie en kruiden uit voorraad niet meegerekend.</p><div class="sidebuttons"><button class="btn outline small" id="copy">Kopieer</button><button class="btn small" id="print">Afdrukken</button></div></aside></div><div class="wrap" style="margin-top:24px">
 <details id="weekmenu-panel" class="weekmenu-panel" hidden>
  <summary>Optioneel: vergelijk de prijs van een automatisch voorbeeldmenu (niet jouw planning)</summary>
@@ -836,10 +842,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
   return {items,missing,pantry,list:rs,total:Math.round(items.reduce((sum,x)=>sum+x.cash_price,0)*100)/100};
  }
  function renderCart(){
-  const cart=calcCart();$("cart-count").textContent=cart.list.length?`${cart.list.length} recepten · ${cart.items.length} producten · ${state.data.store_names[cart.list[0].store]}`:"Kies een of meer recepten. Eén supermarkt per mand.";
+  const cart=calcCart();if($("nav-cart-count"))$("nav-cart-count").textContent=cart.list.length?"("+cart.list.length+")":"";$("cart-count").textContent=cart.list.length?`${cart.list.length} recepten · ${cart.items.length} producten · ${state.data.store_names[cart.list[0].store]}`:"Kies een of meer recepten. Eén supermarkt per mand.";
   const chosenRecipes=cart.list.map(sel=>state.data.recipes[sel.store].find(r=>r.id===sel.id)).filter(Boolean);
   const chosenHtml=chosenRecipes.length?'<div class="notice"><strong>Mijn gekozen recepten</strong><div class="sub">Open een recept om de bereiding en hoeveelheden terug te vinden.</div>'+chosenRecipes.map(r=>'<button type="button" class="btn outline small" style="margin:5px 5px 0 0" data-cart-recipe="'+esc(r.id)+'">'+esc(r.title)+' · '+(plannedPortions(state.store,r.id)||4)+' porties · Bekijk recept</button>').join("")+'</div>':'';
-  $("cart").innerHTML=cart.items.length?cart.items.map(l=>`<div class="cartitem"><div class="row"><b>${esc(l.label)}</b><strong>${euro(l.cash_price)}</strong></div><small>Nodig: ${Number(l.required.toFixed(1)).toLocaleString("nl-NL")} ${esc(l.unit)} · Kopen: ${l.packages} × ${esc(l.product)} (${esc(l.package)}) · Over: ${Number(Math.max(0,l.packages*l.package_size-l.required).toFixed(1)).toLocaleString("nl-NL")} ${esc(l.unit)}</small></div>`).join("")+(cart.missing.length?`<div class="notice warn">Prijs ontbreekt: ${cart.missing.map(l=>esc(l.label)+" ("+esc(l.amount+" "+l.unit)+", "+esc(state.data.store_names[l.store])+")").join(", ")}</div>`:""):"<div class='notice'>Voeg recepten toe om één gecombineerde boodschappenlijst te maken. Ik tel hele verpakkingen.</div>";
+  $("cart").innerHTML=cart.items.length?cart.items.map(l=>`<div class="cartitem"><div class="row"><b>${esc(l.label)}</b><strong>${euro(l.cash_price)}</strong></div><small>Nodig: ${Number(l.required.toFixed(1)).toLocaleString("nl-NL")} ${esc(l.unit)} · Kopen: ${l.packages} × ${l.url?`<a href="${esc(safeURL(l.url))}" target="_blank" rel="noopener noreferrer">${esc(l.product)}</a>`:esc(l.product)} (${esc(l.package)}) · Over: ${Number(Math.max(0,l.packages*l.package_size-l.required).toFixed(1)).toLocaleString("nl-NL")} ${esc(l.unit)}</small></div>`).join("")+(cart.missing.length?`<div class="notice warn">Prijs ontbreekt: ${cart.missing.map(l=>esc(l.label)+" ("+esc(l.amount+" "+l.unit)+", "+esc(state.data.store_names[l.store])+")").join(", ")}</div>`:""):"<div class='notice'>Voeg recepten toe om één gecombineerde boodschappenlijst te maken. Ik tel hele verpakkingen.</div>";
    if(chosenHtml)$("cart").innerHTML=chosenHtml+$("cart").innerHTML;
    if(cart.pantry.length)$("cart").innerHTML+=`<div class="notice"><strong>Smaakmakers, niet in prijs</strong><div>${cart.pantry.map(esc).join(", ")}</div></div>`;
   $("total").textContent=euro(cart.total)+(cart.missing.length?" + onbekend":"");
@@ -1193,7 +1199,10 @@ main{margin-top:-29px;position:relative;padding-bottom:50px}.layout{display:grid
      ${x.url&&safeURL(x.url)!=="#"?`<a href="${esc(safeURL(x.url))}" target="_blank" rel="noopener noreferrer">Bekijk actie</a>`:""}</div>
    </div></article>`).join("");
  }
-  function render(){
+  document.getElementById("nav-deals").addEventListener("click",()=>{state.mode="deals";if(state.data)render()});
+ document.getElementById("nav-recipes").addEventListener("click",()=>{state.mode="recipes";if(state.data)render()});
+ document.getElementById("nav-cart").addEventListener("click",()=>{state.mode="recipes";if(state.data)render()});
+ function render(){
   document.querySelectorAll("[data-store]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.store===state.store)));
   $("store-status").textContent=`${state.data.counts.ordinary[state.store]||0} gewone productprijzen · ${state.data.counts.promotions[state.store]||0} aanbiedingen`;
   $("title").textContent=state.mode==="recipes"?"Recepten · "+state.data.store_names[state.store]:"Actuele aanbiedingen · "+state.data.store_names[state.store];
