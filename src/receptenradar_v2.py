@@ -516,7 +516,7 @@ PROTEIN_PER_100G={
  "kipfilet":20.0,"kipdij":17.0,"kipgehakt":17.0,"shoarma":16.0,
  "gehakt":17.0,"varkenshaas":20.0,"garnalen":19.0,"rookworst":12.0,"zalm":19.0,"gerookte_zalm":18.0,
  "tonijn":22.0,"olijven":0.8,"kappertjes":2.4,"tofu":10.0,"kikkererwten":6.0,"linzen":6.0,
- "bonen":6.0,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
+ "bonen":6.0,"bruine_bonen":6.0,"sperziebonen":1.8,"broccoli":2.5,"spinazie":2.3,"boerenkool":2.5,
  "spruiten":2.5,"wok":1.5,"champignons":2.0,"wortel":0.5,
  "tomaten":0.5,"tomatenblokjes":0.7,"ui":0.7,"sla":1.0,
  "rijst":7.0,"risottorijst":7.0,"pasta":11.0,"couscous":11.0,"aardappel":1.5,
@@ -533,7 +533,7 @@ PROTEIN_PER_PIECE={"eieren":6.0,"wraps":3.0,"naan":5.0,
 KCAL_PER_100G={
  "kipfilet":110,"kipdij":140,"kipgehakt":155,"shoarma":170,
  "gehakt":190,"varkenshaas":120,"rookworst":280,"zalm":205,"gerookte_zalm":165,
- "tonijn":115,"olijven":115,"kappertjes":23,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,
+ "tonijn":115,"olijven":115,"kappertjes":23,"tofu":125,"kikkererwten":115,"linzen":105,"bonen":105,"bruine_bonen":105,"sperziebonen":31,
  "rijst":355,"risottorijst":360,"pasta":350,"couscous":350,"aardappel":80,
  "zoete_aardappel":85,"wok":35,"boerenkool":35,"spruiten":43,
  "spinazie":25,"broccoli":34,"champignons":25,"tomaten":20,
@@ -735,7 +735,7 @@ def make_recipes(shelves,offers):
             # Benoem dit expliciet: zonder etiket is exact benodigde
             # hoeveelheid en voedingswaarde niet te garanderen.
             drained_uncertain=[ING[key][0] for key,amount,unit in ings
-                               if key in ("tonijn","bonen","linzen","kikkererwten")]
+                               if key in ("tonijn","bonen","bruine_bonen","linzen","kikkererwten")]
             if drained_uncertain:
                 nutrition["drained_weight_unverified"]=drained_uncertain
             # Bij gearomatiseerde zuivel is de generieke naturelwaardeschatting
