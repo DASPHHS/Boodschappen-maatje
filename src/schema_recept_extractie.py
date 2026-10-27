@@ -65,3 +65,25 @@ def extract(html,url):
                 "cuisine":item.get("recipeCuisine"),"ingredients":parsed,
                 "kind":"recipe","verification":"schema_recipe_complete"},None
     return None,(reasons[0] if reasons else "no_structured_recipe")
+
+def extract_with_fallback(html,url):
+    """Site-specific parsers only as fallback; exact ingredient validation remains mandatory."""
+    recipe,reason=extract(html,url)
+    if recipe:return recipe,None
+    try:
+        from recipe_scrapers import scrape_html
+        scraper=scrape_html(html,org_url=url)
+        raw=scraper.ingredients()
+        if not raw or not isinstance(raw,list):return None,reason
+        parsed=[amount(x) for x in raw]
+        if any(x is None for x in parsed):return None,reason
+        servings=count_servings(scraper.yields())
+        duration=scraper.total_time()
+        if not servings or not isinstance(duration,int) or duration<=0:return None,reason
+        title=scraper.title()
+        if not title:return None,reason
+        return {"title":title,"source":urlparse(url).netloc,"url":url,
+            "servings":servings,"minutes":duration,"ingredients":parsed,
+            "kind":"recipe","verification":"recipe_scrapers_complete"},None
+    except (ImportError,Exception):
+        return None,reason
