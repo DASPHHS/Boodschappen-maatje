@@ -299,7 +299,7 @@ function priceStatusText(r){
  if(p.state==='historical_estimate')return '4 porties · historische indicatie'+(p.oldest_date?' (oudste prijs '+p.oldest_date+')':' zonder exacte peildatum')+', geen actuele kassaprijs';
  return '4 porties · '+p.missing.length+' ingrediënten zonder verpakkingsprijs, geen complete mand';
 }
-function priceQuality(r){const p=recipePrice(r);return p.total!==null?money(p.total):p.partial>0?'Minimaal '+money(p.partial):'Prijs onbekend'}
+function priceQuality(r){const p=recipePrice(r);return p.state==='today_confirmed'?money(p.total):p.state==='historical_estimate'?'Oude indicatie '+money(p.total):p.partial>0?'Deels bekend '+money(p.partial):'Prijs onbekend'}
 function statusTag(r){return '<span class="tag '+(recipeIsCurrentPrice(r)?'fresh':'orange')+'">'+safe(priceTagText(r))+'</span>'}
 function storeLogo(s){return '<span class="store-dot '+s+'">'+(s==='lidl'?'L':s==='jumbo'?'J':'AH')+'</span>'}
 function clearPage(){['vandaag','aanbiedingen','recepten','lijst','mijn'].forEach(v=>$('#view-'+v).classList.toggle('hidden',v!==state.view));document.querySelectorAll('[data-view]').forEach(el=>el.classList.toggle('active',el.dataset.view===state.view))}
@@ -438,8 +438,8 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
 const deals=recipes(s).filter(r=>window.MaatjeRanking?.mainOffer(offerInfo(r,s))).length;
-const known=recipes(s).filter(r=>recipePrice(r).total!==null).length;
-return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met een prijsindicatie op basis van volledige verpakkingen (niet noodzakelijk actueel).</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>lopende acties</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
+const known=recipes(s).filter(r=>recipePrice(r).state==='today_confirmed').length;
+return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met vandaag volledig onderbouwde productprijzen.</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>ontvangen actiemeldingen</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
 }).join('')+'</div>';
 x+='<div class="my-home-link"><span>♧ <strong>'+state.savedRecipes.length+' bewaarde recepten</strong> · '+Object.values(state.selected).reduce((n,v)=>n+(v?.length||0),0)+' gerechten gepland</span><button class="button secondary small" data-view="mijn">Mijn recepten →</button></div>';
 x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
@@ -463,7 +463,7 @@ if(wanted.length)x+='<div class="cards">'+wanted.map(o=>dealCard(o,s)).join('')+
 }
 x+='<div class="info-banner"><strong>Vergelijk per verpakking:</strong> ingrediënten kunnen in actie zijn, maar de totale maaltijd is alleen aantoonbaar goedkoop als alle kassaprijzen en goedkopere alternatieven zijn gecontroleerd.</div>';
 x+=title('Budgetbasis zonder acties','Voordelige reguliere recepten op basis van eerder waargenomen schapprijzen — geen garantie dat de prijs altijd gelijk blijft.');
-const budgetRec=ORDER.flatMap(s=>recipes(s).filter(r=>r.origin!=='actie-idee'&&recipePrice(r).total!==null&&recipePrice(r).total<=10&&!offerInfo(r,s).confirmed.length&&!offerInfo(r,s).anchors.length&&!(r.ingredients||[]).some(i=>i.price_status==='folder_current')).slice(0,3));
+const budgetRec=ORDER.flatMap(s=>recipes(s).filter(r=>r.origin!=='actie-idee'&&recipePrice(r).total!==null&&recipePrice(r).state==='today_confirmed'&&recipePrice(r).total<=10&&!offerInfo(r,s).confirmed.length&&!offerInfo(r,s).anchors.length&&!(r.ingredients||[]).some(i=>i.price_status==='folder_current')).slice(0,3));
 x+=budgetRec.length?'<div class="cards">'+budgetRec.map(recipeCard).join('')+'</div>':empty('Budgetbasis wordt nog opgebouwd','Zonder betrouwbare reguliere schapprijzen kunnen we geen gerecht als structureel goedkoop bevestigen.');
 x+='<div class="info-banner warning"><strong>Bronstatus:</strong> '+safe(status())+'. De prijzen zijn momentopnames; de gepubliceerde volledige kassamand is niet automatisch vandaag geverifieerd.</div>';
 $('#view-vandaag').innerHTML=x;
