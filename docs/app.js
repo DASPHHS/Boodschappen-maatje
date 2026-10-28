@@ -93,7 +93,10 @@ const anchored=anchors.find(x=>x.role==='eiwitbron')?.offer||null;
 const discount=anchors.reduce((n,x)=>{
 const i=x.ingredient,o=x.offer,k=Number(i.package_count||1);
 if(i.price_status!=='folder_current'||!Number.isFinite(i.pack_price)||!Number.isFinite(o.regular_price)||!Number.isInteger(k)||k<1)return n;
-return n+Math.max(0,o.regular_price*k-i.pack_price);
+const bundle=Number(o.multi_buy_quantity)>1&&Number.isFinite(o.multi_buy_price);
+if(bundle&&k!==Number(o.multi_buy_quantity))return n;
+const reference=bundle?o.regular_price:o.regular_price*k;
+return n+Math.max(0,reference-i.pack_price);
 },0);
 const result={confirmed,anchored,anchors,possible,total:anchors.length+confirmed.length+possible.length,discount:Math.round(discount*100)/100};
 state._matchCache.set(key,result);return result;
