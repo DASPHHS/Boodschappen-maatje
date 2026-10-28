@@ -63,3 +63,10 @@
 .review-box strong{font-weight:800;display:block}.review-box small{display:block;margin-top:3px;color:#5c735e}
 .review-box.review-uncertain{background:#fff5e9;color:#864e23;border-color:#f0dbc5}.review-box.review-uncertain small{color:#926b47}
 .review-links{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}.review-links a{font-size:11px;font-weight:750;color:inherit;text-decoration:underline}
+
+.review-details{margin-top:8px}.review-details summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:800;font-size:11px}.review-details ul{padding:6px 0 0 18px;margin:5px 0 0}.review-details li{margin:7px 0}
+.review-details li a{color:inherit;font-weight:800}.review-details li small{display:block;font-size:11px;line-height:1.5}
+.campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.campaign-card{padding:14px;border:1px solid #d8e5d4;border-radius:13px;background:#fff;display:grid;gap:8px;align-content:start}.campaign-card strong{font-weight:800}.campaign-card p{margin:0;font-size:14px;font-weight:750}
+.campaign-condition{background:#f0f7e9;padding:7px 10px;border-radius:8px;font-weight:800;font-size:13px;color:#346247}
+.campaign-card a{color:#326946;font-weight:800;font-size:11px}

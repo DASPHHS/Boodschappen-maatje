@@ -276,6 +276,15 @@ function productReview(s,o){
  const r=state.verification?.reviews?.[s]?.[o.id];
  return r?.checked_at===today()?r:null;
 }
+
+function campaignHighlights(s){
+ const offers=(state.verification?.campaigns||[]).filter(c=>c.store===s&&c.end_date>=today());
+ if(!offers.length)return '';
+ const cards=offers.map(c=>'<div class="campaign-card"><strong>'+safe(c.name)+'</strong><div class="campaign-condition">'+safe(c.condition)+'</div>'+
+ (Number.isFinite(c.price)?'<p>'+money(c.price)+' '+safe(c.unit||'')+'</p>':'<p class="muted">Variantprijs onbekend — controleer verpakking en kassaprijs</p>')+
+ '<a href="'+attr(c.url)+'" target="_blank" rel="noopener noreferrer">Bekijk officiële AH Bonus ↗</a></div>').join('');
+ return title('Extra aanbiedingen zonder vaste variantprijs','Huishouden en frisdrank: betrouwbare voorwaarden, maar niet zomaar een prijs per tablet of wasbeurt.')+'<div class="campaign-grid">'+cards+'</div>';
+}
 function reviewLabel(s,o){
  const r=productReview(s,o);if(!r)return '';
  const st=r.status;
@@ -287,8 +296,8 @@ function reviewLabel(s,o){
  /unit_price_correction/.test(st)?'Eenheidsprijs herberekend':
  /variant_range/.test(st)?'Verschillende oude prijzen per variant':
  /regular_not_promo/.test(st)?'Reguliere prijs, geen actie':'Prijs met bronnen vergeleken';
- const links=r.checks.filter(x=>x.url).slice(0,4).map(x=>'<a href="'+attr(x.url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.site)+' ↗</a>').join(' · ');
- return '<div class="review-box '+(warn?'review-uncertain':'')+'"><strong>Broncontrole 28 okt: '+safe(label)+'</strong>'+(warn?'<small>Exacte variant en actuele kassaprijs controleren.</small>':'')+'<div class="review-links">'+links+'</div></div>';
+ const links=r.checks.filter(x=>x.url).slice(0,4).map(x=>'<li><a href="'+attr(x.url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.site)+' ↗</a>'+(Number.isFinite(x.price)?' · '+money(x.price):'')+'<small>'+safe(x.note||'')+'</small></li>').join('');
+ return '<div class="review-box '+(warn?'review-uncertain':'')+'"><strong>Broncontrole 28 okt: '+safe(label)+'</strong>'+(warn?'<small>Exacte variant en actuele kassaprijs controleren.</small>':'')+'<details class="review-details"><summary>Prijs en uitleg per bron ('+r.checks.length+')</summary><ul>'+links+'</ul></details></div>';
 }
 function dealCard(o,s){
 const alt=o.cheapest_alternative;
@@ -338,7 +347,7 @@ $('#view-vandaag').innerHTML=x;
 function offersView(){
 header('Slim besparen','Voor mij: <span style="color:#719b66">echte voordelen.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
 let out='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
-if(state.offerMode==='personal')out+=favoriteDashboard()+personalHighlights()+personalComparison();
+if(state.offerMode==='personal')out+=favoriteDashboard()+personalHighlights()+personalComparison()+campaignHighlights('ah');
 else if(state.offerMode==='favorites')out+=favoriteDashboard();
 else{
 out+=storeControls()+kindControls(true);
@@ -347,6 +356,7 @@ const arr=offers(s).filter(o=>(state.kind==='alle'||o.category===state.kind)&&(!
 out+=title(NAMES[s],arr.length+' prijswaarnemingen waarvan geldigheidsperiode nog loopt');
 out+=arr.length?'<div class="cards">'+arr.slice(0,state.pageSize[s]).map(o=>dealCard(o,s)).join('')+'</div>':empty('Geen actuele prijswaarneming','De bron is mogelijk nog niet bijgewerkt.');
 if(arr.length>state.pageSize[s])out+='<div class="control-row"><button class="button secondary" data-more-offers="'+s+'">Nog 24 laden ('+(arr.length-state.pageSize[s])+' resterend)</button></div>';
+if(s==='ah')out+=campaignHighlights(s);
 }}
 $('#view-aanbiedingen').innerHTML=out;
 }
