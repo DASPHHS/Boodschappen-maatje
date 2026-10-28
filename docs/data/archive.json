@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "updated_at": null,
+  "stores": {
+    "lidl": [],
+    "jumbo": [],
+    "ah": []
+  },
+  "note": "Historische recepten. Prijzen in het archief zijn niet geldig totdat opnieuw gecontroleerd. De app verbergt verouderde kassaprijzen."
+}

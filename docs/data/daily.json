@@ -260,7 +260,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Lidl Plus broccoli €0,69 per 500g. Zonder Lidl Plus is deze kassaberekening niet geldig.",
           "source_recipe": "Aangepaste variant van Kip-champignonpan uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "lidl-20261028-broccoli",
+              "ingredient_name": "broccoli, met eetbare stronk",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "lidl-20261028-drive-18",
@@ -382,7 +390,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Drie verpakkingen van 300g kosten €13,47, versus zes mini-varkenshaasverpakkingen €14,94 in de snapshot. De kruiden en vetwaarden verschillen.",
           "source_recipe": "Aangepaste variant van Varkenshaas in mosterdsaus uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "lidl-20261028-varkensoester",
+              "ingredient_name": "gekruide varkensoester",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "lidl-20261028-drive-24",
@@ -490,7 +506,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "De folderzalm op huid kost €15,98/kg. De gisteren waargenomen wilde zalmfilet kostte €10,28 voor 4 x 250g; andere vissoort en productvorm, beschikbaarheid vandaag niet opnieuw bevestigd.",
           "source_recipe": "Aangepaste variant van Zalm met dillekwark uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "lidl-20261028-broccoli",
+              "ingredient_name": "broccoli, met eetbare stronk",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "lidl-20261028-drive-37",
@@ -612,7 +636,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "De Lidl Plus-broccoli maakt dit goedkoper. De rijst is bewust weggelaten; 250g tempeh per portie is de eiwitbasis.",
           "source_recipe": "Aangepaste variant van Pittige tempeh-roerbak uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "lidl-20261028-broccoli",
+              "ingredient_name": "broccoli, met eetbare stronk",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "lidl-20261028-budget-tofu",
@@ -734,7 +766,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "De goedkope Lidl Plus-broccoli maakt vier eiwitrijke porties mogelijk onder €10. Zonder Lidl Plus moet de broccoli opnieuw worden geprijsd.",
           "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "lidl-20261028-broccoli",
+              "ingredient_name": "broccoli, met eetbare stronk",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         }
       ],
       "notes": "Acties geverifieerd in weekfolder en waar mogelijk bij officiële winkel/vergelijker. Receptkosten zijn kassaprijsindicaties uit volledige verpakkingen, deels op basis van Checkjebon-snapshot 27 oktober, niet vandaag volledig bevestigd. Loyaliteitsvoorwaarden en winkelvoorraad controleren. Er wordt geen winkel gekozen.",
@@ -1690,7 +1730,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Twee verpakkingen AH kiphaasjes 300g voor €7,98; de oudere 800g kipfiletverpakking kostte €9,99. Verschillende verpakkingen, prijs per benodigde hoeveelheid is gunstiger.",
           "source_recipe": "Aangepaste variant van Rozemarijnkip van de bakplaat uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "ah-20261028-kiphaasjes",
+              "ingredient_name": "AH scharrelkipfilethaasjes",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "ah-20261028-drive-14",
@@ -1855,7 +1903,15 @@
           "savings_tip": "Drie verpakkingen varkensgehakt kosten €4,47 tegenover €13,98 voor twee pakken mager rundergehakt in de oude dataset. Varkensgehakt heeft doorgaans meer vet; geen voedingskundig identiek alternatief.",
           "source_recipe": "Aangepaste variant van Teriyakiballetjes met groente uit bestaande bibliotheek",
           "offer_inspired": true,
-          "health_note": "Deze goedkope actievariant met varkensgehakt bevat naar schatting 48 g vet per portie. Mager rundergehakt heeft een gunstiger vetprofiel maar is aanzienlijk duurder."
+          "health_note": "Deze goedkope actievariant met varkensgehakt bevat naar schatting 48 g vet per portie. Mager rundergehakt heeft een gunstiger vetprofiel maar is aanzienlijk duurder.",
+          "offer_links": [
+            {
+              "offer_id": "ah-20261028-varkensgehakt",
+              "ingredient_name": "AH varkensgehakt",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         },
         {
           "id": "ah-20261028-drive-26",
@@ -2193,7 +2249,15 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "AH Bonus-spruitjes 3 x 500g à €0,89, met 300g over. De volledige kassamand is €8,87, inclusief de paprikapoederverpakking.",
           "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "offer_links": [
+            {
+              "offer_id": "ah-20261028-spruitjes",
+              "ingredient_name": "AH spruitjes",
+              "match_type": "exact",
+              "verification": "price_source_folder_current"
+            }
+          ]
         }
       ],
       "notes": "Acties geverifieerd in weekfolder en waar mogelijk bij officiële winkel/vergelijker. Receptkosten zijn kassaprijsindicaties uit volledige verpakkingen, deels op basis van Checkjebon-snapshot 27 oktober, niet vandaag volledig bevestigd. Loyaliteitsvoorwaarden en winkelvoorraad controleren. Er wordt geen winkel gekozen.",

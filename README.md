@@ -70,3 +70,19 @@ python -m http.server 8000 --directory docs
 \`\`\`
 
 Ga naar http://localhost:8000. GitHub Pages moet op branch \`main\` met bron \`/docs\` ingesteld staan; de bestaande repository gebruikte \`/docs\`. Bij het opnieuw koppelen van Pages de bron eventueel controleren.
+
+
+## Actiekoppeling, sorteren en groeiend archief
+
+Recepten worden per supermarkt afzonderlijk getoond, inclusief **minimaal tien bestaande inspiratievarianten in elk van de categorieën kip, vlees (rund/varken), vis en vega**. Dat betekent **niet** dat er tien actuele geverifieerde actiegebonden recepten per categorie zijn; daarvoor zijn actuele relevante aanbiedingen en volledige productprijzen vereist.
+
+Drie labels zijn essentieel:
+- **Actie in prijs verwerkt**: recept bevat een \`offer_links\`-relatie naar een op die datum geldige, geverifieerde aanbieding, met \`offer_id\`, \`ingredient_name\`, \`match_type:"exact"\`; het bijbehorende ingrediënt heeft \`price_status:"folder_current"\`. Iedere koppeling moet ook qua verpakking, hoeveelheden en voorwaarden werkelijk passen. De prijs hoeft nog niet volledig op dezelfde dag gecontroleerd te zijn: dat blijft een aparte waarschuwing.
+- **Past bij aanbieding**: een productnaam/ingrediënt lijkt compatibel met een actuele aanbieding, maar de prijs is nog niet opnieuw berekend en de vervangbaarheid moet gecontroleerd worden. Een match is géén bewijs voor besparing.
+- **Geen actie gekoppeld**: het gerecht is niet aantoonbaar actiegebonden.
+
+Sorteren is mogelijk op aantal gekoppelde acties, laagste **werkelijk bekende** kassaprijs (onbekend komt achteraan), eiwit en bereidingstijd. Actiefilter: alle / actieprijs verwerkt / mogelijke matches. Een actiekorting wordt alleen getoond zolang de aanbieding geldig is.
+
+Archiveer toekomstige dagelijkse of wekelijkse unieke recepten in **docs/data/archive.json** onder \`stores.lidl\`, \`stores.jumbo\`, \`stores.ah\`, met \`id\` als unieke sleutel, \`first_seen_at\` en \`last_seen_at\`. Archiveer alleen recepten die echt volledig genoeg zijn, niet alleen titels. Vermijd duplicaten; dezelfde naam met een andere winkel blijft een eigen record. De site toont archiefrecepten **zonder oude prijzen als actuele prijzen**. Bewaar bron-URL, prijspeildatum, en markeer oude aanbiedingen als verlopen.
+
+De complete actuele prijs- en actierapportage blijft in \`docs/data/daily.json\`; de wekelijkse nieuwe recepten in \`docs/data/weekly.json\`. Werk na een succesvolle run eventueel het archief bij in een tweede GitHub-commit; schrijf nooit fictieve prijzen om een doelstelling te halen. De productdekking kan incompleet blijven bij Lidl, Jumbo en AH. Onderbouw alleen prijsverschillen wanneer exact vergelijkbare alternatieven en verpakkingsprijzen geverifieerd zijn.

@@ -17,3 +17,8 @@ console.log(f+': schema en drie winkels aanwezig');
 const lib=JSON.parse(fs.readFileSync('docs/data/library.json','utf8'));
 if(!Array.isArray(lib.recipes)||lib.recipes.length<10)throw Error('receptenbibliotheek ontbreekt');
 console.log('Receptenbibliotheek:',lib.recipes.length);
+
+const archive=JSON.parse(fs.readFileSync('docs/data/archive.json','utf8'));
+if(archive.schema_version!==1)throw Error('archief-schema ontbreekt');
+for(const s of ['lidl','jumbo','ah'])if(!Array.isArray(archive.stores?.[s]))throw Error('archief ontbreekt '+s);
+console.log('Archief per winkel beschikbaar');
