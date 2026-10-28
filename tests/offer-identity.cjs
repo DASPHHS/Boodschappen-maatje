@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict');
+const m=require('../docs/offer-identity.js');
+const a={id:'a',name:'Texels Skuumkoppe Bier Fles 6 × 300 ml',pack_label:'6 × 300 ml',price:7.04};
+const b={id:'b',name:'Texels Skuumkoppe 6x300ML',pack_label:'6x300ML',price:7.49};
+const c={id:'c',name:'Texels Skuumkoppe 6x330ML',pack_label:'6x330ML',price:8.61};
+const d={id:'d',name:'Texels Skuumkoppe 0.0% 6x300ML',pack_label:'6x300ML',price:7.04};
+const merged=m.merge([a,b,c,d]);
+assert.equal(merged.length,3,'same variant must not be duplicated, different packages must remain');
+assert.ok(merged[0].price_conflict,'contradictory exact pack must not silently choose a winner');
+assert.equal(merged[1].price_conflict,undefined);
+assert.notEqual(m.key(a),m.key(c));assert.notEqual(m.key(a),m.key(d));
+assert.equal(m.pack({pack_label:'6 × 300 ml'}),m.pack({pack_label:'6x30cl'}));
+assert.notEqual(m.pack({pack_label:'4x500ml'}),m.pack({pack_label:'6x300ml'}));
+console.log('Cross-source offer identity, pack sizes and conflict surfacing validated');

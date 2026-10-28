@@ -29,13 +29,7 @@ function offers(s){
  const scan=state.catalog?.stores?.[s];
  const fresh=state.catalog?.generated_at?.slice(0,10)===today()&&scan?.status==='ok';
  const external=fresh&&Array.isArray(scan.offers)?scan.offers:[];
- const ids=new Set(),names=new Set(),all=[];
- for(const o of [...manual,...current,...external,...supplements]){
-   if(!isOfferActive(o)||ids.has(o.id))continue;
-   const key=norm(o.name).replace(/(jumbo|ah|albert heijn|lidl)/g,'').trim()+'|'+(o.pack_label||'');
-   if(names.has(key))continue;
-   ids.add(o.id);names.add(key);all.push(o);
- }
+ const all=window.MaatjeOfferIdentity?.merge([...manual,...current,...external,...supplements].filter(isOfferActive))||[];
  state._offersCache.set(key,all);return all;
 }
 function isOfferActive(o){
@@ -225,11 +219,11 @@ function favoriteDashboard(){
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
  const choices=offers(s).filter(o=>helper.familyKey(o)===group.key).map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
- choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
+ choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||Number(!!a.o.price_conflict)-Number(!!b.o.price_conflict)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
  if(!choices.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen bijpassende actie in de beschikbare bronnen</span><small>Reguliere prijs niet bekend; assortiment kan groter zijn.</small></div>';
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
  choices.slice(0,5).map(({o,unit,exact})=>
- '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+'</strong>'+(unit?'<span>'+money(unit.price)+'/L</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
+ '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+(o.price_conflict?'*':'')+'</strong>'+(unit?'<span>'+money(unit.price)+'/L</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
  '</div>').join('')+
  (choices.length>5?'<small>+'+(choices.length-5)+' aanvullende waarnemingen in Alle aanbiedingen</small>':'')+'</div>';
  }).join('')+'</div></section>';
