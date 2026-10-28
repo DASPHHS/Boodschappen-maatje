@@ -129,10 +129,10 @@ pompoen:/\b(flespompoen|biologische pompoen|oranje pompoen)\b/,
 sperziebonen:/\b(sperziebonen|gebroken bonen)\b/,bospeen:/\bbospeen\b/,popcorn:/\bpopcorn\b/
 };
 function profileKey(o){
-if(o?.category==='bier')return 'bier';
 const name=norm(o.name);
 if(/\bvolle melk\b/.test(name)&&!/plantaardig|halfvol|mager/.test(name))return 'volle_melk';
 if(/skuumkoppe/.test(name))return 'skuumkoppe';
+if(o?.category==='bier')return 'bier';
 if(/(boemboe soto|soto boemboe|saoto boemboe|boemboe saoto)/.test(name))return 'soto_boemboe';
 if(/(kippenpoten|kippenbouten|kipbouten|kippenpootjes|drumsticks)/.test(name)&&!/kruiden|saus|soep/.test(name))return 'kippenpoten';
 if(/\b(sereh|citroengras|lemongrass)\b/.test(name)&&!/thee|smaak|aroma|saus|kruidenmix/.test(name))return 'sereh';
@@ -243,7 +243,7 @@ if(relevant.length>18)out+='<p class="muted">Er zijn '+(relevant.length-18)+' aa
 return out;
 }
 function storeRecipeCounts(s){return recipes(s).length}
-function status(){const d=state.daily;const at=d?.generated_at;const date=at?String(at).slice(0,10):null;return !date?'Er is nog geen actuele scan':date<today()?'Laatste scan: '+date:'Actuele scan: '+date}
+function status(){const d=state.daily;const at=d?.generated_at;const date=at?String(at).slice(0,10):null;return !date?'Dagrapport ontbreekt':date<today()?'Dagrapport verouderd: '+date:'Dagrapport: '+date}
 function storePill(s){return '<span class="store-mini">'+safe(NAMES[s]||'Algemene inspiratie')+'</span>'}
 function priceQuality(r){const n=pick(r.cost,'basket_total');return typeof n==='number'?money(n):'Prijs nog niet bevestigd'}
 function statusTag(r){const n=pick(r.cost,'basket_total');return typeof n!=='number'?'<span class="tag orange">Prijs onbekend</span>':r.cost.estimated?'<span class="tag orange">Prijsindicatie</span>':n<=10?'<span class="tag fresh">≤ € 10</span>':'<span class="tag orange">Boven € 10</span>'}
@@ -427,7 +427,7 @@ return '<div class="recipe-toolbar offer-toolbar"><label>Sorteren <select id="of
 }
 function offersView(){
 header('Slim besparen','Voor mij: <span style="color:#719b66">echte voordelen.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
-let out='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
+let out='<div class="info-banner"><strong>Controle:</strong> de API-feed en de dagelijkse taak zijn geen garantie dat iedere winkelprijs of folderactie onafhankelijk is bevestigd. In de kaarten staat welke bron is gebruikt.</div>';out+='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
 if(state.offerMode==='personal')out+=quickTrackedProducts()+personalHighlights()+personalComparison()+campaignHighlights('ah');
 else if(state.offerMode==='favorites')out+=favoriteDashboard()+quickTrackedProducts();
 else{
@@ -560,7 +560,7 @@ x+='<div class="dialog-actions">'+recipeSaveButton({...r,store:s})+'<button clas
 $('#dialog-content').innerHTML=x;$('#recipe-dialog').showModal();
 }
 function setView(v){if(!['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(v))return;state.view=v;state.kind='alle';state.subtype='alle';state.query='';history.replaceState(null,'','#'+v);render();window.scrollTo(0,0)}
-function render(){clearPage();if(state.view==='vandaag')overview();if(state.view==='aanbiedingen')offersView();if(state.view==='recepten')recipeView();if(state.view==='lijst')shoppingView();if(state.view==='mijn')myRecipesView();let total=Object.values(state.selected).reduce((x,y)=>x+(y?.length||0),0);$('#nav-count').textContent=total||'';$('#saved-count').textContent=state.savedRecipes.length||'';$('#product-favorites-count').textContent=state.favorites.length||'';const st=$('#feed-status');st.textContent=status()+(state.catalog?.generated_at?' · actiescan '+String(state.catalog.generated_at).slice(0,10):'');st.classList.toggle('warn',!state.daily?.generated_at||String(state.daily.generated_at).slice(0,10)<today())}
+function render(){clearPage();if(state.view==='vandaag')overview();if(state.view==='aanbiedingen')offersView();if(state.view==='recepten')recipeView();if(state.view==='lijst')shoppingView();if(state.view==='mijn')myRecipesView();let total=Object.values(state.selected).reduce((x,y)=>x+(y?.length||0),0);$('#nav-count').textContent=total||'';$('#saved-count').textContent=state.savedRecipes.length||'';$('#product-favorites-count').textContent=state.favorites.length||'';const st=$('#feed-status');st.textContent=status()+(state.catalog?.generated_at?' · externe actiescan '+String(state.catalog.generated_at).slice(0,10)+' (niet elke prijs geverifieerd)':' · geen externe actiescan');st.classList.toggle('warn',!state.daily?.generated_at||String(state.daily.generated_at).slice(0,10)<today())}
 function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k);if(!old){old={...i,quantity:0};m.set(k,old)}old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
