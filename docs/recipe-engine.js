@@ -38,6 +38,11 @@ vlees:/(rundergehakt|runderriblappen|rundvleesreepjes|runderlappen|varkensoester
 vis:/(zalmfilet|zalmblokjes|zalm pangasius garnalen|kabeljauwfilet|koolvisfilet|witvisfilet|heekfilet|scholfilet|pangasiusfilet|forelfilet|makreelfilet|haringfilet|sardinefilet|garnalen|visfilet)/i,
 vega:/(tofu|tempeh|seitan|edamame|sojabrokken|sojastukjes)/i
 };
+const SLOW=[
+{name:'Marokkaanse langzaam gestoofde runderriblappen met bloemkool',cuisine:'Marokkaans',veg:['bloemkool','spinazie'],extras:[['ras el hanout',15,'g'],['tomatenblokjes',400,'g']],steps:['Braad de runderriblappen aan in een zware pan.','Voeg tomaat, ras el hanout en een scheut water toe en stoof 2 tot 3 uur op laag vuur tot het vlees zacht is.','Stoom bloemkool en spinazie apart gaar en serveer met de stoof.']},
+{name:'Indonesische semur van runderlappen met paksoi',cuisine:'Indonesisch',veg:['paksoi','broccoli'],extras:[['sojasaus',40,'ml'],['gember',25,'g']],steps:['Braad de runderlappen aan met gember.','Voeg soja en water toe; stoof afgedekt 2 tot 3 uur zachtjes tot het vlees uit elkaar valt.','Stoom broccoli en paksoi gaar en meng met de saus bij het serveren.']},
+{name:'Franse runderstoof met champignons en courgette',cuisine:'Frans',veg:['champignons','courgette'],extras:[['tijm',5,'g'],['tomatenblokjes',400,'g']],steps:['Braad de runderlappen rondom bruin en voeg tomaat en tijm toe.','Stoof afgedekt 2 tot 3 uur op laag vuur totdat het vlees mals is.','Rooster champignons en courgette apart en serveer samen.']}
+];
 const display={kip:'Kip',vlees:'Vlees',vis:'Vis',vega:'Vega'};
 const euro=new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'});
 const qty=(n)=>Math.max(1,Math.round(n));
@@ -47,7 +52,7 @@ function eligible(o,k){
  const n=String(o.name||'').toLowerCase();
  if(/(schnitzel|burger|knorr|honig|cup.a.soup|bouillon|jus|kruiden|saus|dressing|salade|tapenade|rookvlees|gerookt|snack|cracker|borrel|wrap|rolletje|olvarit|ella.s kitchen|noedels|noodles|baby|maaltijd|visstick|gepaneerd|kipstick|knaks|roti|uit eigen keuken|spread|scholiertje|chocolade|plakjes)/i.test(n))return false;
  if((k==='kip'||k==='vlees'||k==='vis')&&/(plantaardig|vegan|vegetarisch|vleesvervanger)/i.test(n))return false;
- if(/(kroket|nugget|cordon bleu|grillworst|spiesje|balletje|staafje|flinterdun|knak|soep|soup|scholier|beyond meat|vleesvervanger|snack|plakjes|gegrild)/i.test(n))return false;
+ if(/(kroket|nugget|krokant|crispy|airfryer|cordon bleu|grillworst|spiesje|balletje|staafje|flinterdun|knak|soep|soup|scholier|beyond meat|vleesvervanger|snack|plakjes|gegrild)/i.test(n))return false;
  if((k==='kip'||k==='vlees')&&/(spies|uit eigen keuken|gerookt|gebakken|gegrild)/i.test(n))return false;
  const q=String(o.pack_label||'').toLowerCase().match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
  const grams=q?Number(q[1].replace(',','.'))*(q[2]==='kg'?1000:1):null;
@@ -81,13 +86,13 @@ for(const k of ['kip','vlees','vis','vega']){
  for(let index=0;index<majors.length&&count<cap;index++){
   const main=majors[index],rounds=majors.length===1?5:3;
   for(let j=0;j<rounds&&count<cap;j++){
-   const t=T[k][(index*2+j)%T[k].length],id='idee-'+store+'-'+slug(main.id)+'-'+slug(t.name);
+   const isSlow=k==='vlees'&&/riblappen|runderlappen|sukade|stoofvlees/i.test(main.name);const templates=isSlow?SLOW:T[k];const t=templates[(index*2+j)%templates.length],id='idee-'+store+'-'+slug(main.id)+'-'+slug(t.name);
    if(usedIds.has(id))continue;usedIds.add(id);
    const protein=ingredient(main.name,800,'g',k==='vega'?'Vega & peulvruchten':'Eiwitbronnen');
    const veg=t.veg.map(v=>ingredient(v,600,'g','Groente & fruit'));
    const extras=t.extras.map(([name,q,u])=>ingredient(name,q,u,'Kruiden & voorraad'));
    result.push({id,title:t.name,category:k,cuisine:t.cuisine,
-    servings:4,minutes:35,vegetables_g_per_portion:300,
+    servings:4,minutes:isSlow?160:35,vegetables_g_per_portion:300,
     animal_protein_g_per_portion:k==='vega'?null:200,
     ingredients:[protein,...veg,...extras],instructions:k==='vlees'&&/gehakt/i.test(main.name)?['Kruid het gehakt met de kruiden uit het recept en rul het volledig gaar.','Snijd de groenten en roerbak of stoof ze gaar.','Meng het gehakt met de groenten en maak de saus of smaakmakers erbij.']:t.steps,
     offer_anchor_id:main.id,offer_anchor_name:main.name,

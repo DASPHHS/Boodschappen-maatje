@@ -27,7 +27,7 @@ def kind(name):
          "rookvlees","gerookt","snack","cracker","borrel","wraphapje","rolletje",
          "olvarit","ella's kitchen","noedels","noodles","baby","maaltijdmix","visstick",
          "gepaneerd","kipstick","knaks","roti","maaltijd","uit eigen keuken",
-         "spread","kant-en-klaar","spice mix","pesto","plakjes")
+         "spread","kant-en-klaar","spice mix","pesto","plakjes","krokant","airfryer")
     if any(part in t for part in bad):return None
     if any(part in t for part in ("kroket","nugget","cordon bleu","grillworst","spiesje","balletje",
                                   "staafje","flinterdun","vleesvervanger","beyond meat","kipknak",
