@@ -258,7 +258,7 @@ return out;
 }
 function personalComparison(){
 const watch=chosenWatch();
-let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Vergelijken gebeurt alleen als de productvariant en eenheid passen.');
+let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Getoond wordt per winkel de goedkoopste beschikbare prijswaarneming per eenheid; verschillende varianten zijn niet automatisch vergelijkbaar.');
 out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
 if(state.manageWatch)out+='<div class="watch-editor">'+(state.watchlist?.items||[]).map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div>';
 for(const w of watch){
@@ -270,9 +270,9 @@ if(!sorted.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</
 const r=sorted[0],p=normalizedPrice(r);
 return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(r.price)+'</strong><small>'+safe(r.name)+'</small><small>'+ (p===null?'Prijs per eenheid onbekend':money(p)+'/'+safe(normalizedUnit(r))) +'</small>'+(sorted.length>1?'<small>'+ (sorted.length-1)+' andere variante(n) geregistreerd</small>':'')+'<small class="personal-evidence">'+safe(r.status==='official_promo'?'Actie (controleer datum)':r.status==='official_discount_undated'?'Webkorting, periode onbekend':r.status==='external_regular_observed'?'Externe prijswaarneming':'Reguliere schapprijs')+'</small>'+'<div class="personal-shop-actions">'+favButton(r,store)+'</div><a href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Prijsbron ↗</a></div>';
 }).join('')+'</div>';
-if(w.key==='sungold')out+='<p class="personal-finding">Gelijke SunGold 750 g: Jumbo € 4,99 en Albert Heijn € 6,59. Lidl-prijs nog niet bevestigd.</p>';
-if(w.key==='pindakaas')out+='<p class="personal-finding">Jumbo huismerk is per kilo goedkoper dan de Calvé-actie. Samenstelling van gewone en 100%-pindakaas verschilt; geen automatische vergelijkbaarheid.</p>';
-if(w.key==='sperziebonen')out+='<p class="personal-finding">De waargenomen diepvriesbonen van € 2,07/kg zijn goedkoper dan de verse aanbieding van circa € 4,98/kg.</p>';
+if(w.key==='sungold')out+='<p class="personal-finding">Vergelijk SunGold uitsluitend bij dezelfde inhoud en productvariant. Oude handmatig genoteerde bedragen gelden niet als actuele winkelprijzen.</p>';
+if(w.key==='pindakaas')out+='<p class="personal-finding">Vergelijk gewone en 100%-pindakaas niet automatisch: samenstelling en verpakking verschillen.</p>';
+if(w.key==='sperziebonen')out+='<p class="personal-finding">Vers en diepvries verschillen in vorm en toepassing; vergelijk de actuele kiloprijs alleen als het alternatief geschikt is.</p>';
 out+='</section>';
 }
 out+='<div class="info-banner warning">Ontbrekende prijsgegevens betekenen niet dat een winkel het product niet verkoopt. Een prijs met peildatum is geen live-kassagarantie. Bij verschillende varianten of aankoopaantallen is geen absolute goedkoopste winkel vastgesteld.</div>';
