@@ -106,15 +106,19 @@
           "verified": true,
           "member_required": false,
           "source": {
-            "label": "Actuele weekfolder",
-            "url": "https://folderaanbod.nl/winkels/lidl/folders/week-44-2026"
+            "label": "Lidl officiële productdetailpagina: €7,99 (categorieoverzicht toont €7,49)",
+            "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112"
           },
           "crosscheck": null,
           "unit_price": 15.98,
           "unit": "kg",
           "comparison_note": "Folderprijs, geen reguliere referentieprijs vastgesteld. Gisteren stond een andere variant wilde zalmfilet (zonder huid, 250g) lager per kg in de prijsdataset; niet identiek qua soort en vorm.",
           "condition": null,
-          "cheapest_alternative": null
+          "cheapest_alternative": null,
+          "price_conflict": "Lidl-pagina productdetail €7,99; overzicht visproducten €7,49. Exacte huidige winkelprijs kan nog niet als bevestigd gelden.",
+          "price_verified": false,
+          "source_provider": "lidl_official_price_conflict",
+          "observed_at": "2026-10-28"
         },
         {
           "id": "lidl-20261028-varkensoester",
@@ -140,6 +144,107 @@
         }
       ],
       "recipes": [
+        {
+          "id": "lidl-20261028-zalm-op-huid-met-broccoli",
+          "title": "Lidl ovenzalm op huid met citroen, broccoli en paprika",
+          "category": "vis",
+          "cuisine": "Mediterraans",
+          "minutes": 35,
+          "servings": 4,
+          "origin": "folder-idee",
+          "source_type": "eigen_bewerking_met_specifieke_aanbieding",
+          "source_note": "Gebaseerd op de werkelijke Lidl-aanbieding 'Verse zalmfilet op huid 500 g'. Prijs €7,49–7,99 per 500 g is tegenstrijdig op de Lidl-pagina's; daarom geen bevestigde kassaprijs en geen bewezen budgetmaaltijd.",
+          "quality_status": "uitgewerkt_niet_culinair_getest",
+          "macro_status": "niet_berekend",
+          "macros": null,
+          "cost": null,
+          "price_status": "prijsconflict_lidl_zalm",
+          "budget_feasibility": "boven_10_euro_op_basis_van_alleen_zalm",
+          "vegetables_g_per_portion": 350,
+          "animal_protein_g_per_portion": 200,
+          "minimum_known_spend": null,
+          "offer_anchors": [
+            {
+              "offer_id": "lidl-20261028-zalm",
+              "ingredient_name": "Verse zalmfilet op huid",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "lidl-20261028-broccoli",
+              "ingredient_name": "Broccoli",
+              "role": "groente"
+            }
+          ],
+          "ingredients": [
+            {
+              "name": "Verse zalmfilet op huid",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": null,
+              "price_status": "officieel_prijsverschil",
+              "price_note": "Twee verpakkingen van 500 g kopen, 800 g gebruiken, 200 g over. De pakketprijs is €7,49 of €7,99 afhankelijk van de bron."
+            },
+            {
+              "name": "Broccoli",
+              "quantity": 1000,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 2,
+              "pack_price": 1.38,
+              "price_status": "folder_current",
+              "price_note": "Twee maal 500 g voor €0,69."
+            },
+            {
+              "name": "Verse paprika",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "Citroen",
+              "quantity": 1,
+              "unit": "st",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "Magere kwark",
+              "quantity": 250,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "Dille",
+              "quantity": 5,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "Olie",
+              "quantity": 20,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Verwarm de oven voor op 200 °C. Verdeel de broccoli in kleine roosjes en snijd de paprika in repen.",
+            "Meng broccoli en paprika met olie. Rooster circa 15 minuten, schep om en schuif de groenten naar de randen.",
+            "Snijd uit de aangeschafte kilo zalm ongeveer 800 g af voor vier porties. Verdeel in stukken van circa 200 g met huid.",
+            "Leg de zalm met de huid naar beneden op de bakplaat. Bak nog circa 12–15 minuten, tot de vis gaar is. Controleer gaarheid in het dikste deel.",
+            "Meng kwark met citroensap en dille. Verdeel minimaal 350 g groente en circa 200 g rauwgewogen zalm per persoon. Bewaar de rest van de rauwe vis tijdig gekoeld of vries deze direct in."
+          ]
+        },
         {
           "id": "lidl-20261028-drive-01",
           "title": "Romige paprikakip met broccoli en champignons",
@@ -514,7 +619,9 @@
               "match_type": "exact",
               "verification": "price_source_folder_current"
             }
-          ]
+          ],
+          "source_note": "De zalmfilet zonder huid in dit eerdere recept is NIET identiek aan de Lidl-aanbieding 'Verse zalmfilet op huid'. Daarom geen zalmactie als reeds verwerkt gemarkeerd; zie alternatief recept met de juiste variant.",
+          "variant_warning": "Zalm zonder huid ≠ verse zalmfilet op huid (aanbieding)."
         },
         {
           "id": "lidl-20261028-drive-37",

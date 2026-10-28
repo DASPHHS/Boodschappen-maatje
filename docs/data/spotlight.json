@@ -381,6 +381,102 @@
           "pack_label": "6 × 300 ml",
           "unit": "L",
           "unit_price": 3.661111111111111
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "Jumbo officiële Skuumkoppe-aanbiedingen, 28 okt–3 nov 2026",
+            "url": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen"
+          },
+          "source_provider": "jumbo_official",
+          "verified": true,
+          "promotion_status": "active",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "observed_at": "2026-10-28",
+          "promo_note": "Exact de genoemde verpakking; prijzen van sommige vergelijkers en andere Jumbo-categoriepagina's wijken af. Statiegeld niet als korting behandeld.",
+          "id": "jumbo-20261028-skuumkoppe-6x300",
+          "name": "Texels Skuumkoppe Bier Fles 6 × 300 ml",
+          "price": 7.04,
+          "regular_price": 9.39,
+          "pack_label": "6 × 300 ml",
+          "unit": "L",
+          "unit_price": 3.91,
+          "variant": "alcoholvrij",
+          "price_conflict": "Andere bron vermeldt €7,49; officieel categorieoverzicht €7,04."
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "Jumbo officiële Skuumkoppe-aanbiedingen, 28 okt–3 nov 2026",
+            "url": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen"
+          },
+          "source_provider": "jumbo_official",
+          "verified": true,
+          "promotion_status": "active",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "observed_at": "2026-10-28",
+          "promo_note": "Exact de genoemde verpakking; prijzen van sommige vergelijkers en andere Jumbo-categoriepagina's wijken af. Statiegeld niet als korting behandeld.",
+          "id": "jumbo-20261028-skuumkoppe-4x500",
+          "name": "Texels Skuumkoppe Blik 4 × 500 ml",
+          "price": 7.46,
+          "regular_price": 9.95,
+          "pack_label": "4 × 500 ml",
+          "unit": "L",
+          "unit_price": 3.73,
+          "variant": "alcoholvrij",
+          "price_conflict": null
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "Jumbo officiële Skuumkoppe-aanbiedingen, 28 okt–3 nov 2026",
+            "url": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen"
+          },
+          "source_provider": "jumbo_official",
+          "verified": true,
+          "promotion_status": "active",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "observed_at": "2026-10-28",
+          "promo_note": "Exact de genoemde verpakking; prijzen van sommige vergelijkers en andere Jumbo-categoriepagina's wijken af. Statiegeld niet als korting behandeld.",
+          "id": "jumbo-20261028-skuumkoppe-6x330",
+          "name": "Texels Skuumkoppe 6 × 330 ml",
+          "price": 8.61,
+          "regular_price": 11.49,
+          "pack_label": "6 × 330 ml",
+          "unit": "L",
+          "unit_price": 4.35,
+          "variant": "alcoholhoudend",
+          "price_conflict": null
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "Jumbo officiële Skuumkoppe-aanbiedingen, 28 okt–3 nov 2026",
+            "url": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen"
+          },
+          "source_provider": "jumbo_official",
+          "verified": true,
+          "promotion_status": "active",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "observed_at": "2026-10-28",
+          "promo_note": "Exact de genoemde verpakking; prijzen van sommige vergelijkers en andere Jumbo-categoriepagina's wijken af. Statiegeld niet als korting behandeld.",
+          "id": "jumbo-20261028-skuumkoppe-00-6x300",
+          "name": "Texels Skuumkoppe 0.0 Bier Fles 6 × 300 ml",
+          "price": 7.04,
+          "regular_price": 9.39,
+          "pack_label": "6 × 300 ml",
+          "unit": "L",
+          "unit_price": 3.91,
+          "variant": "alcoholvrij",
+          "price_conflict": null
         }
       ],
       "recipes": [

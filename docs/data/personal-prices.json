@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T12:10:00+01:00",
+  "generated_at": "2026-10-28T15:49:00+01:00",
   "notice": "Dit zijn afzonderlijk gecontroleerde productwaarnemingen, geen volledig winkelassortiment. Ontbrekende prijzen blijven onbekend. Vergelijk alleen identieke producten of nadrukkelijk gelijkwaardige productgroepen.",
   "products": [
     {
@@ -164,6 +164,111 @@
       "end_date": "2026-11-01",
       "regular_price": 2.98,
       "url": "https://www.ah.nl/shop/seizoensproducten"
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "volle_melk",
+      "store": "ah",
+      "name": "AH Verse volle melk 1 L",
+      "price": 1.39,
+      "quantity": 1000,
+      "unit": "ml",
+      "type": "vers",
+      "url": "https://www.ah.nl/producten/product/wi1524/volle-melk",
+      "note": "Reguliere webprijs; 1 L verse volle melk. Niet vergelijken met houdbare."
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "volle_melk",
+      "store": "jumbo",
+      "name": "Jumbo Verse Volle Melk 1 L",
+      "price": 1.39,
+      "quantity": 1000,
+      "unit": "ml",
+      "type": "vers",
+      "url": "https://www.jumbo.com/producten/zuivel%2C-boter-en-eieren/verse-melk/volle-melk/jumbo/",
+      "note": "Verse volle melk, 1 L. Geen aanbieding aangetoond."
+    },
+    {
+      "group": "volle_melk",
+      "store": "lidl",
+      "name": "Lidl Verse volle melk PP 1 L",
+      "price": 0.94,
+      "quantity": 1000,
+      "unit": "ml",
+      "type": "vers",
+      "status": "external_regular_observed",
+      "checked_date": "2026-10-27",
+      "url": "https://boodschappenvergelijk.nl/vergelijk/volle-melk/",
+      "note": "Waarneming vergelijkingssite van 27 oktober; officiële Lidl-kassaprijs niet bevestigd."
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "soto_boemboe",
+      "store": "jumbo",
+      "name": "Toko Lien Boemboe Soto 100 g",
+      "price": 1.79,
+      "quantity": 100,
+      "unit": "g",
+      "type": "soto_paste",
+      "url": "https://www.jumbo.com/producten/toko-lien-boemboe-soto-100g-699720ZK",
+      "note": "Exacte soto-boemboe; andere samenstelling dan Kokki Djawa."
+    },
+    {
+      "group": "soto_boemboe",
+      "store": "ah",
+      "name": "Kokki Djawa Boemboe soto 100 g",
+      "price": 0.82,
+      "quantity": 100,
+      "unit": "g",
+      "type": "soto_paste",
+      "status": "official_discount_undated",
+      "checked_date": "2026-10-28",
+      "regular_price": 1.09,
+      "url": "https://www.ah.nl/producten/product/wi199073/kokki-djawa-boemboe-soto",
+      "note": "AH productpagina toont €0,82 (25% korting) en €1,09 normale prijs. Exacte actieperiode niet vastgesteld: momentopname, geen bevestigde weekaanbieding."
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "kippenpoten",
+      "store": "jumbo",
+      "name": "Jumbo Kippenbouten 4 stuks circa 1,3 kg",
+      "price": 7.53,
+      "quantity": 1300,
+      "unit": "g",
+      "type": "bouten_bot_in",
+      "url": "https://www.jumbo.com/recepten/kip/kippenpoten/braden",
+      "note": "Gewichtsartikel ca. 1,3 kg; aankoopprijs indicatief. Met bot, eetbaar vlees minder dan aankoopgewicht."
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "sereh",
+      "store": "ah",
+      "name": "AH Verse sereh / citroengras 1 stuk",
+      "price": 0.79,
+      "quantity": 1,
+      "unit": "stuk",
+      "type": "verse_sereh",
+      "url": "https://www.ah.nl/producten/product/wi387232/ah-sereh",
+      "note": "Reguliere prijs van verse sereh per stuk. AH diepvries is anders geprijsd per g."
+    },
+    {
+      "checked_date": "2026-10-28",
+      "status": "official_regular_observed",
+      "group": "sereh",
+      "store": "ah",
+      "name": "Asian Choice Lemongrass diepvries 250 g",
+      "price": 3.49,
+      "quantity": 250,
+      "unit": "g",
+      "type": "diepvries_sereh",
+      "url": "https://www.ah.nl/producten/product/wi582347/asian-choice-lemongrass",
+      "note": "€13,96/kg op AH-productpagina; 250 g kost omgerekend €3,49. Ander formaat dan losse stengel."
     }
   ]
 }

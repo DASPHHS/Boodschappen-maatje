@@ -82,7 +82,29 @@
     }
   ],
   "reviews": {
-    "lidl": {},
+    "lidl": {
+      "lidl-20261028-zalm": {
+        "product": "Verse zalmfilet op huid",
+        "status": "conflicting_official_prices",
+        "checked_at": "2026-10-28",
+        "listed_price": 7.99,
+        "pack_label": "500 g",
+        "checks": [
+          {
+            "site": "Lidl productdetail",
+            "price": 7.99,
+            "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+            "note": "Exact artikel op huid 500g, €7,99."
+          },
+          {
+            "site": "Lidl categorie vis",
+            "price": 7.49,
+            "url": "https://www.lidl.nl/h/vis-zeevruchten/h10071050",
+            "note": "Categoriekaart toont €7,49 voor 500g maar vermeldt tevens €15,98/kg (komt overeen met €7,99)."
+          }
+        ]
+      }
+    },
     "jumbo": {
       "jumbo-w44-gemengdgehakt": {
         "product": "Jumbo Gemengd Gehakt 2 × 500 g",
@@ -276,6 +298,27 @@
             "price": 0.99,
             "url": "https://www.jumbo.com/aanbiedingen/nu",
             "note": "Afhankelijk van smaak 80–150g; productvarianten niet gelijk"
+          }
+        ]
+      },
+      "jumbo-20261028-skuumkoppe-6x300": {
+        "product": "Texels Skuumkoppe Bier Fles 6 × 300 ml",
+        "status": "conflicting_official_prices",
+        "checked_at": "2026-10-28",
+        "listed_price": 7.04,
+        "pack_label": "6 × 300 ml",
+        "checks": [
+          {
+            "site": "Jumbo actuele aanbiedingen",
+            "price": 7.04,
+            "url": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen",
+            "note": "25% korting 28 okt–3 nov, normale prijs op deze pagina €9,39."
+          },
+          {
+            "site": "TurboShopper",
+            "price": 7.49,
+            "url": "https://www.turboshopper.nl/product/3574/texels-skuumkoppe-bier-fles-6-x-300-ml",
+            "note": "De externe vergelijker toont €7,49; dezelfde vormfactor, afwijkende bronprijs."
           }
         ]
       }

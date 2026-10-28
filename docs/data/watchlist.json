@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "updated_at": "2026-10-28",
-  "description": "Persoonlijke interesselijst afgeleid van expliciet genoemde producten en folderbeelden. Aanpasbaar in de browser, geen vaste merkloyaliteit of koopgarantie.",
+  "description": "Persoonlijke productgroepen, zonder een aanbieding te vereisen. Default_selected wordt getoond tenzij de gebruiker het lokaal uitschakelt. Exacte product-hartjes blijven browsergebonden.",
   "topics": [
     {
       "key": "hoofdproteine",
@@ -154,6 +154,41 @@
       "category": "extra",
       "default_selected": false,
       "description": "Optioneel; alleen bij werkelijk voordeel"
+    },
+    {
+      "key": "volle_melk",
+      "title": "Verse volle melk",
+      "category": "zuivel",
+      "default_selected": true,
+      "description": "Bij voorkeur vers en 1 liter; houdbare melk apart vergelijken. Ook bij geen actie de normale prijs tonen."
+    },
+    {
+      "key": "skuumkoppe",
+      "title": "Texels Skuumkoppe",
+      "category": "bier",
+      "default_selected": true,
+      "description": "Met en zonder alcohol apart; 6×300 ml, 6×330 ml en 4×500 ml per liter vergelijken."
+    },
+    {
+      "key": "soto_boemboe",
+      "title": "Soto/saoto-boemboe",
+      "category": "voorraad",
+      "default_selected": true,
+      "description": "Voor saoto: prijs per 100 g, merk en samenstelling vergelijken; soto niet verwarren met andere boemboes."
+    },
+    {
+      "key": "kippenpoten",
+      "title": "Kippenpoten / kippenbouten voor saoto",
+      "category": "kip",
+      "default_selected": true,
+      "description": "Drumsticks en hele kippenbouten afzonderlijk; botgewicht is niet het eetbare vleesgewicht."
+    },
+    {
+      "key": "sereh",
+      "title": "Sereh / citroengras",
+      "category": "groente",
+      "default_selected": true,
+      "description": "Verse stengels of diepvries; vergelijk per stuk/gram en voorraad, niet op basis van woorden in andere producten."
     }
   ]
 }
