@@ -151,3 +151,14 @@ if(!dreft||dreft.price!==37.98||dreft.pack_label!=='5 × 25 capsules = 125 capsu
 const kiwi=spotlight.stores.jumbo.offers.find(o=>o.id==='jumbo-w44-kiwi');
 if(!kiwi||Math.abs(kiwi.unit_price-kiwi.price/.75)>0.001)throw Error('Kiwi kiloprijs onjuist');
 console.log('Broncontroles, bundels en eenheidsprijzen consistent');
+
+const libraryAudit=JSON.parse(fs.readFileSync('docs/data/library.json','utf8'));
+if(libraryAudit.recipes.length<48)throw Error('Receptenbibliotheek onvolledig');
+for(const r of libraryAudit.recipes){
+ if(!r.source_status||!r.quality_status||!Array.isArray(r.quality_issues))
+   throw Error('Recept-herkomst of kwaliteitsstatus ontbreekt '+r.id);
+ const veg=r.ingredients.filter(i=>i.department==='Groente & fruit'&&i.unit==='g').reduce((n,i)=>n+i.quantity,0);
+ if(veg<1200)throw Error('Na categoriecorrectie onvoldoende groente '+r.id);
+ if(r.id.startsWith('drive-')&&r.quality_status!=='concept_niet_culinair_getest')throw Error('Oud recept onterecht als uitgewerkt gemarkeerd '+r.id);
+}
+console.log('Herkomst, kwaliteitsstatus en groentehoeveelheid voor 48 recepten gecontroleerd');
