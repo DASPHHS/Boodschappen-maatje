@@ -8,6 +8,8 @@ on:
       - 'docs/product-matcher.js'
       - 'docs/price-integrity.js'
       - 'tests/price-integrity.cjs'
+      - 'tests/favorite-families.cjs'
+      - 'docs/favorites.js'
       - 'scripts/offer-audit.cjs'
       - 'tests/offer-audit.cjs'
       - 'docs/data/offer-audit.json'
@@ -46,4 +48,5 @@ jobs:
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
+          node tests/favorite-families.cjs
           node tests/offer-audit.cjs

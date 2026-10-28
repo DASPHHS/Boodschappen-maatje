@@ -213,20 +213,28 @@ function favoriteMatches(f,s){
 return offers(s).filter(o=>window.MaatjeFavorites?.same(f,favoriteTarget(o,s),s)).sort((a,b)=>Number(!!b.verified)-Number(!!a.verified)||a.price-b.price);
 }
 function favoriteDashboard(){
-const hits=state.favorites.reduce((n,f)=>n+ORDER.reduce((m,s)=>m+favoriteMatches(f,s).length,0),0);
-let out=title('Mijn favorieten','Alleen exacte producten of aantoonbaar dezelfde variant; geen willekeurige huismerkvervanging.');
-out+='<div class="favorite-summary"><div><strong>♥ '+state.favorites.length+' favorieten</strong><p>'+hits+' actuele aanbiedingen bij de drie supermarkten voor jouw opgeslagen producten.</p></div><button class="button secondary small" data-offer-mode="all">Ontdek producten ♡</button></div>';
-if(!state.favorites.length)return out+empty('Nog geen favorieten','Klik op het hartje naast producten in Alle aanbiedingen of bij je persoonlijke prijsvergelijking.');
-for(const fav of state.favorites){
-out+='<section class="personal-product favorite-product"><div class="favorite-title"><div><strong>'+safe(fav.name)+'</strong><small>'+safe(fav.pack_label||'Verpakking niet bekend')+'</small></div>'+favButton(fav,fav.store||'jumbo')+'</div>';
-out+='<div class="personal-grid">'+ORDER.map(s=>{
-const arr=favoriteMatches(fav,s);
-if(!arr.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen actuele aanbieding gevonden</span></div>';
-const o=arr[0];
-return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><strong class="personal-price">'+money(o.price)+'</strong><small>'+safe(o.name)+' · '+safe(o.pack_label||'')+'</small><span class="tag '+(isOfficialOfferSource(o,s)?'fresh':'orange')+'">'+offerEvidenceLabel(o,s)+'</span><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Controleer bron ↗</a>':'')+'</div>';
-}).join('')+'</div></section>';
-}
-return out+'<div class="info-banner warning">Geen aanbieding gevonden betekent niet dat het product niet verkrijgbaar is. Favorieten worden lokaal in deze browser bewaard; ze synchroniseren nog niet tussen apparaten of naar GitHub.</div>';
+ const helper=window.MaatjeFavorites;
+ const groups=helper?.familyMembers(state.favorites)||[];
+ const matches=groups.reduce((sum,g)=>sum+ORDER.reduce((n,s)=>n+offers(s).filter(o=>helper.familyKey(o)===g.key).length,0),0);
+ let out=title('Mijn productfavorieten','Dezelfde productfamilie bij elkaar. Verpakkingen en 0.0 blijven afzonderlijk herkenbaar; prijs per liter alleen bij exact bekende inhoud.');
+ out+='<div class="favorite-summary"><div><strong>♥ '+state.favorites.length+' bewaarde varianten · '+groups.length+' productgroepen</strong><p>'+matches+' mogelijke aanbiedingen in ontvangen feeds. Dit zegt niet dat alle winkelacties of reguliere prijzen zijn gevonden.</p></div><button class="button secondary small" data-offer-mode="all">Meer favorieten ♡</button></div>';
+ if(!groups.length)return out+empty('Nog geen favoriete producten','Klik op een hartje in Alle aanbiedingen om producten te bewaren.');
+ for(const group of groups){
+ const saved=group.items;
+ out+='<section class="personal-product favorite-product favorite-family"><div class="favorite-title"><div><strong>'+safe(group.label)+'</strong><small>'+saved.length+' bewaarde verpakking'+(saved.length===1?'':'en')+' · alle varianten apart vergelijkbaar</small></div></div>';
+ out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
+ out+='<div class="personal-grid">'+ORDER.map(s=>{
+ const choices=offers(s).filter(o=>helper.familyKey(o)===group.key).map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
+ choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
+ if(!choices.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen bijpassende actie in de beschikbare bronnen</span><small>Reguliere prijs niet bekend; assortiment kan groter zijn.</small></div>';
+ return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
+ choices.slice(0,5).map(({o,unit,exact})=>
+ '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+'</strong>'+(unit?'<span>'+money(unit.price)+'/L</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
+ '</div>').join('')+
+ (choices.length>5?'<small>+'+(choices.length-5)+' aanvullende waarnemingen in Alle aanbiedingen</small>':'')+'</div>';
+ }).join('')+'</div></section>';
+ }
+ return out+'<div class="info-banner warning">Productgroepen zijn geen bewijs dat twee artikelen identiek zijn. Vergelijk alleen gelijkwaardige inhoud en de prijs per liter; 0.0 en alcoholhoudend blijven gescheiden. Hartjes worden in deze browser bewaard, niet tussen apparaten gesynchroniseerd.</div>';
 }
 
 function quickTrackedProducts(){
@@ -428,11 +436,11 @@ function overview(){
 header('Jouw slimme boodschappenhulp','Wat eten we <span style="color:#719b66">deze week?</span>','Bekijk eerst alle drie de supermarkten. Kies straks zelf op basis van wat je lekker vindt.');
 let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOED ETEN · SLIM KOPEN</div><h1>Meer smaak.<br><em>Minder uitgeven.</em></h1><p>Acties, nieuwe recepten en boodschappenlijsten per supermarkt. Altijd vier porties, genoeg voor twee dagen.</p></div><div class="hero-art" aria-hidden="true">✳</div></section>';
 
-x+=title('Drie winkels, jouw keuze','Jij bepaalt de winkel; wij laten echte actieproducten en transparante prijzen zien.');
+x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
 const deals=recipes(s).filter(r=>{const m=offerInfo(r,s);return !!(m.confirmed.length||m.anchors.length)}).length;
 const known=recipes(s).filter(r=>recipePrice(r).total!==null).length;
-return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met actieproducten</span></div><p>'+deals+' recepten die echt een lopend actieproduct gebruiken. '+known+' recepten met een prijsindicatie op basis van volledige verpakkingen (niet noodzakelijk actueel).</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>lopende acties</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
+return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met actieproducten</span></div><p>'+deals+' recepten met een passend product uit de beschikbare actiefolders of feeds. '+known+' recepten met een prijsindicatie op basis van volledige verpakkingen (niet noodzakelijk actueel).</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>lopende acties</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
 }).join('')+'</div>';
 x+='<div class="my-home-link"><span>♧ <strong>'+state.savedRecipes.length+' bewaarde recepten</strong> · '+Object.values(state.selected).reduce((n,v)=>n+(v?.length||0),0)+' gerechten gepland</span><button class="button secondary small" data-view="mijn">Mijn recepten →</button></div>';
 x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
