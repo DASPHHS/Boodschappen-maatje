@@ -147,7 +147,7 @@ const pa=recipePrice(a),pb=recipePrice(b),an=pa.total===null?Infinity:pa.total,b
 if(state.sortBy==='price')return an-bn||cb.confirmed.length-ca.confirmed.length||a.title.localeCompare(b.title,'nl');
 if(state.sortBy==='protein')return (b.macros?.protein_g||-1)-(a.macros?.protein_g||-1)||an-bn;
 if(state.sortBy==='time')return (a.minutes||999)-(b.minutes||999)||an-bn;
-return cb.confirmed.length-ca.confirmed.length||(cb.anchors.length+cb.confirmed.length)-(ca.anchors.length+ca.confirmed.length)||an-bn||a.title.localeCompare(b.title,'nl');
+return (window.MaatjeRanking?.score(cb)||0)-(window.MaatjeRanking?.score(ca)||0)||an-bn||a.title.localeCompare(b.title,'nl');
 }
 function recipeFiltered(r){
 if(state.recipeQuality!=='all'&&r.quality_status==='concept_niet_culinair_getest')return false;
@@ -347,10 +347,15 @@ return opts.length?'<div class="control-row subtype-controls">'+opts.map(([k,v])
 function featured(r){return '<div class="recipe-info"><span>4 porties</span><span>'+(Number(r.minutes)||'?')+' min</span><span>'+safe(KINDS[r.category]||'Maaltijd')+'</span></div>'}
 
 function offerBadge(r){
-const m=offerInfo(r,r.store);
-if(m.confirmed.length)return '<span class="offer-badge confirmed">'+m.confirmed.length+' actieprijs'+(m.confirmed.length>1?'zen':'')+' doorgerekend · kassaprijs niet bevestigd</span>';
-if(m.anchors.length)return '<span class="offer-badge anchor">★ '+m.anchors.length+' gekoppeld actieproduct'+(m.anchors.length>1?'en':'')+' · prijs/variant nog te controleren</span>';if(m.possible.length)return '<span class="offer-badge candidate">↗ '+m.possible.length+' mogelijke actie'+(m.possible.length>1?'s':'')+' · prijs niet doorgerekend</span>';
-return '<span class="offer-badge neutral">Geen actie gekoppeld</span>';
+ const m=offerInfo(r,r.store),main=window.MaatjeRanking?.mainOffer(m);
+ if(main){
+  const priced=m.confirmed.some(x=>x===main);
+  return '<span class="offer-badge '+(priced?'confirmed':'anchor')+'">Hoofdingrediënt in actie: '+safe(main.offer.name)+' · '+(priced?'productprijs verwerkt, mand nog controleren':'prijs/variant nog niet volledig bevestigd')+'</span>';
+ }
+ if(m.confirmed.length)return '<span class="offer-badge confirmed">'+m.confirmed.length+' aanvullend actieproduct'+(m.confirmed.length>1?'en':'')+' · prijs deels verwerkt</span>';
+ if(m.anchors.length)return '<span class="offer-badge anchor">'+m.anchors.length+' aanvullend actieproduct'+(m.anchors.length>1?'en':'')+' · voordeel niet bewezen</span>';
+ if(m.possible.length)return '<span class="offer-badge candidate">'+m.possible.length+' mogelijke aanbieding'+(m.possible.length>1?'en':'')+' · niet verwerkt</span>';
+ return '<span class="offer-badge neutral">Geen actie gekoppeld</span>';
 }
 function recipeSourceLabel(r){
 if(r.quality_status==='concept_niet_culinair_getest')return 'Concept · oorspronkelijke receptbron niet volledig gecontroleerd';
@@ -438,14 +443,14 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 
 x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
-const deals=recipes(s).filter(r=>{const m=offerInfo(r,s);return !!(m.confirmed.length||m.anchors.length)}).length;
+const deals=recipes(s).filter(r=>window.MaatjeRanking?.mainOffer(offerInfo(r,s))).length;
 const known=recipes(s).filter(r=>recipePrice(r).total!==null).length;
-return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met actieproducten</span></div><p>'+deals+' recepten met een passend product uit de beschikbare actiefolders of feeds. '+known+' recepten met een prijsindicatie op basis van volledige verpakkingen (niet noodzakelijk actueel).</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>lopende acties</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
+return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met een prijsindicatie op basis van volledige verpakkingen (niet noodzakelijk actueel).</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>lopende acties</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
 }).join('')+'</div>';
 x+='<div class="my-home-link"><span>♧ <strong>'+state.savedRecipes.length+' bewaarde recepten</strong> · '+Object.values(state.selected).reduce((n,v)=>n+(v?.length||0),0)+' gerechten gepland</span><button class="button secondary small" data-view="mijn">Mijn recepten →</button></div>';
 x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
 
-x+=title('Recepten rond deze weekacties','De genoemde actieproducten staan daadwerkelijk in het recept. Kassaprijzen blijven onbekend als ingrediënten ontbreken.');
+x+=title('Recepten rond deze weekacties','Hoofdingrediënten krijgen voorrang op kleine groentekortingen. De totale besparing is pas betrouwbaar bij een volledige vergelijkbare mand.');
 for(const s of ORDER){
 let featured=recipes(s).filter(r=>{const m=offerInfo(r,s);return m.confirmed.length||m.anchors.length}).sort(recipeSort).slice(0,3);
 x+=title(NAMES[s],featured.length?featured.length+' uitgelichte recepten met lopende actieproducten':'Geen exact gekoppelde actierecepten gevonden','<button class="button secondary small" data-goto-store="'+s+'">Alle recepten →</button>');
