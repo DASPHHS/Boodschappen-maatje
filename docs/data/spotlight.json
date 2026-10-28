@@ -294,8 +294,12 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
             },
             {
               "name": "Jumbo biologische pompoen of flespompoen",
@@ -306,12 +310,18 @@
               "pack_price": null
             },
             {
-              "name": "Jumbo verse sperziebonen of snijbonen",
+              "name": "Begro diepvries gebroken bonen",
               "quantity": 500,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "webshop_observed_2026-10-28",
+              "pack_price": 2.07,
+              "product_name": "Begro Diepvriesgroenten Gebroken Bonen 1 kg",
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://www.jumbo.com/producten/diepvries/groente/sperziebonen/bolletje/?filters=Merken%3AJumbo%2CArdo%2CMerkloos",
+              "note": "Een pak van 1 kg bevat meer dan de verbruikte hoeveelheid; de volledige pakprijs is meegenomen."
             },
             {
               "name": "magere kwark",
@@ -341,7 +351,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 7.06,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-gehakt-boerenkool",
@@ -358,8 +371,12 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
             },
             {
               "name": "Jumbo gesneden boerenkool",
@@ -397,7 +414,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 4.99,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-gehakt-bulgogi",
@@ -414,8 +434,12 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
             },
             {
               "name": "spitskool",
@@ -464,7 +488,10 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
-          }
+          },
+          "minimum_known_spend": 4.99,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-gehakt-surinaams",
@@ -481,16 +508,26 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
             },
             {
-              "name": "Jumbo verse sperziebonen of snijbonen",
+              "name": "Begro diepvries gebroken bonen",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "webshop_observed_2026-10-28",
+              "pack_price": 2.07,
+              "product_name": "Begro Diepvriesgroenten Gebroken Bonen 1 kg",
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://www.jumbo.com/producten/diepvries/groente/sperziebonen/bolletje/?filters=Merken%3AJumbo%2CArdo%2CMerkloos",
+              "note": "Een pak van 1 kg bevat meer dan de verbruikte hoeveelheid; de volledige pakprijs is meegenomen."
             },
             {
               "name": "bospeen",
@@ -531,7 +568,10 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
-          }
+          },
+          "minimum_known_spend": 7.06,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-gehakt-italiaans",
@@ -548,8 +588,12 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
             },
             {
               "name": "courgette",
@@ -595,7 +639,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 4.99,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-kip-pompoen",
@@ -612,8 +659,13 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 13.47,
+              "package_size": 350,
+              "package_unit": "g",
+              "package_count": 3,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
+              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
             },
             {
               "name": "Jumbo biologische pompoen of flespompoen",
@@ -624,12 +676,18 @@
               "pack_price": null
             },
             {
-              "name": "Jumbo verse sperziebonen of snijbonen",
+              "name": "Begro diepvries gebroken bonen",
               "quantity": 550,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "webshop_observed_2026-10-28",
+              "pack_price": 2.07,
+              "product_name": "Begro Diepvriesgroenten Gebroken Bonen 1 kg",
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://www.jumbo.com/producten/diepvries/groente/sperziebonen/bolletje/?filters=Merken%3AJumbo%2CArdo%2CMerkloos",
+              "note": "Een pak van 1 kg bevat meer dan de verbruikte hoeveelheid; de volledige pakprijs is meegenomen."
             },
             {
               "name": "harissa",
@@ -659,7 +717,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 15.54,
+          "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
         },
         {
           "id": "jumbo-kip-masala",
@@ -676,16 +737,27 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 13.47,
+              "package_size": 350,
+              "package_unit": "g",
+              "package_count": 3,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
+              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
             },
             {
-              "name": "Jumbo verse sperziebonen of snijbonen",
+              "name": "Begro diepvries gebroken bonen",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "webshop_observed_2026-10-28",
+              "pack_price": 2.07,
+              "product_name": "Begro Diepvriesgroenten Gebroken Bonen 1 kg",
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://www.jumbo.com/producten/diepvries/groente/sperziebonen/bolletje/?filters=Merken%3AJumbo%2CArdo%2CMerkloos",
+              "note": "Een pak van 1 kg bevat meer dan de verbruikte hoeveelheid; de volledige pakprijs is meegenomen."
             },
             {
               "name": "bospeen",
@@ -726,7 +798,10 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
-          }
+          },
+          "minimum_known_spend": 15.54,
+          "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
         },
         {
           "id": "jumbo-kip-thais",
@@ -743,8 +818,13 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 13.47,
+              "package_size": 350,
+              "package_unit": "g",
+              "package_count": 3,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
+              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
             },
             {
               "name": "spitskool",
@@ -793,7 +873,10 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
-          }
+          },
+          "minimum_known_spend": 13.47,
+          "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
         },
         {
           "id": "jumbo-vega-shoarma",
@@ -810,8 +893,13 @@
               "quantity": 350,
               "unit": "g",
               "department": "Vega & peulvruchten",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 3.39,
+              "package_size": 175,
+              "package_unit": "g",
+              "package_count": 2,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15",
+              "note": "Twee verpakkingen van 175 g gezamenlijk voor €3,39 met 1+1 gratis."
             },
             {
               "name": "stevige tofu",
@@ -865,7 +953,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 3.39,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-vega-turkse",
@@ -882,8 +973,13 @@
               "quantity": 350,
               "unit": "g",
               "department": "Vega & peulvruchten",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 3.39,
+              "package_size": 175,
+              "package_unit": "g",
+              "package_count": 2,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15",
+              "note": "Twee verpakkingen van 175 g gezamenlijk voor €3,39 met 1+1 gratis."
             },
             {
               "name": "stevige tofu",
@@ -929,7 +1025,10 @@
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
-          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 3.39,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         },
         {
           "id": "jumbo-vega-salade",
@@ -946,8 +1045,13 @@
               "quantity": 350,
               "unit": "g",
               "department": "Vega & peulvruchten",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 3.39,
+              "package_size": 175,
+              "package_unit": "g",
+              "package_count": 2,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15",
+              "note": "Twee verpakkingen van 175 g gezamenlijk voor €3,39 met 1+1 gratis."
             },
             {
               "name": "stevige tofu",
@@ -1004,7 +1108,10 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
-          }
+          },
+          "minimum_known_spend": 3.39,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
         }
       ]
     },

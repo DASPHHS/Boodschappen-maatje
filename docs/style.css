@@ -20,3 +20,6 @@
 
 .offer-badge.anchor{background:#e7f0dd;color:#326343}.offer-detail{overflow-wrap:anywhere}
 .recipe-card .offer-hint{font-weight:700}.info-banner a,.deal-card a{color:#285e48;font-weight:800}
+
+.lower-bound{margin:13px 0 0!important;font-size:12px!important;font-weight:800;color:#55774f!important}
+.lower-bound.bad{color:#a15b37!important}
