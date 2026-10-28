@@ -53,12 +53,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/offers-catalog.json docs/data/supplemental-offers.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Update alle relevante promoties per winkel"
-          for attempt in 1 2 3; do
-            git pull --rebase origin main
+          # The generated JSON files are owned by this job. Avoid rebasing those
+          # same large files against a newer main: that creates merge conflicts.
+          tmp="$(mktemp -d)"
+          cp docs/data/offers-catalog.json "$tmp/offers-catalog.json"
+          cp docs/data/supplemental-offers.json "$tmp/supplemental-offers.json"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$tmp/offers-catalog.json" docs/data/offers-catalog.json
+            cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
+            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
             if git push origin HEAD:main; then exit 0; fi
-            sleep 3
+            sleep 4
           done
           exit 1
