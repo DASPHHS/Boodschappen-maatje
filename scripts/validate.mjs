@@ -66,3 +66,11 @@ for(const s of ['lidl','jumbo','ah']){
   }
 }
 console.log('Alle folderrecepten hebben exact aanwezig actie-hoofdproduct, voldoende groenten en geen verzonnen prijs');
+
+const spotlight2=JSON.parse(fs.readFileSync('docs/data/spotlight.json','utf8'));
+for(const r of spotlight2.stores.jumbo.recipes){
+const known=r.ingredients.filter(i=>typeof i.pack_price==='number').reduce((n,i)=>n+i.pack_price,0);
+if(Math.abs(known-r.minimum_known_spend)>0.01)throw Error('prijs-ondergrens verkeerd '+r.id);
+if(known>10&&r.budget_feasibility!=='budget_above_10_even_without_remaining_ingredients')throw Error('onhaalbaar budget niet gemarkeerd '+r.id);
+}
+console.log('Bekende verpakkingsprijzen en budget-ondergrenzen sluiten aan');
