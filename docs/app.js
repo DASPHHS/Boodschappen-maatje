@@ -28,10 +28,12 @@ function offers(s){
  const scan=state.catalog?.stores?.[s];
  const fresh=state.catalog?.generated_at?.slice(0,10)===today()&&scan?.status==='ok';
  const external=fresh&&Array.isArray(scan.offers)?scan.offers:[];
- const ids=new Set(),all=[];
+ const ids=new Set(),names=new Set(),all=[];
  for(const o of [...manual,...current,...external]){
    if(!isOfferActive(o)||ids.has(o.id))continue;
-   ids.add(o.id);all.push(o);
+   const key=norm(o.name).replace(/(jumbo|ah|albert heijn|lidl)/g,'').trim()+'|'+(o.pack_label||'');
+   if(names.has(key))continue;
+   ids.add(o.id);names.add(key);all.push(o);
  }
  state._offersCache.set(key,all);return all;
 }

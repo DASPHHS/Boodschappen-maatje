@@ -48,3 +48,21 @@ if(o.verified===true)throw Error('Externe niet-onafhankelijke actie onterecht ge
 }
 }
 console.log('Brede promotiecatalogus gecontroleerd');
+
+const spotlight=JSON.parse(fs.readFileSync('docs/data/spotlight.json','utf8'));
+for(const s of ['lidl','jumbo','ah']){
+  const st=spotlight.stores[s];
+  if(!st||!Array.isArray(st.offers)||!Array.isArray(st.recipes))throw Error('spotlight winkel ontbreekt '+s);
+  const byId=new Map(st.offers.map(x=>[x.id,x]));
+  for(const recipe of st.recipes){
+    const offer=byId.get(recipe.offer_anchor_id);
+    if(!offer||!recipe.ingredients.some(i=>i.name===offer.name))
+      throw Error('FOUTE product-koppeling '+recipe.id);
+    if(offer.category!==recipe.category)throw Error('onjuiste eiwitcategorie '+recipe.id);
+    if(recipe.cost?.basket_total!==undefined&&recipe.cost!==null)
+      throw Error('prijs onbevestigd maar aanwezig '+recipe.id);
+    const vg=recipe.ingredients.filter(i=>i.department==='Groente & fruit').reduce((n,i)=>n+i.quantity,0);
+    if(vg<1200||recipe.servings!==4)throw Error('porties/groente onjuist '+recipe.id);
+  }
+}
+console.log('Alle folderrecepten hebben exact aanwezig actie-hoofdproduct, voldoende groenten en geen verzonnen prijs');

@@ -102,3 +102,11 @@ Met de vleeschip kies je **rund** of **varken**; met de vischip kies je **vette 
 ### Budgetbasis zonder aanbiedingen
 
 De startpagina toont afzonderlijk recepten die zonder verwerkt actieproduct onder €10 uitkwamen in een eerder berekende prijswaarneming. De kaart vermeldt expliciet dat het om een **tijdgebonden prijsindicatie** gaat, niet om een gegarandeerde 'altijd goedkoop'-prijs. Bij nieuwe actuele reguliere schapprijzen kunnen deze gerechten opnieuw beoordeeld worden en in rangorde stijgen.
+
+## Specifieke foutcorrectie van 28 oktober 2026
+
+De eerdere synthetische receptenmotor is uit de app uitgeschakeld omdat hij herhaaldelijk ongerelateerde productnamen kon koppelen (zoals kipkruiden als kip of plantaardige zalm als gezonde vis). Alleen de dagelijkse geprijsde recepten, geverifieerde folderrecepten met exacte hoofdproductregels, het wekelijkse repertoire en algemene originele bibliotheekrecepten worden nu getoond. Prijzen blijven null zolang de volledige kassamand niet betrouwbaar kan worden berekend. De foldervoorbeelden in docs/data/spotlight.json hebben een bron-URL en zijn aflopend; het bestand is voor 28 oktober t/m 3 november 2026 en moet daarna vervangen worden.
+
+De vers-vs-diepvriesvergelijking voor Jumbo sperziebonen wordt uitsluitend op gelijke gewichtseenheden gemaakt: 400g vers €1,99 (€4,98/kg) versus 1kg diepvries €2,07 (€2,07/kg), op basis van de waarnemingen op 28 oktober 2026. De klant moet beschikbaarheid controleren.
+
+Thematische inspiratie voor enkele nieuwe recepten komt uit de aan de gebruiker gekoppelde Google Drive-kookboeken Recepten uit Zuid-oost-Azië en Sandhia's Surinaamse Recepten. We hebben hieruit nieuwe eigen varianten uitgewerkt, geen letterlijke overnames.
