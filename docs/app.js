@@ -68,31 +68,70 @@ function matchProduct(offer,ingredient){
 }
 function offerInfo(recipe,s){
 const key=s+'|'+recipe.id+'|'+today();if(state._matchCache.has(key))return state._matchCache.get(key);
-const active=offers(s),confirmed=[],possible=[],anchors=[];
+const active=offers(s),confirmed=[],possible=[],anchors=[],matcher=window.MaatjeProductMatcher;
+const added=new Set();
+function consider(offer,ingredient,role,source){
+ if(!offer||!ingredient||added.has(offer.id+'|'+ingredient.name))return;
+ const m=matcher?.evaluate(offer,ingredient)||{status:offer.name===ingredient.name?'compatible':'unrelated',reason:'geen beschikbare productmatcher'};
+ if(m.status==='unrelated'||m.status==='incompatible')return;
+ if(role==='eiwitbron'&&offer.category!==recipe.category)return;
+ if(role==='groente'&&offer.category!=='groente')return;
+ if(role==='aardappelen'&&!/aardappel/i.test(offer.name))return;
+ added.add(offer.id+'|'+ingredient.name);
+ if(m.status==='uncertain'){
+   if(possible.length<8)possible.push({offer,ingredient,reason:'Variant nog te controleren: '+m.reason,source});
+   return;
+ }
+ const linked={offer,ingredient,role,source};
+ if(source==='exact'&&isOfficialOfferSource(offer,s)&&!offer.price_conflict&&matcher?.priceApplied(offer,ingredient)){
+   confirmed.push(linked);
+ }else{
+   anchors.push(linked);
+ }
+}
 for(const rel of (Array.isArray(recipe.offer_links)?recipe.offer_links:[])){
- const offer=active.find(o=>o.id===rel.offer_id&&o.verified===true);
- const ing=(recipe.ingredients||[]).find(i=>i.name===rel.ingredient_name);
- if(offer&&!offer.price_conflict&&ing&&rel.match_type==='exact'&&ing.price_status==='folder_current')confirmed.push({offer,ingredient:ing});
+ const offer=active.find(o=>o.id===rel.offer_id),ing=(recipe.ingredients||[]).find(i=>i.name===rel.ingredient_name);
+ if(!offer||!ing||rel.match_type!=='exact')continue;
+ consider(offer,ing,offer.category===recipe.category?'eiwitbron':offer.category==='groente'?'groente':null,'exact');
 }
 const links=Array.isArray(recipe.offer_anchors)&&recipe.offer_anchors.length
   ?recipe.offer_anchors
   :(recipe.offer_anchor_id?[{offer_id:recipe.offer_anchor_id,ingredient_name:recipe.offer_anchor_name,role:'eiwitbron'}]:[]);
 for(const link of links){
- const offer=active.find(o=>o.id===link.offer_id),ing=(recipe.ingredients||[]).find(i=>i.name===link.ingredient_name);
- if(!offer||!ing||ing.name!==offer.name||anchors.some(a=>a.offer.id===offer.id))continue;
- if(link.role==='eiwitbron'&&offer.category!==recipe.category)continue;
- if(link.role==='groente'&&offer.category!=='groente')continue;
- if(link.role==='aardappelen'&&!/aardappel/i.test(offer.name))continue;
- anchors.push({offer,ingredient:ing,role:link.role});
+ const offer=active.find(o=>o.id===link.offer_id);
+ const ing=(recipe.ingredients||[]).find(i=>i.name===link.ingredient_name);
+ consider(offer,ing,link.role,'explicit');
 }
 for(const rel of (Array.isArray(recipe.candidate_offer_links)?recipe.candidate_offer_links:[])){
- const o=active.find(x=>x.id===rel.offer_id),i=(recipe.ingredients||[]).find(x=>x.name===rel.ingredient_name);
- if(o&&i&&rel.reason)possible.push({offer:o,ingredient:i,reason:rel.reason});
+ const offer=active.find(o=>o.id===rel.offer_id),ing=(recipe.ingredients||[]).find(i=>i.name===rel.ingredient_name);
+ if(offer&&ing&&matcher?.evaluate(offer,ing).status!=='incompatible'&&!added.has(offer.id+'|'+ing.name)&&possible.length<8){
+   added.add(offer.id+'|'+ing.name);possible.push({offer,ingredient:ing,reason:rel.reason||'Productvariant niet onafhankelijk gecontroleerd',source:'suggested'});
+ }
 }
-const anchored=anchors.find(x=>x.role==='eiwitbron')?.offer||null;
-const discount=anchors.reduce((n,x)=>{
+// Discover plausible recipes from ALL active products, across all stores. Never price automatically.
+if(matcher&&possible.length<3){
+ const ingredients=(recipe.ingredients||[]).filter(i=>/^(Groente & fruit|Eiwitbronnen|Vega & peulvruchten)$/.test(i.department)&&matcher.family(i.name));
+ for(const ing of ingredients){
+  if(possible.length>=3)break;
+  if([...confirmed,...anchors].some(x=>x.ingredient.name===ing.name))continue;
+  for(const o of active){
+   if(possible.length>=3)break;
+   if(added.has(o.id+'|'+ing.name))continue;
+   const result=matcher.evaluate(o,ing);
+   if(result.status==='unrelated'||result.status==='incompatible')continue;
+   if(o.category==='bier'||o.category==='huishouden')continue;
+   if(ing.department==='Eiwitbronnen'&&o.category!==recipe.category)continue;
+   if(ing.department==='Vega & peulvruchten'&&o.category!=='vega')continue;
+   if(ing.department==='Groente & fruit'&&o.category!=='groente')continue;
+   added.add(o.id+'|'+ing.name);
+   possible.push({offer:o,ingredient:ing,reason:result.status==='uncertain'?result.reason:'Zelfde productsoort; exacte schapvariant en verpakking niet gecontroleerd',source:'semantic'});
+  }
+ }
+}
+const anchored=anchors.concat(confirmed).find(x=>x.role==='eiwitbron')?.offer||null;
+const discount=[...anchors,...confirmed].reduce((n,x)=>{
 const i=x.ingredient,o=x.offer,k=Number(i.package_count||1);
-if(i.price_status!=='folder_current'||!Number.isFinite(i.pack_price)||!Number.isFinite(o.regular_price)||!Number.isInteger(k)||k<1)return n;
+if(!matcher?.priceApplied(o,i)||!Number.isFinite(o.regular_price)||!Number.isInteger(k)||k<1)return n;
 const bundle=Number(o.multi_buy_quantity)>1&&Number.isFinite(o.multi_buy_price);
 if(bundle&&k!==Number(o.multi_buy_quantity))return n;
 const reference=bundle?o.regular_price:o.regular_price*k;
@@ -114,7 +153,7 @@ if(state.recipeQuality!=='all'&&r.quality_status==='concept_niet_culinair_getest
 if(state.kind!=='alle'&&r.category!==state.kind)return false;if(state.subtype!=='alle'&&proteinSubtype(r)!==state.subtype)return false;
 if(state.query&&!(r.title+' '+(r.cuisine||'')+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).toLocaleLowerCase('nl-NL').includes(state.query.toLocaleLowerCase('nl-NL')))return false;
 const m=offerInfo(r,r.store);
-if(state.dealFilter==='confirmed'&&!m.confirmed.length)return false;if(state.dealFilter==='anchor'&&!m.anchors.length)return false;
+if(state.dealFilter==='confirmed'&&!m.confirmed.length)return false;if(state.dealFilter==='anchor'&&!(m.anchors.length||m.confirmed.length))return false;
 if(state.dealFilter==='potential'&&!m.possible.length)return false;
 return true;
 }
@@ -288,8 +327,8 @@ function featured(r){return '<div class="recipe-info"><span>4 porties</span><spa
 
 function offerBadge(r){
 const m=offerInfo(r,r.store);
-if(m.confirmed.length)return '<span class="offer-badge confirmed">✓ '+m.confirmed.length+' actie'+(m.confirmed.length>1?'s':'')+' in prijs verwerkt</span>';
-if(m.anchors.length)return '<span class="offer-badge anchor">★ '+m.anchors.length+' actieproduct'+(m.anchors.length>1?'en':'')+' in recept · totaalprijs onbekend</span>';if(m.possible.length)return '<span class="offer-badge candidate">↗ '+m.possible.length+' mogelijke actie'+(m.possible.length>1?'s':'')+' · prijs niet doorgerekend</span>';
+if(m.confirmed.length)return '<span class="offer-badge confirmed">✓ '+m.confirmed.length+' geprijsde actie'+(m.confirmed.length>1?'s':'')+' met gecontroleerde variant</span>';
+if(m.anchors.length)return '<span class="offer-badge anchor">★ '+m.anchors.length+' gekoppeld actieproduct'+(m.anchors.length>1?'en':'')+' · prijs/variant nog te controleren</span>';if(m.possible.length)return '<span class="offer-badge candidate">↗ '+m.possible.length+' mogelijke actie'+(m.possible.length>1?'s':'')+' · prijs niet doorgerekend</span>';
 return '<span class="offer-badge neutral">Geen actie gekoppeld</span>';
 }
 function recipeSourceLabel(r){
@@ -300,7 +339,7 @@ if(r.origin==='dagactie')return 'Eigen dagrecept · niet proefgekookt';
 return 'Eigen inspiratie of bewerking · niet proefgekookt';
 }
 function recipeCard(r){
-const id=r.store+'|'+r.id,info=offerInfo(r,r.store),tip=info.confirmed.length?info.confirmed.map(x=>x.offer.name).join(' · '):info.anchors.length?'Actieproducten: '+info.anchors.map(x=>x.offer.name).join(' · '):info.possible.length?'Mogelijk: '+info.possible.slice(0,3).map(x=>x.offer.name).join(' · '):'';
+const id=r.store+'|'+r.id,info=offerInfo(r,r.store),tip=info.confirmed.length?'Actieprijzen in ingrediënten: '+info.confirmed.map(x=>x.offer.name).join(' · '):info.anchors.length?'Actieproduct gekoppeld: '+info.anchors.map(x=>x.offer.name).join(' · '):info.possible.length?'Vergelijkbare aanbieding (niet bewezen): '+info.possible.slice(0,3).map(x=>x.offer.name).join(' · '):'';
 return '<article class="recipe-card"><div class="recipe-visual '+(r.category==='kip'?'chicken':r.category==='vis'?'fish':r.category==='vlees'?'meat':'vega')+'">'+statusTag(r)+recipeSaveButton(r)+'<span class="plate" aria-hidden="true">'+(SYMBOLS[r.category]||'🥗')+'</span></div><div class="recipe-offers">'+offerBadge(r)+'</div><h3>'+safe(r.title)+'</h3><p>'+safe(r.cuisine||'Smakelijk & voedzaam')+' · '+safe(NAMES[r.store]||'')+'</p><p class="recipe-origin">'+safe(recipeSourceLabel(r))+'</p>'+featured(r)+(tip?'<p class="offer-hint">'+safe(tip)+'</p>':'')+(info.discount>0?'<p class="offer-discount">'+money(info.discount)+' verschil t.o.v. vermelde oude prijzen van gekoppelde acties · geen bewezen totaalbesparing</p>':'')+(Number.isFinite(r.minimum_known_spend)&&!!info.anchors.length?'<p class="lower-bound '+(r.minimum_known_spend>10?'bad':'')+'">'+(r.minimum_known_spend>10?'Budget € 10 onhaalbaar · ':'Bekende kosten vanaf ') + money(r.minimum_known_spend)+' · nog geen complete mand</p>':'')+'<div class="recipe-bottom"><div><b>'+priceQuality(r)+'</b><small>4 porties · '+(typeof r.cost?.basket_total==='number'?'indicatieve kassaprijs':'prijs nog te controleren')+(r.macros?' · '+safe(r.macros.protein_g)+' g eiwit/p':' · macro’s volgen')+'</small></div><button class="button small" data-open="'+attr(id)+'">Bekijk →</button></div></article>';
 }
 
@@ -448,11 +487,11 @@ header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">
 let out=storeControls()+kindControls()+subtypeControls()+recipeControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
 const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
-const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;const anchored=all.filter(r=>offerInfo(r,s).anchors.length).length;
+const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;const anchored=all.filter(r=>offerInfo(r,s).anchors.length||offerInfo(r,s).confirmed.length).length;
 const potential=all.filter(r=>offerInfo(r,s).possible.length).length;
 const counts=['kip','vlees','vis','vega'].map(k=>(KINDS[k]+' '+all.filter(r=>r.category===k).length)).join(' · ');
 out+=title(NAMES[s]+' recepten',counts+' · '+current+' met actieprijs verwerkt · '+anchored+' exact gekoppelde actie-ideeën · '+potential+' met mogelijke actie');
-out+='<div class="info-banner">Actiekoppelingen zijn alleen toegestaan als het benoemde product werkelijk in de ingrediënten voorkomt. Geen automatische woordmatches. '+(s==='jumbo'?'Vis zonder passende aanbieding blijft gewone inspiratie.':'')+'</div>';
+out+='<div class="info-banner">Actiekoppelingen vereisen passende productvarianten, verpakkingen en prijzen. Andere vergelijkbare producten verschijnen alleen als mogelijke aanbieding. '+(s==='jumbo'?'Vis zonder passende aanbieding blijft gewone inspiratie.':'')+'</div>';
 out+=found.length?'<div class="cards">'+found.map(recipeCard).join('')+'</div>':empty('Geen recepten voor deze filters','Wijzig je actiestatus of zoekterm om meer recepten te zien.');
 }
 out+='<div class="info-banner warning">De receptenbibliotheek groeit met nieuwe dagelijkse en wekelijkse gerechten. Historische prijzen worden niet als actuele prijzen getoond. De goedkoopste werkelijke kassamand kan pas worden bevestigd als álle productprijzen en verpakkingen gecontroleerd zijn.</div>';

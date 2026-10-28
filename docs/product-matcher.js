@@ -52,6 +52,7 @@
   const id1=String(offer.product_id||''),id2=String(ingredient.product_id||'');
   if(e1&&e2&&e1===e2)return {status:'compatible',reason:'zelfde EAN',family:a.family||b.family};
   if(id1&&id2&&id1===id2)return {status:'compatible',reason:'zelfde product-ID',family:a.family||b.family};
+  if(norm(offer.name)===norm(ingredient.name))return {status:'compatible',reason:'exact gelijkluidende productnaam',family:a.family||b.family};
   if(!a.family||!b.family||a.family!==b.family)return {status:'unrelated',reason:'andere productfamilie'};
   const critical=['plant','skin','wild','frozen','smoked','bone','alcohol','milk','meat'];
   const conflicts=critical.filter(k=>a[k]&&b[k]&&a[k]!==b[k]);
