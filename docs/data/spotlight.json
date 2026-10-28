@@ -149,8 +149,8 @@
           "unit_price": 3.32,
           "unit": "kg",
           "source": {
-            "label": "Jumbo actiefolder pagina 2",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/2"
+            "label": "Jumbo officiële 1+1-actie stamppotproducten",
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523"
           },
           "note": "1+1 gratis op geselecteerde stamppotproducten; prijsvoorbeeld voor 2 gelijke pakken.",
           "start_date": "2026-10-28",
@@ -159,7 +159,11 @@
           "source_provider": "officiele_folder",
           "member_required": false,
           "multi_buy_quantity": 2,
-          "multi_buy_price": 1.99
+          "multi_buy_price": 1.99,
+          "promotion_type": "buy_one_get_one_free",
+          "promo_group": "jumbo-stamppot-2026w44",
+          "mix_and_match": true,
+          "promo_note": "Jumbo 1+1 gratis op stamppotgroep; combineren toegestaan. Bij mixen verschilt de totaalprijs. Vermelde prijs alleen geldig voor twee gelijke pakken."
         },
         {
           "id": "jumbo-w44-stamppotaardappelen",
@@ -171,8 +175,8 @@
           "unit_price": 1.16,
           "unit": "kg",
           "source": {
-            "label": "Jumbo actiefolder pagina 2",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/2"
+            "label": "Jumbo officiële 1+1-actie stamppotproducten",
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523"
           },
           "note": "1+1 gratis; aardappelen zijn niet koolhydraatarm, aparte portie-optie.",
           "start_date": "2026-10-28",
@@ -181,7 +185,11 @@
           "source_provider": "officiele_folder",
           "member_required": false,
           "multi_buy_quantity": 2,
-          "multi_buy_price": 1.39
+          "multi_buy_price": 1.39,
+          "promotion_type": "buy_one_get_one_free",
+          "promo_group": "jumbo-stamppot-2026w44",
+          "mix_and_match": true,
+          "promo_note": "Jumbo 1+1 gratis op stamppotgroep; combineren toegestaan. Bij mixen verschilt de totaalprijs. Vermelde prijs alleen geldig voor twee gelijke pakken."
         },
         {
           "id": "jumbo-w44-kwark",
@@ -354,11 +362,23 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "minimum_known_spend": 7.06,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "jumbo-w44-flespompoen",
+              "ingredient_name": "Jumbo biologische pompoen of flespompoen",
+              "role": "groente"
+            }
+          ]
         },
         {
           "id": "jumbo-gehakt-boerenkool",
-          "title": "Boerenkoolstamppot zonder aardappel met gehaktballetjes",
+          "title": "Boerenkoolstamppot met aardappel, bloemkool en gehaktballetjes",
           "category": "vlees",
           "cuisine": "Nederlands",
           "servings": 4,
@@ -383,8 +403,26 @@
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 1.99,
+              "package_count": 2,
+              "source_url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+              "package_unit": "g",
+              "package_size": 300,
+              "price_note": "Prijs voor twee gelijke verpakkingen in de 1+1-actie. Overgebleven inhoud kan later worden gebruikt."
+            },
+            {
+              "name": "Jumbo stamppotaardappelen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Aardappelen & granen",
+              "price_status": "folder_current",
+              "pack_price": 1.39,
+              "package_count": 2,
+              "source_url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+              "package_unit": "g",
+              "package_size": 600,
+              "price_note": "Prijs voor twee gelijke verpakkingen in de 1+1-actie. Overgebleven inhoud kan later worden gebruikt."
             },
             {
               "name": "bloemkool",
@@ -404,9 +442,10 @@
             }
           ],
           "instructions": [
-            "Stoom de bloemkool en boerenkool goed gaar.",
-            "Stamp de bloemkool met mosterd tot puree en roer de boerenkool erdoor.",
-            "Bak de gehaktballetjes volledig gaar en serveer samen."
+            "Snijd de bloemkool in roosjes en kook of stoom samen met de boerenkool tot beide zacht zijn.",
+            "Kook 600 gram stamppotaardappelen gaar, stamp met de bloemkool tot puree en meng de boerenkool erdoor.",
+            "Breng het gehakt op smaak, vorm kleine gehaktballetjes en bak deze helemaal gaar.",
+            "Serveer de stamppot met de gehaktballetjes en een beetje mosterd. Bewaar de tweede verpakking aardappelen voor een volgend gerecht."
           ],
           "offer_anchor_id": "jumbo-w44-gemengdgehakt",
           "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
@@ -415,9 +454,131 @@
           "macros": null,
           "macro_status": "niet_berekend",
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
-          "minimum_known_spend": 4.99,
+          "minimum_known_spend": 8.37,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Voor het gehakt, twee pakken boerenkool en twee pakken aardappelen betaal je bij aanschaf samen minimaal €8,37. Bloemkool, mosterd en eventueel olie ontbreken nog; de volledige kassaprijs kan boven €10 uitkomen.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "jumbo-w44-boerenkool",
+              "ingredient_name": "Jumbo gesneden boerenkool",
+              "role": "groente"
+            },
+            {
+              "offer_id": "jumbo-w44-stamppotaardappelen",
+              "ingredient_name": "Jumbo stamppotaardappelen",
+              "role": "aardappelen"
+            }
+          ],
+          "nutrition_note": "Deze stamppot bevat 150 g aardappelen per portie en is daardoor niet strikt koolhydraatarm. 600 g boerenkool + 600 g bloemkool leveren minimaal 300 g groente per portie.",
+          "nutrition_profile": "gematigd_koolhydraat",
+          "meal_potato_g_per_portion": 150
+        },
+        {
+          "id": "jumbo-gehakt-boerenkool-licht",
+          "title": "Lichtere boerenkoolstamppot met een beetje aardappel en gehaktballetjes",
+          "category": "vlees",
+          "cuisine": "Nederlands",
+          "servings": 4,
+          "minutes": 40,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "folder_current",
+              "pack_price": 4.99,
+              "package_size": 1000,
+              "package_unit": "g",
+              "package_count": 1,
+              "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
+            },
+            {
+              "name": "Jumbo gesneden boerenkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "folder_current",
+              "pack_price": 1.99,
+              "package_count": 2,
+              "source_url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+              "package_unit": "g",
+              "package_size": 300,
+              "price_note": "Prijs voor twee gelijke verpakkingen in de 1+1-actie. Overgebleven inhoud kan later worden gebruikt."
+            },
+            {
+              "name": "Jumbo stamppotaardappelen",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Aardappelen & granen",
+              "price_status": "folder_current",
+              "pack_price": 1.39,
+              "package_count": 2,
+              "source_url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+              "package_unit": "g",
+              "package_size": 600,
+              "price_note": "Prijs voor twee gelijke verpakkingen in de 1+1-actie. Overgebleven inhoud kan later worden gebruikt."
+            },
+            {
+              "name": "bloemkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "mosterd",
+              "quantity": 30,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Snijd de bloemkool in roosjes en kook of stoom samen met de boerenkool tot beide zacht zijn.",
+            "Kook 300 gram aardappelen gaar, stamp met bloemkool en schep de boerenkool erdoor. De rest van de gekochte aardappelen is voor andere maaltijden.",
+            "Breng het gehakt op smaak, vorm kleine gehaktballetjes en bak deze helemaal gaar.",
+            "Serveer de stamppot met de gehaktballetjes en een beetje mosterd. Bewaar de tweede verpakking aardappelen voor een volgend gerecht."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "minimum_known_spend": 8.37,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Voor het gehakt, twee pakken boerenkool en twee pakken aardappelen betaal je bij aanschaf samen minimaal €8,37. Bloemkool, mosterd en eventueel olie ontbreken nog; de volledige kassaprijs kan boven €10 uitkomen. De extra aardappelen zijn voorraad, niet verbruikt in dit gerecht.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "jumbo-w44-boerenkool",
+              "ingredient_name": "Jumbo gesneden boerenkool",
+              "role": "groente"
+            },
+            {
+              "offer_id": "jumbo-w44-stamppotaardappelen",
+              "ingredient_name": "Jumbo stamppotaardappelen",
+              "role": "aardappelen"
+            }
+          ],
+          "nutrition_note": "Slechts 75 g aardappelen per portie; 300 g groenten per portie dankzij boerenkool en bloemkool. Werkelijke koolhydraten hangen af van ingrediënten, geen berekende macro's.",
+          "nutrition_profile": "koolhydraatbewuste_variant",
+          "meal_potato_g_per_portion": 75
         },
         {
           "id": "jumbo-gehakt-bulgogi",
@@ -491,7 +652,14 @@
           },
           "minimum_known_spend": 4.99,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-gehakt-surinaams",
@@ -571,7 +739,14 @@
           },
           "minimum_known_spend": 7.06,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-gehakt-italiaans",
@@ -642,7 +817,14 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "minimum_known_spend": 4.99,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-gemengdgehakt",
+              "ingredient_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-kip-pompoen",
@@ -720,7 +902,19 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "minimum_known_spend": 15.54,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
-          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-kipblokjes",
+              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "jumbo-w44-flespompoen",
+              "ingredient_name": "Jumbo biologische pompoen of flespompoen",
+              "role": "groente"
+            }
+          ]
         },
         {
           "id": "jumbo-kip-masala",
@@ -801,7 +995,14 @@
           },
           "minimum_known_spend": 15.54,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
-          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-kipblokjes",
+              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-kip-thais",
@@ -876,7 +1077,14 @@
           },
           "minimum_known_spend": 13.47,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
-          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen."
+          "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-kipblokjes",
+              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-vega-shoarma",
@@ -956,7 +1164,14 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "minimum_known_spend": 3.39,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-vivera-shoarma",
+              "ingredient_name": "Vivera plantaardige shoarma",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-vega-turkse",
@@ -1028,13 +1243,20 @@
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
           "minimum_known_spend": 3.39,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-vivera-shoarma",
+              "ingredient_name": "Vivera plantaardige shoarma",
+              "role": "eiwitbron"
+            }
+          ]
         },
         {
           "id": "jumbo-vega-salade",
-          "title": "Indonesische tempeh-/tofu-pan met bospeen en boerenkool",
+          "title": "Pittige tofu-shoarmapan met boerenkool en bospeen",
           "category": "vega",
-          "cuisine": "Indonesisch",
+          "cuisine": "Fusion",
           "servings": 4,
           "minutes": 35,
           "vegetables_g_per_portion": 300,
@@ -1066,8 +1288,13 @@
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit",
-              "price_status": "not_verified",
-              "pack_price": null
+              "price_status": "folder_current",
+              "pack_price": 1.99,
+              "package_count": 2,
+              "source_url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+              "package_unit": "g",
+              "package_size": 300,
+              "price_note": "Prijs voor twee gelijke verpakkingen in de 1+1-actie. Overgebleven inhoud kan later worden gebruikt."
             },
             {
               "name": "bospeen",
@@ -1095,9 +1322,9 @@
             }
           ],
           "instructions": [
-            "Bak tofu en plantaardige shoarma goudbruin.",
-            "Stoom de boerenkool en gesneden bospeen gaar.",
-            "Meng met sojasaus en sambal."
+            "Bak de stevige tofu krokant en voeg de plantaardige shoarma toe.",
+            "Stoom de boerenkool en bospeen gaar.",
+            "Breng op smaak met sojasaus en sambal en verdeel over vier porties."
           ],
           "offer_anchor_id": "jumbo-w44-vivera-shoarma",
           "offer_anchor_name": "Vivera plantaardige shoarma",
@@ -1109,9 +1336,21 @@
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
           },
-          "minimum_known_spend": 3.39,
+          "minimum_known_spend": 5.38,
           "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
-          "minimum_spend_note": "Dit is alleen een ondergrens: andere ingrediënten en verpakkingen ontbreken nog in de prijsberekening."
+          "minimum_spend_note": "Vivera-shoarma en boerenkool bedragen samen €5,38 in bevestigde bundelaanbiedingen. Tofu, bospeen, saus en kruiden zijn nog niet geprijsd.",
+          "offer_anchors": [
+            {
+              "offer_id": "jumbo-w44-vivera-shoarma",
+              "ingredient_name": "Vivera plantaardige shoarma",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "jumbo-w44-boerenkool",
+              "ingredient_name": "Jumbo gesneden boerenkool",
+              "role": "groente"
+            }
+          ]
         }
       ]
     },
