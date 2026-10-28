@@ -19,8 +19,15 @@
   const oldest=dated.length?dated.sort()[0]:null;
   const lacksDate=priced.some(i=>!i.price_observed_at&&!i.checked_at&&i.price_status!=='folder_current');
   const stale=oldest&&today?oldest<today:false;
+  const retailerHost={lidl:'lidl.nl',jumbo:'jumbo.com',ah:'ah.nl'}[recipe?.store];
+  const officiallyPriced=priced.every(i=>{
+   try{const url=new URL(i.source_url);const h=url.hostname.replace(/^www\./,'').toLowerCase();
+    return !!retailerHost&&(h===retailerHost||h.endsWith('.'+retailerHost))&&
+      i.price_status==='retailer_price_confirmed'&&(i.price_observed_at===today||i.checked_at===today);
+   }catch{return false}
+  });
   const explicitlyVerified=total!==null&&consistent&&recipe?.cost?.estimated===false&&recipe?.cost?.verified_today===true&&
-    priced.every(i=>i.price_observed_at===today||i.checked_at===today)&&!lacksDate;
+    recipe?.cost?.verification_level==='retailer_product_pages'&&officiallyPriced&&!lacksDate;
   const state=ingredients.length===0?'unpriced':missing.length===ingredients.length?'unpriced':
     missing.length?'partial':explicitlyVerified?'today_confirmed':'historical_estimate';
   return {state,total,partial,missing:missing.map(i=>i.name||'Onbekend'),priced_count:priced.length,
