@@ -91,8 +91,6 @@ function consider(offer,ingredient,role,source){
    confirmed.push(linked);
  }else{
    anchors.push(linked);
- }else{
-   anchors.push(linked);
  }
 }
 for(const rel of (Array.isArray(recipe.offer_links)?recipe.offer_links:[])){
