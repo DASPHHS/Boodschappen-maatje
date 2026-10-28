@@ -3,7 +3,7 @@
 const stores=['lidl','jumbo','ah'];
 const validDate=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x));
 const validPrice=x=>typeof x==='number'&&Number.isFinite(x)&&x>0;
-const day=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const day=()=>{const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const x=Object.fromEntries(p.map(k=>[k.type,k.value]));return x.year+'-'+x.month+'-'+x.day};
 function auditItem(o,store,today){
  const issues=[];
  if(!o||!o.id||!o.name)issues.push('product_missing');
@@ -18,14 +18,14 @@ function auditItem(o,store,today){
  if(o?.price_conflict)issues.push('source_price_conflict');
  if(Number(o?.multi_buy_quantity)>1){
    if(!validPrice(o.multi_buy_price))issues.push('bundle_total_missing');
-   else if(Math.abs(o.price-o.multi_buy_price)>0.02)issues.push('bundle_amount_mismatch');
+   else if(Math.abs(o.price-o.multi_buy_price)>0.02)issues.push('bundle_per_item_versus_total_check');
  }
  if(o?.loyalty_price&&!o?.loyalty_program)issues.push('loyalty_conditions_unknown');
- const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing','bundle_amount_mismatch'].includes(i));
+ const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing'].includes(i));
  return {status:invalid?'needs_review':retailer?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer};
 }
 function audit(data,today=day()){
- const result={schema_version:1,generated_at:new Date().toISOString(),day,method:'automatic_consistency_scan_not_cashier_price_verification',stores:{},status_by_id:{},exceptions:[]};
+ const result={schema_version:1,generated_at:new Date().toISOString(),day:today,method:'automatic_consistency_scan_not_cashier_price_verification',stores:{},status_by_id:{},exceptions:[]};
  for(const s of stores){
   const feed=data.catalog?.stores?.[s]||{},seen=new Set(),counts={retailer_page_reported:0,external_feed_reported:0,needs_review:0};
   const items=[...(feed.offers||[]),...(data.daily?.stores?.[s]?.offers||[]),...(data.spotlight?.stores?.[s]?.offers||[]),...(data.supplemental?.stores?.[s]?.offers||[])];
