@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T15:49:00+01:00",
-  "source": "Lidl aanvullende gecontroleerde derdepartij-pagina's",
-  "status": "manual_source_review",
+  "generated_at": "2026-10-28T16:09:47.359954+01:00",
+  "source": "Lidl supplemental third-party product page checks",
+  "status": "ok",
+  "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-28T15:49:00+01:00",
+      "checked_at": "2026-10-28T16:09:47.359954+01:00",
       "status": "ok",
       "offers": [
         {
@@ -21,14 +22,14 @@
           "end_date": "2026-11-01",
           "source_provider": "Biernet",
           "source": {
-            "label": "Biernet actuele Lidl-bieraanbieding",
+            "label": "Externe productdetailbron (niet Lidl-kassa)",
             "url": "https://www.biernet.nl/bier/aanbiedingen/aanbieding/perlenbacher-strong-verpakking-blik-van-050-liter-winkel-lidl"
           },
           "promotion_status": "active",
           "verified": false,
           "checked_at": "2026-10-28",
           "status": "third_party_price_observation",
-          "note": "Lidl-assortimentpagina bevestigt het type Perlenbacher Strong maar niet deze actieprijs; AlleFolders noemt Perlenbacher Wit of Strong met variantafhankelijke prijzen."
+          "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
         {
           "id": "lidl-biernet-affligem-blond-00-6x030",
@@ -43,14 +44,14 @@
           "end_date": "2026-11-01",
           "source_provider": "Biernet",
           "source": {
-            "label": "Biernet actuele Lidl-bieraanbieding",
+            "label": "Externe productdetailbron (niet Lidl-kassa)",
             "url": "https://www.biernet.nl/bier/aanbiedingen/aanbieding/affligem-blond-00-verpakking-set-van-6-flesjes-a-030-liter-winkel-lidl"
           },
           "promotion_status": "active",
           "verified": false,
           "checked_at": "2026-10-28",
           "status": "third_party_price_observation",
-          "note": "Promotheus en AlleFolders noemen groepsactie Amstel Radler/Affligem Blond 0.0 met vanafprijs €2,99, zonder dezelfde 6×300ml-variant te bewijzen; geen eenduidige kassaprijs."
+          "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         }
       ]
     },
