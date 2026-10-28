@@ -6,7 +6,7 @@ assert.equal(auditItem(a,'lidl',t).status,'retailer_page_reported');
 assert.equal(auditItem({...a,source:{url:'https://www.prijsprofeet.nl/foo'}},'lidl',t).status,'external_feed_reported');
 assert.equal(auditItem({...a,price_conflict:'0.69/0.89'},'lidl',t).status,'needs_review');
 assert.equal(auditItem({...a,end_date:'2026-10-27'},'lidl',t).status,'needs_review');
-assert.ok(auditItem({...a,multi_buy_quantity:2,multi_buy_price:0.99},'lidl',t).issues.includes('bundle_amount_mismatch'));
+assert.ok(auditItem({...a,multi_buy_quantity:2,multi_buy_price:0.99},'lidl',t).issues.includes('bundle_per_item_versus_total_check'));
 const mk=()=>({stores:Object.fromEntries(['lidl','jumbo','ah'].map(s=>[s,{offers:[]}]))});
 const result=audit({catalog:{stores:{lidl:{offers:[a],status:'ok',reported_total:1},jumbo:{offers:[]},ah:{offers:[]}}},daily:mk(),spotlight:mk(),supplemental:mk()},t);
 assert.equal(result.stores.lidl.evaluated,1);
