@@ -140,7 +140,7 @@ const ev=JSON.parse(fs.readFileSync('docs/data/verification.json','utf8'));
 if(ev.schema_version!==1||ev.source_audit?.length<9)throw Error('Broncontrolematrix ontbreekt');
 for(const [s,entries] of Object.entries(ev.reviews)){
  for(const [id,info] of Object.entries(entries)){
-  const offer=spotlight.stores[s].offers.find(o=>o.id===id);
+  const offer=spotlight.stores[s].offers.find(o=>o.id===id)||sources.stores[s].offers.find(o=>o.id===id);
   if(!offer)throw Error('Geen aanbieding bij broncheck '+id);
   if(info.listed_price!==offer.price)throw Error('Gepubliceerde prijs verschilt van broncheck '+id);
   if(!Array.isArray(info.checks)||!info.checks.length)throw Error('Geen broncheckregels '+id);
@@ -162,3 +162,22 @@ for(const r of libraryAudit.recipes){
  if(r.id.startsWith('drive-')&&r.quality_status!=='concept_niet_culinair_getest')throw Error('Oud recept onterecht als uitgewerkt gemarkeerd '+r.id);
 }
 console.log('Herkomst, kwaliteitsstatus en groentehoeveelheid voor 48 recepten gecontroleerd');
+
+
+// De historische Lidl-variant mag niet met de nieuwe op-huid aanbieding worden verward.
+const lidlFish=sources.stores.lidl.recipes.find(r=>r.id==='lidl-20261028-zalm-op-huid-met-broccoli');
+const lidlFishOffer=sources.stores.lidl.offers.find(o=>o.id==='lidl-20261028-zalm');
+if(!lidlFish||!lidlFishOffer?.price_conflict||!lidlFish.offer_anchors?.some(x=>x.offer_id===lidlFishOffer.id&&x.ingredient_name==='Verse zalmfilet op huid'))throw Error('Lidl zalmkoppeling of tegenstrijdige prijs ontbreekt');
+if(lidlFish.cost!==null||lidlFish.macros!==null)throw Error('Lidl zalm met onbevestigde prijs als volledig geprijsd');
+if(lidlFish.ingredients.filter(i=>i.department==='Groente & fruit'&&i.unit==='g').reduce((n,i)=>n+i.quantity,0)<1200)throw Error('Lidl zalm groente onvoldoende');
+const monitored=JSON.parse(fs.readFileSync('docs/data/watchlist.json','utf8')).items;
+for(const k of ['volle_melk','skuumkoppe','soto_boemboe','kippenpoten','sereh']){
+ if(!monitored.some(i=>i.key===k&&i.default_selected===true))throw Error('Persoonlijk vast product ontbreekt '+k);
+}
+const records=JSON.parse(fs.readFileSync('docs/data/personal-prices.json','utf8')).products;
+for(const k of ['volle_melk','soto_boemboe','kippenpoten','sereh']){
+ if(!records.some(i=>i.group===k&&i.url?.startsWith('https://')))throw Error('Normale prijs voor vaste producten ontbreekt '+k);
+}
+const sku=spotlight.stores.jumbo.offers.find(i=>i.id==='jumbo-20261028-skuumkoppe-6x300');
+if(!sku||Math.abs(sku.unit_price-7.04/1.8)>.02)throw Error('Skuumkoppe variant/prijsvraag mislukt');
+console.log('Lidl-zalm, persoonlijke saoto-ingrediënten en Skuumkoppe-varianten gecontroleerd');
