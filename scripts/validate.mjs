@@ -55,10 +55,15 @@ for(const s of ['lidl','jumbo','ah']){
   if(!st||!Array.isArray(st.offers)||!Array.isArray(st.recipes))throw Error('spotlight winkel ontbreekt '+s);
   const byId=new Map(st.offers.map(x=>[x.id,x]));
   for(const recipe of st.recipes){
-    const offer=byId.get(recipe.offer_anchor_id);
-    if(!offer||!recipe.ingredients.some(i=>i.name===offer.name))
-      throw Error('FOUTE product-koppeling '+recipe.id);
-    if(offer.category!==recipe.category)throw Error('onjuiste eiwitcategorie '+recipe.id);
+    const attached=recipe.offer_anchors?.length?recipe.offer_anchors:(recipe.offer_anchor_id?[{offer_id:recipe.offer_anchor_id,ingredient_name:recipe.offer_anchor_name,role:'eiwitbron'}]:[]);
+    for(const link of attached){
+      const offer=byId.get(link.offer_id);
+      const ing=recipe.ingredients.find(i=>i.name===link.ingredient_name);
+      if(!offer||!ing||ing.name!==offer.name)throw Error('FOUTE product-koppeling '+recipe.id);
+      if(link.role==='eiwitbron'&&offer.category!==recipe.category)throw Error('onjuiste eiwitcategorie '+recipe.id);
+      if(link.role==='groente'&&offer.category!=='groente')throw Error('onjuiste groentecategorie '+recipe.id);
+      if(typeof offer.price!=='number')throw Error('Niet geprijsd actieproduct als bevestigd gekoppeld '+recipe.id);
+    }
     if(recipe.cost?.basket_total!==undefined&&recipe.cost!==null)
       throw Error('prijs onbevestigd maar aanwezig '+recipe.id);
     const vg=recipe.ingredients.filter(i=>i.department==='Groente & fruit').reduce((n,i)=>n+i.quantity,0);
@@ -118,3 +123,15 @@ for(const [s,d] of Object.entries(sources.stores)){
  }
 }
 console.warn('Acties met verified-flag maar zonder officiële winkelbron (UI markeert als extern):',externalCount);
+
+const ahSpot=JSON.parse(fs.readFileSync('docs/data/spotlight.json','utf8')).stores.ah;
+const ahRecipes=ahSpot.recipes.filter(r=>r.id.startsWith('ah-w44-'));
+if(ahRecipes.length<10)throw Error('Ontbrekende AH Bonusrecepten');
+for(const r of ahRecipes){
+ const known=r.ingredients.reduce((n,i)=>n+(typeof i.pack_price==='number'?i.pack_price:0),0);
+ if(Math.abs(known-r.minimum_known_spend)>0.01)throw Error('AH kosten onjuist '+r.id);
+ if(r.cost!==null||r.macros!==null)throw Error('Ongeverifieerd AH recept geprijsd '+r.id);
+ const main=r.ingredients.filter(i=>['Eiwitbronnen','Vega & peulvruchten'].includes(i.department)).reduce((n,i)=>n+(i.unit==='g'?i.quantity:0),0);
+ if(main<600)throw Error('AH eiwitbron onvoldoende '+r.id);
+}
+console.log('AH Bonus inclusief exacte actiekoppelingen gevalideerd');
