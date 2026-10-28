@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict');
+const m=require('../docs/product-matcher.js');
+const o=(name,extra={})=>({name,...extra});
+const i=(name,extra={})=>({name,...extra});
+assert.equal(m.evaluate(o('Verse zalmfilet op huid'),i('zalmfilet zonder huid')).status,'incompatible');
+assert.equal(m.evaluate(o('Verse zalmfilet op huid'),i('Verse zalmfilet op huid')).status,'compatible');
+assert.equal(m.evaluate(o('Verse zalmfilet op huid'),i('zalmfilet')).status,'uncertain');
+assert.equal(m.evaluate(o('Broccoli 500g'),i('broccoli, met eetbare stronk')).status,'compatible');
+assert.equal(m.evaluate(o('AH Terra plantaardige kipfilet'),i('kipfilet naturel')).status,'incompatible');
+assert.equal(m.evaluate(o('verse sperziebonen'),i('diepvries sperziebonen')).status,'incompatible');
+assert.equal(m.evaluate(o('Rundergehakt'),i('Varkensgehakt')).status,'incompatible');
+assert.equal(m.evaluate(o('Soto boemboe'),i('Soto bouillon')).status,'unrelated');
+assert.equal(m.evaluate(o('Verse volle melk'),i('Halfvolle melk')).status,'incompatible');
+assert.equal(m.evaluate(o('Zalm in saus'),i('Zalmfilet')).status,'unrelated');
+assert.equal(m.priceApplied(o('Broccoli',{price:0.69}),i('broccoli',{pack_price:1.38,package_count:2,price_status:'folder_current'})),true);
+assert.equal(m.priceApplied(o('Broccoli',{price:0.69}),i('broccoli',{pack_price:2.07,package_count:2,price_status:'folder_current'})),false);
+assert.equal(m.priceApplied(o('Broccoli',{price:0.69,price_conflict:'tegenstrijdig'}),i('broccoli',{pack_price:0.69,price_status:'folder_current'})),false);
+console.log('Productmatching: identieke soorten, afwijkende varianten en exacte actiebedragen gecontroleerd');

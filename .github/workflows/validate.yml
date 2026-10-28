@@ -5,6 +5,8 @@ on:
     paths:
       - 'docs/data/**'
       - 'docs/app.js'
+      - 'docs/product-matcher.js'
+      - 'tests/product-matcher.cjs'
       - 'scripts/validate.mjs'
       - 'scripts/sync_aanbiedingen.py'
       - 'tests/test_sync_aanbiedingen.py'
@@ -33,3 +35,4 @@ jobs:
         run: |
           node scripts/validate.mjs
           node tests/recipe-engine.cjs
+          node tests/product-matcher.cjs
