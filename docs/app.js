@@ -227,9 +227,16 @@ function favoriteDashboard(){
  out+='<section class="personal-product favorite-product favorite-family"><div class="favorite-title"><div><strong>'+safe(group.label)+'</strong><small>'+saved.length+' bewaarde verpakking'+(saved.length===1?'':'en')+' · alle varianten apart vergelijkbaar</small></div></div>';
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
- const choices=offers(s).filter(o=>helper.familyKey(o)===group.key).map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
+ const familyOffers=offers(s).filter(o=>helper.familyKey(o)===group.key);
+  const choices=familyOffers.filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict)
+    .map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
  choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||Number(!!a.o.price_conflict)-Number(!!b.o.price_conflict)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
- if(!choices.length){const observed=(state.personalPrices?.products||[]).filter(p=>p.store===s&&helper.familyKey(p)===group.key&&Number.isFinite(p.price));return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen aanbieding in beschikbare prijsbronnen</span>'+(observed.length?observed.slice(0,3).map(p=>'<small>'+safe(p.name)+': '+money(p.price)+' · prijswaarneming '+safe(p.checked_date||p.start_date||'zonder datum')+' (geen bevestigde actie)</small>').join(''):'<small>Gewone prijs ontbreekt ook; dit zegt niets over de beschikbaarheid in de winkel.</small>')+'</div>';}
+ if(!choices.length){
+    const observed=(state.personalPrices?.products||[]).filter(p=>p.store===s&&helper.familyKey(p)===group.key&&Number.isFinite(p.price));
+    const reported=familyOffers.slice(0,3).map(o=>'<small>'+safe(o.name)+': '+money(o.price)+' · '+safe(offerEvidenceLabel(o,s))+' (niet bevestigd bij winkel)</small>').join('');
+    return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen rechtstreeks bevestigde aanbieding</span>'+
+      reported+(observed.length?observed.slice(0,3).map(p=>'<small>'+safe(p.name)+': '+money(p.price)+' · prijswaarneming '+safe(p.checked_date||p.start_date||'zonder datum')+' (geen bevestigde actie)</small>').join(''):'<small>Geen gewone winkelprijs bevestigd; beschikbaarheid onbekend.</small>')+'</div>';
+  }
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
  choices.slice(0,5).map(({o,unit,exact})=>
  '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+(o.price_conflict?'*':'')+'</strong>'+(unit?'<span>'+money(unit.price)+'/'+safe(unit.unit)+'</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
