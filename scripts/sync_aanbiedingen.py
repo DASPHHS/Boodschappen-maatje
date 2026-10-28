@@ -12,12 +12,12 @@ OUT=Path(__file__).resolve().parents[1]/"docs/data/offers-catalog.json"
 BASE="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
 RETAILERS={"lidl":"lidl","jumbo":"jumbo","ah":"albert_heijn"}
 REGEX={
-"kip":r"\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)\b",
-"vis":r"\b(zalm|makreel|haring|forel|sardine|koolvis|kabeljauw|witvis|heek|schol|pangasius|schelvis|tonijn|visfilet)\b",
-"vlees":r"\b(rund|runder|biefstuk|varken|varkens|hamlap|riblappen|entrecote|rosbief|ossenhaas|gehakt)\b",
-"vega":r"\b(tofu|tempeh|seitan|edamame|eieren|kikkererwten|linzen|sojabrokken|vegan spek|plantaardige kip)\b",
-"groente":r"\b(broccoli|bloemkool|courgette|paprika|champignon|prei|wortel|waspeen|spinazie|spruit|paksoi|boerenkool|spitskool|witte kool|rode kool|aubergine|tomaat|tomaten|uien|komkommer|venkel|sperziebonen|witlof|andijvie|wokgroente)\b"}
-BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|gepaneerd|visstick|fishstick|dierenvoer|kattenvoer|bier|wijn|chips|snoep)\b"
+"kip":r"\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)[a-z]*\b",
+"vis":r"\b(zalm|makreel|haring|forel|sardine|koolvis|kabeljauw|witvis|heek|schol|pangasius|schelvis|tonijn|visfilet)[a-z]*\b",
+"vlees":r"\b(rund|runder|biefstuk|varken|varkens|hamlap|riblappen|entrecote|rosbief|ossenhaas|gehakt)[a-z]*\b",
+"vega":r"\b(tofu|tempeh|seitan|edamame|eieren|kikkererwten|linzen|sojabrokken|vegan spek|plantaardige kip)[a-z]*\b",
+"groente":r"\b(broccoli|bloemkool|courgette|paprika|champignon|prei|wortel|waspeen|spinazie|spruit|paksoi|boerenkool|spitskool|witte kool|rode kool|aubergine|tomaat|tomaten|uien|komkommer|venkel|sperziebonen|witlof|andijvie|wokgroente)[a-z]*\b"}
+BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|hamburger|runderburger|kipburger|kruidenmix|kipkruiden|gepaneerd|visstick|fishstick|dierenvoer|kattenvoer|bier|wijn|chips|snoep)\b"
 
 def kind(name):
     t=name.lower()

@@ -177,7 +177,11 @@ let featured=recipes(store).filter(r=>offerInfo(r,store).confirmed.length).sort(
 x+=title(NAMES[store],featured.length+' recept(en) met bevestigde actie-ingrediënten','<button class="button secondary small" data-goto-store="'+store+'">Alle recepten →</button>');
 x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Nog geen actie-recept met geprijsd ingrediënt','Bekijk de gewone recepten of de losse aanbiedingen van '+NAMES[store]+'.');
 }
-x+='<div class="info-banner warning"><strong>Bronstatus:</strong> '+safe(status())+'. De app toont geen oude of onbevestigde aanbiedingen als actuele deal. Prijzen en macro’s verschijnen na de gecontroleerde publicatie.</div>';
+
+x+=title('Budgetbasis zonder acties','Voordelige reguliere recepten op basis van eerder waargenomen schapprijzen — geen garantie dat de prijs altijd gelijk blijft.');
+const budgetRec=ORDER.flatMap(s=>recipes(s).filter(r=>r.origin!=='actie-idee'&&typeof r.cost?.basket_total==='number'&&r.cost.basket_total<=10&&!offerInfo(r,s).confirmed.length&&!offerInfo(r,s).anchored&&!(r.ingredients||[]).some(i=>i.price_status==='folder_current')).slice(0,3));
+x+=budgetRec.length?'<div class="cards">'+budgetRec.map(recipeCard).join('')+'</div>':empty('Budgetbasis wordt nog opgebouwd','Zonder betrouwbare reguliere schapprijzen kunnen we geen gerecht als structureel goedkoop bevestigen.');
+x+='<div class="info-banner warning"><strong>Bronstatus:</strong> '+safe(status())+'. De prijzen zijn momentopnames; de gepubliceerde volledige kassamand is niet automatisch vandaag geverifieerd.</div>';
 $('#view-vandaag').innerHTML=x;
 }
 function offersView(){

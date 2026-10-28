@@ -97,3 +97,8 @@ Met de vleeschip kies je **rund** of **varken**; met de vischip kies je **vette 
 \`scripts/sync_aanbiedingen.py\` gebruikt dagelijks het publieke PrijsProfeet-endpoint \`/products/promotional/all\` voor Lidl, Jumbo en Albert Heijn; de resultaten komen in \`docs/data/offers-catalog.json\`. De GitHub-workflow \`actiecatalogus.yml\` draait om 07.35 Nederlandse tijd (onder voorbehoud van een geslaagde run). De bronvermelding PrijsProfeet is vereist. Een prijs uit deze feed is niet zelfstandig geverifieerd en bevat geen volledig regulier assortiment.
 
 \`docs/recipe-engine.js\` genereert per supermarkt uiteenlopende wereldkeuken-ideeën rond actieve aanbiedingen voor eiwitbronnen, met minimaal 1200 g voorgestelde groenten per vier porties. Deze ideeën krijgen het label **Actie als basis**. Hun volledige kassaprijs en macro's blijven onbekend totdat alle ingrediënten en verpakkingen geprijsd en berekend zijn. Alleen handmatig/aantoonbaar verbonden en al verwerkte acties krijgen het label **Actieprijs verwerkt**. De permanente bibliotheek van veertig recepten blijft aanwezig als gezonde, mogelijk budgetvriendelijke inspiratie, zonder ongefundeerde 'altijd goedkoop'-garantie.
+
+
+### Budgetbasis zonder aanbiedingen
+
+De startpagina toont afzonderlijk recepten die zonder verwerkt actieproduct onder €10 uitkwamen in een eerder berekende prijswaarneming. De kaart vermeldt expliciet dat het om een **tijdgebonden prijsindicatie** gaat, niet om een gegarandeerde 'altijd goedkoop'-prijs. Bij nieuwe actuele reguliere schapprijzen kunnen deze gerechten opnieuw beoordeeld worden en in rangorde stijgen.
