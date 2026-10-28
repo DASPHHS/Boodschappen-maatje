@@ -7,6 +7,8 @@ on:
       - 'docs/app.js'
       - 'docs/product-matcher.js'
       - 'docs/price-integrity.js'
+      - 'docs/source-freshness.js'
+      - 'tests/source-freshness.cjs'
       - 'tests/price-integrity.cjs'
       - 'tests/favorite-families.cjs'
       - 'docs/recipe-ranking.js'
@@ -53,6 +55,7 @@ jobs:
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
+          node tests/source-freshness.cjs
           node tests/favorite-families.cjs
           node tests/recipe-ranking.cjs
           node tests/offer-identity.cjs
