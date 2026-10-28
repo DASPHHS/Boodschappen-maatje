@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+const fake={};
+const fs=require('node:fs');
+const src=fs.readFileSync('docs/favorites.js','utf8');
+new Function('window',src)(fake);
+const fav=fake.MaatjeFavorites;
+const a={name:'Texels Skuumkoppe 6x330ML',pack_label:'6x330ML',store:'jumbo'};
+const b={name:'Texels Skuumkoppe Bier Fles 6 x 300 ml',pack_label:'6 x 300 ml',store:'jumbo'};
+const zero={name:'Texels Skuumkoppe 0.0% 6x330ML',pack_label:'6x330ML',store:'jumbo'};
+assert.equal(fav.familyKey(a),fav.familyKey(b));
+assert.notEqual(fav.familyKey(a),fav.familyKey(zero));
+assert.equal(fav.same(a,b,'jumbo'),false);
+assert.equal(fav.familyMembers([a,b,zero]).length,2);
+assert.equal(fav.familyMembers([a,b,zero])[0].items.length,2);
+const chouffe={name:'La Chouffe Blond',pack_label:'330 ml',store:'ah'};
+assert.equal(fav.familyMembers([a,b,zero,chouffe]).length,3);
+console.log('Favorite families grouped, alcohol variants and exact packaging remain separate');

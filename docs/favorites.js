@@ -19,11 +19,33 @@ if(xPack&&yPack&&xPack===yPack)return true;
 // Missing packaging means the observation is too weak for cross-store equivalence
 return !xPack&&!yPack&&a.store===store;
 }
+// Families group only genuinely related products. A family is NOT an exact-price match.
+function familyKey(p){
+ const n=name(p?.name);
+ const zero=/(?:\b0\s?0\b|\balcoholvrij\b)/.test(n)?'|alcoholvrij':'|regulier';
+ if(/\btexels\b/.test(n)&&/\bskuumkoppe\b/.test(n))return 'beer:texels skuumkoppe'+zero;
+ if(/\bla chouffe\b/.test(n)&&/\bblond(?:e)?\b/.test(n))return 'beer:la chouffe blond'+zero;
+ const base=n.replace(/\b\d+\s*(?:x|×)\s*\d+(?:\s*\d+)?\s*(?:ml|cl|l|g|kg)\b/g,'')
+  .replace(/\b\d+\s*(?:ml|cl|l|g|kg)\b/g,'').replace(/\b(bier fles|bier blik)\b/g,'')
+  .replace(/\b(fles|blik|6 flesjes|6 blikjes)\b/g,'').replace(/\s+/g,' ').trim();
+ return 'product:'+base+(n.includes('0 0')||n.includes('alcoholvrij')?'|alcoholvrij':'');
+}
+function familyLabel(p){
+ const k=familyKey(p);
+ if(k.startsWith('beer:texels skuumkoppe'))return 'Texels Skuumkoppe'+(k.endsWith('alcoholvrij')?' 0.0':'');
+ if(k.startsWith('beer:la chouffe blond'))return 'La Chouffe Blond'+(k.endsWith('alcoholvrij')?' 0.0':'');
+ return name(p?.name);
+}
+function familyMembers(products){
+ const groups=new Map();
+ for(const p of products||[]){const k=familyKey(p);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)}
+ return [...groups].map(([key,items])=>({key,label:familyLabel(items[0]),items}));
+}
 function record(p,store){
 const label=name(p?.name),packageLabel=String(p?.pack_label||'');
 return {id:(ean(p)?'ean:'+ean(p):'product:'+label+'|'+fold(packageLabel)+'|'+(packageLabel?'':'shop:'+store)),
  name:String(p?.name||''),pack_label:packageLabel,ean:ean(p),store:String(store||''),added_at:new Date().toISOString()};
 }
 function find(favorites,p,store){return (Array.isArray(favorites)?favorites:[]).find(f=>same(f,p,store))}
-root.MaatjeFavorites={same,record,find,name,pack,sungold};
+root.MaatjeFavorites={same,record,find,name,pack,sungold,familyKey,familyLabel,familyMembers};
 })(window);
