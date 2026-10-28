@@ -35,7 +35,7 @@
  function features(name){
   const n=norm(name),f=family(name);
   const plant=/\b(plantaardig|vegan|vega|vegetarisch|terra)\b/.test(n);
-  return {family:f,plant:plant?'plant':['zalm','kabeljauw','kipfilet','kippenbouten','gehakt'].includes(f)?'animal':null,
+  return {family:f,retailer:/\b(jumbo)\b/.test(n)?'jumbo':/\b(ah|albert heijn)\b/.test(n)?'ah':/\blidl\b/.test(n)?'lidl':null,plant:plant?'plant':['zalm','kabeljauw','kipfilet','kippenbouten','gehakt'].includes(f)?'animal':null,
    skin:/\b(zonder huid|huidloos)\b/.test(n)?'without':/\b(op huid|met huid)\b/.test(n)?'with':null,
    wild:/\b(wild|wilde)\b/.test(n)?'wild':/\bkweek\b/.test(n)?'farmed':null,
    frozen:/\b(diepvries|bevroren)\b/.test(n)?'frozen':/\b(vers|verse)\b/.test(n)?'fresh':null,
@@ -54,7 +54,7 @@
   if(id1&&id2&&id1===id2)return {status:'compatible',reason:'zelfde product-ID',family:a.family||b.family};
   if(norm(offer.name)===norm(ingredient.name))return {status:'compatible',reason:'exact gelijkluidende productnaam',family:a.family||b.family};
   if(!a.family||!b.family||a.family!==b.family)return {status:'unrelated',reason:'andere productfamilie'};
-  const critical=['plant','skin','wild','frozen','smoked','bone','alcohol','milk','meat'];
+  const critical=['retailer','plant','skin','wild','frozen','smoked','bone','alcohol','milk','meat'];
   const conflicts=critical.filter(k=>a[k]&&b[k]&&a[k]!==b[k]);
   if(conflicts.length)return {status:'incompatible',reason:'variant verschilt: '+conflicts.join(', '),family:a.family};
   const missing=critical.filter(k=>(a[k]&&!b[k])||(!a[k]&&b[k])).filter(k=>
@@ -66,14 +66,23 @@
   if(missing.length)return {status:'uncertain',reason:'variant onvoldoende gespecificeerd: '+missing.join(', '),family:a.family};
   return {status:'compatible',reason:'zelfde productsoort en geen variantconflict',family:a.family};
  }
+ function packGrams(offer){
+   const x=norm(offer.pack_label);
+   const m=x.match(/(\d+)\s*x\s*(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
+   if(m)return Number(m[1])*Number(m[2].replace(',','.'))*(m[3]==='kg'?1000:1);
+   const one=x.match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
+   return one?Number(one[1].replace(',','.'))*(one[2]==='kg'?1000:1):null;
+ }
  function priceApplied(offer,ingredient){
   if(evaluate(offer,ingredient).status!=='compatible')return false;
   if(offer.price_conflict||ingredient.price_status!=='folder_current'||!Number.isFinite(offer.price)||!Number.isFinite(ingredient.pack_price))return false;
   const packages=Number(ingredient.package_count||1);
   if(!Number.isInteger(packages)||packages<1)return false;
   // Retailer's bundle offer is one purchased unit; never multiply a bundle's regular price.
+  const grams=packGrams(offer);
+  if(grams&&ingredient.unit==='g'&&Number(ingredient.quantity)>grams*packages+0.01)return false;
   const expected=offer.price*packages;
   return Math.abs(expected-ingredient.pack_price)<=0.015;
  }
- return {norm,family,features,evaluate,priceApplied};
+ return {norm,family,features,evaluate,packGrams,priceApplied};
 });

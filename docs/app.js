@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,library:[],offerMode:'personal',manageWatch:false,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,supplemental:null,library:[],offerMode:'personal',manageWatch:false,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
 function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites));localStorage.setItem('bm_saved_recipes',JSON.stringify(state.savedRecipes));localStorage.setItem('bm_recipe_snapshots',JSON.stringify(state.recipeSnapshots))}catch{}}
 async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
@@ -21,15 +21,16 @@ function storeData(d,s){return (d&&d.stores&&d.stores[s])||{}}
 
 
 function offers(s){
- const key=s+'|'+today()+'|'+(state.catalog?.generated_at||'')+'|'+(state.daily?.generated_at||'');
+ const key=s+'|'+today()+'|'+(state.catalog?.generated_at||'')+'|'+(state.supplemental?.generated_at||'')+'|'+(state.daily?.generated_at||'');
  if(state._offersCache.has(key))return state._offersCache.get(key);
  const manual=storeData(state.spotlight,s).offers||[];
  const current=storeData(state.daily,s).offers||[];
+ const supplements=storeData(state.supplemental,s).offers||[];
  const scan=state.catalog?.stores?.[s];
  const fresh=state.catalog?.generated_at?.slice(0,10)===today()&&scan?.status==='ok';
  const external=fresh&&Array.isArray(scan.offers)?scan.offers:[];
  const ids=new Set(),names=new Set(),all=[];
- for(const o of [...manual,...current,...external]){
+ for(const o of [...manual,...current,...external,...supplements]){
    if(!isOfferActive(o)||ids.has(o.id))continue;
    const key=norm(o.name).replace(/(jumbo|ah|albert heijn|lidl)/g,'').trim()+'|'+(o.pack_label||'');
    if(names.has(key))continue;
@@ -40,7 +41,7 @@ function offers(s){
 function isOfferActive(o){
  if(!o||o.is_regular_low_price||!Number.isFinite(o.price)||!validdate(o.end_date)||!validdate(o.start_date))return false;
  if(o.start_date>today()||o.end_date<today()||o.online_only)return false;
- return o.verified===true||(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')||(o.source_provider==='user_folder_image'&&!!o.evidence_date&&o.evidence_date<=today());
+ return o.verified===true||(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')||(o.source_provider==='user_folder_image'&&!!o.evidence_date&&o.evidence_date<=today())||(o.source_provider==='Biernet'&&o.checked_at===today()&&o.status==='third_party_price_observation');
 }
 function recipes(s){
  const found=[],seen=new Set();
@@ -356,7 +357,7 @@ try{
 }
 function offerEvidenceLabel(o,s){
 if(o.price_conflict)return 'Officiële melding · prijs verschilt';if(isOfficialOfferSource(o,s))return 'Officiële actiebron';
-return o.source_provider==='PrijsProfeet'?'Externe prijswaarneming':o.source_provider==='user_folder_image'?'Aangeleverde folderfoto · prijs controleren':'Folder- of vergelijkingsbron';
+return o.source_provider==='Biernet'?'Biernet: externe actieprijs':o.source_provider==='PrijsProfeet'?'Externe prijswaarneming':o.source_provider==='user_folder_image'?'Aangeleverde folderfoto · prijs controleren':'Folder- of vergelijkingsbron';
 }
 
 function productReview(s,o){
@@ -476,7 +477,7 @@ const arr=offers(s).filter(o=>offerFiltered(o,s)).sort((a,b)=>offerSorter(a,b,s)
 out+=title(NAMES[s],arr.length+' lopende prijswaarnemingen · '+Math.min(arr.length,state.pageSize[s])+' getoond');
 out+=arr.length?'<div class="cards">'+arr.slice(0,state.pageSize[s]).map(o=>dealCard(o,s)).join('')+'</div>':empty('Geen actuele prijswaarneming','De bron is mogelijk nog niet bijgewerkt.');
 if(arr.length>state.pageSize[s])out+='<div class="control-row"><button class="button secondary" data-more-offers="'+s+'">Nog 24 laden ('+(arr.length-state.pageSize[s])+' resterend)</button></div>';
-if(s==='ah')out+=campaignHighlights(s);if(s==='lidl')out+='<div class="info-banner warning"><strong>Lidl-dekking beperkt:</strong> de productfeed is geen compleet assortiment. Controleer de <a href="https://www.lidl.nl/c/service-contact-folders/s10008124" rel="noopener noreferrer" target="_blank">officiële weekfolder</a> en Lidl Plus. Ontbrekend in de feed betekent niet dat er geen actie is.</div>';
+if(s==='ah')out+=campaignHighlights(s);if(s==='lidl')out+='<div class="info-banner warning"><strong>Lidl-dekking beperkt:</strong> de productfeed is geen compleet assortiment. Controleer de <a href="https://www.lidl.nl/c/service-contact-folders/s10008124" rel="noopener noreferrer" target="_blank">officiële weekfolder</a> en Lidl Plus. Ontbrekend in de feed betekent niet dat er geen actie is. Lidl-bier wordt aanvullend gecontroleerd bij <a href="https://www.biernet.nl/bier/aanbiedingen/" target="_blank" rel="noopener noreferrer">Biernet</a> en <a href="https://www.allefolders.nl/nl/aanbiedingen/bier" target="_blank" rel="noopener noreferrer">AlleFolders</a>; die prijzen zijn externe meldingen.</div>';
 }}
 $('#view-aanbiedingen').innerHTML=out;
 }
@@ -616,5 +617,5 @@ document.addEventListener('input',e=>{if(e.target.id==='find'){let x=e.target.va
 document.addEventListener('change',e=>{if(e.target.matches('[data-watch-key]')){const k=e.target.dataset.watchKey;state.watchDisabled=state.watchDisabled.filter(x=>x!==k);if(!e.target.checked)state.watchDisabled.push(k);save();offersView();return}if(e.target.id==='recipe-quality'){state.recipeQuality=e.target.value;recipeView();return}if(e.target.id==='offer-category'){state.kind=e.target.value;offersView();return}if(e.target.id==='offer-sort'){state.offerSort=e.target.value;offersView();return}if(e.target.id==='offer-evidence'){state.offerEvidence=e.target.value;offersView();return}if(e.target.id==='recipe-sort'){state.sortBy=e.target.value;recipeView();return}if(e.target.id==='deal-filter'){state.dealFilter=e.target.value;recipeView();return}if(e.target.matches('[data-check]')){state.checks[e.target.dataset.check]=e.target.checked;save();e.target.closest('.list-line').querySelector('.item-name').classList.toggle('done',e.target.checked)}});
 $('#dialog-close').addEventListener('click',()=>$('#recipe-dialog').close());
 document.querySelector('#clock').textContent=new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Amsterdam'});
-(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
+(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
 })();
