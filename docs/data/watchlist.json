@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "updated_at": "2026-10-28",
-  "description": "Door gebruiker genoemde interessante productgroepen, niet per se vaste merkvoorkeuren of automatische koopaankopen.",
+  "description": "Persoonlijke interesselijst afgeleid van expliciet genoemde producten en folderbeelden. Aanpasbaar in de browser, geen vaste merkloyaliteit of koopgarantie.",
   "topics": [
     {
       "key": "hoofdproteine",
@@ -54,6 +54,99 @@
         "popcorn"
       ],
       "importance": "alleen_bij_echt_voordeel"
+    }
+  ],
+  "items": [
+    {
+      "key": "sungold",
+      "title": "Zespri SunGold kiwi",
+      "category": "fruit",
+      "default_selected": true,
+      "description": "Alleen SunGold; vergelijk 750 g exact"
+    },
+    {
+      "key": "pindakaas",
+      "title": "Pindakaas",
+      "category": "voorraad",
+      "default_selected": true,
+      "description": "Huismerk, Calvé en 100% apart benoemen"
+    },
+    {
+      "key": "kwark",
+      "title": "Magere kwark / high protein",
+      "category": "zuivel",
+      "default_selected": true,
+      "description": "Let op eiwit per 100 g en prijs per kg"
+    },
+    {
+      "key": "dreft",
+      "title": "Dreft vaatwastabletten",
+      "category": "huishouden",
+      "default_selected": true,
+      "description": "Vergelijk per tablet, niet per doos"
+    },
+    {
+      "key": "walnoten",
+      "title": "Ongebrande walnoten",
+      "category": "voorraad",
+      "default_selected": true,
+      "description": "Vergelijk per kg, liefst ongezouten"
+    },
+    {
+      "key": "tofu",
+      "title": "Vivera, tofu en tempeh",
+      "category": "vega",
+      "default_selected": true,
+      "description": "Varianten niet altijd onderling vergelijkbaar"
+    },
+    {
+      "key": "gemengdgehakt",
+      "title": "(Gemengd) gehakt",
+      "category": "vlees",
+      "default_selected": true,
+      "description": "Bereken de volledige te kopen verpakkingen"
+    },
+    {
+      "key": "kipfilet",
+      "title": "Kipfilet, blokjes en reepjes",
+      "category": "kip",
+      "default_selected": true,
+      "description": "Geen kruidenmixen of kipbereidingen"
+    },
+    {
+      "key": "vis",
+      "title": "Gezonde vis",
+      "category": "vis",
+      "default_selected": true,
+      "description": "Zalm, forel, makreel en magere vis; geen gepaneerde vis of vega-vis"
+    },
+    {
+      "key": "pompoen",
+      "title": "Pompoen / flespompoen",
+      "category": "groente",
+      "default_selected": true,
+      "description": "Per stuk, niet zonder gewicht per kilo vergelijken"
+    },
+    {
+      "key": "sperziebonen",
+      "title": "Sperziebonen",
+      "category": "groente",
+      "default_selected": true,
+      "description": "Vers en diepvries vergelijken per kg"
+    },
+    {
+      "key": "bospeen",
+      "title": "Bospeen",
+      "category": "groente",
+      "default_selected": true,
+      "description": "Per bos of kg, gewicht controleren"
+    },
+    {
+      "key": "popcorn",
+      "title": "Popcorn",
+      "category": "extra",
+      "default_selected": false,
+      "description": "Optioneel; alleen bij werkelijk voordeel"
     }
   ]
 }
