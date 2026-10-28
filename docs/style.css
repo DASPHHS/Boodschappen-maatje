@@ -70,3 +70,7 @@
 .campaign-card{padding:14px;border:1px solid #d8e5d4;border-radius:13px;background:#fff;display:grid;gap:8px;align-content:start}.campaign-card strong{font-weight:800}.campaign-card p{margin:0;font-size:14px;font-weight:750}
 .campaign-condition{background:#f0f7e9;padding:7px 10px;border-radius:8px;font-weight:800;font-size:13px;color:#346247}
 .campaign-card a{color:#326946;font-weight:800;font-size:11px}
+
+.recipe-origin{font-size:11px!important;color:#6d745d!important;margin:4px 0 9px!important}
+.offer-category-select{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:10px 12px;max-width:260px}
+.offer-filter-row{flex-wrap:wrap}.offer-filter-row .search{flex:1;min-width:205px}

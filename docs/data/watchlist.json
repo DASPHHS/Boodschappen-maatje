@@ -58,6 +58,13 @@
   ],
   "items": [
     {
+      "key": "bier",
+      "title": "Bier (ook speciaalbier en 0.0)",
+      "category": "bier",
+      "default_selected": true,
+      "description": "Vergelijk exact dezelfde verpakkingen per liter; alcoholvrij en alcoholhoudend niet vermengen."
+    },
+    {
       "key": "sungold",
       "title": "Zespri SunGold kiwi",
       "category": "fruit",
