@@ -11,6 +11,7 @@ on:
       - 'tests/favorite-families.cjs'
       - 'docs/recipe-ranking.js'
       - 'tests/recipe-ranking.cjs'
+      - 'tests/recipe-price-dataset.cjs'
       - 'docs/favorites.js'
       - 'scripts/offer-audit.cjs'
       - 'tests/offer-audit.cjs'
@@ -52,4 +53,5 @@ jobs:
           node tests/price-integrity.cjs
           node tests/favorite-families.cjs
           node tests/recipe-ranking.cjs
+          node tests/recipe-price-dataset.cjs
           node tests/offer-audit.cjs
