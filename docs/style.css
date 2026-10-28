@@ -74,3 +74,13 @@
 .recipe-origin{font-size:11px!important;color:#6d745d!important;margin:4px 0 9px!important}
 .offer-category-select{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:10px 12px;max-width:260px}
 .offer-filter-row{flex-wrap:wrap}.offer-filter-row .search{flex:1;min-width:205px}
+
+.offer-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.offer-toolbar .muted{font-size:11px;max-width:380px}
+.tracked-items{display:grid;gap:12px}.tracked-product{border:1px solid #dbe5db;border-radius:15px;padding:14px;background:white}
+.tracked-head{display:flex;flex-direction:column;gap:3px}.tracked-head strong{font-size:16px}.tracked-head small{color:#617568}
+.tracked-store-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.tracked-store-grid>div{padding:10px;background:#f2f5ee;border-radius:9px;position:relative;min-height:98px}
+.tracked-store-grid>div b{display:block;font-size:11px;margin-bottom:8px}.tracked-store-grid small{font-size:10px;line-height:1.4;display:block}
+.tracked-store-grid .favorite-heart{position:absolute;right:5px;top:6px;transform:scale(.75)}
+.personal-evidence{color:#567369;font-weight:650}
+@media(max-width:590px){.tracked-store-grid{grid-template-columns:1fr}.tracked-store-grid>div{min-height:76px}.tracked-store-grid .favorite-heart{transform:none}}
