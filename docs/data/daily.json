@@ -1392,30 +1392,30 @@
               "price_status": "webshop_current"
             },
             {
-              "name": "tomatenblokjes met knoflook",
+              "name": "tomatenblokjes",
               "quantity": 400,
               "unit": "g",
               "department": "Groente & fruit",
-              "pack_price": 1.35,
+              "pack_price": 0.37,
               "package_count": 1,
               "package_size": 400,
               "package_unit": "g",
-              "product_name": "Jumbo Tomatenblokjes met Knoflook 400g",
+              "product_name": "Jumbo Tomatenblokjes 400g",
               "source_url": "https://www.jumbo.com/producten/wereldkeukens%2C-kruiden%2C-pasta-en-rijst/mediterrane-keuken/tomatenblokjes-en-puree/tomatenblokjes/jumbo/?filters=Merken%3AHema%2CAlpro%2CMUTTI",
               "price_observed_at": "2026-10-28",
               "price_status": "webshop_current"
             }
           ],
           "instructions": [
-            "Snijd 1kg tempeh in blokjes en rooster in een hete antiaanbakpan zonder extra olie.",
-            "Voeg beide blikken tomatenblokjes toe en laat 10 minuten sudderen.",
-            "Roer 750g spinazie erdoor, laat goed heet worden en verdeel over vier porties. Gebruik optioneel kruiden uit de voorraadkast."
+            "Snijd 1kg tempeh in blokjes en rooster in een antiaanbakpan zonder extra olie.",
+            "Voeg twee blikken gewone tomatenblokjes toe en laat 10 minuten inkoken; gebruik eventueel kruiden die je al in huis hebt.",
+            "Roer 750g spinazie erdoor, verwarm door en verdeel over vier porties."
           ],
           "cost": {
-            "basket_total": 9.88,
+            "basket_total": 8.9,
             "estimated": true,
             "verified_today": false,
-            "price_per_portion": 2.47,
+            "price_per_portion": 2.23,
             "price_basis": "Volledige kassaverpakkingen; deels regulier geprijsd op 27 oktober, folderacties gecontroleerd op 28 oktober. Filiaalkassa niet bevestigd.",
             "budget_target": 10,
             "budget_met": true
@@ -1429,7 +1429,7 @@
           "macro_status": "estimated",
           "macro_note": "Benaderde voedingswaarden per portie, gebaseerd op gangbare productsamenstellingen.",
           "price_status": "deels_2026-10-27",
-          "savings_tip": "Geen actie nodig: reguliere Jumbo-tempeh, diepvriesgroente en goedkope tomatenblikken geven een kassamand van €9,88. Een duurdere actie is niet nodig.",
+          "savings_tip": "Twee gewone Jumbo-tomatenblikken van €0,37 zijn samen €0,98 goedkoper dan één gewoon blik plus één blik met knoflook. Gebruik optioneel eigen knoflook of kruiden; de verplichte boodschappenmand kost €8,90.",
           "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
           "offer_inspired": false
         }
