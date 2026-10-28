@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_at": "2026-10-28T15:00:00+01:00",
-  "notes": "Jumbo en AH acties geldig binnen hun winkel-specifieke datums. AH-producten met een ontbrekend bedrag blijven in spotlight aanwezig als prijs onbekend, niet zichtbaar als geprijsde actie. Alle nieuwe recepten zijn alleen gedeeltelijk geprijsd. De gepubliceerde prijs is geen live filiaalkassa.",
+  "notes": "Jumbo en AH acties geldig binnen hun winkel-specifieke datums. AH-producten met een ontbrekend bedrag blijven in spotlight aanwezig als prijs onbekend, niet zichtbaar als geprijsde actie. Alle nieuwe recepten zijn alleen gedeeltelijk geprijsd. De gepubliceerde prijs is geen live filiaalkassa.; broncontrole aanvullende vergelijkingssites van 28 okt 2026, zie verification.json. De retailer kan in HTML de oude eenheidsprijs naast de actuele actieprijs tonen.",
   "stores": {
     "lidl": {
       "offers": [],
@@ -19,10 +19,10 @@
           "unit_price": 4.99,
           "unit": "kg",
           "source": {
-            "label": "Jumbo actiefolder pagina 15",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
+            "label": "Jumbo aanbieding gemengd gehakt 1000 g, 28 okt–3 nov",
+            "url": "https://www.jumbo.com/aanbiedingen/gemengd-gehakt/3022981"
           },
-          "note": "Naturel of gekruid; varken/rund-mengsel, geen mager rundergehakt.",
+          "note": "Officieel 1000 g voor €4,99, was €7,99. De getoonde retailer-kiloprijs kan nog de normale prijs zijn; effectief €4,99/kg.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -39,10 +39,10 @@
           "unit_price": 12.83,
           "unit": "kg",
           "source": {
-            "label": "Jumbo actiefolder pagina 16 (Extra's)",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16"
+            "label": "Jumbo Extra's aanbiedingen, alleen in de winkel",
+            "url": "https://www.jumbo.com/aanbiedingen/nu"
           },
-          "note": "Extra's-actie: voorwaarden en exacte kassaprijs/gewicht controleren.",
+          "note": "Extra's-actie alleen in de winkel; online overzicht bevestigt €4,49 per circa 350 g. Controleer jouw Extra's toegang en gewicht.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -59,10 +59,10 @@
           "unit_price": 9.69,
           "unit": "kg",
           "source": {
-            "label": "Jumbo actiefolder pagina 15",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
+            "label": "Jumbo Alle Vivera: 1+1 gratis",
+            "url": "https://www.jumbo.com/aanbiedingen/alle-vivera/3021682"
           },
-          "note": "1+1 gratis, voorbeeld 2 gelijke verpakkingen; gemengde combinaties kunnen afwijken.",
+          "note": "Reguliere winkelprijs €3,39 PER verpakking van 175 g. 1+1 gratis: twee identieke verpakkingen samen €3,39 = €9,69/kg. Combineren kan andere totaalprijs geven.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -104,15 +104,15 @@
           "name": "Jumbo biologische pompoen of flespompoen",
           "category": "groente",
           "price": 1.49,
-          "regular_price": 2.49,
+          "regular_price": null,
           "pack_label": "per stuk",
           "unit_price": null,
           "unit": null,
           "source": {
-            "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
-            "url": "https://www.jumbo.com/aanbiedingen"
+            "label": "Jumbo biologische pompoen of flespompoen",
+            "url": "https://www.jumbo.com/aanbiedingen/biologische-pompoen-of-flespompoen/3023322"
           },
-          "note": "Per stuk: gewicht en eetbaar vruchtvlees verschillen.",
+          "note": "Officiële actie geldt voor meerdere pompoenvarianten. De oude prijs verschilt (€1,99 of €2,49); daarom geen uniforme oude prijs. Gewicht per stuk onbekend.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -146,13 +146,13 @@
           "price": 1.99,
           "regular_price": 3.98,
           "pack_label": "2 × 300 g",
-          "unit_price": 3.32,
+          "unit_price": 3.3166666666666664,
           "unit": "kg",
           "source": {
-            "label": "Jumbo officiële 1+1-actie stamppotproducten",
+            "label": "Jumbo stamppotgroente en -aardappelen 1+1",
             "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523"
           },
-          "note": "1+1 gratis op geselecteerde stamppotproducten; prijsvoorbeeld voor 2 gelijke pakken.",
+          "note": "Jumbo productpagina toont €1,99/pak van 300 g; twee identieke pakken samen €1,99 bij 1+1. PrijsProfeet geeft effectieve €0,99 per pak.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -172,13 +172,13 @@
           "price": 1.39,
           "regular_price": 2.78,
           "pack_label": "2 × 600 g",
-          "unit_price": 1.16,
+          "unit_price": 1.1583333333333334,
           "unit": "kg",
           "source": {
-            "label": "Jumbo officiële 1+1-actie stamppotproducten",
+            "label": "Jumbo stamppotgroente en -aardappelen 1+1",
             "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523"
           },
-          "note": "1+1 gratis; aardappelen zijn niet koolhydraatarm, aparte portie-optie.",
+          "note": "Productprijs €1,39/pak 600 g; bij twee identieke pakken totaal €1,39, effectief €1,16/kg.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -202,12 +202,13 @@
             "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
             "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/12"
           },
-          "note": "Geldt voor geselecteerde bekers; exacte variant/volledige productnaam controleren.",
+          "note": "Bedrag afgelezen uit aangeleverde folderafbeelding. Variabele productvariant/verpakking nog niet bij retailer apart geverifieerd; niet onafhankelijk bevestigd.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
-          "verified": true,
-          "source_provider": "officiele_folder",
-          "member_required": false
+          "verified": false,
+          "source_provider": "user_folder_image",
+          "member_required": false,
+          "evidence_date": "2026-10-28"
         },
         {
           "id": "jumbo-w44-pindakaas",
@@ -220,12 +221,13 @@
             "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
             "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/12"
           },
-          "note": "Vergelijk Calvé per kilo met Jumbo huismerk; merkactie niet automatisch voordelig.",
+          "note": "Bedrag afgelezen uit aangeleverde folderafbeelding. Variabele productvariant/verpakking nog niet bij retailer apart geverifieerd; niet onafhankelijk bevestigd.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
-          "verified": true,
-          "source_provider": "officiele_folder",
-          "member_required": false
+          "verified": false,
+          "source_provider": "user_folder_image",
+          "member_required": false,
+          "evidence_date": "2026-10-28"
         },
         {
           "id": "jumbo-w44-kiwi",
@@ -234,13 +236,13 @@
           "price": 4.99,
           "regular_price": 6.59,
           "pack_label": "750 g",
-          "unit_price": 6.65,
+          "unit_price": 6.653333333333333,
           "unit": "kg",
           "source": {
-            "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
+            "label": "Jumbo Zespri SunGold aanbieding",
             "url": "https://www.jumbo.com/aanbiedingen/zespri-kiwi-sungold/3023317"
           },
-          "note": "Fruitactie, geen hoofdmaaltijdingrediënt.",
+          "note": "Bron toont soms reguliere kiloprijs van €8,79/kg naast actieprijs €4,99. Correcte actiekiloprijs 4,99 / 0,75 = €6,65/kg.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
@@ -258,32 +260,35 @@
             "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
             "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/27"
           },
-          "note": "Per smaak verschillen gewicht en prijs per kg: niet als één identiek product vergelijken.",
+          "note": "Bedrag afgelezen uit aangeleverde folderafbeelding. Variabele productvariant/verpakking nog niet bij retailer apart geverifieerd; niet onafhankelijk bevestigd.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
-          "verified": true,
-          "source_provider": "officiele_folder",
-          "member_required": false
+          "verified": false,
+          "source_provider": "user_folder_image",
+          "member_required": false,
+          "evidence_date": "2026-10-28"
         },
         {
           "id": "jumbo-w44-dreft",
-          "name": "Dreft Platinum Plus / Miracle vaatwastabletten (selectie)",
+          "name": "Dreft Platinum Plus Bries vaatwascapsules 25 stuks (5 pakken)",
           "category": "huishouden",
           "price": 37.98,
           "regular_price": 94.95,
-          "pack_label": "5 dozen, variabele tabletaantallen",
+          "pack_label": "5 × 25 capsules = 125 capsules",
           "source": {
-            "label": "Actuele Jumbo weekfolder 44 (28 okt – 3 nov)",
-            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/30"
+            "label": "Jumbo 2+3 gratis Dreft Platinum Plus of Miracle",
+            "url": "https://www.jumbo.com/aanbiedingen/dreft-platinum-plus-of-miracle/3021593"
           },
-          "note": "2+3 gratis; prijs per tablet eerst per variant controleren; geen maaltijdproduct.",
+          "note": "Dit is de rekenbare variant à €18,99/25 stuks. Koop 5 dezelfde pakken, betaal voor 2 (€37,98), ontvang 125 capsules, effectief €0,304 per capsule. Andere Dreft-verpakkingen hebben andere totaalprijzen. Huismerk kan goedkoper zijn.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
           "verified": true,
           "source_provider": "officiele_folder",
           "member_required": false,
           "multi_buy_quantity": 5,
-          "multi_buy_price": 37.98
+          "multi_buy_price": 37.98,
+          "unit_price": 0.30384,
+          "unit": "capsule"
         }
       ],
       "recipes": [
@@ -1364,7 +1369,7 @@
           "regular_price": 2.99,
           "pack_label": "300 g",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "label": "AH Bonusfolder varkensgehakt 300g",
             "url": "https://www.ah.nl/bonus"
           },
           "source_provider": "ah_official_bonus",
@@ -1374,7 +1379,8 @@
           "member_required": true,
           "unit_price": 4.97,
           "unit": "kg",
-          "promo_note": "50% korting; per verpakking 300 g. Voor 600 g twee verpakkingen kopen."
+          "promo_note": "50% korting; per verpakking 300 g. Voor 600 g twee verpakkingen kopen.",
+          "note": "Folder, PrijsProfeet en MijnMandje: €1,49. Allesupers geeft €1,50 voor ogenschijnlijk identiek product. Verschil van €0,01 nog niet op AH-artikelniveau opgelost."
         },
         {
           "id": "ah-w44-chicken-300",
@@ -1394,7 +1400,8 @@
           "member_required": true,
           "unit_price": 13.3,
           "unit": "kg",
-          "promo_note": "Per verpakking van 300 g; voor minimaal 600 g twee verpakkingen, voor 800 g drie."
+          "promo_note": "Per verpakking van 300 g; voor minimaal 600 g twee verpakkingen, voor 800 g drie.",
+          "note": "€3,99 voor 300 g of 2 stuks zoals in AH Bonusfolder. Nog geen bevestigde exacte productdetail-URL voor hetzelfde pak; prijs niet door tweede winkelproductbron bevestigd."
         },
         {
           "id": "ah-w44-plant-chicken-160",
@@ -1404,8 +1411,8 @@
           "regular_price": 2.09,
           "pack_label": "160 g",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
-            "url": "https://www.ah.nl/bonus"
+            "label": "AH Bonus Terra plantaardige kipstukjes 160g",
+            "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
           },
           "source_provider": "ah_official_bonus",
           "verified": true,
@@ -1424,8 +1431,8 @@
           "regular_price": 1.49,
           "pack_label": "500 g",
           "source": {
-            "label": "AH Bonus week 44 + officiële AH productpagina",
-            "url": "https://www.ah.nl/bonus"
+            "label": "AH Spruitjes 500g Bonus; eigen winkelpagina",
+            "url": "https://www.ah.nl/shop/eetmomenten"
           },
           "source_provider": "ah_official_bonus",
           "verified": true,
@@ -1444,15 +1451,16 @@
           "regular_price": 1.75,
           "pack_label": "per stuk",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
-            "url": "https://www.ah.nl/bonus"
+            "label": "AH biologische seizoensproducten en bloemkoolbonus",
+            "url": "https://www.ah.nl/shop/seizoensproducten"
           },
           "source_provider": "ah_official_bonus",
           "verified": true,
           "start_date": "2026-10-26",
           "end_date": "2026-11-01",
           "member_required": true,
-          "promo_note": "Gewicht en eetbaar aandeel per bloemkool kunnen variëren. Controleer of één exemplaar voldoende is."
+          "promo_note": "Gewicht en eetbaar aandeel per bloemkool kunnen variëren. Controleer of één exemplaar voldoende is.",
+          "note": "€1,49 per stuk. Oude prijs verschilt op sommige AH-pagina's (1,75/1,85); daarom prijsreferentie met datum vergelijken."
         },
         {
           "id": "ah-w44-butternut-piece",
@@ -1462,7 +1470,7 @@
           "regular_price": 2.98,
           "pack_label": "per stuk",
           "source": {
-            "label": "AH seizoenspagina 40%-actie",
+            "label": "AH seizoensproduct biologische flespompoen",
             "url": "https://www.ah.nl/shop/seizoensproducten"
           },
           "source_provider": "ah_official_bonus",
@@ -1500,8 +1508,8 @@
           "regular_price": null,
           "pack_label": "2 × 1 kg",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
-            "url": "https://www.ah.nl/bonus"
+            "label": "AH seizoen: aardappelen 2 voor 1,99",
+            "url": "https://www.ah.nl/shop/seizoensproducten"
           },
           "source_provider": "ah_official_bonus",
           "verified": true,
@@ -1560,7 +1568,7 @@
           "regular_price": null,
           "pack_label": "200 g",
           "source": {
-            "label": "AH Allerhande koolhydraatarm productoverzicht",
+            "label": "AH Allerhande koolhydraatarme recepten, cottage cheese 200g",
             "url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten"
           },
           "source_provider": "ah_official_bonus",
@@ -1569,7 +1577,8 @@
           "end_date": "2026-11-01",
           "member_required": false,
           "promo_note": "Lage schapprijs, niet als Bonusactie of kortingsverschil geclaimd.",
-          "is_regular_low_price": true
+          "is_regular_low_price": true,
+          "note": "Reguliere schapprijs €0,74; geen Bonusaanbieding. Andere AH-pagina heeft oudere waarneming €0,75."
         },
         {
           "id": "ah-w44-fruit-pieces",

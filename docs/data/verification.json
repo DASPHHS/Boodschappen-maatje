@@ -1,0 +1,546 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-28T16:00:00+01:00",
+  "scope": "Publieke webcontrole en door gebruiker aangeleverde folderbeelden. Geen inzage in fysieke kassas of private winkelaccounts. Niet elke site heeft verifieerbare detail-URLs per product.",
+  "source_audit": [
+    {
+      "site": "Albert Heijn (officieel)",
+      "url": "https://www.ah.nl/bonus",
+      "coverage": "AH Bonus + webshop",
+      "verdict": "primary",
+      "caveat": "Per product, Bonuskaart, filiaal en datum controleren. Sommige generieke Bonus-URL's tonen niet precies dezelfde variant."
+    },
+    {
+      "site": "Jumbo (officieel)",
+      "url": "https://www.jumbo.com/aanbiedingen/nu",
+      "coverage": "Actuele Jumbo weekacties inclusief bundels",
+      "verdict": "primary",
+      "caveat": "1+1 kan winkelprijs van één artikel tonen; bundeltotaal apart rekenen. Extra's zijn soms alleen in de winkel."
+    },
+    {
+      "site": "Lidl (officieel)",
+      "url": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+      "coverage": "Folder en geadverteerde Lidl-aanbiedingen",
+      "verdict": "primary_limited",
+      "caveat": "Geen doorzoekbare volledige reguliere schapprijs voor alle filialen; Lidl Plus verschilt per coupon."
+    },
+    {
+      "site": "PrijsProfeet",
+      "url": "https://www.prijsprofeet.nl/",
+      "coverage": "Acties, effectieve bundelprijzen en prijs-historie",
+      "verdict": "secondary_product_prices",
+      "caveat": "Prijzen afkomstig uit retailerdata en folders. Eenheidsprijzen/effectieve halve prijzen kunnen van retailer-weergave verschillen."
+    },
+    {
+      "site": "Checkjebon",
+      "url": "https://github.com/supermarkt/checkjebon",
+      "coverage": "Open prijsdata AH, Jumbo en andere supermarkten",
+      "verdict": "secondary_data_not_product_verified",
+      "caveat": "GitHub README noemt Lidl expliciet als niet ondersteund. Geen afzonderlijk actuele, product-specifieke rij voor deze steekproef kunnen bevestigen."
+    },
+    {
+      "site": "AlleFolders",
+      "url": "https://www.allefolders.nl/",
+      "coverage": "Digitale folders en aanbiedingen",
+      "verdict": "folder_mirror",
+      "caveat": "Gebaseerd op originele supermarkt-folder. Een kopie is geen onafhankelijke kassaprijsmeting."
+    },
+    {
+      "site": "Schapr",
+      "url": "https://schapr.nl/boodschappen",
+      "coverage": "Productcatalogus, favorieten en prijsvergelijking",
+      "verdict": "comparison_catalog",
+      "caveat": "Wel raadpleegbaar maar geen controleerbare publieke detailprijs voor alle geselecteerde producten aangetroffen."
+    },
+    {
+      "site": "Supermarktscanner",
+      "url": "https://supermarktscanner.nl/jumbo-aanbiedingen",
+      "coverage": "Aanbiedingen en prijshistorie",
+      "verdict": "comparison_catalog",
+      "caveat": "Zoek- en catalogusprijzen beschikbaar maar niet elke huidige foldervariant afzonderlijk verifieerbaar uit publiek zichtbare pagina."
+    },
+    {
+      "site": "Allesupers",
+      "url": "https://allesupers.nl/browse/aardappelen-groente-en-fruit/verse-groente/spruiten",
+      "coverage": "Eenheidsprijsvergelijkingen bij 9 supermarkten",
+      "verdict": "secondary_product_prices",
+      "caveat": "Bij AH varkensgehakt €1,50 versus €1,49 elders. Per datum/centafronding productdetail vergelijken; geen Lidl in vergelijkingsset."
+    },
+    {
+      "site": "MijnMandje",
+      "url": "https://mijnmandje.nl/producten/vlees-kip-vis",
+      "coverage": "Dagelijkse prijswaarnemingen en aanbiedingen, favorieten",
+      "verdict": "secondary_product_prices",
+      "caveat": "Bevestigt AH varkensgehakt €1,49 maar een producentprijs is niet per se live kassa."
+    },
+    {
+      "site": "Superscraper",
+      "url": "https://superscraper.nl/bronnen",
+      "coverage": "Prijsbronnen en prijsgeschiedenis inclusief Lidl",
+      "verdict": "secondary_data_claim",
+      "caveat": "Zelf meldt site Lidl-data uit Checkjebon, terwijl Checkjebon README Lidl uitsluit. Dit herkomstverschil eerst ophelderen voordat Lidl-prijzen als bevestigd gelden."
+    }
+  ],
+  "reviews": {
+    "lidl": {},
+    "jumbo": {
+      "jumbo-w44-gemengdgehakt": {
+        "product": "Jumbo Gemengd Gehakt 2 × 500 g",
+        "status": "confirmed",
+        "checked_at": "2026-10-28",
+        "listed_price": 4.99,
+        "pack_label": "2 × 500 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 4.99,
+            "url": "https://www.jumbo.com/aanbiedingen/gemengd-gehakt/3022981",
+            "note": "1000g, actieprijs en einddatum rechtstreeks op retailer"
+          },
+          {
+            "site": "AlleFolders",
+            "price": 4.99,
+            "url": "https://www.allefolders.nl/aanbiedingen/gehakt",
+            "note": "Folderovername"
+          }
+        ]
+      },
+      "jumbo-w44-vivera-shoarma": {
+        "product": "Vivera plantaardige shoarma",
+        "status": "confirmed_bundle",
+        "checked_at": "2026-10-28",
+        "listed_price": 3.39,
+        "pack_label": "2 × 175 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 3.39,
+            "url": "https://www.jumbo.com/aanbiedingen/alle-vivera/3021682",
+            "note": "Eén pak €3,39, twee gelijke pakken €3,39 bij 1+1. Nominale unitprijs op winkelpagina betreft één pak"
+          }
+        ]
+      },
+      "jumbo-w44-boerenkool": {
+        "product": "Jumbo gesneden boerenkool",
+        "status": "confirmed_bundle",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.99,
+        "pack_label": "2 × 300 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 1.99,
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+            "note": "1 pak 300g €1,99, twee gelijke pakken bij 1+1 samen €1,99"
+          },
+          {
+            "site": "PrijsProfeet",
+            "price": 0.99,
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/groente-fruit/",
+            "note": "Effectief per pak afgerond: €0,99; NIET de kassaprijs voor 1 pak"
+          }
+        ]
+      },
+      "jumbo-w44-stamppotaardappelen": {
+        "product": "Jumbo stamppotaardappelen",
+        "status": "confirmed_bundle",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.39,
+        "pack_label": "2 × 600 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 1.39,
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-stamppotgroente-stamppotaardappelen-spekreepjes-of-hamblokjes/3021523",
+            "note": "1 pak 600g €1,39, twee gelijke pakken samen €1,39"
+          },
+          {
+            "site": "PrijsProfeet",
+            "price": 0.69,
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/groente-fruit/",
+            "note": "Effectieve afgeronde halve bundelprijs per pak, niet kassaprijs 1 los pak"
+          }
+        ]
+      },
+      "jumbo-w44-kiwi": {
+        "product": "Zespri kiwi SunGold",
+        "status": "confirmed_unit_price_correction",
+        "checked_at": "2026-10-28",
+        "listed_price": 4.99,
+        "pack_label": "750 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 4.99,
+            "url": "https://www.jumbo.com/aanbiedingen/zespri-kiwi-sungold/3023317",
+            "note": "750g, actieprijs €4,99; pagina toont soms oude kiloprijs €8,79/kg"
+          },
+          {
+            "site": "PrijsProfeet",
+            "price": 4.99,
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/groente-fruit/",
+            "note": "Correcte effectieve kiloprijs €6,65/kg"
+          }
+        ]
+      },
+      "jumbo-w44-flespompoen": {
+        "product": "Jumbo biologische pompoen of flespompoen",
+        "status": "confirmed_variant_range",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.49,
+        "pack_label": "per stuk",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 1.49,
+            "url": "https://www.jumbo.com/aanbiedingen/biologische-pompoen-of-flespompoen/3023322",
+            "note": "Prijs per stuk €1,49; deelnemende productvarianten met oude prijzen €1,99 of €2,49"
+          }
+        ]
+      },
+      "jumbo-w44-kipblokjes": {
+        "product": "Jumbo kipfiletblokjes of -reepjes naturel",
+        "status": "official_promo_member_condition",
+        "checked_at": "2026-10-28",
+        "listed_price": 4.49,
+        "pack_label": "ca. 350 g",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 4.49,
+            "url": "https://www.jumbo.com/aanbiedingen/nu",
+            "note": "Extra's: alleen in de winkel, schaal ca. 350g; gewone korting- en winkelvoorwaarden apart controleren"
+          }
+        ]
+      },
+      "jumbo-w44-dreft": {
+        "product": "Dreft Platinum Plus Bries vaatwascapsules 25 stuks (5 pakken)",
+        "status": "confirmed_variant_bundle",
+        "checked_at": "2026-10-28",
+        "listed_price": 37.98,
+        "pack_label": "5 × 25 capsules = 125 capsules",
+        "checks": [
+          {
+            "site": "Jumbo",
+            "price": 18.99,
+            "url": "https://www.jumbo.com/aanbiedingen/dreft-platinum-plus-of-miracle/3021593",
+            "note": "Platinum Plus Bries 25 caps, reguliere per-pakprijs; 5 identieke pakken totaal €37,98 met 2+3, effectief €0,304/capsule"
+          },
+          {
+            "site": "Allesupers",
+            "price": null,
+            "url": "https://allesupers.nl/browse/huishouden-huisdier-en-overig/schoonmaakmiddelen/vaatwasmiddel",
+            "note": "Huismerk vanaf circa €0,05 per tab in oudere meetperiode: géén actuele laagste prijs geclaimd"
+          }
+        ]
+      },
+      "jumbo-w44-kwark": {
+        "product": "Campina yoghurt of kwark (voorbeeld 2 bekers)",
+        "status": "photo_only",
+        "checked_at": "2026-10-28",
+        "listed_price": 2.99,
+        "pack_label": "2 × 450–500 g",
+        "checks": [
+          {
+            "site": "Aangeleverde Jumbo folder",
+            "price": 2.99,
+            "url": "https://www.jumbo.com/aanbiedingen/nu",
+            "note": "2 bekers uit gekozen selectie, exacte 450/500g-variant nog niet verifieerbaar"
+          }
+        ]
+      },
+      "jumbo-w44-pindakaas": {
+        "product": "Calvé pindakaas (voorbeeld 2 potten)",
+        "status": "photo_only_comparable_brand",
+        "checked_at": "2026-10-28",
+        "listed_price": 4.99,
+        "pack_label": "2 × 350 g",
+        "checks": [
+          {
+            "site": "Aangeleverde Jumbo folder",
+            "price": 4.99,
+            "url": "https://www.jumbo.com/aanbiedingen/nu",
+            "note": "Calvé 2x350g, bij andere merken mogelijk goedkoper per kg"
+          }
+        ]
+      },
+      "jumbo-w44-popcorn": {
+        "product": "Jimmy's popcorn (selectie)",
+        "status": "photo_only_varied_grams",
+        "checked_at": "2026-10-28",
+        "listed_price": 0.99,
+        "pack_label": "80–150 g per zak",
+        "checks": [
+          {
+            "site": "Aangeleverde Jumbo folder",
+            "price": 0.99,
+            "url": "https://www.jumbo.com/aanbiedingen/nu",
+            "note": "Afhankelijk van smaak 80–150g; productvarianten niet gelijk"
+          }
+        ]
+      }
+    },
+    "ah": {
+      "ah-w44-pork-300": {
+        "product": "AH Varkensgehakt 300 g",
+        "status": "conflicting_one_cent",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.49,
+        "pack_label": "300 g",
+        "checks": [
+          {
+            "site": "AH Bonusfolder",
+            "price": 1.49,
+            "url": "https://www.ah.nl/bonus",
+            "note": "Gebruiker heeft folderbeeld 300g €1,49"
+          },
+          {
+            "site": "PrijsProfeet",
+            "price": 1.49,
+            "url": "https://www.prijsprofeet.nl/categorie/vlees/",
+            "note": "Actie 26 okt–1 nov"
+          },
+          {
+            "site": "MijnMandje",
+            "price": 1.49,
+            "url": "https://mijnmandje.nl/producten/vlees-kip-vis",
+            "note": "Vermeld als grootste vleesaanbieding"
+          },
+          {
+            "site": "Allesupers",
+            "price": 1.5,
+            "url": "https://allesupers.nl/browse/vlees-kip-en-vis/gehakt-en-burgers/overig",
+            "note": "Verschil €0,01; niet stilzwijgend gelijkgesteld"
+          }
+        ]
+      },
+      "ah-w44-sprouts-500": {
+        "product": "AH Spruitjes 500 g",
+        "status": "confirmed",
+        "checked_at": "2026-10-28",
+        "listed_price": 0.89,
+        "pack_label": "500 g",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 0.89,
+            "url": "https://www.ah.nl/shop/eetmomenten",
+            "note": "500g voor €0,89, was €1,49"
+          },
+          {
+            "site": "Allesupers",
+            "price": 0.89,
+            "url": "https://allesupers.nl/browse/aardappelen-groente-en-fruit/verse-groente/spruiten",
+            "note": "€1,78/kg bij AH; vergelijken met Jumbo €2,64/kg voor 450g"
+          }
+        ]
+      },
+      "ah-w44-butternut-piece": {
+        "product": "AH Biologisch Flespompoen",
+        "status": "confirmed",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.79,
+        "pack_label": "per stuk",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 1.79,
+            "url": "https://www.ah.nl/shop/seizoensproducten",
+            "note": "Biologische flespompoen per stuk, was €2,98; variabel eetbaar gewicht"
+          }
+        ]
+      },
+      "ah-w44-cauliflower-piece": {
+        "product": "AH Bloemkool",
+        "status": "confirmed_old_price_conflict",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.49,
+        "pack_label": "per stuk",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 1.49,
+            "url": "https://www.ah.nl/shop/seizoensproducten",
+            "note": "Per stuk €1,49, was €1,75"
+          },
+          {
+            "site": "AH productpagina",
+            "price": 1.49,
+            "url": "https://www.ah.nl/producten/product/wi4183/ah-bloemkool",
+            "note": "Sommige AH-pagina's geven oude prijs 1,79 of 1,85; de €1,49-actie klopt, referentieprijs kan per pagina verschillen"
+          }
+        ]
+      },
+      "ah-w44-plant-chicken-160": {
+        "product": "AH Terra Plantaardige kipstukjes 160 g",
+        "status": "confirmed",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.59,
+        "pack_label": "160 g",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 1.59,
+            "url": "https://www.ah.nl/bonus/volgende-week?id=772689",
+            "note": "Terra plantaardige kipstukjes, 160 g, €1,59 i.p.v. €2,09; geen echte kip"
+          }
+        ]
+      },
+      "ah-w44-cottage-200": {
+        "product": "AH Cottage cheese 200 g",
+        "status": "regular_not_promo",
+        "checked_at": "2026-10-28",
+        "listed_price": 0.74,
+        "pack_label": "200 g",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 0.74,
+            "url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
+            "note": "Normale prijs €0,74 per 200g, geen Bonus"
+          },
+          {
+            "site": "AH oudere winkelpagina",
+            "price": 0.75,
+            "url": "https://www.ah.nl/shop/duurzamer-eten/vegetarisch",
+            "note": "Oudere waarneming €0,75; status normale prijs niet gegarandeerd"
+          }
+        ]
+      },
+      "ah-w44-potatoes-2kg": {
+        "product": "AH (Iets) kruimige of vastkokende aardappelen 1 kg",
+        "status": "confirmed_bundle",
+        "checked_at": "2026-10-28",
+        "listed_price": 1.99,
+        "pack_label": "2 × 1 kg",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 1.99,
+            "url": "https://www.ah.nl/shop/seizoensproducten",
+            "note": "2 zakken van 1 kg voor €1,99 samen, niet €1,99 per zak"
+          }
+        ]
+      },
+      "ah-w44-chicken-300": {
+        "product": "AH Scharrelkipfilethaasjes 300 g",
+        "status": "folder_confirmed_variant_detail_missing",
+        "checked_at": "2026-10-28",
+        "listed_price": 3.99,
+        "pack_label": "300 g",
+        "checks": [
+          {
+            "site": "AH Bonusfolder",
+            "price": 3.99,
+            "url": "https://www.ah.nl/bonus",
+            "note": "Scharrelkipfilet 2 stuks of kipfilethaasjes 300g €3,99; nog geen exacte individuele productpagina op de juiste week bewezen"
+          }
+        ]
+      },
+      "ah-w44-veg-small-2": {
+        "product": "Alle AH Kleinverpakkingen groentegemak",
+        "status": "confirmed_bundle_variant_weight_unknown",
+        "checked_at": "2026-10-28",
+        "listed_price": 2.49,
+        "pack_label": "2 zakken/stuks",
+        "checks": [
+          {
+            "site": "AH",
+            "price": 2.49,
+            "url": "https://www.ah.nl/bonus/volgende-week?id=772689",
+            "note": "2 voor €2,49 op geselecteerde kleinverpakkingen; verschillende gewichten/varianten"
+          }
+        ]
+      },
+      "ah-w44-mango-two": {
+        "product": "AH Mango los 2 stuks",
+        "status": "photo_only",
+        "checked_at": "2026-10-28",
+        "listed_price": 2.99,
+        "pack_label": "2 stuks",
+        "checks": [
+          {
+            "site": "Aangeleverde Bonusfolder",
+            "price": 2.99,
+            "url": "https://www.ah.nl/bonus",
+            "note": "2 losse mango's €2,99, onafhankelijke detailbron ontbreekt"
+          }
+        ]
+      },
+      "ah-w44-blueberries-300": {
+        "product": "AH Blauwe bessen 300 g",
+        "status": "photo_only",
+        "checked_at": "2026-10-28",
+        "listed_price": 3.79,
+        "pack_label": "300 g",
+        "checks": [
+          {
+            "site": "Aangeleverde Bonusfolder",
+            "price": 3.79,
+            "url": "https://www.ah.nl/bonus",
+            "note": "300g blauwe bessen €3,79, onafhankelijke detailbron ontbreekt"
+          }
+        ]
+      }
+    }
+  },
+  "campaigns": [
+    {
+      "store": "ah",
+      "name": "Alle Robijn Quickwash of Klein & Krachtig",
+      "price": 6.99,
+      "unit": "per geselecteerde fles",
+      "condition": "voor 6,99",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed_variant_price_check",
+      "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+    },
+    {
+      "store": "ah",
+      "name": "Alle Dreft en Finish vaatwascapsules",
+      "price": null,
+      "condition": "1+1 gratis",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed_sku_price_missing",
+      "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+    },
+    {
+      "store": "ah",
+      "name": "Alle Ariel pods+ en vloeibaar+",
+      "price": null,
+      "condition": "2+3 gratis",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed_sku_price_missing",
+      "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+    },
+    {
+      "store": "ah",
+      "name": "Alle Lenor wasverzachters t/m 42 wasbeurten",
+      "price": 9.99,
+      "unit": "3 geselecteerde stuks samen",
+      "condition": "3 voor 9,99",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed_unit_variant_missing",
+      "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+    },
+    {
+      "store": "ah",
+      "name": "Alle Ajax",
+      "price": null,
+      "condition": "1+1 gratis",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed_sku_price_missing",
+      "url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+    },
+    {
+      "store": "ah",
+      "name": "Alle Coca-Cola en Fanta literflessen",
+      "price": 2.99,
+      "unit": "2 flessen à 1 liter samen",
+      "condition": "2 voor 2,99",
+      "end_date": "2026-11-01",
+      "status": "campaign_confirmed",
+      "url": "https://www.ah.nl/bonus/cola-aanbiedingen"
+    }
+  ]
+}
