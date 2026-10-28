@@ -508,7 +508,7 @@ const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
 const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;const anchored=all.filter(r=>offerInfo(r,s).anchors.length||offerInfo(r,s).confirmed.length).length;
 const potential=all.filter(r=>offerInfo(r,s).possible.length).length;
 const counts=['kip','vlees','vis','vega'].map(k=>(KINDS[k]+' '+all.filter(r=>r.category===k).length)).join(' · ');
-out+=title(NAMES[s]+' recepten',counts+' · '+current+' met actieprijs verwerkt · '+anchored+' actiekoppelingen, prijs niet volledig geverifieerd · '+potential+' met mogelijke actie');
+out+=title(NAMES[s]+' recepten',counts+' · '+anchored+' recepten met gekoppeld actieproduct · '+all.filter(r=>Number.isFinite(r.cost?.basket_total)).length+' met een berekende totaalprijs · '+potential+' vergelijkbare actie-opties');
 out+='<div class="info-banner">Actiekoppelingen vereisen passende productvarianten, verpakkingen en prijzen. Andere vergelijkbare producten verschijnen alleen als mogelijke aanbieding. '+(s==='jumbo'?'Vis zonder passende aanbieding blijft gewone inspiratie.':'')+'</div>';
 out+=found.length?'<div class="cards">'+found.map(recipeCard).join('')+'</div>':empty('Geen recepten voor deze filters','Wijzig je actiestatus of zoekterm om meer recepten te zien.');
 }
