@@ -151,7 +151,7 @@ def main():
             print(store,"FAILED",e,file=sys.stderr,flush=True)
     if failures==3:return 1
     OUT.parent.mkdir(parents=True,exist_ok=True)
-    OUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n")
+    OUT.write_text(json.dumps(output,ensure_ascii=False,separators=(",",":"))+"\n")
     return 2 if failures else 0
 
 if __name__=="__main__":raise SystemExit(main())
