@@ -90,3 +90,10 @@ De complete actuele prijs- en actierapportage blijft in \`docs/data/daily.json\`
 ### Extra filters voor vlees en vis
 
 Met de vleeschip kies je **rund** of **varken**; met de vischip kies je **vette (omega-3-rijke) vis** of **magere vis**. Deze groepen worden uit de expliciete ingrediënt- of productnaam afgeleid, zonder ongespecificeerd gehakt zomaar als rund/varken aan te merken. Bij sommige recepten kan de precieze vissoort nog onbekend zijn. Visadvies: https://www.voedingscentrum.nl/encyclopedie/vis .
+
+
+## Brede actiecatalogus en receptenmotor
+
+\`scripts/sync_aanbiedingen.py\` gebruikt dagelijks het publieke PrijsProfeet-endpoint \`/products/promotional/all\` voor Lidl, Jumbo en Albert Heijn; de resultaten komen in \`docs/data/offers-catalog.json\`. De GitHub-workflow \`actiecatalogus.yml\` draait om 07.35 Nederlandse tijd (onder voorbehoud van een geslaagde run). De bronvermelding PrijsProfeet is vereist. Een prijs uit deze feed is niet zelfstandig geverifieerd en bevat geen volledig regulier assortiment.
+
+\`docs/recipe-engine.js\` genereert per supermarkt uiteenlopende wereldkeuken-ideeën rond actieve aanbiedingen voor eiwitbronnen, met minimaal 1200 g voorgestelde groenten per vier porties. Deze ideeën krijgen het label **Actie als basis**. Hun volledige kassaprijs en macro's blijven onbekend totdat alle ingrediënten en verpakkingen geprijsd en berekend zijn. Alleen handmatig/aantoonbaar verbonden en al verwerkte acties krijgen het label **Actieprijs verwerkt**. De permanente bibliotheek van veertig recepten blijft aanwezig als gezonde, mogelijk budgetvriendelijke inspiratie, zonder ongefundeerde 'altijd goedkoop'-garantie.
