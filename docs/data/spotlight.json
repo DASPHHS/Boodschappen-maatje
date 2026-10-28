@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T12:00:00+01:00",
-  "notes": "Folderwaarnemingen gecontroleerd voor Jumbo week 44; te kopen hoeveelheden, gecombineerde prijs en varianten moeten op productniveau worden bevestigd. Items uit screenshots kunnen extra variantvoorwaarden hebben.",
+  "generated_at": "2026-10-28T15:00:00+01:00",
+  "notes": "Jumbo en AH acties geldig binnen hun winkel-specifieke datums. AH-producten met een ontbrekend bedrag blijven in spotlight aanwezig als prijs onbekend, niet zichtbaar als geprijsde actie. Alle nieuwe recepten zijn alleen gedeeltelijk geprijsd. De gepubliceerde prijs is geen live filiaalkassa.",
   "stores": {
     "lidl": {
       "offers": [],
@@ -1355,8 +1355,1312 @@
       ]
     },
     "ah": {
-      "offers": [],
-      "recipes": []
+      "offers": [
+        {
+          "id": "ah-w44-pork-300",
+          "name": "AH Varkensgehakt 300 g",
+          "category": "vlees",
+          "price": 1.49,
+          "regular_price": 2.99,
+          "pack_label": "300 g",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "unit_price": 4.97,
+          "unit": "kg",
+          "promo_note": "50% korting; per verpakking 300 g. Voor 600 g twee verpakkingen kopen."
+        },
+        {
+          "id": "ah-w44-chicken-300",
+          "name": "AH Scharrelkipfilethaasjes 300 g",
+          "category": "kip",
+          "price": 3.99,
+          "regular_price": null,
+          "pack_label": "300 g",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "unit_price": 13.3,
+          "unit": "kg",
+          "promo_note": "Per verpakking van 300 g; voor minimaal 600 g twee verpakkingen, voor 800 g drie."
+        },
+        {
+          "id": "ah-w44-plant-chicken-160",
+          "name": "AH Terra Plantaardige kipstukjes 160 g",
+          "category": "vega",
+          "price": 1.59,
+          "regular_price": 2.09,
+          "pack_label": "160 g",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "unit_price": 9.94,
+          "unit": "kg",
+          "promo_note": "Plantaardig soja-/tarweproduct; géén echte kip. 4 verpakkingen = 640 g."
+        },
+        {
+          "id": "ah-w44-sprouts-500",
+          "name": "AH Spruitjes 500 g",
+          "category": "groente",
+          "price": 0.89,
+          "regular_price": 1.49,
+          "pack_label": "500 g",
+          "source": {
+            "label": "AH Bonus week 44 + officiële AH productpagina",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "unit_price": 1.78,
+          "unit": "kg",
+          "promo_note": "€0,89 voor 500 g; per gebruikte verpakking."
+        },
+        {
+          "id": "ah-w44-cauliflower-piece",
+          "name": "AH Bloemkool",
+          "category": "groente",
+          "price": 1.49,
+          "regular_price": 1.75,
+          "pack_label": "per stuk",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "Gewicht en eetbaar aandeel per bloemkool kunnen variëren. Controleer of één exemplaar voldoende is."
+        },
+        {
+          "id": "ah-w44-butternut-piece",
+          "name": "AH Biologisch Flespompoen",
+          "category": "groente",
+          "price": 1.79,
+          "regular_price": 2.98,
+          "pack_label": "per stuk",
+          "source": {
+            "label": "AH seizoenspagina 40%-actie",
+            "url": "https://www.ah.nl/shop/seizoensproducten"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "Per stuk: eetbaar gewicht kan variëren. Geen gegarandeerd 700 g vruchtvlees per pompoen."
+        },
+        {
+          "id": "ah-w44-veg-small-2",
+          "name": "Alle AH Kleinverpakkingen groentegemak",
+          "category": "groente",
+          "price": 2.49,
+          "regular_price": null,
+          "pack_label": "2 zakken/stuks",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 2.49,
+          "promo_note": "Twee geselecteerde verpakkingen; gewicht/samenstelling per variant verschillen. Niet rekenen als 1200 g groente zonder productniveauverificatie."
+        },
+        {
+          "id": "ah-w44-potatoes-2kg",
+          "name": "AH (Iets) kruimige of vastkokende aardappelen 1 kg",
+          "category": "overig",
+          "price": 1.99,
+          "regular_price": null,
+          "pack_label": "2 × 1 kg",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 1.99,
+          "promo_note": "Twee zakken van 1 kg gezamenlijk €1,99. Zet apart bij een koolhydraatbewuste variant."
+        },
+        {
+          "id": "ah-w44-blueberries-300",
+          "name": "AH Blauwe bessen 300 g",
+          "category": "fruit",
+          "price": 3.79,
+          "regular_price": null,
+          "pack_label": "300 g",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "Fruit/voorraad; geen goedkope eiwitbron."
+        },
+        {
+          "id": "ah-w44-mango-two",
+          "name": "AH Mango los 2 stuks",
+          "category": "fruit",
+          "price": 2.99,
+          "regular_price": null,
+          "pack_label": "2 stuks",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 2.99,
+          "promo_note": "Twee mango's; wisselend gewicht."
+        },
+        {
+          "id": "ah-w44-cottage-200",
+          "name": "AH Cottage cheese 200 g",
+          "category": "zuivel",
+          "price": 0.74,
+          "regular_price": null,
+          "pack_label": "200 g",
+          "source": {
+            "label": "AH Allerhande koolhydraatarm productoverzicht",
+            "url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": true,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": false,
+          "promo_note": "Lage schapprijs, niet als Bonusactie of kortingsverschil geclaimd.",
+          "is_regular_low_price": true
+        },
+        {
+          "id": "ah-w44-fruit-pieces",
+          "name": "AH Vers fruit: ananas of meloenmix",
+          "category": "fruit",
+          "price": null,
+          "regular_price": null,
+          "pack_label": "verschillende verpakkingen",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "user_folder_image",
+          "verified": false,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "1+1 gratis met verschillende varianten; exacte combinatieprijs onbekend."
+        },
+        {
+          "id": "ah-w44-cheese-25",
+          "name": "Alle Beemster kaas",
+          "category": "zuivel",
+          "price": null,
+          "regular_price": null,
+          "pack_label": "verschillende gewichten",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": false,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "25% korting; geen prijs per verpakking zonder gekozen variant."
+        },
+        {
+          "id": "ah-w44-fish-stir",
+          "name": "AH Roerbakvis",
+          "category": "vis",
+          "price": null,
+          "regular_price": null,
+          "pack_label": "variabele verpakkingen",
+          "source": {
+            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "url": "https://www.ah.nl/bonus"
+          },
+          "source_provider": "ah_official_bonus",
+          "verified": false,
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "member_required": true,
+          "promo_note": "25% korting, exacte soort, verpakking en prijs nog onbekend."
+        }
+      ],
+      "recipes": [
+        {
+          "id": "ah-w44-pork-spanish",
+          "title": "Spaanse pimentóngehaktballetjes met spruitjes en bloemkool",
+          "category": "vlees",
+          "cuisine": "Spaans",
+          "minutes": 40,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Varkensgehakt 300 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": 2.98,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 300 g"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "1 hele bloemkool; 700 g eetbaar is niet gegarandeerd, controleer gewicht"
+            },
+            {
+              "name": "gerookt paprikapoeder",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "knoflook",
+              "quantity": 15,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Meng gehakt, paprika en knoflook en vorm ongeveer 16 kleine balletjes.",
+            "Rooster bloemkoolroosjes en spruitjes in de oven en controleer of de benodigde eetbare hoeveelheid uit één bloemkool komt.",
+            "Bak de gehaktballetjes volledig gaar, serveer met kwarksaus."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-pork-300",
+              "ingredient_name": "AH Varkensgehakt 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-pork-300",
+          "offer_anchor_name": "AH Varkensgehakt 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 150,
+          "minimum_known_spend": 5.36,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd.",
+          "nutrition_profile": "koolhydraatbewust"
+        },
+        {
+          "id": "ah-w44-pork-korean",
+          "title": "Koreaanse gembergehaktpan met spruitjes en wortel",
+          "category": "vlees",
+          "cuisine": "Koreaans",
+          "minutes": 30,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Varkensgehakt 300 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": 2.98,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 300 g"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 2,
+              "pack_price": 1.78,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 500 g"
+            },
+            {
+              "name": "wortel",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "sojasaus",
+              "quantity": 45,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "gember",
+              "quantity": 25,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Rul het varkensgehakt met verse gember volledig gaar.",
+            "Stoom spruitjes en wortel tot beetgaar.",
+            "Roerbak alles kort met sojasaus en een scheutje water; serveer zonder rijst."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-pork-300",
+              "ingredient_name": "AH Varkensgehakt 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-pork-300",
+          "offer_anchor_name": "AH Varkensgehakt 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 150,
+          "minimum_known_spend": 4.76,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd.",
+          "nutrition_profile": "koolhydraatbewust"
+        },
+        {
+          "id": "ah-w44-pork-italian",
+          "title": "Italiaanse gehaktschotel met bloemkool, courgette en oregano",
+          "category": "vlees",
+          "cuisine": "Italiaans",
+          "minutes": 40,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Varkensgehakt 300 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": 2.98,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 300 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "courgette",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "tomatenpuree",
+              "quantity": 70,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "oregano",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Verwarm oven tot 200 graden. Snijd bloemkool en courgette.",
+            "Bak het varkensgehakt volledig gaar met tomatenpuree en oregano.",
+            "Meng met groenten en laat in de oven garen; verdeel over vier porties."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-pork-300",
+              "ingredient_name": "AH Varkensgehakt 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-pork-300",
+          "offer_anchor_name": "AH Varkensgehakt 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 150,
+          "minimum_known_spend": 4.47,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-pork-dutch",
+          "title": "Nederlandse spruitjesstamppot met aardappel, bloemkool en gehakt",
+          "category": "vlees",
+          "cuisine": "Nederlands",
+          "minutes": 40,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Varkensgehakt 300 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": 2.98,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 300 g"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 2,
+              "pack_price": 1.78,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 500 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "AH (Iets) kruimige of vastkokende aardappelen 1 kg",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Aardappelen & granen",
+              "package_count": 1,
+              "pack_price": 1.99,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Je koopt 2 kg bij de actie; je gebruikt slechts 300 g"
+            },
+            {
+              "name": "mosterd",
+              "quantity": 30,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Kook 300 g aardappel en stoom bloemkool en spruitjes gaar.",
+            "Stamp aardappel en bloemkool tot puree, schep de spruitjes erdoor.",
+            "Bak het gehakt in balletjes volledig gaar en serveer erbij."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-pork-300",
+              "ingredient_name": "AH Varkensgehakt 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-potatoes-2kg",
+              "ingredient_name": "AH (Iets) kruimige of vastkokende aardappelen 1 kg",
+              "role": "bijgerecht"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-pork-300",
+          "offer_anchor_name": "AH Varkensgehakt 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 150,
+          "minimum_known_spend": 8.24,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd.",
+          "nutrition_profile": "koolhydraatbewuste_variant",
+          "nutrition_note": "Bevat 75 g aardappel per portie. Meer koolhydraten dan een pure bloemkoolstamppot, geen strikt koolhydraatarm recept."
+        },
+        {
+          "id": "ah-w44-pork-mexican",
+          "title": "Mexicaanse paprikagehaktbowl met spruitjes en tomaat",
+          "category": "vlees",
+          "cuisine": "Mexicaans",
+          "minutes": 30,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Varkensgehakt 300 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 2,
+              "pack_price": 2.98,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 300 g"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "paprika",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "tomaten",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "komijn",
+              "quantity": 10,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "gerookt paprikapoeder",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Bak gehakt rul met komijn en paprikapoeder en laat helemaal garen.",
+            "Rooster spruitjes en paprika tot ze bruin kleuren.",
+            "Voeg tomaten toe, verwarm kort en serveer als bowl zonder tortilla."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-pork-300",
+              "ingredient_name": "AH Varkensgehakt 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-pork-300",
+          "offer_anchor_name": "AH Varkensgehakt 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 150,
+          "minimum_known_spend": 3.87,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-chicken-greek",
+          "title": "Griekse oregano-kip met bloemkool en spruitjes",
+          "category": "kip",
+          "cuisine": "Grieks",
+          "minutes": 35,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Scharrelkipfilethaasjes 300 g",
+              "quantity": 900,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 3,
+              "pack_price": 11.97,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 3 × 300 g"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 2,
+              "pack_price": 1.78,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 2 × 500 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "citroensap",
+              "quantity": 25,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "oregano",
+              "quantity": 10,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Rooster bloemkoolroosjes en spruitjes in de oven met oregano.",
+            "Bak de kipfilethaasjes volledig gaar, breng op smaak met citroen.",
+            "Serveer met yoghurtsaus op basis van magere kwark."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-chicken-300",
+              "ingredient_name": "AH Scharrelkipfilethaasjes 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-chicken-300",
+          "offer_anchor_name": "AH Scharrelkipfilethaasjes 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 225,
+          "minimum_known_spend": 15.24,
+          "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
+          "minimum_spend_note": "De bekende verpakkingskosten zijn al boven €10, ook zonder overige ingrediënten.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-chicken-indian",
+          "title": "Indiase tandoorikip met flespompoen en spruitjes",
+          "category": "kip",
+          "cuisine": "Indiaas",
+          "minutes": 40,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Scharrelkipfilethaasjes 300 g",
+              "quantity": 900,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "package_count": 3,
+              "pack_price": 11.97,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 3 × 300 g"
+            },
+            {
+              "name": "AH Biologisch Flespompoen",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.79,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/shop/seizoensproducten",
+              "price_note": "1 pompoen als aankoopindicatie; controleer of minimaal 700 g eetbaar beschikbaar is"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "tandoorikruiden",
+              "quantity": 15,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Snijd pompoen in blokjes; controleer de hoeveelheid eetbaar vruchtvlees.",
+            "Braad de met tandoorikruiden gekruide kipfilethaasjes volledig gaar.",
+            "Rooster pompoen en spruitjes en serveer met kwarksaus."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-chicken-300",
+              "ingredient_name": "AH Scharrelkipfilethaasjes 300 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-butternut-piece",
+              "ingredient_name": "AH Biologisch Flespompoen",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-chicken-300",
+          "offer_anchor_name": "AH Scharrelkipfilethaasjes 300 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 225,
+          "minimum_known_spend": 14.65,
+          "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
+          "minimum_spend_note": "De bekende verpakkingskosten zijn al boven €10, ook zonder overige ingrediënten.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-vega-mexican",
+          "title": "Mexicaanse AH Terra-kipstukjes met pompoen en spruitjes",
+          "category": "vega",
+          "cuisine": "Mexicaans",
+          "minutes": 35,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Terra Plantaardige kipstukjes 160 g",
+              "quantity": 640,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "package_count": 4,
+              "pack_price": 6.36,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 4 × 160 g"
+            },
+            {
+              "name": "AH Biologisch Flespompoen",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.79,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/shop/seizoensproducten",
+              "price_note": "Per stuk; 700 g eetbaar gewicht moet worden gecontroleerd"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "paprikapoeder",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "tomatenpuree",
+              "quantity": 70,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Rooster pompoen en spruitjes totdat de groenten gaar zijn.",
+            "Bak de plantaardige kipstukjes volgens verpakking met paprikapoeder.",
+            "Meng de tomatenpuree met wat kookwater voor een saus en verdeel over vier porties."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-plant-chicken-160",
+              "ingredient_name": "AH Terra Plantaardige kipstukjes 160 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-butternut-piece",
+              "ingredient_name": "AH Biologisch Flespompoen",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-plant-chicken-160",
+          "offer_anchor_name": "AH Terra Plantaardige kipstukjes 160 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "minimum_known_spend": 9.04,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-vega-indonesian",
+          "title": "Indonesische plantaardige kip met bloemkool en spruitjes",
+          "category": "vega",
+          "cuisine": "Indonesisch",
+          "minutes": 30,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Terra Plantaardige kipstukjes 160 g",
+              "quantity": 640,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "package_count": 4,
+              "pack_price": 6.36,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 4 × 160 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "sambal",
+              "quantity": 25,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "sojasaus",
+              "quantity": 40,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "gember",
+              "quantity": 20,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Bak de plantaardige kipstukjes goudbruin met gember.",
+            "Stoom bloemkool en spruitjes beetgaar; controleer of één bloemkool genoeg eetbaar product oplevert.",
+            "Meng met sambal en sojasaus."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-plant-chicken-160",
+              "ingredient_name": "AH Terra Plantaardige kipstukjes 160 g",
+              "role": "eiwitbron"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": "ah-w44-plant-chicken-160",
+          "offer_anchor_name": "AH Terra Plantaardige kipstukjes 160 g",
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "minimum_known_spend": 8.74,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd."
+        },
+        {
+          "id": "ah-w44-vega-cottage-frittata",
+          "title": "Mediterrane frittata met cottage cheese, spruitjes en bloemkool",
+          "category": "vega",
+          "cuisine": "Mediterraans",
+          "minutes": 40,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Cottage cheese 200 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "package_count": 4,
+              "pack_price": 2.96,
+              "price_status": "official_regular_observed",
+              "source_url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
+              "price_note": "Lage schapprijs, geen Bonuskorting"
+            },
+            {
+              "name": "eieren",
+              "quantity": 6,
+              "unit": "st",
+              "department": "Vega & peulvruchten",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "AH Spruitjes 500 g",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 0.89,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × 500 g"
+            },
+            {
+              "name": "AH Bloemkool",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.49,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "oregano",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Stoom spruitjes en bloemkool tot beetgaar.",
+            "Klop eieren los met cottage cheese en oregano.",
+            "Meng groenten erdoor en bak in een ovenschaal tot de eieren volledig gestold zijn."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-sprouts-500",
+              "ingredient_name": "AH Spruitjes 500 g",
+              "role": "groente"
+            },
+            {
+              "offer_id": "ah-w44-cauliflower-piece",
+              "ingredient_name": "AH Bloemkool",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": null,
+          "offer_anchor_name": null,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "minimum_known_spend": 5.34,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd.",
+          "nutrition_profile": "koolhydraatbewust"
+        },
+        {
+          "id": "ah-w44-vega-cottage-shakshuka",
+          "title": "Shakshuka met cottage cheese, pompoen en spinazie",
+          "category": "vega",
+          "cuisine": "Midden-Oosters",
+          "minutes": 35,
+          "servings": 4,
+          "ingredients": [
+            {
+              "name": "AH Cottage cheese 200 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "package_count": 4,
+              "pack_price": 2.96,
+              "price_status": "official_regular_observed",
+              "source_url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
+              "price_note": "Benodigde verpakking(en): 4 × 200 g"
+            },
+            {
+              "name": "eieren",
+              "quantity": 4,
+              "unit": "st",
+              "department": "Vega & peulvruchten",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "AH Biologisch Flespompoen",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "package_count": 1,
+              "pack_price": 1.79,
+              "price_status": "folder_current",
+              "source_url": "https://www.ah.nl/shop/seizoensproducten",
+              "price_note": "Benodigde verpakking(en): 1 × per stuk"
+            },
+            {
+              "name": "spinazie",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "tomatenblokjes",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": null,
+              "price_status": "not_verified"
+            },
+            {
+              "name": "komijn",
+              "quantity": 10,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": null,
+              "price_status": "not_verified"
+            }
+          ],
+          "instructions": [
+            "Stoof pompoenblokjes gaar in tomatenblokjes en komijn.",
+            "Laat de spinazie slinken. Schep er vier kuiltjes in en voeg de eieren toe.",
+            "Laat de eieren volledig garen en serveer met cottage cheese."
+          ],
+          "offer_anchors": [
+            {
+              "offer_id": "ah-w44-butternut-piece",
+              "ingredient_name": "AH Biologisch Flespompoen",
+              "role": "groente"
+            }
+          ],
+          "offer_anchor_id": null,
+          "offer_anchor_name": null,
+          "vegetables_g_per_portion": 400,
+          "animal_protein_g_per_portion": null,
+          "minimum_known_spend": 4.75,
+          "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+          "minimum_spend_note": "Alleen de bekende, geprijsde verpakkingen zijn opgeteld; overige producten blijven onbekend.",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "origin": "folder-idee",
+          "source_note": "Recept op basis van officieel genoemde AH Bonusproducten, maar de volledige kassamand en macro's zijn nog niet geverifieerd.",
+          "nutrition_profile": "koolhydraatbewust"
+        }
+      ]
     }
   }
 }
