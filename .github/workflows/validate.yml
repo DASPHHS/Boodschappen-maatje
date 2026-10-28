@@ -21,4 +21,6 @@ jobs:
         with:
           node-version: '22'
       - name: Controleer feedstructuur
-        run: node scripts/validate.mjs
+        run: |
+          node scripts/validate.mjs
+          node tests/recipe-engine.cjs

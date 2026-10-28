@@ -36,3 +36,15 @@ if(!o||!o.verified||!ingredient||ingredient.price_status!=='folder_current'||lin
 const counts={};for(const r of lib.recipes)counts[r.category]=(counts[r.category]||0)+1;
 for(const k of ['kip','vlees','vis','vega'])if((counts[k]||0)<10)throw Error('te weinig recepten in categorie '+k);
 console.log('Actiekoppelingen en minstens tien bibliotheekrecepten per hoofdgroep gecontroleerd');
+
+const feed=JSON.parse(fs.readFileSync('docs/data/offers-catalog.json','utf8'));
+if(feed.schema_version!==1)throw Error('Schema actiecatalogus ontbreekt');
+for(const name of ['lidl','jumbo','ah']){
+const shop=feed.stores?.[name];
+if(!shop||!Array.isArray(shop.offers))throw Error('Actiecataloog onvolledig: '+name);
+for(const o of shop.offers){
+if(!o.id||!o.name||typeof o.price!=='number'||!o.source?.url||!o.start_date||!o.end_date)throw Error('Ongeldige actierij '+name);
+if(o.verified===true)throw Error('Externe niet-onafhankelijke actie onterecht geverifieerd');
+}
+}
+console.log('Brede promotiecatalogus gecontroleerd');
