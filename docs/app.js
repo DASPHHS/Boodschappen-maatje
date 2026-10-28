@@ -285,8 +285,8 @@ return out;
 function storeRecipeCounts(s){return recipes(s).length}
 function status(){const d=state.daily;const at=d?.generated_at;const date=at?String(at).slice(0,10):null;return !date?'Dagrapport ontbreekt':date<today()?'Dagrapport verouderd: '+date:'Dagrapport: '+date}
 function storePill(s){return '<span class="store-mini">'+safe(NAMES[s]||'Algemene inspiratie')+'</span>'}
-function priceQuality(r){const n=pick(r.cost,'basket_total');return typeof n==='number'?money(n):'Prijs nog niet bevestigd'}
-function statusTag(r){const n=pick(r.cost,'basket_total');return typeof n!=='number'?'<span class="tag orange">Prijs onbekend</span>':r.cost.estimated?'<span class="tag orange">Prijsindicatie</span>':n<=10?'<span class="tag fresh">≤ € 10</span>':'<span class="tag orange">Boven € 10</span>'}
+function priceQuality(r){const n=pick(r.cost,'basket_total');return typeof n==='number'?money(n):Number.isFinite(r.minimum_known_spend)?'Vanaf '+money(r.minimum_known_spend)+'*':'Prijs onbekend'}
+function statusTag(r){const n=pick(r.cost,'basket_total');return typeof n!=='number'?'<span class="tag orange">'+(Number.isFinite(r.minimum_known_spend)?'Deels geprijsd':'Prijs onbekend')+'</span>':r.cost.estimated?'<span class="tag orange">Prijsindicatie</span>':n<=10?'<span class="tag fresh">≤ € 10</span>':'<span class="tag orange">Boven € 10</span>'}
 function storeLogo(s){return '<span class="store-dot '+s+'">'+(s==='lidl'?'L':s==='jumbo'?'J':'AH')+'</span>'}
 function clearPage(){['vandaag','aanbiedingen','recepten','lijst','mijn'].forEach(v=>$('#view-'+v).classList.toggle('hidden',v!==state.view));document.querySelectorAll('[data-view]').forEach(el=>el.classList.toggle('active',el.dataset.view===state.view))}
 function header(eyebrow,title,subtitle){$('#page-intro').innerHTML='<div class="eyebrow">'+safe(eyebrow)+'</div><h1>'+title+'</h1><p class="subhead">'+safe(subtitle)+'</p>'}
