@@ -14,13 +14,38 @@
   if(m){const d={ml:1,cl:10,l:1000,g:1,kg:1000}[m[2]];const unit=['ml','cl','l'].includes(m[2])?'ml':'g';return '1x'+Math.round(Number(m[1])*d*100)/100+unit}
   return fold(o?.pack_label||'');
  }
+ function container(o){
+  const t=fold((o?.name||'')+' '+(o?.pack_label||''));
+  if(/\b(blik|blikje|blikjes|blikken)\b/.test(t))return 'blik';
+  if(/\b(fles|flesje|flesjes|flessen)\b/.test(t))return 'fles';
+  return 'verpakkingstype-onbekend';
+ }
+ function classify(o,today){
+  if(!o||!o.id||!o.name||!Number.isFinite(o.price)||o.price<=0||
+     !/^\d{4}-\d{2}-\d{2}$/.test(String(o.start_date||''))||
+     !/^\d{4}-\d{2}-\d{2}$/.test(String(o.end_date||''))||
+     !/^\d{4}-\d{2}-\d{2}$/.test(String(today||''))||
+     o.start_date>today||o.end_date<today||o.start_date>o.end_date||o.online_only)return 'excluded';
+  // A historical or regular-price observation is never a promotion.
+  if(o.is_regular_low_price||o.status==='third_party_price_observation'||
+     o.source_provider==='Biernet'||/^(historical|upcoming|regular|inactive)$/.test(String(o.promotion_status||'')))return 'observation';
+  const label=fold(o.name),variant=fold(o.variant);
+  const zero=/\b0\s+0\b|\balcoholvrij\b/.test(label);
+  // If the advertised variant contradicts the actual name, require a new product check.
+  if((variant==='alcoholvrij'&&!zero)||(variant==='alcoholhoudend'&&zero))return 'excluded';
+  if(!/^https:\/\//.test(String(o.source?.url||'')))return 'excluded';
+  if(o.verified===true)return 'confirmed';
+  if(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')return 'reported';
+  if(o.source_provider==='user_folder_image'&&o.evidence_date&&o.evidence_date<=today)return 'reported';
+  return 'excluded';
+ }
  function key(o){
   const n=fold(o?.name);
   const brand=/(?:^|\s)(texels)\s+skuumkoppe\b/.test(n)?'texels-skuumkoppe':
               /\bla chouffe\b/.test(n)?'la-chouffe-'+(n.includes('blond')?'blond':'other'):null;
   if(brand){
    const alcohol=/\b0\s+0\b|\balcoholvrij\b/.test(n)?'zero':'alcohol';
-   return 'known-brand:'+brand+'|'+alcohol+'|'+pack(o);
+   return 'known-brand:'+brand+'|'+alcohol+'|'+pack(o)+'|'+container(o);
   }
   return 'exact-name:'+n.replace(/^(ah|albert heijn|jumbo|lidl) /,'')+'|'+pack(o);
  }
@@ -43,5 +68,5 @@
   }
   return results;
  }
- return {key,pack,merge};
+ return {key,pack,container,classify,merge};
 });
