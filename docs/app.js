@@ -361,6 +361,7 @@ function auditBadge(o,s){
  const a=auditStatus(s,o);
  if(!a)return '<p class="muted">Automatische productcontrole nog niet gepubliceerd of verouderd.</p>';
  const detail=a.status==='needs_review'?'Gegevens vragen controle: '+a.issues.join(', '):
+ a.issues?.length?'Automatisch nagekeken, met aandachtspunten: '+a.issues.join(', '):
  a.status==='retailer_page_reported'?'Datums, bron en prijslogica gecontroleerd; winkel-URL aanwezig':
  'Datums, bron en prijslogica gecontroleerd; externe prijswaarneming';
  return '<p class="muted">'+safe(detail)+' · geen onafhankelijke kassagarantie</p>';
@@ -369,7 +370,7 @@ function auditSummary(){
  const report=state.audit;
  if(!report||report.day!==today())return '<div class="info-banner warning">De actuele kwaliteitscontrole is nog niet gepubliceerd. Aanbiedingenfeed ≠ geverifieerde kassaprijzen.</div>';
  return '<div class="info-banner"><strong>Dagelijkse kwaliteitscontrole ('+safe(report.day)+'):</strong> '+
- ORDER.map(s=>{const r=report.stores?.[s];return r?safe(NAMES[s])+': '+r.evaluated+' records op geldigheid en prijslogica nagekeken, '+r.by_status.needs_review+' met onzekerheden':safe(NAMES[s])+': geen controle';}).join(' · ')+
+ ORDER.map(s=>{const r=report.stores?.[s];return r?safe(NAMES[s])+': '+r.evaluated+' ontvangen aanbiedingen nagekeken, '+r.with_issues+' met aandachtspunten (waarvan '+r.by_status.needs_review+' ernstig)':safe(NAMES[s])+': geen controle';}).join(' · ')+
  '<p>Deze controle omvat alle ONTVANGEN aanbiedingen, niet alle bestaande winkelacties; zij is geen onafhankelijke prijsbevestiging.</p></div>';
 }
 function offerEvidenceLabel(o,s){
