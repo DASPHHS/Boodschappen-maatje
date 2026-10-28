@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-28",
+  "description": "Door gebruiker genoemde interessante productgroepen, niet per se vaste merkvoorkeuren of automatische koopaankopen.",
+  "topics": [
+    {
+      "key": "hoofdproteine",
+      "label": "Vlees/kip/vis/vega",
+      "examples": [
+        "gemengd gehakt",
+        "kipfiletblokjes en -reepjes",
+        "gezonde vette vis",
+        "Vivera",
+        "tofu"
+      ],
+      "importance": "receptanker"
+    },
+    {
+      "key": "groenten",
+      "label": "Groenten vers of diepvries",
+      "examples": [
+        "boerenkool",
+        "sperziebonen",
+        "bospeen",
+        "flespompoen",
+        "broccoli"
+      ],
+      "importance": "goedkoopste_eenheidsprijs"
+    },
+    {
+      "key": "kwark",
+      "label": "Kwark en yoghurt",
+      "examples": [
+        "Campina high protein",
+        "magere kwark"
+      ],
+      "importance": "eiwit_en_voorraad"
+    },
+    {
+      "key": "huishouden",
+      "label": "Huishouden",
+      "examples": [
+        "Dreft vaatwastabletten"
+      ],
+      "importance": "per_stuk_of_wasbeurt"
+    },
+    {
+      "key": "voorraad",
+      "label": "Voorraad en tussendoor",
+      "examples": [
+        "Calvé pindakaas",
+        "ongebrande walnoten",
+        "kiwi",
+        "popcorn"
+      ],
+      "importance": "alleen_bij_echt_voordeel"
+    }
+  ]
+}

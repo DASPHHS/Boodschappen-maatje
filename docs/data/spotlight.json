@@ -1,0 +1,1021 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-28T12:00:00+01:00",
+  "notes": "Folderwaarnemingen gecontroleerd voor Jumbo week 44; te kopen hoeveelheden, gecombineerde prijs en varianten moeten op productniveau worden bevestigd. Items uit screenshots kunnen extra variantvoorwaarden hebben.",
+  "stores": {
+    "lidl": {
+      "offers": [],
+      "recipes": []
+    },
+    "jumbo": {
+      "offers": [
+        {
+          "id": "jumbo-w44-gemengdgehakt",
+          "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "category": "vlees",
+          "price": 4.99,
+          "regular_price": 7.99,
+          "pack_label": "2 × 500 g",
+          "unit_price": 4.99,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 15",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
+          },
+          "note": "Naturel of gekruid; varken/rund-mengsel, geen mager rundergehakt.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-kipblokjes",
+          "name": "Jumbo kipfiletblokjes of -reepjes naturel",
+          "category": "kip",
+          "price": 4.49,
+          "regular_price": null,
+          "pack_label": "ca. 350 g",
+          "unit_price": 12.83,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 16 (Extra's)",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16"
+          },
+          "note": "Extra's-actie: voorwaarden en exacte kassaprijs/gewicht controleren.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": true
+        },
+        {
+          "id": "jumbo-w44-vivera-shoarma",
+          "name": "Vivera plantaardige shoarma",
+          "category": "vega",
+          "price": 3.39,
+          "regular_price": 6.78,
+          "pack_label": "2 × 175 g",
+          "unit_price": 9.69,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 15",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/15"
+          },
+          "note": "1+1 gratis, voorbeeld 2 gelijke verpakkingen; gemengde combinaties kunnen afwijken.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 3.39
+        },
+        {
+          "id": "jumbo-w44-groene-bonen",
+          "name": "Jumbo verse sperziebonen of snijbonen",
+          "category": "groente",
+          "price": 1.99,
+          "regular_price": null,
+          "pack_label": "400 g",
+          "unit_price": 4.98,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 8",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/8"
+          },
+          "note": "Vergelijk met diepvries: € 2,07/kg waargenomen voor Begro/Ardo.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false,
+          "cheapest_alternative": {
+            "name": "Begro/Ardo diepvries gebroken bonen, 1 kg",
+            "price": 2.07,
+            "unit_price": 2.07,
+            "unit": "kg",
+            "pack_label": "1 kg",
+            "source_url": "https://www.jumbo.com/producten/diepvries/groente/sperziebonen/bolletje/?filters=Merken%3AJumbo%2CArdo%2CMerkloos"
+          }
+        },
+        {
+          "id": "jumbo-w44-flespompoen",
+          "name": "Jumbo biologische pompoen of flespompoen",
+          "category": "groente",
+          "price": 1.49,
+          "regular_price": 2.49,
+          "pack_label": "per stuk",
+          "unit_price": null,
+          "unit": null,
+          "source": {
+            "label": "Jumbo actiefolder",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/8"
+          },
+          "note": "Per stuk: gewicht en eetbaar vruchtvlees verschillen.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-bospeen",
+          "name": "Jumbo bospeen",
+          "category": "groente",
+          "price": 0.99,
+          "regular_price": 1.59,
+          "pack_label": "1 bos",
+          "unit_price": null,
+          "unit": null,
+          "source": {
+            "label": "Jumbo actiefolder pagina 16",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16"
+          },
+          "note": "Gewicht per bos en eetbaar aandeel niet bevestigd.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-boerenkool",
+          "name": "Jumbo gesneden boerenkool",
+          "category": "groente",
+          "price": 1.99,
+          "regular_price": 3.98,
+          "pack_label": "2 × 300 g",
+          "unit_price": 3.32,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 2",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/2"
+          },
+          "note": "1+1 gratis op geselecteerde stamppotproducten; prijsvoorbeeld voor 2 gelijke pakken.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 1.99
+        },
+        {
+          "id": "jumbo-w44-stamppotaardappelen",
+          "name": "Jumbo stamppotaardappelen",
+          "category": "overig",
+          "price": 1.39,
+          "regular_price": 2.78,
+          "pack_label": "2 × 600 g",
+          "unit_price": 1.16,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 2",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/2"
+          },
+          "note": "1+1 gratis; aardappelen zijn niet koolhydraatarm, aparte portie-optie.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false,
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 1.39
+        },
+        {
+          "id": "jumbo-w44-kwark",
+          "name": "Campina yoghurt of kwark (voorbeeld 2 bekers)",
+          "category": "zuivel",
+          "price": 2.99,
+          "regular_price": null,
+          "pack_label": "2 × 450–500 g",
+          "source": {
+            "label": "Jumbo actiefolder, gebruikersafbeelding",
+            "url": "https://www.jumbo.com/aanbiedingen"
+          },
+          "note": "Geldt voor geselecteerde bekers; exacte variant/volledige productnaam controleren.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-pindakaas",
+          "name": "Calvé pindakaas (voorbeeld 2 potten)",
+          "category": "voorraad",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "2 × 350 g",
+          "source": {
+            "label": "Jumbo actiefolder, gebruikersafbeelding",
+            "url": "https://www.jumbo.com/aanbiedingen"
+          },
+          "note": "Vergelijk Calvé per kilo met Jumbo huismerk; merkactie niet automatisch voordelig.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-kiwi",
+          "name": "Zespri kiwi SunGold",
+          "category": "fruit",
+          "price": 4.99,
+          "regular_price": 6.59,
+          "pack_label": "750 g",
+          "unit_price": 6.65,
+          "unit": "kg",
+          "source": {
+            "label": "Jumbo actiefolder pagina 6",
+            "url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/6"
+          },
+          "note": "Fruitactie, geen hoofdmaaltijdingrediënt.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-popcorn",
+          "name": "Jimmy's popcorn (selectie)",
+          "category": "extra",
+          "price": 0.99,
+          "regular_price": null,
+          "pack_label": "80–150 g per zak",
+          "source": {
+            "label": "Jumbo actiefolder, gebruikersafbeelding",
+            "url": "https://www.jumbo.com/aanbiedingen"
+          },
+          "note": "Per smaak verschillen gewicht en prijs per kg: niet als één identiek product vergelijken.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false
+        },
+        {
+          "id": "jumbo-w44-dreft",
+          "name": "Dreft Platinum Plus / Miracle vaatwastabletten (selectie)",
+          "category": "huishouden",
+          "price": 37.98,
+          "regular_price": 94.95,
+          "pack_label": "5 dozen, variabele tabletaantallen",
+          "source": {
+            "label": "Jumbo actiefolder, gebruikersafbeelding",
+            "url": "https://www.jumbo.com/aanbiedingen"
+          },
+          "note": "2+3 gratis; prijs per tablet eerst per variant controleren; geen maaltijdproduct.",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "verified": true,
+          "source_provider": "officiele_folder",
+          "member_required": false,
+          "multi_buy_quantity": 5,
+          "multi_buy_price": 37.98
+        }
+      ],
+      "recipes": [
+        {
+          "id": "jumbo-kofte-pompoen",
+          "title": "Turkse köfte met flespompoen en sperziebonen",
+          "category": "vlees",
+          "cuisine": "Turks",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo biologische pompoen of flespompoen",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo verse sperziebonen of snijbonen",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Zuivel",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "komijn",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Meng gehakt met komijn en vorm kleine köfte.",
+            "Rooster blokjes flespompoen gaar, kook boontjes.",
+            "Bak de köfte volledig gaar en serveer met kwark."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-gehakt-boerenkool",
+          "title": "Boerenkoolstamppot zonder aardappel met gehaktballetjes",
+          "category": "vlees",
+          "cuisine": "Nederlands",
+          "servings": 4,
+          "minutes": 40,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo gesneden boerenkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "bloemkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "mosterd",
+              "quantity": 30,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Stoom de bloemkool en boerenkool goed gaar.",
+            "Stamp de bloemkool met mosterd tot puree en roer de boerenkool erdoor.",
+            "Bak de gehaktballetjes volledig gaar en serveer samen."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-gehakt-bulgogi",
+          "title": "Koreaanse gehaktbowl met spitskool en wortel",
+          "category": "vlees",
+          "cuisine": "Koreaans",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "spitskool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "bospeen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "sojasaus",
+              "quantity": 45,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "gember",
+              "quantity": 25,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Rul het gehakt volledig gaar met gember en sojasaus.",
+            "Snijd spitskool en wortel fijn en roerbak gaar.",
+            "Meng alles en serveer eventueel met extra chilivlokken."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "inspiration_source": {
+            "name": "Thematische inspiratie uit je Google Drive recepten",
+            "url": "https://drive.google.com/file/d/1e0qSsjkQiq7n3uAD1BHXYwiBPq_mzqOw/view"
+          }
+        },
+        {
+          "id": "jumbo-gehakt-surinaams",
+          "title": "Surinaamse masala-gehaktpan met boontjes",
+          "category": "vlees",
+          "cuisine": "Surinaams",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo verse sperziebonen of snijbonen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "bospeen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "masalakruiden",
+              "quantity": 15,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "tomatenblokjes",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Bak het gehakt rul en geheel gaar met masala.",
+            "Voeg boontjes en wortel toe met tomaat en wat water.",
+            "Laat sudderen tot de groenten gaar zijn."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "inspiration_source": {
+            "name": "Thematische inspiratie uit je Google Drive recepten",
+            "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view"
+          }
+        },
+        {
+          "id": "jumbo-gehakt-italiaans",
+          "title": "Italiaanse courgette-bolognese met gehakt",
+          "category": "vlees",
+          "cuisine": "Italiaans",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "courgette",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "tomaten",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "tomatenpuree",
+              "quantity": 70,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "oregano",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Bak gehakt volledig gaar met oregano.",
+            "Kook een saus van tomaat en tomatenpuree.",
+            "Maak linten van courgette, bak kort en serveer met de saus."
+          ],
+          "offer_anchor_id": "jumbo-w44-gemengdgehakt",
+          "offer_anchor_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-kip-pompoen",
+          "title": "Marokkaanse kip met pompoen, boontjes en harissa",
+          "category": "kip",
+          "cuisine": "Marokkaans",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo biologische pompoen of flespompoen",
+              "quantity": 650,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo verse sperziebonen of snijbonen",
+              "quantity": 550,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "harissa",
+              "quantity": 40,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 300,
+              "unit": "g",
+              "department": "Zuivel",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Kruid kip met harissa en bak volledig gaar.",
+            "Rooster pompoen en kook sperziebonen tot ze gaar zijn.",
+            "Serveer met een frisse kwarksaus."
+          ],
+          "offer_anchor_id": "jumbo-w44-kipblokjes",
+          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-kip-masala",
+          "title": "Surinaamse kipmasala met bospeen en sperziebonen",
+          "category": "kip",
+          "cuisine": "Surinaams",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo verse sperziebonen of snijbonen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "bospeen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "masala",
+              "quantity": 15,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "tomatenblokjes",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Fruit masala kort en bak de kip geheel gaar.",
+            "Voeg gesneden bospeen, boontjes en tomatenblokjes toe.",
+            "Stoof tot alle groenten gaar zijn."
+          ],
+          "offer_anchor_id": "jumbo-w44-kipblokjes",
+          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "inspiration_source": {
+            "name": "Thematische inspiratie uit je Google Drive recepten",
+            "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view"
+          }
+        },
+        {
+          "id": "jumbo-kip-thais",
+          "title": "Thaise gemberkip met spitskool en champignons",
+          "category": "kip",
+          "cuisine": "Thais",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 200,
+          "ingredients": [
+            {
+              "name": "Jumbo kipfiletblokjes of -reepjes naturel",
+              "quantity": 800,
+              "unit": "g",
+              "department": "Eiwitbronnen",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "spitskool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "champignons",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "gember",
+              "quantity": 30,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "sojasaus",
+              "quantity": 45,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Bak kip geheel gaar met gember.",
+            "Roerbak spitskool en champignons gaar.",
+            "Meng met sojasaus en serveer zonder rijst."
+          ],
+          "offer_anchor_id": "jumbo-w44-kipblokjes",
+          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "inspiration_source": {
+            "name": "Thematische inspiratie uit je Google Drive recepten",
+            "url": "https://drive.google.com/file/d/1e0qSsjkQiq7n3uAD1BHXYwiBPq_mzqOw/view"
+          }
+        },
+        {
+          "id": "jumbo-vega-shoarma",
+          "title": "Plantaardige shoarma met kool, paprika en yoghurtsaus",
+          "category": "vega",
+          "cuisine": "Midden-Oosters",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "ingredients": [
+            {
+              "name": "Vivera plantaardige shoarma",
+              "quantity": 350,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "stevige tofu",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "witte kool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "paprika",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "magere kwark",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Zuivel",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "komijn",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Bak tofu apart krokant en verwarm de plantaardige shoarma.",
+            "Roerbak kool en paprika gaar.",
+            "Meng alles en serveer met kruidenkwark."
+          ],
+          "offer_anchor_id": "jumbo-w44-vivera-shoarma",
+          "offer_anchor_name": "Vivera plantaardige shoarma",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-vega-turkse",
+          "title": "Turkse gevulde paprika met shoarma en tofu",
+          "category": "vega",
+          "cuisine": "Turks",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "ingredients": [
+            {
+              "name": "Vivera plantaardige shoarma",
+              "quantity": 350,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "stevige tofu",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "paprika",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "courgette",
+              "quantity": 500,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "tomatenpuree",
+              "quantity": 70,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Snijd paprika doormidden en verwijder de zaadlijsten.",
+            "Vul met gebakken tofu, shoarma, fijngesneden courgette en tomatenpuree.",
+            "Bak in de oven tot de groenten gaar zijn."
+          ],
+          "offer_anchor_id": "jumbo-w44-vivera-shoarma",
+          "offer_anchor_name": "Vivera plantaardige shoarma",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd."
+        },
+        {
+          "id": "jumbo-vega-salade",
+          "title": "Indonesische tempeh-/tofu-pan met bospeen en boerenkool",
+          "category": "vega",
+          "cuisine": "Indonesisch",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": null,
+          "ingredients": [
+            {
+              "name": "Vivera plantaardige shoarma",
+              "quantity": 350,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "stevige tofu",
+              "quantity": 700,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "Jumbo gesneden boerenkool",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "bospeen",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "sojasaus",
+              "quantity": 40,
+              "unit": "ml",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            },
+            {
+              "name": "sambal",
+              "quantity": 20,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "price_status": "not_verified",
+              "pack_price": null
+            }
+          ],
+          "instructions": [
+            "Bak tofu en plantaardige shoarma goudbruin.",
+            "Stoom de boerenkool en gesneden bospeen gaar.",
+            "Meng met sojasaus en sambal."
+          ],
+          "offer_anchor_id": "jumbo-w44-vivera-shoarma",
+          "offer_anchor_name": "Vivera plantaardige shoarma",
+          "origin": "folder-idee",
+          "cost": null,
+          "macros": null,
+          "macro_status": "niet_berekend",
+          "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
+          "inspiration_source": {
+            "name": "Thematische inspiratie uit je Google Drive recepten",
+            "url": "https://drive.google.com/file/d/1e0qSsjkQiq7n3uAD1BHXYwiBPq_mzqOw/view"
+          }
+        }
+      ]
+    },
+    "ah": {
+      "offers": [],
+      "recipes": []
+    }
+  }
+}
