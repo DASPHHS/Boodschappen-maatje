@@ -137,6 +137,33 @@
       "regular_price": 2.49,
       "url": "https://www.jumbo.com/aanbiedingen/biologische-pompoen-of-flespompoen/3023322",
       "note": "Prijs per stuk, gewicht varieert."
+    },
+    {
+      "group": "kwark",
+      "store": "ah",
+      "name": "AH Cottage cheese 200 g",
+      "price": 0.74,
+      "quantity": 200,
+      "unit": "g",
+      "type": "cottage",
+      "status": "official_regular_observed",
+      "checked_date": "2026-10-28",
+      "url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
+      "note": "Reguliere lage prijs, niet als Bonusactie aangemerkt."
+    },
+    {
+      "group": "pompoen",
+      "store": "ah",
+      "name": "AH Biologisch Flespompoen",
+      "price": 1.79,
+      "quantity": 1,
+      "unit": "stuk",
+      "type": "bio_pumpkin",
+      "status": "official_promo",
+      "start_date": "2026-10-26",
+      "end_date": "2026-11-01",
+      "regular_price": 2.98,
+      "url": "https://www.ah.nl/shop/seizoensproducten"
     }
   ]
 }
