@@ -38,6 +38,35 @@ def kind(name):
     for k in ("kip","vis","vlees","vega","groente"):
         if re.search(REGEX[k],t):return k
 
+
+# Deze classificatie is voor het tonen van ALLE acties. kind() is uitsluitend
+# een strengere herkenning van verse/gezonde receptingrediënten.
+def category(name):
+    t=name.lower()
+    if re.search(r"\b(bier|pils(?:ener)?|pilsje|bokbier|bockbier|weizen|witbier|radler|speciaalbier|blond bier|ipa|stout|abdijbier|hertog jan|heineken|grolsch|leffe|amstel|texels|brand bier|gulpener|bavaria|karmeliet|liefmans|tripel)\b",t):
+        return "bier"
+    if re.search(r"\b(wijn|prosecco|cava|champagne|port|sherry|rum|whisky|vodka|gin|likeur)\b",t):
+        return "overige_dranken"
+    if re.search(r"\b(dreft|finish|vaatwas|wasmiddel|wasverzachter|ariel|robijn|lenor|ajax|allesreiniger|schoonmaak|waspoeder|keukenrol|toiletpapier|tissues|tandpasta|shampoo|deodorant)\b",t):
+        return "huishouden"
+    if re.search(r"\b(cola|fanta|frisdrank|sap|sappen|limonade|water|ice tea|ijstee|red bull|monster energy|koffie|thee|cappuccino)\b",t):
+        return "dranken"
+    if re.search(r"\b(kwark|yoghurt|skyr|cottage cheese|melk|kaas|mozzarella|burrata|griekse stijl)\b",t):
+        return "zuivel"
+    if re.search(r"\b(kiwi|sungold|mango|appel|appels|peer|peren|bananen|banaan|blauwe bessen|aardbei|frambozen|sinaasappel|druiven|mandarijnen|ananas|meloen|avocado)\b",t):
+        return "fruit"
+    if re.search(r"\b(pindakaas|walnoten|amandel|hazelnoot|noten|pistache|cashew)\b",t):
+        return "voorraad"
+    if re.search(r"\b(popcorn|chips|koekjes|chocolade|snoep|crackers|snack)\b",t):
+        return "snacks"
+    if re.search(r"\b(aardappelen|aardappel|krieltjes|rijst|pasta|noedels|tortilla|wrap|brood|baguette)\b",t):
+        return "brood_graan"
+    strict=kind(name)
+    if strict:return strict
+    if re.search(r"\b(sla|kool|bonen|biet|courgette|komkommer|ui|broccoli|groente|pompoen|prei|wortel|bloemkool|champignon|spruitjes|paprika|spinazie)\b",t):
+        return "groente"
+    return "overig"
+
 def request(params):
     url=BASE+"?"+urlencode(params)
     headers={"User-Agent":"BoodschappenMaatje/1.0 (+https://github.com/DASPHHS/Boodschappen-maatje)"}
@@ -56,8 +85,8 @@ def request(params):
 
 def item(p,today):
     name=str(p.get("name") or "")
-    k=kind(name)
-    if not k or p.get("promotion_status")!="active" or p.get("online_only"):return
+    k=category(name)
+    if p.get("promotion_status")!="active" or p.get("online_only"):return
     start=str(p.get("valid_from") or "")[:10];end=str(p.get("valid_until") or "")[:10]
     if not(start<=today<=end):return
     price=p.get("price")
@@ -73,12 +102,12 @@ def item(p,today):
       "loyalty_price":lp if isinstance(lp,(int,float)) else None,
       "loyalty_program":p.get("loyalty_program"),
       "pack_label":p.get("quantity") or "inhoud onbekend","unit":p.get("unit"),
-      "unit_price":p.get("unit_price"),"start_date":start,"end_date":end,
+      "unit_price":p.get("unit_price"),"unit_price_status":"external_reported_recalculate_for_multibuy","start_date":start,"end_date":end,
       "date_estimated":bool(p.get("valid_until_estimated")),
       "multi_buy_quantity":p.get("multi_buy_quantity"),
       "multi_buy_price":p.get("multi_buy_price"),"promotion_type":p.get("promotion_type"),
       "source":{"label":"PrijsProfeet API (niet onafhankelijk bevestigd)","url":url},
-      "source_provider":"PrijsProfeet","observed_at":p.get("extracted_at"),
+      "source_provider":"PrijsProfeet","observed_at":p.get("extracted_at"),"recipe_ingredient_candidate":kind(name) is not None,
       "promotion_status":"active","verified":False,
       "member_required":False,"brand":p.get("brand"),"ean":p.get("ean")}
 
@@ -89,7 +118,7 @@ def main():
         try:previous=json.loads(OUT.read_text()).get("stores",{})
         except (ValueError,OSError):pass
     output={"schema_version":1,"generated_at":timestamp.isoformat(),"source":"PrijsProfeet public API",
-      "notice":"API-gemelde promoties: geen onafhankelijke winkelcontrole of volledige reguliere assortimentprijzen.",
+      "notice":"ALLE API-gemelde winkelpromoties inclusief bier, dranken, huishouden en overige categorieën. Geen onafhankelijke winkelcontrole; geen volledige reguliere schapprijzen. Categorieën zijn indicatief; alleen expliciete product-ID kan een recept koppelen.",
       "stores":{}}
     failures=0
     for store,retailer in RETAILERS.items():
@@ -108,8 +137,12 @@ def main():
                 page+=1
                 if page>90:raise RuntimeError("pagination exceeded")
                 time.sleep(2.2 if not os.environ.get("PRIJS_PROFEET_KEY") else 0.45)
-            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"status":"ok","checked_at":timestamp.isoformat()}
-            print(store,total,"total,",len(found),"nutrition-relevant",flush=True)
+            counts={}
+            for offer in found.values():
+                c=offer["category"]
+                counts[c]=counts.get(c,0)+1
+            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"imported_total":len(found),"categories":counts,"status":"ok","checked_at":timestamp.isoformat()}
+            print(store,total,"total,",len(found),"active in-store promotions across all categories",flush=True)
         except Exception as e:
             failures+=1
             old=previous.get(store,{})
