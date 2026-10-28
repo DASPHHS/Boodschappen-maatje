@@ -40,7 +40,7 @@ function offers(s){
 function isOfferActive(o){
  if(!o||o.is_regular_low_price||!Number.isFinite(o.price)||!validdate(o.end_date)||!validdate(o.start_date))return false;
  if(o.start_date>today()||o.end_date<today()||o.online_only)return false;
- return o.verified===true||(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active');
+ return o.verified===true||(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')||(o.source_provider==='user_folder_image'&&!!o.evidence_date&&o.evidence_date<=today());
 }
 function recipes(s){
  const found=[],seen=new Set();
@@ -266,7 +266,7 @@ try{
 }
 function offerEvidenceLabel(o,s){
 if(isOfficialOfferSource(o,s))return 'Officiële actiebron';
-return o.source_provider==='PrijsProfeet'?'Externe prijswaarneming':'Folder- of vergelijkingsbron';
+return o.source_provider==='PrijsProfeet'?'Externe prijswaarneming':o.source_provider==='user_folder_image'?'Aangeleverde folderfoto · prijs controleren':'Folder- of vergelijkingsbron';
 }
 function dealCard(o,s){
 const alt=o.cheapest_alternative;

@@ -1520,15 +1520,16 @@
           "regular_price": null,
           "pack_label": "300 g",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "label": "Aangeleverde AH Bonusfolderfoto, nog niet onafhankelijk gecontroleerd",
             "url": "https://www.ah.nl/bonus"
           },
-          "source_provider": "ah_official_bonus",
-          "verified": true,
+          "source_provider": "user_folder_image",
+          "verified": false,
           "start_date": "2026-10-26",
           "end_date": "2026-11-01",
           "member_required": true,
-          "promo_note": "Fruit/voorraad; geen goedkope eiwitbron."
+          "promo_note": "Fruit/voorraad; geen goedkope eiwitbron. Prijs afgelezen van folderfoto, nog te verifiëren op AH-productpagina.",
+          "evidence_date": "2026-10-28"
         },
         {
           "id": "ah-w44-mango-two",
@@ -1538,17 +1539,18 @@
           "regular_price": null,
           "pack_label": "2 stuks",
           "source": {
-            "label": "Albert Heijn Bonus 26 oktober t/m 1 november 2026",
+            "label": "Aangeleverde AH Bonusfolderfoto, nog niet onafhankelijk gecontroleerd",
             "url": "https://www.ah.nl/bonus"
           },
-          "source_provider": "ah_official_bonus",
-          "verified": true,
+          "source_provider": "user_folder_image",
+          "verified": false,
           "start_date": "2026-10-26",
           "end_date": "2026-11-01",
           "member_required": true,
           "multi_buy_quantity": 2,
           "multi_buy_price": 2.99,
-          "promo_note": "Twee mango's; wisselend gewicht."
+          "promo_note": "Twee mango's; wisselend gewicht. Prijs afgelezen van folderfoto, nog te verifiëren op AH-productpagina.",
+          "evidence_date": "2026-10-28"
         },
         {
           "id": "ah-w44-cottage-200",
