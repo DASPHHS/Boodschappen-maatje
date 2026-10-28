@@ -110,3 +110,7 @@ De eerdere synthetische receptenmotor is uit de app uitgeschakeld omdat hij herh
 De vers-vs-diepvriesvergelijking voor Jumbo sperziebonen wordt uitsluitend op gelijke gewichtseenheden gemaakt: 400g vers €1,99 (€4,98/kg) versus 1kg diepvries €2,07 (€2,07/kg), op basis van de waarnemingen op 28 oktober 2026. De klant moet beschikbaarheid controleren.
 
 Thematische inspiratie voor enkele nieuwe recepten komt uit de aan de gebruiker gekoppelde Google Drive-kookboeken Recepten uit Zuid-oost-Azië en Sandhia's Surinaamse Recepten. We hebben hieruit nieuwe eigen varianten uitgewerkt, geen letterlijke overnames.
+
+
+## Extra internationale recepten (28 oktober)
+De bibliotheek bevat acht nieuwe originele recepten (twee kip, twee vlees, twee vis, twee vegetarisch), gebaseerd op de algemene culinaire en gezonde kookprincipes van het Voedingscentrum en Allerhande. De bron-URL staat bij ieder nieuw recept. Elk gerecht is voor vier personen met minstens 300 gram groente per portie. Kassaprijzen en macro's zijn bewust onbekend zolang de benodigde product- en verpakkingsgegevens niet voor een specifieke winkel zijn gecontroleerd. Dit zijn geen bewezen 'altijd goedkoop'-recepten of geverifieerde aanbiedingen.

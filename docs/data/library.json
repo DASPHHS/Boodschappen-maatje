@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "notes": "Bestaande bronrecepten, prijzen en macro's nog niet geverifieerd.",
+  "notes": "48 bestaande en zelf bewerkte gezonde vierportierecepten. De nieuwe 8 verwijzen naar kwalitatieve voedings-/receptbronnen. Alle supermarktprijzen en macrowaarden zijn afzonderlijk te controleren.",
   "recipes": [
     {
       "id": "drive-01",
@@ -2489,6 +2489,464 @@
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
       "source_name": "Romige tomaat-bonenstoof met rijst"
+    },
+    {
+      "id": "basis-41",
+      "title": "Turkse sumakkip met aubergine en courgette",
+      "category": "kip",
+      "cuisine": "Turks",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "sumak",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 15,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 210 graden en rooster aubergine en courgette met sumak tot ze zacht zijn.",
+        "Snijd de kipfilet in stukken en bak deze volledig gaar.",
+        "Meng geperste knoflook met kwark en serveer samen."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
+      "inspiration_source": {
+        "name": "Voedingscentrum — gezonde recepten en richtlijnen",
+        "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-42",
+      "title": "Vietnamese citroengraskip met paksoi en groene boontjes",
+      "category": "kip",
+      "cuisine": "Vietnamees",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kipdijfilet zonder huid",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "diepvries sperziebonen",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "citroengras",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "limoensap",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de kip en bak goed door met fijngesneden citroengras.",
+        "Kook de sperziebonen gaar en bak de paksoi kort op hoog vuur.",
+        "Meng met limoensap en sojasaus; verdeel de kip en groenten over vier borden."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+      "inspiration_source": {
+        "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+        "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-43",
+      "title": "Mexicaanse rundergehaktpan met spitskool en paprika",
+      "category": "vlees",
+      "cuisine": "Mexicaans",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenpuree",
+          "quantity": 70,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de kool en paprika fijn.",
+        "Rul het gehakt volledig gaar met komijn en tomatenpuree.",
+        "Roerbak de groenten beetgaar en meng met het gehakt. Serveer zonder wraps."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+      "inspiration_source": {
+        "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+        "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-44",
+      "title": "Spaanse varkenshaas met bloemkool en venkel",
+      "category": "vlees",
+      "cuisine": "Spaans",
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "name": "varkenshaas",
+          "quantity": 760,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "venkel",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroensap",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Rooster bloemkool en venkel met paprikapoeder in de oven tot alles gaar is.",
+        "Braad varkenshaas rondom aan en gaar veilig verder.",
+        "Laat het vlees kort rusten, snijd in medaillons en serveer met de groenten en citroensap."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
+      "inspiration_source": {
+        "name": "Voedingscentrum — gezonde recepten en richtlijnen",
+        "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-45",
+      "title": "Japanse gember-misozalm met broccoli en paksoi",
+      "category": "vis",
+      "cuisine": "Japans",
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "name": "zalmfilet",
+          "quantity": 760,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "miso",
+          "quantity": 35,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Roer miso met fijn geraspte gember en wat water tot een dunne saus.",
+        "Bestrijk zalm met de saus en bak in de oven op 190 graden tot hij gaar is.",
+        "Stoom de broccoli en paksoi beetgaar en serveer direct."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+      "inspiration_source": {
+        "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+        "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-46",
+      "title": "Griekse kabeljauwstoof met tomaat en courgette",
+      "category": "vis",
+      "cuisine": "Grieks",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kabeljauwfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "courgette",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroensap",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd courgette en tomaten en stoof met oregano tot ze zacht zijn.",
+        "Leg de kabeljauw boven op de groenten en laat zacht garen tot de vis gemakkelijk uit elkaar valt.",
+        "Breng op smaak met citroensap en verdeel over vier porties."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
+      "inspiration_source": {
+        "name": "Voedingscentrum — gezonde recepten en richtlijnen",
+        "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-47",
+      "title": "Marokkaanse harissatempeh met wortel en broccoli",
+      "category": "vega",
+      "cuisine": "Marokkaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "tempeh",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "harissa",
+          "quantity": 35,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd tempeh in blokjes en bak krokant met een kleine hoeveelheid harissa.",
+        "Stoom wortel en broccoli gaar en bak de groenten kort mee.",
+        "Serveer met magere kwark als frisse saus."
+      ],
+      "vegetables_g_per_portion": 300,
+      "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+      "inspiration_source": {
+        "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
+        "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
+    },
+    {
+      "id": "basis-48",
+      "title": "Midden-Oosterse tofu-shakshuka met boerenkool",
+      "category": "vega",
+      "cuisine": "Midden-Oosters",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "stevige tofu",
+          "quantity": 900,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "eieren",
+          "quantity": 4,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "boerenkool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komijn",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm tomatenblokjes en paprika met komijn in een brede pan.",
+        "Voeg in blokjes gesneden tofu en boerenkool toe en laat rustig gaar stoven.",
+        "Maak vier kuiltjes, breek in elk een ei en laat onder een deksel volledig garen."
+      ],
+      "vegetables_g_per_portion": 400,
+      "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
+      "inspiration_source": {
+        "name": "Voedingscentrum — gezonde recepten en richtlijnen",
+        "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
+      },
+      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "price_status": "onbekend",
+      "macro_status": "niet_berekend",
+      "origin": "gezonde_basis_inspiratie"
     }
   ]
 }

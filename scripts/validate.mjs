@@ -90,3 +90,18 @@ for(const [store,v] of Object.entries(promo.stores)){
 const stamp=promo.stores.jumbo.recipes.find(r=>r.id==='jumbo-gehakt-boerenkool');
 if(!stamp||stamp.offer_anchors?.length!==3||!stamp.ingredients.some(i=>/stamppotaardappelen/i.test(i.name)))throw Error('Boerenkoolactie of aardappel ontbreekt');
 console.log('Recepten en meerdere exact gekoppelde actieproducten gevalideerd');
+
+const library2=JSON.parse(fs.readFileSync('docs/data/library.json','utf8'));
+const seenRecipes=new Set();
+for(const r of library2.recipes){
+ if(seenRecipes.has(r.id))throw Error('Dubbel recept '+r.id);
+ seenRecipes.add(r.id);
+ if(r.servings!==4||!Array.isArray(r.ingredients)||!Array.isArray(r.instructions))throw Error('Onvolledig basisrecept '+r.id);
+ if(r.id.startsWith('basis-')){
+  const vegetables=r.ingredients.filter(i=>i.department==='Groente & fruit'&&i.unit==='g').reduce((n,i)=>n+i.quantity,0);
+  if(vegetables<1200)throw Error('Te weinig groente '+r.id);
+  if(r.cost?.basket_total!==undefined||r.macros!==undefined)throw Error('Niet-berekende basisrecepten bevatten fictieve prijs/macro '+r.id);
+  if(!/^https:\/\//.test(r.inspiration_source?.url||''))throw Error('Bron ontbreekt '+r.id);
+ }
+}
+console.log('Receptenbibliotheek: '+library2.recipes.length+' recepten, nieuwe gerechten met bron en groentecontrole');
