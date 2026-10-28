@@ -21,6 +21,14 @@ BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|
 
 def kind(name):
     t=name.lower()
+    # Exclude sauces, prepared meals, toppings and snacks from core proteins.
+    bad=("schnitzel","burger","knorr","honig","cup-a-soup","cup a soup","soup","scholiertje",
+         "drinkbouillon","bouillon","jus","kruiden","saus","dressing","salade","tapenade",
+         "rookvlees","gerookt","snack","cracker","borrel","wraphapje","rolletje",
+         "olvarit","ella's kitchen","noedels","noodles","baby","maaltijdmix","visstick",
+         "gepaneerd","kipstick","knaks","roti","maaltijd","uit eigen keuken",
+         "spread","kant-en-klaar","spice mix","pesto","plakjes")
+    if any(part in t for part in bad):return None
     if re.search(BLOCK,t):return None
     if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"
