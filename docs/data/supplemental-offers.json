@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T16:32:01.532621+01:00",
+  "generated_at": "2026-10-28T16:38:17.995391+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-28T16:32:01.532621+01:00",
+      "checked_at": "2026-10-28T16:38:17.995391+01:00",
       "status": "ok",
       "offers": [
         {
