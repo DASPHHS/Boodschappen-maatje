@@ -47,3 +47,12 @@
 .favorite-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}.favorite-title strong{font:800 18px Manrope}.favorite-title small{display:block;color:var(--muted);margin-top:3px}
 .favorite-product .personal-shop .tag{width:max-content;white-space:normal;font-size:10px}
 @media(max-width:740px){.favorite-summary,.favorite-home-link{flex-direction:column;align-items:stretch}.favorite-summary button,.favorite-home-link button{width:100%}}
+
+/* Mijn recepten */
+.recipe-visual{position:relative}.recipe-visual .recipe-heart{position:absolute;right:12px;top:12px;z-index:2}
+.recipe-heart{display:grid;place-items:center;width:39px;height:39px;min-width:39px;background:#fff;border:1px solid #dce5da;border-radius:12px;font-size:25px;color:#607465}
+.recipe-heart.chosen{background:#fff0f3;color:#b44159;border-color:#f1c7cf}
+.my-home-link{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;background:#e7f0df;border:1px solid #d6e4cd;border-radius:17px;margin:22px 0 10px;font-size:13px;color:#3e6747}
+.personal-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.personal-stat{background:white;border:1px solid var(--line);border-radius:15px;padding:17px}.personal-stat strong{display:block;font:800 29px Manrope}.personal-stat span{font-size:12px;color:var(--muted)}
+.personal-plan-group{border:1px solid var(--line);border-radius:17px;background:#fff;padding:17px 19px;margin-bottom:12px}.personal-group-header{display:flex;align-items:center;justify-content:space-between;gap:10px}.my-recipe-list{margin-top:12px}.my-recipe-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}.my-recipe-row strong{font-size:14px}.my-recipe-row small{display:block;font-size:12px;color:var(--muted)}.my-actions,.my-saved-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.my-saved-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;display:flex;justify-content:space-between;gap:16px;flex-direction:column}.my-saved-card h3{margin-bottom:8px}
+@media(max-width:740px){.mobile-nav button{padding:4px 3px;font-size:9px}.personal-hero{gap:6px}.personal-stat{padding:10px}.personal-stat strong{font-size:21px}.personal-stat span{font-size:10px}.my-home-link{flex-direction:column;align-items:stretch}.my-recipe-row>div:first-child{flex:1}}

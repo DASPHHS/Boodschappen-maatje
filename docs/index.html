@@ -19,6 +19,7 @@
   <button type="button" data-view="vandaag" class="nav-link active"><span class="nav-icon">◫</span> Vandaag</button>
   <button type="button" data-view="aanbiedingen" class="nav-link"><span class="nav-icon">％</span> Aanbiedingen</button>
   <button type="button" data-view="recepten" class="nav-link"><span class="nav-icon">♧</span> Recepten</button>
+  <button type="button" data-view="mijn" class="nav-link"><span class="nav-icon">♥</span> Mijn recepten <span class="count" id="saved-count"></span></button>
   <button type="button" data-view="lijst" class="nav-link"><span class="nav-icon">☑</span> Boodschappenlijst <span id="nav-count" class="count"></span></button>
  </nav>
  <div class="sidebar-bottom"><div class="sidebar-illustration" aria-hidden="true">✳<span>◡</span></div><strong>Meer smaak.<br>Minder gedoe.</strong><p>Drie winkels vol inspiratie. Jij kiest er één.</p></div>
@@ -35,12 +36,14 @@
   <section id="view-aanbiedingen" class="view hidden"></section>
   <section id="view-recepten" class="view hidden"></section>
   <section id="view-lijst" class="view hidden"></section>
+  <section id="view-mijn" class="view hidden"></section>
  </main>
 </div>
 <nav class="mobile-nav" aria-label="Mobiele navigatie">
  <button data-view="vandaag" class="active"><span>◫</span>Vandaag</button>
  <button data-view="aanbiedingen"><span>％</span>Deals</button>
  <button data-view="recepten"><span>♧</span>Recepten</button>
+ <button data-view="mijn"><span>♥</span>Recepten</button>
  <button data-view="lijst"><span>☑</span>Mijn lijst</button>
 </nav>
 </div>
