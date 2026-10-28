@@ -613,6 +613,128 @@
           "savings_tip": "De Lidl Plus-broccoli maakt dit goedkoper. De rijst is bewust weggelaten; 250g tempeh per portie is de eiwitbasis.",
           "source_recipe": "Aangepaste variant van Pittige tempeh-roerbak uit bestaande bibliotheek",
           "offer_inspired": true
+        },
+        {
+          "id": "lidl-20261028-budget-tofu",
+          "title": "Mediterrane tofu-groentepan met romige cottage cheese",
+          "category": "vega",
+          "cuisine": "Mediterraans",
+          "servings": 4,
+          "minutes": 25,
+          "vegetables_g_per_portion": 400,
+          "animal_protein_g_per_portion": 0,
+          "ingredients": [
+            {
+              "name": "tofu",
+              "quantity": 1000,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "pack_price": 3.9,
+              "package_count": 3,
+              "package_size": 360,
+              "package_unit": "g",
+              "product_name": "Lidl Tofu 360g",
+              "source_url": "https://boodschaapje.nl/product/6609684",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            },
+            {
+              "name": "broccoli, met eetbare stronk",
+              "quantity": 1000,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 1.38,
+              "package_count": 2,
+              "package_size": 500,
+              "package_unit": "g",
+              "product_name": "Lidl broccoli 500g Lidl Plus",
+              "source_url": "https://folderaanbod.nl/winkels/lidl/folders/week-44-2026",
+              "price_observed_at": "2026-10-28",
+              "price_status": "folder_current"
+            },
+            {
+              "name": "tomatenblokjes",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 0.69,
+              "package_count": 1,
+              "package_size": 400,
+              "package_unit": "g",
+              "product_name": "Lidl bio tomatenblokjes 400g",
+              "source_url": "https://boodschaapje.nl/",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            },
+            {
+              "name": "wortel",
+              "quantity": 200,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 1.19,
+              "package_count": 1,
+              "package_size": 1000,
+              "package_unit": "g",
+              "product_name": "Lidl biologische wortelen 1kg",
+              "source_url": "https://boodschaapje.nl/product/84611",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            },
+            {
+              "name": "cottage cheese",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": 1.49,
+              "package_count": 1,
+              "package_size": 400,
+              "package_unit": "g",
+              "product_name": "Lidl cottage cheese 400g",
+              "source_url": "https://boodschaapje.nl/product/150444",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            },
+            {
+              "name": "paprikapoeder",
+              "quantity": 6,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": 0.76,
+              "package_count": 1,
+              "package_size": 50,
+              "package_unit": "g",
+              "product_name": "Lidl paprikapoeder 50g",
+              "source_url": "https://boodschaapje.nl/product/1202",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            }
+          ],
+          "instructions": [
+            "Rooster 1kg broccoli en 200g wortel op bakpapier op 200°C tot beetgaar.",
+            "Bak 1kg tofu in een goede antiaanbakpan goudbruin; voeg paprikapoeder en 400g tomatenblokjes toe.",
+            "Schep de groente erdoor en verdeel de cottage cheese over vier porties. Voeg naar smaak peper toe als je die al hebt."
+          ],
+          "cost": {
+            "basket_total": 9.41,
+            "estimated": true,
+            "verified_today": false,
+            "price_per_portion": 2.35,
+            "price_basis": "Volledige kassaverpakkingen; deels regulier geprijsd op 27 oktober, folderacties gecontroleerd op 28 oktober. Filiaalkassa niet bevestigd.",
+            "budget_target": 10,
+            "budget_met": true
+          },
+          "macros": {
+            "kcal": 538,
+            "protein_g": 52,
+            "carbs_g": 26,
+            "fat_g": 23
+          },
+          "macro_status": "estimated",
+          "macro_note": "Benaderde voedingswaarden per portie, gebaseerd op gangbare productsamenstellingen.",
+          "price_status": "deels_2026-10-27",
+          "savings_tip": "De goedkope Lidl Plus-broccoli maakt vier eiwitrijke porties mogelijk onder €10. Zonder Lidl Plus moet de broccoli opnieuw worden geprijsd.",
+          "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
+          "offer_inspired": true
         }
       ],
       "notes": "Acties geverifieerd in weekfolder en waar mogelijk bij officiële winkel/vergelijker. Receptkosten zijn kassaprijsindicaties uit volledige verpakkingen, deels op basis van Checkjebon-snapshot 27 oktober, niet vandaag volledig bevestigd. Loyaliteitsvoorwaarden en winkelvoorraad controleren. Er wordt geen winkel gekozen.",
@@ -1216,6 +1338,100 @@
           "savings_tip": "Drie pakken Jumbo tempeh 395g à €2,29 kosten €6,87. Dat is goedkoper dan de vijf Vivera-tofuverpakkingen van €10,95 in de oude prijsmand; smaak en voedingsprofiel verschillen.",
           "source_recipe": "Aangepaste variant van Miso-tofu met champignons uit bestaande bibliotheek",
           "offer_inspired": true
+        },
+        {
+          "id": "jumbo-20261028-budget-tempeh",
+          "title": "Italiaanse tempeh-tomatenstoof met spinazie",
+          "category": "vega",
+          "cuisine": "Italiaans",
+          "servings": 4,
+          "minutes": 25,
+          "vegetables_g_per_portion": 387.5,
+          "animal_protein_g_per_portion": 0,
+          "ingredients": [
+            {
+              "name": "Jumbo tempeh naturel",
+              "quantity": 1000,
+              "unit": "g",
+              "department": "Vega & peulvruchten",
+              "pack_price": 6.87,
+              "package_count": 3,
+              "package_size": 395,
+              "package_unit": "g",
+              "product_name": "Jumbo Tempeh Naturel 395g",
+              "source_url": "https://www.jumbo.com/producten/vega-en-plantaardig/jumbo/?filters=Merken%3AAlways%3BDieetvoorkeur%3APlantaardig%3BAanbiedingen%3AAlle+aanbiedingen",
+              "price_observed_at": "2026-10-28",
+              "price_status": "webshop_current"
+            },
+            {
+              "name": "spinazie",
+              "quantity": 750,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 1.29,
+              "package_count": 1,
+              "package_size": 750,
+              "package_unit": "g",
+              "product_name": "Jumbo Gehakte Spinazie 750g diepvries",
+              "source_url": "https://www.jumbo.com/producten/jumbo-gehakte-spinazie-voordeelverpakking-750-g-713747ZK",
+              "price_observed_at": "2026-10-28",
+              "price_status": "webshop_current"
+            },
+            {
+              "name": "tomatenblokjes",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 0.37,
+              "package_count": 1,
+              "package_size": 400,
+              "package_unit": "g",
+              "product_name": "Jumbo Tomatenblokjes 400g",
+              "source_url": "https://www.jumbo.com/producten/wereldkeukens%2C-kruiden%2C-pasta-en-rijst/mediterrane-keuken/tomatenblokjes-en-puree/tomatenblokjes/jumbo/?filters=Merken%3AHema%2CAlpro%2CMUTTI",
+              "price_observed_at": "2026-10-28",
+              "price_status": "webshop_current"
+            },
+            {
+              "name": "tomatenblokjes met knoflook",
+              "quantity": 400,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 1.35,
+              "package_count": 1,
+              "package_size": 400,
+              "package_unit": "g",
+              "product_name": "Jumbo Tomatenblokjes met Knoflook 400g",
+              "source_url": "https://www.jumbo.com/producten/wereldkeukens%2C-kruiden%2C-pasta-en-rijst/mediterrane-keuken/tomatenblokjes-en-puree/tomatenblokjes/jumbo/?filters=Merken%3AHema%2CAlpro%2CMUTTI",
+              "price_observed_at": "2026-10-28",
+              "price_status": "webshop_current"
+            }
+          ],
+          "instructions": [
+            "Snijd 1kg tempeh in blokjes en rooster in een hete antiaanbakpan zonder extra olie.",
+            "Voeg beide blikken tomatenblokjes toe en laat 10 minuten sudderen.",
+            "Roer 750g spinazie erdoor, laat goed heet worden en verdeel over vier porties. Gebruik optioneel kruiden uit de voorraadkast."
+          ],
+          "cost": {
+            "basket_total": 9.88,
+            "estimated": true,
+            "verified_today": false,
+            "price_per_portion": 2.47,
+            "price_basis": "Volledige kassaverpakkingen; deels regulier geprijsd op 27 oktober, folderacties gecontroleerd op 28 oktober. Filiaalkassa niet bevestigd.",
+            "budget_target": 10,
+            "budget_met": true
+          },
+          "macros": {
+            "kcal": 570,
+            "protein_g": 53,
+            "carbs_g": 24,
+            "fat_g": 29
+          },
+          "macro_status": "estimated",
+          "macro_note": "Benaderde voedingswaarden per portie, gebaseerd op gangbare productsamenstellingen.",
+          "price_status": "deels_2026-10-27",
+          "savings_tip": "Geen actie nodig: reguliere Jumbo-tempeh, diepvriesgroente en goedkope tomatenblikken geven een kassamand van €9,88. Een duurdere actie is niet nodig.",
+          "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
+          "offer_inspired": false
         }
       ],
       "notes": "Acties geverifieerd in weekfolder en waar mogelijk bij officiële winkel/vergelijker. Receptkosten zijn kassaprijsindicaties uit volledige verpakkingen, deels op basis van Checkjebon-snapshot 27 oktober, niet vandaag volledig bevestigd. Loyaliteitsvoorwaarden en winkelvoorraad controleren. Er wordt geen winkel gekozen.",
@@ -1843,20 +2059,6 @@
               "price_status": "last_observed_2026-10-27"
             },
             {
-              "name": "zonnebloemolie",
-              "quantity": 20,
-              "unit": "ml",
-              "department": "Kruiden & voorraad",
-              "pack_price": 1.79,
-              "package_count": 1,
-              "package_size": 1000,
-              "package_unit": "ml",
-              "product_name": "AH Zonnebloemolie",
-              "source_url": "https://www.ah.nl/producten/product/wi906/ah-zonnebloemolie",
-              "price_observed_at": "2026-10-27",
-              "price_status": "last_observed_2026-10-27"
-            },
-            {
               "name": "AH cottage cheese",
               "quantity": 600,
               "unit": "g",
@@ -1872,30 +2074,124 @@
             }
           ],
           "instructions": [
-            "Verwarm tomatenblokjes met spinazie, olie en paprikapoeder in een brede pan.",
-            "Maak 12 kuiltjes, breek er de eieren in en laat met deksel rustig stollen.",
-            "Verdeel 600g cottage cheese over de vier royale porties."
+            "Laat tomatenblokjes en spinazie met paprikapoeder in een goede antiaanbakpan inkoken. Voeg een scheut water toe als dat nodig is.",
+            "Maak twaalf kuiltjes, breek de eieren erin en laat ze met een deksel op laag vuur stollen.",
+            "Verdeel de cottage cheese over vier royale porties."
           ],
           "cost": {
-            "basket_total": 10.32,
+            "basket_total": 8.53,
             "estimated": true,
             "verified_today": false,
-            "price_per_portion": 2.58,
+            "price_per_portion": 2.13,
             "price_basis": "Volledige verpakkingen; deels reguliere prijzen uit 27 oktober 2026 en gecontroleerde folderprijzen van 28 oktober. Geen vandaag geverifieerde complete kassamand.",
             "budget_target": 10,
-            "budget_met": false
+            "budget_met": true
           },
           "macros": {
-            "kcal": 474,
+            "kcal": 433,
             "protein_g": 40,
             "carbs_g": 15,
-            "fat_g": 26
+            "fat_g": 21
           },
           "macro_status": "estimated",
           "macro_note": "Benaderd uit generieke voedingswaarden per 100g; niet product- of bereidingsspecifiek.",
           "price_status": "deels_2026-10-27",
-          "savings_tip": "Drie bakjes cottage cheese van 200g à €0,74 kosten €2,22, goedkoper dan twee 400g-bakjes voor €3,58 in de oudere prijsdataset. Totale mand blijft net boven €10.",
+          "savings_tip": "Gebruik een antiaanbakpan zonder olie. Met AH cottage cheese 3 x 200g à €0,74 en de reguliere producten kost de complete kassamand €8,53 (deels prijzen van 27 oktober).",
           "source_recipe": "Aangepaste variant van Shakshuka met cottage cheese uit bestaande bibliotheek",
+          "offer_inspired": true
+        },
+        {
+          "id": "ah-20261028-budget-spruiten",
+          "title": "Ovenfrittata met spruitjes en cottage cheese",
+          "category": "vega",
+          "cuisine": "Mediterraans",
+          "servings": 4,
+          "minutes": 35,
+          "vegetables_g_per_portion": 300,
+          "animal_protein_g_per_portion": 0,
+          "ingredients": [
+            {
+              "name": "AH spruitjes",
+              "quantity": 1200,
+              "unit": "g",
+              "department": "Groente & fruit",
+              "pack_price": 2.67,
+              "package_count": 3,
+              "package_size": 500,
+              "package_unit": "g",
+              "product_name": "AH Spruitjes 500g",
+              "source_url": "https://www.ah.nl/bonus",
+              "price_observed_at": "2026-10-28",
+              "price_status": "folder_current"
+            },
+            {
+              "name": "eieren",
+              "quantity": 12,
+              "unit": "st",
+              "department": "Vega & peulvruchten",
+              "pack_price": 3.19,
+              "package_count": 1,
+              "package_size": 12,
+              "package_unit": "st",
+              "product_name": "AH Scharreleieren 12 stuks",
+              "source_url": "https://www.ah.nl/producten/product/wi588275/ah-scharreleieren",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            },
+            {
+              "name": "AH cottage cheese",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Zuivel",
+              "pack_price": 2.22,
+              "package_count": 3,
+              "package_size": 200,
+              "package_unit": "g",
+              "product_name": "AH Cottage cheese 200g",
+              "source_url": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
+              "price_observed_at": "2026-10-28",
+              "price_status": "webshop_current"
+            },
+            {
+              "name": "paprikapoeder",
+              "quantity": 8,
+              "unit": "g",
+              "department": "Kruiden & voorraad",
+              "pack_price": 0.79,
+              "package_count": 1,
+              "package_size": 48,
+              "package_unit": "g",
+              "product_name": "AH Paprika mild gemalen 48g",
+              "source_url": "https://www.ah.nl/producten/product/wi197977/ah-paprika-mild-gemalen",
+              "price_observed_at": "2026-10-27",
+              "price_status": "last_observed_2026-10-27"
+            }
+          ],
+          "instructions": [
+            "Verwarm de oven op 200°C. Halveer 1,2kg spruitjes, spreid ze op bakpapier en rooster circa 15 minuten.",
+            "Klop 12 eieren los met 600g cottage cheese en paprikapoeder.",
+            "Doe de spruitjes in een ovenvaste schaal, giet het eimengsel erover en bak 15 tot 20 minuten tot de frittata gestold is."
+          ],
+          "cost": {
+            "basket_total": 8.87,
+            "estimated": true,
+            "verified_today": false,
+            "price_per_portion": 2.22,
+            "price_basis": "Volledige kassaverpakkingen; deels regulier geprijsd op 27 oktober, folderacties gecontroleerd op 28 oktober. Filiaalkassa niet bevestigd.",
+            "budget_target": 10,
+            "budget_met": true
+          },
+          "macros": {
+            "kcal": 495,
+            "protein_g": 45,
+            "carbs_g": 22,
+            "fat_g": 23
+          },
+          "macro_status": "estimated",
+          "macro_note": "Benaderde voedingswaarden per portie, gebaseerd op gangbare productsamenstellingen.",
+          "price_status": "deels_2026-10-27",
+          "savings_tip": "AH Bonus-spruitjes 3 x 500g à €0,89, met 300g over. De volledige kassamand is €8,87, inclusief de paprikapoederverpakking.",
+          "source_recipe": "Nieuw budgetrecept samengesteld 28 oktober 2026",
           "offer_inspired": true
         }
       ],
@@ -1920,6 +2216,6 @@
     "nutrition_rule": "Benaderde macro's op basis van generieke voedingswaarden; 4 gelijke porties.",
     "shop_rule": "Toon drie winkels onafhankelijk; gebruiker kiest zelf één supermarkt.",
     "crosscheck_status": "Jumbo en AH deels officiële winkelpagina's; Lidl folder en foldervergelijkers; Checkjebon-snapshot van 27 oktober voor overige reguliere receptprijzen.",
-    "data_quality": "partial_current_prices"
+    "data_quality": "partial_current_prices; 3 aanvullende budgetrecepten; sommige reguliere prijzen gisteren waargenomen"
   }
 }
