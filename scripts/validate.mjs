@@ -74,3 +74,19 @@ if(Math.abs(known-r.minimum_known_spend)>0.01)throw Error('prijs-ondergrens verk
 if(known>10&&r.budget_feasibility!=='budget_above_10_even_without_remaining_ingredients')throw Error('onhaalbaar budget niet gemarkeerd '+r.id);
 }
 console.log('Bekende verpakkingsprijzen en budget-ondergrenzen sluiten aan');
+
+const promo=JSON.parse(fs.readFileSync('docs/data/spotlight.json','utf8'));
+for(const [store,v] of Object.entries(promo.stores)){
+ const byId=new Map(v.offers.map(o=>[o.id,o]));
+ for(const r of v.recipes){
+  for(const l of r.offer_anchors||[]){
+   const o=byId.get(l.offer_id),i=r.ingredients.find(i=>i.name===l.ingredient_name);
+   if(!o||!i||i.name!==o.name)throw Error('Onjuiste actiekoppeling '+r.id+' -> '+l.offer_id);
+  }
+  const known=r.ingredients.reduce((n,i)=>n+(typeof i.pack_price==='number'?i.pack_price:0),0);
+  if(typeof r.minimum_known_spend==='number'&&Math.abs(known-r.minimum_known_spend)>.015)throw Error('Pakketprijzen komen niet overeen '+r.id);
+ }
+}
+const stamp=promo.stores.jumbo.recipes.find(r=>r.id==='jumbo-gehakt-boerenkool');
+if(!stamp||stamp.offer_anchors?.length!==3||!stamp.ingredients.some(i=>/stamppotaardappelen/i.test(i.name)))throw Error('Boerenkoolactie of aardappel ontbreekt');
+console.log('Recepten en meerdere exact gekoppelde actieproducten gevalideerd');
