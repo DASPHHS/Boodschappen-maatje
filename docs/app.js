@@ -57,9 +57,6 @@ return newRecs.concat(templates.filter(r=>!used.has(r.title.toLocaleLowerCase('n
 }
 function norm(s){return String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ')}
 
-function matchProduct(offer,ingredient){
- return !!(offer&&ingredient&&ingredient.product_id&&offer.product_id&&ingredient.product_id===offer.product_id);
-}
 function offerInfo(recipe,s){
 const key=s+'|'+recipe.id+'|'+today();if(state._matchCache.has(key))return state._matchCache.get(key);
 const active=offers(s),confirmed=[],possible=[],anchors=[],matcher=window.MaatjeProductMatcher;
@@ -77,13 +74,8 @@ function consider(offer,ingredient,role,source){
    return;
  }
  const linked={offer,ingredient,role,source};
- const sameId=matchProduct(offer,ingredient)||
-   (!!offer.ean&&!!ingredient.ean&&String(offer.ean)===String(ingredient.ean));
- const sameNamedPack=norm(offer.name)===norm(ingredient.name)&&
-   !!offer.pack_label&&!!ingredient.pack_label&&
-   window.MaatjeOfferIdentity?.pack(offer)===window.MaatjeOfferIdentity?.pack(ingredient);
- // A semantic family match is not an exact purchasable variant.
- if(!sameId&&!sameNamedPack){
+ // The same shared matcher is used for all exact-SKU claims.
+ if(!matcher?.exactIdentity(offer,ingredient,window.MaatjeOfferIdentity)){
    if(possible.length<8)possible.push({offer,ingredient,reason:'EAN/product-ID of identieke naam én verpakking ontbreken',source});
    return;
  }
