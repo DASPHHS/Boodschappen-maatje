@@ -35,8 +35,38 @@ function audit(data,today=day()){
     const a=auditItem(o,s,today);records[o.id]=a;counts[a.status]++;
     if(a.issues.length){problemCount++;if(result.exceptions.length<150)result.exceptions.push({store:s,id:o.id,issues:a.issues});}
   }
+  // A second listing can agree but may be copying the same retailer folder.
+  // Only compare identical EAN+pack or entirely identical normalized name+pack.
+  const norm=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  const groups=new Map();
+  for(const [origin,entries] of [
+   ['prijsprofeet',feed.offers||[]],
+   ['daily',data.daily?.stores?.[s]?.offers||[]],
+   ['spotlight',data.spotlight?.stores?.[s]?.offers||[]],
+   ['supplemental',data.supplemental?.stores?.[s]?.offers||[]]
+  ]){
+   for(const offer of entries){
+    if(!offer?.id||!validPrice(offer.price))continue;
+    const pack=norm(offer.pack_label);
+    if(!pack||/onbekend|verschillende|variabel/.test(pack))continue;
+    const key=offer.ean?'ean:'+offer.ean+'|'+pack:'name:'+norm(offer.name)+'|'+pack;
+    if(!groups.has(key))groups.set(key,[]);
+    groups.get(key).push({origin,offer});
+   }
+  }
+  let matchingPrices=0,differingPrices=0;
+  for(const rows of groups.values()){
+   if(new Set(rows.map(x=>x.origin)).size<2)continue;
+   const prices=rows.map(x=>x.offer.price),agree=Math.max(...prices)-Math.min(...prices)<=0.015;
+   for(const row of rows){
+    const entry=records[row.offer.id];if(!entry)continue;
+    entry.corrob={kind:agree?'sources_agree':'sources_disagree',count:new Set(rows.map(x=>x.origin)).size,explanation:'Same exact name/EAN and package observed in multiple feeds; these may use the same underlying store data.'};
+    if(agree)matchingPrices++;else differingPrices++;
+   }
+  }
+  result.stores[s]={cross_source_matching_records:matchingPrices,cross_source_disagreeing_records:differingPrices};
   result.status_by_id[s]=records;
-  result.stores[s]={evaluated:seen.size,raw_records:items.length,by_status:counts,with_issues:problemCount,feed_status:feed.status||'missing',feed_reported_total:feed.reported_total??null,feed_imported_total:feed.imported_total??null,scope:'Records received from available sources, NOT all store discounts and NOT independently verified prices'};
+  result.stores[s]={...result.stores[s],evaluated:seen.size,raw_records:items.length,by_status:counts,with_issues:problemCount,feed_status:feed.status||'missing',feed_reported_total:feed.reported_total??null,feed_imported_total:feed.imported_total??null,scope:'Records received from available sources, NOT all store discounts and NOT independently verified prices'};
  }
  return result;
 }
