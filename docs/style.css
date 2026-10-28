@@ -17,3 +17,6 @@
 @media(max-width:740px){.recipe-toolbar{display:grid;grid-template-columns:1fr}.recipe-toolbar label{justify-content:space-between}.recipe-toolbar select{width:65%;max-width:none}.offer-badge{font-size:10px}}
 
 .offer-badge.anchor{background:#e5eefe;color:#355ea5}.recipe-offers .offer-badge{min-height:30px}
+
+.offer-badge.anchor{background:#e7f0dd;color:#326343}.offer-detail{overflow-wrap:anywhere}
+.recipe-card .offer-hint{font-weight:700}.info-banner a,.deal-card a{color:#285e48;font-weight:800}
