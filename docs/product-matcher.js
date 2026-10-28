@@ -22,7 +22,7 @@
   ['kippenbouten',/\b(kippenbouten|kippenpoten|drumsticks)\b/],
   ['melk',/\bmelk\b/],
   ['pindakaas',/\bpindakaas\b/],
-  ['sku umkoppe',/\bskuumkoppe\b/],
+  ['skuumkoppe',/\bskuumkoppe\b/],
   ['soto boemboe',/\b(soto|saoto)\s?boemboe\b|\bboemboe\s?(soto|saoto)\b/],
   ['sereh',/\b(sereh|citroengras|lemongrass)\b/]
  ];
@@ -35,7 +35,7 @@
  function features(name){
   const n=norm(name),f=family(name);
   const plant=/\b(plantaardig|vegan|vega|vegetarisch|terra)\b/.test(n);
-  return {family:f,plant:plant?'plant':/\b(kip|vlees|vis|zalm|filet|gehakt|sch arrel)\b/.test(n)?'animal':null,
+  return {family:f,plant:plant?'plant':['zalm','kabeljauw','kipfilet','kippenbouten','gehakt'].includes(f)?'animal':null,
    skin:/\b(zonder huid|huidloos)\b/.test(n)?'without':/\b(op huid|met huid)\b/.test(n)?'with':null,
    wild:/\b(wild|wilde)\b/.test(n)?'wild':/\bkweek\b/.test(n)?'farmed':null,
    frozen:/\b(diepvries|bevroren)\b/.test(n)?'frozen':/\b(vers|verse)\b/.test(n)?'fresh':null,
@@ -57,7 +57,7 @@
   const conflicts=critical.filter(k=>a[k]&&b[k]&&a[k]!==b[k]);
   if(conflicts.length)return {status:'incompatible',reason:'variant verschilt: '+conflicts.join(', '),family:a.family};
   const missing=critical.filter(k=>(a[k]&&!b[k])||(!a[k]&&b[k])).filter(k=>
-    k==='skin'&&a.family==='zalm'||k==='alcohol'&&a.family==='sku umkoppe'||k==='meat'&&a.family==='gehakt'||
+    k==='skin'&&a.family==='zalm'||k==='alcohol'&&a.family==='skuumkoppe'||k==='meat'&&a.family==='gehakt'||
     k==='milk'&&a.family==='melk'||k==='bone'&&a.family==='kippenbouten'||
     k==='plant'&&['kipfilet','zalm','gehakt'].includes(a.family)||
     k==='frozen'&&['sperziebonen','zalm'].includes(a.family)||
