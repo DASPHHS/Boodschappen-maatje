@@ -9,6 +9,9 @@ on:
       - 'tests/product-matcher.cjs'
       - 'scripts/validate.mjs'
       - 'scripts/sync_aanbiedingen.py'
+      - 'scripts/sync_lidl_supplemental.py'
+      - 'docs/data/lidl-source-registry.json'
+      - 'docs/data/supplemental-offers.json'
       - 'tests/test_sync_aanbiedingen.py'
       - '.github/workflows/validate.yml'
   workflow_dispatch:
@@ -29,7 +32,8 @@ jobs:
           python-version: '3.12'
       - name: Controleer brede aanbiedingimport
         run: |
-          python -m py_compile scripts/sync_aanbiedingen.py
+          python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py
+          python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
           python -m unittest discover -s tests -p 'test_sync_aanbiedingen.py'
       - name: Controleer feedstructuur
         run: |

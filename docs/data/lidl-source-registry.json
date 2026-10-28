@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "notes": "Per bron exact product en verpakking. Elke dagelijkse controle leest opnieuw de verkoopprijs en de daadwerkelijke geldigheidsdatums. Andere Lidl-bieracties kunnen ontbreken: bronregister uitbreiden of bredere feed toevoegen. Fouten worden niet stilzwijgend als vandaag geverifieerd.",
+  "sources": [
+    {
+      "id": "lidl-biernet-perlenbacher-strong-blik-050l",
+      "store": "lidl",
+      "name": "Perlenbacher Strong 7,9% bier blik 50 cl",
+      "category": "bier",
+      "pack_label": "1 × 500 ml",
+      "liters": 0.5,
+      "alcohol_variant": "alcoholhoudend",
+      "url": "https://www.biernet.nl/bier/aanbiedingen/aanbieding/perlenbacher-strong-verpakking-blik-van-050-liter-winkel-lidl",
+      "provider": "Biernet"
+    },
+    {
+      "id": "lidl-biernet-affligem-blond-00-6x030",
+      "store": "lidl",
+      "name": "Affligem Blond 0.0% bier 6 × 30 cl",
+      "category": "bier",
+      "pack_label": "6 × 300 ml",
+      "liters": 1.8,
+      "alcohol_variant": "alcoholvrij",
+      "url": "https://www.biernet.nl/bier/aanbiedingen/aanbieding/affligem-blond-00-verpakking-set-van-6-flesjes-a-030-liter-winkel-lidl",
+      "provider": "Biernet"
+    }
+  ]
+}
