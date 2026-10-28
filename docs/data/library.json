@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "notes": "48 bestaande en zelf bewerkte gezonde vierportierecepten. De nieuwe 8 verwijzen naar kwalitatieve voedings-/receptbronnen. Alle supermarktprijzen en macrowaarden zijn afzonderlijk te controleren.",
+  "notes": "40 eerdere titel-geïnspireerde concepten (oorspronkelijke bron, kooktechniek en 300g groente per portie niet altijd geverifieerd), 8 eigen uitgewerkte wereldkeukenvarianten (niet proefgekookt). De site toont herkomst en kwaliteitswaarschuwingen; fouten in ingrediëntcategorieën gecorrigeerd. Geen oude bron claimen als 1-op-1 recept.",
   "recipes": [
     {
       "id": "drive-01",
@@ -53,10 +53,18 @@
         "Stoom broccoli",
         "Roer cottage cheese buiten het vuur door de pan."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kipfilet in champignonroomsaus"
+      "source_name": "Kipfilet in champignonroomsaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-02",
@@ -94,7 +102,7 @@
           "name": "mosterd",
           "quantity": 40,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -108,10 +116,18 @@
         "Meng cottage cheese met mosterd en wat kookwater",
         "voeg buiten het vuur toe."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kipfilet in mosterdroomsaus"
+      "source_name": "Kipfilet in mosterdroomsaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-03",
@@ -137,19 +153,19 @@
           "name": "prei",
           "quantity": 600,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "volkoren pasta, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "kerriepoeder",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -162,10 +178,18 @@
         "Bak kip, wortel en prei met kerrie",
         "Voeg 1,2 l water toe en laat kip en pasta gaar worden."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Goedgevulde kippensoep met orecchiette"
+      "source_name": "Goedgevulde kippensoep met orecchiette",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-04",
@@ -197,7 +221,7 @@
           "name": "volkoren couscous, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "rozemarijn",
@@ -216,10 +240,18 @@
         "Rooster gesneden groente met olie en rozemarijn op 200 °C",
         "Bak kip gaar en wel de couscous."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kip in rozemarijnkorst met geroosterde groenten"
+      "source_name": "Kip in rozemarijnkorst met geroosterde groenten",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 301
     },
     {
       "id": "drive-05",
@@ -257,7 +289,7 @@
           "name": "volkoren noedels, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "sojasaus",
@@ -269,7 +301,7 @@
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -284,10 +316,18 @@
         "meng met saus en noedels",
         "Serveer komkommer erbij."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Bami in Surinaamse stijl met kippendijreepjes"
+      "source_name": "Bami in Surinaamse stijl met kippendijreepjes",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-06",
@@ -325,19 +365,19 @@
           "name": "volkoren couscous, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "harissa",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "ras el hanout",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "kaneel",
@@ -357,10 +397,16 @@
         "Laat tomaat, dunne wortelschijfjes, kikkererwten en harissa zachtjes meekoken",
         "Wel de couscous apart en verdeel alles over vier porties."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "MOROCCAN SPICED CHICKEN TAGINE"
+      "source_name": "MOROCCAN SPICED CHICKEN TAGINE",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [],
+      "vegetables_g_per_portion": 350.5
     },
     {
       "id": "drive-07",
@@ -418,10 +464,18 @@
         "Bak kip met currypasta",
         "voeg groente, kokosmelk en water toe en gaar volledig."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kipfilet met kruidige groene curry"
+      "source_name": "Kipfilet met kruidige groene curry",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 352.5
     },
     {
       "id": "drive-08",
@@ -447,7 +501,7 @@
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "tomatenblokjes",
@@ -479,10 +533,18 @@
         "Laat tomaat en paprikapoeder meekoken",
         "roer cottage cheese buiten het vuur erdoor."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kip in smokey stroganoff-stijl saus"
+      "source_name": "Kip in smokey stroganoff-stijl saus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 400
     },
     {
       "id": "drive-09",
@@ -532,7 +594,7 @@
           "name": "limoen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -546,10 +608,18 @@
         "Maak saus van pindakaas, soja, limoensap en warm water",
         "Snijd de groente tot rauwkost."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Fusion kipsaté-stijl taco's"
+      "source_name": "Fusion kipsaté-stijl taco's",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-10",
@@ -593,13 +663,13 @@
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -614,10 +684,18 @@
         "voeg tomaat en knoflook toe",
         "Serveer met citroen en cottage cheese."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kipfilet op romige citroenrijst"
+      "source_name": "Kipfilet op romige citroenrijst",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 340
     },
     {
       "id": "drive-11",
@@ -637,19 +715,19 @@
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "prei",
           "quantity": 600,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "orzo, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "cottage cheese",
@@ -675,10 +753,18 @@
         "Kook orzo en meng",
         "voeg cottage cheese buiten het vuur toe."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Orzo à la Fata Morgana"
+      "source_name": "Orzo à la Fata Morgana",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-12",
@@ -692,7 +778,7 @@
           "name": "hamlappen, dun gesneden",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "spitskool",
@@ -710,7 +796,7 @@
           "name": "volkoren noedels, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "sojasaus",
@@ -722,13 +808,13 @@
           "name": "gember",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -742,10 +828,18 @@
         "Roerbak met knoflook en gember tot gaar",
         "voeg kool, wortel, soja en gekookte noedels toe."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Bulgogi stir-fry met noedels en varkensvlees"
+      "source_name": "Bulgogi stir-fry met noedels en varkensvlees",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-13",
@@ -759,19 +853,19 @@
           "name": "biefstuk, dun gesneden",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "sperziebonen",
           "quantity": 800,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "verse paprika",
           "quantity": 400,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "ui",
@@ -798,10 +892,16 @@
         "voeg roerbaksaus en wat water toe",
         "Laat de bonen kort meegaren en verdeel over vier porties."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Beef Surinam (Surinaams rundvlees)"
+      "source_name": "Beef Surinam (Surinaams rundvlees)",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [],
+      "vegetables_g_per_portion": 337.5
     },
     {
       "id": "drive-14",
@@ -851,13 +951,13 @@
           "name": "gember",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -872,10 +972,18 @@
         "voeg soja, gember en knoflook met wat water toe",
         "Serveer met groente."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Teriyakigehaktballetjes met geroerbakte groenten"
+      "source_name": "Teriyakigehaktballetjes met geroerbakte groenten",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 310
     },
     {
       "id": "drive-15",
@@ -889,7 +997,7 @@
           "name": "biefstuk",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "courgette",
@@ -907,7 +1015,7 @@
           "name": "volkoren couscous, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "magere kwark",
@@ -919,7 +1027,7 @@
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "paprikapoeder",
@@ -940,10 +1048,18 @@
         "Bak biefstuk naar voorkeur",
         "Meng kwark en citroen tot saus."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Steak met citroenmayonaise"
+      "source_name": "Steak met citroenmayonaise",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-16",
@@ -963,7 +1079,7 @@
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "verse tomaten",
@@ -993,7 +1109,7 @@
           "name": "komijn",
           "quantity": 6,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1006,10 +1122,18 @@
         "Bak gehakt en paprika met kruiden gaar",
         "Serveer met tomaat, fijn gesneden kool en kwark."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Fajita's met rundergehakt"
+      "source_name": "Fajita's met rundergehakt",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-17",
@@ -1047,7 +1171,7 @@
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "Italiaanse kruiden",
@@ -1067,10 +1191,18 @@
         "Laat tomaat en kruiden inkoken",
         "Bak courgettelinten kort en serveer als basis."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Miljuschka's snelle eenpansbolognese"
+      "source_name": "Miljuschka's snelle eenpansbolognese",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 501.5
     },
     {
       "id": "drive-18",
@@ -1084,13 +1216,13 @@
           "name": "varkenshaas",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "sperziebonen",
           "quantity": 800,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "wortel",
@@ -1108,7 +1240,7 @@
           "name": "mosterd",
           "quantity": 40,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1121,10 +1253,18 @@
         "Gaar groente en bak vlees",
         "Meng cottage cheese, mosterd en wat kookwater buiten het vuur tot saus."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Varkenshaas in romige mosterdsaus"
+      "source_name": "Varkenshaas in romige mosterdsaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-19",
@@ -1144,7 +1284,7 @@
           "name": "sperziebonen",
           "quantity": 800,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "wortel",
@@ -1182,10 +1322,18 @@
         "kook bonen",
         "Meng met ei en cottage cheese en bak circa 20 minuten op 180 °C tot gestold."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Hartige gehakt-groentetaart"
+      "source_name": "Hartige gehakt-groentetaart",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-20",
@@ -1237,10 +1385,18 @@
         "Snijd rauwkost",
         "serveer burgers in kommen met cottage cheese en pesto."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Hamburgerbowl met orzo"
+      "source_name": "Hamburgerbowl met orzo",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-21",
@@ -1260,7 +1416,7 @@
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "tomatenblokjes",
@@ -1284,7 +1440,7 @@
           "name": "kerriepoeder",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1298,10 +1454,18 @@
         "Stoof groente met kokosmelk, kerrie en water",
         "laat vis de laatste minuten volledig garen."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Kruidige kokos-visstoof"
+      "source_name": "Kruidige kokos-visstoof",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 340
     },
     {
       "id": "drive-22",
@@ -1315,13 +1479,13 @@
           "name": "tonijn in water, uitgelekt",
           "quantity": 600,
           "unit": "g",
-          "department": "Eiwitbronnen"
+          "department": "Groente & fruit"
         },
         {
           "name": "verse paprika",
           "quantity": 800,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "spinazie",
@@ -1339,7 +1503,7 @@
           "name": "volkoren couscous, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "paprikapoeder",
@@ -1358,10 +1522,18 @@
         "Wel couscous en meng met uitgelekte tonijn, spinazie, kruiden en cottage cheese",
         "Vul paprikahelften en bak 20-25 minuten op 200 °C."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Gevulde paprika met tonijn en witte kaas"
+      "source_name": "Gevulde paprika met tonijn en witte kaas",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "dierlijk_eiwit_minder_dan_600g"
+      ],
+      "vegetables_g_per_portion": 450
     },
     {
       "id": "drive-23",
@@ -1375,7 +1547,7 @@
           "name": "zalmfilet, zonder huid",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "venkel",
@@ -1405,13 +1577,13 @@
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "dille",
           "quantity": 4,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1425,10 +1597,18 @@
         "Snijd venkel, komkommer en appel dun",
         "meng kwark, citroen en dille tot dressing."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Zalmfilet met krieltjes-venkelsalade"
+      "source_name": "Zalmfilet met krieltjes-venkelsalade",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 350
     },
     {
       "id": "drive-24",
@@ -1442,7 +1622,7 @@
           "name": "zalmfilet, zonder huid",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "broccoli, met eetbare stronk",
@@ -1454,7 +1634,7 @@
           "name": "verse paprika",
           "quantity": 400,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "magere kwark",
@@ -1466,13 +1646,13 @@
           "name": "dille",
           "quantity": 4,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1485,10 +1665,18 @@
         "Rooster groente op 200 °C en bak zalm gaar",
         "Meng dille en citroen door de kwark."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Zalm met dillemayonaise"
+      "source_name": "Zalm met dillemayonaise",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-25",
@@ -1508,7 +1696,7 @@
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "komkommer",
@@ -1526,13 +1714,13 @@
           "name": "knoflook",
           "quantity": 16,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1547,10 +1735,18 @@
         "voeg garnalen toe en gaar volgens verpakking",
         "Serveer met komkommer en citroen."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Tortilla's met knoflook-citroengarnalen"
+      "source_name": "Tortilla's met knoflook-citroengarnalen",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 340
     },
     {
       "id": "drive-26",
@@ -1594,13 +1790,13 @@
           "name": "harissa",
           "quantity": 30,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1614,10 +1810,18 @@
         "Bestrijk vis met harissa en bak gaar",
         "Maak kwark-knoflooksaus."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Harissakabeljauw met yoghurt-knoflooksaus"
+      "source_name": "Harissakabeljauw met yoghurt-knoflooksaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 340
     },
     {
       "id": "drive-27",
@@ -1649,7 +1853,7 @@
           "name": "volkoren noedels, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "kokosmelk",
@@ -1661,7 +1865,7 @@
           "name": "kerriepoeder",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1675,10 +1879,18 @@
         "Voeg vis toe en gaar",
         "serveer met gekookte noedels."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Milde viscurry met koolvis en noedels"
+      "source_name": "Milde viscurry met koolvis en noedels",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-28",
@@ -1716,7 +1928,7 @@
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "paprikapoeder",
@@ -1737,10 +1949,18 @@
         "Gaar spinazie en bak vis",
         "serveer met citroen."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Heekfilet à la meunière met wortel-linzenpuree"
+      "source_name": "Heekfilet à la meunière met wortel-linzenpuree",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-29",
@@ -1754,7 +1974,7 @@
           "name": "tonijn in water, uitgelekt",
           "quantity": 600,
           "unit": "g",
-          "department": "Eiwitbronnen"
+          "department": "Groente & fruit"
         },
         {
           "name": "edamame",
@@ -1798,10 +2018,19 @@
         "Verdeel met uitgelekte tonijn en gesneden rauwkost over kommen",
         "voeg soja toe."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Tonijnbowl met avocado en furikake"
+      "source_name": "Tonijnbowl met avocado en furikake",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "dierlijk_eiwit_minder_dan_600g",
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 590
     },
     {
       "id": "drive-30",
@@ -1815,7 +2044,7 @@
           "name": "zalmfilet, zonder huid",
           "quantity": 800,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Eiwitbronnen"
         },
         {
           "name": "courgette",
@@ -1833,19 +2062,19 @@
           "name": "tahin",
           "quantity": 50,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "za’atar",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1859,10 +2088,18 @@
         "bak zalm met za’atar gaar",
         "Meng tahin, citroensap en water tot dressing."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Gebakken zalm met za’atarkorst en tahindressing"
+      "source_name": "Gebakken zalm met za’atarkorst en tahindressing",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-31",
@@ -1900,7 +2137,7 @@
           "name": "volkoren noedels, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "sojasaus",
@@ -1912,7 +2149,7 @@
           "name": "gember",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1926,10 +2163,18 @@
         "voeg 1,2 l water, soja en gember toe",
         "Gaar overige groente en noedels in de soep."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Noedelsoep met champignons en zachtgekookt eitje"
+      "source_name": "Noedelsoep met champignons en zachtgekookt eitje",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-32",
@@ -1961,19 +2206,19 @@
           "name": "tahin",
           "quantity": 60,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "citroen",
           "quantity": 1,
           "unit": "st",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "komijn",
           "quantity": 6,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -1987,10 +2232,18 @@
         "Bak tofu",
         "serveer met tahin, citroen en water als saus."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Geroosterde aubergine met tahinsaus"
+      "source_name": "Geroosterde aubergine met tahinsaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-33",
@@ -2034,7 +2287,7 @@
           "name": "knoflook",
           "quantity": 12,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "Italiaanse kruiden",
@@ -2054,10 +2307,18 @@
         "Gebruik courgetteplakken als lagen met cottage cheese",
         "bak 25 minuten op 200 °C."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Groentelasagne met vers basilicum"
+      "source_name": "Groentelasagne met vers basilicum",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 501.5
     },
     {
       "id": "drive-34",
@@ -2089,7 +2350,7 @@
           "name": "volkoren noedels, droog",
           "quantity": 160,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Aardappelen & granen"
         },
         {
           "name": "miso",
@@ -2116,10 +2377,18 @@
         "voeg met spinazie toe",
         "Serveer met noedels en sesam."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Conchiglie met misochampignons"
+      "source_name": "Conchiglie met misochampignons",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 315
     },
     {
       "id": "drive-35",
@@ -2139,13 +2408,13 @@
           "name": "kidneybonen, uitgelekt",
           "quantity": 400,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "verse paprika",
           "quantity": 600,
           "unit": "g",
-          "department": "Kruiden & voorraad"
+          "department": "Groente & fruit"
         },
         {
           "name": "tomatenblokjes",
@@ -2163,7 +2432,7 @@
           "name": "chipotle",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -2177,10 +2446,18 @@
         "Voeg tomaat, uitgelekte bonen en chipotle toe",
         "serveer met kwark."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Wraps met chipotle-bonen en avocado"
+      "source_name": "Wraps met chipotle-bonen en avocado",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 400
     },
     {
       "id": "drive-36",
@@ -2224,13 +2501,13 @@
           "name": "kerriepoeder",
           "quantity": 8,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "gember",
           "quantity": 20,
           "unit": "g",
-          "department": "Groente & fruit"
+          "department": "Kruiden & voorraad"
         },
         {
           "name": "zonnebloemolie",
@@ -2244,10 +2521,18 @@
         "Bak tofu",
         "laat spinazie slinken en serveer komkommer erbij."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Dahl met naanbrood en komkommersalsa"
+      "source_name": "Dahl met naanbrood en komkommersalsa",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-37",
@@ -2306,10 +2591,18 @@
         "roerbak groente gaar",
         "Voeg soja, sambal en een beetje water toe."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Roerbak met tempeh en pittige saus"
+      "source_name": "Roerbak met tempeh en pittige saus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 343.75
     },
     {
       "id": "drive-38",
@@ -2368,10 +2661,18 @@
         "voeg curry, kokosmelk en paksoi toe",
         "Serveer met bloemkool en rijst."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Geroosterde bloemkool in groene currysaus"
+      "source_name": "Geroosterde bloemkool in groene currysaus",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 352.5
     },
     {
       "id": "drive-39",
@@ -2423,10 +2724,18 @@
         "Maak kuiltjes en gaar eieren onder een deksel",
         "schep cottage cheese erbij."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Shakshuka met verse geitenkaas"
+      "source_name": "Shakshuka met verse geitenkaas",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 300
     },
     {
       "id": "drive-40",
@@ -2446,7 +2755,7 @@
           "name": "kidneybonen, uitgelekt",
           "quantity": 400,
           "unit": "g",
-          "department": "Vega & peulvruchten"
+          "department": "Groente & fruit"
         },
         {
           "name": "courgette",
@@ -2485,10 +2794,18 @@
         "laat pruttelen",
         "Roer cottage cheese en pesto buiten het vuur erdoor."
       ],
-      "source_note": "Uit de bestaande receptenbibliotheek; actuele prijzen en voedingswaarden niet bevestigd.",
+      "source_note": "Bewerking op basis van de vermelde brontitel; de exacte oorspronkelijke ingrediënten en bereidingsstappen zijn niet één-op-één gevalideerd. Niet culinair getest. Controleer de instructies voor bereiding.",
       "macro_status": "niet_berekend",
       "price_status": "onbekend",
-      "source_name": "Romige tomaat-bonenstoof met rijst"
+      "source_name": "Romige tomaat-bonenstoof met rijst",
+      "origin": "titel_geinspireerd_concept",
+      "source_type": "titel_uit_eerdere_collectie",
+      "source_status": "oorspronkelijk_recept_niet_per_url_geverifieerd",
+      "quality_status": "concept_niet_culinair_getest",
+      "quality_issues": [
+        "bereiding_te_beknopt"
+      ],
+      "vegetables_g_per_portion": 400
     },
     {
       "id": "basis-41",
@@ -2546,10 +2863,14 @@
         "name": "Voedingscentrum — gezonde recepten en richtlijnen",
         "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-42",
@@ -2607,10 +2928,14 @@
         "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
         "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-43",
@@ -2662,10 +2987,14 @@
         "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
         "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-44",
@@ -2717,10 +3046,14 @@
         "name": "Voedingscentrum — gezonde recepten en richtlijnen",
         "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-45",
@@ -2772,10 +3105,14 @@
         "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
         "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-46",
@@ -2827,10 +3164,14 @@
         "name": "Voedingscentrum — gezonde recepten en richtlijnen",
         "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-47",
@@ -2882,10 +3223,14 @@
         "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
         "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     },
     {
       "id": "basis-48",
@@ -2943,10 +3288,14 @@
         "name": "Voedingscentrum — gezonde recepten en richtlijnen",
         "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
       },
-      "source_note": "Zelf samengesteld voor vier porties. Gezondheid en macro's nog niet volledig berekend; actuele supermarkt- en verpakkingsprijzen ontbreken.",
+      "source_note": "Zelf samengesteld op basis van algemene culinaire inspiratie; geen letterlijke overname of door bron gevalideerd gerecht. Vier porties; niet proefgekookt, prijzen/macro's niet gecontroleerd.",
       "price_status": "onbekend",
       "macro_status": "niet_berekend",
-      "origin": "gezonde_basis_inspiratie"
+      "origin": "gezonde_basis_inspiratie",
+      "source_type": "zelf_samengesteld_geinspireerd",
+      "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": []
     }
   ]
 }
