@@ -142,8 +142,13 @@ header('Jouw slimme boodschappenhulp','Wat eten we <span style="color:#719b66">d
 let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOED ETEN · SLIM KOPEN</div><h1>Meer smaak.<br><em>Minder uitgeven.</em></h1><p>Acties, nieuwe recepten en boodschappenlijsten per supermarkt. Altijd vier porties, genoeg voor twee dagen.</p></div><div class="hero-art" aria-hidden="true">✳</div></section>';
 x+=title('Drie winkels, jouw keuze','Geen automatische winnaar. Bekijk per winkel wat er te koken valt.');
 x+='<div class="store-grid">'+ORDER.map(s=>'<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+(storeRecipeCounts(s)?'Nieuwe recepten':'Prijscheck volgt')+'</span></div><p>'+ (storeRecipeCounts(s)?'Bekijk de nieuwe winkelrecepten en bijpassende acties.':'De eerste actuele winkelrapportage is nog niet beschikbaar.')+'</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>gecontroleerde deals</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>nieuwe recepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>').join('')+'</div>';
-x+=title('Eerst zien wat lekker is','Bestaande recepten ter inspiratie, nog niet opnieuw geprijsd.','<button class="button secondary" data-view="recepten">Alle recepten →</button>');
-x+='<div class="cards">'+state.library.slice(0,3).map(r=>recipeCard({...r,store:null})).join('')+'</div>';
+
+x+=title('Vandaag in de aanbieding','Alleen recepten die aantoonbaar een lopende aanbieding in hun gepubliceerde prijs bevatten.');
+for(const store of ORDER){
+let featured=recipes(store).filter(r=>offerInfo(r,store).confirmed.length).sort(recipeSort).slice(0,2);
+x+=title(NAMES[store],featured.length+' recept(en) met bevestigde actie-ingrediënten','<button class="button secondary small" data-goto-store="'+store+'">Alle recepten →</button>');
+x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Nog geen actie-recept met geprijsd ingrediënt','Bekijk de gewone recepten of de losse aanbiedingen van '+NAMES[store]+'.');
+}
 x+='<div class="info-banner warning"><strong>Bronstatus:</strong> '+safe(status())+'. De app toont geen oude of onbevestigde aanbiedingen als actuele deal. Prijzen en macro’s verschijnen na de gecontroleerde publicatie.</div>';
 $('#view-vandaag').innerHTML=x;
 }
