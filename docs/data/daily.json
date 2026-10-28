@@ -634,7 +634,7 @@
               "package_size": 360,
               "package_unit": "g",
               "product_name": "Lidl Tofu 360g",
-              "source_url": "https://boodschaapje.nl/product/6609684",
+              "source_url": "https://boodschaapje.nl/product/7509034",
               "price_observed_at": "2026-10-27",
               "price_status": "last_observed_2026-10-27"
             },
@@ -971,7 +971,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Broccoli en wortel zijn reguliere producten. De prei-aanbieding is niet nodig om dit gerecht te maken.",
           "source_recipe": "Aangepaste variant van Rozemarijnkip van de bakplaat uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "jumbo-20261028-drive-11",
@@ -1093,7 +1093,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Jumbo prei 3 voor €0,99 kan goedkoper zijn dan gesneden prei (€4,18 voor 2 x 400g), maar controleer of drie preien samen ten minste 600g eetbaar leveren. De conservatieve kassaprijs gebruikt gesneden prei.",
           "source_recipe": "Aangepaste variant van Orzo met mager rundergehakt uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "jumbo-20261028-drive-21",
@@ -1215,7 +1215,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Diepvriespangasius uit twee verpakkingen is goedkoper dan veel verse witvisvarianten; vergelijk altijd op netto visgewicht.",
           "source_recipe": "Aangepaste variant van Kokos-witvisstoof uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "jumbo-20261028-drive-34",
@@ -1337,7 +1337,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Drie pakken Jumbo tempeh 395g à €2,29 kosten €6,87. Dat is goedkoper dan de vijf Vivera-tofuverpakkingen van €10,95 in de oude prijsmand; smaak en voedingsprofiel verschillen.",
           "source_recipe": "Aangepaste variant van Miso-tofu met champignons uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "jumbo-20261028-budget-tempeh",
@@ -1854,7 +1854,8 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Drie verpakkingen varkensgehakt kosten €4,47 tegenover €13,98 voor twee pakken mager rundergehakt in de oude dataset. Varkensgehakt heeft doorgaans meer vet; geen voedingskundig identiek alternatief.",
           "source_recipe": "Aangepaste variant van Teriyakiballetjes met groente uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": true,
+          "health_note": "Deze goedkope actievariant met varkensgehakt bevat naar schatting 48 g vet per portie. Mager rundergehakt heeft een gunstiger vetprofiel maar is aanzienlijk duurder."
         },
         {
           "id": "ah-20261028-drive-26",
@@ -1990,7 +1991,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Koolvis uit twee diepvriespakken van 400g was gisteren €5,38 totaal; de overige kassaprijzen zijn eveneens gisteren waargenomen.",
           "source_recipe": "Aangepaste variant van Harissawitvis met wortel uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "ah-20261028-drive-39",
@@ -2098,7 +2099,7 @@
           "price_status": "deels_2026-10-27",
           "savings_tip": "Gebruik een antiaanbakpan zonder olie. Met AH cottage cheese 3 x 200g à €0,74 en de reguliere producten kost de complete kassamand €8,53 (deels prijzen van 27 oktober).",
           "source_recipe": "Aangepaste variant van Shakshuka met cottage cheese uit bestaande bibliotheek",
-          "offer_inspired": true
+          "offer_inspired": false
         },
         {
           "id": "ah-20261028-budget-spruiten",
