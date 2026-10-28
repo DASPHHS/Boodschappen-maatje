@@ -22,3 +22,17 @@ const archive=JSON.parse(fs.readFileSync('docs/data/archive.json','utf8'));
 if(archive.schema_version!==1)throw Error('archief-schema ontbreekt');
 for(const s of ['lidl','jumbo','ah'])if(!Array.isArray(archive.stores?.[s]))throw Error('archief ontbreekt '+s);
 console.log('Archief per winkel beschikbaar');
+
+const daily=JSON.parse(fs.readFileSync('docs/data/daily.json','utf8'));
+for(const s of ['lidl','jumbo','ah']){
+for(const r of daily.stores[s].recipes){
+for(const link of r.offer_links||[]){
+const o=daily.stores[s].offers.find(x=>x.id===link.offer_id);
+const ingredient=r.ingredients.find(x=>x.name===link.ingredient_name);
+if(!o||!o.verified||!ingredient||ingredient.price_status!=='folder_current'||link.match_type!=='exact')throw Error('onjuiste actieprijs-receptkoppeling: '+s+' '+r.id);
+}
+}
+}
+const counts={};for(const r of lib.recipes)counts[r.category]=(counts[r.category]||0)+1;
+for(const k of ['kip','vlees','vis','vega'])if((counts[k]||0)<10)throw Error('te weinig recepten in categorie '+k);
+console.log('Actiekoppelingen en minstens tien bibliotheekrecepten per hoofdgroep gecontroleerd');

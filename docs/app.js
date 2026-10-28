@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',query:'',sortBy:'deals',dealFilter:'all',daily:null,weekly:null,archive:null,library:[],selected:read('bm_selected',{}),checks:read('bm_checks',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',dealFilter:'all',daily:null,weekly:null,archive:null,library:[],selected:read('bm_selected',{}),checks:read('bm_checks',{})};
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
 function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks))}catch{}}
 async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
@@ -83,7 +83,7 @@ if(state.sortBy==='time')return (a.minutes||999)-(b.minutes||999)||an-bn;
 return cb.confirmed.length-ca.confirmed.length||cb.total-ca.total||an-bn||a.title.localeCompare(b.title,'nl');
 }
 function recipeFiltered(r){
-if(state.kind!=='alle'&&r.category!==state.kind)return false;
+if(state.kind!=='alle'&&r.category!==state.kind)return false;if(state.subtype!=='alle'&&proteinSubtype(r)!==state.subtype)return false;
 if(state.query&&!(r.title+' '+(r.cuisine||'')+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).toLocaleLowerCase('nl-NL').includes(state.query.toLocaleLowerCase('nl-NL')))return false;
 const m=offerInfo(r,r.store);
 if(state.dealFilter==='confirmed'&&!m.confirmed.length)return false;
@@ -103,6 +103,26 @@ function storeControls(all=true){return '<div class="control-row store-filter">'
 
 function kindControls(){return '<div class="control-row">'+['alle','kip','vlees','vis','vega'].map(k=>'<button class="pill '+(state.kind===k?'active':'')+'" data-kind="'+k+'">'+(KINDS[k]||'Alle soorten')+'</button>').join('')+'<input class="search" id="find" aria-label="Zoek producten of recepten" placeholder="Zoek recept, keuken of ingrediënt…" value="'+attr(state.query)+'"></div>'}
 function recipeControls(){return '<div class="recipe-toolbar"><label>Sorteer op <select id="recipe-sort"><option value="deals"'+(state.sortBy==='deals'?' selected':'')+'>Meeste acties eerst</option><option value="price"'+(state.sortBy==='price'?' selected':'')+'>Laagste kassaprijs</option><option value="protein"'+(state.sortBy==='protein'?' selected':'')+'>Meeste eiwit</option><option value="time"'+(state.sortBy==='time'?' selected':'')+'>Snelste bereiding</option></select></label><label>Actiestatus <select id="deal-filter"><option value="all"'+(state.dealFilter==='all'?' selected':'')+'>Alle recepten</option><option value="confirmed"'+(state.dealFilter==='confirmed'?' selected':'')+'>Actie verwerkt</option><option value="potential"'+(state.dealFilter==='potential'?' selected':'')+'>Past bij aanbieding</option></select></label></div>'}
+
+function proteinSubtype(r){
+const names=norm(r.title+' '+(r.ingredients||[]).map(i=>i.name||i.label||'').join(' '));
+if(r.category==='vlees'){
+if(/varken|varkens|hamlap|varkensoester/.test(names))return 'varken';
+if(/rund|biefstuk|ossenhaas|rosbief/.test(names))return 'rund';
+return 'ongespecificeerd';
+}
+if(r.category==='vis'){
+if(/zalm|haring|sardine|makreel|forel/.test(names))return 'vet';
+if(/koolvis|kabeljauw|schol|heek|pangasius|witvis|tilapia/.test(names))return 'mager';
+return 'overig';
+}
+return 'alle';
+}
+function subtypeControls(){
+const opts=state.kind==='vlees'?[['alle','Rund & varken'],['rund','Rund'],['varken','Varken'],['ongespecificeerd','Ander vlees']]:
+state.kind==='vis'?[['alle','Alle vis'],['vet','Vette vis (omega 3)'],['mager','Magere vis'],['overig','Overige vis']]:[];
+return opts.length?'<div class="control-row subtype-controls">'+opts.map(([k,v])=>'<button class="pill '+(state.subtype===k?'active':'')+'" data-subtype="'+k+'">'+v+'</button>').join('')+'</div>':'';
+}
 function featured(r){return '<div class="recipe-info"><span>4 porties</span><span>'+(Number(r.minutes)||'?')+' min</span><span>'+safe(KINDS[r.category]||'Maaltijd')+'</span></div>'}
 
 function offerBadge(r){
@@ -144,7 +164,7 @@ function allRecipes(){let found=ORDER.filter(s=>state.store==='alle'||state.stor
 
 function recipeView(){
 header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Acties die je écht gebruikt.</span>','Per supermarkt minstens tien recepten per categorie als inspiratie en dagelijkse actiegerichte gerechten zodra ze gecontroleerd zijn. Alleen bevestigde koppelingen tellen als actie in de prijs.');
-let out=storeControls()+kindControls()+recipeControls();
+let out=storeControls()+kindControls()+subtypeControls()+recipeControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
 const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
 const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;
@@ -190,21 +210,21 @@ if(matched.possible.length){x+='<p class="dialog-note"><strong>Wel mogelijk, nie
 if(!matched.total)x+='<p class="dialog-note">Geen actuele aanbieding aan deze ingrediënten gekoppeld.</p>';
 x+='</div>';
 x+='<div class="summary-tiles"><div class="summary-tile"><b>'+priceQuality(r)+'</b><span>'+(typeof r.cost?.basket_total==='number'?'KASSAPRIJSINDICATIE':'KASSAPRIJS ONBEKEND')+'</span></div><div class="summary-tile"><b>'+(m&&Number.isFinite(Number(m.protein_g))?m.protein_g+' g':'—')+'</b><span>EIWIT / PORTIE</span></div><div class="summary-tile"><b>'+(m&&Number.isFinite(Number(m.carbs_g))?m.carbs_g+' g':'—')+'</b><span>KOOLHYDRATEN / PORTIE</span></div></div>';
-if(m)x+='<p class="muted">Voedingswaarden per portie: '+safe(m.kcal)+' kcal, '+safe(m.protein_g)+' g eiwit, '+safe(m.carbs_g)+' g koolhydraten, '+safe(m.fat_g)+' g vet. '+(r.macro_status==='verified'?'Berekend':'Schatting')+'.</p>';
+if(r.category==='vis')x+='<div class="info-banner">Tip: varieer met vissoorten. Zalm, haring en forel leveren omega 3; magere witvis levert vooral eiwit. Bron: <a href="https://www.voedingscentrum.nl/encyclopedie/vis" target="_blank" rel="noopener noreferrer">Voedingscentrum ↗</a>.</div>';if(m)x+='<p class="muted">Voedingswaarden per portie: '+safe(m.kcal)+' kcal, '+safe(m.protein_g)+' g eiwit, '+safe(m.carbs_g)+' g koolhydraten, '+safe(m.fat_g)+' g vet. '+(r.macro_status==='verified'?'Berekend':'Schatting')+'.</p>';
 x+='<h3 style="margin-top:20px">Ingrediënten voor 4 porties</h3><ul class="ingredients">'+list.map((i,k)=>{const raw=r.ingredients[k];return '<li>'+safe(i.quantity)+' '+safe(i.unit)+' '+safe(i.name)+(typeof raw.pack_price==='number'?'<span class="muted"> · verpakkingen '+money(raw.pack_price)+(raw.price_observed_at?' · peildatum '+safe(raw.price_observed_at):'')+'</span>':' · <span class="muted">prijs onbekend</span>')+'</li>'}).join('')+'</ul>';
 x+='<h3 style="margin-top:20px">Zo maak je het</h3><ol class="steps">'+steps.map(t=>'<li>'+safe(t)+'</li>').join('')+'</ol>';
 x+='<div class="info-banner warning">'+(typeof r.cost?.basket_total==='number'?'Dit bedrag is gebaseerd op de gepubliceerde prijswaarnemingen; de volledige kassamand is '+(r.cost.verified_today?'die dag gecontroleerd.':'niet op dezelfde dag geverifieerd.')+' '+safe(r.cost.price_basis||''):'Voor dit bibliotheekrecept zijn nog niet alle vierportiehoeveelheden, actuele verpakkingsprijzen en macro’s gecontroleerd. Er is geen betrouwbare actuele kassaprijs.')+'</div>';
 x+='<div class="dialog-actions"><button class="button" data-add="'+attr(s+'|'+id)+'">Voeg toe aan '+safe(NAMES[s])+'-lijst</button></div>';
 $('#dialog-content').innerHTML=x;$('#recipe-dialog').showModal();
 }
-function setView(v){if(!['vandaag','aanbiedingen','recepten','lijst'].includes(v))return;state.view=v;state.kind='alle';state.query='';history.replaceState(null,'','#'+v);render();window.scrollTo(0,0)}
+function setView(v){if(!['vandaag','aanbiedingen','recepten','lijst'].includes(v))return;state.view=v;state.kind='alle';state.subtype='alle';state.query='';history.replaceState(null,'','#'+v);render();window.scrollTo(0,0)}
 function render(){clearPage();if(state.view==='vandaag')overview();if(state.view==='aanbiedingen')offersView();if(state.view==='recepten')recipeView();if(state.view==='lijst')shoppingView();let total=Object.values(state.selected).reduce((x,y)=>x+(y?.length||0),0);$('#nav-count').textContent=total||'';const st=$('#feed-status');st.textContent=status();st.classList.toggle('warn',!state.daily?.generated_at||String(state.daily.generated_at).slice(0,10)<today())}
 function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k);if(!old){old={...i,quantity:0};m.set(k,old)}old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
 if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
-if(b.dataset.kind){state.kind=b.dataset.kind;render();return}
+if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
 if(b.dataset.open){openRecipe(b.dataset.open);return}
 if(b.dataset.add){let parts=b.dataset.add.split('|');let s=parts[0],id=parts.slice(1).join('|');state.selected[s]??=[];if(!state.selected[s].includes(id))state.selected[s].push(id);save();$('#recipe-dialog').close();state.store=s;setView('lijst');return}
 if(b.dataset.remove){let s=state.store;state.selected[s]=(state.selected[s]||[]).filter(k=>k!==b.dataset.remove);save();render();return}

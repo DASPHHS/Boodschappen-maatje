@@ -86,3 +86,7 @@ Sorteren is mogelijk op aantal gekoppelde acties, laagste **werkelijk bekende** 
 Archiveer toekomstige dagelijkse of wekelijkse unieke recepten in **docs/data/archive.json** onder \`stores.lidl\`, \`stores.jumbo\`, \`stores.ah\`, met \`id\` als unieke sleutel, \`first_seen_at\` en \`last_seen_at\`. Archiveer alleen recepten die echt volledig genoeg zijn, niet alleen titels. Vermijd duplicaten; dezelfde naam met een andere winkel blijft een eigen record. De site toont archiefrecepten **zonder oude prijzen als actuele prijzen**. Bewaar bron-URL, prijspeildatum, en markeer oude aanbiedingen als verlopen.
 
 De complete actuele prijs- en actierapportage blijft in \`docs/data/daily.json\`; de wekelijkse nieuwe recepten in \`docs/data/weekly.json\`. Werk na een succesvolle run eventueel het archief bij in een tweede GitHub-commit; schrijf nooit fictieve prijzen om een doelstelling te halen. De productdekking kan incompleet blijven bij Lidl, Jumbo en AH. Onderbouw alleen prijsverschillen wanneer exact vergelijkbare alternatieven en verpakkingsprijzen geverifieerd zijn.
+
+### Extra filters voor vlees en vis
+
+Met de vleeschip kies je **rund** of **varken**; met de vischip kies je **vette (omega-3-rijke) vis** of **magere vis**. Deze groepen worden uit de expliciete ingrediënt- of productnaam afgeleid, zonder ongespecificeerd gehakt zomaar als rund/varken aan te merken. Bij sommige recepten kan de precieze vissoort nog onbekend zijn. Visadvies: https://www.voedingscentrum.nl/encyclopedie/vis .
