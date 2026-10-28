@@ -289,6 +289,98 @@
           "multi_buy_price": 37.98,
           "unit_price": 0.30384,
           "unit": "capsule"
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "PrijsProfeet — Bier bij Jumbo, externe prijslijst",
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/bier/"
+          },
+          "source_provider": "PrijsProfeet",
+          "observed_at": "2026-10-28",
+          "verified": false,
+          "promotion_status": "active",
+          "date_estimated": true,
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "source_note": "Startdatum is de datum van deze waarneming, niet de bevestigde eerste actiedag. Externe prijswaarneming, geen live kassa.",
+          "id": "pp-observed-20261028-grolsch-herfstbok-6",
+          "name": "Grolsch Herfstbok 6×300 ml",
+          "price": 6.18,
+          "regular_price": 8.25,
+          "pack_label": "6 × 300 ml",
+          "unit": "L",
+          "unit_price": 3.433333333333333
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "PrijsProfeet — Bier bij Jumbo, externe prijslijst",
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/bier/"
+          },
+          "source_provider": "PrijsProfeet",
+          "observed_at": "2026-10-28",
+          "verified": false,
+          "promotion_status": "active",
+          "date_estimated": true,
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "source_note": "Startdatum is de datum van deze waarneming, niet de bevestigde eerste actiedag. Externe prijswaarneming, geen live kassa.",
+          "id": "pp-observed-20261028-brand-winterbock-6",
+          "name": "Brand Winterbock 6×300 ml",
+          "price": 6.48,
+          "regular_price": 8.65,
+          "pack_label": "6 × 300 ml",
+          "unit": "L",
+          "unit_price": 3.6
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "PrijsProfeet — Bier bij Jumbo, externe prijslijst",
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/bier/"
+          },
+          "source_provider": "PrijsProfeet",
+          "observed_at": "2026-10-28",
+          "verified": false,
+          "promotion_status": "active",
+          "date_estimated": true,
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "source_note": "Startdatum is de datum van deze waarneming, niet de bevestigde eerste actiedag. Externe prijswaarneming, geen live kassa.",
+          "id": "pp-observed-20261028-texels-juttersbock-4",
+          "name": "Texels Jutters Bock 4×300 ml",
+          "price": 6.74,
+          "regular_price": 8.99,
+          "pack_label": "4 × 300 ml",
+          "unit": "L",
+          "unit_price": 5.616666666666667
+        },
+        {
+          "category": "bier",
+          "source": {
+            "label": "PrijsProfeet — Bier bij Jumbo, externe prijslijst",
+            "url": "https://www.prijsprofeet.nl/aanbiedingen/jumbo/bier/"
+          },
+          "source_provider": "PrijsProfeet",
+          "observed_at": "2026-10-28",
+          "verified": false,
+          "promotion_status": "active",
+          "date_estimated": true,
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-03",
+          "member_required": false,
+          "source_note": "Startdatum is de datum van deze waarneming, niet de bevestigde eerste actiedag. Externe prijswaarneming, geen live kassa.",
+          "id": "pp-observed-20261028-hertog-jan-lentebok-6",
+          "name": "Hertog Jan Lentebok 6×300 ml",
+          "price": 6.59,
+          "regular_price": 8.79,
+          "pack_label": "6 × 300 ml",
+          "unit": "L",
+          "unit_price": 3.661111111111111
         }
       ],
       "recipes": [
