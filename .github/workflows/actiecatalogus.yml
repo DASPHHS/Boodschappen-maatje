@@ -41,7 +41,9 @@ jobs:
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
       - name: Read all public promotions
         if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
         run: python scripts/sync_aanbiedingen.py
+      # This source is independent: it must still execute if PrijsProfeet fails or returns zero beer.
       - name: Check supplemental Lidl beer/folder sources
         if: steps.gate.outputs.run == 'true'
         continue-on-error: true

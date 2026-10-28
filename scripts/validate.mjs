@@ -181,3 +181,13 @@ for(const k of ['volle_melk','soto_boemboe','kippenpoten','sereh']){
 const sku=spotlight.stores.jumbo.offers.find(i=>i.id==='jumbo-20261028-skuumkoppe-6x300');
 if(!sku||Math.abs(sku.unit_price-7.04/1.8)>.02)throw Error('Skuumkoppe variant/prijsvraag mislukt');
 console.log('Lidl-zalm, persoonlijke saoto-ingrediënten en Skuumkoppe-varianten gecontroleerd');
+
+const extra=JSON.parse(fs.readFileSync('docs/data/supplemental-offers.json','utf8'));
+const registry=JSON.parse(fs.readFileSync('docs/data/lidl-source-registry.json','utf8'));
+if(extra.schema_version!==1||!Array.isArray(extra.stores?.lidl?.offers)||!Array.isArray(registry.sources))throw Error('Lidl aanvullende bronstructuur ongeldig');
+for(const o of extra.stores.lidl.offers){
+ if(!o.start_date||!o.end_date||o.verified!==false||!/^https:\/\//.test(o.source?.url||'')||!Number.isFinite(o.price)||o.price<=0)throw Error('Onvolledige Lidl extra actie '+o.id);
+ if(!registry.sources.some(s=>s.id===o.id))throw Error('Niet-herleidbaar Lidl extra product '+o.id);
+ if(o.category==='bier'&&!(o.unit==='L'&&Number.isFinite(o.unit_price)))throw Error('Bier literprijs ontbreekt '+o.id);
+}
+console.log('Aanvullende Lidl-bronnen zijn extern, gedateerd en product-specifiek');

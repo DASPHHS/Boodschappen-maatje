@@ -15,4 +15,7 @@ assert.equal(m.evaluate(o('Zalm in saus'),i('Zalmfilet')).status,'unrelated');
 assert.equal(m.priceApplied(o('Broccoli',{price:0.69}),i('broccoli',{pack_price:1.38,package_count:2,price_status:'folder_current'})),true);
 assert.equal(m.priceApplied(o('Broccoli',{price:0.69}),i('broccoli',{pack_price:2.07,package_count:2,price_status:'folder_current'})),false);
 assert.equal(m.priceApplied(o('Broccoli',{price:0.69,price_conflict:'tegenstrijdig'}),i('broccoli',{pack_price:0.69,price_status:'folder_current'})),false);
+assert.equal(m.evaluate(o('Jumbo Gemengd Gehakt'),i('AH Gemengd Gehakt')).status,'incompatible');
+assert.equal(m.priceApplied(o('Broccoli',{price:0.69,pack_label:'500 g'}),i('broccoli',{quantity:900,unit:'g',pack_price:0.69,package_count:1,price_status:'folder_current'})),false);
+assert.equal(m.evaluate(o('Vivera plantaardige shoarma'),i('Vivera plantaardige shoarma')).status,'compatible');
 console.log('Productmatching: identieke soorten, afwijkende varianten en exacte actiebedragen gecontroleerd');
