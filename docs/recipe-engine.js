@@ -33,10 +33,10 @@ const T={
 };
 const omit=/\b(gerookt|salami|schnitzel|gepaneerd|burger|nugget|worst|spek|bacon|saus|soep|kroket|maaltijd|mix|salade|filet americain|kippenvleugel|drumstick|kippenbout|hele kip|kant-en-klaar|dip|wrap|borrel|pasta|noedels|noodles|bouillon|kruiden|baby|olvarit|knaks|voorgegaard|grillworst|gebakken|gekookte|gerookte|rolletje)\b/i;
 const valid={
-kip:/(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)/i,
-vlees:/\b(runder|rund|varkens|varken|biefstuk|ossenhaas|rosbief|entrecote|varkenshaas)/i,
-vis:/\b(zalm|forel|koolvis|kabeljauw|witvis|heek|schol|makreel|haring|sardine|pangasius|tonijn)/i,
-vega:/\b(tofu|tempeh|seitan|edamame|sojabrok|soja\s?stukjes)/i
+kip:/(kipfilet|kipdij|kippendij|kiphaas|kipgehakt|kalkoenfilet|kalkoengehakt|kippenborst)/i,
+vlees:/(rundergehakt|runderriblappen|rundvleesreepjes|runderlappen|varkensoester|varkenshaas|varkensfilet|varkenslap|varkensgehakt|gemengd gehakt|mager gehakt|biefstuk|entrecote|ossenhaas|sukadelap)/i,
+vis:/(zalmfilet|zalmblokjes|zalm pangasius garnalen|kabeljauwfilet|koolvisfilet|witvisfilet|heekfilet|scholfilet|pangasiusfilet|forelfilet|makreelfilet|haringfilet|sardinefilet|garnalen|visfilet)/i,
+vega:/(tofu|tempeh|seitan|edamame|sojabrokken|sojastukjes)/i
 };
 const display={kip:'Kip',vlees:'Vlees',vis:'Vis',vega:'Vega'};
 const euro=new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'});
