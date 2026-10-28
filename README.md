@@ -114,3 +114,10 @@ Thematische inspiratie voor enkele nieuwe recepten komt uit de aan de gebruiker 
 
 ## Extra internationale recepten (28 oktober)
 De bibliotheek bevat acht nieuwe originele recepten (twee kip, twee vlees, twee vis, twee vegetarisch), gebaseerd op de algemene culinaire en gezonde kookprincipes van het Voedingscentrum en Allerhande. De bron-URL staat bij ieder nieuw recept. Elk gerecht is voor vier personen met minstens 300 gram groente per portie. Kassaprijzen en macro's zijn bewust onbekend zolang de benodigde product- en verpakkingsgegevens niet voor een specifieke winkel zijn gecontroleerd. Dit zijn geen bewezen 'altijd goedkoop'-recepten of geverifieerde aanbiedingen.
+
+
+## Prijsbetrouwbaarheid (bronstatus, geen absolute garanties)
+
+De UI zegt bij een aanbieding uitsluitend **Officiële actiebron** als de bron-URL daadwerkelijk de website van dezelfde retailer is (Jumbo, AH of Lidl), de actie nog binnen haar geldigheidsperiode valt en de gegevens als geverifieerd zijn gemarkeerd. PrijsProfeet, folderaggregatoren en andere vergelijkers krijgen in plaats daarvan een duidelijk **Externe prijswaarneming** of **Folder- of vergelijkingsbron**-label. Een officieel bronlabel is nog steeds geen filiaalvoorraad- of kassagarantie.
+
+Het 'Voor mij'-blok met duidelijke prijsverschillen toont voortaan alleen actieprijzen met de officiële winkel als bron en een bekende oude prijs. De prijsverschillen in de recepten zijn niet per definitie werkelijke besparingen ten opzichte van huismerken, diepvries of een ander assortiment. Zolang een volledige, vergelijkbare mand ontbreekt, wordt de totale besparing niet als bevestigd weergegeven. Een product zonder bekend alternatief mag nooit als 'goedkoopste van alle winkels' worden aangeduid.

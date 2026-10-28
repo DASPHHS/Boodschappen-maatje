@@ -105,3 +105,16 @@ for(const r of library2.recipes){
  }
 }
 console.log('Receptenbibliotheek: '+library2.recipes.length+' recepten, nieuwe gerechten met bron en groentecontrole');
+
+const sources=JSON.parse(fs.readFileSync('docs/data/daily.json','utf8'));
+let externalCount=0;
+for(const [s,d] of Object.entries(sources.stores)){
+ for(const o of d.offers){
+  if(!/^https:\/\//.test(o.source?.url||''))throw Error('Ongeldige of ontbrekende aanbiedingbron '+s+' '+o.id);
+  const u=new URL(o.source.url);
+  const h=u.hostname.toLowerCase().replace(/^www\./,'');
+  const official=s==='lidl'?(h==='lidl.nl'||h.endsWith('.lidl.nl')):s==='jumbo'?(h==='jumbo.com'||h.endsWith('.jumbo.com')):(h==='ah.nl'||h.endsWith('.ah.nl'));
+  if(o.verified===true&&!official)externalCount++;
+ }
+}
+console.warn('Acties met verified-flag maar zonder officiële winkelbron (UI markeert als extern):',externalCount);
