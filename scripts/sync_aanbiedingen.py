@@ -17,11 +17,12 @@ REGEX={
 "vlees":r"\b(rund|runder|biefstuk|varken|varkens|hamlap|riblappen|entrecote|rosbief|ossenhaas|gehakt)[a-z]*\b",
 "vega":r"\b(tofu|tempeh|seitan|edamame|eieren|kikkererwten|linzen|sojabrokken|vegan spek|plantaardige kip)[a-z]*\b",
 "groente":r"\b(broccoli|bloemkool|courgette|paprika|champignon|prei|wortel|waspeen|spinazie|spruit|paksoi|boerenkool|spitskool|witte kool|rode kool|aubergine|tomaat|tomaten|uien|komkommer|venkel|sperziebonen|witlof|andijvie|wokgroente)[a-z]*\b"}
-BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|hamburger|runderburger|kipburger|kruidenmix|kipkruiden|gepaneerd|visstick|fishstick|dierenvoer|kattenvoer|bier|wijn|chips|snoep)\b"
+BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|hamburger|runderburger|kipburger|kruidenmix|kipkruiden|gepaneerd|visstick|fishstick|dierenvoer|kattenvoer|bier|wijn|chips|snoep|olvarit|baby|dreumes|peuter|maaltijdmix|kruiden|kruidenmix|basis voor|noedels|noodles|bouillon|saus|soep|wraphapje|wrap|rolletje|borrel|gevulde eieren|salade|pesto|spread|dip|grillworst|knaks|donut|rijstcookies|cracker|roti|pokebowl|bowl|kant-en-klaar|maaltijd|pasta|risotto|cordon bleu|voorgegaard|roerbakmix|belegd)\b"
 
 def kind(name):
     t=name.lower()
     if re.search(BLOCK,t):return None
+    if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"
     for k in ("kip","vis","vlees","vega","groente"):
         if re.search(REGEX[k],t):return k

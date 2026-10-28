@@ -31,9 +31,9 @@ const T={
   {name:'Italiaanse oregano-tofu met aubergine en tomaat',cuisine:'Italiaans',veg:['aubergine','tomaten'],extras:[['oregano',7,'g'],['cottage cheese',600,'g']],steps:['Snijd aubergine en tomaat en rooster met oregano.','Bak de plantaardige eiwitbron goudbruin.','Schep de cottage cheese ernaast en verdeel in vier porties.']}
  ]
 };
-const omit=/\b(gerookt|salami|schnitzel|gepaneerd|burger|nugget|worst|spek|bacon|saus|soep|kroket|maaltijd|mix|salade|filet americain|kippenvleugel|drumstick|kippenbout)\b/i;
+const omit=/\b(gerookt|salami|schnitzel|gepaneerd|burger|nugget|worst|spek|bacon|saus|soep|kroket|maaltijd|mix|salade|filet americain|kippenvleugel|drumstick|kippenbout|hele kip|kant-en-klaar|dip|wrap|borrel|pasta|noedels|noodles|bouillon|kruiden|baby|olvarit|knaks|voorgegaard|grillworst|gebakken|gekookte|gerookte|rolletje)\b/i;
 const valid={
-kip:/\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)/i,
+kip:/(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)/i,
 vlees:/\b(runder|rund|varkens|varken|biefstuk|ossenhaas|rosbief|entrecote|varkenshaas)/i,
 vis:/\b(zalm|forel|koolvis|kabeljauw|witvis|heek|schol|makreel|haring|sardine|pangasius|tonijn)/i,
 vega:/\b(tofu|tempeh|seitan|edamame|sojabrok|soja\s?stukjes)/i
@@ -44,6 +44,8 @@ const qty=(n)=>Math.max(1,Math.round(n));
 const slug=s=>String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'-').slice(0,90);
 function eligible(o,k){
  if(!o||!valid[k].test(o.name||'')||omit.test(o.name||''))return false;
+ if(/fish tales|john west|tonijn in |tonijn salade|zalm zonder vel|witte tonijn in |skipjack/i.test(o.name||'')&&k==='vis')return false;
+ if(/olvarit|gerookt|maaltijdmix|kruidenmix|salade|dip|spread|knaks|wrap|roti|pokebowl/i.test(o.name||''))return false;
  if(o.category&&o.category!==k)return false;
  if(o.online_only||o.promotion_status==='historical'||o.promotion_status==='upcoming')return false;
  return true;
@@ -76,15 +78,15 @@ for(const k of ['kip','vlees','vis','vega']){
    const protein=ingredient(main.name,800,'g',k==='vega'?'Vega & peulvruchten':'Eiwitbronnen');
    const veg=t.veg.map(v=>ingredient(v,600,'g','Groente & fruit'));
    const extras=t.extras.map(([name,q,u])=>ingredient(name,q,u,'Kruiden & voorraad'));
-   result.push({id,title:t.name+' met '+main.name,category:k,cuisine:t.cuisine,
+   result.push({id,title:t.name,category:k,cuisine:t.cuisine,
     servings:4,minutes:35,vegetables_g_per_portion:300,
     animal_protein_g_per_portion:k==='vega'?null:200,
-    ingredients:[protein,...veg,...extras],instructions:t.steps,
+    ingredients:[protein,...veg,...extras],instructions:k==='vlees'&&/gehakt/i.test(main.name)?['Kruid het gehakt met de kruiden uit het recept en rul het volledig gaar.','Snijd de groenten en roerbak of stoof ze gaar.','Meng het gehakt met de groenten en maak de saus of smaakmakers erbij.']:t.steps,
     offer_anchor_id:main.id,offer_anchor_name:main.name,
     offer_source:main.source?.url,offer_price:main.price,offer_pack_label:main.pack_label,
     origin:'actie-idee',idea_status:'actiehoofdingredient_alleen',
     cost:null,macros:null,macro_status:'niet_berekend',
-    source_note:'Ingrediënten/hoeveelheden zijn een culinaire suggestie. Enkel het hoofdproduct is in de aanbiedingsfeed gezien. De volledige kassaprijs, exacte hoeveelheid per verpakking en macro’s zijn niet geverifieerd.'});
+    source_note:'Gebruik 800 g eetbare eiwitbron zonder bot; bij bot, huid of uitlekgewicht kan meer gekocht gewicht nodig zijn. Ingrediënten/hoeveelheden zijn een culinaire suggestie. Enkel het hoofdproduct is in de aanbiedingsfeed gezien. De volledige kassaprijs, exacte hoeveelheid per verpakking en macro’s zijn niet geverifieerd.'});
    count++;
   }
  }
