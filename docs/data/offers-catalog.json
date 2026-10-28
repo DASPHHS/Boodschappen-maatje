@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "generated_at": null,
+  "source": "PrijsProfeet public API",
+  "notice": "Nog geen volledige synchronisatie uitgevoerd.",
+  "stores": {
+    "lidl": {
+      "offers": [],
+      "status": "pending"
+    },
+    "jumbo": {
+      "offers": [],
+      "status": "pending"
+    },
+    "ah": {
+      "offers": [],
+      "status": "pending"
+    }
+  }
+}
