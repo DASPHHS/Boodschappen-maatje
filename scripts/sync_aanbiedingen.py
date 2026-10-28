@@ -29,6 +29,9 @@ def kind(name):
          "gepaneerd","kipstick","knaks","roti","maaltijd","uit eigen keuken",
          "spread","kant-en-klaar","spice mix","pesto","plakjes")
     if any(part in t for part in bad):return None
+    if any(part in t for part in ("kroket","nugget","cordon bleu","grillworst","spiesje","balletje",
+                                  "staafje","flinterdun","vleesvervanger","beyond meat","kipknak",
+                                  "gehaktbal","scholier","cracker","kippensoep")):return None
     if re.search(BLOCK,t):return None
     if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"

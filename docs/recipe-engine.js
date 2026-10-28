@@ -47,6 +47,11 @@ function eligible(o,k){
  const n=String(o.name||'').toLowerCase();
  if(/(schnitzel|burger|knorr|honig|cup.a.soup|bouillon|jus|kruiden|saus|dressing|salade|tapenade|rookvlees|gerookt|snack|cracker|borrel|wrap|rolletje|olvarit|ella.s kitchen|noedels|noodles|baby|maaltijd|visstick|gepaneerd|kipstick|knaks|roti|uit eigen keuken|spread|scholiertje|chocolade|plakjes)/i.test(n))return false;
  if((k==='kip'||k==='vlees'||k==='vis')&&/(plantaardig|vegan|vegetarisch|vleesvervanger)/i.test(n))return false;
+ if(/(kroket|nugget|cordon bleu|grillworst|spiesje|balletje|staafje|flinterdun|knak|soep|soup|scholier|beyond meat|vleesvervanger|snack|plakjes|gegrild)/i.test(n))return false;
+ if((k==='kip'||k==='vlees')&&/(spies|uit eigen keuken|gerookt|gebakken|gegrild)/i.test(n))return false;
+ const q=String(o.pack_label||'').toLowerCase().match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
+ const grams=q?Number(q[1].replace(',','.'))*(q[2]==='kg'?1000:1):null;
+ if((k==='kip'||k==='vlees')&&grams!==null&&grams<200)return false;
  if(/fish tales|john west|tonijn in |tonijn salade|zalm zonder vel|witte tonijn in |skipjack/i.test(o.name||'')&&k==='vis')return false;
  if(/olvarit|gerookt|maaltijdmix|kruidenmix|salade|dip|spread|knaks|wrap|roti|pokebowl/i.test(o.name||''))return false;
  if(o.category&&o.category!==k)return false;
