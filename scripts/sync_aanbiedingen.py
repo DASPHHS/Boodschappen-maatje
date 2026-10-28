@@ -34,6 +34,7 @@ def kind(name):
                                   "gehaktbal","scholier","cracker","kippensoep")):return None
     if re.search(BLOCK,t):return None
     if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
+    if re.search(r"\b(plantaardig\w*|vegan|vegetarisch)\b",t) and re.search(r"\b(kip\w*|zalm\w*|vis\w*|gehakt\w*|shoarma\w*|stukjes)\b",t):return "vega"
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"
     for k in ("kip","vis","vlees","vega","groente"):
         if re.search(REGEX[k],t):return k
