@@ -20,6 +20,11 @@
   if(/\b(fles|flesje|flesjes|flessen)\b/.test(t))return 'fles';
   return 'verpakkingstype-onbekend';
  }
+ function variantConflict(o){
+  const label=fold(o?.name),variant=fold(o?.variant);
+  const zero=/\b0\s+0\b|\balcoholvrij\b/.test(label);
+  return (variant==='alcoholvrij'&&!zero)||(variant==='alcoholhoudend'&&zero);
+ }
  function classify(o,today){
   if(!o||!o.id||!o.name||!Number.isFinite(o.price)||o.price<=0||
      !/^\d{4}-\d{2}-\d{2}$/.test(String(o.start_date||''))||
@@ -29,12 +34,16 @@
   // A historical or regular-price observation is never a promotion.
   if(o.is_regular_low_price||o.status==='third_party_price_observation'||
      o.source_provider==='Biernet'||/^(historical|upcoming|regular|inactive)$/.test(String(o.promotion_status||'')))return 'observation';
-  const label=fold(o.name),variant=fold(o.variant);
-  const zero=/\b0\s+0\b|\balcoholvrij\b/.test(label);
-  // If the advertised variant contradicts the actual name, require a new product check.
-  if((variant==='alcoholvrij'&&!zero)||(variant==='alcoholhoudend'&&zero))return 'excluded';
+  // A conflicting product variant must never be published as a promotion.
+  if(variantConflict(o))return 'excluded';
   if(!/^https:\/\//.test(String(o.source?.url||'')))return 'excluded';
-  if(o.verified===true)return 'confirmed';
+  if(o.verified===true){
+   const provider=String(o.source_provider||'');
+   let host='';try{host=new URL(o.source.url).hostname.toLowerCase().replace(/^www\./,'')}catch{}
+   const officialHost=['lidl.nl','jumbo.com','ah.nl'].some(d=>host===d||host.endsWith('.'+d));
+   const retailerSource=['officiele_folder','jumbo_official','lidl_official','ah_official'].includes(provider);
+   return officialHost||retailerSource?'confirmed':'reported';
+  }
   if(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')return 'reported';
   if(o.source_provider==='user_folder_image'&&o.evidence_date&&o.evidence_date<=today)return 'reported';
   return 'excluded';
@@ -68,5 +77,5 @@
   }
   return results;
  }
- return {key,pack,container,classify,merge};
+ return {key,pack,container,variantConflict,classify,merge};
 });
