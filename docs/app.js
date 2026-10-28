@@ -13,9 +13,9 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',dealFilter:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,library:[],offerMode:'personal',manageWatch:false,watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',dealFilter:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,library:[],offerMode:'personal',manageWatch:false,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{})};
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
-function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled))}catch{}}
+function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites))}catch{}}
 async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
 function storeData(d,s){return (d&&d.stores&&d.stores[s])||{}}
 
@@ -139,6 +139,40 @@ if(p.unit==='stuk')return p.price/p.quantity;
 return null;
 }
 function normalizedUnit(p){return p.unit==='g'?'kg':p.unit==='ml'?'L':p.unit==='stuk'?'stuk':'verpakking'}
+
+function favoriteTarget(o,s){
+return {name:String(o?.name||''),pack_label:String(o?.pack_label||((o?.quantity&&o?.unit)?o.quantity+' '+o.unit:'')),ean:o?.ean||null,store:s};
+}
+function isFavorite(o,s){return !!window.MaatjeFavorites?.find(state.favorites,favoriteTarget(o,s),s)}
+function favButton(o,s){
+const p=favoriteTarget(o,s),yes=isFavorite(p,s);
+return '<button class="favorite-heart '+(yes?'chosen':'')+'" type="button" data-fav-toggle="1" data-fav-store="'+attr(s)+'" data-fav-name="'+attr(p.name)+'" data-fav-pack="'+attr(p.pack_label)+'" data-fav-ean="'+attr(p.ean||'')+'" aria-pressed="'+yes+'" aria-label="'+(yes?'Verwijder '+attr(p.name)+' uit favorieten':'Bewaar '+attr(p.name)+' als favoriet')+'" title="'+(yes?'Verwijder favoriet':'Opslaan als favoriet')+'">'+(yes?'♥':'♡')+'</button>';
+}
+function toggleFavorite(p,s){
+const helper=window.MaatjeFavorites;if(!helper)return;
+const product=favoriteTarget(p,s),ix=state.favorites.findIndex(f=>helper.same(f,product,s));
+if(ix>=0)state.favorites.splice(ix,1);else if(product.name)state.favorites.unshift(helper.record(product,s));
+save();
+}
+function favoriteMatches(f,s){
+return offers(s).filter(o=>window.MaatjeFavorites?.same(f,favoriteTarget(o,s),s)).sort((a,b)=>Number(!!b.verified)-Number(!!a.verified)||a.price-b.price);
+}
+function favoriteDashboard(){
+const hits=state.favorites.reduce((n,f)=>n+ORDER.reduce((m,s)=>m+favoriteMatches(f,s).length,0),0);
+let out=title('Mijn favorieten','Alleen exacte producten of aantoonbaar dezelfde variant; geen willekeurige huismerkvervanging.');
+out+='<div class="favorite-summary"><div><strong>♥ '+state.favorites.length+' favorieten</strong><p>'+hits+' actuele aanbiedingen bij de drie supermarkten voor jouw opgeslagen producten.</p></div><button class="button secondary small" data-offer-mode="all">Ontdek producten ♡</button></div>';
+if(!state.favorites.length)return out+empty('Nog geen favorieten','Klik op het hartje naast producten in Alle aanbiedingen of bij je persoonlijke prijsvergelijking.');
+for(const fav of state.favorites){
+out+='<section class="personal-product favorite-product"><div class="favorite-title"><div><strong>'+safe(fav.name)+'</strong><small>'+safe(fav.pack_label||'Verpakking niet bekend')+'</small></div>'+favButton(fav,fav.store||'jumbo')+'</div>';
+out+='<div class="personal-grid">'+ORDER.map(s=>{
+const arr=favoriteMatches(fav,s);
+if(!arr.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen actuele aanbieding gevonden</span></div>';
+const o=arr[0];
+return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><strong class="personal-price">'+money(o.price)+'</strong><small>'+safe(o.name)+' · '+safe(o.pack_label||'')+'</small><span class="tag '+(o.verified?'fresh':'orange')+'">'+(o.verified?'Actie gecontroleerd':'Externe prijswaarneming')+'</span><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Controleer bron ↗</a>':'')+'</div>';
+}).join('')+'</div></section>';
+}
+return out+'<div class="info-banner warning">Geen aanbieding gevonden betekent niet dat het product niet verkrijgbaar is. Favorieten worden lokaal in deze browser bewaard; ze synchroniseren nog niet tussen apparaten of naar GitHub.</div>';
+}
 function personalComparison(){
 const watch=chosenWatch();
 let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Vergelijken gebeurt alleen als de productvariant en eenheid passen.');
@@ -151,7 +185,7 @@ out+='<div class="personal-grid">'+observations.map(({store,entries})=>{
 const sorted=[...entries].sort((a,b)=>(normalizedPrice(a)??Infinity)-(normalizedPrice(b)??Infinity));
 if(!sorted.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen recente prijs bevestigd</span></div>';
 const r=sorted[0],p=normalizedPrice(r);
-return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(r.price)+'</strong><small>'+safe(r.name)+'</small><small>'+ (p===null?'Prijs per eenheid onbekend':money(p)+'/'+safe(normalizedUnit(r))) +'</small>'+(sorted.length>1?'<small>'+ (sorted.length-1)+' andere variante(n) geregistreerd</small>':'')+'<a href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Prijsbron ↗</a></div>';
+return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(r.price)+'</strong><small>'+safe(r.name)+'</small><small>'+ (p===null?'Prijs per eenheid onbekend':money(p)+'/'+safe(normalizedUnit(r))) +'</small>'+(sorted.length>1?'<small>'+ (sorted.length-1)+' andere variante(n) geregistreerd</small>':'')+'<div class="personal-shop-actions">'+favButton(r,store)+'</div><a href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Prijsbron ↗</a></div>';
 }).join('')+'</div>';
 if(w.key==='sungold')out+='<p class="personal-finding">Gelijke SunGold 750 g: Jumbo € 4,99 en Albert Heijn € 6,59. Lidl-prijs nog niet bevestigd.</p>';
 if(w.key==='pindakaas')out+='<p class="personal-finding">Jumbo huismerk is per kilo goedkoper dan de Calvé-actie. Samenstelling van gewone en 100%-pindakaas verschilt; geen automatische vergelijkbaarheid.</p>';
@@ -219,7 +253,7 @@ function dealCard(o,s){
 const alt=o.cheapest_alternative;
 const cheaper=alt&&Number.isFinite(alt.unit_price)&&Number.isFinite(o.unit_price)&&alt.unit===o.unit&&alt.unit_price<o.unit_price;
 const independent=o.verified===true;
-return '<article class="deal-card"><div class="deal-card-top"><div>'+storePill(s)+'<h3>'+safe(o.name||'Product')+'</h3></div><span class="tag '+(independent?'fresh':'orange')+'">'+(independent?'Actie gecontroleerd':'Via PrijsProfeet gemeld')+'</span></div><div class="price-line"><span class="price">'+money(o.price)+'</span>'+(typeof o.regular_price==='number'&&o.regular_price>o.price?'<span class="oldprice">'+money(o.regular_price)+'</span>':'')+'</div><div class="deal-meta">'+safe(o.pack_label||'Verpakking onbekend')+(o.unit_price?(' · '+money(o.unit_price)+'/'+safe(o.unit||'kg')):'')+' · geldig t/m '+dateNL(o.end_date)+(o.multi_buy_quantity?' · '+safe(o.multi_buy_quantity)+' voor '+money(o.multi_buy_price):'')+(o.member_required?' · klantenkaart nodig':'')+(o.loyalty_price?' · ledenprijs '+money(o.loyalty_price):'')+'</div>'+(cheaper?'<div class="deal-note bad">Goedkoper per '+safe(o.unit)+': '+safe(alt.name)+' ('+money(alt.unit_price)+' tegenover '+money(o.unit_price)+' per '+safe(o.unit)+'). Controleer beschikbaarheid.</div>':alt?'<div class="deal-note">Alternatief: '+safe(alt.name)+' ('+money(alt.price)+').</div>':'<div class="deal-note">'+(independent?'Geen onafhankelijk vergelijkbare reguliere variant toegevoegd.':'Externe melding. Geen onafhankelijke winkelcontrole of bewijs van de laagste prijs.')+'</div>')+(o.source?.url?'<div class="deal-meta"><a href="'+attr(/^https:\/\//.test(o.source.url)?o.source.url:'#')+'" rel="noopener noreferrer" target="_blank">Prijsbron ↗</a></div>':'')+'</article>';
+return '<article class="deal-card"><div class="deal-card-top"><div>'+storePill(s)+'<h3>'+safe(o.name||'Product')+'</h3></div><div class="deal-card-actions">'+favButton(o,s)+'</div><span class="tag '+(independent?'fresh':'orange')+'">'+(independent?'Actie gecontroleerd':'Via PrijsProfeet gemeld')+'</span></div><div class="price-line"><span class="price">'+money(o.price)+'</span>'+(typeof o.regular_price==='number'&&o.regular_price>o.price?'<span class="oldprice">'+money(o.regular_price)+'</span>':'')+'</div><div class="deal-meta">'+safe(o.pack_label||'Verpakking onbekend')+(o.unit_price?(' · '+money(o.unit_price)+'/'+safe(o.unit||'kg')):'')+' · geldig t/m '+dateNL(o.end_date)+(o.multi_buy_quantity?' · '+safe(o.multi_buy_quantity)+' voor '+money(o.multi_buy_price):'')+(o.member_required?' · klantenkaart nodig':'')+(o.loyalty_price?' · ledenprijs '+money(o.loyalty_price):'')+'</div>'+(cheaper?'<div class="deal-note bad">Goedkoper per '+safe(o.unit)+': '+safe(alt.name)+' ('+money(alt.unit_price)+' tegenover '+money(o.unit_price)+' per '+safe(o.unit)+'). Controleer beschikbaarheid.</div>':alt?'<div class="deal-note">Alternatief: '+safe(alt.name)+' ('+money(alt.price)+').</div>':'<div class="deal-note">'+(independent?'Geen onafhankelijk vergelijkbare reguliere variant toegevoegd.':'Externe melding. Geen onafhankelijke winkelcontrole of bewijs van de laagste prijs.')+'</div>')+(o.source?.url?'<div class="deal-meta"><a href="'+attr(/^https:\/\//.test(o.source.url)?o.source.url:'#')+'" rel="noopener noreferrer" target="_blank">Prijsbron ↗</a></div>':'')+'</article>';
 }
 function empty(head,body){return '<div class="empty"><div class="empty-art">◌</div><strong>'+safe(head)+'</strong>'+safe(body)+'</div>'}
 function overview(){
@@ -228,6 +262,7 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 x+=title('Drie winkels, jouw keuze','Geen automatische winnaar. Bekijk per winkel wat er te koken valt.');
 x+='<div class="store-grid">'+ORDER.map(s=>'<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+(storeRecipeCounts(s)?'Nieuwe recepten':'Prijscheck volgt')+'</span></div><p>'+ (storeRecipeCounts(s)?'Bekijk de folderrecepten en bijpassende acties.':'De eerste actuele winkelrapportage is nog niet beschikbaar.')+'</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>acties en bronmeldingen</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>nieuwe recepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>').join('')+'</div>';
 
+x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
 x+=title('Vandaag in de aanbieding','Alleen recepten die aantoonbaar een lopende aanbieding in hun gepubliceerde prijs bevatten.');
 for(const store of ORDER){
 let featured=recipes(store).filter(r=>offerInfo(r,store).confirmed.length).sort(recipeSort).slice(0,2);
@@ -250,8 +285,9 @@ $('#view-vandaag').innerHTML=x;
 
 function offersView(){
 header('Slim besparen','Voor mij: <span style="color:#719b66">echte voordelen.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
-let out='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
-if(state.offerMode==='personal')out+=personalHighlights()+personalComparison();
+let out='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
+if(state.offerMode==='personal')out+=favoriteDashboard()+personalHighlights()+personalComparison();
+else if(state.offerMode==='favorites')out+=favoriteDashboard();
 else{
 out+=storeControls()+kindControls(true);
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
@@ -332,7 +368,7 @@ function render(){clearPage();if(state.view==='vandaag')overview();if(state.view
 function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k);if(!old){old={...i,quantity:0};m.set(k,old)}old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
-if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
+if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);if(state.view==='aanbiedingen')offersView();else render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
 if(b.dataset.open){openRecipe(b.dataset.open);return}
