@@ -6,6 +6,8 @@ on:
       - 'docs/data/**'
       - 'docs/app.js'
       - 'docs/product-matcher.js'
+      - 'docs/price-integrity.js'
+      - 'tests/price-integrity.cjs'
       - 'scripts/offer-audit.cjs'
       - 'tests/offer-audit.cjs'
       - 'docs/data/offer-audit.json'
@@ -43,4 +45,5 @@ jobs:
           node scripts/validate.mjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
+          node tests/price-integrity.cjs
           node tests/offer-audit.cjs
