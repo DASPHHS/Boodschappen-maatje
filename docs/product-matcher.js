@@ -66,6 +66,19 @@
   if(missing.length)return {status:'uncertain',reason:'variant onvoldoende gespecificeerd: '+missing.join(', '),family:a.family};
   return {status:'compatible',reason:'zelfde productsoort en geen variantconflict',family:a.family};
  }
+ // Shared exact-SKU gate. A related product family alone never certifies a recipe price.
+ function exactIdentity(offer,ingredient,identity){
+  if(evaluate(offer,ingredient).status!=='compatible')return false;
+  const a=String(offer.ean||''),b=String(ingredient.ean||'');
+  if(a||b)return !!a&&!!b&&a===b;
+  const x=String(offer.product_id||''),y=String(ingredient.product_id||'');
+  if(x||y)return !!x&&!!y&&x===y;
+  return !!offer.pack_label&&!!ingredient.pack_label&&
+    norm(offer.name)===norm(ingredient.name)&&
+    !!identity?.pack&&!!identity?.container&&
+    identity.pack(offer)===identity.pack(ingredient)&&
+    identity.container(offer)===identity.container(ingredient);
+ }
  function packGrams(offer){
    const x=norm(offer.pack_label);
    const m=x.match(/(\d+)\s*x\s*(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
@@ -84,5 +97,5 @@
   const expected=offer.price*packages;
   return Math.abs(expected-ingredient.pack_price)<=0.015;
  }
- return {norm,family,features,evaluate,packGrams,priceApplied};
+ return {norm,family,features,evaluate,exactIdentity,packGrams,priceApplied};
 });

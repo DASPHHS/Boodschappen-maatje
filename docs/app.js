@@ -32,9 +32,9 @@ function offers(s){
  state._offersCache.set(key,all);return all;
 }
 function isOfferActive(o){
- if(!o||o.is_regular_low_price||!Number.isFinite(o.price)||!validdate(o.end_date)||!validdate(o.start_date))return false;
- if(o.start_date>today()||o.end_date<today()||o.online_only)return false;
- return o.verified===true||(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')||(o.source_provider==='user_folder_image'&&!!o.evidence_date&&o.evidence_date<=today())||(o.source_provider==='Biernet'&&o.checked_at===today()&&o.status==='third_party_price_observation');
+ // One shared evidence gate: price observations are never silently promoted to offers.
+ const status=window.MaatjeOfferIdentity?.classify(o,today());
+ return status==='confirmed'||status==='reported';
 }
 function recipes(s){
  const found=[],seen=new Set();
@@ -57,9 +57,6 @@ return newRecs.concat(templates.filter(r=>!used.has(r.title.toLocaleLowerCase('n
 }
 function norm(s){return String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ')}
 
-function matchProduct(offer,ingredient){
- return !!(offer&&ingredient&&ingredient.product_id&&offer.product_id&&ingredient.product_id===offer.product_id);
-}
 function offerInfo(recipe,s){
 const key=s+'|'+recipe.id+'|'+today();if(state._matchCache.has(key))return state._matchCache.get(key);
 const active=offers(s),confirmed=[],possible=[],anchors=[],matcher=window.MaatjeProductMatcher;
@@ -77,6 +74,11 @@ function consider(offer,ingredient,role,source){
    return;
  }
  const linked={offer,ingredient,role,source};
+ // The same shared matcher is used for all exact-SKU claims.
+ if(!matcher?.exactIdentity(offer,ingredient,window.MaatjeOfferIdentity)){
+   if(possible.length<8)possible.push({offer,ingredient,reason:'EAN/product-ID of identieke naam én verpakking ontbreken',source});
+   return;
+ }
  if(source==='exact'&&isOfficialOfferSource(offer,s)&&!offer.price_conflict&&matcher?.priceApplied(offer,ingredient)){
    confirmed.push(linked);
  }else{
@@ -98,7 +100,7 @@ for(const link of links){
 }
 for(const rel of (Array.isArray(recipe.candidate_offer_links)?recipe.candidate_offer_links:[])){
  const offer=active.find(o=>o.id===rel.offer_id),ing=(recipe.ingredients||[]).find(i=>i.name===rel.ingredient_name);
- if(offer&&ing&&matcher?.evaluate(offer,ing).status!=='incompatible'&&!added.has(offer.id+'|'+ing.name)&&possible.length<8){
+ if(offer&&ing&&['compatible','uncertain'].includes(matcher?.evaluate(offer,ing).status)&&!added.has(offer.id+'|'+ing.name)&&possible.length<8){
    added.add(offer.id+'|'+ing.name);possible.push({offer,ingredient:ing,reason:rel.reason||'Productvariant niet onafhankelijk gecontroleerd',source:'suggested'});
  }
 }
@@ -123,7 +125,7 @@ if(matcher&&possible.length<3){
  }
 }
 const anchored=anchors.concat(confirmed).find(x=>x.role==='eiwitbron')?.offer||null;
-const discount=[...anchors,...confirmed].reduce((n,x)=>{
+const discount=confirmed.reduce((n,x)=>{
 const i=x.ingredient,o=x.offer,k=Number(i.package_count||1);
 if(!matcher?.priceApplied(o,i)||!Number.isFinite(o.regular_price)||!Number.isInteger(k)||k<1)return n;
 const bundle=Number(o.multi_buy_quantity)>1&&Number.isFinite(o.multi_buy_price);
@@ -217,9 +219,16 @@ function favoriteDashboard(){
  out+='<section class="personal-product favorite-product favorite-family"><div class="favorite-title"><div><strong>'+safe(group.label)+'</strong><small>'+saved.length+' bewaarde verpakking'+(saved.length===1?'':'en')+' · alle varianten apart vergelijkbaar</small></div></div>';
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
- const choices=offers(s).filter(o=>helper.familyKey(o)===group.key).map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
+ const familyOffers=offers(s).filter(o=>helper.familyKey(o)===group.key);
+  const choices=familyOffers.filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict)
+    .map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
  choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||Number(!!a.o.price_conflict)-Number(!!b.o.price_conflict)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
- if(!choices.length){const observed=(state.personalPrices?.products||[]).filter(p=>p.store===s&&helper.familyKey(p)===group.key&&Number.isFinite(p.price));return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen aanbieding in beschikbare prijsbronnen</span>'+(observed.length?observed.slice(0,3).map(p=>'<small>'+safe(p.name)+': '+money(p.price)+' · prijswaarneming '+safe(p.checked_date||p.start_date||'zonder datum')+' (geen bevestigde actie)</small>').join(''):'<small>Gewone prijs ontbreekt ook; dit zegt niets over de beschikbaarheid in de winkel.</small>')+'</div>';}
+ if(!choices.length){
+    const observed=(state.personalPrices?.products||[]).filter(p=>p.store===s&&helper.familyKey(p)===group.key&&Number.isFinite(p.price));
+    const reported=familyOffers.slice(0,3).map(o=>'<small>'+safe(o.name)+': '+money(o.price)+' · '+safe(offerEvidenceLabel(o,s))+' (niet bevestigd bij winkel)</small>').join('');
+    return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen rechtstreeks bevestigde aanbieding</span>'+
+      reported+(observed.length?observed.slice(0,3).map(p=>'<small>'+safe(p.name)+': '+money(p.price)+' · prijswaarneming '+safe(p.checked_date||p.start_date||'zonder datum')+' (geen bevestigde actie)</small>').join(''):'<small>Geen gewone winkelprijs bevestigd; beschikbaarheid onbekend.</small>')+'</div>';
+  }
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
  choices.slice(0,5).map(({o,unit,exact})=>
  '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+(o.price_conflict?'*':'')+'</strong>'+(unit?'<span>'+money(unit.price)+'/'+safe(unit.unit)+'</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
@@ -248,7 +257,7 @@ return out;
 }
 function personalComparison(){
 const watch=chosenWatch();
-let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Vergelijken gebeurt alleen als de productvariant en eenheid passen.');
+let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Getoond wordt per winkel de goedkoopste beschikbare prijswaarneming per eenheid; verschillende varianten zijn niet automatisch vergelijkbaar.');
 out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
 if(state.manageWatch)out+='<div class="watch-editor">'+(state.watchlist?.items||[]).map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div>';
 for(const w of watch){
@@ -260,9 +269,9 @@ if(!sorted.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</
 const r=sorted[0],p=normalizedPrice(r);
 return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(r.price)+'</strong><small>'+safe(r.name)+'</small><small>'+ (p===null?'Prijs per eenheid onbekend':money(p)+'/'+safe(normalizedUnit(r))) +'</small>'+(sorted.length>1?'<small>'+ (sorted.length-1)+' andere variante(n) geregistreerd</small>':'')+'<small class="personal-evidence">'+safe(r.status==='official_promo'?'Actie (controleer datum)':r.status==='official_discount_undated'?'Webkorting, periode onbekend':r.status==='external_regular_observed'?'Externe prijswaarneming':'Reguliere schapprijs')+'</small>'+'<div class="personal-shop-actions">'+favButton(r,store)+'</div><a href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Prijsbron ↗</a></div>';
 }).join('')+'</div>';
-if(w.key==='sungold')out+='<p class="personal-finding">Gelijke SunGold 750 g: Jumbo € 4,99 en Albert Heijn € 6,59. Lidl-prijs nog niet bevestigd.</p>';
-if(w.key==='pindakaas')out+='<p class="personal-finding">Jumbo huismerk is per kilo goedkoper dan de Calvé-actie. Samenstelling van gewone en 100%-pindakaas verschilt; geen automatische vergelijkbaarheid.</p>';
-if(w.key==='sperziebonen')out+='<p class="personal-finding">De waargenomen diepvriesbonen van € 2,07/kg zijn goedkoper dan de verse aanbieding van circa € 4,98/kg.</p>';
+if(w.key==='sungold')out+='<p class="personal-finding">Vergelijk SunGold uitsluitend bij dezelfde inhoud en productvariant. Oude handmatig genoteerde bedragen gelden niet als actuele winkelprijzen.</p>';
+if(w.key==='pindakaas')out+='<p class="personal-finding">Vergelijk gewone en 100%-pindakaas niet automatisch: samenstelling en verpakking verschillen.</p>';
+if(w.key==='sperziebonen')out+='<p class="personal-finding">Vers en diepvries verschillen in vorm en toepassing; vergelijk de actuele kiloprijs alleen als het alternatief geschikt is.</p>';
 out+='</section>';
 }
 out+='<div class="info-banner warning">Ontbrekende prijsgegevens betekenen niet dat een winkel het product niet verkoopt. Een prijs met peildatum is geen live-kassagarantie. Bij verschillende varianten of aankoopaantallen is geen absolute goedkoopste winkel vastgesteld.</div>';
@@ -439,8 +448,10 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
 const deals=recipes(s).filter(r=>window.MaatjeRanking?.mainOffer(offerInfo(r,s))).length;
+ const knownOffers=offers(s).filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict).length;
+ const otherReports=offers(s).length-knownOffers;
 const known=recipes(s).filter(r=>recipePrice(r).state==='today_confirmed').length;
-return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met vandaag volledig onderbouwde productprijzen.</p><div class="store-metrics"><div class="metric"><b>'+offers(s).length+'</b><small>ontvangen actiemeldingen</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
+return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met vandaag volledig onderbouwde productprijzen. '+otherReports+' externe of nog niet rechtstreeks bevestigde actiemeldingen.</p><div class="store-metrics"><div class="metric"><b>'+knownOffers+'</b><small>acties met directe winkelbron</small></div><div class="metric"><b>'+storeRecipeCounts(s)+'</b><small>dag- en folderrecepten</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
 }).join('')+'</div>';
 x+='<div class="my-home-link"><span>♧ <strong>'+state.savedRecipes.length+' bewaarde recepten</strong> · '+Object.values(state.selected).reduce((n,v)=>n+(v?.length||0),0)+' gerechten gepland</span><button class="button secondary small" data-view="mijn">Mijn recepten →</button></div>';
 x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
@@ -448,7 +459,9 @@ x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+'
 x+=title('Recepten rond deze weekacties','Hoofdingrediënten krijgen voorrang op kleine groentekortingen. De totale besparing is pas betrouwbaar bij een volledige vergelijkbare mand.');
 for(const s of ORDER){
 let featured=recipes(s).filter(r=>{const m=offerInfo(r,s);return m.confirmed.length||m.anchors.length}).sort(recipeSort).slice(0,3);
-x+=title(NAMES[s],featured.length?featured.length+' uitgelichte recepten met lopende actieproducten':'Geen exact gekoppelde actierecepten gevonden','<button class="button secondary small" data-goto-store="'+s+'">Alle recepten →</button>');
+ const onlyIdeas=!featured.length;
+ if(onlyIdeas)featured=recipes(s).filter(r=>offerInfo(r,s).possible.length).sort(recipeSort).slice(0,3);
+ x+=title(NAMES[s],featured.length?(onlyIdeas?featured.length+' receptideeën · productvariant en prijs nog niet bevestigd':featured.length+' uitgelichte recepten met controleerbare actiekoppeling'):'Geen actierecepten of passende ideeën gevonden','<button class="button secondary small" data-goto-store="'+s+'">Alle recepten →</button>');
 x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Geen gekoppelde actierecepten','Bekijk wel de losse aanbiedingen of de bestaande recepten.');
 }
 x+=title('Niet missen · Lidl, Jumbo & AH','Relevante aanbiedingen met hartjes om direct te bewaren. Een actie is niet automatisch de goedkoopste optie.');

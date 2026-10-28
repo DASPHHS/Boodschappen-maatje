@@ -1,5 +1,7 @@
 name: Controleer dagelijkse publicatie
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
     paths:

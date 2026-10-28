@@ -403,7 +403,7 @@
           "pack_label": "6 × 300 ml",
           "unit": "L",
           "unit_price": 3.91,
-          "variant": "alcoholvrij",
+          "variant": "alcoholhoudend",
           "price_conflict": "Andere bron vermeldt €7,49; officieel categorieoverzicht €7,04."
         },
         {
@@ -427,7 +427,7 @@
           "pack_label": "4 × 500 ml",
           "unit": "L",
           "unit_price": 3.73,
-          "variant": "alcoholvrij",
+          "variant": "alcoholhoudend",
           "price_conflict": null
         },
         {

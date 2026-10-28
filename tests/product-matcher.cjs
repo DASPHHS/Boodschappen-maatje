@@ -18,4 +18,14 @@ assert.equal(m.priceApplied(o('Broccoli',{price:0.69,price_conflict:'tegenstrijd
 assert.equal(m.evaluate(o('Jumbo Gemengd Gehakt'),i('AH Gemengd Gehakt')).status,'incompatible');
 assert.equal(m.priceApplied(o('Broccoli',{price:0.69,pack_label:'500 g'}),i('broccoli',{quantity:900,unit:'g',pack_price:0.69,package_count:1,price_status:'folder_current'})),false);
 assert.equal(m.evaluate(o('Vivera plantaardige shoarma'),i('Vivera plantaardige shoarma')).status,'compatible');
+// Regression tests: related names must never masquerade as an exact purchased SKU.
+const identity=require('../docs/offer-identity.js');
+assert.equal(m.exactIdentity(o('Broccoli',{pack_label:'500 g'}),i('Broccoli',{pack_label:'500g'}),identity),true);
+assert.equal(m.exactIdentity(o('Broccoli',{pack_label:'500 g'}),i('Broccoli',{pack_label:'750 g'}),identity),false);
+assert.equal(m.exactIdentity(o('Broccoli',{pack_label:'500 g'}),i('Broccoli'),identity),false);
+assert.equal(m.exactIdentity(o('Broccoli',{ean:'12345678'}),i('Broccoli',{ean:'87654321'}),identity),false);
+assert.equal(m.exactIdentity(o('Broccoli',{ean:'12345678'}),i('Broccoli'),identity),false);
+assert.equal(m.exactIdentity(o('Broccoli',{product_id:'ret-1'}),i('Broccoli',{product_id:'ret-1'}),identity),true);
+assert.equal(m.exactIdentity(o('Texels Skuumkoppe 6x300ML'),i('Texels Skuumkoppe 0.0 6x300ML'),identity),false);
+assert.equal(m.exactIdentity(o('Texels Skuumkoppe Bier Fles 6x300ML',{pack_label:'6x300ML'}),i('Texels Skuumkoppe Bier Blik 6x300ML',{pack_label:'6x300ML'}),identity),false);
 console.log('Productmatching: identieke soorten, afwijkende varianten en exacte actiebedragen gecontroleerd');

@@ -1,4 +1,14 @@
 import fs from 'node:fs';
+import offerGate from '../docs/offer-identity.js';
+// Data-level fail-closed checks: a contradictory variant cannot reach the website.
+for(const filename of ['daily','weekly','spotlight','supplemental-offers']){
+ const data=JSON.parse(fs.readFileSync('docs/data/'+filename+'.json','utf8'));
+ for(const store of ['lidl','jumbo','ah'])for(const o of data.stores?.[store]?.offers||[]){
+  if(offerGate.variantConflict(o))throw Error(filename+': alcoholvariant spreekt productnaam tegen: '+o.id);
+  if(o.status==='third_party_price_observation'&&o.verified===true)throw Error(filename+': derdenprijs is geen geverifieerde winkelactie: '+o.id);
+ }
+}
+
 for(const f of ['daily','weekly']){
 const d=JSON.parse(fs.readFileSync('docs/data/'+f+'.json','utf8'));
 if(d.schema_version!==1||!d.stores||typeof d.stores!=='object')throw Error(f+': ongeldig schema');
