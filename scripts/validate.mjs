@@ -135,3 +135,19 @@ for(const r of ahRecipes){
  if(main<600)throw Error('AH eiwitbron onvoldoende '+r.id);
 }
 console.log('AH Bonus inclusief exacte actiekoppelingen gevalideerd');
+
+const ev=JSON.parse(fs.readFileSync('docs/data/verification.json','utf8'));
+if(ev.schema_version!==1||ev.source_audit?.length<9)throw Error('Broncontrolematrix ontbreekt');
+for(const [s,entries] of Object.entries(ev.reviews)){
+ for(const [id,info] of Object.entries(entries)){
+  const offer=spotlight.stores[s].offers.find(o=>o.id===id);
+  if(!offer)throw Error('Geen aanbieding bij broncheck '+id);
+  if(info.listed_price!==offer.price)throw Error('Gepubliceerde prijs verschilt van broncheck '+id);
+  if(!Array.isArray(info.checks)||!info.checks.length)throw Error('Geen broncheckregels '+id);
+ }
+}
+const dreft=spotlight.stores.jumbo.offers.find(o=>o.id==='jumbo-w44-dreft');
+if(!dreft||dreft.price!==37.98||dreft.pack_label!=='5 × 25 capsules = 125 capsules'||Math.abs(dreft.unit_price-0.30384)>0.0001)throw Error('Dreft 2+3 bundel onjuist');
+const kiwi=spotlight.stores.jumbo.offers.find(o=>o.id==='jumbo-w44-kiwi');
+if(!kiwi||Math.abs(kiwi.unit_price-kiwi.price/.75)>0.001)throw Error('Kiwi kiloprijs onjuist');
+console.log('Broncontroles, bundels en eenheidsprijzen consistent');

@@ -124,3 +124,11 @@ Het 'Voor mij'-blok met duidelijke prijsverschillen toont voortaan alleen actiep
 
 ### AH week 44 en overzicht (28 oktober)
 Nieuwe AH-spotlight: 11 recepten die werkelijk matchen met AH Varkensgehakt, Terra plantaardige kipstukjes, scharrelkipfilethaasjes, spruitjes, bloemkool of flespompoen. Geen macrowaarden en geen volledige kassaprijzen zonder voldoende gegevens. De startpagina toont nu uitgelichte actierecepten en actuele relevante producten voor álle drie winkels. De categorie Productfavorieten heeft een eigen ingang in het linkermenu. Een lage reguliere prijs (zoals AH cottage cheese €0,74) is niet automatisch een actie en verschijnt alleen als reguliere prijswaarneming in het persoonlijke prijsoverzicht. De filter Actie als hoofdingrediënt behandelt alle expliciet gekoppelde actierecepten, ook wanneer alleen de groenten in actie zijn; de begeleidende tekst licht dit toe.
+
+## Bronverificatie (28 oktober 2026)
+
+De controle in docs/data/verification.json registreert elf onderzochte winkels en prijsplatforms, 22 productcontroles en zes aanvullende AH-campagnes. De site toont bij de aanbieding wanneer twee bronnen overeenkomen, een bundel is omgerekend, of de bronnen elkaar tegenspreken. Na de controledag verdwijnt het recente controlelabel.
+
+Let op: AH varkensgehakt 300g is €1,49 in de AH-folder/PrijsProfeet/MijnMandje en €1,50 in Allesupers. Jumbo boerenkool 300g kost los €1,99 en bij 1+1 twee gelijke pakken samen €1,99. Jumbo Zespri SunGold 750g voor €4,99 is €6,65/kg. Jumbo Dreft Platinum Plus Bries 25 capsules kost normaal €18,99 per pak: bij vijf identieke pakken en 2+3 gratis betaal je €37,98 voor 125 capsules (€0,304 per capsule). Andere Dreft-varianten hebben andere bundelbedragen. Referentieprijzen van pompoenen kunnen per soort verschillen.
+
+Aanbiedingsprijzen uit aggregators zijn niet onafhankelijk gecontroleerde filiaalkassaprijzen. Checkjebon noemt in zijn README geen Lidl; Superscraper zegt Lidl-data via Checkjebon te gebruiken, wat onvoldoende onderbouwd is. Eenheidsprijzen van bepaalde Jumbo-productpagina's tonen de oude prijs ondanks de actie: bereken de actuele eenheidsprijs uit prijs en gewicht. Actie- en product-verificatie verlopen automatisch als een nieuwe datum begint, totdat de dagelijkse taak nieuwe controles schrijft.

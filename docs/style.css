@@ -58,3 +58,8 @@
 @media(max-width:740px){.mobile-nav button{padding:4px 3px;font-size:9px}.personal-hero{gap:6px}.personal-stat{padding:10px}.personal-stat strong{font-size:21px}.personal-stat span{font-size:10px}.my-home-link{flex-direction:column;align-items:stretch}.my-recipe-row>div:first-child{flex:1}}
 
 .nav-link[data-open-favorites]{font-weight:700}.store-top .tag{max-width:125px;white-space:normal;text-align:right}
+
+.review-box{margin-top:9px;background:#eaf5e8;color:#245740;padding:11px 12px;border:1px solid #d7e9d3;border-radius:10px;font-size:12px}
+.review-box strong{font-weight:800;display:block}.review-box small{display:block;margin-top:3px;color:#5c735e}
+.review-box.review-uncertain{background:#fff5e9;color:#864e23;border-color:#f0dbc5}.review-box.review-uncertain small{color:#926b47}
+.review-links{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}.review-links a{font-size:11px;font-weight:750;color:inherit;text-decoration:underline}
