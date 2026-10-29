@@ -41,6 +41,7 @@ class RegularPricesTest(unittest.TestCase):
 
     def test_ah_litre_price_with_known_exact_size(self):
         html = '<html><h1>AH Volle melk</h1><span>1 l · Prijs per LT € 1,39</span></html>'
+        self.assertTrue(p.title_match(MILK["name"], "AH Volle melk"))
         self.assertEqual(p.observed(html, MILK)["price"], 1.39)
         self.assertIsNone(p.observed(html, {**MILK, "unit": "stuk"}))
         self.assertIsNone(p.observed(html, {**MILK, "quantity": None}))
