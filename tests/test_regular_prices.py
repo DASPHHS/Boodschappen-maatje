@@ -8,7 +8,7 @@ import sync_regular_prices as p
 
 MILK = {
     "store": "ah", "name": "AH Verse volle melk 1 L", "group": "volle_melk",
-    "price": 1.39, "checked_date": "2026-10-28",
+    "price": 1.39, "quantity": 1000, "unit": "ml", "checked_date": "2026-10-28",
     "status": "official_regular_observed",
     "url": "https://www.ah.nl/producten/product/wi1524/volle-melk"
 }
@@ -42,8 +42,6 @@ class RegularPricesTest(unittest.TestCase):
     def test_ah_litre_price_with_known_exact_size(self):
         html = '<html><h1>AH Volle melk</h1><span>1 l · Prijs per LT € 1,39</span></html>'
         self.assertTrue(p.title_match(MILK["name"], "AH Volle melk"))
-        page = p.ProductPage(); page.feed(html)
-        print("DEBUG_AH", repr(page.h1), repr(page.text), repr(p.observed(html, MILK)), repr(MILK), flush=True)
         self.assertEqual(p.observed(html, MILK)["price"], 1.39)
         self.assertIsNone(p.observed(html, {**MILK, "unit": "stuk"}))
         self.assertIsNone(p.observed(html, {**MILK, "quantity": None}))
