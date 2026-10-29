@@ -117,6 +117,8 @@ def observed(html, record):
     amounts = jsonld_prices(page)
     # Single structured price is acceptable only with the matching title.
     # Never fall back to scraping all euro amounts (recommendations and bundles).
+    if len(amounts) > 1:
+        return None  # Conflicting structured offers: no implicit winner.
     if len(amounts) != 1:
         # A tightly scoped single visible Product price is a second safe source.
         matches = re.findall(r"Prijs:\s*€\s*(\d{1,3}[,.]\d{2})", near, re.I)
