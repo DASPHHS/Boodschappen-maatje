@@ -37,6 +37,8 @@
   // A conflicting product variant must never be published as a promotion.
   if(variantConflict(o))return 'excluded';
   if(!/^https:\/\//.test(String(o.source?.url||'')))return 'excluded';
+  // An explicit cross-source/retailer price conflict must never become a confirmed promotion.
+  if(o.price_conflict)return 'reported';
   if(o.verified===true){
    const provider=String(o.source_provider||'');
    let host='';try{host=new URL(o.source.url).hostname.toLowerCase().replace(/^www\./,'')}catch{}
@@ -68,6 +70,9 @@
     seen.set(k,z);results.push(z);continue;
    }
    if(a.source_observations.some(o=>o.id===x.id))continue;
+   // Propagate an explicit conflict even when duplicate feeds happen to report the same numeric price.
+   if(x.price_conflict&&!String(a.price_conflict||'').includes(String(x.price_conflict)))
+     a.price_conflict=a.price_conflict?a.price_conflict+' · '+x.price_conflict:x.price_conflict;
    a.source_observations.push({id:x.id,price:x.price,url:x.source?.url||null});
    const prices=a.source_observations.map(o=>o.price),min=Math.min(...prices),max=Math.max(...prices);
    if(max-min>=0.02){

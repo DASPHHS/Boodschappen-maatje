@@ -3202,7 +3202,9 @@
           "promo_note": "50% korting; per verpakking 300 g. Voor 600 g twee verpakkingen kopen.",
           "note": "Folder, PrijsProfeet en MijnMandje: €1,49. Allesupers geeft €1,50 voor ogenschijnlijk identiek product. Verschil van €0,01 nog niet op AH-artikelniveau opgelost.",
           "checked_at": "2026-10-29",
-          "price_observed_at": "2026-10-29"
+          "price_observed_at": "2026-10-29",
+          "price_conflict": "AH Bonus €1,49 per 300g, Allesupers externe waarneming €1,50 voor overeenkomstig product. Bronverschil van €0,01; kassaprijs niet onafhankelijk bevestigd.",
+          "price_verified": false
         },
         {
           "id": "ah-w44-sprouts-500",

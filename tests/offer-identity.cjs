@@ -22,6 +22,9 @@ const today='2026-10-29';
 const offer={...a,start_date:'2026-10-26',end_date:'2026-11-01',
   verified:true,source:{url:'https://www.jumbo.com/aanbiedingen/test'}};
 assert.equal(m.classify(offer,today),'confirmed');
+assert.equal(m.classify({...offer,price_conflict:'retailer disagrees with its kilo price'},today),'reported','conflict cannot be confirmed');
+const explicit=m.merge([{...offer,id:'original'},{...offer,id:'duplicate',price_conflict:'AH product versus category price'}]);
+assert.ok(explicit[0].price_conflict?.includes('AH product'),'a duplicate with the same price must propagate a known source conflict');
 assert.equal(m.classify({...offer,source_provider:'PrijsProfeet',verified:false,promotion_status:'active'},today),'reported');
 assert.equal(m.classify({...offer,source_provider:'Biernet',status:'third_party_price_observation'},today),'observation');
 assert.equal(m.classify({...offer,variant:'alcoholvrij'},today),'excluded','incorrect alcohol flags are a blocker');
