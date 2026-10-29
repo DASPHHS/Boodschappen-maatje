@@ -22,8 +22,8 @@ assert.ok(search.valid(catalog,today));
 assert.equal(search.candidates(milk,'lidl',catalog,pricing,resolver,today)[0].o.price,.98);
 assert.equal(search.candidates(milk,'jumbo',catalog,pricing,resolver,today)[0].o.price,.99);
 assert.equal(search.candidates(milk,'ah',catalog,pricing,resolver,today)[0].o.price,1.29);
-assert.equal(search.candidates(milk,'ah',catalog,pricing,resolver,today).length,2,
-  'Lactose-free variation is distinguishable and may require stricter user intent');
+assert.equal(search.candidates(milk,'ah',catalog,pricing,resolver,today).length,1,
+  'Lactosevrije/verse UHT alternatives must not replace regular full milk');
 const older=[{store:'ah',name:'AH Houdbare volle melk 1 L',pack_label:'1 L',
   group:'volle_melk',status:'external_regular_observed',price:.99,
   checked_date:today,url:'https://www.ah.nl/producten/product/wi450535/ah-houdbare-volle-melk'}];
