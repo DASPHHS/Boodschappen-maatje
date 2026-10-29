@@ -10,6 +10,7 @@ const fakeBundle={id:'ah-three',name:'AH Verse volle melk 3 stuks',pack_label:'3
  start_date:'2026-10-27',end_date:'2026-11-03',verified:true,source:{url:'https://www.ah.nl/bonus'}};
 assert.equal(price.pack(fakeBundle),null,'unknown 3-pack content cannot be normalized');
 assert.equal(price.unitCost(fakeBundle),null,'no inferred litre price for bundle');
+assert.equal(price.pack({...fakeBundle,status:'official_regular_observed',quantity:1000,unit:'ml'}),null,'structured quantity cannot override explicit unknown bundle');
 let ah=price.collect('ah','volle_melk',[milk],[fakeBundle],day);
 assert.equal(ah.length,1,'3-stuks must never displace 1-litre fresh milk');
 assert.equal(ah[0].o.price,1.39);
@@ -21,6 +22,7 @@ const stale=price.inspect({...milk,checked_date:'2026-10-01'},'ah',day);
 assert.equal(stale.fresh,false,'old price must not be called current');
 assert.equal(stale.status,'oud');
 assert.ok(stale.label.includes('2026-10-01'));
+assert.equal(price.inspect({...milk,checked_date:'2026-10-30'},'ah',day),null);
 assert.equal(price.pack({pack_label:'6 × 330 ml'}).amount,1.98);
 assert.equal(price.pack({pack_label:'6x300ml'}).amount,1.8);
 assert.equal(price.unitCost({pack_label:'6x330ml',price:8.61}).price,4.35);
