@@ -248,7 +248,10 @@ function favoriteDashboard(){
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
  const obs=window.MaatjeObservations;
- const rows=obs?.favoriteRows(s,saved,state.personalPrices?.products||[],offers(s),helper,today())||[];
+ const observed=obs?.favoriteRows(s,saved,state.personalPrices?.products||[],offers(s),helper,today())||[];
+ const discovered=window.MaatjeCatalogSearch?.favoritePrices(s,saved,state.retailerCatalog,obs,window.MaatjeResolver,helper,today())||[];
+ const indexed=new Set(discovered.map(x=>x.o.url).filter(Boolean));
+ const rows=[...discovered,...observed.filter(x=>!indexed.has(x.o.url)||x.o.source_verification==='retailer_product_page_checked')];
  if(!rows.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen prijs in aangesloten bronnen</span><small>Niet gevonden betekent niet dat het artikel niet verkrijgbaar is. De promotiefeed bevat geen volledig schapassortiment.</small></div>';
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
   rows.slice(0,6).map(x=>{
