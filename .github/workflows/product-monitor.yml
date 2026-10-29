@@ -17,7 +17,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: product-coverage
+  group: boodschappen-data-publication
   cancel-in-progress: false
 jobs:
   monitor:
@@ -50,12 +50,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          tmp="$(mktemp)"
-          cp docs/data/product-resolution.json "$tmp"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
-            cp "$tmp" docs/data/product-resolution.json
+            # Recalculate AFTER rebasing to the newest catalog + offers.
+            # Never replay a stale report built before another workflow pushed.
+            node scripts/build_product_resolution.cjs
+            node scripts/build_product_resolution.cjs --check
             git add docs/data/product-resolution.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Ververs openstaande productbroncontroles"

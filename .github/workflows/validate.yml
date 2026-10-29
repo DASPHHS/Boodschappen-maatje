@@ -45,6 +45,9 @@ on:
       - 'docs/data/supplemental-offers.json'
       - 'tests/test_sync_aanbiedingen.py'
       - '.github/workflows/validate.yml'
+      - '.github/workflows/product-monitor.yml'
+      - '.github/workflows/actiecatalogus.yml'
+      - 'tests/workflow-publish-consistency.cjs'
   workflow_dispatch:
   schedule:
     - cron: '30 8 * * *'
@@ -77,6 +80,7 @@ jobs:
           node tests/price-observations.cjs
           node tests/product-resolver.cjs
           node tests/catalog-search.cjs
+          node tests/workflow-publish-consistency.cjs
           node tests/live-price-ui.cjs
           node scripts/build_product_resolution.cjs --check
           node tests/source-freshness.cjs
