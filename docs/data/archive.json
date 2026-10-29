@@ -1,10 +1,678 @@
 {
   "schema_version": 1,
-  "updated_at": null,
+  "updated_at": "2026-10-29",
   "stores": {
-    "lidl": [],
-    "jumbo": [],
-    "ah": []
+    "lidl": [
+      {
+        "id": "lidl-20261029-riblappen-koolstoof",
+        "title": "Langzaam gestoofde riblappen met spitskool en wortel",
+        "store": "lidl",
+        "category": "vlees",
+        "cuisine": "Surinaams-Nederlands",
+        "minutes": 165,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "Runderriblappen",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Eiwitbronnen",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "pack_label": "700 g",
+            "package_count": 1,
+            "price_observed_at": null,
+            "source_url": "https://www.lidl.nl/p/runderriblappen/p11308105"
+          },
+          {
+            "name": "spitskool",
+            "quantity": 800,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "wortel",
+            "quantity": 400,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "ui",
+            "quantity": 200,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "tomatenpuree",
+            "quantity": 70,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "komijn",
+            "quantity": 8,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Bak de riblappen rondom bruin en fruit de ui kort mee.",
+          "Voeg komijn, tomatenpuree en 400 ml water toe. Stoof met deksel op laag vuur circa 2½ uur, tot het vlees zacht is.",
+          "Voeg wortel 25 minuten voor het einde toe en spitskool in de laatste 15 minuten; laat de groenten gaar worden.",
+          "Verdeel 700 g gestoofd vlees en 1400 g groente over vier porties. Riblappen zijn niet geschikt voor kort roerbakken."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Koolhutspot met Masterbeef', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Koolhutspot met Masterbeef",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 350,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      },
+      {
+        "id": "lidl-20261029-limoenzalm-paksoi",
+        "title": "Limoenzalm op huid met paksoi en komkommersalade",
+        "store": "lidl",
+        "category": "vis",
+        "cuisine": "Thais geïnspireerd",
+        "minutes": 35,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "Verse zalmfilet op huid",
+            "quantity": 800,
+            "unit": "g",
+            "department": "Eiwitbronnen",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "pack_label": "500 g",
+            "package_count": 2,
+            "price_note": "Koop 2x500g, gebruik 800g; Lidl €7,49 versus €7,99 per pak.",
+            "price_observed_at": null
+          },
+          {
+            "name": "paksoi",
+            "quantity": 800,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "komkommer",
+            "quantity": 500,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "bosui",
+            "quantity": 100,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "limoen",
+            "quantity": 2,
+            "unit": "st",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "vissaus",
+            "quantity": 25,
+            "unit": "ml",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "munt",
+            "quantity": 10,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Snijd paksoi, komkommer en bosui. Bak de paksoistelen 4 minuten en laat de bladeren kort slinken.",
+          "Meng de komkommer en bosui met limoen, munt en een beetje vissaus.",
+          "Bak de zalm met de huid naar beneden tot krokant, keer en gaar het dikste deel volledig. Gebruik 800g uit twee pakken; bewaar de rest veilig.",
+          "Serveer met minstens 350g groente per persoon. Geen actuele zalm-kassaprijs claimen."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Thaise biefstuk met pittige salade', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Thaise biefstuk met pittige salade",
+          "url": "https://drive.google.com/file/d/1InzDA6tRhgOdSgBcNo2b1X1_uBza7R37/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 350,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      },
+      {
+        "id": "lidl-20261029-budget-tofu",
+        "title": "Gembertofu met paksoi, prei en champignons",
+        "store": "lidl",
+        "category": "vega",
+        "cuisine": "Surinaams-Chinees",
+        "minutes": 30,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "stevige tofu",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Vega & peulvruchten",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "paksoi",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "champignons",
+            "quantity": 400,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "prei",
+            "quantity": 200,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "gember",
+            "quantity": 25,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "knoflook",
+            "quantity": 15,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Dep tofu droog en bak de blokjes goudbruin.",
+          "Fruit knoflook en gember; bak champignons en prei tot het vocht verdampt.",
+          "Voeg paksoistelen toe en daarna het blad; meng tofu erdoor en verwarm goed.",
+          "Serveer minimaal 325g groente en 175g tofu per persoon."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Kip met Paksoi, vegetarische techniekbewerking', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Kip met Paksoi, vegetarische techniekbewerking",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 325,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      }
+    ],
+    "jumbo": [
+      {
+        "id": "jumbo-20261029-masala-gehakt",
+        "title": "Masala-gehakt met spitskool en sperziebonen",
+        "store": "jumbo",
+        "category": "vlees",
+        "cuisine": "Surinaams-Hindoestaans",
+        "minutes": 40,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "Jumbo Gemengd Gehakt 2 × 500 g",
+            "quantity": 800,
+            "unit": "g",
+            "department": "Eiwitbronnen",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "pack_label": "2 × 500 g",
+            "package_count": 1,
+            "price_observed_at": null,
+            "source_url": "https://www.jumbo.com/aanbiedingen/gemengd-gehakt/3022981",
+            "price_note": "Koop 1000g, gebruik 800g en bewaar 200g."
+          },
+          {
+            "name": "spitskool",
+            "quantity": 900,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "sperziebonen",
+            "quantity": 500,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "ui",
+            "quantity": 200,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "masala",
+            "quantity": 12,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "tomatenpuree",
+            "quantity": 70,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Snijd kool, bonen en ui. Bak het gehakt rul en volledig gaar; giet overtollig vet af.",
+          "Fruit de ui met masala en tomatenpuree, voeg bonen en een scheut water toe en stoof 10 minuten.",
+          "Voeg de spitskool toe en smoor nog 8–10 minuten tot alle groenten gaar zijn.",
+          "Verdeel 800g gehakt en minstens 1600g groenten over vier porties."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Murgie Tarkari Masala (kip met kool in masala)', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Murgie Tarkari Masala (kip met kool in masala)",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 400,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      },
+      {
+        "id": "jumbo-20261029-budget-tempeh",
+        "title": "Mosterdtempeh met bloemkool, boerenkool en ui",
+        "store": "jumbo",
+        "category": "vega",
+        "cuisine": "Nederlands",
+        "minutes": 40,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "tempeh",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Vega & peulvruchten",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "bloemkool",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "boerenkool",
+            "quantity": 500,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "ui",
+            "quantity": 200,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "mosterd",
+            "quantity": 25,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "magere kwark",
+            "quantity": 250,
+            "unit": "g",
+            "department": "Zuivel",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Rooster bloemkool en ui 20 minuten op 210°C.",
+          "Bak tempeh in blokjes goudbruin en gaar; stoom boerenkool zacht.",
+          "Roer mosterd door kwark en verdun tot saus.",
+          "Meng de groenten en tempeh, serveer met de saus; minstens 350g groente per portie."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Koolhutspot met Masterbeef, vegetarische herwerking', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Koolhutspot met Masterbeef, vegetarische herwerking",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 350,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      }
+    ],
+    "ah": [
+      {
+        "id": "ah-20261029-kip-paksoi",
+        "title": "Knoflookkip met paksoi en champignons",
+        "store": "ah",
+        "category": "kip",
+        "cuisine": "Surinaams-Chinees",
+        "minutes": 35,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "AH Scharrelkipfilethaasjes 300 g",
+            "quantity": 600,
+            "unit": "g",
+            "department": "Eiwitbronnen",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "pack_label": "300 g",
+            "package_count": 2,
+            "price_observed_at": null,
+            "source_url": "https://www.ah.nl/bonus/volgende-week?id=772689"
+          },
+          {
+            "name": "paksoi",
+            "quantity": 900,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "champignons",
+            "quantity": 400,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "ui",
+            "quantity": 150,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "gember",
+            "quantity": 25,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "knoflook",
+            "quantity": 20,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "sojasaus",
+            "quantity": 30,
+            "unit": "ml",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Snijd kip en groenten. Bak de kipfilethaasjes in stukken volledig gaar en haal uit de pan.",
+          "Fruit ui, gember en knoflook. Bak champignons en paksoistelen 5 minuten mee.",
+          "Voeg de bladeren en een beetje water toe, doe de kip terug en verwarm alles door en door.",
+          "Serveer 150g kip en minstens 360g groente per persoon."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Kip met Paksoi', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Kip met Paksoi",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 362.5,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      },
+      {
+        "id": "ah-20261029-budget-gadogado",
+        "title": "Gado gado met tofu, ei en knapperige kool",
+        "store": "ah",
+        "category": "vega",
+        "cuisine": "Surinaams-Javaans",
+        "minutes": 35,
+        "servings": 4,
+        "ingredients": [
+          {
+            "name": "stevige tofu",
+            "quantity": 700,
+            "unit": "g",
+            "department": "Vega & peulvruchten",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "eieren",
+            "quantity": 6,
+            "unit": "st",
+            "department": "Vega & peulvruchten",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "witte kool",
+            "quantity": 500,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "sperziebonen",
+            "quantity": 500,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "taugé",
+            "quantity": 300,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "komkommer",
+            "quantity": 200,
+            "unit": "g",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "pindakaas",
+            "quantity": 70,
+            "unit": "g",
+            "department": "Kruiden & voorraad",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          },
+          {
+            "name": "limoen",
+            "quantity": 1,
+            "unit": "st",
+            "department": "Groente & fruit",
+            "pack_price": null,
+            "price_status": "archive_no_current_prices",
+            "price_observed_at": null
+          }
+        ],
+        "instructions": [
+          "Kook de eieren hard. Blancheer bonen tot gaar, kool kort en taugé één minuut; laat uitlekken.",
+          "Bak tofu in blokjes goudbruin. Snijd komkommer en pel de eieren.",
+          "Meng pindakaas met warm water en limoensap tot dressing.",
+          "Verdeel 1500g groenten, tofu en eieren over vier kommen en serveer de dressing apart."
+        ],
+        "offer_links": [],
+        "offer_anchors": [],
+        "cost": null,
+        "macros": null,
+        "macro_status": "niet_berekend",
+        "quality_status": "uitgewerkt_niet_culinair_getest",
+        "origin": "archief",
+        "source_note": "Originele niet-proefgekookte bewerking van 'Gado Gado (groente-ei salade)', met andere hoeveelheden en eigen stappen; geen volledige kassaprijs of berekende macro's.",
+        "inspiration_source": {
+          "name": "Gado Gado (groente-ei salade)",
+          "url": "https://drive.google.com/file/d/10UMNBbQeZTRcrdt_wYL_eFOo8YX-P9lO/view",
+          "kind": "Google Drive kookboek"
+        },
+        "minimum_known_spend": null,
+        "budget_feasibility": "onbekend_overige_producten_nog_te_prijzen",
+        "vegetables_g_per_portion": 375,
+        "archive_note": "Geen actuele aanbiedingen of historische pakprijzen als vandaag tonen."
+      }
+    ]
   },
-  "note": "Historische recepten. Prijzen in het archief zijn niet geldig totdat opnieuw gecontroleerd. De app verbergt verouderde kassaprijzen."
+  "note": "Nieuwe originele recepten met specifieke kookboekprovenance. Prijzen en promoties uit archief niet actueel."
 }
