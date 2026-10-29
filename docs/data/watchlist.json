@@ -62,98 +62,285 @@
       "title": "Bier (ook speciaalbier en 0.0)",
       "category": "bier",
       "default_selected": true,
-      "description": "Vergelijk exact dezelfde verpakkingen per liter; alcoholvrij en alcoholhoudend niet vermengen."
+      "description": "Vergelijk exact dezelfde verpakkingen per liter; alcoholvrij en alcoholhoudend niet vermengen.",
+      "requires_specific_variant": true,
+      "compare_mode": "variants"
     },
     {
       "key": "sungold",
       "title": "Zespri SunGold kiwi",
       "category": "fruit",
       "default_selected": true,
-      "description": "Alleen SunGold; vergelijk 750 g exact"
+      "description": "Alleen SunGold; vergelijk 750 g exact",
+      "match": {
+        "all": [
+          "zespri",
+          "sungold"
+        ],
+        "pack": {
+          "unit": "kg",
+          "amount": 0.75
+        }
+      },
+      "compare_mode": "exact"
     },
     {
       "key": "pindakaas",
       "title": "Pindakaas",
       "category": "voorraad",
       "default_selected": true,
-      "description": "Huismerk, Calvé en 100% apart benoemen"
+      "description": "Huismerk, Calvé en 100% apart benoemen",
+      "match": {
+        "all": [
+          "pindakaas"
+        ],
+        "none": [
+          "saus",
+          "koekjes",
+          "repen"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "kwark",
       "title": "Magere kwark / high protein",
       "category": "zuivel",
       "default_selected": true,
-      "description": "Let op eiwit per 100 g en prijs per kg"
+      "description": "Let op eiwit per 100 g en prijs per kg",
+      "match": {
+        "all": [
+          "kwark"
+        ],
+        "any": [
+          "magere",
+          "mager",
+          "high protein",
+          "proteine"
+        ],
+        "none": [
+          "cottage",
+          "drink",
+          "dessert"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "dreft",
       "title": "Dreft vaatwastabletten",
       "category": "huishouden",
       "default_selected": true,
-      "description": "Vergelijk per tablet, niet per doos"
+      "description": "Vergelijk per tablet, niet per doos",
+      "match": {
+        "all": [
+          "dreft"
+        ],
+        "any": [
+          "vaatwascapsules",
+          "vaatwastabletten",
+          "vaatwaspods",
+          "all in one"
+        ],
+        "none": [
+          "handafwas",
+          "afwasmiddel",
+          "machinereiniger"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "walnoten",
       "title": "Ongebrande walnoten",
       "category": "voorraad",
       "default_selected": true,
-      "description": "Vergelijk per kg, liefst ongezouten"
+      "description": "Vergelijk per kg, liefst ongezouten",
+      "match": {
+        "all": [
+          "walnoten"
+        ],
+        "any": [
+          "ongebrand",
+          "ongebrande"
+        ],
+        "none": [
+          "brood",
+          "honing",
+          "walnoten in dop",
+          "mix"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "tofu",
       "title": "Vivera, tofu en tempeh",
       "category": "vega",
       "default_selected": true,
-      "description": "Varianten niet altijd onderling vergelijkbaar"
+      "description": "Varianten niet altijd onderling vergelijkbaar",
+      "match": {
+        "any": [
+          "tofu",
+          "tempeh"
+        ],
+        "none": [
+          "burger",
+          "schnitzel",
+          "soep",
+          "saus",
+          "marinade"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "gemengdgehakt",
       "title": "(Gemengd) gehakt",
       "category": "vlees",
       "default_selected": true,
-      "description": "Bereken de volledige te kopen verpakkingen"
+      "description": "Bereken de volledige te kopen verpakkingen",
+      "match": {
+        "all": [
+          "gehakt"
+        ],
+        "any": [
+          "gemengd",
+          "rundergehakt"
+        ],
+        "none": [
+          "soep",
+          "saus",
+          "kruiden"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "kipfilet",
       "title": "Kipfilet, blokjes en reepjes",
       "category": "kip",
       "default_selected": true,
-      "description": "Geen kruidenmixen of kipbereidingen"
+      "description": "Geen kruidenmixen of kipbereidingen",
+      "match": {
+        "any": [
+          "kipfiletblokjes",
+          "kipfiletreepjes",
+          "kipfilet"
+        ],
+        "none": [
+          "schnitzel",
+          "sate",
+          "saté",
+          "salade",
+          "kruiden",
+          "saus",
+          "gemarineerde"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "vis",
       "title": "Gezonde vis",
       "category": "vis",
       "default_selected": true,
-      "description": "Zalm, forel, makreel en magere vis; geen gepaneerde vis of vega-vis"
+      "description": "Zalm, forel, makreel en magere vis; geen gepaneerde vis of vega-vis",
+      "match": {
+        "any": [
+          "zalmfilet",
+          "makreel",
+          "forel",
+          "kabeljauw",
+          "koolvis",
+          "haringfilet"
+        ],
+        "none": [
+          "salade",
+          "vega",
+          "burger",
+          "saus",
+          "schnitzel",
+          "gepaneerd"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "pompoen",
       "title": "Pompoen / flespompoen",
       "category": "groente",
       "default_selected": true,
-      "description": "Per stuk, niet zonder gewicht per kilo vergelijken"
+      "description": "Per stuk, niet zonder gewicht per kilo vergelijken",
+      "match": {
+        "any": [
+          "pompoen",
+          "flespompoen"
+        ],
+        "none": [
+          "pitten",
+          "soep",
+          "kruiden",
+          "brood",
+          "saus",
+          "puree"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "sperziebonen",
       "title": "Sperziebonen",
       "category": "groente",
       "default_selected": true,
-      "description": "Vers en diepvries vergelijken per kg"
+      "description": "Vers en diepvries vergelijken per kg",
+      "match": {
+        "all": [
+          "sperziebonen"
+        ],
+        "none": [
+          "schotel",
+          "soep",
+          "maaltijd",
+          "met kip"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "bospeen",
       "title": "Bospeen",
       "category": "groente",
       "default_selected": true,
-      "description": "Per bos of kg, gewicht controleren"
+      "description": "Per bos of kg, gewicht controleren",
+      "match": {
+        "all": [
+          "bospeen"
+        ],
+        "none": [
+          "soep",
+          "sap"
+        ]
+      },
+      "compare_mode": "exact"
     },
     {
       "key": "popcorn",
       "title": "Popcorn",
       "category": "extra",
       "default_selected": false,
-      "description": "Optioneel; alleen bij werkelijk voordeel"
+      "description": "Optioneel; alleen bij werkelijk voordeel",
+      "match": {
+        "all": [
+          "popcorn"
+        ],
+        "none": [
+          "ijs",
+          "chocolade",
+          "chips"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "volle_melk",
@@ -200,28 +387,85 @@
       "title": "Texels Skuumkoppe",
       "category": "bier",
       "default_selected": true,
-      "description": "Met en zonder alcohol apart; 6×300 ml, 6×330 ml en 4×500 ml per liter vergelijken."
+      "description": "Met en zonder alcohol apart; 6×300 ml, 6×330 ml en 4×500 ml per liter vergelijken.",
+      "match": {
+        "all": [
+          "texels",
+          "skuumkoppe"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "soto_boemboe",
       "title": "Soto/saoto-boemboe",
       "category": "voorraad",
       "default_selected": true,
-      "description": "Voor saoto: prijs per 100 g, merk en samenstelling vergelijken; soto niet verwarren met andere boemboes."
+      "description": "Voor saoto: prijs per 100 g, merk en samenstelling vergelijken; soto niet verwarren met andere boemboes.",
+      "match": {
+        "all": [
+          "boemboe"
+        ],
+        "any": [
+          "soto",
+          "saoto"
+        ],
+        "none": [
+          "nasi",
+          "bami"
+        ]
+      },
+      "compare_mode": "exact"
     },
     {
       "key": "kippenpoten",
       "title": "Kippenpoten / kippenbouten voor saoto",
       "category": "kip",
       "default_selected": true,
-      "description": "Drumsticks en hele kippenbouten afzonderlijk; botgewicht is niet het eetbare vleesgewicht."
+      "description": "Drumsticks en hele kippenbouten afzonderlijk; botgewicht is niet het eetbare vleesgewicht.",
+      "match": {
+        "any": [
+          "drumsticks",
+          "kippenbouten",
+          "kippenpoten"
+        ],
+        "none": [
+          "gemarineerd",
+          "gekruid",
+          "kruidenmix",
+          "saus",
+          "barbecue"
+        ]
+      },
+      "compare_mode": "variants"
     },
     {
       "key": "sereh",
       "title": "Sereh / citroengras",
       "category": "groente",
       "default_selected": true,
-      "description": "Verse stengels of diepvries; vergelijk per stuk/gram en voorraad, niet op basis van woorden in andere producten."
+      "description": "Verse stengels of diepvries; vergelijk per stuk/gram en voorraad, niet op basis van woorden in andere producten.",
+      "match": {
+        "any": [
+          "sereh",
+          "citroengras",
+          "lemongrass"
+        ],
+        "none": [
+          "thee",
+          "deodorant",
+          "saus",
+          "smoothie",
+          "poeder",
+          "gemalen",
+          "olie",
+          "siroop",
+          "aroma",
+          "roomspray",
+          "kruidenmix"
+        ]
+      },
+      "compare_mode": "variants"
     }
   ]
 }
