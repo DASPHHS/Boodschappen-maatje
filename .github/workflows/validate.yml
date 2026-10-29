@@ -13,6 +13,11 @@ on:
       - 'docs/product-resolver.js'
       - 'docs/catalog-search.js'
       - 'docs/style.css'
+      - 'docs/recipe-shop-options.js'
+      - 'scripts/build_weekly_menu.cjs'
+      - 'tests/weekly-menu.cjs'
+      - 'tests/recipe-shop-options.cjs'
+      - '.github/workflows/weekly-menu.yml'
       - 'docs/data/recipe-sources.json'
       - 'tests/recipe-source-integrity.cjs'
       - 'tests/browser-journey.cjs'
@@ -77,6 +82,9 @@ jobs:
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
+          node scripts/build_weekly_menu.cjs --check
+          node tests/weekly-menu.cjs
+          node tests/recipe-shop-options.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs

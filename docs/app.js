@@ -39,9 +39,10 @@ function isOfferActive(o){
  const status=window.MaatjeOfferIdentity?.classify(o,today());
  return status==='confirmed'||status==='reported';
 }
+function freshWeekly(){return state.weekly&&state.weekly.week_start<=today()&&today()<=state.weekly.week_end?state.weekly:null}
 function recipes(s){
  const found=[],seen=new Set();
- for(const [d,origin] of [[state.daily,'dagactie'],[state.weekly,'weekinspiratie'],[state.spotlight,'folder-idee'],[state.archive,'archief']]){
+ for(const [d,origin] of [[state.daily,'dagactie'],[freshWeekly(),'weekinspiratie'],[state.spotlight,'folder-idee'],[state.archive,'archief']]){
    const list=origin==='archief'?(d?.stores?.[s]||[]):storeData(d,s).recipes;
    if(!Array.isArray(list))continue;
    for(const r of list){
@@ -357,6 +358,7 @@ function status(){const d=state.daily;const at=d?.generated_at;const date=at?Str
 function storePill(s){return '<span class="store-mini">'+safe(NAMES[s]||'Algemene inspiratie')+'</span>'}
 
 function recipePrice(r){return window.MaatjePricing?.basket(r,today())||{state:'unpriced',total:null,partial:0,missing:[],oldest_date:null}}
+function weeklyPriceOptions(r,s){return window.MaatjeRecipeShopOptions?.recommend(r,s,state.retailerCatalog,window.MaatjeObservations,window.MaatjeResolver,today())||null}
 function recipeIsCurrentPrice(r){return recipePrice(r).state==='today_confirmed'}
 function priceTagText(r){
  const p=recipePrice(r);return p.state==='today_confirmed'?'Vandaag onderbouwd':p.state==='historical_estimate'?'Historische prijsindicatie':p.state==='partial'?'Deels geprijsd':'Prijs onbekend';
@@ -420,6 +422,7 @@ function offerBadge(r){
  return '<span class="offer-badge neutral">Geen actie gekoppeld</span>';
 }
 function recipeSourceLabel(r){
+if(r.origin==='weekinspiratie')return 'Weekmenu · eigen receptidee, niet proefgekookt';
 if(r.quality_status==='concept_niet_culinair_getest')return 'Concept · oorspronkelijke receptbron niet volledig gecontroleerd';
 if(r.quality_status==='uitgewerkt_niet_culinair_getest')return 'Eigen bewerking · niet proefgekookt';
 if(r.origin==='folder-idee')return 'Eigen receptidee rond actie · niet proefgekookt';
@@ -523,6 +526,16 @@ let featured=recipes(s).filter(r=>{const m=offerInfo(r,s);return m.confirmed.len
  if(onlyIdeas)featured=recipes(s).filter(r=>offerInfo(r,s).possible.length).sort(recipeSort).slice(0,3);
  x+=title(NAMES[s],featured.length?(onlyIdeas?featured.length+' receptideeën · productvariant en prijs nog niet bevestigd':featured.length+' uitgelichte recepten met controleerbare actiekoppeling'):'Geen actierecepten of passende ideeën gevonden','<button class="button secondary small" data-goto-store="'+s+'">Alle recepten →</button>');
 x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Geen gekoppelde actierecepten','Bekijk wel de losse aanbiedingen of de bestaande recepten.');
+}
+const currentWeek=freshWeekly();
+if(currentWeek){
+ x+=title('Dit weekmenu · vier porties per gerecht','Wekelijks wisselende eigen recepten; niet proefgekookt en niet automatisch volledig geprijsd.');
+ for(const s of ORDER){
+  const weekly=recipes(s).filter(r=>r.origin==='weekinspiratie').slice(0,2);
+  x+=title(NAMES[s],weekly.length+' weekideeën uit de eigen bibliotheek',
+   '<button class="button secondary small" data-goto-store="'+s+'">Bekijk alle recepten →</button>');
+  if(weekly.length)x+='<div class="cards">'+weekly.map(recipeCard).join('')+'</div>';
+ }
 }
 x+=title('Niet missen · Lidl, Jumbo & AH','Relevante aanbiedingen met hartjes om direct te bewaren. Een actie is niet automatisch de goedkoopste optie.');
 // Always select from current, date-filtered offers. A fixed week-44 list
@@ -723,6 +736,13 @@ if(matched.discount>0)x+='<div class="info-banner warning">Oude referentieprijze
 if(matched.possible.length){x+='<p class="dialog-note"><strong>Wel mogelijk, niet verrekend:</strong> deze aanbiedingen kunnen mogelijk bij een ingrediënt passen. Productvorm, gewicht en kassaprijs moeten nog worden gecontroleerd.</p><ul class="ingredients">'+matched.possible.map(item=>'<li>'+safe(item.offer.name)+' ('+money(item.offer.price)+' / '+safe(item.offer.pack_label||'verpakking')+')'+(item.offer.source?.url?' <a href="'+attr(item.offer.source.url)+'" rel="noopener noreferrer" target="_blank">Bron ↗</a>':'')+'</li>').join('')+'</ul>'}
 if(!matched.total)x+='<p class="dialog-note">Geen actuele aanbieding aan deze ingrediënten gekoppeld.</p>';
 x+='</div>';
+const shopOptions=weeklyPriceOptions(r,s);
+if(shopOptions?.available){
+ x+='<div class="dialog-offer-section"><h3>Verpakkingsopties voor dit recept</h3>'+
+ '<p class="dialog-note">'+shopOptions.matched+' van '+shopOptions.required+' ingrediënten hebben een mogelijke winkelprijsoptie uit de externe catalogus (peildatum '+safe(shopOptions.source_date)+'). Per product is het aantal <strong>hele verpakkingen</strong> berekend. Dit is geen volledig of geverifieerd kassabedrag; controleer productvariant, voorraad en prijs.</p>';
+ if(shopOptions.rows.length)x+='<ul class="ingredients">'+shopOptions.rows.map(z=>'<li><strong>'+safe(z.ingredient)+'</strong> ('+safe(z.quantity)+' '+safe(z.unit)+'): '+safe(z.product)+' · '+safe(z.pack_count)+' × '+safe(z.pack_label)+' · '+money(z.purchase_total)+' voor het benodigde aantal verpakkingen'+(z.url?.startsWith('https://')?' · <a href="'+attr(z.url)+'" target="_blank" rel="noopener noreferrer">Bron bekijken ↗</a>':'')+'</li>').join('')+'</ul>';
+ x+='</div>';
+}
 x+='<div class="summary-tiles"><div class="summary-tile"><b>'+priceQuality(r)+'</b><span>'+safe(priceTagText(r).toUpperCase())+'</span></div><div class="summary-tile"><b>'+(m&&Number.isFinite(Number(m.protein_g))?m.protein_g+' g':'—')+'</b><span>EIWIT / PORTIE</span></div><div class="summary-tile"><b>'+(m&&Number.isFinite(Number(m.carbs_g))?m.carbs_g+' g':'—')+'</b><span>KOOLHYDRATEN / PORTIE</span></div></div>';
 if(r.category==='vis')x+='<div class="info-banner">Tip: varieer met vissoorten. Zalm, haring en forel leveren omega 3; magere witvis levert vooral eiwit. Bron: <a href="https://www.voedingscentrum.nl/encyclopedie/vis" target="_blank" rel="noopener noreferrer">Voedingscentrum ↗</a>.</div>';if(r.inspiration_source?.url)x+='<p class="muted">Culinaire inspiratie: <a href="'+attr(r.inspiration_source.url)+'" target="_blank" rel="noopener noreferrer">'+safe(r.inspiration_source.name||'Receptenbron')+' ↗</a>. Dit gerecht is een eigen bewerking.</p>';if(m)x+='<p class="muted">Voedingswaarden per portie: '+safe(m.kcal)+' kcal, '+safe(m.protein_g)+' g eiwit, '+safe(m.carbs_g)+' g koolhydraten, '+safe(m.fat_g)+' g vet. '+(r.macro_status==='verified'?'Berekend':'Schatting')+'.</p>';
 const priceAudit=recipePrice(r);if(priceAudit.state!=='today_confirmed')x+='<div class="info-banner warning"><strong>Prijsstatus:</strong> '+safe(priceStatusText(r))+'. '+(priceAudit.missing.length?'Niet geprijsd: '+safe(priceAudit.missing.join(' · '))+'. ':'')+'De kassaprijs is niet onafhankelijk bevestigd.</div>';if(r.nutrition_note)x+='<div class="info-banner warning"><strong>Voedingsprofiel:</strong> '+safe(r.nutrition_note)+'</div>';x+='<h3 style="margin-top:20px">Ingrediënten voor 4 porties</h3><ul class="ingredients">'+list.map((i,k)=>{const raw=r.ingredients[k];return '<li>'+safe(i.quantity)+' '+safe(i.unit)+' '+safe(i.name)+(typeof raw.pack_price==='number'&&(r.origin!=='folder-idee'||!!matched.anchored)?'<span class="muted"> · verpakkingen '+money(raw.pack_price)+(raw.price_observed_at?' · peildatum '+safe(raw.price_observed_at):'')+'</span>':' · <span class="muted">prijs onbekend</span>')+'</li>'}).join('')+'</ul>';

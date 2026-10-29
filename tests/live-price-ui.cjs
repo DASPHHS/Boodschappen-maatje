@@ -38,7 +38,7 @@ context.window=context;
 vm.createContext(context);
 for(const src of [
  'recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js',
- 'price-observations.js','product-resolver.js','catalog-search.js',
+ 'price-observations.js','product-resolver.js','catalog-search.js','recipe-shop-options.js',
  'recipe-ranking.js','offer-identity.js','source-freshness.js','app.js']){
  vm.runInContext(fs.readFileSync(path.join(ROOT,src),'utf8'),context,{filename:src});
 }
