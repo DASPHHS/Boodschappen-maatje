@@ -370,7 +370,9 @@
           "haver",
           "soja",
           "barista",
-          "koffiemelk"
+          "koffiemelk",
+          "lactosevrije",
+          "lactosevrij"
         ],
         "traits": {
           "shelf_life": "houdbaar",
