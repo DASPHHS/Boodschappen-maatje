@@ -525,15 +525,26 @@ let featured=recipes(s).filter(r=>{const m=offerInfo(r,s);return m.confirmed.len
 x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Geen gekoppelde actierecepten','Bekijk wel de losse aanbiedingen of de bestaande recepten.');
 }
 x+=title('Niet missen · Lidl, Jumbo & AH','Relevante aanbiedingen met hartjes om direct te bewaren. Een actie is niet automatisch de goedkoopste optie.');
-const focus={
-lidl:['broccoli','zalm','prei'],
-jumbo:['jumbo-w44-gemengdgehakt','jumbo-w44-vivera-shoarma','jumbo-w44-flespompoen','jumbo-w44-kipblokjes','jumbo-w44-dreft'],
-ah:['ah-w44-pork-300','ah-w44-sprouts-500','ah-w44-plant-chicken-160','ah-w44-butternut-piece','ah-w44-cauliflower-piece','ah-w44-chicken-300']
-};
+// Always select from current, date-filtered offers. A fixed week-44 list
+// becomes invalid as soon as the next retailer campaign starts.
 for(const s of ORDER){
-let wanted=offers(s).filter(o=>focus[s].includes(o.id)||(s==='lidl'&&focus.lidl.some(k=>norm(o.name).includes(k)))).slice(0,6);
-x+=title(NAMES[s],wanted.length+' uitgelichte producten','<button class="button secondary small" data-goto-offers="'+s+'">Alle aanbiedingen →</button>');
-if(wanted.length)x+='<div class="cards">'+wanted.map(o=>dealCard(o,s)).join('')+'</div>';
+ const relevant=new Set(chosenWatch().map(w=>w.key));
+ const rank=o=>{
+  const personal=relevant.has(profileKey(o))?1000:0;
+  const official=isOfficialOfferSource(o,s)?250:0;
+  const kind=['kip','vis','vlees','vega','groente','fruit','zuivel','voorraad','huishouden','bier'].indexOf(o.category);
+  const category=kind<0?0:80-kind*7;
+  const discount=Number.isFinite(o.regular_price)&&o.regular_price>o.price&&
+    !o.price_conflict&&Number(o.multi_buy_quantity||1)<=1?
+      Math.min(20,(o.regular_price-o.price)/o.regular_price*20):0;
+  return personal+official+category+discount;
+ };
+ const wanted=offers(s).filter(o=>Number.isFinite(o.price)&&!o.price_conflict)
+  .sort((a,b)=>rank(b)-rank(a)||a.name.localeCompare(b.name,'nl')).slice(0,6);
+ x+=title(NAMES[s],wanted.length+' actuele productwaarnemingen',
+  '<button class="button secondary small" data-goto-offers="'+s+'">Alle aanbiedingen →</button>');
+ if(wanted.length)x+='<div class="cards">'+wanted.map(o=>dealCard(o,s)).join('')+'</div>';
+ else x+=empty('Geen recente passende aanbiedingen','Vernieuwen van de externe winkelbron kan nodig zijn.');
 }
 x+='<div class="info-banner"><strong>Vergelijk per verpakking:</strong> ingrediënten kunnen in actie zijn, maar de totale maaltijd is alleen aantoonbaar goedkoop als alle kassaprijzen en goedkopere alternatieven zijn gecontroleerd.</div>';
 x+=title('Budgetbasis zonder acties','Voordelige reguliere recepten op basis van eerder waargenomen schapprijzen — geen garantie dat de prijs altijd gelijk blijft.');
