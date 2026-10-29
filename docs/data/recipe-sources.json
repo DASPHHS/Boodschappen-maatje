@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "policy": "link_only",
+  "updated_at": "2026-10-29",
+  "notice": "Rechtstreeks naar de oorspronkelijke uitgever. Boodschappenmaatje publiceert deze recepten niet opnieuw, kent er geen eigen voedingswaarden of actuele kassaprijzen aan toe en toont ze niet als door ons proefgekookt.",
+  "sources": [
+    {
+      "id": "allerhande",
+      "name": "Albert Heijn Allerhande",
+      "url": "https://www.ah.nl/allerhande/recepten-zoeken",
+      "tag": "Veel keuze · ook budget en eiwitrijk",
+      "reuse": "link_only"
+    },
+    {
+      "id": "jumbo",
+      "name": "Jumbo Recepten",
+      "url": "https://www.jumbo.com/recepten/zoeken",
+      "tag": "Weekmenu's, seizoensgerechten en snelle recepten",
+      "reuse": "link_only"
+    },
+    {
+      "id": "voedingscentrum",
+      "name": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx",
+      "tag": "Gezond en praktisch, met voedingsrichtlijnen",
+      "reuse": "link_only"
+    },
+    {
+      "id": "24kitchen",
+      "name": "24Kitchen",
+      "url": "https://www.24kitchen.nl/recepten",
+      "tag": "Uitgewerkte recepten van koks",
+      "reuse": "link_only"
+    },
+    {
+      "id": "lidl",
+      "name": "Lidl Recepten",
+      "url": "https://www.lidl.nl/c/6658.html",
+      "tag": "Receptideeën van Lidl",
+      "reuse": "link_only"
+    }
+  ]
+}
