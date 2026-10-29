@@ -77,5 +77,23 @@
   return {product:x.o.name,price:x.o.price,unit:x.unit,pack:x.o.pack_label,
     source:x.o.source_provider||x.o.status,url:x.o.url,date:x.checked,status:x.status};
  }
- return {valid,candidates,combined,compactResult};
+ function favoritePrices(store,saved,catalog,pricing,resolver,favorites,today){
+  if(!valid(catalog,today))return [];
+  const picked=[],seen=new Set();
+  for(const f of saved||[]){
+   const raw=norm(f.name).replace(/^(ah|jumbo|lidl|albert heijn)\s+/,'')
+    .replace(/\b\d+\s*x\s*\d+\s*(ml|cl|l|g|kg)\b/g,'')
+    .replace(/\b\d+\s*(ml|cl|l|g|kg)\b/g,'').trim();
+   const words=raw.split(' ').filter(x=>x.length>1&&!/^\d+$/.test(x));
+   if(!words.length)continue;
+   const profile={match:{all:words}};
+   for(const x of candidates(profile,store,catalog,pricing,resolver,today,100)){
+    if(!favorites?.same({...x.o,store},f,store))continue;
+    const key=x.o.url||[x.o.name,x.o.pack_label].join('|');
+    if(!seen.has(key)){seen.add(key);picked.push({...x,exact:true})}
+   }
+  }
+  return picked.sort((a,b)=>(a.unit&&b.unit&&a.unit.unit===b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
+ }
+ return {valid,candidates,combined,compactResult,favoritePrices};
 });
