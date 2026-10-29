@@ -168,7 +168,7 @@
     {
       "checked_date": "2026-10-29",
       "status": "official_regular_observed",
-      "group": "volle_melk",
+      "group": "verse_volle_melk",
       "store": "ah",
       "name": "AH Verse volle melk 1 L",
       "price": 1.39,
@@ -181,7 +181,7 @@
     {
       "checked_date": "2026-10-28",
       "status": "official_regular_observed",
-      "group": "volle_melk",
+      "group": "verse_volle_melk",
       "store": "jumbo",
       "name": "Jumbo Verse Volle Melk 1 L",
       "price": 1.39,
@@ -192,7 +192,7 @@
       "note": "Verse volle melk, 1 L. Geen aanbieding aangetoond."
     },
     {
-      "group": "volle_melk",
+      "group": "verse_volle_melk",
       "store": "lidl",
       "name": "Lidl Verse volle melk PP 1 L",
       "price": 0.94,
@@ -271,6 +271,38 @@
       "type": "diepvries_sereh",
       "url": "https://www.ah.nl/producten/product/wi582347/asian-choice-lemongrass",
       "note": "€13,96/kg op AH-productpagina; 250 g kost omgerekend €3,49. Ander formaat dan losse stengel."
+    },
+    {
+      "status": "external_regular_observed",
+      "group": "volle_melk",
+      "store": "ah",
+      "name": "AH Houdbare volle melk 1 L",
+      "price": 0.99,
+      "quantity": 1000,
+      "unit": "ml",
+      "type": "houdbaar",
+      "pack_label": "1 L",
+      "checked_date": "2026-10-29",
+      "availability_status": "unknown",
+      "source_verification": "indexed_retailer_page_not_live",
+      "url": "https://www.ah.nl/producten/product/wi450535/ah-houdbare-volle-melk",
+      "note": "Prijs op geïndexeerde officiële AH-productpagina geraadpleegd 29 okt 2026; nog niet als live kassaprijs bevestigd."
+    },
+    {
+      "status": "external_regular_observed",
+      "group": "volle_melk",
+      "store": "jumbo",
+      "name": "Jumbo Houdbare Volle Melk 1 L",
+      "price": 0.99,
+      "quantity": 1000,
+      "unit": "ml",
+      "type": "houdbaar",
+      "pack_label": "1 L",
+      "checked_date": "2026-10-29",
+      "availability_status": "unknown",
+      "source_verification": "indexed_retailer_page_not_live",
+      "url": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
+      "note": "Prijs op geïndexeerde officiële Jumbo-productpagina geraadpleegd 29 okt 2026; nog niet als live kassaprijs bevestigd."
     }
   ]
 }
