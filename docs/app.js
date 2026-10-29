@@ -422,9 +422,9 @@ function offerBadge(r){
  return '<span class="offer-badge neutral">Geen actie gekoppeld</span>';
 }
 function recipeSourceLabel(r){
+if(r.origin==='weekinspiratie')return 'Weekmenu · eigen receptidee, niet proefgekookt';
 if(r.quality_status==='concept_niet_culinair_getest')return 'Concept · oorspronkelijke receptbron niet volledig gecontroleerd';
 if(r.quality_status==='uitgewerkt_niet_culinair_getest')return 'Eigen bewerking · niet proefgekookt';
-if(r.origin==='weekinspiratie')return 'Weekmenu · eigen receptidee, niet proefgekookt';
 if(r.origin==='folder-idee')return 'Eigen receptidee rond actie · niet proefgekookt';
 if(r.origin==='dagactie')return 'Eigen dagrecept · niet proefgekookt';
 return 'Eigen inspiratie of bewerking · niet proefgekookt';
