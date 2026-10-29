@@ -121,6 +121,16 @@ def observed(html, record):
         # A tightly scoped single visible Product price is a second safe source.
         matches = re.findall(r"Prijs:\s*€\s*(\d{1,3}[,.]\d{2})", near, re.I)
         amounts = sorted({round(float(v.replace(",", ".")), 2) for v in matches})
+    if not amounts:
+        # AH sometimes exposes only a price per KG/LT after the exact product H1.
+        # Only convert with explicitly stored grams/ml for this exact product ID.
+        matches = re.findall(r"Prijs per\s+(KG|LT)\s*€\s*(\d{1,3}[,.]\d{2})", near, re.I)
+        quantity, unit = record.get("quantity"), record.get("unit")
+        if len(matches) == 1 and isinstance(quantity, (int, float)) and quantity > 0 and (
+            (matches[0][0].upper() == "KG" and unit == "g") or
+            (matches[0][0].upper() == "LT" and unit == "ml")
+        ):
+            amounts = [round(float(matches[0][1].replace(",", ".")) * quantity / 1000, 2)]
     if len(amounts) != 1:return None
     return {"price": amounts[0], "availability_status": "unknown"}
 
