@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: retailer-price-catalog
+  group: boodschappen-data-publication
   cancel-in-progress: false
 jobs:
   refresh:
@@ -44,12 +44,14 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           tmp="$(mktemp -d)"
           cp docs/data/retailer-catalog.json "$tmp/retailer-catalog.json"
-          cp docs/data/product-resolution.json "$tmp/product-resolution.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
             cp "$tmp/retailer-catalog.json" docs/data/retailer-catalog.json
-            cp "$tmp/product-resolution.json" docs/data/product-resolution.json
+            # Always generate coverage using the freshest committed offers
+            # and the new catalog; an earlier calculation is not safe to copy.
+            node scripts/build_product_resolution.cjs
+            node scripts/build_product_resolution.cjs --check
             git add docs/data/retailer-catalog.json docs/data/product-resolution.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Werk AH Jumbo Lidl catalogusprijzen en productdekking bij"
