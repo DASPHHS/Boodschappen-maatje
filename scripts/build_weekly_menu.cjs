@@ -4,8 +4,8 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'../docs/data');
-const {format}=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'});
-const today=process.env.DATE_OVERRIDE||format.format(new Date());
+const formatter=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'});
+const today=process.env.DATE_OVERRIDE||formatter.format(new Date());
 if(!/^\d{4}-\d{2}-\d{2}$/.test(today)||Number.isNaN(Date.parse(today+'T12:00:00Z')))throw Error('Invalid Amsterdam-local date');
 const anchor=new Date(today+'T12:00:00Z');
 const monday=new Date(anchor);monday.setUTCDate(anchor.getUTCDate()-(anchor.getUTCDay()+6)%7);
