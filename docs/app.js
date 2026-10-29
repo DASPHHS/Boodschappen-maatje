@@ -647,6 +647,7 @@ function planRecipe(key){
  const [s,...rest]=key.split('|'),id=rest.join('|');if(!ORDER.includes(s)||!findRecipe(s,id))return;
  state.selected[s]??=[];
  if(!state.selected[s].includes(id))state.selected[s].push(id);
+ state.store=s; // Open the chosen retailer's actual list after planning.
  snapshotRecipe(s,id);save();
 }
 function unplanRecipe(key){
@@ -686,6 +687,8 @@ function myRecipesView(){
 function shoppingView(){
 header('Alles in één winkel','Jouw <span style="color:#719b66">boodschappenlijst.</span>','Jij kiest welke supermarkt je bezoekt. Combineer gerechten en vink je boodschappen in de winkel af.');
 let s=state.store==='alle'?null:state.store;
+if(!s){const populated=ORDER.filter(store=>(state.selected[store]||[]).length>0);
+ if(populated.length===1){s=populated[0];state.store=s;}}
 let x=storeControls(false);
 if(!s){x+=empty('Kies eerst je supermarkt','Selecteer Lidl, Jumbo of Albert Heijn. Je lijst blijft per winkel apart bewaard.');$('#view-lijst').innerHTML=x;return}
 const picks=currentSelections(s);x+='<div class="info-banner">Je hebt '+picks.length+' '+(picks.length===1?'recept':'recepten')+' geselecteerd voor '+safe(NAMES[s])+'. We combineren gelijke ingrediënten. Winkelprijzen zonder verpakkingcontrole worden niet opgeteld.</div>';
