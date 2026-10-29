@@ -9,6 +9,11 @@ on:
       - 'docs/app.js'
       - 'docs/product-matcher.js'
       - 'docs/price-integrity.js'
+      - 'docs/price-observations.js'
+      - 'docs/data/personal-prices.json'
+      - 'scripts/sync_regular_prices.py'
+      - 'tests/test_regular_prices.py'
+      - 'tests/price-observations.cjs'
       - 'docs/source-freshness.js'
       - 'tests/source-freshness.cjs'
       - 'tests/price-integrity.cjs'
@@ -51,12 +56,14 @@ jobs:
           python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
           python -m unittest discover -s tests -p 'test_sync_aanbiedingen.py'
+          python -m unittest discover -s tests -p 'test_regular_prices.py'
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
+          node tests/price-observations.cjs
           node tests/source-freshness.cjs
           node tests/favorite-families.cjs
           node tests/recipe-ranking.cjs
