@@ -4,7 +4,7 @@ const stores=['lidl','jumbo','ah'];
 const validDate=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x));
 const validPrice=x=>typeof x==='number'&&Number.isFinite(x)&&x>0;
 const day=()=>{const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const x=Object.fromEntries(p.map(k=>[k.type,k.value]));return x.year+'-'+x.month+'-'+x.day};
-function auditItem(o,store,today){
+function auditItem(o,store,today,fromBulkFeed=false){
  const issues=[];
  if(!o||!o.id||!o.name)issues.push('product_missing');
  if(!validPrice(o?.price))issues.push('price_missing');
@@ -22,17 +22,18 @@ function auditItem(o,store,today){
  }
  if(o?.loyalty_price&&!o?.loyalty_program)issues.push('loyalty_conditions_unknown');
  const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing'].includes(i));
- return {status:invalid?'needs_review':retailer?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer};
+ return {status:invalid?'needs_review':retailer&&!fromBulkFeed?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer,independently_retailer_checked:retailer&&!fromBulkFeed,source_kind:fromBulkFeed?'external_bulk_with_possible_retailer_link':'direct_report'};
 }
 function audit(data,today=day()){
  const result={schema_version:1,generated_at:new Date().toISOString(),day:today,method:'automatic_consistency_scan_not_cashier_price_verification',stores:{},status_by_id:{},exceptions:[]};
  for(const s of stores){
   const feed=data.catalog?.stores?.[s]||{},seen=new Set(),counts={retailer_page_reported:0,external_feed_reported:0,needs_review:0};
+  const bulkIds=new Set((feed.offers||[]).map(o=>o.id));
   const items=[...(feed.offers||[]),...(data.daily?.stores?.[s]?.offers||[]),...(data.spotlight?.stores?.[s]?.offers||[]),...(data.supplemental?.stores?.[s]?.offers||[])];
   const records={};let problemCount=0;
   for(const o of items){
     if(!o?.id||seen.has(o.id))continue;seen.add(o.id);
-    const a=auditItem(o,s,today);records[o.id]=a;counts[a.status]++;
+    const a=auditItem(o,s,today,bulkIds.has(o.id));records[o.id]=a;counts[a.status]++;
     if(a.issues.length){problemCount++;if(result.exceptions.length<150)result.exceptions.push({store:s,id:o.id,issues:a.issues});}
   }
   // A second listing can agree but may be copying the same retailer folder.
