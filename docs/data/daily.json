@@ -10,7 +10,7 @@
           "id": "lidl-20261028-zalm",
           "name": "Verse zalmfilet op huid",
           "category": "vis",
-          "price": 7.99,
+          "price": 7.49,
           "regular_price": null,
           "pack_label": "500 g",
           "start_date": "2026-10-26",
@@ -18,20 +18,21 @@
           "verified": true,
           "member_required": false,
           "source": {
-            "label": "Lidl productdetail, conflict met eigen aanbiedingenoverzicht",
+            "label": "Lidl officieel 29 okt €7,49/500g; oudere index €7,99 en getoonde kilo-eenheid €15,98 wijken af",
             "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112"
           },
           "crosscheck": null,
           "unit_price": null,
           "unit": "kg",
-          "comparison_note": "Folderprijs, geen reguliere referentieprijs vastgesteld. Gisteren stond een andere variant wilde zalmfilet (zonder huid, 250g) lager per kg in de prijsdataset; niet identiek qua soort en vorm.",
+          "comparison_note": "Op-huid 500g artikel 11318112; huidloos, andere inhoud of wilde zalm niet als identiek vergelijken. De zichtbare Lidl €/kg wijkt af van €7,49/500g.",
           "condition": null,
           "cheapest_alternative": null,
-          "price_conflict": "Productdetail €7,99/500g, Lidl actieoverzicht €7,49/500g maar toont €15,98/kg; geen bewezen kassaprijs",
+          "price_conflict": "Officiële productpagina en folder tonen nu €7,49 voor 500g op huid (berekend €14,98/kg), maar tonen €15,98/kg (impliceert €7,99). Eerdere zoekindex toont €7,99. Zalm zonder huid is een andere SKU. Niet als zekere kassaprijs of €10-maaltijd gebruiken.",
           "price_verified": false,
           "source_provider": "lidl_official",
           "observed_at": "2026-10-29",
-          "checked_at": "2026-10-29"
+          "checked_at": "2026-10-29",
+          "price_status": "conflicted"
         },
         {
           "id": "lidl-20261029-prei",

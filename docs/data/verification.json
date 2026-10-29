@@ -87,22 +87,49 @@
         "product": "Verse zalmfilet op huid",
         "status": "conflicted",
         "checked_at": "2026-10-29",
-        "listed_price": 7.99,
+        "listed_price": 7.49,
         "pack_label": "500 g",
         "checks": [
+          {
+            "site": "Lidl productdetail vandaag",
+            "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+            "price": 7.49,
+            "pack_label": "500 g",
+            "checked_at": "2026-10-29",
+            "unit_price_displayed": 15.98,
+            "unit_price_calculated": 14.98
+          },
+          {
+            "site": "Lidl officieel weekoverzicht",
+            "url": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+            "price": 7.49,
+            "pack_label": "500 g",
+            "checked_at": "2026-10-29",
+            "unit_price_displayed": 15.98
+          },
+          {
+            "site": "Lidl eerder geïndexeerd productdetail",
+            "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+            "price": 7.99,
+            "pack_label": "500 g",
+            "checked_at": "2026-10-28",
+            "historical": true
+          },
           {
             "site": "Lidl productdetail",
             "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
             "price": 7.99,
             "pack_label": "500 g",
-            "checked_at": "2026-10-29"
+            "checked_at": "2026-10-29",
+            "historical": true
           },
           {
             "site": "Lidl officiële actiepagina",
             "url": "https://www.lidl.nl/c/aanbiedingen/a10008785",
             "price": 7.49,
             "pack_label": "500 g",
-            "checked_at": "2026-10-29"
+            "checked_at": "2026-10-29",
+            "historical": true
           },
           {
             "site": "Lidl productdetail",
@@ -121,7 +148,7 @@
             "checked_at": "2026-10-28"
           }
         ],
-        "conclusion": "7,49 vs 7,99, niet bewezen kassaprijs",
+        "conclusion": "Officiële productpagina en folder tonen nu €7,49 voor 500g op huid (berekend €14,98/kg), maar tonen €15,98/kg (impliceert €7,99). Eerdere zoekindex toont €7,99. Zalm zonder huid is een andere SKU. Niet als zekere kassaprijs of €10-maaltijd gebruiken.",
         "offer_period": {
           "start": "2026-10-26",
           "end": "2026-11-01"
@@ -1026,7 +1053,8 @@
       "Jumbo Skuumkoppe 6x300 fles: €7,04/€7,49/€9,99 bronconflict; 0.0 en 6x330 afzonderlijk.",
       "AH Terra 160g €1,59/€1,04/€2,09 bronconflict.",
       "Geen individuele EAN-copieerverzoeken naar PrijsProfeet; bulkdata behouden.",
-      "Geen betrouwbare complete kassamand voor nieuwe recepten."
+      "Geen betrouwbare complete kassamand voor nieuwe recepten.",
+      "Lidl zalm op huid: op 29 oktober zichtbaar €7,49/500g, maar vermelde €15,98/kg impliceert €7,99; eerdere productindex €7,99. Dit is een interne prijsweergave-tegenstrijdigheid."
     ],
     "unit_calculations": {
       "jumbo_boerenkool": {
