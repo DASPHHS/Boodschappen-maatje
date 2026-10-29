@@ -13,12 +13,12 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 // Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
 const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
-function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites));localStorage.setItem('bm_saved_recipes',JSON.stringify(state.savedRecipes));localStorage.setItem('bm_recipe_snapshots',JSON.stringify(state.recipeSnapshots))}catch{}}
+function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_custom_watches',JSON.stringify(state.customWatches));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites));localStorage.setItem('bm_saved_recipes',JSON.stringify(state.savedRecipes));localStorage.setItem('bm_recipe_snapshots',JSON.stringify(state.recipeSnapshots))}catch{}}
 async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
 function storeData(d,s){return (d&&d.stores&&d.stores[s])||{}}
 
@@ -178,7 +178,32 @@ if(/kruiden|saus|bouillon|salade|schnitzel|burger|knaks|spek|baby|gepaneerd|kipm
 if(/plantaardig|vegan|vegetarisch/.test(name)&&(o.category==='vis'||o.category==='kip'||o.category==='vlees'))return null;
 return Object.keys(PERSONAL_MATCH).find(k=>PERSONAL_MATCH[k].test(name))||null;
 }
-function chosenWatch(){return (state.watchlist?.items||[]).filter(x=>!state.watchDisabled.includes(x.key))}
+function allWatches(){return [...(state.watchlist?.items||[]),...state.customWatches]}
+function chosenWatch(){return allWatches().filter(x=>!state.watchDisabled.includes(x.key))}
+function addCustomWatch(query){
+ const title=String(query||'').trim().replace(/\s+/g,' ').slice(0,85);
+ const sized=title.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l)\b/i);
+ const quantity=sized?Number(sized[1].replace(',','.')):null;
+ const factor=sized?({kg:1,g:0.001,l:1,ml:0.001,cl:0.01}[sized[2].toLowerCase()]):null;
+ const constraint=sized&&Number.isFinite(quantity)&&quantity>0?
+   {pack:{unit:/g$/i.test(sized[2])?'kg':'L',amount:quantity*factor}}:{};
+ const phrase=sized?title.replace(sized[0],' '):title;
+ const tokens=window.MaatjeResolver?.norm(phrase).split(' ').filter(Boolean)||[];
+ if(!tokens.length||tokens.length>12||allWatches().some(w=>w.title?.toLowerCase()===title.toLowerCase()))return false;
+ const key='eigen_'+tokens.join('_').slice(0,60)+(constraint.pack?'_'+constraint.pack.amount+constraint.pack.unit.toLowerCase():'');
+ if(allWatches().some(w=>w.key===key))return false;
+ state.customWatches.push({key,title,description:'Zelf gevolgd; zoeken naar betrouwbare winkelprijzen',match:{all:tokens,...constraint}});
+ save();return true;
+}
+function unresolvedNote(w,s){
+ const p=window.MaatjeResolver?.resolution(w,s,state.personalPrices?.products||[],offers(s),window.MaatjeObservations,today());
+ const report=state.resolution?.checked_date===today()?state.resolution?.stores?.[s]?.[w.key]:null;
+ const reason=p?.unresolved_reason||report?.reason||'geen gecontroleerde productprijs in de beschikbare bronnen';
+ const title='Prijsbron gevraagd: '+w.title+' — '+NAMES[s];
+ const body='Product: '+w.title+'\nWinkel: '+NAMES[s]+'\nGezocht: identieke productvorm, inhoud, actuele prijs en officiële product-URL.\nGeen onbewezen prijs invullen.';
+ const url='https://github.com/DASPHHS/Boodschappen-maatje/issues/new?title='+encodeURIComponent(title)+'&body='+encodeURIComponent(body);
+ return '<small>'+safe(reason)+'. Bij de volgende scan worden de aangesloten bronnen opnieuw bekeken.</small><a href="'+attr(url)+'" target="_blank" rel="noopener noreferrer">Broncontrole aanvragen via GitHub ↗</a>';
+}
 function priceRecords(key,s){
 return (state.personalPrices?.products||[]).filter(p=>p.group===key&&p.store===s&&Number.isFinite(p.price)&&p.price>=0&&(
 p.status==='official_promo'&&p.start_date<=today()&&p.end_date>=today()||
@@ -246,10 +271,10 @@ function quickTrackedProducts(){
  const obs=window.MaatjeObservations;
  let out=title('Mijn vaste favorieten · ook zonder actie','Alle bekende prijzen; gewone prijzen, acties en oudere waarnemingen afzonderlijk gelabeld.');
  out+='<div class="tracked-items">'+watch.map(w=>{
-  const byStore=ORDER.map(s=>({store:s,rows:obs?.collect(s,w.key,state.personalPrices?.products||[],offers(s),today())||[]}));
+  const byStore=ORDER.map(s=>({store:s,rows:obs?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[]}));
   return '<article class="tracked-product"><div class="tracked-head"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div><div class="tracked-store-grid">'+byStore.map(p=>{
    const x=p.rows[0];
-   if(!x)return '<div><b>'+safe(NAMES[p.store])+'</b><div class="personal-unknown">Geen passende prijsbron</div><small>Geen volledige gewone-prijzenfeed aangesloten.</small></div>';
+   if(!x)return '<div><b>'+safe(NAMES[p.store])+'</b><div class="personal-unknown">Geen passende prijsbron</div>'+unresolvedNote(w,p.store)+'</div>';
    const o=x.o;
    return '<div><b>'+safe(NAMES[p.store])+'</b><div><strong>'+money(o.price)+'</strong>'+
      (x.unit?'<small>'+money(x.unit.price)+'/'+safe(x.unit.unit)+'</small>':'')+'</div>'+
@@ -262,12 +287,12 @@ function personalComparison(){
  const watch=chosenWatch(),obs=window.MaatjeObservations;
  let out=title('Mijn vaste producten · drie supermarkten','Alle bekende productprijzen met bron, verpakkingsinhoud en peildatum. Verschillende varianten niet automatisch vergelijkbaar.');
  out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
- if(state.manageWatch)out+='<div class="watch-editor">'+(state.watchlist?.items||[]).map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div>';
+ if(state.manageWatch)out+='<div class="watch-editor">'+allWatches().map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>'+(state.customWatches.some(x=>x.key===w.key)?'<button class="button secondary small" data-remove-watch="'+attr(w.key)+'" aria-label="Verwijder product '+attr(w.title)+'">Verwijder</button>':'')).join('')+'</div><div class="personal-settings"><input id="new-watch" class="search" type="text" maxlength="85" placeholder="Nieuw product, bijvoorbeeld amandelen 200 g" aria-label="Nieuw product volgen"><button class="button secondary small" data-add-watch="1">Product volgen</button></div><small>Eigen productwensen blijven in deze browser. Een aanvraag voor centrale broncontrole vereist jouw bevestiging via GitHub.</small>';
  for(const w of watch){
-  const records=ORDER.map(s=>({store:s,entries:obs?.collect(s,w.key,state.personalPrices?.products||[],offers(s),today())||[]}));
+  const records=ORDER.map(s=>({store:s,entries:obs?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[]}));
   out+='<section class="personal-product"><div class="personal-product-title"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div>';
   out+='<div class="personal-grid">'+records.map(({store,entries})=>{
-   if(!entries.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen passende prijsbron</span><small>Onbekend in aangesloten bronnen, niet hetzelfde als niet verkrijgbaar.</small></div>';
+   if(!entries.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen passende prijsbron</span>'+unresolvedNote(w,store)+'</div>';
    const x=entries[0],p=x.o,link=p.url||p.source?.url;
    return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(p.price)+'</strong>'+
     '<small>'+safe(p.name)+'</small><small>'+safe(p.pack_label||'Inhoud volgens productnaam')+'</small>'+
@@ -283,11 +308,14 @@ function personalComparison(){
 }
 
 function personalHighlights(){
-const selected=new Set(chosenWatch().map(w=>w.key));
+const watches=chosenWatch(),selected=new Set(watches.map(w=>w.key));
 const strictKeys=new Set(['volle_melk','skuumkoppe','soto_boemboe','kippenpoten','sereh']);
  const relevant=ORDER.flatMap(s=>offers(s).filter(o=>{
    const key=profileKey(o);
-   return selected.has(key)&&(!strictKeys.has(key)||window.MaatjeObservations?.matchesWatch(o,key));
+   const watch=watches.find(w=>w.key===key);
+   if(!watch||!selected.has(key))return false;
+   if(watch.match)return window.MaatjeResolver?.matching(o,watch,window.MaatjeObservations).status==='match';
+   return !strictKeys.has(key)||window.MaatjeObservations?.matchesWatch(o,key);
  }).map(o=>({...o,store:s,interest:profileKey(o)})));
 const hasOld=o=>typeof o.regular_price==='number'&&o.regular_price>o.price&&!o.price_conflict;
 const saving=o=>hasOld(o)?o.regular_price-o.price:0;
@@ -663,6 +691,8 @@ function render(){clearPage();if(state.view==='vandaag')overview();if(state.view
 function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forEach(r=>normalize(r).forEach(i=>{let k=i.name+'|'+i.unit;let old=m.get(k);if(!old){old={...i,quantity:0};m.set(k,old)}old.quantity+=i.quantity;m.set(k,old)}));let txt='Boodschappenmaatje · '+NAMES[s]+'\n'+picks.map(x=>'• '+x.title).join('\n')+'\n\n'+[...m.values()].map(i=>'☐ '+i.quantity+' '+i.unit+' '+i.name).join('\n');navigator.clipboard?.writeText(txt).then(()=>alert('Boodschappenlijst gekopieerd.')).catch(()=>alert(txt))}
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
+if(b.dataset.addWatch){const value=$('#new-watch')?.value||'';if(addCustomWatch(value))offersView();return}
+if(b.dataset.removeWatch){state.customWatches=state.customWatches.filter(w=>w.key!==b.dataset.removeWatch);save();offersView();return}
 if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);if(state.view==='aanbiedingen')offersView();else render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
@@ -676,5 +706,5 @@ document.addEventListener('input',e=>{if(e.target.id==='find'){let x=e.target.va
 document.addEventListener('change',e=>{if(e.target.matches('[data-watch-key]')){const k=e.target.dataset.watchKey;state.watchDisabled=state.watchDisabled.filter(x=>x!==k);if(!e.target.checked)state.watchDisabled.push(k);save();offersView();return}if(e.target.id==='recipe-quality'){state.recipeQuality=e.target.value;recipeView();return}if(e.target.id==='offer-category'){state.kind=e.target.value;offersView();return}if(e.target.id==='offer-sort'){state.offerSort=e.target.value;offersView();return}if(e.target.id==='offer-evidence'){state.offerEvidence=e.target.value;offersView();return}if(e.target.id==='recipe-sort'){state.sortBy=e.target.value;recipeView();return}if(e.target.id==='deal-filter'){state.dealFilter=e.target.value;recipeView();return}if(e.target.matches('[data-check]')){state.checks[e.target.dataset.check]=e.target.checked;save();e.target.closest('.list-line').querySelector('.item-name').classList.toggle('done',e.target.checked)}});
 $('#dialog-close').addEventListener('click',()=>$('#recipe-dialog').close());
 document.querySelector('#clock').textContent=new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Amsterdam'});
-(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
+(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json'),load('data/product-resolution.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state.resolution=res[11];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
 })();

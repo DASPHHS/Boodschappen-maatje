@@ -1,0 +1,42 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const resolver=require('../docs/product-resolver.js');
+const pricing=require('../docs/price-observations.js');
+const watch=JSON.parse(fs.readFileSync('docs/data/watchlist.json','utf8')).items.find(x=>x.key==='volle_melk');
+assert.ok(watch?.match,'Milk needs a declarative, reusable profile');
+assert.deepEqual(watch.match.traits,{shelf_life:'houdbaar',fat:'vol'});
+const day='2026-10-29';
+const product=(store,name,price,extra={})=>({
+ store,name,price,group:'volle_melk',status:'external_regular_observed',
+ checked_date:'2026-10-29',pack_label:'1 L',...extra
+});
+const ah=product('ah','AH Houdbare volle melk 1 L',.99,{url:'https://www.ah.nl/producten/product/wi450535/ah-houdbare-volle-melk'});
+const jumbo=product('jumbo','Jumbo Houdbare Volle Melk 1 L',.99,{url:'https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK'});
+const fresh=product('ah','AH Verse volle melk 1 L',1.39,{type:'vers'});
+const half=product('ah','AH Houdbare halfvolle melk 1 L',.99,{type:'houdbaar'});
+const six=product('ah','AH Houdbare volle melk 6 x 1 L',5.94,{pack_label:'6 x 1 L'});
+const missingPack=product('ah','AH Houdbare volle melk',{},{pack_label:'inhoud onbekend'});
+assert.equal(resolver.matching(ah,watch,pricing).status,'match');
+assert.equal(resolver.matching(jumbo,watch,pricing).status,'match');
+assert.equal(resolver.matching(fresh,watch,pricing).status,'reject');
+assert.equal(resolver.matching(half,watch,pricing).status,'reject');
+assert.equal(resolver.matching(six,watch,pricing).status,'reject');
+assert.equal(resolver.matching({...ah,pack_label:'inhoud onbekend'},watch,pricing).status,'partial');
+const records=[ah,jumbo,fresh,half,six];
+const result=resolver.resolution(watch,'ah',records,[],pricing,day);
+assert.equal(result.state,'price_observed');
+assert.equal(result.best.o.price,.99);
+assert.equal(result.current.length,1);
+const lost=resolver.resolution(watch,'lidl',records,[],pricing,day);
+assert.equal(lost.state,'needs_source');
+assert.equal(lost.best,null);
+const partial=resolver.resolution(watch,'lidl',[{...ah,store:'lidl',pack_label:'inhoud onbekend'}],[],pricing,day);
+assert.equal(partial.state,'needs_variant_evidence');
+const expired=resolver.resolution(watch,'ah',[{...ah,checked_date:'2026-10-01'}],[],pricing,day);
+assert.equal(expired.state,'stale_or_unavailable');
+const newWatch={key:'eigen_amandelen',title:'Amandelen 200 g',match:{all:['amandelen'],pack:{amount:.2,unit:'kg'}}};
+assert.equal(resolver.matching({name:'Amandelen 200g',pack_label:'200g'},newWatch,pricing).status,'match');
+assert.equal(resolver.matching({name:'Amandelen 500g',pack_label:'500g'},newWatch,pricing).status,'reject');
+assert.equal(resolver.resolution(newWatch,'jumbo',[],[],pricing,day).state,'needs_source');
+assert.equal(pricing.collect('ah',watch,records,[],day,resolver)[0].o.price,.99);
+console.log('Generic source resolver: UHT variants, packaging, old observations, unknowns and future products validated');

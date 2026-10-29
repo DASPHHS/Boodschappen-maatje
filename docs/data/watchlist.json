@@ -157,10 +157,43 @@
     },
     {
       "key": "volle_melk",
-      "title": "Verse volle melk",
+      "title": "Houdbare volle melk voor cappuccino",
       "category": "zuivel",
       "default_selected": true,
-      "description": "Bij voorkeur vers en 1 liter; houdbare melk apart vergelijken. Ook bij geen actie de normale prijs tonen."
+      "description": "UHT/houdbare VOLLE koemelk voor cappuccino's; voorkeur 1 liter. Verse, halfvolle en plantaardige melk uitsluiten. Andere inhoud niet als hetzelfde product prijzen.",
+      "match": {
+        "all": [
+          "volle",
+          "melk"
+        ],
+        "any": [
+          "houdbare",
+          "houdbaar",
+          "uht",
+          "langlekker"
+        ],
+        "none": [
+          "verse",
+          "vers",
+          "halfvolle",
+          "halfvol",
+          "magere",
+          "mager",
+          "plantaardig",
+          "haver",
+          "soja",
+          "barista",
+          "koffiemelk"
+        ],
+        "traits": {
+          "shelf_life": "houdbaar",
+          "fat": "vol"
+        },
+        "pack": {
+          "unit": "L",
+          "amount": 1
+        }
+      }
     },
     {
       "key": "skuumkoppe",

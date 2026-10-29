@@ -46,6 +46,18 @@ class RegularPricesTest(unittest.TestCase):
         self.assertIsNone(p.observed(html, {**MILK, "unit": "stuk"}))
         self.assertIsNone(p.observed(html, {**MILK, "quantity": None}))
 
+    def test_external_seed_is_upgraded_only_after_exact_page_proof(self):
+        seeded = {**MILK, "status": "external_regular_observed",
+                  "price": 1.19, "checked_date": "2026-10-27"}
+        doc = {"products": [seeded]}
+        p.refresh(doc, "2026-10-29", lambda url: HTML_MILK)
+        row = doc["products"][0]
+        self.assertEqual(row["status"], "official_regular_observed")
+        self.assertEqual(row["price"], 1.39)
+        self.assertEqual(row["price_history"][0]["price"], 1.19)
+        self.assertEqual(row["price_history"][-1]["price"], 1.39)
+        self.assertEqual(row["source_verification"], "retailer_product_page_checked")
+
     def test_unavailable_not_bought(self):
         self.assertEqual(p.observed(HTML_SEREH, SEREH)["availability_status"], "discontinued")
 

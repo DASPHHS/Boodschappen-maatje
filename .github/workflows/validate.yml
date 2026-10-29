@@ -10,6 +10,9 @@ on:
       - 'docs/product-matcher.js'
       - 'docs/price-integrity.js'
       - 'docs/price-observations.js'
+      - 'docs/product-resolver.js'
+      - 'scripts/build_product_resolution.cjs'
+      - 'tests/product-resolver.cjs'
       - 'docs/data/personal-prices.json'
       - 'scripts/sync_regular_prices.py'
       - 'tests/test_regular_prices.py'
@@ -64,6 +67,8 @@ jobs:
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
           node tests/price-observations.cjs
+          node tests/product-resolver.cjs
+          node scripts/build_product_resolution.cjs --check
           node tests/source-freshness.cjs
           node tests/favorite-families.cjs
           node tests/recipe-ranking.cjs

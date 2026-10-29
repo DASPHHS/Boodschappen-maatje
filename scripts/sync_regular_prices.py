@@ -152,7 +152,7 @@ def fetch(url):
 def refresh(data, day, get_html=fetch):
     checked = updated = 0
     for item in data.get("products", []):
-        if item.get("status") not in ("official_regular_observed", "official_discount_undated"):
+        if item.get("status") not in ("official_regular_observed", "official_discount_undated", "external_regular_observed"):
             continue
         if not direct_url(item): continue
         checked += 1
@@ -171,8 +171,19 @@ def refresh(data, day, get_html=fetch):
             continue
         # A matched product page without a price must leave the old timestamp unchanged.
         if "price" in result:
+            previous = item.get("price")
+            history = item.setdefault("price_history", [])
+            if not history and isinstance(previous, (float, int)) and item.get("checked_date"):
+                history.append({"date": item["checked_date"], "price": previous,
+                                "source_status": item.get("status", "observation")})
+            last = history[-1] if history else None
+            if not last or last.get("price") != result["price"] or last.get("date") != day:
+                history.append({"date": day, "price": result["price"], "source_status": "official_regular_observed"})
+            item["price_history"] = history[-90:]
             item["price"] = result["price"]
             item["checked_date"] = day
+            item["status"] = "official_regular_observed"
+            item["source_verification"] = "retailer_product_page_checked"
             item["availability_status"] = "unknown"
             item["availability_checked_date"] = day
             updated += 1

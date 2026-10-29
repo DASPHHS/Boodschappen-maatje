@@ -3,7 +3,7 @@ const price=require('../docs/price-observations.js');
 const mock={};new Function('window',require('node:fs').readFileSync('docs/favorites.js','utf8'))(mock);
 const fav=mock.MaatjeFavorites;
 const day='2026-10-29';
-const milk={store:'ah',group:'volle_melk',name:'AH Verse volle melk 1 L',price:1.39,
+const milk={store:'ah',group:'volle_melk',name:'AH Houdbare volle melk 1 L',price:0.99,
  quantity:1000,unit:'ml',status:'official_regular_observed',checked_date:'2026-10-28',
  url:'https://www.ah.nl/producten/product/wi1524/volle-melk'};
 const fakeBundle={id:'ah-three',name:'AH Verse volle melk 3 stuks',pack_label:'3 stuks',price:5.67,
@@ -13,9 +13,9 @@ assert.equal(price.unitCost(fakeBundle),null,'no inferred litre price for bundle
 assert.equal(price.pack({...fakeBundle,status:'official_regular_observed',quantity:1000,unit:'ml'}),null,'structured quantity cannot override explicit unknown bundle');
 let ah=price.collect('ah','volle_melk',[milk],[fakeBundle],day);
 assert.equal(ah.length,1,'3-stuks must never displace 1-litre fresh milk');
-assert.equal(ah[0].o.price,1.39);
+assert.equal(ah[0].o.price,0.99);
 assert.equal(ah[0].unit.unit,'L');
-assert.equal(ah[0].unit.price,1.39);
+assert.equal(ah[0].unit.price,0.99);
 assert.ok(ah[0].label.includes('2026-10-28'));
 assert.equal(price.collect('lidl','volle_melk',[milk],[fakeBundle],day).length,0);
 const stale=price.inspect({...milk,checked_date:'2026-10-01'},'ah',day);
@@ -31,6 +31,7 @@ assert.equal(price.unitCost({pack_label:'ca. 350 g',price:4.49}),null);
 assert.equal(price.unitCost({pack_label:'5 dozen, variabele tabletaantallen',price:37.98}),null);
 assert.equal(price.matchesWatch(fakeBundle,'volle_melk'),false);
 assert.equal(price.matchesWatch(milk,'volle_melk'),true);
+assert.equal(price.matchesWatch({...milk,name:'AH Verse volle melk 1 L'},'volle_melk'),false);
 const future={...fakeBundle,pack_label:'1 L',start_date:'2026-11-01',end_date:'2026-11-03'};
 assert.equal(price.collect('ah','volle_melk',[],[future],day).length,0);
 const unknown={name:'Page Vochtig Toiletpapier',pack_label:'inhoud onbekend',price:0.99,

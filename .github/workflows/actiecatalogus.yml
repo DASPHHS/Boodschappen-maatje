@@ -9,6 +9,9 @@ on:
       - 'scripts/sync_lidl_supplemental.py'
       - 'scripts/sync_regular_prices.py'
       - 'docs/data/personal-prices.json'
+      - 'docs/data/watchlist.json'
+      - 'docs/product-resolver.js'
+      - 'scripts/build_product_resolution.cjs'
       - 'docs/data/lidl-source-registry.json'
       - '.github/workflows/actiecatalogus.yml'
   schedule:
@@ -24,6 +27,9 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -56,6 +62,11 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/sync_regular_prices.py
+      - name: Record coverage and unresolved products
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          node tests/product-resolver.cjs
+          node scripts/build_product_resolution.cjs
       - name: Audit all received promotions
         if: steps.gate.outputs.run == 'true'
         run: |
@@ -73,6 +84,7 @@ jobs:
           cp docs/data/supplemental-offers.json "$tmp/supplemental-offers.json"
           cp docs/data/offer-audit.json "$tmp/offer-audit.json"
           cp docs/data/personal-prices.json "$tmp/personal-prices.json"
+          cp docs/data/product-resolution.json "$tmp/product-resolution.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
@@ -80,7 +92,8 @@ jobs:
             cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
             cp "$tmp/offer-audit.json" docs/data/offer-audit.json
             cp "$tmp/personal-prices.json" docs/data/personal-prices.json
-            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json
+            cp "$tmp/product-resolution.json" docs/data/product-resolution.json
+            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
             if git push origin HEAD:main; then exit 0; fi
