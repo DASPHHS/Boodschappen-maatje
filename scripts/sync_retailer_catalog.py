@@ -10,6 +10,7 @@ import datetime as dt
 import json
 import os
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
@@ -93,7 +94,7 @@ def build(dataset, commits, today):
 
 
 def main():
-    today=dt.datetime.now(dt.timezone(dt.timedelta(hours=1))).date()
+    today=dt.datetime.now(ZoneInfo('Europe/Amsterdam')).date()
     if os.getenv("DATE_OVERRIDE"): today=dt.date.fromisoformat(os.environ["DATE_OVERRIDE"])
     try:
         dataset=fetch_json(SOURCE)
