@@ -72,12 +72,12 @@
       o.status==='external_regular_observed'?'externe prijswaarneming':
       'prijswaarneming';
   const dated=age!==null&&age>=0;
-  const fresh=!unavailable&&(within||(!promo&&dated&&age<=7));
+  const fresh=!unavailable&&!o.source_scan_stale&&(within||(!promo&&dated&&age<=7));
   const status=unavailable?'niet-beschikbaar':promo&&!within?'historisch':!fresh?'oud':conflict?'conflict':officialSource&&direct?'winkelbron':'waarneming';
   const label=classified+(conflict?' · bronnen verschillen':'')+
     (!within&&dated?' · '+noted:within?' · t/m '+o.end_date:' · datum niet bevestigd');
   return {o,store,pack:p,unit,status,label,fresh,conflict,officialSource,direct,
-   current:!unavailable&&(within||(!promo&&fresh)),isPromotion:promo&&within&&!unavailable,checked:dated?noted:null,
+   current:fresh,isPromotion:promo&&within&&!unavailable,checked:dated?noted:null,
    score:(unavailable?-1000:0)+(conflict?-100:0)+(within?70:0)+(!promo&&fresh?55:0)+
     (officialSource?20:0)+(direct?12:0)+(p&&!p.approximate?9:0)+
     (!promo&&!fresh?0:0)+(age!==null?Math.max(0,7-Math.max(0,age)):0)};
@@ -85,7 +85,8 @@
  function matchesWatch(o,key){
   const n=fold(o?.name),p=pack(o);
   if(key==='volle_melk')return /\bvolle melk\b/.test(n)&&
-    !/\b(houdbaar|lang houdbaar|halfvolle|halfvol|plantaardig|haver|geitenmelk)\b/.test(n)&&
+    /\b(houdbare|houdbaar|uht|langlekker)\b/.test(n+' '+fold(o?.type))&&
+    !/\b(verse|vers|halfvolle|halfvol|magere|mager|plantaardig|haver|geitenmelk)\b/.test(n)&&
     !!p&&p.unit==='L'&&Math.abs(p.amount-1)<0.001&&p.pieces===1&&!p.approximate;
   if(key==='skuumkoppe')return /\btexels\b/.test(n)&&/\bskuumkoppe\b/.test(n);
   if(key==='soto_boemboe')return /\b(soto|saoto)\b/.test(n)&&/\bboemboe\b/.test(n);
@@ -98,7 +99,13 @@
     (a.unit&&b.unit&&a.unit.unit===b.unit.unit?a.unit.price-b.unit.price:0)||
     a.o.name.localeCompare(b.o.name,'nl'));
  }
- function collect(store,key,records,offers,today){
+ function apiBridge(){return {pack,unitCost,inspect,choose};}
+ function collect(store,key,records,offers,today,resolver){
+  if(key&&typeof key==='object'&&key.match&&resolver){
+   const result=resolver.candidates(key,store,records,offers,apiBridge(),today);
+   return result.valid;
+  }
+  key=typeof key==='object'?key.key:key;
   const rows=[];
   for(const p of records||[])if(p.store===store&&p.group===key&&matchesWatch(p,key)){
     const x=inspect(p,store,today);if(x)rows.push(x);
