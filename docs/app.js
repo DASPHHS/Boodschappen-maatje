@@ -14,6 +14,9 @@ const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterda
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
 const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+// Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
+const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
+if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
 function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites));localStorage.setItem('bm_saved_recipes',JSON.stringify(state.savedRecipes));localStorage.setItem('bm_recipe_snapshots',JSON.stringify(state.recipeSnapshots))}catch{}}
 async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
@@ -219,63 +222,64 @@ function favoriteDashboard(){
  out+='<section class="personal-product favorite-product favorite-family"><div class="favorite-title"><div><strong>'+safe(group.label)+'</strong><small>'+saved.length+' bewaarde verpakking'+(saved.length===1?'':'en')+' · alle varianten apart vergelijkbaar</small></div></div>';
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
- const familyOffers=offers(s).filter(o=>helper.familyKey(o)===group.key);
-  const choices=familyOffers.filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict)
-    .map(o=>({o,unit:window.MaatjePricing?.unitCost(o),exact:saved.some(f=>helper.same(f,favoriteTarget(o,s),s))}));
- choices.sort((a,b)=>Number(b.exact)-Number(a.exact)||Number(!!a.o.price_conflict)-Number(!!b.o.price_conflict)||(a.unit&&b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
- if(!choices.length){
-    const observed=(state.personalPrices?.products||[]).filter(p=>p.store===s&&helper.familyKey(p)===group.key&&Number.isFinite(p.price));
-    const reported=familyOffers.slice(0,3).map(o=>'<small>'+safe(o.name)+': '+money(o.price)+' · '+safe(offerEvidenceLabel(o,s))+' (niet bevestigd bij winkel)</small>').join('');
-    return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen rechtstreeks bevestigde aanbieding</span>'+
-      reported+(observed.length?observed.slice(0,3).map(p=>'<small>'+safe(p.name)+': '+money(p.price)+' · prijswaarneming '+safe(p.checked_date||p.start_date||'zonder datum')+' (geen bevestigde actie)</small>').join(''):'<small>Geen gewone winkelprijs bevestigd; beschikbaarheid onbekend.</small>')+'</div>';
-  }
+ const obs=window.MaatjeObservations;
+ const rows=obs?.favoriteRows(s,saved,state.personalPrices?.products||[],offers(s),helper,today())||[];
+ if(!rows.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen prijs in aangesloten bronnen</span><small>Niet gevonden betekent niet dat het artikel niet verkrijgbaar is. De promotiefeed bevat geen volledig schapassortiment.</small></div>';
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
- choices.slice(0,5).map(({o,unit,exact})=>
- '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+(o.price_conflict?'*':'')+'</strong>'+(unit?'<span>'+money(unit.price)+'/'+safe(unit.unit)+'</span>':'<span>Eenheidsprijs onbekend</span>')+'</div><small>'+safe(o.name)+' · '+safe(o.pack_label||'verpakking onbekend')+'</small><small>'+(exact?'Exact bewaarde variant':'Andere verpakking/variant binnen dezelfde productfamilie')+' · '+safe(offerEvidenceLabel(o,s))+'</small><small>Geldig t/m '+dateNL(o.end_date)+'</small>'+(o.source?.url?'<a href="'+attr(o.source.url)+'" rel="noopener noreferrer" target="_blank">Prijsbron</a>':'')+
- '</div>').join('')+
- (choices.length>5?'<small>+'+(choices.length-5)+' aanvullende waarnemingen in Alle aanbiedingen</small>':'')+'</div>';
+  rows.slice(0,6).map(x=>{
+   const o=x.o,source=o.url||o.source?.url;
+   return '<div class="favorite-store-option"><div class="favorite-store-price"><strong>'+money(o.price)+'</strong>'+
+    (x.unit?'<span>'+money(x.unit.price)+'/'+safe(x.unit.unit)+'</span>':'<span>Eenheidsprijs niet bekend</span>')+'</div>'+
+    '<small>'+safe(o.name)+' · '+safe(o.pack_label||'inhoud volgens productnaam')+'</small>'+
+    '<small>'+(x.exact?'Exacte bewaarde verpakking':'Andere verpakking/variant; niet exact vergelijkbaar')+'</small>'+
+    '<small>'+safe(x.label)+(x.status==='oud'?' · niet actueel':'')+'</small>'+
+    (source&&/^https:\/\//.test(source)?'<a href="'+attr(source)+'" rel="noopener noreferrer" target="_blank">Controleer prijsbron ↗</a>':'')+'</div>';
+  }).join('')+(rows.length>6?'<small>+'+(rows.length-6)+' andere waarnemingen</small>':'')+'</div>';
  }).join('')+'</div></section>';
  }
  return out+'<div class="info-banner warning">Productgroepen zijn geen bewijs dat twee artikelen identiek zijn. Vergelijk alleen gelijkwaardige inhoud en de prijs per liter; 0.0 en alcoholhoudend blijven gescheiden. Hartjes worden in deze browser bewaard, niet tussen apparaten gesynchroniseerd.</div>';
 }
 
 function quickTrackedProducts(){
-const important=['volle_melk','skuumkoppe','soto_boemboe','kippenpoten','sereh'];
-const watch=chosenWatch().filter(w=>important.includes(w.key));
-if(!watch.length)return '';
-let out=title('Mijn vaste favorieten · ook zonder actie','Dit zijn productinteresses uit je boodschappenprofiel. Hartjes bewaren daarnaast exacte verpakkingen in deze browser.');
-out+='<div class="tracked-items">'+watch.map(w=>{
- const offersByStore=ORDER.map(s=>({store:s,offers:offers(s).filter(o=>profileKey(o)===w.key),regular:priceRecords(w.key,s)}));
- return '<article class="tracked-product"><div class="tracked-head"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div><div class="tracked-store-grid">'+offersByStore.map(p=>{
- let o=p.offers[0], reg=[...p.regular].sort((a,b)=>(normalizedPrice(a)??Infinity)-(normalizedPrice(b)??Infinity))[0];
- if(o)return '<div><b>'+safe(NAMES[p.store])+'</b><div><strong>'+money(o.price)+'</strong><small> Actie gemeld</small></div><small>'+safe(o.pack_label||o.name)+'</small>'+favButton(o,p.store)+'</div>';
- if(reg)return '<div><b>'+safe(NAMES[p.store])+'</b><div><strong>'+money(reg.price)+'</strong><small> '+safe(reg.status==='external_regular_observed'?'extern':reg.status==='official_discount_undated'?'korting, duur onbekend':'regulier')+'</small></div><small>'+safe(reg.name)+'</small>'+favButton(reg,p.store)+'</div>';
- return '<div><b>'+safe(NAMES[p.store])+'</b><div class="personal-unknown">Prijs onbekend</div></div>';
- }).join('')+'</div></article>';
- }).join('')+'</div>';
-return out;
+ const important=['volle_melk','skuumkoppe','soto_boemboe','kippenpoten','sereh'];
+ const watch=chosenWatch().filter(w=>important.includes(w.key));if(!watch.length)return '';
+ const obs=window.MaatjeObservations;
+ let out=title('Mijn vaste favorieten · ook zonder actie','Alle bekende prijzen; gewone prijzen, acties en oudere waarnemingen afzonderlijk gelabeld.');
+ out+='<div class="tracked-items">'+watch.map(w=>{
+  const byStore=ORDER.map(s=>({store:s,rows:obs?.collect(s,w.key,state.personalPrices?.products||[],offers(s),today())||[]}));
+  return '<article class="tracked-product"><div class="tracked-head"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div><div class="tracked-store-grid">'+byStore.map(p=>{
+   const x=p.rows[0];
+   if(!x)return '<div><b>'+safe(NAMES[p.store])+'</b><div class="personal-unknown">Geen passende prijsbron</div><small>Geen volledige gewone-prijzenfeed aangesloten.</small></div>';
+   const o=x.o;
+   return '<div><b>'+safe(NAMES[p.store])+'</b><div><strong>'+money(o.price)+'</strong>'+
+     (x.unit?'<small>'+money(x.unit.price)+'/'+safe(x.unit.unit)+'</small>':'')+'</div>'+
+     '<small>'+safe(o.name)+' · '+safe(o.pack_label||'inhoud uit productnaam')+'</small>'+
+     '<small>'+safe(x.label)+(x.status==='oud'?' · niet actueel':'')+'</small>'+favButton(o,p.store)+'</div>';
+  }).join('')+'</div></article>';
+ }).join('')+'</div>';return out;
 }
 function personalComparison(){
-const watch=chosenWatch();
-let out=title('Mijn vaste producten · drie supermarkten','Je kiest zelf de winkel. Getoond wordt per winkel de goedkoopste beschikbare prijswaarneming per eenheid; verschillende varianten zijn niet automatisch vergelijkbaar.');
-out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
-if(state.manageWatch)out+='<div class="watch-editor">'+(state.watchlist?.items||[]).map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div>';
-for(const w of watch){
-const observations=ORDER.map(s=>({store:s,entries:priceRecords(w.key,s)}));
-out+='<section class="personal-product"><div class="personal-product-title"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div>';
-out+='<div class="personal-grid">'+observations.map(({store,entries})=>{
-const sorted=[...entries].sort((a,b)=>(normalizedPrice(a)??Infinity)-(normalizedPrice(b)??Infinity));
-if(!sorted.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen recente prijs bevestigd</span></div>';
-const r=sorted[0],p=normalizedPrice(r);
-return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(r.price)+'</strong><small>'+safe(r.name)+'</small><small>'+ (p===null?'Prijs per eenheid onbekend':money(p)+'/'+safe(normalizedUnit(r))) +'</small>'+(sorted.length>1?'<small>'+ (sorted.length-1)+' andere variante(n) geregistreerd</small>':'')+'<small class="personal-evidence">'+safe(r.status==='official_promo'?'Actie (controleer datum)':r.status==='official_discount_undated'?'Webkorting, periode onbekend':r.status==='external_regular_observed'?'Externe prijswaarneming':'Reguliere schapprijs')+'</small>'+'<div class="personal-shop-actions">'+favButton(r,store)+'</div><a href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Prijsbron ↗</a></div>';
-}).join('')+'</div>';
-if(w.key==='sungold')out+='<p class="personal-finding">Vergelijk SunGold uitsluitend bij dezelfde inhoud en productvariant. Oude handmatig genoteerde bedragen gelden niet als actuele winkelprijzen.</p>';
-if(w.key==='pindakaas')out+='<p class="personal-finding">Vergelijk gewone en 100%-pindakaas niet automatisch: samenstelling en verpakking verschillen.</p>';
-if(w.key==='sperziebonen')out+='<p class="personal-finding">Vers en diepvries verschillen in vorm en toepassing; vergelijk de actuele kiloprijs alleen als het alternatief geschikt is.</p>';
-out+='</section>';
-}
-out+='<div class="info-banner warning">Ontbrekende prijsgegevens betekenen niet dat een winkel het product niet verkoopt. Een prijs met peildatum is geen live-kassagarantie. Bij verschillende varianten of aankoopaantallen is geen absolute goedkoopste winkel vastgesteld.</div>';
-return out;
+ const watch=chosenWatch(),obs=window.MaatjeObservations;
+ let out=title('Mijn vaste producten · drie supermarkten','Alle bekende productprijzen met bron, verpakkingsinhoud en peildatum. Verschillende varianten niet automatisch vergelijkbaar.');
+ out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
+ if(state.manageWatch)out+='<div class="watch-editor">'+(state.watchlist?.items||[]).map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div>';
+ for(const w of watch){
+  const records=ORDER.map(s=>({store:s,entries:obs?.collect(s,w.key,state.personalPrices?.products||[],offers(s),today())||[]}));
+  out+='<section class="personal-product"><div class="personal-product-title"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div>';
+  out+='<div class="personal-grid">'+records.map(({store,entries})=>{
+   if(!entries.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen passende prijsbron</span><small>Onbekend in aangesloten bronnen, niet hetzelfde als niet verkrijgbaar.</small></div>';
+   const x=entries[0],p=x.o,link=p.url||p.source?.url;
+   return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(p.price)+'</strong>'+
+    '<small>'+safe(p.name)+'</small><small>'+safe(p.pack_label||'Inhoud volgens productnaam')+'</small>'+
+    '<small>'+(x.unit?money(x.unit.price)+'/'+safe(x.unit.unit):'Geen zekere eenheidsprijs')+'</small>'+
+    '<small class="personal-evidence">'+safe(x.label)+(x.status==='oud'?' · verouderd':'')+'</small>'+
+    (entries.length>1?'<small>'+(entries.length-1)+' andere prijswaarnemingen, mogelijk andere varianten</small>':'')+
+    '<div class="personal-shop-actions">'+favButton(p,store)+'</div>'+
+    (link&&/^https:\/\//.test(link)?'<a href="'+attr(link)+'" target="_blank" rel="noopener noreferrer">Controleer bron ↗</a>':'')+'</div>';
+  }).join('')+'</div></section>';
+ }
+ out+='<div class="info-banner warning">De gratis promotiebron bevat geen volledige reguliere schapprijzen. Oude prijzen blijven zichtbaar met peildatum en tellen niet als actuele kassaprijs. Vergelijk geen verschillende verpakkingen of multibuys op uitsluitend het kassabedrag.</div>';
+ return out;
 }
 
 function personalHighlights(){
@@ -517,7 +521,7 @@ return '<div class="recipe-toolbar offer-toolbar"><label>Sorteren <select id="of
 '</select></label><span class="muted">* Alleen vergelijkbare gewone prijs en actieprijs; bundels zonder zekere vergelijkbaarheid niet als korting gerangschikt.</span></div>';
 }
 function offersView(){
-header('Slim besparen','Voor mij: <span style="color:#719b66">echte voordelen.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
+header('Slim besparen','Voor mij: <span style="color:#719b66">prijzen met broncontrole.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
 let out=auditSummary();out+='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
 if(state.offerMode==='personal')out+=quickTrackedProducts()+personalHighlights()+personalComparison()+campaignHighlights('ah');
 else if(state.offerMode==='favorites')out+=favoriteDashboard()+quickTrackedProducts();

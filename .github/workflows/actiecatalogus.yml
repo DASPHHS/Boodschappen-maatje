@@ -7,6 +7,8 @@ on:
       - 'scripts/sync_aanbiedingen.py'
       - 'scripts/offer-audit.cjs'
       - 'scripts/sync_lidl_supplemental.py'
+      - 'scripts/sync_regular_prices.py'
+      - 'docs/data/personal-prices.json'
       - 'docs/data/lidl-source-registry.json'
       - '.github/workflows/actiecatalogus.yml'
   schedule:
@@ -38,7 +40,8 @@ jobs:
       - name: Compile check
         if: steps.gate.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py
+          python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py scripts/sync_regular_prices.py
+          python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
       - name: Read all public promotions
         if: steps.gate.outputs.run == 'true'
@@ -49,6 +52,10 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/sync_lidl_supplemental.py
+      - name: Recheck known regular prices on retailer product pages
+        if: steps.gate.outputs.run == 'true'
+        continue-on-error: true
+        run: python scripts/sync_regular_prices.py
       - name: Audit all received promotions
         if: steps.gate.outputs.run == 'true'
         run: |
@@ -65,13 +72,15 @@ jobs:
           cp docs/data/offers-catalog.json "$tmp/offers-catalog.json"
           cp docs/data/supplemental-offers.json "$tmp/supplemental-offers.json"
           cp docs/data/offer-audit.json "$tmp/offer-audit.json"
+          cp docs/data/personal-prices.json "$tmp/personal-prices.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
             cp "$tmp/offers-catalog.json" docs/data/offers-catalog.json
             cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
             cp "$tmp/offer-audit.json" docs/data/offer-audit.json
-            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json
+            cp "$tmp/personal-prices.json" docs/data/personal-prices.json
+            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
             if git push origin HEAD:main; then exit 0; fi
