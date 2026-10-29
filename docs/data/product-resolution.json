@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T13:04:28.400Z",
+  "generated_at": "2026-10-29T13:07:15.054Z",
   "checked_date": "2026-10-29",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 53,
+    "price_observed": 30,
     "stale_or_unavailable": 0,
     "needs_variant_evidence": 3,
-    "needs_source": 4
+    "needs_source": 27
   },
   "stores": {
     "lidl": {
@@ -31,22 +31,22 @@
         "checked_date": null
       },
       "pindakaas": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Pindakaas",
-        "price": 1.38,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "kwark": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Magere kwark 1kg",
-        "price": 1.69,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "dreft": {
         "state": "needs_source",
@@ -58,103 +58,103 @@
         "checked_date": null
       },
       "walnoten": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Walnoten ongebrand",
-        "price": 1.89,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "tofu": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Tofu",
-        "price": 1.3,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "gemengdgehakt": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Gemengd gehakt 1kg",
-        "price": 5.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "kipfilet": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Kipfilet Americanos",
-        "price": 4.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Alaska koolvis XXL",
-        "price": 6.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+        "product_name": "- Verse zalmfilet op huid",
+        "price": 7.49,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "pompoen": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Pureersoep pompoen",
-        "price": 3.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "sperziebonen": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Sperziebonen",
-        "price": 1.19,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "bospeen": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Bospeen",
-        "price": 1.45,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "popcorn": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Popcorn mais",
-        "price": 1.69,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "volle_melk": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Houdbare volle melk",
-        "price": 0.98,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "skuumkoppe": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Texels Skuumkoppe",
-        "price": 5.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "skuumkoppe_00": {
         "state": "needs_source",
@@ -175,22 +175,22 @@
         "checked_date": null
       },
       "kippenpoten": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Gegaarde drumsticks",
-        "price": 4.29,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "sereh": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://github.com/supermarkt/checkjebon/blob/main/data/supermarkets.json",
-        "product_name": "Citroengras",
-        "price": 0.69,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       }
     },
     "jumbo": {
@@ -215,28 +215,28 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
+        "source": "https://www.jumbo.com/producten/ontbijt%2C-broodbeleg-en-bakproducten/zoet-broodbeleg/pindakaas/jumbo/?filters=Merken%3ABolletje%2CKoopmans%2CHero%2CWhole+Earth%2CSkippy%2CJumbo%2CCalv%C3%A9",
         "product_name": "Jumbo Pindakaas Naturel 600 g",
-        "price": 1.45,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "price": 1.35,
+        "price_status": "prijsregistratie zonder directe productverificatie · 2026-10-28",
+        "checked_date": "2026-10-28"
       },
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
-        "product_name": "Jumbo Franse Kwark Mager 1000 g",
-        "price": 1.85,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-aardbei-500-g-347423CUP",
+        "product_name": "Campina Magere Milde Kwark met 'n Vleugje Aardbei 500 g",
+        "price": 1.5,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "dreft": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/dreft-platinum-citroen-vaatwascapsules-21-x-738705ZK",
-        "product_name": "Dreft Platinum Citroen Vaatwascapsules 21 X",
-        "price": 12.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/dreft-platinum-plus-all-in-one-vaatwastabletten-anti-dofheidstechnologie-19-x-676439ZK",
+        "product_name": "Dreft Platinum Plus All In One Vaatwastabletten Anti-dofheidstechnologie 19 X",
+        "price": 5.6,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "walnoten": {
@@ -244,8 +244,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
         "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
-        "price": 6.39,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "price": 4.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "tofu": {
@@ -253,8 +253,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
         "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "price": 0.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "gemengdgehakt": {
@@ -262,62 +262,62 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
-        "price": 7.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "price": 4.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vergrill-gerookte-kipfilet-plakjes-ca-150-g-722286KGR",
-        "product_name": "Vergrill Gerookte Kipfilet Plakjes ca. 150 g",
-        "price": 3.19,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/jumbo-kipfiletreepjes-voorgegaard-135-g-742856TRA",
+        "product_name": "Jumbo Kipfiletreepjes Voorgegaard 135 g",
+        "price": 2.5,
+        "price_status": "externe actiemelding · t/m 2026-11-24",
         "checked_date": "2026-10-29"
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
-        "product_name": "Jumbo Koolvis Filet 400 g",
-        "price": 2.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/vivera-plantaardige-zalmfilet-2-stuks-200-g-675928STK",
+        "product_name": "Vivera Plantaardige Zalmfilet 2 Stuks 200 g",
+        "price": 1.9,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/olvarit-12-maanden-knijpfruit-pompoen-wortel-appel-100g-714715ZK",
-        "product_name": "Olvarit 12+ Maanden Knijpfruit Pompoen, Wortel, Appel 100g",
-        "price": 1.25,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/jumbo-biologische-pompoen-208854STK",
+        "product_name": "Jumbo Biologische Pompoen",
+        "price": 1.49,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-680g-318540POT",
-        "product_name": "Jumbo Gebroken Sperziebonen 680g",
-        "price": 1.19,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-400-g-583752ZK",
+        "product_name": "Jumbo Gebroken Sperziebonen 400 g",
+        "price": 1.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "bospeen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-bospeen-2-3-personen-285592STK",
-        "product_name": "Jumbo Bospeen 2-3 Personen",
-        "price": 1.59,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "source": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
+        "product_name": "Jumbo bospeen",
+        "price": 0.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": null
       },
       "popcorn": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
-        "product_name": "Jumbo Popcorn Maïs 500 g",
-        "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.jumbo.com/producten/jimmy-s-air-popped-popcorn-salted-caramel-150-g-646833ZK",
+        "product_name": "Jimmy's Air Popped Popcorn Salted Caramel 150 g",
+        "price": 0.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "volle_melk": {
@@ -334,8 +334,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-4x500ml-736230DS",
         "product_name": "Texels Skuumkoppe 4x500ML",
-        "price": 9.95,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "price": 7.46,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "skuumkoppe_00": {
@@ -343,36 +343,36 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-6x330ml-737475DS",
         "product_name": "Texels Skuumkoppe 0.0%  6x330ML",
-        "price": 10.09,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "price": 7.56,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
       "soto_boemboe": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/toko-lien-boemboe-soto-100g-699720ZK",
-        "product_name": "Toko Lien Boemboe Soto 100g",
+        "product_name": "Toko Lien Boemboe Soto 100 g",
         "price": 1.79,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "price_status": "winkelprijswaarneming · 2026-10-28",
+        "checked_date": "2026-10-28"
       },
       "kippenpoten": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-kip-drumsticks-4-stuks-515082KGR",
-        "product_name": "Jumbo Kip Drumsticks 4 Stuks",
-        "price": 3.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "source": "https://www.jumbo.com/recepten/kip/kippenpoten/braden",
+        "product_name": "Jumbo Kippenbouten 4 stuks circa 1,3 kg",
+        "price": 7.53,
+        "price_status": "prijsregistratie zonder directe productverificatie · 2026-10-28",
+        "checked_date": "2026-10-28"
       },
       "sereh": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-smoothiemix-green-reviver-boerenkool-banaan-mango-citroengras-250-g-703565ZK",
-        "product_name": "Jumbo Smoothiemix Green Reviver Boerenkool, Banaan, Mango & Citroengras 250 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       }
     },
     "ah": {
@@ -389,172 +389,172 @@
         "state": "price_observed",
         "reason": null,
         "source": "https://www.ah.nl/producten/product/wi367212/zespri-kiwi-sungold",
-        "product_name": "Zespri Kiwi sungold",
-        "price": 7.35,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "product_name": "Zespri kiwi Sungold 750 g",
+        "price": 6.59,
+        "price_status": "winkelprijswaarneming · 2026-10-24",
+        "checked_date": "2026-10-24"
       },
       "pindakaas": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi479791/ah-terra-plantaardig-100-pindakaas-naturel",
-        "product_name": "AH Terra Plantaardig 100% pindakaas naturel",
-        "price": 5.69,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi458995/de-zaanse-hoeve-magere-kwark",
-        "product_name": "De Zaanse Hoeve Magere kwark",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi609370/arla-lactofree-magere-kwark-3-pack",
+        "product_name": "Arla Lactofree magere kwark 3-pack",
+        "price": 6.24,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "dreft": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi571450/dreft-platinum-plus-deep-clean-vaatwascapsules",
-        "product_name": "Dreft Platinum plus deep clean vaatwascapsules",
-        "price": 13.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi608066/dreft-platinum-vaatwastabletten-citroen",
+        "product_name": "Dreft Platinum vaatwastabletten citroen",
+        "price": 6.5,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "walnoten": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi460465/ah-terra-walnoten-ongebrand",
-        "product_name": "AH Terra Walnoten ongebrand",
-        "price": 7.15,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi598995/ah-terra-biologische-tofu-grootverpakking",
-        "product_name": "AH Terra Biologische tofu grootverpakking",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi609817/ah-terra-uit-eigen-keuken-sticky-tempeh",
+        "product_name": "AH Terra Uit eigen keuken sticky tempeh",
+        "price": 6,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "gemengdgehakt": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi556663/ah-gemengd-gehakt",
-        "product_name": "AH Gemengd gehakt",
-        "price": 6.49,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi210763/ah-kipfilet-pepersaus-met-wortel-en-doperwt",
-        "product_name": "AH Kipfilet pepersaus met wortel en doperwt",
-        "price": 5.79,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi430835/knorr-tratorria-kipfilet-toscana",
+        "product_name": "Knorr Tratorria kipfilet Toscana",
+        "price": 2.5,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "vis": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi334/ah-blik-brokjes-zalm-forel",
-        "product_name": "AH Blik brokjes zalm forel",
-        "price": 0.75,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi561717/ah-85-groenteshot-pompoen-gele-wortel",
-        "product_name": "AH 85% groenteshot pompoen gele wortel",
-        "price": 1.09,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi435907/olvarit-pompoen-kip-aardappel-15m",
+        "product_name": "Olvarit Pompoen kip aardappel 15m+",
+        "price": 0.99,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi822/ah-gebroken-sperziebonen",
-        "product_name": "AH Gebroken sperziebonen",
-        "price": 1.19,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi230848/ah-sperziebonen-kleinverpakking",
+        "product_name": "AH Sperziebonen kleinverpakking",
+        "price": 1.25,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "bospeen": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi127590/ah-bospeen",
-        "product_name": "AH Bospeen",
-        "price": 1.55,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "popcorn": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi469877/ah-biologisch-popcorn-mais",
-        "product_name": "AH Biologisch Popcorn mais",
-        "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-10-29",
+        "source": "https://www.ah.nl/producten/product/wi613530/true-dates-caramel-popcorn",
+        "product_name": "True Dates Caramel popcorn",
+        "price": 1.12,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
         "checked_date": "2026-10-29"
       },
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.ah.nl/producten/product/wi450535/ah-houdbare-volle-melk",
-        "product_name": "AH Houdbare volle melk",
-        "price": 1.29,
+        "product_name": "AH Houdbare volle melk 1 L",
+        "price": 0.99,
         "price_status": "externe prijswaarneming · 2026-10-29",
         "checked_date": "2026-10-29"
       },
       "skuumkoppe": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi548572/texels-skuumkoppe-speciaalbier-6-pack",
-        "product_name": "Texels Skuumkoppe speciaalbier 6-pack",
-        "price": 7.04,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "skuumkoppe_00": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi571813/texels-skuumkoppe-0-0-speciaalbier-6-pack",
-        "product_name": "Texels Skuumkoppe 0.0 speciaalbier 6-pack",
-        "price": 6.74,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "soto_boemboe": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.ah.nl/producten/product/wi199073/kokki-djawa-boemboe-soto",
-        "product_name": "Kokki Djawa Boemboe soto",
-        "price": 1.09,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "product_name": "Kokki Djawa Boemboe soto 100 g",
+        "price": 0.82,
+        "price_status": "korting zonder einddatum · 2026-10-28",
+        "checked_date": "2026-10-28"
       },
       "kippenpoten": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi165537/ah-scharrel-kippenpoten-2-stuks",
-        "product_name": "AH Scharrel kippenpoten 2 stuks",
-        "price": 4.15,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "sereh": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi454507/ah-bruiswater-gember-citroengras",
-        "product_name": "AH Bruiswater gember citroengras",
-        "price": 1.19,
-        "price_status": "externe prijswaarneming · 2026-10-29",
-        "checked_date": "2026-10-29"
+        "source": "https://www.ah.nl/producten/product/wi582347/asian-choice-lemongrass",
+        "product_name": "Asian Choice Lemongrass diepvries 250 g",
+        "price": 3.49,
+        "price_status": "winkelprijswaarneming · 2026-10-28",
+        "checked_date": "2026-10-28"
       }
     }
   }
