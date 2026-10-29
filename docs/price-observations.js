@@ -60,21 +60,22 @@
   const officialSource=retailerUrl(o.url||o.source?.url,store);
   const direct= isDirectProductUrl(o.url||o.source?.url,store);
   const conflict=!!o.price_conflict;
+  const unavailable=['discontinued','unavailable'].includes(o.availability_status);
   const reported=String(o.source_provider||'')==='PrijsProfeet'||String(o.source_provider||'')==='Biernet';
-  const classified= promo
+  const classified=unavailable?(o.availability_status==='discontinued'?'uit assortiment':'momenteel niet beschikbaar')+' · laatste bekende prijs':promo
     ?(within?(officialSource&&o.verified===true&&!conflict?'winkelactie':'externe actiemelding'):(future?'toekomstige actie':expired?'verlopen actie':'onzekere actiedatum'))
     :o.status==='official_discount_undated'?'korting zonder einddatum':
       o.status==='official_regular_observed'?(direct?'winkelprijswaarneming':'prijswaarneming met winkelverwijzing'):
       o.status==='external_regular_observed'?'externe prijswaarneming':
       'prijswaarneming';
   const dated=age!==null&&age>=0;
-  const fresh=within||(!promo&&dated&&age<=7);
-  const status=promo&&!within?'historisch':!fresh?'oud':conflict?'conflict':officialSource&&direct?'winkelbron':'waarneming';
+  const fresh=!unavailable&&(within||(!promo&&dated&&age<=7));
+  const status=unavailable?'niet-beschikbaar':promo&&!within?'historisch':!fresh?'oud':conflict?'conflict':officialSource&&direct?'winkelbron':'waarneming';
   const label=classified+(conflict?' · bronnen verschillen':'')+
     (!within&&dated?' · '+noted:within?' · t/m '+o.end_date:' · datum niet bevestigd');
   return {o,store,pack:p,unit,status,label,fresh,conflict,officialSource,direct,
-   current:within||(!promo&&fresh),isPromotion:promo&&within,checked:dated?noted:null,
-   score:(conflict?-100:0)+(within?70:0)+(!promo&&fresh?55:0)+
+   current:!unavailable&&(within||(!promo&&fresh)),isPromotion:promo&&within&&!unavailable,checked:dated?noted:null,
+   score:(unavailable?-1000:0)+(conflict?-100:0)+(within?70:0)+(!promo&&fresh?55:0)+
     (officialSource?20:0)+(direct?12:0)+(p&&!p.approximate?9:0)+
     (!promo&&!fresh?0:0)+(age!==null?Math.max(0,7-Math.max(0,age)):0)};
  }
