@@ -182,11 +182,17 @@ function allWatches(){return [...(state.watchlist?.items||[]),...state.customWat
 function chosenWatch(){return allWatches().filter(x=>!state.watchDisabled.includes(x.key))}
 function addCustomWatch(query){
  const title=String(query||'').trim().replace(/\s+/g,' ').slice(0,85);
- const tokens=window.MaatjeResolver?.norm(title).split(' ').filter(Boolean)||[];
+ const sized=title.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|ml|cl|l)\b/i);
+ const quantity=sized?Number(sized[1].replace(',','.')):null;
+ const factor=sized?({kg:1,g:0.001,l:1,ml:0.001,cl:0.01}[sized[2].toLowerCase()]):null;
+ const constraint=sized&&Number.isFinite(quantity)&&quantity>0?
+   {pack:{unit:/g$/i.test(sized[2])?'kg':'L',amount:quantity*factor}}:{};
+ const phrase=sized?title.replace(sized[0],' '):title;
+ const tokens=window.MaatjeResolver?.norm(phrase).split(' ').filter(Boolean)||[];
  if(!tokens.length||tokens.length>12||allWatches().some(w=>w.title?.toLowerCase()===title.toLowerCase()))return false;
  const key='eigen_'+tokens.join('_').slice(0,72);
  if(allWatches().some(w=>w.key===key))return false;
- state.customWatches.push({key,title,description:'Zelf gevolgd; zoeken naar betrouwbare winkelprijzen',match:{all:tokens}});
+ state.customWatches.push({key,title,description:'Zelf gevolgd; zoeken naar betrouwbare winkelprijzen',match:{all:tokens,...constraint}});
  save();return true;
 }
 function unresolvedNote(w,s){
@@ -281,7 +287,7 @@ function personalComparison(){
  const watch=chosenWatch(),obs=window.MaatjeObservations;
  let out=title('Mijn vaste producten · drie supermarkten','Alle bekende productprijzen met bron, verpakkingsinhoud en peildatum. Verschillende varianten niet automatisch vergelijkbaar.');
  out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
- if(state.manageWatch)out+='<div class="watch-editor">'+allWatches().map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>').join('')+'</div><div class="personal-settings"><input id="new-watch" class="search" type="text" maxlength="85" placeholder="Nieuw product, bijvoorbeeld amandelen 200 g" aria-label="Nieuw product volgen"><button class="button secondary small" data-add-watch="1">Product volgen</button></div><small>Eigen productwensen blijven in deze browser. Een aanvraag voor centrale broncontrole vereist jouw bevestiging via GitHub.</small>';
+ if(state.manageWatch)out+='<div class="watch-editor">'+allWatches().map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>'+(state.customWatches.some(x=>x.key===w.key)?'<button class="button secondary small" data-remove-watch="'+attr(w.key)+'" aria-label="Verwijder product '+attr(w.title)+'">Verwijder</button>':'')).join('')+'</div><div class="personal-settings"><input id="new-watch" class="search" type="text" maxlength="85" placeholder="Nieuw product, bijvoorbeeld amandelen 200 g" aria-label="Nieuw product volgen"><button class="button secondary small" data-add-watch="1">Product volgen</button></div><small>Eigen productwensen blijven in deze browser. Een aanvraag voor centrale broncontrole vereist jouw bevestiging via GitHub.</small>';
  for(const w of watch){
   const records=ORDER.map(s=>({store:s,entries:obs?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[]}));
   out+='<section class="personal-product"><div class="personal-product-title"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div>';
@@ -686,6 +692,7 @@ function copyList(s){const picks=currentSelections(s);let m=new Map();picks.forE
 document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-view]');if(!b)return;
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
 if(b.dataset.addWatch){const value=$('#new-watch')?.value||'';if(addCustomWatch(value))offersView();return}
+if(b.dataset.removeWatch){state.customWatches=state.customWatches.filter(w=>w.key!==b.dataset.removeWatch);save();offersView();return}
 if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);if(state.view==='aanbiedingen')offersView();else render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
