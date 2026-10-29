@@ -17,7 +17,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: boodschappen-data-publication
+  group: product-coverage
   cancel-in-progress: false
 jobs:
   monitor:
