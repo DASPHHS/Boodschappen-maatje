@@ -75,6 +75,9 @@ def title_match(expected, actual):
     # Fail closed: one distinctive product token can be enough for an exact
     # retailer product-ID URL, but all meaningful tokens must still match.
     if not significant: return False
+    # Sereh/citroengras are synonyms; the retailer names the specific item AH Sereh.
+    if set(significant) == {"sereh", "citroengras"} and "sereh" in found:
+        return True
     matched = sum(w in found for w in significant)
     return matched == len(significant) or (matched >= 2 and matched >= len(significant) - 1)
 
@@ -128,6 +131,9 @@ def fetch(url):
     })
     with urlopen(req, timeout=20) as response:
         if response.status != 200 or "html" not in response.headers.get("Content-Type", ""):
+            return None
+        # Never accept a redirected third-party domain as direct retailer evidence.
+        if urlparse(response.geturl()).hostname != urlparse(url).hostname:
             return None
         return response.read(2_000_000).decode("utf-8", errors="replace")
 
