@@ -13,6 +13,9 @@ on:
       - 'docs/product-resolver.js'
       - 'docs/catalog-search.js'
       - 'docs/style.css'
+      - 'docs/data/recipe-sources.json'
+      - 'tests/recipe-source-integrity.cjs'
+      - 'tests/browser-journey.cjs'
       - 'scripts/sync_retailer_catalog.py'
       - 'tests/test_retailer_catalog.py'
       - 'tests/catalog-search.cjs'
@@ -80,6 +83,7 @@ jobs:
           node tests/price-observations.cjs
           node tests/product-resolver.cjs
           node tests/catalog-search.cjs
+          node tests/recipe-source-integrity.cjs
           node tests/workflow-publish-consistency.cjs
           node tests/live-price-ui.cjs
           node scripts/build_product_resolution.cjs --check
@@ -89,3 +93,32 @@ jobs:
           node tests/offer-identity.cjs
           node tests/recipe-price-dataset.cjs
           node tests/offer-audit.cjs
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Start de echte website met lokale data
+        run: |
+          python -m http.server 8765 --directory docs > /tmp/bm-server.log 2>&1 &
+          sleep 2
+          curl --fail http://127.0.0.1:8765/ > /dev/null
+      - name: Installeer echte Chromium-browsertest
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test alle pagina's en gebruikershandelingen
+        run: BASE_URL=http://127.0.0.1:8765/ node tests/browser-journey.cjs
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-journey-failure
+          path: browser-journey-failure.png
+          if-no-files-found: ignore
