@@ -21,7 +21,9 @@
   if(m)return result(Number(m[1]),Number(m[2]),m[3],/\bca\.?\b|circa|ongeveer|variabel/.test(raw));
   m=raw.match(/(\d+(?:\.\d+)?)\s*(ml|cl|l|g|kg)\b/);
   if(m)return result(1,Number(m[1]),m[2],/\bca\.?\b|circa|ongeveer|variabel/.test(raw));
-  // Structured quantity is safe for manual observations, never for arbitrary promotional "3 stuks".
+  // An explicit but unmeasured count must never turn into a 1-litre or 1-kg product.
+  if(/\b(stuks?|dozen|variabele|verschillende|inhoud onbekend)\b/.test(raw))return null;
+  // Structured quantity is safe for manual observations without conflicting pack text.
   if(o?.status&&validPrice(o.quantity)){
    const unit=String(o.unit||'').toLowerCase();
    if(unit==='stuk')return {amount:o.quantity,unit:'stuk',pieces:o.quantity,approximate:false};
@@ -54,6 +56,7 @@
   const p=pack(o),unit=unitCost(o);
   const noted=String(o.checked_date||o.price_observed_at||o.observed_at||o.checked_at||'').slice(0,10);
   const age=days(today,noted);
+  if(age!==null&&age<0)return null; // Future shelf observation is invalid evidence.
   const within=promo&&validDay(o.start_date)&&validDay(o.end_date)&&o.start_date<=today&&today<=o.end_date;
   const future=promo&&o.start_date>today;
   const expired=promo&&o.end_date<today;
@@ -65,7 +68,7 @@
   const classified=unavailable?(o.availability_status==='discontinued'?'uit assortiment':'momenteel niet beschikbaar')+' · laatste bekende prijs':promo
     ?(within?(officialSource&&o.verified===true&&!conflict?'winkelactie':'externe actiemelding'):(future?'toekomstige actie':expired?'verlopen actie':'onzekere actiedatum'))
     :o.status==='official_discount_undated'?'korting zonder einddatum':
-      o.status==='official_regular_observed'?(direct?'winkelprijswaarneming':'prijswaarneming met winkelverwijzing'):
+      o.status==='official_regular_observed'?(direct?'winkelprijswaarneming':'prijsregistratie zonder directe productverificatie'):
       o.status==='external_regular_observed'?'externe prijswaarneming':
       'prijswaarneming';
   const dated=age!==null&&age>=0;

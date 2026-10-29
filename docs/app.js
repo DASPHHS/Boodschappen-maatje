@@ -284,7 +284,11 @@ function personalComparison(){
 
 function personalHighlights(){
 const selected=new Set(chosenWatch().map(w=>w.key));
-const relevant=ORDER.flatMap(s=>offers(s).filter(o=>selected.has(profileKey(o))).map(o=>({...o,store:s,interest:profileKey(o)})));
+const strictKeys=new Set(['volle_melk','skuumkoppe','soto_boemboe','kippenpoten','sereh']);
+ const relevant=ORDER.flatMap(s=>offers(s).filter(o=>{
+   const key=profileKey(o);
+   return selected.has(key)&&(!strictKeys.has(key)||window.MaatjeObservations?.matchesWatch(o,key));
+ }).map(o=>({...o,store:s,interest:profileKey(o)})));
 const hasOld=o=>typeof o.regular_price==='number'&&o.regular_price>o.price&&!o.price_conflict;
 const saving=o=>hasOld(o)?o.regular_price-o.price:0;
 relevant.sort((a,b)=>
