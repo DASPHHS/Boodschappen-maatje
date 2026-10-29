@@ -1,0 +1,59 @@
+name: Verzamel echte winkelprijzen
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync_retailer_catalog.py'
+      - 'docs/catalog-search.js'
+      - '.github/workflows/retailer-catalog.yml'
+  schedule:
+    - cron: '10 5,6 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: retailer-price-catalog
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify valid matching and importer
+        run: |
+          python -m py_compile scripts/sync_retailer_catalog.py
+          node tests/catalog-search.cjs
+      - name: Collect open catalog for all three supermarkets
+        run: |
+          python scripts/sync_retailer_catalog.py
+      - name: Check catalog output and generate product coverage
+        run: |
+          test -s docs/data/retailer-catalog.json
+          node scripts/build_product_resolution.cjs
+          node scripts/build_product_resolution.cjs --check
+      - name: Publish prices and product matches atomically
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tmp="$(mktemp -d)"
+          cp docs/data/retailer-catalog.json "$tmp/retailer-catalog.json"
+          cp docs/data/product-resolution.json "$tmp/product-resolution.json"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$tmp/retailer-catalog.json" docs/data/retailer-catalog.json
+            cp "$tmp/product-resolution.json" docs/data/product-resolution.json
+            git add docs/data/retailer-catalog.json docs/data/product-resolution.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Werk AH Jumbo Lidl catalogusprijzen en productdekking bij"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 4
+          done
+          exit 1
