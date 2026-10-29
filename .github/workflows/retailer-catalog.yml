@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: boodschappen-data-publication
+  group: retailer-price-catalog
   cancel-in-progress: false
 jobs:
   refresh:

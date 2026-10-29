@@ -19,7 +19,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: boodschappen-data-publication
+  group: full-promotions
   cancel-in-progress: false
 jobs:
   update:
