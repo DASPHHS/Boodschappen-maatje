@@ -19,7 +19,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: full-promotions
+  group: boodschappen-data-publication
   cancel-in-progress: false
 jobs:
   update:
@@ -84,7 +84,6 @@ jobs:
           cp docs/data/supplemental-offers.json "$tmp/supplemental-offers.json"
           cp docs/data/offer-audit.json "$tmp/offer-audit.json"
           cp docs/data/personal-prices.json "$tmp/personal-prices.json"
-          cp docs/data/product-resolution.json "$tmp/product-resolution.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
@@ -92,7 +91,10 @@ jobs:
             cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
             cp "$tmp/offer-audit.json" docs/data/offer-audit.json
             cp "$tmp/personal-prices.json" docs/data/personal-prices.json
-            cp "$tmp/product-resolution.json" docs/data/product-resolution.json
+            # The catalog/price monitor may have published newer source data.
+            # Resolve coverage from the latest combined files AFTER reset.
+            node scripts/build_product_resolution.cjs
+            node scripts/build_product_resolution.cjs --check
             git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
