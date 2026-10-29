@@ -1,0 +1,63 @@
+name: Controleer ontbrekende productprijzen
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/product-monitor.yml'
+      - 'docs/data/watchlist.json'
+      - 'docs/data/personal-prices.json'
+      - 'docs/product-resolver.js'
+      - 'docs/price-observations.js'
+      - 'scripts/build_product_resolution.cjs'
+  schedule:
+    - cron: '15 6,7 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: product-coverage
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run at 08:15 Amsterdam or on request/change
+        id: gate
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          run=os.getenv("GITHUB_EVENT_NAME")!="schedule" or datetime.now(ZoneInfo("Europe/Amsterdam")).hour==8
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write("run="+str(run).lower()+"\n")
+          PY
+      - name: Validate every tracked product and regenerate unresolved queue
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          node tests/product-resolver.cjs
+          node scripts/build_product_resolution.cjs --check
+          node scripts/build_product_resolution.cjs
+      - name: Publish only resolution status
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tmp="$(mktemp)"
+          cp docs/data/product-resolution.json "$tmp"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$tmp" docs/data/product-resolution.json
+            git add docs/data/product-resolution.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Ververs openstaande productbroncontroles"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 3
+          done
+          exit 1
