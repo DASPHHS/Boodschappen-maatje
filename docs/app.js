@@ -190,7 +190,7 @@ function addCustomWatch(query){
  const phrase=sized?title.replace(sized[0],' '):title;
  const tokens=window.MaatjeResolver?.norm(phrase).split(' ').filter(Boolean)||[];
  if(!tokens.length||tokens.length>12||allWatches().some(w=>w.title?.toLowerCase()===title.toLowerCase()))return false;
- const key='eigen_'+tokens.join('_').slice(0,72);
+ const key='eigen_'+tokens.join('_').slice(0,60)+(constraint.pack?'_'+constraint.pack.amount+constraint.pack.unit.toLowerCase():'');
  if(allWatches().some(w=>w.key===key))return false;
  state.customWatches.push({key,title,description:'Zelf gevolgd; zoeken naar betrouwbare winkelprijzen',match:{all:tokens,...constraint}});
  save();return true;
