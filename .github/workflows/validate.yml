@@ -11,6 +11,12 @@ on:
       - 'docs/price-integrity.js'
       - 'docs/price-observations.js'
       - 'docs/product-resolver.js'
+      - 'docs/catalog-search.js'
+      - 'docs/style.css'
+      - 'scripts/sync_retailer_catalog.py'
+      - 'tests/test_retailer_catalog.py'
+      - 'tests/catalog-search.cjs'
+      - '.github/workflows/retailer-catalog.yml'
       - 'scripts/build_product_resolution.cjs'
       - 'tests/product-resolver.cjs'
       - 'docs/data/personal-prices.json'
@@ -60,6 +66,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
           python -m unittest discover -s tests -p 'test_sync_aanbiedingen.py'
           python -m unittest discover -s tests -p 'test_regular_prices.py'
+          python -m unittest discover -s tests -p 'test_retailer_catalog.py'
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
@@ -68,6 +75,7 @@ jobs:
           node tests/price-integrity.cjs
           node tests/price-observations.cjs
           node tests/product-resolver.cjs
+          node tests/catalog-search.cjs
           node scripts/build_product_resolution.cjs --check
           node tests/source-freshness.cjs
           node tests/favorite-families.cjs
