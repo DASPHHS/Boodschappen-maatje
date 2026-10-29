@@ -1,0 +1,47 @@
+name: Publiceer eigen weekmenu
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_weekly_menu.cjs'
+      - 'docs/data/library.json'
+      - '.github/workflows/weekly-menu.yml'
+  schedule:
+    - cron: '0 6 * * 1'
+permissions:
+  contents: write
+concurrency:
+  group: weekly-menu-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Bouw menu uitsluitend uit bestaande eigen recepten
+        run: |
+          node scripts/build_weekly_menu.cjs
+          node scripts/build_weekly_menu.cjs --check
+          node tests/weekly-menu.cjs
+      - name: Publiceer de weekfeed zonder andere prijsbestanden te overschrijven
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/build_weekly_menu.cjs
+            node scripts/build_weekly_menu.cjs --check
+            node tests/weekly-menu.cjs
+            git add docs/data/weekly.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Publiceer eigen vierportie-weekideeën voor alle supermarkten"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
