@@ -1,5 +1,12 @@
 name: Controleer gepubliceerde website en verse aanbiedingen
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/app.js'
+      - 'docs/index.html'
+      - 'docs/data/recipe-sources.json'
+      - '.github/workflows/live-site-check.yml'
   workflow_dispatch:
   schedule:
     - cron: '15 9 * * *'
@@ -18,6 +25,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Geef Pages na publicatie tijd om het nieuwe commit te serveren
+        if: github.event_name == 'push'
+        run: sleep 90
       - name: Controleer gepubliceerde data; geen oud weekmateriaal als nieuw
         run: node tests/live-data-freshness.cjs
         env:
