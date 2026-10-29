@@ -386,14 +386,36 @@
     },
     {
       "key": "skuumkoppe",
-      "title": "Texels Skuumkoppe",
+      "title": "Texels Skuumkoppe (met alcohol)",
       "category": "bier",
       "default_selected": true,
-      "description": "Met en zonder alcohol apart; 6×300 ml, 6×330 ml en 4×500 ml per liter vergelijken.",
+      "description": "Vergelijk alleen alcoholhoudende Skuumkoppe; fles/blik en 6×300, 6×330, 4×500 apart.",
       "match": {
         "all": [
           "texels",
           "skuumkoppe"
+        ],
+        "none": [
+          "0.0",
+          "alcoholvrij"
+        ]
+      },
+      "compare_mode": "variants"
+    },
+    {
+      "key": "skuumkoppe_00",
+      "title": "Texels Skuumkoppe 0.0",
+      "description": "Alcoholvrij; 0.0 niet mengen met alcoholhoudende varianten.",
+      "category": "bier",
+      "default_selected": true,
+      "match": {
+        "all": [
+          "texels",
+          "skuumkoppe"
+        ],
+        "any": [
+          "0.0",
+          "alcoholvrij"
         ]
       },
       "compare_mode": "variants"
