@@ -8,6 +8,8 @@ const read=name=>JSON.parse(fs.readFileSync(path.join(base,name+'.json'),'utf8')
 const resolver=require('../docs/product-resolver.js');
 const pricing=require('../docs/price-observations.js');
 const identity=require('../docs/offer-identity.js');
+const catalogSearch=require('../docs/catalog-search.js');
+const retailerCatalog=fs.existsSync(path.join(base,'retailer-catalog.json'))?read('retailer-catalog'):null;
 const now=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const tracks=read('watchlist').items||[];
 const records=read('personal-prices').products||[];
@@ -22,9 +24,14 @@ for(const store of stores){
  const items={};
  for(const p of tracks){
   let state,match,unresolved;
-  if(p.match){
-   const evaluated=resolver.resolution(p,store,records,offers,pricing,now);
-   state=evaluated.state;match=evaluated.best;unresolved=evaluated.unresolved_reason;
+  if(p.requires_specific_variant){
+   state='needs_variant_evidence';match=null;unresolved='specificeer het exacte product of de verpakking';
+  }else if(p.match){
+   const found=catalogSearch.combined(p,store,retailerCatalog,records,offers,pricing,resolver,now);
+   match=found[0]||null;
+   if(match){state=match.current?'price_observed':'stale_or_unavailable';unresolved=null;}
+   else{const evaluated=resolver.resolution(p,store,records,offers,pricing,now);
+    state=evaluated.state;match=evaluated.best;unresolved=evaluated.unresolved_reason;}
   }else{
    // Legacy profiles retain existing group-based matching; new profiles use the
    // common declarative matcher. No automatic fuzzy guessing of unseen SKUs.
