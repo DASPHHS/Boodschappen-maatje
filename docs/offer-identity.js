@@ -69,10 +69,10 @@
     const z={...x,source_observations:[{id:x.id,price:x.price,url:x.source?.url||null}]};
     seen.set(k,z);results.push(z);continue;
    }
-   if(a.source_observations.some(o=>o.id===x.id))continue;
-   // Propagate an explicit conflict even when duplicate feeds happen to report the same numeric price.
+   // Propagate conflict before same-ID deduplication: spotlight and daily may reuse an offer ID.
    if(x.price_conflict&&!String(a.price_conflict||'').includes(String(x.price_conflict)))
      a.price_conflict=a.price_conflict?a.price_conflict+' · '+x.price_conflict:x.price_conflict;
+   if(a.source_observations.some(o=>o.id===x.id))continue;
    a.source_observations.push({id:x.id,price:x.price,url:x.source?.url||null});
    const prices=a.source_observations.map(o=>o.price),min=Math.min(...prices),max=Math.max(...prices);
    if(max-min>=0.02){
