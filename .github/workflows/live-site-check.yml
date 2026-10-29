@@ -1,0 +1,38 @@
+name: Controleer gepubliceerde website en verse aanbiedingen
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 9 * * *'
+    - cron: '15 19 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: live-site-quality-check
+  cancel-in-progress: false
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Controleer gepubliceerde data; geen oud weekmateriaal als nieuw
+        run: node tests/live-data-freshness.cjs
+        env:
+          BASE_URL: https://dasphhs.github.io/Boodschappen-maatje/docs/
+      - name: Installeer Chromium
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Doorloop live website op desktop en mobiel
+        run: node tests/browser-journey.cjs
+        env:
+          BASE_URL: https://dasphhs.github.io/Boodschappen-maatje/docs/
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: live-site-failure
+          path: browser-journey-failure.png
+          if-no-files-found: ignore
