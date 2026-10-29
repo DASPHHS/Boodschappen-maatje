@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 // Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
 const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
@@ -248,7 +248,10 @@ function favoriteDashboard(){
  out+='<div class="favorite-variant-list">'+saved.map(f=>'<div class="favorite-variant"><span>'+safe(f.name)+' <small>· '+safe(f.pack_label||'verpakking onbekend')+'</small></span>'+favButton(f,f.store||'jumbo')+'</div>').join('')+'</div>';
  out+='<div class="personal-grid">'+ORDER.map(s=>{
  const obs=window.MaatjeObservations;
- const rows=obs?.favoriteRows(s,saved,state.personalPrices?.products||[],offers(s),helper,today())||[];
+ const observed=obs?.favoriteRows(s,saved,state.personalPrices?.products||[],offers(s),helper,today())||[];
+ const discovered=window.MaatjeCatalogSearch?.favoritePrices(s,saved,state.retailerCatalog,obs,window.MaatjeResolver,helper,today())||[];
+ const indexed=new Set(discovered.map(x=>x.o.url).filter(Boolean));
+ const rows=[...discovered,...observed.filter(x=>!indexed.has(x.o.url)||x.o.source_verification==='retailer_product_page_checked')];
  if(!rows.length)return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b><span class="personal-unknown">Geen prijs in aangesloten bronnen</span><small>Niet gevonden betekent niet dat het artikel niet verkrijgbaar is. De promotiefeed bevat geen volledig schapassortiment.</small></div>';
  return '<div class="personal-shop"><b>'+safe(NAMES[s])+'</b>'+
   rows.slice(0,6).map(x=>{
@@ -283,27 +286,48 @@ function quickTrackedProducts(){
   }).join('')+'</div></article>';
  }).join('')+'</div>';return out;
 }
-function personalComparison(){
- const watch=chosenWatch(),obs=window.MaatjeObservations;
- let out=title('Mijn vaste producten · drie supermarkten','Alle bekende productprijzen met bron, verpakkingsinhoud en peildatum. Verschillende varianten niet automatisch vergelijkbaar.');
- out+='<div class="personal-settings"><span>'+watch.length+' geselecteerde productgroepen</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Mijn selectie sluiten':'Mijn producten aanpassen')+'</button></div>';
- if(state.manageWatch)out+='<div class="watch-editor">'+allWatches().map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description)+'</small></span></label>'+(state.customWatches.some(x=>x.key===w.key)?'<button class="button secondary small" data-remove-watch="'+attr(w.key)+'" aria-label="Verwijder product '+attr(w.title)+'">Verwijder</button>':'')).join('')+'</div><div class="personal-settings"><input id="new-watch" class="search" type="text" maxlength="85" placeholder="Nieuw product, bijvoorbeeld amandelen 200 g" aria-label="Nieuw product volgen"><button class="button secondary small" data-add-watch="1">Product volgen</button></div><small>Eigen productwensen blijven in deze browser. Een aanvraag voor centrale broncontrole vereist jouw bevestiging via GitHub.</small>';
- for(const w of watch){
-  const records=ORDER.map(s=>({store:s,entries:obs?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[]}));
-  out+='<section class="personal-product"><div class="personal-product-title"><strong>'+safe(w.title)+'</strong><small>'+safe(w.description||'')+'</small></div>';
-  out+='<div class="personal-grid">'+records.map(({store,entries})=>{
-   if(!entries.length)return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><span class="personal-unknown">Geen passende prijsbron</span>'+unresolvedNote(w,store)+'</div>';
-   const x=entries[0],p=x.o,link=p.url||p.source?.url;
-   return '<div class="personal-shop"><b>'+safe(NAMES[store])+'</b><strong class="personal-price">'+money(p.price)+'</strong>'+
-    '<small>'+safe(p.name)+'</small><small>'+safe(p.pack_label||'Inhoud volgens productnaam')+'</small>'+
-    '<small>'+(x.unit?money(x.unit.price)+'/'+safe(x.unit.unit):'Geen zekere eenheidsprijs')+'</small>'+
-    '<small class="personal-evidence">'+safe(x.label)+(x.status==='oud'?' · verouderd':'')+'</small>'+
-    (entries.length>1?'<small>'+(entries.length-1)+' andere prijswaarnemingen, mogelijk andere varianten</small>':'')+
-    '<div class="personal-shop-actions">'+favButton(p,store)+'</div>'+
-    (link&&/^https:\/\//.test(link)?'<a href="'+attr(link)+'" target="_blank" rel="noopener noreferrer">Controleer bron ↗</a>':'')+'</div>';
-  }).join('')+'</div></section>';
+function shopPrices(w,s){
+ if(w.requires_specific_variant)return [];
+ const adapter=window.MaatjeCatalogSearch,pricing=window.MaatjeObservations;
+ if(w.match&&adapter){
+  return adapter.combined(w,s,state.retailerCatalog,state.personalPrices?.products||[],offers(s),pricing,window.MaatjeResolver,today());
  }
- out+='<div class="info-banner warning">De gratis promotiebron bevat geen volledige reguliere schapprijzen. Oude prijzen blijven zichtbaar met peildatum en tellen niet als actuele kassaprijs. Vergelijk geen verschillende verpakkingen of multibuys op uitsluitend het kassabedrag.</div>';
+ return pricing?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[];
+}
+function compareCell(w,s,rows){
+ if(w.requires_specific_variant)return '<span class="compare-empty">Kies verpakking</span>';
+ if(!rows.length)return '<span class="compare-empty">—</span>';
+ const x=rows[0],o=x.o,link=o.url||o.source?.url;
+ const isCatalog=o.source_provider==='Checkjebon',aged=!x.current;
+ const name=safe(o.name),pack=safe(o.pack_label||'inhoud niet bevestigd');
+ return '<strong class="compare-price">'+money(o.price)+'</strong>'+
+   (x.unit?'<small>'+money(x.unit.price)+'/'+safe(x.unit.unit)+'</small>':'')+
+   '<small class="compare-product">'+name+' · '+pack+'</small>'+
+   '<small class="compare-evidence">'+(isCatalog?'Catalogus':x.isPromotion?'Actie':'Prijswaarneming')+
+    (x.checked?' · '+safe(x.checked):'')+(aged?' · ouder':'')+'</small>'+
+   (link&&/^https:\/\//.test(link)?'<a class="compare-source" href="'+attr(link)+'" target="_blank" rel="noopener noreferrer">Product bekijken ↗</a>':'');
+}
+function personalComparison(){
+ const watch=chosenWatch();
+ const snapshot=state.retailerCatalog;
+ const valid=window.MaatjeCatalogSearch?.valid(snapshot,today());
+ let out=title('Mijn boodschappen · vergelijk de winkels','Reguliere productprijzen en aanbiedingen bij elkaar. Elke prijs is gekoppeld aan een concrete verpakking.');
+ out+='<div class="personal-settings"><span>'+watch.length+' producten'+(valid?' · catalogus '+safe(snapshot.source_date):' · actuele catalogus niet beschikbaar')+'</span><button class="button secondary small" data-manage-watch="1">'+(state.manageWatch?'Sluit productkeuze':'Producten toevoegen of aanpassen')+'</button></div>';
+ if(state.manageWatch)out+='<div class="watch-editor">'+allWatches().map(w=>'<label class="watch-option"><input type="checkbox" data-watch-key="'+attr(w.key)+'" '+(!state.watchDisabled.includes(w.key)?'checked':'')+'><span><b>'+safe(w.title)+'</b><small>'+safe(w.description||'')+'</small></span></label>'+(state.customWatches.some(x=>x.key===w.key)?'<button class="button secondary small" data-remove-watch="'+attr(w.key)+'">Verwijder</button>':'')).join('')+'</div><div class="personal-settings"><input id="new-watch" class="search" type="text" maxlength="85" placeholder="Bijv. ongebrande amandelen 200 g" aria-label="Product toevoegen"><button class="button secondary small" data-add-watch="1">Product toevoegen</button></div>';
+ const rows=watch.map(w=>({w,stores:ORDER.map(s=>({s,prices:shopPrices(w,s)}))}));
+ const found=rows.filter(x=>x.stores.some(y=>y.prices.some(z=>z.current))).length;
+ out+='<p class="compare-summary">'+found+' van '+watch.length+' productgroepen met ten minste één recente prijsbron. '+(!valid?'De actuele openbare catalogus ontbreekt; oude bedragen zijn geen actuele koopprijzen.':'De gepubliceerde catalogusprijzen zijn momentopnames, geen kassagarantie.')+'</p>';
+ out+='<div class="compare-scroll"><table class="compare-table"><thead><tr><th>Product</th>'+ORDER.map(s=>'<th>'+safe(NAMES[s])+'</th>').join('')+'</tr></thead><tbody>';
+ for(const entry of rows){
+  const w=entry.w;
+  out+='<tr><th scope="row"><strong>'+safe(w.title)+'</strong><small>'+safe(w.compare_mode==='variants'?'Varianten apart controleren':w.description||'')+'</small></th>';
+  for(const item of entry.stores){
+   out+='<td>'+compareCell(w,item.s,item.prices)+'</td>';
+  }
+  out+='</tr>';
+ }
+ out+='</tbody></table></div>';
+ out+='<p class="muted">Vergelijk de prijs per liter/kilo uitsluitend voor dezelfde productsoort. Een verschil tussen vers en houdbaar, blik en fles, of reguliere prijs en bundelactie is geen bewezen besparing. Voor Lidl ontbreekt soms een directe productlink, maar de bronprijs en verpakking blijven zichtbaar.</p>';
  return out;
 }
 
@@ -555,8 +579,8 @@ return '<div class="recipe-toolbar offer-toolbar"><label>Sorteren <select id="of
 function offersView(){
 header('Slim besparen','Voor mij: <span style="color:#719b66">prijzen met broncontrole.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
 let out=auditSummary();out+='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
-if(state.offerMode==='personal')out+=quickTrackedProducts()+personalHighlights()+personalComparison()+campaignHighlights('ah');
-else if(state.offerMode==='favorites')out+=favoriteDashboard()+quickTrackedProducts();
+if(state.offerMode==='personal')out+=personalComparison();
+else if(state.offerMode==='favorites')out+=favoriteDashboard();
 else{
 out+=storeControls()+kindControls(true)+offerSortingControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
@@ -706,5 +730,5 @@ document.addEventListener('input',e=>{if(e.target.id==='find'){let x=e.target.va
 document.addEventListener('change',e=>{if(e.target.matches('[data-watch-key]')){const k=e.target.dataset.watchKey;state.watchDisabled=state.watchDisabled.filter(x=>x!==k);if(!e.target.checked)state.watchDisabled.push(k);save();offersView();return}if(e.target.id==='recipe-quality'){state.recipeQuality=e.target.value;recipeView();return}if(e.target.id==='offer-category'){state.kind=e.target.value;offersView();return}if(e.target.id==='offer-sort'){state.offerSort=e.target.value;offersView();return}if(e.target.id==='offer-evidence'){state.offerEvidence=e.target.value;offersView();return}if(e.target.id==='recipe-sort'){state.sortBy=e.target.value;recipeView();return}if(e.target.id==='deal-filter'){state.dealFilter=e.target.value;recipeView();return}if(e.target.matches('[data-check]')){state.checks[e.target.dataset.check]=e.target.checked;save();e.target.closest('.list-line').querySelector('.item-name').classList.toggle('done',e.target.checked)}});
 $('#dialog-close').addEventListener('click',()=>$('#recipe-dialog').close());
 document.querySelector('#clock').textContent=new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Amsterdam'});
-(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json'),load('data/product-resolution.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state.resolution=res[11];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
+(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json'),load('data/product-resolution.json'),load('data/retailer-catalog.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state.resolution=res[11];state.retailerCatalog=res[12];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
 })();

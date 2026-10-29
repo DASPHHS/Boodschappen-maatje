@@ -7,6 +7,8 @@ on:
       - '.github/workflows/product-monitor.yml'
       - 'docs/data/watchlist.json'
       - 'docs/data/personal-prices.json'
+      - 'docs/data/retailer-catalog.json'
+      - 'docs/catalog-search.js'
       - 'docs/product-resolver.js'
       - 'docs/price-observations.js'
       - 'scripts/build_product_resolution.cjs'

@@ -84,3 +84,27 @@
 .tracked-store-grid .favorite-heart{position:absolute;right:5px;top:6px;transform:scale(.75)}
 .personal-evidence{color:#567369;font-weight:650}
 @media(max-width:590px){.tracked-store-grid{grid-template-columns:1fr}.tracked-store-grid>div{min-height:76px}.tracked-store-grid .favorite-heart{transform:none}}
+
+/* One compact, scannable table instead of repeated empty product cards. */
+.compare-summary{font-size:.9rem;font-weight:650;margin:15px 0;color:#214838}
+.compare-scroll{overflow-x:auto;border:1px solid #dae4d7;border-radius:18px;background:#fff}
+.compare-table{border-collapse:collapse;width:100%;min-width:660px;table-layout:fixed}
+.compare-table th,.compare-table td{vertical-align:top;text-align:left;padding:15px 16px;border-bottom:1px solid #edf0e9}
+.compare-table th{font-size:.9rem;color:#15372b}
+.compare-table thead th{background:#eaf3e4;font-weight:750}
+.compare-table thead th:first-child{width:25%}
+.compare-table tbody th{font-weight:normal}
+.compare-table tbody th strong,.compare-table tbody th small,.compare-table td small{display:block}
+.compare-table tbody th strong{font-weight:750}
+.compare-table tbody th small{margin-top:6px;font-size:.78rem;color:#52655b;font-weight:400}
+.compare-price{font-size:1.12rem;color:#153f30;display:block}
+.compare-product{margin-top:6px;color:#394b41;line-height:1.35}
+.compare-evidence{margin-top:6px;color:#627267;font-size:.73rem}
+.compare-source{display:inline-block;margin-top:5px;text-decoration:underline;color:#276b4b;font-size:.76rem}
+.compare-empty{color:#718179;font-weight:500}
+@media(max-width:760px){
+ .compare-table{min-width:590px}
+ .compare-table th,.compare-table td{padding:11px}
+ .compare-table thead th:first-child{width:26%}
+ .compare-price{font-size:1rem}
+}
