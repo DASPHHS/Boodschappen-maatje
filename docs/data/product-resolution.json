@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T12:10:31.867Z",
+  "generated_at": "2026-10-29T13:04:31.513Z",
   "checked_date": "2026-10-29",
   "summary": {
-    "profiles": 19,
-    "checked": 57,
-    "price_observed": 16,
+    "profiles": 20,
+    "checked": 60,
+    "price_observed": 30,
     "stale_or_unavailable": 0,
-    "needs_variant_evidence": 0,
-    "needs_source": 41
+    "needs_variant_evidence": 3,
+    "needs_source": 27
   },
   "stores": {
     "lidl": {
       "bier": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "state": "needs_variant_evidence",
+        "reason": "specificeer het exacte product of de verpakking",
         "source": null,
         "product_name": null,
         "price": null,
@@ -23,7 +23,7 @@
       },
       "sungold": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -32,7 +32,7 @@
       },
       "pindakaas": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -41,7 +41,7 @@
       },
       "kwark": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -50,7 +50,7 @@
       },
       "dreft": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -59,7 +59,7 @@
       },
       "walnoten": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -68,7 +68,7 @@
       },
       "tofu": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -77,7 +77,7 @@
       },
       "gemengdgehakt": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -86,7 +86,7 @@
       },
       "kipfilet": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -94,17 +94,17 @@
         "checked_date": null
       },
       "vis": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+        "product_name": "- Verse zalmfilet op huid",
+        "price": 7.49,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "pompoen": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -113,7 +113,7 @@
       },
       "sperziebonen": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -122,7 +122,7 @@
       },
       "bospeen": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -131,7 +131,7 @@
       },
       "popcorn": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -149,7 +149,16 @@
       },
       "skuumkoppe": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
+      },
+      "skuumkoppe_00": {
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -158,7 +167,7 @@
       },
       "soto_boemboe": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -167,7 +176,7 @@
       },
       "kippenpoten": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -176,7 +185,7 @@
       },
       "sereh": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -186,8 +195,8 @@
     },
     "jumbo": {
       "bier": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "state": "needs_variant_evidence",
+        "reason": "specificeer het exacte product of de verpakking",
         "source": null,
         "product_name": null,
         "price": null,
@@ -198,118 +207,118 @@
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/aanbiedingen/zespri-kiwi-sungold/3023317",
-        "product_name": "Zespri SunGold Kiwifruit 750 g",
+        "product_name": "Zespri kiwi SunGold",
         "price": 4.99,
-        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "price_status": "winkelactie · t/m 2026-11-03",
         "checked_date": null
       },
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/ontbijt%2C-broodbeleg-en-bakproducten/zoet-broodbeleg/pindakaas/jumbo/?filters=Merken%3ABolletje%2CCalv%C3%A9%2CJumbo%27s%2CSkippy",
-        "product_name": "Calvé Pindakaas Regular, 2 × 350 g",
-        "price": 4.99,
-        "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": null
+        "source": "https://www.jumbo.com/producten/ontbijt%2C-broodbeleg-en-bakproducten/zoet-broodbeleg/pindakaas/jumbo/?filters=Merken%3ABolletje%2CKoopmans%2CHero%2CWhole+Earth%2CSkippy%2CJumbo%2CCalv%C3%A9",
+        "product_name": "Jumbo Pindakaas Naturel 600 g",
+        "price": 1.35,
+        "price_status": "prijsregistratie zonder directe productverificatie · 2026-10-28",
+        "checked_date": "2026-10-28"
       },
       "kwark": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-aardbei-500-g-347423CUP",
+        "product_name": "Campina Magere Milde Kwark met 'n Vleugje Aardbei 500 g",
+        "price": 1.5,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
       },
       "dreft": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/dreft-platinum-plus-all-in-one-vaatwastabletten-anti-dofheidstechnologie-19-x-676439ZK",
+        "product_name": "Dreft Platinum Plus All In One Vaatwastabletten Anti-dofheidstechnologie 19 X",
+        "price": 5.6,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
       },
       "walnoten": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
+        "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
+        "price": 4.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
       },
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/aanbiedingen/alle-vivera/3021682",
-        "product_name": "Vivera Stevige Tofu 2 × 280 g (1+1)",
-        "price": 2.19,
+        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
+        "product_name": "Vivera Zachte Tofu 550 g",
+        "price": 0.99,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": null
+        "checked_date": "2026-10-29"
       },
       "gemengdgehakt": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/aanbiedingen/gemengd-gehakt/3022981",
-        "product_name": "Jumbo Gemengd Gehakt 2 × 500 g",
+        "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
+        "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
         "price": 4.99,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": null
+        "checked_date": "2026-10-29"
       },
       "kipfilet": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/jumbo-kipfiletreepjes-voorgegaard-135-g-742856TRA",
+        "product_name": "Jumbo Kipfiletreepjes Voorgegaard 135 g",
+        "price": 2.5,
+        "price_status": "externe actiemelding · t/m 2026-11-24",
+        "checked_date": "2026-10-29"
       },
       "vis": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/vivera-plantaardige-zalmfilet-2-stuks-200-g-675928STK",
+        "product_name": "Vivera Plantaardige Zalmfilet 2 Stuks 200 g",
+        "price": 1.9,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
       },
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/aanbiedingen/biologische-pompoen-of-flespompoen/3023322",
-        "product_name": "Jumbo biologische pompoen per stuk",
+        "source": "https://www.jumbo.com/producten/jumbo-biologische-pompoen-208854STK",
+        "product_name": "Jumbo Biologische Pompoen",
         "price": 1.49,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": null
+        "checked_date": "2026-10-29"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/aanbiedingen/verse-sperziebonen-of-snijbonen/3021546",
-        "product_name": "Jumbo gebroken sperziebonen vers 400 g",
+        "source": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-400-g-583752ZK",
+        "product_name": "Jumbo Gebroken Sperziebonen 400 g",
         "price": 1.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
+      },
+      "bospeen": {
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
+        "product_name": "Jumbo bospeen",
+        "price": 0.99,
         "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": null
       },
-      "bospeen": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
-      },
       "popcorn": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/jimmy-s-air-popped-popcorn-salted-caramel-150-g-646833ZK",
+        "product_name": "Jimmy's Air Popped Popcorn Salted Caramel 150 g",
+        "price": 0.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
       },
       "volle_melk": {
         "state": "price_observed",
@@ -326,6 +335,15 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-4x500ml-736230DS",
         "product_name": "Texels Skuumkoppe 4x500ML",
         "price": 7.46,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-29"
+      },
+      "skuumkoppe_00": {
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-6x330ml-737475DS",
+        "product_name": "Texels Skuumkoppe 0.0%  6x330ML",
+        "price": 7.56,
         "price_status": "externe actiemelding · t/m 2026-11-03",
         "checked_date": "2026-10-29"
       },
@@ -349,7 +367,7 @@
       },
       "sereh": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -359,8 +377,8 @@
     },
     "ah": {
       "bier": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "state": "needs_variant_evidence",
+        "reason": "specificeer het exacte product of de verpakking",
         "source": null,
         "product_name": null,
         "price": null,
@@ -378,7 +396,7 @@
       },
       "pindakaas": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -388,24 +406,24 @@
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/allerhande/koolhydraatarme-recepten",
-        "product_name": "AH Cottage cheese 200 g",
-        "price": 0.74,
-        "price_status": "prijsregistratie zonder directe productverificatie · 2026-10-28",
-        "checked_date": "2026-10-28"
+        "source": "https://www.ah.nl/producten/product/wi609370/arla-lactofree-magere-kwark-3-pack",
+        "product_name": "Arla Lactofree magere kwark 3-pack",
+        "price": 6.24,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "dreft": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi608066/dreft-platinum-vaatwastabletten-citroen",
+        "product_name": "Dreft Platinum vaatwastabletten citroen",
+        "price": 6.5,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "walnoten": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -413,17 +431,17 @@
         "checked_date": null
       },
       "tofu": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi609817/ah-terra-uit-eigen-keuken-sticky-tempeh",
+        "product_name": "AH Terra Uit eigen keuken sticky tempeh",
+        "price": 6,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "gemengdgehakt": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -431,17 +449,17 @@
         "checked_date": null
       },
       "kipfilet": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi430835/knorr-tratorria-kipfilet-toscana",
+        "product_name": "Knorr Tratorria kipfilet Toscana",
+        "price": 2.5,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "vis": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -451,24 +469,24 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/shop/seizoensproducten",
-        "product_name": "AH Biologisch Flespompoen",
-        "price": 1.79,
+        "source": "https://www.ah.nl/producten/product/wi435907/olvarit-pompoen-kip-aardappel-15m",
+        "product_name": "Olvarit Pompoen kip aardappel 15m+",
+        "price": 0.99,
         "price_status": "externe actiemelding · t/m 2026-11-01",
-        "checked_date": null
+        "checked_date": "2026-10-29"
       },
       "sperziebonen": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi230848/ah-sperziebonen-kleinverpakking",
+        "product_name": "AH Sperziebonen kleinverpakking",
+        "price": 1.25,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "bospeen": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -476,13 +494,13 @@
         "checked_date": null
       },
       "popcorn": {
-        "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi613530/true-dates-caramel-popcorn",
+        "product_name": "True Dates Caramel popcorn",
+        "price": 1.12,
+        "price_status": "externe actiemelding · t/m 2026-11-01",
+        "checked_date": "2026-10-29"
       },
       "volle_melk": {
         "state": "price_observed",
@@ -495,7 +513,16 @@
       },
       "skuumkoppe": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
+      },
+      "skuumkoppe_00": {
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -513,7 +540,7 @@
       },
       "kippenpoten": {
         "state": "needs_source",
-        "reason": "geen bron in de gekoppelde gegevens",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
