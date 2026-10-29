@@ -39,6 +39,12 @@ class RegularPricesTest(unittest.TestCase):
 <script type="application/ld+json">[{"@type":"Offer","price":"1.39"},
 {"@type":"Offer","price":"2.79"}]</script>''', MILK))
 
+    def test_ah_litre_price_with_known_exact_size(self):
+        html = '<html><h1>AH Volle melk</h1><span>1 l · Prijs per LT € 1,39</span></html>'
+        self.assertEqual(p.observed(html, MILK)["price"], 1.39)
+        self.assertIsNone(p.observed(html, {**MILK, "unit": "stuk"}))
+        self.assertIsNone(p.observed(html, {**MILK, "quantity": None}))
+
     def test_unavailable_not_bought(self):
         self.assertEqual(p.observed(HTML_SEREH, SEREH)["availability_status"], "discontinued")
 
