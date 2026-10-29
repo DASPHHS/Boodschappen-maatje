@@ -6,8 +6,11 @@ const fs=require('node:fs');
 for(const name of ['product-monitor','actiecatalogus','retailer-catalog']){
   const file='.github/workflows/'+name+'.yml';
   const yaml=fs.readFileSync(file,'utf8');
-  assert.match(yaml,/group: boodschappen-data-publication/,
-    file+' must share a publication lock with the other writers');
+  // A shared GitHub concurrency group cancels pending runs across workflows.
+  // Keep per-source queues; the post-reset rebuild plus push retry provides consistency.
+  const group={ 'product-monitor':'product-coverage',
+    'actiecatalogus':'full-promotions','retailer-catalog':'retailer-price-catalog' }[name];
+  assert.ok(yaml.includes('group: '+group),file+' needs its own queue');
   const reset=yaml.lastIndexOf('git reset --hard origin/main');
   const rebuild=yaml.lastIndexOf('node scripts/build_product_resolution.cjs\n');
   const stage=yaml.lastIndexOf('git add ');
@@ -16,4 +19,4 @@ for(const name of ['product-monitor','actiecatalogus','retailer-catalog']){
   assert.doesNotMatch(yaml,/cp [^\n]*product-resolution\.json/,
     file+' must not replay pre-reset product resolution from a temporary copy');
 }
-console.log('All three publication jobs rebuild fresh coverage under a shared lock');
+console.log('All price jobs rebuild fresh coverage after reset and do not cancel each other');
