@@ -305,7 +305,7 @@ function compareCell(w,s,rows){
    '<small class="compare-product">'+name+' · '+pack+'</small>'+
    '<small class="compare-evidence">'+(isCatalog?'Catalogus':x.isPromotion?'Actie':'Prijswaarneming')+
     (x.checked?' · '+safe(x.checked):'')+(aged?' · ouder':'')+'</small>'+
-   (link&&/^https:\/\//.test(link)?'<a class="compare-source" href="'+attr(link)+'" target="_blank" rel="noopener noreferrer">Product bekijken ↗</a>':'');
+   (link&&/^https:\/\//.test(link)?'<a class="compare-source" href="'+attr(link)+'" target="_blank" rel="noopener noreferrer">'+(isCatalog&&!o.url?.includes('ah.nl')&&!o.url?.includes('jumbo.com')?'Prijsbron ↗':'Product bekijken ↗')+'</a>':'');
 }
 function personalComparison(){
  const watch=chosenWatch();
@@ -577,8 +577,8 @@ return '<div class="recipe-toolbar offer-toolbar"><label>Sorteren <select id="of
 '</select></label><span class="muted">* Alleen vergelijkbare gewone prijs en actieprijs; bundels zonder zekere vergelijkbaarheid niet als korting gerangschikt.</span></div>';
 }
 function offersView(){
-header('Slim besparen','Voor mij: <span style="color:#719b66">prijzen met broncontrole.</span>','Bekijk je eigen veelgekochte producten, vergelijk prijzen tussen Lidl, Jumbo en Albert Heijn, en laat de winkelkeuze aan jezelf.');
-let out=auditSummary();out+='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
+header('Mijn boodschappen','Vergelijk <span style="color:#719b66">echte winkelprijzen.</span>','Van jouw producten zie je direct de prijzen bij Lidl, Jumbo en Albert Heijn.');
+let out=state.offerMode==='all'?auditSummary():'';out+='<div class="control-row"><button class="pill '+(state.offerMode==='personal'?'active':'')+'" data-offer-mode="personal">Voor mij</button><button class="pill '+(state.offerMode==='favorites'?'active':'')+'" data-offer-mode="favorites">♥ Favorieten ('+state.favorites.length+')</button><button class="pill '+(state.offerMode==='all'?'active':'')+'" data-offer-mode="all">Alle aanbiedingen</button></div>';
 if(state.offerMode==='personal')out+=personalComparison();
 else if(state.offerMode==='favorites')out+=favoriteDashboard();
 else{

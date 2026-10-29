@@ -16,6 +16,7 @@ on:
       - 'scripts/sync_retailer_catalog.py'
       - 'tests/test_retailer_catalog.py'
       - 'tests/catalog-search.cjs'
+      - 'tests/live-price-ui.cjs'
       - '.github/workflows/retailer-catalog.yml'
       - 'scripts/build_product_resolution.cjs'
       - 'tests/product-resolver.cjs'
@@ -76,6 +77,7 @@ jobs:
           node tests/price-observations.cjs
           node tests/product-resolver.cjs
           node tests/catalog-search.cjs
+          node tests/live-price-ui.cjs
           node scripts/build_product_resolution.cjs --check
           node tests/source-freshness.cjs
           node tests/favorite-families.cjs
