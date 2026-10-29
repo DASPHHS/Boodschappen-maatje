@@ -166,7 +166,7 @@
       "url": "https://www.ah.nl/shop/seizoensproducten"
     },
     {
-      "checked_date": "2026-10-28",
+      "checked_date": "2026-10-29",
       "status": "official_regular_observed",
       "group": "volle_melk",
       "store": "ah",
@@ -255,7 +255,9 @@
       "unit": "stuk",
       "type": "verse_sereh",
       "url": "https://www.ah.nl/producten/product/wi387232/ah-sereh",
-      "note": "Reguliere prijs van verse sereh per stuk. AH diepvries is anders geprijsd per g."
+      "note": "Reguliere prijs van verse sereh per stuk. AH diepvries is anders geprijsd per g.",
+      "availability_status": "discontinued",
+      "availability_checked_date": "2026-10-29"
     },
     {
       "checked_date": "2026-10-28",
