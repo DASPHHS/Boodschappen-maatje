@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,recipeSources:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 // Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
 const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
@@ -525,15 +525,26 @@ let featured=recipes(s).filter(r=>{const m=offerInfo(r,s);return m.confirmed.len
 x+=featured.length?'<div class="cards">'+featured.map(recipeCard).join('')+'</div>':empty('Geen gekoppelde actierecepten','Bekijk wel de losse aanbiedingen of de bestaande recepten.');
 }
 x+=title('Niet missen · Lidl, Jumbo & AH','Relevante aanbiedingen met hartjes om direct te bewaren. Een actie is niet automatisch de goedkoopste optie.');
-const focus={
-lidl:['broccoli','zalm','prei'],
-jumbo:['jumbo-w44-gemengdgehakt','jumbo-w44-vivera-shoarma','jumbo-w44-flespompoen','jumbo-w44-kipblokjes','jumbo-w44-dreft'],
-ah:['ah-w44-pork-300','ah-w44-sprouts-500','ah-w44-plant-chicken-160','ah-w44-butternut-piece','ah-w44-cauliflower-piece','ah-w44-chicken-300']
-};
+// Always select from current, date-filtered offers. A fixed week-44 list
+// becomes invalid as soon as the next retailer campaign starts.
 for(const s of ORDER){
-let wanted=offers(s).filter(o=>focus[s].includes(o.id)||(s==='lidl'&&focus.lidl.some(k=>norm(o.name).includes(k)))).slice(0,6);
-x+=title(NAMES[s],wanted.length+' uitgelichte producten','<button class="button secondary small" data-goto-offers="'+s+'">Alle aanbiedingen →</button>');
-if(wanted.length)x+='<div class="cards">'+wanted.map(o=>dealCard(o,s)).join('')+'</div>';
+ const relevant=new Set(chosenWatch().map(w=>w.key));
+ const rank=o=>{
+  const personal=relevant.has(profileKey(o))?1000:0;
+  const official=isOfficialOfferSource(o,s)?250:0;
+  const kind=['kip','vis','vlees','vega','groente','fruit','zuivel','voorraad','huishouden','bier'].indexOf(o.category);
+  const category=kind<0?0:80-kind*7;
+  const discount=Number.isFinite(o.regular_price)&&o.regular_price>o.price&&
+    !o.price_conflict&&Number(o.multi_buy_quantity||1)<=1?
+      Math.min(20,(o.regular_price-o.price)/o.regular_price*20):0;
+  return personal+official+category+discount;
+ };
+ const wanted=offers(s).filter(o=>Number.isFinite(o.price)&&!o.price_conflict)
+  .sort((a,b)=>rank(b)-rank(a)||a.name.localeCompare(b.name,'nl')).slice(0,6);
+ x+=title(NAMES[s],wanted.length+' actuele productwaarnemingen',
+  '<button class="button secondary small" data-goto-offers="'+s+'">Alle aanbiedingen →</button>');
+ if(wanted.length)x+='<div class="cards">'+wanted.map(o=>dealCard(o,s)).join('')+'</div>';
+ else x+=empty('Geen recente passende aanbiedingen','Vernieuwen van de externe winkelbron kan nodig zijn.');
 }
 x+='<div class="info-banner"><strong>Vergelijk per verpakking:</strong> ingrediënten kunnen in actie zijn, maar de totale maaltijd is alleen aantoonbaar goedkoop als alle kassaprijzen en goedkopere alternatieven zijn gecontroleerd.</div>';
 x+=title('Budgetbasis zonder acties','Voordelige reguliere recepten op basis van eerder waargenomen schapprijzen — geen garantie dat de prijs altijd gelijk blijft.');
@@ -594,9 +605,16 @@ $('#view-aanbiedingen').innerHTML=out;
 }
 function allRecipes(){let found=ORDER.filter(s=>state.store==='alle'||state.store===s).flatMap(s=>recipes(s));let known=new Set(found.map(r=>r.title?.toLowerCase()));let suggestions=state.library.filter(r=>!known.has(r.title?.toLowerCase())).map(r=>({...r,store:null,origin:'bibliotheek'}));return found.concat(suggestions)}
 
+function recipeSourceDirectory(){
+ const rows=state.recipeSources?.sources||[];
+ if(!rows.length)return '';
+ let html=title('Recepten van vertrouwde kooksites','Open de oorspronkelijke receptpagina. Geen automatisch gekopieerde bereidingsstappen, foto’s of onbewezen prijzen.');
+ html+='<div class="recipe-source-grid">'+rows.filter(x=>x.reuse==='link_only'&&/^https:\/\//.test(x.url)).map(x=>'<a class="recipe-source-link" href="'+attr(x.url)+'" target="_blank" rel="noopener noreferrer"><strong>'+safe(x.name)+'</strong><small>'+safe(x.tag)+'</small><span>Bekijk recepten bij de bron ↗</span></a>').join('')+'</div>';
+ return html;
+}
 function recipeView(){
 header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Acties die je écht gebruikt.</span>','Uitgewerkte ideeën en actierecepten voorop. De 40 oudere titel-geïnspireerde concepten kun je apart inschakelen. Geen van deze gerechten is door ons proefgekookt.');
-let out=storeControls()+kindControls()+subtypeControls()+recipeControls();
+let out=recipeSourceDirectory()+storeControls()+kindControls()+subtypeControls()+recipeControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
 const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
 const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;const anchored=all.filter(r=>offerInfo(r,s).anchors.length||offerInfo(r,s).confirmed.length).length;
@@ -606,7 +624,7 @@ out+=title(NAMES[s]+' recepten',counts+' · '+anchored+' recepten met gekoppeld 
 out+='<div class="info-banner">Actiekoppelingen vereisen passende productvarianten, verpakkingen en prijzen. Andere vergelijkbare producten verschijnen alleen als mogelijke aanbieding. '+(s==='jumbo'?'Vis zonder passende aanbieding blijft gewone inspiratie.':'')+'</div>';
 out+=found.length?'<div class="cards">'+found.map(recipeCard).join('')+'</div>':empty('Geen recepten voor deze filters','Wijzig je actiestatus of zoekterm om meer recepten te zien.');
 }
-out+='<div class="info-banner warning">De receptenbibliotheek groeit met nieuwe dagelijkse en wekelijkse gerechten. Historische prijzen worden niet als actuele prijzen getoond. De goedkoopste werkelijke kassamand kan pas worden bevestigd als álle productprijzen en verpakkingen gecontroleerd zijn.</div>';
+out+='<div class="info-banner warning">De eigen recepten en automatische actie-ideeën zijn niet proefgekookt; externe recepten open je rechtstreeks bij hun maker. De receptenbibliotheek groeit met nieuwe dagelijkse en wekelijkse gerechten. Historische prijzen worden niet als actuele prijzen getoond. De goedkoopste werkelijke kassamand kan pas worden bevestigd als álle productprijzen en verpakkingen gecontroleerd zijn.</div>';
 $('#view-recepten').innerHTML=out;
 }
 function normalize(r){return (r.ingredients||[]).map(i=>({name:i.name||i.label||'Ingrediënt',quantity:Number(i.quantity||0),unit:i.unit||'',department:i.department||'Overig',price:typeof i.pack_price==='number'?i.pack_price:null}));}
@@ -629,6 +647,7 @@ function planRecipe(key){
  const [s,...rest]=key.split('|'),id=rest.join('|');if(!ORDER.includes(s)||!findRecipe(s,id))return;
  state.selected[s]??=[];
  if(!state.selected[s].includes(id))state.selected[s].push(id);
+ state.store=s; // Open the chosen retailer's actual list after planning.
  snapshotRecipe(s,id);save();
 }
 function unplanRecipe(key){
@@ -668,6 +687,8 @@ function myRecipesView(){
 function shoppingView(){
 header('Alles in één winkel','Jouw <span style="color:#719b66">boodschappenlijst.</span>','Jij kiest welke supermarkt je bezoekt. Combineer gerechten en vink je boodschappen in de winkel af.');
 let s=state.store==='alle'?null:state.store;
+if(!s){const populated=ORDER.filter(store=>(state.selected[store]||[]).length>0);
+ if(populated.length===1){s=populated[0];state.store=s;}}
 let x=storeControls(false);
 if(!s){x+=empty('Kies eerst je supermarkt','Selecteer Lidl, Jumbo of Albert Heijn. Je lijst blijft per winkel apart bewaard.');$('#view-lijst').innerHTML=x;return}
 const picks=currentSelections(s);x+='<div class="info-banner">Je hebt '+picks.length+' '+(picks.length===1?'recept':'recepten')+' geselecteerd voor '+safe(NAMES[s])+'. We combineren gelijke ingrediënten. Winkelprijzen zonder verpakkingcontrole worden niet opgeteld.</div>';
@@ -717,7 +738,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-vi
 if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
 if(b.dataset.addWatch){const value=$('#new-watch')?.value||'';if(addCustomWatch(value))offersView();return}
 if(b.dataset.removeWatch){state.customWatches=state.customWatches.filter(w=>w.key!==b.dataset.removeWatch);save();offersView();return}
-if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);if(state.view==='aanbiedingen')offersView();else render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
+if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
 if(b.dataset.open){openRecipe(b.dataset.open);return}
@@ -730,5 +751,5 @@ document.addEventListener('input',e=>{if(e.target.id==='find'){let x=e.target.va
 document.addEventListener('change',e=>{if(e.target.matches('[data-watch-key]')){const k=e.target.dataset.watchKey;state.watchDisabled=state.watchDisabled.filter(x=>x!==k);if(!e.target.checked)state.watchDisabled.push(k);save();offersView();return}if(e.target.id==='recipe-quality'){state.recipeQuality=e.target.value;recipeView();return}if(e.target.id==='offer-category'){state.kind=e.target.value;offersView();return}if(e.target.id==='offer-sort'){state.offerSort=e.target.value;offersView();return}if(e.target.id==='offer-evidence'){state.offerEvidence=e.target.value;offersView();return}if(e.target.id==='recipe-sort'){state.sortBy=e.target.value;recipeView();return}if(e.target.id==='deal-filter'){state.dealFilter=e.target.value;recipeView();return}if(e.target.matches('[data-check]')){state.checks[e.target.dataset.check]=e.target.checked;save();e.target.closest('.list-line').querySelector('.item-name').classList.toggle('done',e.target.checked)}});
 $('#dialog-close').addEventListener('click',()=>$('#recipe-dialog').close());
 document.querySelector('#clock').textContent=new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Amsterdam'});
-(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json'),load('data/product-resolution.json'),load('data/retailer-catalog.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state.resolution=res[11];state.retailerCatalog=res[12];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
+(async()=>{const res=await Promise.all([load('data/daily.json'),load('data/weekly.json'),load('data/library.json'),load('data/archive.json'),load('data/offers-catalog.json'),load('data/spotlight.json'),load('data/watchlist.json'),load('data/personal-prices.json'),load('data/verification.json'),load('data/supplemental-offers.json'),load('data/offer-audit.json'),load('data/product-resolution.json'),load('data/retailer-catalog.json'),load('data/recipe-sources.json')]);state.daily=res[0];state.weekly=res[1];state.library=Array.isArray(res[2]?.recipes)?res[2].recipes:[];state.archive=res[3];state.catalog=res[4];state.spotlight=res[5];state.watchlist=res[6];state.personalPrices=res[7];state.verification=res[8];state.supplemental=res[9];state.audit=res[10];state.resolution=res[11];state.retailerCatalog=res[12];state.recipeSources=res[13];state._offersCache.clear();state._matchCache.clear();state.view=['vandaag','aanbiedingen','recepten','lijst','mijn'].includes(location.hash.slice(1))?location.hash.slice(1):'vandaag';render()})();
 })();
