@@ -25,3 +25,25 @@ assert.equal('basket_total' in p,false,'Do not imply an actual or complete baske
 assert.equal(options.recommend(recipe,'ah',{...catalog,source_date:'2026-10-20'},pricing,resolver,today).matched,0);
 assert.equal(options.recommend(recipe,'lidl',catalog,pricing,resolver,today).matched,0);
 console.log('Real external price options: whole packs, strict exclusion, stale source fallback and incomplete basket');
+const fixture={...catalog,stores:{ah:[
+ ['Zonnebloemolie',2,'1 l',null,'oil'],
+ ['Paprikapoeder',1,'50 g',null,'spice'],
+ ['Eieren',3,'6 stuks',null,'eggs'],
+ ['Courgette',.50,'per stuk',null,'courgette'],
+ ['Boursin knoflook',.10,'150 g',null,'wrong'],
+ ['Knoflook',1.50,'150 g',null,'garlic']
+]}};
+const meal={ingredients:[{name:'zonnebloemolie',quantity:20,unit:'ml'},
+ {name:'paprikapoeder',quantity:6,unit:'g'}, {name:'eieren',quantity:8,unit:'st'}]};
+const full=options.estimate(meal,'ah',fixture,pricing,resolver,today);
+assert.equal(full.state,'catalog_estimate');assert.equal(full.total,9);
+assert.equal(full.rows.find(x=>x.ingredient==='eieren').pack_count,2);
+assert.equal(full.rows.find(x=>x.ingredient==='zonnebloemolie').consumption_total,.04);
+assert.equal(full.unverified,true,'External catalog prices must remain indications');
+const incomplete=options.estimate({ingredients:[...meal.ingredients,{name:'courgette',quantity:600,unit:'g'}]},'ah',fixture,pricing,resolver,today);
+assert.equal(incomplete.total,null,'Never invent a vegetable weight from a per-piece pack');
+assert.equal(incomplete.partial,9);assert.deepEqual(incomplete.missing,['courgette']);
+const garlic=options.estimate({ingredients:[{name:'knoflook',quantity:10,unit:'g'}]},'ah',fixture,pricing,resolver,today);
+assert.equal(garlic.rows[0].product,'Knoflook','Garlic cheese is not garlic');
+assert.equal(options.estimate(meal,'ah',{...fixture,source_date:'2026-11-01'},pricing,resolver,today).partial,0);
+assert.equal(options.estimate(meal,'ah',{...fixture,source_date:'2026-10-20'},pricing,resolver,today).partial,0);

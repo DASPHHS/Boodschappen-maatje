@@ -13,7 +13,7 @@ const start=base.endsWith('/')?base:base+'/';
  try{
   const resp=await page.goto(start+'#vandaag',{waitUntil:'domcontentloaded',timeout:60000});
   assert.ok(resp&&resp.ok(),'Site HTTP status must be 200');
-  await page.waitForFunction(()=>document.querySelector('#feed-status')?.textContent?.includes('Dagrapport'),{timeout:60000});
+  await page.waitForFunction(()=>document.querySelector('#feed-status')?.textContent?.includes('Acties'),{timeout:60000});
   assert.equal(await page.locator('#view-vandaag .store-card').count(),3,'All three supermarkets must render');
   assert.equal(await page.locator('#view-vandaag:not(.hidden)').count(),1);
   assert.ok((await page.locator('#view-vandaag').innerText()).includes('Dit weekmenu'),'A current weekly plan must be published on the homepage');
@@ -21,7 +21,7 @@ const start=base.endsWith('/')?base:base+'/';
   await weeklyCard.locator('[data-open]').click();
   await page.locator('#recipe-dialog').waitFor({state:'visible'});
   assert.ok((await page.locator('#dialog-content').innerText()).includes('Verpakkingsopties voor dit recept'),'Week ideas must show guarded shop options');
-  assert.ok((await page.locator('#dialog-content').innerText()).includes('geen volledig of geverifieerd kassabedrag'),'Never invent a complete recipe price');
+  assert.ok((await page.locator('#dialog-content').innerText()).includes('geen geverifieerd kassabedrag'),'Never invent a complete recipe price');
   await page.locator('#dialog-close').click();
   await page.locator('.sidebar button[data-view="aanbiedingen"]').click();
   await page.locator('#view-aanbiedingen .compare-table').waitFor();
@@ -61,7 +61,7 @@ const start=base.endsWith('/')?base:base+'/';
   const mobile=await browser.newPage({viewport:{width:390,height:844}});
   try{
    await mobile.goto(start+'#vandaag',{waitUntil:'domcontentloaded',timeout:60000});
-   await mobile.waitForFunction(()=>document.querySelector('#feed-status')?.textContent?.includes('Dagrapport'));
+   await mobile.waitForFunction(()=>document.querySelector('#feed-status')?.textContent?.includes('Acties'));
    assert.equal(await mobile.locator('.mobile-nav').isVisible(),true,'Mobile navigation must be visible');
    await mobile.locator('.mobile-nav [data-view="recepten"]').click();
    await mobile.locator('#view-recepten .recipe-source-link').first().waitFor();
