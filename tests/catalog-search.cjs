@@ -53,3 +53,17 @@ search.candidates(cacheProfile,'ah',cacheCatalog,pricing,countingResolver,today)
 const firstCount=evaluations;assert.ok(firstCount>0,'Fixture must contain an actual product match');
 search.candidates(cacheProfile,'ah',cacheCatalog,pricing,countingResolver,today);
 assert.equal(evaluations,firstCount,'Same catalog/profile/day must reuse resolved matches');
+// Only identity-checked, recent retailer prices override a catalog snapshot.
+const officialRow=['AH Broccoli',5,'500 g','https://www.ah.nl/producten/product/wi7/broccoli','wi7',
+ {status:'ok',verified_identity:true,product_pack:'500 g',checked_at:today+'T14:00:00Z',observed_price:2,categories:['Broccoli']}];
+assert.equal(search.observation(officialRow,'ah',catalog,today,pricing).price,2);
+assert.equal(search.observation([...officialRow.slice(0,5),{...officialRow[5],verified_identity:false}],'ah',catalog,today,pricing).price,5);
+assert.equal(search.observation([...officialRow.slice(0,5),{...officialRow[5],checked_at:'2026-10-20T14:00:00Z'}],'ah',catalog,today,pricing).price,5);
+const changedPack=search.observation([...officialRow.slice(0,5),{...officialRow[5],product_pack:'1 kg'}],'ah',catalog,today,pricing);
+assert.equal(changedPack.pack_conflict,true);
+assert.equal(resolver.matching(changedPack,{match:{all:['broccoli']}},pricing).status,'partial','A retailer pack change must not create a false unit price');
+
+assert.notEqual(search.productKey({name:'Kipfilet',product_id:'111',url:'https://github.com/supermarkt/checkjebon'},'lidl'),search.productKey({name:'Kipfilet',product_id:'222',url:'https://github.com/supermarkt/checkjebon'},'lidl'),'A shared catalog attribution URL is not a product identity');
+assert.equal(search.productKey({product_id:'wi450535/old-slug'},'ah'),search.productKey({url:'https://www.ah.nl/producten/product/wi450535/new-slug'},'ah'),'A renamed URL must preserve the stable retailer SKU');
+const lidlSharedUrl={...catalog,stores:{lidl:[['Houdbare volle melk',1,'1 L',null,'111'],['Bio Houdbare volle melk',2,'1 L',null,'222']]}};
+assert.equal(search.combined(watch.find(x=>x.key==='volle_melk'),'lidl',lidlSharedUrl,[],[],pricing,resolver,today).length,2,'Distinct retailer IDs must not be merged because their attribution URL is shared');

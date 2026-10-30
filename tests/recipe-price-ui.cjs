@@ -11,7 +11,7 @@ const ctx={console,URL,Intl,Date:Clock,Set,Map,WeakMap,Promise,parseFloat,parseI
  location:{hash:'#vandaag'},localStorage:{getItem:()=>null,setItem(){}},
  fetch:async url=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,String(url).split('?')[0]),'utf8'))})};
 ctx.window=ctx;vm.createContext(ctx);
-for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','offer-identity.js','source-freshness.js','app.js']){
+for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','offer-identity.js','source-freshness.js','app.js']){
  let source=fs.readFileSync(path.join(root,file),'utf8');
  if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections};})();');
  vm.runInContext(source,ctx,{filename:file});

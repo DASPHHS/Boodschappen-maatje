@@ -50,3 +50,7 @@ assert.equal(fav.dedupe([favorite,regular]).length,1);
 assert.equal(fav.same({name:'Texels Skuumkoppe Bier Fles 6x300ml',pack_label:'6x300ml',store:'jumbo'},
  {name:'Texels Skuumkoppe Bier Blik 6x300ml',pack_label:'6x300ml',store:'jumbo'},'jumbo'),false);
 console.log('Personal-price coverage, milk bundle mismatch, historical dates, exact packs and regular favorites validated');
+
+assert.equal(price.unitCost({name:'Dreft vaatwascapsules',pack_label:'19 stuks',price:13.99}).unit,'stuk');
+assert.equal(price.unitCost({name:'Dreft vaatwascapsules',pack_label:'19 stuks',price:13.99}).price,.74);
+assert.equal(price.pack({name:'AH Bospeen',pack_label:'per bos'}).unit,'bos');

@@ -76,9 +76,10 @@ jobs:
             cp "$tmp/personal-prices.json" docs/data/personal-prices.json
             # The catalog/price monitor may have published newer source data.
             # Resolve coverage from the latest combined files AFTER reset.
+            node scripts/audit_product_semantics.cjs
             node scripts/build_product_resolution.cjs
             node scripts/build_product_resolution.cjs --check
-            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json
+            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json docs/data/semantic-review.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
             if git push origin HEAD:main; then exit 0; fi

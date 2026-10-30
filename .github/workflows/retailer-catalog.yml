@@ -6,6 +6,9 @@ on:
     paths:
       - 'scripts/sync_retailer_catalog.py'
       - 'docs/catalog-search.js'
+      - 'docs/product-semantics.js'
+      - 'scripts/sync_product_evidence.py'
+      - 'scripts/audit_product_semantics.cjs'
       - '.github/workflows/retailer-catalog.yml'
   schedule:
     - cron: '10 5,6 * * *'
@@ -31,11 +34,21 @@ jobs:
           python -m py_compile scripts/sync_retailer_catalog.py
           node tests/catalog-search.cjs
       - name: Collect open catalog for all three supermarkets
+        continue-on-error: true
         run: |
           python scripts/sync_retailer_catalog.py
+      - name: Audit product semantics and refresh bounded official metadata queue
+        run: |
+          node tests/product-semantics.cjs
+          node scripts/audit_product_semantics.cjs
+          python scripts/sync_product_evidence.py
+      - name: Merge verified product metadata with current snapshot
+        continue-on-error: true
+        run: python scripts/sync_retailer_catalog.py
       - name: Check catalog output and generate product coverage
         run: |
           test -s docs/data/retailer-catalog.json
+          node scripts/audit_product_semantics.cjs
           node scripts/build_product_resolution.cjs
           node scripts/build_product_resolution.cjs --check
       - name: Publish prices and product matches atomically
@@ -44,18 +57,25 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           tmp="$(mktemp -d)"
           cp docs/data/retailer-catalog.json "$tmp/retailer-catalog.json"
+          cp docs/data/source-health.json "$tmp/source-health.json"
+          cp docs/data/product-evidence.json "$tmp/product-evidence.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
             cp "$tmp/retailer-catalog.json" docs/data/retailer-catalog.json
+            cp "$tmp/source-health.json" docs/data/source-health.json
+            cp "$tmp/product-evidence.json" docs/data/product-evidence.json
+            node scripts/audit_product_semantics.cjs
             # Always generate coverage using the freshest committed offers
             # and the new catalog; an earlier calculation is not safe to copy.
             node scripts/build_product_resolution.cjs
             node scripts/build_product_resolution.cjs --check
-            git add docs/data/retailer-catalog.json docs/data/product-resolution.json
+            git add docs/data/retailer-catalog.json docs/data/product-resolution.json docs/data/semantic-review.json docs/data/product-evidence.json docs/data/source-health.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Werk AH Jumbo Lidl catalogusprijzen en productdekking bij"
             if git push origin HEAD:main; then exit 0; fi
             sleep 4
           done
           exit 1
+      - name: Fail visibly when the retained snapshot could not be refreshed
+        run: python -c "import json; assert json.load(open('docs/data/source-health.json'))['status']=='ok', 'Catalog refresh failed; previous prices retained and warning published'"

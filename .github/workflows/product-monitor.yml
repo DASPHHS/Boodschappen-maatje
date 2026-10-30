@@ -10,6 +10,8 @@ on:
       - 'docs/data/retailer-catalog.json'
       - 'docs/catalog-search.js'
       - 'docs/product-resolver.js'
+      - 'docs/product-semantics.js'
+      - 'scripts/audit_product_semantics.cjs'
       - 'docs/price-observations.js'
       - 'scripts/build_product_resolution.cjs'
   schedule:
@@ -28,25 +30,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run at 08:15 Amsterdam or on request/change
-        id: gate
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          run=os.getenv("GITHUB_EVENT_NAME")!="schedule" or datetime.now(ZoneInfo("Europe/Amsterdam")).hour==8
-          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
-              f.write("run="+str(run).lower()+"\n")
-          PY
       - name: Validate every tracked product and regenerate unresolved queue
-        if: steps.gate.outputs.run == 'true'
         run: |
           node tests/product-resolver.cjs
           node scripts/build_product_resolution.cjs --check
           node scripts/build_product_resolution.cjs
       - name: Publish only resolution status
-        if: steps.gate.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -55,9 +44,10 @@ jobs:
             git reset --hard origin/main
             # Recalculate AFTER rebasing to the newest catalog + offers.
             # Never replay a stale report built before another workflow pushed.
+            node scripts/audit_product_semantics.cjs
             node scripts/build_product_resolution.cjs
             node scripts/build_product_resolution.cjs --check
-            git add docs/data/product-resolution.json
+            git add docs/data/product-resolution.json docs/data/semantic-review.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Ververs openstaande productbroncontroles"
             if git push origin HEAD:main; then exit 0; fi

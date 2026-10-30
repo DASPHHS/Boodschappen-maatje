@@ -11,6 +11,11 @@ on:
       - 'docs/price-integrity.js'
       - 'docs/price-observations.js'
       - 'docs/product-resolver.js'
+      - 'docs/product-semantics.js'
+      - 'tests/product-semantics.cjs'
+      - 'scripts/audit_product_semantics.cjs'
+      - 'scripts/sync_product_evidence.py'
+      - 'tests/test_product_evidence.py'
       - 'docs/catalog-search.js'
       - 'docs/style.css'
       - 'docs/recipe-shop-options.js'
@@ -80,6 +85,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_sync_aanbiedingen.py'
           python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_retailer_catalog.py'
+          python -m unittest discover -s tests -p 'test_product_evidence.py'
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
@@ -92,6 +98,7 @@ jobs:
           node tests/price-integrity.cjs
           node tests/price-observations.cjs
           node tests/product-resolver.cjs
+          node tests/product-semantics.cjs
           node tests/catalog-search.cjs
           node tests/recipe-source-integrity.cjs
           node tests/workflow-publish-consistency.cjs

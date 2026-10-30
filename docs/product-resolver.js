@@ -5,6 +5,7 @@
  if(root)root.MaatjeResolver=api;
 })(typeof window!=='undefined'?window:null,function(){
  'use strict';
+ const semantic=typeof module==='object'&&module.exports?require('./product-semantics.js'):window.MaatjeSemantics;
  const norm=x=>String(x||'').toLocaleLowerCase('nl-NL').normalize('NFD')
   .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const has=(text,term)=>(' '+norm(text)+' ').includes(' '+norm(term)+' ');
@@ -26,6 +27,7 @@
  }
  function matching(product,profile,pricing){
   const p=interest(profile),rule=p.match||{},name=norm(product?.name||'');
+  if(product?.pack_conflict)return {status:'partial',reason:'winkelpagina noemt een andere verpakking; hercontrole nodig'};
   if(!name)return {status:'reject',reason:'naam ontbreekt'};
   const all=Array.isArray(rule.all)?rule.all:[];
   const any=Array.isArray(rule.any)?rule.any:[];
@@ -33,6 +35,8 @@
   if(all.some(x=>!has(name,x))||(any.length&&!any.some(x=>has(name,x)))||none.some(x=>has(name,x)))
    return {status:'reject',reason:'productnaam of uitsluitingen passen niet'};
   if(rule.ean&&String(rule.ean)!==String(product.ean||''))return {status:'reject',reason:'EAN verschilt'};
+  const meaning=semantic.evaluate(product,p,pricing);
+  if(meaning.status!=='match')return meaning;
   const features=traits(product);
   // A required facet is a hard condition: absence cannot become a confirmed match.
   for(const [field,value] of Object.entries(rule.traits||{})){
@@ -45,7 +49,7 @@
    if(unit.unit!==rule.pack.unit||Math.abs(unit.amount-Number(rule.pack.amount))>0.00001)
     return {status:'reject',reason:'verpakkingsgrootte verschilt'};
   }
-  return {status:'match',reason:'productkenmerken en verpakking passen'};
+  return {...meaning,status:'match',reason:'productkenmerken en verpakking passen'};
  }
  function candidates(profile,store,records,offers,pricing,today){
   const p=interest(profile),valid=[],possible=[],seen=new Set();
