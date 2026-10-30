@@ -43,3 +43,13 @@ const more={...catalog,stores:{...catalog.stores,ah:[['AH Ongebrande amandelen',
   'https://www.ah.nl/producten/product/wi000009/amandelen','wi000009']]}};
 assert.equal(search.candidates(user,'ah',more,pricing,resolver,today)[0].o.price,2.99);
 console.log('Real catalog: source dates, three stores, UHT milk, false cottage, updated SKU and future products verified');
+
+// Repeated rendering must not rescan and resolve thousands of catalog products.
+let evaluations=0;
+const countingResolver={...resolver,matching(...args){evaluations++;return resolver.matching(...args)}};
+const cacheCatalog={...catalog,stores:{...catalog.stores}};
+const cacheProfile={match:{all:['houdbare','volle','melk']}};
+search.candidates(cacheProfile,'ah',cacheCatalog,pricing,countingResolver,today);
+const firstCount=evaluations;assert.ok(firstCount>0,'Fixture must contain an actual product match');
+search.candidates(cacheProfile,'ah',cacheCatalog,pricing,countingResolver,today);
+assert.equal(evaluations,firstCount,'Same catalog/profile/day must reuse resolved matches');

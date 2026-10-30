@@ -14,16 +14,37 @@
   const age=Math.round((Date.parse(day+'T12:00:00Z')-Date.parse(c.source_date+'T12:00:00Z'))/86400000);
   return age>=0&&age<=3;
  }
+ const indexes=new WeakMap();
+ function searchIndex(catalog,store){
+  let stores=indexes.get(catalog);if(!stores){stores=new Map();indexes.set(catalog,stores)}
+  if(stores.has(store))return stores.get(store);
+  const words=new Map(),normalized=new Map(),memo=new Map();
+  for(const row of catalog.stores?.[store]||[]){
+   if(!Array.isArray(row)||typeof row[0]!=='string')continue;
+   const name=norm(row[0]);normalized.set(row,name);
+   for(const word of new Set(name.split(' '))){if(!words.has(word))words.set(word,[]);words.get(word).push(row)}
+  }
+  const index={words,normalized,memo};stores.set(store,index);return index;
+ }
  function candidates(profile,store,catalog,pricing,resolver,today,limit=120){
   if(!valid(catalog,today)||profile?.requires_specific_variant)return [];
   const rule=profile?.match||{},all=rule.all||[],any=rule.any||[],none=rule.none||[];
   if(!all.length&&!any.length)return [];
-  const rows=catalog.stores?.[store]||[];
+  const index=searchIndex(catalog,store);
+  const cacheKey=JSON.stringify([profile,today]);
+  if(index.memo.has(cacheKey))return index.memo.get(cacheKey).slice(0,limit);
+  const needed=all.flatMap(x=>norm(x).split(' ')).filter(Boolean);
+  const lists=needed.map(x=>index.words.get(x)||[]);
+  const rows=lists.length?lists.reduce((a,b)=>a.length<=b.length?a:b):
+   [...new Set(any.flatMap(x=>index.words.get(norm(x).split(' ')[0])||[]))];
+  const required=all.map(norm),alternatives=any.map(norm),excluded=none.map(norm);
   const found=[];
   for(const row of rows){
    if(!Array.isArray(row)||typeof row[0]!=='string'||!Number.isFinite(row[1]))continue;
    const name=row[0];
-   if(all.some(x=>!token(name,x))||any.length&&!any.some(x=>token(name,x))||none.some(x=>token(name,x)))continue;
+   const text=' '+index.normalized.get(row)+' ';
+   const contains=x=>text.includes(' '+x+' ');
+   if(required.some(x=>!contains(x))||alternatives.length&&!alternatives.some(contains)||excluded.some(contains))continue;
    const item={name,price:row[1],pack_label:row[2]||'',
      product_id:row[4],store,status:'external_regular_observed',
      checked_date:catalog.source_date,
@@ -45,6 +66,7 @@
    if(ub&&!ua)return 1;
    return a.o.price-b.o.price||a.o.name.localeCompare(b.o.name,'nl');
   });
+  index.memo.set(cacheKey,found);
   return found.slice(0,limit);
  }
  function combined(profile,store,catalog,observations,offers,pricing,resolver,today){
