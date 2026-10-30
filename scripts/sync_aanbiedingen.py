@@ -62,6 +62,7 @@ def category(name):
         return "snacks"
     if re.search(r"\b(aardappelen|aardappel|krieltjes|rijst|pasta|noedels|tortilla|wrap|brood|baguette)\b",t):
         return "brood_graan"
+    if re.search(r"\b(plantaardig\w*|vegan|vegetarisch\w*|vemondo)\b",t):return "vega"
     strict=kind(name)
     if strict:return strict
     if re.search(r"\b(sla|kool|bonen|biet|courgette|komkommer|ui|broccoli|groente|pompoen|prei|wortel|bloemkool|champignon|spruitjes|paprika|spinazie)\b",t):

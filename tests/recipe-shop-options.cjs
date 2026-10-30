@@ -65,3 +65,8 @@ for(const [ingredient,wrong,pack] of [
 const liveCatalog={...catalog,stores:{ah:[['AH Broccoli',10,'500 g',null,'wi9',
  {status:'ok',verified_identity:true,product_pack:'500 g',checked_at:today+'T10:00:00Z',observed_price:2,categories:['Broccoli']}]]}};
 assert.equal(options.estimate({ingredients:[{name:'broccoli',quantity:800,unit:'g'}]},'ah',liveCatalog,pricing,resolver,today).total,4,'Recipes and comparisons must share the same live product price');
+for(const [pack_label,total] of [['400 g',null],['400 g; uitlekgewicht 240 g',4]]){
+ const c={...catalog,stores:{ah:[['AH Kikkererwten',2,pack_label,null,'chickpeas']]}};
+ const r=options.estimate({ingredients:[{name:'kikkererwten uitgelekt',quantity:400,unit:'g'}]},'ah',c,pricing,resolver,today);
+ assert.equal(r.total,total,'Use measured drained mass, never gross can weight');
+}

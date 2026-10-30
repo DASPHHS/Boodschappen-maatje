@@ -34,7 +34,7 @@ function classify(product){
  const category=norm(meta?.categories?.join(' ')||'');
  const combined=n+' '+category;
  let audience=/\b(kat|katten|kattenvoer|kattenvoeding|hond|honden|hondenvoer|hondenvoeding|diervoeder|dierenvoeding|petfood|catfood|dogfood|cat food|dog food|pet food|puppy|kitten|whiskas|felix|sheba|brokjes|brokken)\b/.test(combined)?'pet':
-  /\b(baby|babyvoeding|babymelk|babymaaltijd|groentehapje|groentehapjes|knijpfruit|olvarit|kleintje|dreumes|peuter|maanden|months|infant)\b/.test(combined)?'baby':
+  /\b(baby|babyvoeding|babymelk|babymaaltijd|groentehapje|groentehapjes|knijpfruit|knijpmix|olvarit|organix|kleine keuken|kleintje|dreumes|peuter|maanden|months|infant)\b/.test(combined)||/\b\d{1,2}\s*m\b/.test(combined)?'baby':
   /\b(zeep|shampoo|deodorant|roomspray|schoonmaak|vaatwas|vaatwastabletten|vaatwascapsules|vaatwaspods|afwasmiddel|wasmiddel|wasverzachter|toiletreiniger)\b/.test(combined)?'household':'human';
  const matches=families(name),structured=families(category);
  const family=matches[0]||structured[0]||null;

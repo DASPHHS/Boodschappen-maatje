@@ -13,7 +13,7 @@ const ctx={console,URL,Intl,Date:Clock,Set,Map,WeakMap,Promise,parseFloat,parseI
 ctx.window=ctx;vm.createContext(ctx);
 for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','offer-identity.js','source-freshness.js','app.js']){
  let source=fs.readFileSync(path.join(root,file),'utf8');
- if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections};})();');
+ if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections,offerInfo};})();');
  vm.runInContext(source,ctx,{filename:file});
 }
 (async()=>{
@@ -21,7 +21,10 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  const t=ctx.testApp;
  t.state.catalog.generated_at=catalog.source_date+'T12:00:00Z';
  t.state.catalog.stores.ah.offers.unshift({id:'prepared-regression',name:'AH Ovenschotel kipfilet champignon room',category:'kip',price:6,pack_label:'430 g',start_date:catalog.source_date,end_date:catalog.source_date,source_provider:'PrijsProfeet',source:{url:'https://www.ah.nl/producten/product/wi620796/ah-ovenschotel-kipfilet-champignon-room'},verified:false});
+ for(const name of ['Olvarit Knijpfruit wortel 12m+','Organix Mais knabbels met wortel 6m+','De Kleine Keuken Knijpmix wortel blauwe bes & haver 12m+'])t.state.catalog.stores.ah.offers.unshift({...t.state.catalog.stores.ah.offers[0],id:name,name});
  t.state._offersCache.clear();t.state._matchCache.clear();
+ const bad=t.offerInfo({id:'baby-regression',category:'vis',ingredients:[{name:'wortel',quantity:600,unit:'g'}]},'ah');
+ assert.ok(!JSON.stringify(bad).match(/Olvarit|Organix|De Kleine Keuken/),'Baby foods never suggested for ordinary vegetables');
  assert.ok(!el('#view-vandaag').innerHTML.includes('[object Object]'));
  for(const store of ['lidl','jumbo','ah']){
   const id='library|'+t.state.library[0].id;

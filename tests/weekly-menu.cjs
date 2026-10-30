@@ -23,7 +23,7 @@ for(const store of ['lidl','jumbo','ah']){
   assert.equal((r.offer_anchors||[]).length,0);
   assert.ok(r.ingredients.every(i=>i.pack_price===undefined),'Never synthesize shelf prices');
   assert.ok(r.instructions.length>=3);
-  assert.equal(r.source_status,'algemene_inspiratie_bron_geen_1_op_1_recept');
+  assert.ok(['algemene_inspiratie_bron_geen_1_op_1_recept','eigen_recept_geen_externe_overname'].includes(r.source_status));
  }
 }
 console.log('Weekmenu: 4 honest untested four-portion ideas per store, rotating by week and never priced as verified');

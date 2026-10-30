@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T13:59:01.005Z",
+  "generated_at": "2026-10-30T15:17:50.473Z",
   "week_start": "2026-10-26",
   "week_end": "2026-11-01",
   "editorial_status": "eigen_bewerkingen_niet_proefgekookt",
   "notice": "Vier eigen weekideeën per supermarkt voor vier porties; gebaseerd op vooraf geselecteerde bibliotheekrecepten. Niet proefgekookt, geen overgenomen uitgeverstekst, geen actuele prijs of volledig kassabedrag bevestigd.",
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-29T13:59:01.006Z",
+      "checked_at": "2026-10-30T15:17:50.474Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
@@ -159,20 +159,20 @@
         },
         {
           "id": "week-2026-10-26-lidl-vis",
-          "title": "Japanse gember-misozalm met broccoli en paksoi",
+          "title": "Kabeljauw in kokos met bloemkool en paksoi",
           "category": "vis",
-          "cuisine": "Japans",
+          "cuisine": "Thais",
           "servings": 4,
-          "minutes": 30,
+          "minutes": 35,
           "ingredients": [
             {
-              "name": "zalmfilet",
-              "quantity": 760,
+              "name": "kabeljauwfilet",
+              "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen"
             },
             {
-              "name": "broccoli",
+              "name": "bloemkool",
               "quantity": 700,
               "unit": "g",
               "department": "Groente & fruit"
@@ -184,41 +184,43 @@
               "department": "Groente & fruit"
             },
             {
-              "name": "miso",
-              "quantity": 35,
+              "name": "kokosmelk",
+              "quantity": 400,
+              "unit": "ml",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "kerriepoeder",
+              "quantity": 10,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "gember",
-              "quantity": 25,
-              "unit": "g",
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Roer miso met fijn geraspte gember en wat water tot een dunne saus.",
-            "Bestrijk zalm met de saus en bak in de oven op 190 graden tot hij gaar is.",
-            "Stoom de broccoli en paksoi beetgaar en serveer direct."
+            "Snijd bloemkool klein en houd de witte en groene delen van paksoi apart.",
+            "Verwarm olie en kerrie kort. Voeg kokosmelk, 100 ml water en bloemkool toe en stoof 10 minuten.",
+            "Voeg de vis en witte paksoi toe. Pocheer zacht tot de vis gaar is, circa 8 tot 12 minuten. Laat het paksoigroen de laatste 2 minuten slinken."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-          "inspiration_source": {
-            "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-            "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "lidl",
-          "source_library_id": "basis-45",
+          "source_library_id": "wereld-kabeljauw-kerrie",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -229,15 +231,15 @@
         },
         {
           "id": "week-2026-10-26-lidl-vega",
-          "title": "Midden-Oosterse tofu-shakshuka met boerenkool",
+          "title": "Edamame-groentepan met ei en sesam",
           "category": "vega",
-          "cuisine": "Midden-Oosters",
+          "cuisine": "Japans",
           "servings": 4,
           "minutes": 35,
           "ingredients": [
             {
-              "name": "stevige tofu",
-              "quantity": 900,
+              "name": "edamame",
+              "quantity": 600,
               "unit": "g",
               "department": "Vega & peulvruchten"
             },
@@ -248,53 +250,55 @@
               "department": "Vega & peulvruchten"
             },
             {
-              "name": "boerenkool",
+              "name": "broccoli",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "paprika",
+              "name": "spitskool",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "tomatenblokjes",
-              "quantity": 400,
-              "unit": "g",
-              "department": "Groente & fruit"
+              "name": "sojasaus",
+              "quantity": 30,
+              "unit": "ml",
+              "department": "Kruiden & voorraad"
             },
             {
-              "name": "komijn",
-              "quantity": 10,
+              "name": "sesamzaad",
+              "quantity": 20,
               "unit": "g",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Verwarm tomatenblokjes en paprika met komijn in een brede pan.",
-            "Voeg in blokjes gesneden tofu en boerenkool toe en laat rustig gaar stoven.",
-            "Maak vier kuiltjes, breek in elk een ei en laat onder een deksel volledig garen."
+            "Kook edamame volgens de verpakking. Snijd de groenten klein.",
+            "Roerbak groenten in olie, voeg een scheut water toe en gaar afgedekt 8 minuten.",
+            "Schuif groenten opzij, breek de eieren in de pan en roer tot volledig gestold. Meng met edamame, soja en sesam."
           ],
-          "vegetables_g_per_portion": 400,
-          "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
-          "inspiration_source": {
-            "name": "Voedingscentrum — gezonde recepten en richtlijnen",
-            "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
-          },
+          "vegetables_g_per_portion": 300,
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "lidl",
-          "source_library_id": "basis-48",
+          "source_library_id": "wereld-edamame",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -307,7 +311,7 @@
       "notes": "Automatisch samengesteld uit reeds bestaande eigen ideeën. Controleer het oorspronkelijke recept en de winkelprijzen zelf."
     },
     "jumbo": {
-      "checked_at": "2026-10-29T13:59:01.006Z",
+      "checked_at": "2026-10-30T15:17:50.474Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
@@ -389,66 +393,68 @@
         },
         {
           "id": "week-2026-10-26-jumbo-vlees",
-          "title": "Mexicaanse rundergehaktpan met spitskool en paprika",
+          "title": "Gemberbiefstuk met broccoli en witte kool",
           "category": "vlees",
-          "cuisine": "Mexicaans",
+          "cuisine": "Japans",
           "servings": 4,
-          "minutes": 30,
+          "minutes": 35,
           "ingredients": [
             {
-              "name": "mager rundergehakt",
+              "name": "biefstuk",
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen"
             },
             {
-              "name": "spitskool",
+              "name": "broccoli",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "paprika",
+              "name": "witte kool",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "tomatenpuree",
-              "quantity": 70,
+              "name": "gember",
+              "quantity": 25,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "komijn",
-              "quantity": 10,
-              "unit": "g",
+              "name": "sojasaus",
+              "quantity": 35,
+              "unit": "ml",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Snijd de kool en paprika fijn.",
-            "Rul het gehakt volledig gaar met komijn en tomatenpuree.",
-            "Roerbak de groenten beetgaar en meng met het gehakt. Serveer zonder wraps."
+            "Snijd de biefstuk in dunne reepjes en de groente klein; rasp de gember.",
+            "Roerbak broccoli en kool in de helft van de olie. Voeg 100 ml water toe en gaar afgedekt 8 minuten.",
+            "Bak de vleesreepjes apart in de rest van de olie. Meng met gember, sojasaus en groenten en verhit alles goed."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-          "inspiration_source": {
-            "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-            "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "jumbo",
-          "source_library_id": "basis-43",
+          "source_library_id": "wereld-biefstuk-gember",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -459,9 +465,9 @@
         },
         {
           "id": "week-2026-10-26-jumbo-vis",
-          "title": "Griekse kabeljauwstoof met tomaat en courgette",
+          "title": "Tomatenvis met venkel en courgette",
           "category": "vis",
-          "cuisine": "Grieks",
+          "cuisine": "Italiaans",
           "servings": 4,
           "minutes": 35,
           "ingredients": [
@@ -472,53 +478,55 @@
               "department": "Eiwitbronnen"
             },
             {
+              "name": "venkel",
+              "quantity": 600,
+              "unit": "g",
+              "department": "Groente & fruit"
+            },
+            {
               "name": "courgette",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "tomaten",
-              "quantity": 600,
-              "unit": "g",
-              "department": "Groente & fruit"
-            },
-            {
-              "name": "oregano",
-              "quantity": 8,
+              "name": "tomatenblokjes",
+              "quantity": 400,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "citroensap",
+              "name": "oregano",
+              "quantity": 6,
+              "unit": "g",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
               "quantity": 20,
               "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Snijd courgette en tomaten en stoof met oregano tot ze zacht zijn.",
-            "Leg de kabeljauw boven op de groenten en laat zacht garen tot de vis gemakkelijk uit elkaar valt.",
-            "Breng op smaak met citroensap en verdeel over vier porties."
+            "Snijd venkel dun en courgette in halve plakjes. Bak 5 minuten in olie.",
+            "Voeg tomatenblokjes, oregano en 100 ml water toe. Stoof afgedekt 10 minuten.",
+            "Leg de vis in de saus en laat onder een deksel zachtjes garen, circa 10 minuten afhankelijk van de dikte."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
-          "inspiration_source": {
-            "name": "Voedingscentrum — gezonde recepten en richtlijnen",
-            "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "jumbo",
-          "source_library_id": "basis-46",
+          "source_library_id": "wereld-kabeljauw-venkel",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -529,66 +537,68 @@
         },
         {
           "id": "week-2026-10-26-jumbo-vega",
-          "title": "Marokkaanse harissatempeh met wortel en broccoli",
+          "title": "Shakshuka met spinazie en paprika",
           "category": "vega",
-          "cuisine": "Marokkaans",
+          "cuisine": "Noord-Afrikaans",
           "servings": 4,
           "minutes": 35,
           "ingredients": [
             {
-              "name": "tempeh",
-              "quantity": 1000,
-              "unit": "g",
+              "name": "eieren",
+              "quantity": 8,
+              "unit": "st",
               "department": "Vega & peulvruchten"
             },
             {
-              "name": "wortel",
+              "name": "paprika",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "broccoli",
+              "name": "spinazie",
               "quantity": 600,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "magere kwark",
-              "quantity": 400,
+              "name": "tomatenblokjes",
+              "quantity": 800,
               "unit": "g",
-              "department": "Zuivel"
+              "department": "Kruiden & voorraad"
             },
             {
-              "name": "harissa",
-              "quantity": 35,
+              "name": "komijn",
+              "quantity": 8,
               "unit": "g",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Snijd tempeh in blokjes en bak krokant met een kleine hoeveelheid harissa.",
-            "Stoom wortel en broccoli gaar en bak de groenten kort mee.",
-            "Serveer met magere kwark als frisse saus."
+            "Snijd paprika en bak 5 minuten in olie met komijn.",
+            "Voeg tomaten toe en stoof 10 minuten. Laat de spinazie in porties slinken.",
+            "Maak acht kuiltjes en breek in elk een ei. Dek af en laat 8 tot 12 minuten zacht garen tot ook het eiwit gestold is."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-          "inspiration_source": {
-            "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-            "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "jumbo",
-          "source_library_id": "basis-47",
+          "source_library_id": "wereld-ei-shakshuka",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -601,17 +611,17 @@
       "notes": "Automatisch samengesteld uit reeds bestaande eigen ideeën. Controleer het oorspronkelijke recept en de winkelprijzen zelf."
     },
     "ah": {
-      "checked_at": "2026-10-29T13:59:01.006Z",
+      "checked_at": "2026-10-30T15:17:50.474Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
         {
           "id": "week-2026-10-26-ah-kip",
-          "title": "Turkse sumakkip met aubergine en courgette",
+          "title": "Kerriekip met bloemkool en spinazie",
           "category": "kip",
-          "cuisine": "Turks",
+          "cuisine": "Indiaas",
           "servings": 4,
-          "minutes": 40,
+          "minutes": 35,
           "ingredients": [
             {
               "name": "kipfilet",
@@ -620,59 +630,55 @@
               "department": "Eiwitbronnen"
             },
             {
-              "name": "aubergine",
-              "quantity": 600,
+              "name": "bloemkool",
+              "quantity": 800,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "courgette",
-              "quantity": 600,
-              "unit": "g",
-              "department": "Groente & fruit"
-            },
-            {
-              "name": "magere kwark",
+              "name": "spinazie",
               "quantity": 400,
               "unit": "g",
-              "department": "Zuivel"
+              "department": "Groente & fruit"
             },
             {
-              "name": "sumak",
-              "quantity": 10,
+              "name": "kokosmelk",
+              "quantity": 400,
+              "unit": "ml",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "kerriepoeder",
+              "quantity": 12,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "knoflook",
-              "quantity": 15,
-              "unit": "g",
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Verwarm de oven voor op 210 graden en rooster aubergine en courgette met sumak tot ze zacht zijn.",
-            "Snijd de kipfilet in stukken en bak deze volledig gaar.",
-            "Meng geperste knoflook met kwark en serveer samen."
+            "Verdeel bloemkool in kleine roosjes en snijd de kip in blokjes.",
+            "Bak de kip in olie volledig gaar. Roer kerriepoeder erdoor en voeg kokosmelk, bloemkool en 100 ml water toe.",
+            "Stoof afgedekt 12 tot 15 minuten tot de bloemkool gaar is. Laat spinazie in de saus slinken."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
-          "inspiration_source": {
-            "name": "Voedingscentrum — gezonde recepten en richtlijnen",
-            "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "ah",
-          "source_library_id": "basis-41",
+          "source_library_id": "wereld-kip-kerrie",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -683,66 +689,68 @@
         },
         {
           "id": "week-2026-10-26-ah-vlees",
-          "title": "Spaanse varkenshaas met bloemkool en venkel",
+          "title": "Auberginebootjes met gehakt en tomaat",
           "category": "vlees",
-          "cuisine": "Spaans",
+          "cuisine": "Grieks",
           "servings": 4,
-          "minutes": 45,
+          "minutes": 50,
           "ingredients": [
             {
-              "name": "varkenshaas",
-              "quantity": 760,
+              "name": "mager rundergehakt",
+              "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen"
             },
             {
-              "name": "bloemkool",
-              "quantity": 700,
+              "name": "aubergine",
+              "quantity": 800,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "venkel",
-              "quantity": 500,
+              "name": "tomaten",
+              "quantity": 400,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "paprikapoeder",
-              "quantity": 8,
+              "name": "oregano",
+              "quantity": 6,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "citroensap",
+              "name": "knoflook",
+              "quantity": 10,
+              "unit": "g",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
               "quantity": 20,
               "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Rooster bloemkool en venkel met paprikapoeder in de oven tot alles gaar is.",
-            "Braad varkenshaas rondom aan en gaar veilig verder.",
-            "Laat het vlees kort rusten, snijd in medaillons en serveer met de groenten en citroensap."
+            "Verwarm de oven tot 200 °C. Halveer aubergines, kerf het vruchtvlees in en bestrijk met de helft van de olie. Rooster 25 minuten.",
+            "Rul gehakt volledig gaar met de rest van de olie en fijngehakte knoflook. Voeg tomaten en oregano toe en stoof 10 minuten.",
+            "Schep wat zacht auberginevruchtvlees door het gehakt, vul de helften en bak nog 10 minuten in de oven."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
-          "inspiration_source": {
-            "name": "Voedingscentrum — gezonde recepten en richtlijnen",
-            "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "ah",
-          "source_library_id": "basis-44",
+          "source_library_id": "wereld-gehakt-aubergine",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -753,15 +761,15 @@
         },
         {
           "id": "week-2026-10-26-ah-vis",
-          "title": "Japanse gember-misozalm met broccoli en paksoi",
+          "title": "Mosterdzalm met broccoli en prei",
           "category": "vis",
-          "cuisine": "Japans",
+          "cuisine": "Noords",
           "servings": 4,
-          "minutes": 30,
+          "minutes": 35,
           "ingredients": [
             {
               "name": "zalmfilet",
-              "quantity": 760,
+              "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen"
             },
@@ -772,47 +780,49 @@
               "department": "Groente & fruit"
             },
             {
-              "name": "paksoi",
+              "name": "prei",
               "quantity": 500,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "miso",
-              "quantity": 35,
+              "name": "mosterd",
+              "quantity": 30,
               "unit": "g",
               "department": "Kruiden & voorraad"
             },
             {
-              "name": "gember",
-              "quantity": 25,
+              "name": "magere yoghurt",
+              "quantity": 300,
               "unit": "g",
+              "department": "Kruiden & voorraad"
+            },
+            {
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Roer miso met fijn geraspte gember en wat water tot een dunne saus.",
-            "Bestrijk zalm met de saus en bak in de oven op 190 graden tot hij gaar is.",
-            "Stoom de broccoli en paksoi beetgaar en serveer direct."
+            "Verwarm de oven tot 190 °C. Snijd broccoli en prei en stoom 6 minuten voor.",
+            "Leg groenten met olie en 50 ml water in een ovenschaal. Leg de zalm erop en bestrijk met mosterd.",
+            "Bak 15 tot 20 minuten, afhankelijk van de dikte, tot de vis gaar is. Serveer met yoghurt."
           ],
           "vegetables_g_per_portion": 300,
-          "source_name": "Eigen bewerking met inspiratie uit Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-          "inspiration_source": {
-            "name": "Allerhande — gezonde en eiwitrijke maaltijdinspiratie",
-            "url": "https://www.ah.nl/allerhande/recepten/gezonde-recepten"
-          },
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "ah",
-          "source_library_id": "basis-45",
+          "source_library_id": "wereld-zalm-mosterd",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
@@ -823,72 +833,68 @@
         },
         {
           "id": "week-2026-10-26-ah-vega",
-          "title": "Midden-Oosterse tofu-shakshuka met boerenkool",
+          "title": "Warme linzenschotel met feta en courgette",
           "category": "vega",
-          "cuisine": "Midden-Oosters",
+          "cuisine": "Grieks",
           "servings": 4,
-          "minutes": 35,
+          "minutes": 40,
           "ingredients": [
             {
-              "name": "stevige tofu",
-              "quantity": 900,
+              "name": "groene linzen droog",
+              "quantity": 300,
               "unit": "g",
               "department": "Vega & peulvruchten"
             },
             {
-              "name": "eieren",
-              "quantity": 4,
-              "unit": "st",
+              "name": "feta",
+              "quantity": 200,
+              "unit": "g",
               "department": "Vega & peulvruchten"
             },
             {
-              "name": "boerenkool",
-              "quantity": 600,
+              "name": "courgette",
+              "quantity": 700,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
               "name": "paprika",
-              "quantity": 600,
+              "quantity": 500,
               "unit": "g",
               "department": "Groente & fruit"
             },
             {
-              "name": "tomatenblokjes",
-              "quantity": 400,
+              "name": "oregano",
+              "quantity": 6,
               "unit": "g",
-              "department": "Groente & fruit"
+              "department": "Kruiden & voorraad"
             },
             {
-              "name": "komijn",
-              "quantity": 10,
-              "unit": "g",
+              "name": "zonnebloemolie",
+              "quantity": 20,
+              "unit": "ml",
               "department": "Kruiden & voorraad"
             }
           ],
           "instructions": [
-            "Verwarm tomatenblokjes en paprika met komijn in een brede pan.",
-            "Voeg in blokjes gesneden tofu en boerenkool toe en laat rustig gaar stoven.",
-            "Maak vier kuiltjes, breek in elk een ei en laat onder een deksel volledig garen."
+            "Spoel linzen en kook volgens de verpakking in ruim water gaar; giet af.",
+            "Snijd courgette en paprika en bak met olie en oregano in 12 tot 15 minuten gaar.",
+            "Meng linzen en groenten. Verkruimel feta erover en warm kort door."
           ],
-          "vegetables_g_per_portion": 400,
-          "source_name": "Eigen bewerking met inspiratie uit Voedingscentrum — gezonde recepten en richtlijnen",
-          "inspiration_source": {
-            "name": "Voedingscentrum — gezonde recepten en richtlijnen",
-            "url": "https://www.voedingscentrum.nl/nl/gezonde-recepten.aspx"
-          },
+          "vegetables_g_per_portion": 300,
+          "origin": "eigen_recept",
+          "source_type": "zelf_samengesteld",
+          "source_status": "eigen_recept_geen_externe_overname",
+          "source_name": "Eigen receptidee",
           "source_note": "Eigen bewerking, niet proefgekookt. Inspiratiebron is geen 1-op-1 gereproduceerd recept. Productprijzen en productvarianten staan los van deze bereidingsinstructies.",
-          "price_status": "onbekend",
-          "macro_status": "niet_berekend",
-          "origin": "gezonde_basis_inspiratie",
-          "source_type": "zelf_samengesteld_geinspireerd",
-          "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
           "quality_status": "uitgewerkt_niet_culinair_getest",
           "quality_issues": [
             "niet_proefgekookt"
           ],
+          "macro_status": "niet_berekend",
+          "price_status": "onbekend",
           "store": "ah",
-          "source_library_id": "basis-48",
+          "source_library_id": "wereld-feta-linzen",
           "recipe_week_start": "2026-10-26",
           "recipe_week_end": "2026-11-01",
           "offer_anchors": [],
