@@ -38,6 +38,16 @@
   }
   return null;
  }
+ function packLabel(o){
+  if(String(o?.pack_label||'').trim())return String(o.pack_label).trim();
+  const p=pack(o);if(!p)return 'inhoud niet bevestigd';
+  const number=x=>new Intl.NumberFormat('nl-NL',{maximumFractionDigits:3}).format(x);
+  if(p.unit==='stuk')return number(p.amount)+' stuks (volgens productnaam)';
+  const count=p.pieces||1,amount=p.amount/count;
+  const unit=p.unit==='kg'&&amount<1?'g':p.unit==='L'&&amount<1?'ml':p.unit;
+  const quantity=unit==='g'||unit==='ml'?amount*1000:amount;
+  return (p.approximate?'circa ':'')+(count>1?number(count)+' × ':'')+number(quantity)+' '+unit+' (volgens productnaam)';
+ }
  function unitCost(o){
   const p=pack(o);
   return p&&!p.approximate&&validPrice(o?.price)&&validPrice(p.amount)?
@@ -105,7 +115,7 @@
     (a.unit&&b.unit&&a.unit.unit===b.unit.unit?a.unit.price-b.unit.price:0)||
     a.o.name.localeCompare(b.o.name,'nl'));
  }
- function apiBridge(){return {pack,unitCost,inspect,choose};}
+ function apiBridge(){return {pack,packLabel,unitCost,inspect,choose};}
  function collect(store,key,records,offers,today,resolver){
   if(key&&typeof key==='object'&&key.match&&resolver){
    const result=resolver.candidates(key,store,records,offers,apiBridge(),today);
@@ -139,5 +149,5 @@
   }
   return choose(out);
  }
- return {pack,unitCost,inspect,matchesWatch,collect,favoriteRows,choose,retailerUrl,isDirectProductUrl,fold};
+ return {pack,packLabel,unitCost,inspect,matchesWatch,collect,favoriteRows,choose,retailerUrl,isDirectProductUrl,fold};
 });

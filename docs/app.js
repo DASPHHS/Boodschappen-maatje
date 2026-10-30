@@ -307,7 +307,7 @@ function compareCell(w,s,rows){
  const x=rows[0],o=x.o,link=o.url||o.source?.url;
  if(x.conflict)return '<span class="compare-empty">Bronprijzen verschillen · hercontrole nodig</span>';
  const isCatalog=o.source_provider==='Checkjebon',aged=!x.current;
- const name=safe(o.name),pack=safe(o.pack_label||'inhoud niet bevestigd');
+ const name=safe(o.name),pack=safe(window.MaatjeObservations.packLabel(o));
  return '<strong class="compare-price">'+money(o.price)+'</strong>'+
    (x.unit?'<small>'+money(x.unit.price)+'/'+safe(x.unit.unit)+'</small>':'')+
    '<small class="compare-product">'+name+' · '+pack+'</small>'+

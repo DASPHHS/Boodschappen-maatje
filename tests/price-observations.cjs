@@ -54,3 +54,7 @@ console.log('Personal-price coverage, milk bundle mismatch, historical dates, ex
 assert.equal(price.unitCost({name:'Dreft vaatwascapsules',pack_label:'19 stuks',price:13.99}).unit,'stuk');
 assert.equal(price.unitCost({name:'Dreft vaatwascapsules',pack_label:'19 stuks',price:13.99}).price,.74);
 assert.equal(price.pack({name:'AH Bospeen',pack_label:'per bos'}).unit,'bos');
+
+assert.equal(price.packLabel({name:'Jumbo Kipfilet 800 g',pack_label:''}),'800 g (volgens productnaam)');
+assert.equal(price.packLabel({name:'Bier 6x330ml',pack_label:''}),'6 × 330 ml (volgens productnaam)');
+assert.equal(price.packLabel({name:'Bospeen',pack_label:''}),'inhoud niet bevestigd');
