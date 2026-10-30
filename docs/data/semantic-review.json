@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-10-30.1",
-  "generated_at": "2026-10-30T15:01:50.668Z",
+  "generated_at": "2026-10-30T15:22:51.028Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
     "match": 246,
-    "partial": 393,
-    "reject": 185
+    "partial": 389,
+    "reject": 189
   },
   "profiles": {
     "sungold": {
@@ -41,8 +41,8 @@
     },
     "pindakaas": {
       "match": 44,
-      "partial": 43,
-      "reject": 7,
+      "partial": 41,
+      "reject": 9,
       "reasons": {
         "productkenmerken en verpakking passen": 44,
         "niet herkende productbeschrijving: noot": 3,
@@ -58,7 +58,7 @@
         "niet herkende productbeschrijving: gr": 1,
         "niet herkende productbeschrijving: regular": 3,
         "niet herkende productbeschrijving: regular 12x": 1,
-        "niet herkende productbeschrijving: kleine keuken voor kids": 1,
+        "andere doelgroep: baby": 2,
         "niet herkende productbeschrijving: hipro reep banaan": 1,
         "niet herkende productbeschrijving: skippy super chunk noot": 1,
         "niet herkende productbeschrijving: whole earth": 4,
@@ -67,7 +67,6 @@
         "niet herkende productbeschrijving: smeuige noot": 1,
         "niet herkende productbeschrijving: plantaardig": 9,
         "andere productvorm: preserved": 3,
-        "niet herkende productbeschrijving: kleine keuken kids": 1,
         "niet herkende productbeschrijving: flower farm palmolie": 2,
         "niet herkende productbeschrijving: upfront eiwitreep": 1
       },
@@ -801,8 +800,8 @@
     },
     "pompoen": {
       "match": 10,
-      "partial": 41,
-      "reject": 42,
+      "partial": 39,
+      "reject": 44,
       "reasons": {
         "productkenmerken en verpakking passen": 10,
         "andere productvorm: prepared": 10,
@@ -818,9 +817,9 @@
         "niet herkende productbeschrijving: patisson": 1,
         "niet herkende productbeschrijving: spaghetti": 2,
         "niet herkende productbeschrijving: sw lightning": 1,
-        "andere productvorm: mixed": 4,
+        "andere productvorm: mixed": 3,
         "niet herkende productbeschrijving: sierkussen": 1,
-        "andere doelgroep: baby": 18,
+        "andere doelgroep: baby": 22,
         "niet herkende productbeschrijving: boeren knapperig en": 1,
         "niet herkende productbeschrijving: grijze": 1,
         "niet herkende productbeschrijving: flammkuchen verspakket personen": 1,
@@ -839,7 +838,6 @@
         "niet herkende productbeschrijving: abdij broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
         "niet herkende productbeschrijving: maaltijdhapje rijst kip": 1,
-        "niet herkende productbeschrijving: 4m": 1,
         "niet herkende productbeschrijving: robuust broodjes": 1,
         "niet herkende productbeschrijving: culi nduja verspakket": 1,
         "niet herkende productbeschrijving: verspakket mac n cheese": 1,
@@ -847,8 +845,6 @@
         "niet herkende productbeschrijving: liefde passie desem": 2,
         "niet herkende productbeschrijving: liefde passie desem ongesneden": 1,
         "niet herkende productbeschrijving: lasagneblad": 1,
-        "andere productvorm: cooked": 1,
-        "niet herkende productbeschrijving: kleine keuken knijpmix perzik haver 12m": 1,
         "niet herkende productbeschrijving: oma": 1
       },
       "samples": [
@@ -3140,17 +3136,6 @@
       "fingerprint": "af3bcd04b76b0c47f8956121"
     },
     {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi452159/ah-biologisch-pompoen-4m",
-      "name": "AH Biologisch Pompoen 4m+",
-      "pack": "125 g",
-      "url": "https://www.ah.nl/producten/product/wi452159/ah-biologisch-pompoen-4m",
-      "reason": "niet herkende productbeschrijving: 4m",
-      "fingerprint": "91b10fa968ba1a13ee19fd10"
-    },
-    {
       "profile": "sereh",
       "priority": 0,
       "store": "ah",
@@ -3671,17 +3656,6 @@
       "profile": "pompoen",
       "priority": 0,
       "store": "ah",
-      "product_id": "wi585625/de-kleine-keuken-knijpmix-pompoen-perzik-en-haver-12m",
-      "name": "De Kleine Keuken Knijpmix pompoen perzik & haver 12m+",
-      "pack": "100 g",
-      "url": "https://www.ah.nl/producten/product/wi585625/de-kleine-keuken-knijpmix-pompoen-perzik-en-haver-12m",
-      "reason": "niet herkende productbeschrijving: kleine keuken knijpmix perzik haver 12m",
-      "fingerprint": "bdecfd4c812722165b1a28f8"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "ah",
       "product_id": "wi585671/ah-biologisch-maaltijdhapje-pompoen-rijst-en-kip-8",
       "name": "AH Biologisch Maaltijdhapje pompoen rijst & kip 8+",
       "pack": "220 g",
@@ -4117,17 +4091,6 @@
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-naturel-voordeelpak-1-kg-194964BAK",
       "reason": "niet herkende productbeschrijving: campina voordeelpak",
       "fingerprint": "0e4ad6a9bd1b8b54fe445631"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "de-kleine-keuken-biologische-pindakaas-voor-kids-250-g-163080POT",
-      "name": "De Kleine Keuken Biologische Pindakaas voor Kids 250 g",
-      "pack": "250 g",
-      "url": "https://www.jumbo.com/producten/de-kleine-keuken-biologische-pindakaas-voor-kids-250-g-163080POT",
-      "reason": "niet herkende productbeschrijving: kleine keuken voor kids",
-      "fingerprint": "cfb6cb3464adcf002ab36ae5"
     },
     {
       "profile": "dreft",
@@ -5448,17 +5411,6 @@
       "url": "https://www.ah.nl/producten/product/wi379003/calve-pindakaas-met-stukjes-pinda",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "b792094efdd130ed02e21626"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "ah",
-      "product_id": "wi381705/de-kleine-keuken-biologische-pindakaas-100-pinda-s-kids",
-      "name": "De Kleine Keuken Biologische pindakaas 100% pinda's kids",
-      "pack": "250 g",
-      "url": "https://www.ah.nl/producten/product/wi381705/de-kleine-keuken-biologische-pindakaas-100-pinda-s-kids",
-      "reason": "niet herkende productbeschrijving: kleine keuken kids",
-      "fingerprint": "6040c689ff8b0844ab163ff2"
     },
     {
       "profile": "volle_melk",
