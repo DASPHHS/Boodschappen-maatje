@@ -68,6 +68,58 @@
   const key=normalize(name),canonical=aliases[key]||key;
   return {key:canonical,rule:variants[canonical]};
  }
+ // A word match alone also finds pet food, flavored snacks and mixed meals.
+ // Require every remaining word to describe a known brand or the ingredient itself.
+ const commonWords=new Set(normalize('AH Jumbo Lidl Albert Heijn biologisch biologische bio Terra Verstegen Kania Ducros Bonduelle Hak Conimex Fairtrade Go Tan Koh Thai Le Phare Du Cap Bon Lemondor Polenghi Sebahat Golden Seafood Vemondo Freshona Milbona Chef Select Chtoura Al Fez Lassie Lezziz Mama s De Zaanse Hoeve Mill Mortar extra xxl voordeelverpakking grootverpakking kleinverpakking verpakking pak zak zakje pot fles naturel vers verse rauw rauwe ongekruid ongekruide gesneden fijngesneden fijn fijne grove groot grote klein kleine mini mild milde light naturel gemalen geperst gepeld gepelde scharrel halal bl beter leven nl nederlands nederlandse per stuks stuk st g kg ml cl l x').split(' '));
+ const ingredientWords={
+  kipfilet:'kipfilet filethaasjes',
+  'kipdijfilet':'kipdijfilet reepjes blokjes',
+  champignons:'witte kastanje kastanjechampignons',
+  broccoli:'roosjes stronk stronken',
+  wortel:'wortels wortelen winterpeen waspeen geraspt',
+  spinazie:'gehakte bladspinazie deelblokjes',
+  bloemkool:'roosjes deelblokjes',
+  boerenkool:'deelblokjes gesneden',
+  sperziebonen:'gebroken heel hele',
+  'diepvries sperziebonen':'gebroken heel hele diepvries bevroren',
+  paprika:'rood rode geel gele groen groene oranje puntpaprika',
+  tomaten:'tros trostomaten roma cherrytomaten kerstomaten',
+  appel:'appels elstar jonagold gala granny smith pink lady',
+  ui:'uien geel gele rood rode wit witte',
+  komkommer:'snoepgroente snoepkomkommer mini',
+  zalmfilet:'wilde noorse atlantische zonder huid porties',
+  kabeljauwfilet:'zonder huid filets',
+  biefstuk:'rund rundvlees kogel ossenhaas',
+  'magere kwark':'franse fransekwark magere mager',
+  tofu:'stevige stevig firm zacht zachte zijden',
+  'stevige tofu':'stevig firm',
+  edamame:'sojabonen boontjes',
+  'rode linzen':'gedroogde',
+  'zilvervliesrijst':'droog droge',
+  'volkoren pasta':'spaghetti penne fusilli macaroni',
+  'volkoren noedels':'noodles mie',
+  tahin:'sesampasta',
+  miso:'pasta rood rode wit witte',
+  harissa:'pasta',
+  sambal:'oelek badjak',
+  'groene currypasta':'curry pasta',
+  kokosmelk:'romig romige vet',
+  eieren:'ei eieren vrije uitloop maten maat m l xl s',
+  havermout:'vlokken volkoren',
+  pindakaas:'pinda pindas pinda s pinda’s stukjes',
+  'Italiaanse kruiden':'italiaanse italiaans kruiden kruidenmix',
+ };
+ const freshProduce=new Set(['paprika','tomaten','knoflook','gember','citroengras','wortel','courgette','komkommer','aubergine','venkel','prei','ui','bosui','paksoi','appel']);
+ function plainIngredient(name,key,rule){
+  const allowed=new Set([...commonWords,...normalize(key).split(' '),
+   ...(rule.all||[]).flatMap(x=>normalize(x).split(' ')),
+   ...(rule.any||[]).flatMap(x=>normalize(x).split(' ')),
+   ...normalize(ingredientWords[key]||'').split(' ')]);
+  if((freshProduce.has(key)||['sperziebonen','broccoli','bloemkool','spinazie','boerenkool'].includes(key))&&/\bhak\b/.test(normalize(name)))return false;
+  if(freshProduce.has(key)&&/\b(gemalen|poeder|gedroogd|gedroogde|gepeld|gepelde|gezeefd|gezeefde|blik|pot)\b/.test(normalize(name)))return false;
+  if(key==='stevige tofu'&&/\b(zacht|zachte|zijde|zijden|silken)\b/.test(normalize(name)))return false;
+  return normalize(name).split(' ').every(word=>/^\d+(?:g|kg|ml|cl|l|st|stuks)?$/.test(word)||allowed.has(word));
+ }
  function measuredPack(row,pricing,unit){
   const parsed=pricing.pack({name:row[0],pack_label:row[2]});
   if(parsed)return parsed;
@@ -112,6 +164,7 @@
     if(!Array.isArray(row)||typeof row[0]!=='string'||!Number.isFinite(row[1])||row[1]<=0||
       typeof row[2]!=='string'||row[2].length>80)continue;
     const name=row[0];
+    if(!plainIngredient(name,key,rule))continue;
     if(resolver.matching({name,pack_label:row[2]},profile,pricing).status!=='match')continue;
     const p=measuredPack(row,pricing,requiredUnit);
     if(!p||p.approximate||p.unit!==requiredUnit||p.amount<=0||p.amount>(requiredUnit==='stuk'?60:15))continue;
