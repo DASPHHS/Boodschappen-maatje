@@ -26,6 +26,22 @@
   }
   const index={words,normalized,memo};stores.set(store,index);return index;
  }
+ function observation(row,store,catalog,today,pricing){
+   const meta=row[5];
+   const age=meta?.checked_at?(Date.parse(today+'T12:00:00Z')-Date.parse(String(meta.checked_at).slice(0,10)+'T12:00:00Z'))/86400000:Infinity;
+   const pack=pricing?.pack?.({pack_label:row[2],name:row[0]}),livePack=pricing?.pack?.({pack_label:meta?.product_pack||meta?.name});
+   const knownPacks=pack&&livePack&&!pack.approximate&&!livePack.approximate;
+   const packConflict=!!knownPacks&&(pack.unit!==livePack.unit||Math.abs(pack.amount-livePack.amount)>.000001);
+   const packVerified=!!knownPacks&&!packConflict;
+   const official=packVerified&&meta?.verified_identity===true&&meta?.status==='ok'&&age>=0&&age<=1&&Number.isFinite(meta.observed_price)&&meta.observed_price>0;
+   const item={name:row[0],price:official?meta.observed_price:row[1],pack_label:row[2]||'',
+     pack_conflict:packConflict,product_id:row[4],semantic_evidence:row[5]||null,store,status:'external_regular_observed',
+     checked_date:official?meta.checked_at.slice(0,10):catalog.source_date,
+     source_provider:official?'Winkelpagina':'Checkjebon',
+     source_verification:official?'retailer_product_page_checked':'published_catalog_snapshot',
+     url:row[3]||catalog.source_url, source_catalog_url:catalog.source_url};
+   return item;
+ }
  function candidates(profile,store,catalog,pricing,resolver,today,limit=120){
   if(!valid(catalog,today)||profile?.requires_specific_variant)return [];
   const rule=profile?.match||{},all=rule.all||[],any=rule.any||[],none=rule.none||[];
@@ -45,12 +61,7 @@
    const text=' '+index.normalized.get(row)+' ';
    const contains=x=>text.includes(' '+x+' ');
    if(required.some(x=>!contains(x))||alternatives.length&&!alternatives.some(contains)||excluded.some(contains))continue;
-   const item={name,price:row[1],pack_label:row[2]||'',
-     product_id:row[4],store,status:'external_regular_observed',
-     checked_date:catalog.source_date,
-     source_provider:'Checkjebon',
-     source_verification:'published_catalog_snapshot',
-     url:row[3]||catalog.source_url, source_catalog_url:catalog.source_url};
+   const item=observation(row,store,catalog,today,pricing);
    const match=resolver.matching(item,profile,pricing);
    if(match.status!=='match')continue;
    const check=pricing.inspect(item,store,today);
@@ -69,22 +80,31 @@
   index.memo.set(cacheKey,found);
   return found.slice(0,limit);
  }
+ function productKey(o,store){
+  const direct=o.url||o.source?.url||'';
+  const raw=String(o.product_id||direct);
+  const id=store==='ah'?raw.match(/wi\d+/i)?.[0]:store==='jumbo'?raw.replace(/[?#].*$/,'').match(/(\d{5,}[a-z0-9]*)$/i)?.[0]:o.product_id;
+  return store+'|'+(id||o.product_id||[norm(o.name),o.pack_label||''].join('|'));
+ }
  function combined(profile,store,catalog,observations,offers,pricing,resolver,today){
   const catalogRows=candidates(profile,store,catalog,pricing,resolver,today,150);
   const original=resolver?.candidates?.(profile,store,observations||[],offers||[],pricing,today).valid||[];
-  // A matching current catalog product overrides an older, manually entered
-  // third-party price for the same retailer product link/ID, not a proven official
-  // retailer fetch. This fixes AH UHT 0.99 vs 1.29 for the exact same SKU.
-  const indexedLinks=new Set(catalogRows.map(x=>x.o.url).filter(Boolean));
-  const seen=new Set(),out=[];
+  // Resolve a stable retailer identity before ranking prices. A cheaper stale
+  // observation of the same SKU must not defeat a newer source check.
+  const byIdentity=new Map();
+  const authority=x=>x.o.source_verification==='retailer_product_page_checked'&&x.checked===today?3:x.checked===today?2:1;
   for(const candidate of [...catalogRows,...original]){
-    const old=candidate.o;
-    if(indexedLinks.has(old.url)&&old.source_provider!=='Checkjebon'&&
-       old.source_verification!=='retailer_product_page_checked')continue;
-    const key=old.url||[old.name,old.pack_label,old.price].join('|');
-    if(seen.has(key))continue;seen.add(key);
-    out.push(candidate);
+   const o=candidate.o,key=productKey(o,store);
+   const prior=byIdentity.get(key);
+   if(!prior){byIdentity.set(key,candidate);continue;}
+   const rank=authority(candidate)-authority(prior);
+   const date=String(candidate.checked||'').localeCompare(String(prior.checked||''));
+   if(rank>0||rank===0&&date>0){byIdentity.set(key,candidate);continue;}
+   if(rank===0&&date===0&&Math.abs(o.price-prior.o.price)>.001){
+    byIdentity.set(key,{...prior,conflict:true,current:false,label:'Bronprijzen verschillen; hercontrole nodig'});
+   }
   }
+  const out=[...byIdentity.values()];
   out.sort((a,b)=>Number(b.current)-Number(a.current)||
     Number(b.o.source_verification==='retailer_product_page_checked')-
     Number(a.o.source_verification==='retailer_product_page_checked')||
@@ -111,11 +131,11 @@
    const profile={match:{all:words}};
    for(const x of candidates(profile,store,catalog,pricing,resolver,today,100)){
     if(!favorites?.same({...x.o,store},f,store))continue;
-    const key=x.o.url||[x.o.name,x.o.pack_label].join('|');
+    const key=productKey(x.o,store);
     if(!seen.has(key)){seen.add(key);picked.push({...x,exact:true})}
    }
   }
   return picked.sort((a,b)=>(a.unit&&b.unit&&a.unit.unit===b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
  }
- return {valid,candidates,combined,compactResult,favoritePrices};
+ return {productKey,observation,valid,candidates,combined,compactResult,favoritePrices};
 });

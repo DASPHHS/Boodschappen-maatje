@@ -6,6 +6,7 @@
  if(root)root.MaatjeRecipeShopOptions=api;
 })(typeof window!=='undefined'?window:null,function(){
  'use strict';
+ const catalogAdapter=typeof module==='object'&&module.exports?require('./catalog-search.js'):window.MaatjeCatalogSearch;
  const normalize=x=>String(x||'').toLocaleLowerCase('nl-NL').normalize('NFD')
   .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const forbidden=[
@@ -165,23 +166,22 @@
       typeof row[2]!=='string'||row[2].length>80)continue;
     const name=row[0];
     if(!plainIngredient(name,key,rule))continue;
-    if(resolver.matching({name,pack_label:row[2]},profile,pricing).status!=='match')continue;
+    const candidate=catalogAdapter.observation(row,store,catalog,today,pricing);
+    if(resolver.matching(candidate,profile,pricing).status!=='match')continue;
     const p=measuredPack(row,pricing,requiredUnit);
     if(!p||p.approximate||p.unit!==requiredUnit||p.amount<=0||p.amount>(requiredUnit==='stuk'?60:15))continue;
     const count=Math.ceil((required-1e-9)/p.amount);
     if(count<1||count>12)continue;
-    const item={name,price:row[1],pack_label:row[2],store,
-     status:'external_regular_observed',source_provider:'Checkjebon',
-     checked_date:catalog.source_date,url:row[3]||catalog.source_url};
+    const item=candidate;
     const inspected=pricing.inspect(item,store,today);
     if(!inspected?.current||inspected.conflict)continue;
-    const total=Math.round(count*row[1]*100)/100;
+    const total=Math.round(count*item.price*100)/100;
     if(!Number.isFinite(total)||total<=0||total>300)continue;
     if(!chosen||total<chosen.purchase_total-0.001||
       (Math.abs(total-chosen.purchase_total)<0.001&&count<chosen.pack_count)){
      chosen={ingredient:ing.name,quantity:q,unit:ing.unit,product:name,
-      pack_label:row[2],pack_count:count,unit_price:Math.round(row[1]*100)/100,
-      purchase_total:total,consumption_total:Math.round(required/p.amount*row[1]*100)/100,url:item.url,source_date:catalog.source_date};
+      pack_label:row[2],pack_count:count,unit_price:Math.round(item.price*100)/100,
+      purchase_total:total,consumption_total:Math.round(required/p.amount*item.price*100)/100,url:item.url,source_date:item.checked_date};
     }
    }
    if(chosen)rows.push(chosen);

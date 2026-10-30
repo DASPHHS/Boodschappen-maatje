@@ -27,6 +27,8 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('.sidebar button[data-view="aanbiedingen"]').click();
   await page.locator('#view-aanbiedingen .compare-table').waitFor();
   assert.ok(await page.locator('#view-aanbiedingen .compare-table tbody tr').count()>=15);
+  const comparisonText=await page.locator('#view-aanbiedingen .compare-table').innerText();
+  assert.doesNotMatch(comparisonText,/Kipfilet Americanos|Gerookte Kipfilet Plakjes|Kipfilet pepersaus|Blik brokjes zalm forel|Pureersoep pompoen|Knijpfruit Pompoen|groenteshot pompoen/i,'Wrong product classes must never appear in grocery comparisons');
   const milk=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Houdbare volle melk voor cappuccino'});
   assert.equal(await milk.count(),1,'UHT full milk is an exact saved preference');
   for(const name of ['Lidl','Jumbo','Albert Heijn'])assert.ok((await page.locator('#view-aanbiedingen .compare-table').innerText()).includes(name));
@@ -35,10 +37,11 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('[data-manage-watch]').click();
   await page.locator('#new-watch').fill('Ongebrande amandelen 200 g');
   await page.locator('[data-add-watch]').click();
-  assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),1);
+  const customVariantCount=await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count();
+  assert.ok(customVariantCount>=1,'The added query must show its eligible variants');
   await page.reload({waitUntil:'domcontentloaded'});
   await page.locator('.compare-table').waitFor();
-  assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),1,
+  assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),customVariantCount,
     'A user-added product must persist across page reload');
   await page.locator('[data-offer-mode="all"]').click();
   await page.locator('#view-aanbiedingen .deal-card').first().waitFor();

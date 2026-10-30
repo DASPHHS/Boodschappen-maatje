@@ -21,6 +21,12 @@
   if(m)return result(Number(m[1]),Number(m[2]),m[3],/\bca\.?\b|circa|ongeveer|variabel/.test(raw));
   m=raw.match(/(\d+(?:\.\d+)?)\s*(ml|cl|l|g|kg)\b/);
   if(m)return result(1,Number(m[1]),m[2],/\bca\.?\b|circa|ongeveer|variabel/.test(raw));
+  // Counts are a different dimension, never a guessed litre or kilogram.
+  if(/\b(vaatwascapsules|vaatwastabletten|vaatwaspods|eieren)\b/.test(fold(o?.name))){
+   const count=raw.match(/^(\d+)\s*(stuks?|st|stk|tabletten|capsules|pods|wasbeurten)\b/);
+   if(count)return {amount:Number(count[1]),unit:count[2]==='wasbeurten'?'wasbeurt':'stuk',pieces:Number(count[1]),approximate:false};
+  }
+  if(/^per bos$/.test(raw))return {amount:1,unit:'bos',pieces:1,approximate:false};
   // An explicit but unmeasured count must never turn into a 1-litre or 1-kg product.
   if(/\b(stuks?|dozen|variabele|verschillende|inhoud onbekend)\b/.test(raw))return null;
   // Structured quantity is safe for manual observations without conflicting pack text.

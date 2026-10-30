@@ -62,3 +62,6 @@ for(const [ingredient,wrong,pack] of [
  const result=options.estimate({ingredients:[{name:ingredient,quantity:100,unit:'g'}]},'ah',source,pricing,resolver,today);
  assert.equal(result.total,null,ingredient+' must not use '+wrong);
 }
+const liveCatalog={...catalog,stores:{ah:[['AH Broccoli',10,'500 g',null,'wi9',
+ {status:'ok',verified_identity:true,product_pack:'500 g',checked_at:today+'T10:00:00Z',observed_price:2,categories:['Broccoli']}]]}};
+assert.equal(options.estimate({ingredients:[{name:'broccoli',quantity:800,unit:'g'}]},'ah',liveCatalog,pricing,resolver,today).total,4,'Recipes and comparisons must share the same live product price');

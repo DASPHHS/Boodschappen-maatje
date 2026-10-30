@@ -34,4 +34,18 @@ class CatalogTest(unittest.TestCase):
         with self.assertRaises(ValueError): m.build(data,COMMIT,dt.date(2026,11,4))
         with self.assertRaises(ValueError): m.build(data[:2],COMMIT,DAY)
 
+
+
+class CatalogHealthTests(unittest.TestCase):
+    def test_failed_refresh_retains_bytes_and_returns_failure(self):
+        from unittest.mock import patch
+        import tempfile
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]) as d:
+            root=Path(d);snapshot=root/'retailer-catalog.json';snapshot.write_text('{"prior":true}')
+            with patch.object(m,'DATA',root),patch.object(m,'fetch_json',side_effect=ValueError('source broken')):
+                self.assertEqual(m.main(),1)
+            self.assertEqual(snapshot.read_text(),'{"prior":true}')
+            import json
+            self.assertEqual(json.loads((root/'source-health.json').read_text())['status'],'error')
+
 if __name__ == "__main__":unittest.main()
