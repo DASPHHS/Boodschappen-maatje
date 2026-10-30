@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T15:01:52.297Z",
+  "generated_at": "2026-10-30T15:18:24.253Z",
   "checked_date": "2026-10-30",
   "summary": {
     "profiles": 20,
@@ -242,27 +242,27 @@
       "walnoten": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-200-g-561767TAS",
-        "product_name": "Jumbo Ongebrande Walnoten 200 g",
-        "price": 2.59,
+        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
+        "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
+        "price": 6.39,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
-        "product_name": "Jumbo Tofu Naturel 375g",
-        "price": 1.44,
+        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
+        "product_name": "Vivera Zachte Tofu 550 g",
+        "price": 1.99,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "gemengdgehakt": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
-        "product_name": "Jumbo Gemengd Gehakt 500 g",
-        "price": 4.59,
+        "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
+        "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
+        "price": 7.99,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -287,20 +287,20 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-blokjes-pompoen-400-g-591347STK",
-        "product_name": "Jumbo Blokjes Pompoen 400 g",
-        "price": 3.49,
+        "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
+        "product_name": "Jumbo Stukjes Pompoen 450 g",
+        "price": 1.99,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologisch-hele-sperziebonen-450g-621516ZK",
-        "product_name": "Jumbo Biologisch Hele Sperziebonen 450g",
-        "price": 1.35,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "source": "https://www.jumbo.com/aanbiedingen/verse-sperziebonen-of-snijbonen/3021546",
+        "product_name": "Jumbo gebroken sperziebonen vers 400 g",
+        "price": 1.99,
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": null
       },
       "bospeen": {
         "state": "price_observed",
@@ -332,20 +332,20 @@
       "skuumkoppe": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen",
-        "product_name": "Texels Skuumkoppe Bier Fles 6 × 300 ml",
-        "price": 7.04,
-        "price_status": "externe actiemelding · bronnen verschillen · t/m 2026-11-03",
-        "checked_date": "2026-10-28"
+        "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
+        "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
+        "price": 9.99,
+        "price_status": "externe prijswaarneming · 2026-10-30",
+        "checked_date": "2026-10-30"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen",
-        "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 × 300 ml",
-        "price": 7.04,
-        "price_status": "winkelactie · t/m 2026-11-03",
-        "checked_date": "2026-10-28"
+        "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
+        "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
+        "price": 9.39,
+        "price_status": "externe prijswaarneming · 2026-10-30",
+        "checked_date": "2026-10-30"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
@@ -451,9 +451,9 @@
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi280081/ah-biologisch-kipfilet",
-        "product_name": "AH Biologisch Kipfilet",
-        "price": 3.39,
+        "source": "https://www.ah.nl/producten/product/wi531825/ah-scharrel-kipfilet",
+        "product_name": "AH Scharrel kipfilet",
+        "price": 9.99,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -469,9 +469,9 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi482844/ah-flespompoen-stukjes",
-        "product_name": "AH Flespompoen stukjes",
-        "price": 3.39,
+        "source": "https://www.ah.nl/producten/product/wi426004/ah-biologisch-flespompoen",
+        "product_name": "AH Biologisch Flespompoen",
+        "price": 2.78,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },

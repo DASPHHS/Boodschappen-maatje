@@ -11,6 +11,8 @@
  const days=(a,b)=>validDay(a)&&validDay(b)?Math.round((Date.parse(a+'T12:00:00Z')-Date.parse(b+'T12:00:00Z'))/86400000):null;
  function pack(o){
   const raw=String(o?.pack_label||o?.name||'').toLowerCase().replace(/,/g,'.').replace(/×/g,'x');
+  // A range describes variants, not an exact purchasable quantity.
+  if(/\d+(?:\.\d+)?\s*[-–]\s*\d+(?:\.\d+)?\s*(?:g|kg|ml|cl|l)\b/.test(raw))return null;
   const factor={ml:1,cl:10,l:1000,g:1,kg:1000};
   function result(count,size,unit,rough){
    if(!validPrice(count)||!validPrice(size))return null;

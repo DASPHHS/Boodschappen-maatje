@@ -67,3 +67,9 @@ assert.notEqual(search.productKey({name:'Kipfilet',product_id:'111',url:'https:/
 assert.equal(search.productKey({product_id:'wi450535/old-slug'},'ah'),search.productKey({url:'https://www.ah.nl/producten/product/wi450535/new-slug'},'ah'),'A renamed URL must preserve the stable retailer SKU');
 const lidlSharedUrl={...catalog,stores:{lidl:[['Houdbare volle melk',1,'1 L',null,'111'],['Bio Houdbare volle melk',2,'1 L',null,'222']]}};
 assert.equal(search.combined(watch.find(x=>x.key==='volle_melk'),'lidl',lidlSharedUrl,[],[],pricing,resolver,today).length,2,'Distinct retailer IDs must not be merged because their attribution URL is shared');
+const officialSupplement={stores:{lidl:{official_prices:[{name:'Vemondo Tofu',price:2.19,product_id:'111',pack_label:'400 g',source_provider:'lidl_official',verified:true,checked_at:today,start_date:today,end_date:today,source:{url:'https://www.lidl.nl/p/vemondo-tofu/p111'},semantic_evidence:{verified_identity:true,brand:'Vemondo',categories:['Tofu']}}]}}};
+const blended=search.withLidlPrices(catalog,officialSupplement,today);
+assert.equal(blended.stores.lidl[0][1],2.19);
+assert.equal(search.withLidlPrices(catalog,officialSupplement,'2026-11-10'),catalog,'Old official data must not gain a fresh snapshot date');
+officialSupplement.stores.lidl.official_prices[0].member_required=true;
+assert.equal(search.withLidlPrices(catalog,officialSupplement,today),catalog,'Member discount cannot silently become a regular basket price');

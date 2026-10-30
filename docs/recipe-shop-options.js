@@ -41,7 +41,7 @@
  'broccoli met eetbare stronk':'broccoli','verse paprika':'paprika',
  'volkoren pasta droog':'volkoren pasta','volkoren couscous droog':'volkoren couscous',
  'volkoren noedels droog':'volkoren noedels','zilvervliesrijst droog':'zilvervliesrijst',
- 'orzo droog':'orzo','rode linzen droog':'rode linzen','hamlappen dun gesneden':'hamlappen',
+ 'orzo droog':'orzo','groene linzen droog':'groene linzen','rode linzen droog':'rode linzen','hamlappen dun gesneden':'hamlappen',
  'biefstuk dun gesneden':'biefstuk','verse tomaten':'tomaten','olie':'zonnebloemolie',
  'kipdijfilet zonder huid':'kipdijfilet','zalmfilet zonder huid':'zalmfilet',
  'witvisfilet zonder huid':'kabeljauwfilet','haver':'havermout','za atar':'zaatar'
@@ -53,7 +53,7 @@
  'hamlappen','gember','biefstuk','sperziebonen','ui','eieren','havermout','tomaten',
  'komijn','Italiaanse kruiden','varkenshaas','spinazie','appel','dille','gepelde garnalen',
  'rode linzen','edamame','tahin','zaatar','aubergine','miso','sesamzaad','chipotle',
- 'sambal','bloemkool','sumak','kipdijfilet','citroengras','limoensap','citroensap',
+ 'groene linzen','halloumi','feta','kikkererwten uitgelekt','zwarte bonen uitgelekt','witte bonen uitgelekt','sambal','bloemkool','sumak','kipdijfilet','citroengras','limoensap','citroensap',
  'oregano','bosui','vissaus','munt','bospeen','witte kool','tauge'];
  const extraExclusions=['sap','saus','soep','salade','maaltijd','pizza','chips','burger',
  'dressing','snoep','chocolade','cake','taart','brood','wafels','baby','groentehapje',
@@ -65,6 +65,7 @@
   if(!variants[key])variants[key]={all:[key],none:extraExclusions.filter(x=>!(' '+key+' ').includes(' '+x+' '))};
  }
  // Sauces/spices are ingredients themselves; exclusions must not reject their own type.
+ for(const name of ['kikkererwten','zwarte bonen','witte bonen'])variants[name+' uitgelekt']={all:[name],none:['saus','soep','salade','mix'],drained:true};
  function ingredientRule(name){
   const key=normalize(name),canonical=aliases[key]||key;
   return {key:canonical,rule:variants[canonical]};
@@ -112,7 +113,7 @@
  };
  const freshProduce=new Set(['paprika','tomaten','knoflook','gember','citroengras','wortel','courgette','komkommer','aubergine','venkel','prei','ui','bosui','paksoi','appel']);
  function plainIngredient(name,key,rule){
-  const allowed=new Set([...commonWords,...normalize(key).split(' '),
+  const allowed=new Set([...commonWords,...(rule.drained?['uitlekgewicht','uitgelekt','blik','pot']:[]),...normalize(key).split(' '),
    ...(rule.all||[]).flatMap(x=>normalize(x).split(' ')),
    ...(rule.any||[]).flatMap(x=>normalize(x).split(' ')),
    ...normalize(ingredientWords[key]||'').split(' ')]);
@@ -121,7 +122,12 @@
   if(key==='stevige tofu'&&/\b(zacht|zachte|zijde|zijden|silken)\b/.test(normalize(name)))return false;
   return normalize(name).split(' ').every(word=>/^\d+(?:g|kg|ml|cl|l|st|stuks)?$/.test(word)||allowed.has(word));
  }
- function measuredPack(row,pricing,unit){
+ function measuredPack(row,pricing,unit,drained=false){
+  if(drained){
+   const label=String(row[2]||'')+' '+String(row[0]||'');
+   const m=label.match(/(?:uitlekgewicht|uitgelekt)\s*[:(]?\s*(\d+(?:[.,]\d+)?)\s*(kg|g)\b/i);
+   return m?{amount:Number(m[1].replace(',','.'))*(m[2].toLowerCase()==='kg'?1:.001),unit:'kg',approximate:false}:null;
+  }
   const parsed=pricing.pack({name:row[0],pack_label:row[2]});
   if(parsed)return parsed;
   if(unit!=='stuk')return null;
@@ -144,7 +150,7 @@
   const lists=(rule.all||[]).flatMap(term=>normalize(term).split(' ')).map(token=>index.get(token)||[]);
   return lists.length?lists.reduce((a,b)=>a.length<=b.length?a:b):[];
  }
- function recommend(recipe,store,catalog,pricing,resolver,today){
+ function calculate(recipe,store,catalog,pricing,resolver,today){
   const ingredients=Array.isArray(recipe?.ingredients)?recipe.ingredients:[];
   const blank={rows:[],matched:0,required:ingredients.length,source_date:catalog?.source_date||null,
    source:'Checkjebon',available:false};
@@ -159,7 +165,7 @@
    const requiredUnit=({g:'kg',kg:'kg',ml:'L',l:'L',L:'L',st:'stuk',stuk:'stuk'})[ing?.unit]||null;
    const {key,rule}=ingredientRule(label);
    if(!rule||!requiredUnit||!Number.isFinite(q)||q<=0)continue;
-   const required=q/(['g','ml'].includes(ing.unit)?1000:1),profile={match:{all:rule.all,any:rule.any||[],none:[...forbidden.filter(x=>!(' '+key+' ').includes(' '+x+' ')),...(rule.none||[])]}};
+   const required=q/(['g','ml'].includes(ing.unit)?1000:1),profile={...(rule.drained?{semantics:{forms:['preserved','plain']}}:{}),match:{all:rule.all,any:rule.any||[],none:[...forbidden.filter(x=>!(' '+key+' ').includes(' '+x+' ')),...(rule.none||[])]}};
    let chosen=null;
    for(const row of candidates(catalog,store,rule)){
     if(!Array.isArray(row)||typeof row[0]!=='string'||!Number.isFinite(row[1])||row[1]<=0||
@@ -168,7 +174,7 @@
     if(!plainIngredient(name,key,rule))continue;
     const candidate=catalogAdapter.observation(row,store,catalog,today,pricing);
     if(resolver.matching(candidate,profile,pricing).status!=='match')continue;
-    const p=measuredPack(row,pricing,requiredUnit);
+    const p=measuredPack(row,pricing,requiredUnit,rule.drained);
     if(!p||p.approximate||p.unit!==requiredUnit||p.amount<=0||p.amount>(requiredUnit==='stuk'?60:15))continue;
     const count=Math.ceil((required-1e-9)/p.amount);
     if(count<1||count>12)continue;
@@ -188,6 +194,28 @@
   }
   return {rows,matched:rows.length,required:ingredients.length,source_date:catalog.source_date,
    source:'Checkjebon',available:true};
+ }
+ // Shared ingredients occur in many recipes. Reuse the measured purchase result,
+ // including missing results, only for the same immutable feed and dependencies.
+ const ingredientCache=new WeakMap();
+ function recommend(recipe,store,catalog,pricing,resolver,today){
+  const ingredients=Array.isArray(recipe?.ingredients)?recipe.ingredients:[];
+  if(!catalog||typeof catalog!=='object')return calculate(recipe,store,catalog,pricing,resolver,today);
+  let scopes=ingredientCache.get(catalog);if(!scopes){scopes=new Map();ingredientCache.set(catalog,scopes)}
+  const scope=JSON.stringify([store,today,catalog.source_date,catalog.generated_at]);
+  let cache=scopes.get(scope);
+  if(!cache||cache.pricing!==pricing||cache.resolver!==resolver||cache.rows!==catalog.stores?.[store]){
+   cache={pricing,resolver,rows:catalog.stores?.[store],items:new Map()};scopes.set(scope,cache);
+  }
+  let base=null;const rows=[];
+  for(const ing of ingredients){
+   const key=JSON.stringify([ing.name,ing.quantity,ing.unit]);
+   let value=cache.items.get(key);
+   if(!value){value=calculate({ingredients:[ing]},store,catalog,pricing,resolver,today);cache.items.set(key,value)}
+   base=value;rows.push(...value.rows.map(r=>({...r})));
+  }
+  if(!base)base=calculate({ingredients:[]},store,catalog,pricing,resolver,today);
+  return {...base,rows,matched:rows.length,required:ingredients.length};
  }
  function estimate(recipe,store,catalog,pricing,resolver,today){
   const options=recommend(recipe,store,catalog,pricing,resolver,today);

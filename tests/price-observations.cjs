@@ -58,3 +58,4 @@ assert.equal(price.pack({name:'AH Bospeen',pack_label:'per bos'}).unit,'bos');
 assert.equal(price.packLabel({name:'Jumbo Kipfilet 800 g',pack_label:''}),'800 g (volgens productnaam)');
 assert.equal(price.packLabel({name:'Bier 6x330ml',pack_label:''}),'6 × 330 ml (volgens productnaam)');
 assert.equal(price.packLabel({name:'Bospeen',pack_label:''}),'inhoud niet bevestigd');
+for(const pack_label of ['250-295 g','250 – 300 g','0,5-1 kg'])assert.equal(price.pack({name:'Productvarianten',pack_label}),null,'Weight ranges are not exact packs');

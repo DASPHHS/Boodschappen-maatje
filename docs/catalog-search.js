@@ -26,6 +26,20 @@
   }
   const index={words,normalized,memo};stores.set(store,index);return index;
  }
+ // Blend freshly read public Lidl shelf observations into the same adapter.
+ // Only the non-member price enters recipe baskets. Plus stays an offer condition.
+ function withLidlPrices(catalog,supplemental,today){
+  if(!catalog?.stores)return catalog;
+  const fresh=(supplemental?.stores?.lidl?.official_prices||[]).filter(o=>
+   o.source_provider==='lidl_official'&&o.verified===true&&!o.member_required&&
+   o.checked_at===today&&o.start_date<=today&&o.end_date>=today&&
+   /^https:\/\/www\.lidl\.nl\/p\//.test(o.source?.url||'')&&Number.isFinite(o.price)&&o.price>0);
+  if(!fresh.length)return catalog;
+  const rows=fresh.map(o=>[o.name,o.price,o.pack_label,o.source.url,o.product_id,
+   {...o.semantic_evidence,status:'ok',checked_at:o.checked_at,observed_price:o.price,product_pack:o.pack_label}]);
+  const ids=new Set(rows.map(r=>String(r[4])));
+  return {...catalog,stores:{...catalog.stores,lidl:[...rows,...(catalog.stores.lidl||[]).filter(r=>!ids.has(String(r[4])))]}};
+ }
  function observation(row,store,catalog,today,pricing){
    const meta=row[5];
    const age=meta?.checked_at?(Date.parse(today+'T12:00:00Z')-Date.parse(String(meta.checked_at).slice(0,10)+'T12:00:00Z'))/86400000:Infinity;
@@ -137,5 +151,5 @@
   }
   return picked.sort((a,b)=>(a.unit&&b.unit&&a.unit.unit===b.unit?a.unit.price-b.unit.price:0)||a.o.price-b.o.price);
  }
- return {productKey,observation,valid,candidates,combined,compactResult,favoritePrices};
+ return {withLidlPrices,productKey,observation,valid,candidates,combined,compactResult,favoritePrices};
 });

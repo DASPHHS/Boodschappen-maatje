@@ -57,6 +57,13 @@ def main():
       "errors":errors,
       "stores":{"lidl":{"checked_at":now.isoformat(),"status":"partial" if errors else "ok","offers":offers},
         "jumbo":{"offers":[],"status":"not_configured"},"ah":{"offers":[],"status":"not_configured"}}}
+    # Independent official reader owns these fields; a Biernet refresh must not
+    # erase its evidence on a transient official-source failure.
+    if OUT.exists():
+        previous=json.loads(OUT.read_text()).get('stores',{}).get('lidl',{})
+        result['stores']['lidl']['offers'] += [o for o in previous.get('offers',[]) if o.get('source_provider')=='lidl_official']
+        for key in ['official_check','official_prices']:
+            if key in previous:result['stores']['lidl'][key]=previous[key]
     OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
     print("Lidl supplemental: ",len(offers),"current offers,",len(errors),"errors")
     return 0 if not errors else 2

@@ -16,11 +16,12 @@ const reference=new Date('2026-10-26T12:00:00Z');
 const weekIndex=Math.floor((monday-reference)/604800000);
 const data=JSON.parse(fs.readFileSync(path.join(root,'library.json'),'utf8'));
 const kinds=['kip','vlees','vis','vega'],stores=['lidl','jumbo','ah'];
-const eligible=data.recipes.filter(r=>r.id?.startsWith('basis-')&&
+const eligible=data.recipes.filter(r=>
  r.quality_status==='uitgewerkt_niet_culinair_getest'&&
- r.source_status==='algemene_inspiratie_bron_geen_1_op_1_recept'&&
+ ((r.id?.startsWith('basis-')&&r.source_status==='algemene_inspiratie_bron_geen_1_op_1_recept'&&r.inspiration_source?.url?.startsWith('https://'))||
+  (r.id?.startsWith('wereld-')&&r.source_type==='zelf_samengesteld'&&r.source_status==='eigen_recept_geen_externe_overname'))&&
  r.servings===4&&Array.isArray(r.ingredients)&&r.ingredients.length>=4&&
- Array.isArray(r.instructions)&&r.instructions.length>=3&&r.inspiration_source?.url?.startsWith('https://'));
+ Array.isArray(r.instructions)&&r.instructions.length>=3);
 for(const kind of kinds)if(eligible.filter(r=>r.category===kind).length<2)
  throw Error('Cannot publish: fewer than two reviewed original base ideas in '+kind);
 const previousPath=path.join(root,'weekly.json');

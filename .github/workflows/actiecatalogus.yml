@@ -7,6 +7,7 @@ on:
       - 'scripts/sync_aanbiedingen.py'
       - 'scripts/offer-audit.cjs'
       - 'scripts/sync_lidl_supplemental.py'
+      - 'scripts/sync_lidl_official.py'
       - 'scripts/sync_regular_prices.py'
       - 'docs/data/personal-prices.json'
       - 'docs/data/watchlist.json'
@@ -35,9 +36,10 @@ jobs:
           python-version: '3.12'
       - name: Compile check
         run: |
-          python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py scripts/sync_regular_prices.py
+          python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py scripts/sync_regular_prices.py scripts/sync_lidl_official.py
           python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
+          python -m unittest discover -s tests -p 'test_lidl_official.py'
       - name: Read all public promotions
         continue-on-error: true
         run: python scripts/sync_aanbiedingen.py
@@ -45,6 +47,9 @@ jobs:
       - name: Check supplemental Lidl beer/folder sources
         continue-on-error: true
         run: python scripts/sync_lidl_supplemental.py
+      - name: Read dated public Lidl product grids and Lidl Plus conditions
+        continue-on-error: true
+        run: python scripts/sync_lidl_official.py
       - name: Recheck known regular prices on retailer product pages
         continue-on-error: true
         run: python scripts/sync_regular_prices.py
@@ -86,3 +91,14 @@ jobs:
             sleep 4
           done
           exit 1
+      - name: Report a failed official Lidl refresh after publishing source health
+        if: always()
+        run: |
+          python - <<'PYCODE'
+          import json
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          s=json.load(open('docs/data/supplemental-offers.json'))['stores']['lidl'].get('official_check',{})
+          today=datetime.now(ZoneInfo('Europe/Amsterdam')).date().isoformat()
+          assert s.get('status')=='ok' and str(s.get('checked_at','')).startswith(today), s
+          PYCODE

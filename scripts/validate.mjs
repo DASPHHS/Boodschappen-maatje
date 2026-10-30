@@ -196,8 +196,8 @@ const extra=JSON.parse(fs.readFileSync('docs/data/supplemental-offers.json','utf
 const registry=JSON.parse(fs.readFileSync('docs/data/lidl-source-registry.json','utf8'));
 if(extra.schema_version!==1||!Array.isArray(extra.stores?.lidl?.offers)||!Array.isArray(registry.sources))throw Error('Lidl aanvullende bronstructuur ongeldig');
 for(const o of extra.stores.lidl.offers){
- if(!o.start_date||!o.end_date||o.verified!==false||!/^https:\/\//.test(o.source?.url||'')||!Number.isFinite(o.price)||o.price<=0)throw Error('Onvolledige Lidl extra actie '+o.id);
- if(!registry.sources.some(s=>s.id===o.id))throw Error('Niet-herleidbaar Lidl extra product '+o.id);
+ if(!o.start_date||!o.end_date||(o.verified!==false&&!(o.source_provider==='lidl_official'&&/^https:\/\/www\.lidl\.nl\/p\//.test(o.source?.url||'')&&o.semantic_evidence?.verified_identity===true))||!/^https:\/\//.test(o.source?.url||'')||!Number.isFinite(o.price)||o.price<=0)throw Error('Onvolledige Lidl extra actie '+o.id);
+ if(o.source_provider!=='lidl_official'&&!registry.sources.some(s=>s.id===o.id))throw Error('Niet-herleidbaar Lidl extra product '+o.id);
  if(o.category==='bier'&&!(o.unit==='L'&&Number.isFinite(o.unit_price)))throw Error('Bier literprijs ontbreekt '+o.id);
 }
-console.log('Aanvullende Lidl-bronnen zijn extern, gedateerd en product-specifiek');
+console.log('Aanvullende Lidl-bronnen zijn herleidbaar, gedateerd en product-specifiek; officiële gegevens apart gecontroleerd');

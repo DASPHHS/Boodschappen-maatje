@@ -1,0 +1,79 @@
+{
+  "store": true,
+  "online": false,
+  "productType": "RETAIL",
+  "productId": 11150311,
+  "fullTitle": "VEMONDO Plantaardige hamburgers",
+  "storeStartDate": 1792969200,
+  "storeEndDate": 1793573999,
+  "canonicalUrl": "/p/vemondo-plantaardige-hamburgers/p11150311",
+  "regionsPrices": {
+    "1": {
+      "currentPrice": {
+        "price": 2.19,
+        "hasVat": true,
+        "endDate": "2200-01-01T22:59:59Z",
+        "hasStar": false,
+        "basePrice": {
+          "text": "100 g = 0.97",
+          "prefix": false
+        },
+        "packaging": {
+          "text": "226 g"
+        },
+        "startDate": "2026-10-28T14:16:02.398Z",
+        "priceTheme": "white_red",
+        "currencyCode": "EUR",
+        "currencySymbol": "€",
+        "endDateExclusive": "2200-01-01T23:00Z",
+        "variantsHaveDifferentPrices": false
+      },
+      "currentLidlPlusPrice": {
+        "price": {
+          "price": 1.89,
+          "hasVat": true,
+          "endDate": "2026-11-01T22:59:59Z",
+          "hasStar": false,
+          "discount": {
+            "showFrom": false,
+            "showUpTo": false,
+            "deletedPrice": 2.19,
+            "showDiscount": true,
+            "showPercentage": true,
+            "bargainHintText": "Mega deal!",
+            "discountHasStar": false,
+            "hideBargainHint": false,
+            "absoluteDiscount": 0.3,
+            "bargainHintEnabled": false,
+            "percentageDiscount": 13,
+            "fromRecommendedPrice": false,
+            "fromNormalPriceForLidlPlus": true
+          },
+          "oldPrice": 2.19,
+          "basePrice": {
+            "prefix": false
+          },
+          "packaging": {
+            "text": "227 g"
+          },
+          "startDate": "2026-10-21T22:00Z",
+          "priceTheme": "white_red",
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "endDateExclusive": "2026-11-01T23:00Z",
+          "variantsHaveDifferentPrices": false
+        },
+        "lidlPlusText": "met Lidl Plus",
+        "highlightText": "-13%"
+      }
+    }
+  },
+  "brand": {
+    "url": "/q/search?q=vemondo",
+    "name": "Vemondo",
+    "showBrand": true
+  },
+  "keyfacts": {
+    "wonCategoryPrimary": "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Vleesvervangers"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T15:59:04.560869+01:00",
+  "generated_at": "2026-10-30T16:15:40.646321+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-30T15:59:04.560869+01:00",
+      "checked_at": "2026-10-29T14:27:23.912307+01:00",
       "status": "ok",
       "offers": [
         {
@@ -27,7 +27,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-30",
+          "checked_at": "2026-10-29",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -49,9 +49,1525 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-30",
+          "checked_at": "2026-10-29",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
+        },
+        {
+          "id": "lidl-official-11561032",
+          "product_id": "11561032",
+          "name": "CHEF SELECT Maaltijdsalade Caesar",
+          "category": "overig",
+          "price": 2.49,
+          "regular_price": 2.85,
+          "pack_label": "250-295 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/chef-select-maaltijdsalade-caesar/p11561032",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 2.85,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Salades, fruit & antipasti om mee te nemen"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11317763",
+          "product_id": "11317763",
+          "name": "Aardappelschijfjes",
+          "category": "overig",
+          "price": 0.99,
+          "regular_price": 1.29,
+          "pack_label": "700 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/aardappelschijfjes/p11317763",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 1.29,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Gekoelde kant-en-klaarmaaltijden"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11150311",
+          "product_id": "11150311",
+          "name": "VEMONDO Plantaardige hamburgers",
+          "category": "vega",
+          "price": 1.89,
+          "regular_price": 2.19,
+          "pack_label": "227 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/vemondo-plantaardige-hamburgers/p11150311",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 2.19,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Vemondo",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Vleesvervangers"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11151394",
+          "product_id": "11151394",
+          "name": "Schnittbroodje",
+          "category": "overig",
+          "price": 0.19,
+          "regular_price": 0.29,
+          "pack_label": "Per stuk",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/schnittbroodje/p11151394",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 0.29,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Broodjes & klein gebak"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11304724",
+          "product_id": "11304724",
+          "name": "Gevulde koek",
+          "category": "overig",
+          "price": 0.49,
+          "regular_price": 0.68,
+          "pack_label": "Per stuk",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/gevulde-koek/p11304724",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 0.68,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Hartige gebakjes"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11308105",
+          "product_id": "11308105",
+          "name": "- Runderriblappen",
+          "category": "vlees",
+          "price": 8.99,
+          "regular_price": 10.96,
+          "pack_label": "700 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/runderriblappen/p11308105",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 10.96,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/rundvlees"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11514947",
+          "product_id": "11514947",
+          "name": "Aardappelgratin",
+          "category": "overig",
+          "price": 1.79,
+          "regular_price": 2.15,
+          "pack_label": "450 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/aardappelgratin/p11514947",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Gekoelde kant-en-klaarmaaltijden"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11360122",
+          "product_id": "11360122",
+          "name": "MILBONA Goudse belegen stuk 48+",
+          "category": "overig",
+          "price": 6.99,
+          "regular_price": 8.45,
+          "pack_label": "910 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-goudse-belegen-stuk-48/p11360122",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 8.45,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11003785",
+          "product_id": "11003785",
+          "name": "IT Primitivo Puglia IGT",
+          "category": "overig",
+          "price": 3.74,
+          "regular_price": 4.99,
+          "pack_label": "0,75 l",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/it-primitivo-puglia-igt/p11003785",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 4.99,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Wijn, bier en sterke drank/Wijn/Rode wijn"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11254196",
+          "product_id": "11254196",
+          "name": "IWB ITALIA IT DdS Appassimento Puglia Rosso",
+          "category": "overig",
+          "price": 4.49,
+          "regular_price": 5.99,
+          "pack_label": "0,75 l",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/iwb-italia-it-dds-appassimento-puglia-rosso/p11254196",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 4.99,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "IWB ITALIA",
+            "categories": [
+              "Werelden van nood/Wijn, bier en sterke drank/Wijn/Rode wijn"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11303602",
+          "product_id": "11303602",
+          "name": "Chocomel",
+          "category": "overig",
+          "price": 2.19,
+          "regular_price": 2.99,
+          "pack_label": "1,5 liter",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/chocomel/p11303602",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 2.99,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Melk & room"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11306146",
+          "product_id": "11306146",
+          "name": "Rustiek meergranen desem",
+          "category": "overig",
+          "price": 1.69,
+          "regular_price": 2.19,
+          "pack_label": "",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/rustiek-meergranen-desem/p11306146",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 2.19,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Vers brood"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11322235",
+          "product_id": "11322235",
+          "name": "- Kogelbiefstuk",
+          "category": "overig",
+          "price": 6.99,
+          "regular_price": 8.39,
+          "pack_label": "350 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/kogelbiefstuk/p11322235",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 8.39,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/rundvlees"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11561374",
+          "product_id": "11561374",
+          "name": "MILBONA Smeerkaas sambal 45+",
+          "category": "overig",
+          "price": 0.99,
+          "regular_price": 1.18,
+          "pack_label": "150-200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-sambal-45/p11561374",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 1.18,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11562774",
+          "product_id": "11562774",
+          "name": "MILBONA Smeerkaas sambal 20+",
+          "category": "overig",
+          "price": 0.99,
+          "regular_price": 1.18,
+          "pack_label": "150-200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-sambal-20/p11562774",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 1.18,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11308140",
+          "product_id": "11308140",
+          "name": "MILBONA Smeerkaas naturel 48+",
+          "category": "overig",
+          "price": 0.99,
+          "regular_price": 1.32,
+          "pack_label": "150-200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-naturel-48/p11308140",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": true,
+          "requires_membership": true,
+          "promo_note": "Alleen met Lidl Plus",
+          "without_membership_price": 1.32,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        }
+      ],
+      "official_check": {
+        "checked_at": "2026-10-30T16:15:40.646321+01:00",
+        "status": "ok",
+        "pages": {
+          "https://www.lidl.nl/c/aanbiedingen/a10008785": 36,
+          "https://www.lidl.nl/c/lidl-plus/s10008463": 15
+        },
+        "errors": {},
+        "current_offers": 16
+      },
+      "official_prices": [
+        {
+          "id": "lidl-official-11561032",
+          "product_id": "11561032",
+          "name": "CHEF SELECT Maaltijdsalade Caesar",
+          "category": "overig",
+          "price": 2.85,
+          "regular_price": null,
+          "pack_label": "285 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/chef-select-maaltijdsalade-caesar/p11561032",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Salades, fruit & antipasti om mee te nemen"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11317763",
+          "product_id": "11317763",
+          "name": "Aardappelschijfjes",
+          "category": "overig",
+          "price": 1.29,
+          "regular_price": null,
+          "pack_label": "700 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/aardappelschijfjes/p11317763",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Gekoelde kant-en-klaarmaaltijden"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11002438",
+          "product_id": "11002438",
+          "name": "ALESTO Cashewnoten",
+          "category": "overig",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "500 gram",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/alesto-cashewnoten/p11002438",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Alesto",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Snoep & snacks/Gedroogd fruit & noten"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11323356",
+          "product_id": "11323356",
+          "name": "BELLAROM Koffie goud",
+          "category": "dranken",
+          "price": 7.99,
+          "regular_price": null,
+          "pack_label": "2 x 500 gram",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/bellarom-koffie-goud/p11323356",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Bellarom",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Koffie, thee & cacao"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11150311",
+          "product_id": "11150311",
+          "name": "VEMONDO Plantaardige hamburgers",
+          "category": "vega",
+          "price": 2.19,
+          "regular_price": null,
+          "pack_label": "226 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/vemondo-plantaardige-hamburgers/p11150311",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Vemondo",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Vleesvervangers"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11151394",
+          "product_id": "11151394",
+          "name": "Schnittbroodje",
+          "category": "overig",
+          "price": 0.29,
+          "regular_price": null,
+          "pack_label": "65 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/schnittbroodje/p11151394",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Broodjes & klein gebak"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11309566",
+          "product_id": "11309566",
+          "name": "Frikandelbroodje",
+          "category": "overig",
+          "price": 0.98,
+          "regular_price": null,
+          "pack_label": "Per stuk",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/frikandelbroodje/p11309566",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Broodjes & klein gebak"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11654532",
+          "product_id": "11654532",
+          "name": "Karamel pencee",
+          "category": "overig",
+          "price": 2.79,
+          "regular_price": null,
+          "pack_label": "Pak 4 stuks",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/karamel-pencee/p11654532",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Snoep & snacks/Snoepjes & fruitgummies"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11558182",
+          "product_id": "11558182",
+          "name": "- Ovenverse roomboter appeltaart",
+          "category": "overig",
+          "price": 2.49,
+          "regular_price": null,
+          "pack_label": "Voor 6-8 personen",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/ovenverse-roomboter-appeltaart/p11558182",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Zoet gebak"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11304724",
+          "product_id": "11304724",
+          "name": "Gevulde koek",
+          "category": "overig",
+          "price": 0.68,
+          "regular_price": null,
+          "pack_label": "85 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/gevulde-koek/p11304724",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Hartige gebakjes"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11311833",
+          "product_id": "11311833",
+          "name": "ZWAGERMAN Spekreepjes",
+          "category": "overig",
+          "price": 2.99,
+          "regular_price": null,
+          "pack_label": "380 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/zwagerman-spekreepjes/p11311833",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Zwagerman",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Worst & vleeswaren"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11308105",
+          "product_id": "11308105",
+          "name": "- Runderriblappen",
+          "category": "vlees",
+          "price": 10.96,
+          "regular_price": null,
+          "pack_label": "700 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/runderriblappen/p11308105",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/rundvlees"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11317720",
+          "product_id": "11317720",
+          "name": "- Gekruide varkensoester",
+          "category": "vlees",
+          "price": 4.49,
+          "regular_price": null,
+          "pack_label": "300 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/gekruide-varkensoester/p11317720",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Varkensvlees"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11317782",
+          "product_id": "11317782",
+          "name": "- Hamlappen",
+          "category": "vlees",
+          "price": 7.99,
+          "regular_price": null,
+          "pack_label": "960 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/hamlappen/p11317782",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Worst & vleeswaren"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11318112",
+          "product_id": "11318112",
+          "name": "- Verse zalmfilet op huid",
+          "category": "vis",
+          "price": 7.49,
+          "regular_price": null,
+          "pack_label": "500 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/verse-zalmfilet-op-huid/p11318112",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vis & zeevruchten"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11559056",
+          "product_id": "11559056",
+          "name": "Kip-kaassschnitzels",
+          "category": "overig",
+          "price": 5.99,
+          "regular_price": null,
+          "pack_label": "500 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/kip-kaassschnitzels/p11559056",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/Gevogelte"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11514947",
+          "product_id": "11514947",
+          "name": "Aardappelgratin",
+          "category": "overig",
+          "price": 1.79,
+          "regular_price": 2.15,
+          "pack_label": "450 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/aardappelgratin/p11514947",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Chef Select",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kant-en-klaarmaaltijden/Gekoelde kant-en-klaarmaaltijden"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11342967",
+          "product_id": "11342967",
+          "name": "MILBONA Goudse extra belegen plakken",
+          "category": "overig",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "500 gram",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-goudse-extra-belegen-plakken/p11342967",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11360122",
+          "product_id": "11360122",
+          "name": "MILBONA Goudse belegen stuk 48+",
+          "category": "overig",
+          "price": 8.45,
+          "regular_price": null,
+          "pack_label": "910 g",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-goudse-belegen-stuk-48/p11360122",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11003785",
+          "product_id": "11003785",
+          "name": "IT Primitivo Puglia IGT",
+          "category": "overig",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "750 ml",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/it-primitivo-puglia-igt/p11003785",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Wijn, bier en sterke drank/Wijn/Rode wijn"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11119625",
+          "product_id": "11119625",
+          "name": "Chrysant",
+          "category": "overig",
+          "price": 1.39,
+          "regular_price": null,
+          "pack_label": "Potmaat: Ø 12 cm Hoogte: ca. 25 cm",
+          "start_date": "2026-10-28",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/chrysant/p11119625",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bloemen & planten/Bloemen & planten"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11254196",
+          "product_id": "11254196",
+          "name": "IWB ITALIA IT DdS Appassimento Puglia Rosso",
+          "category": "overig",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "750 ml",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/iwb-italia-it-dds-appassimento-puglia-rosso/p11254196",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "IWB ITALIA",
+            "categories": [
+              "Werelden van nood/Wijn, bier en sterke drank/Wijn/Rode wijn"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11303602",
+          "product_id": "11303602",
+          "name": "Chocomel",
+          "category": "overig",
+          "price": 2.99,
+          "regular_price": null,
+          "pack_label": "1500 ml",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-05",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/chocomel/p11303602",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Melk & room"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11306146",
+          "product_id": "11306146",
+          "name": "Rustiek meergranen desem",
+          "category": "overig",
+          "price": 2.19,
+          "regular_price": null,
+          "pack_label": "600 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/rustiek-meergranen-desem/p11306146",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Bakkerij/Vers brood"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11322235",
+          "product_id": "11322235",
+          "name": "- Kogelbiefstuk",
+          "category": "overig",
+          "price": 8.39,
+          "regular_price": null,
+          "pack_label": "350 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-05",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/kogelbiefstuk/p11322235",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "-",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Vlees & gevogelte/rundvlees"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11561374",
+          "product_id": "11561374",
+          "name": "MILBONA Smeerkaas sambal 45+",
+          "category": "overig",
+          "price": 1.18,
+          "regular_price": null,
+          "pack_label": "200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-sambal-45/p11561374",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11562774",
+          "product_id": "11562774",
+          "name": "MILBONA Smeerkaas sambal 20+",
+          "category": "overig",
+          "price": 1.18,
+          "regular_price": null,
+          "pack_label": "200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-sambal-20/p11562774",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11308140",
+          "product_id": "11308140",
+          "name": "MILBONA Smeerkaas naturel 48+",
+          "category": "overig",
+          "price": 1.32,
+          "regular_price": null,
+          "pack_label": "200 g",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-01",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/milbona-smeerkaas-naturel-48/p11308140",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "Milbona",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Kaas, zuivelproducten & eieren/Kaas"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11309573",
+          "product_id": "11309573",
+          "name": "Maaza Magno",
+          "category": "overig",
+          "price": 1.49,
+          "regular_price": null,
+          "pack_label": "1 l",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-05",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/maaza-magno/p11309573",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Dranken/Vruchtensappen"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11562683",
+          "product_id": "11562683",
+          "name": "Maaza Guava",
+          "category": "overig",
+          "price": 1.49,
+          "regular_price": null,
+          "pack_label": "1 l",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-05",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/maaza-guava/p11562683",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Dranken/Vruchtensappen"
+            ]
+          }
+        },
+        {
+          "id": "lidl-official-11567144",
+          "product_id": "11567144",
+          "name": "Tropical",
+          "category": "overig",
+          "price": 1.49,
+          "regular_price": null,
+          "pack_label": "1 l",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-05",
+          "source_provider": "lidl_official",
+          "source": {
+            "url": "https://www.lidl.nl/p/tropical/p11567144",
+            "label": "Lidl openbare productgegevens"
+          },
+          "source_page": "https://www.lidl.nl/c/aanbiedingen/a10008785",
+          "checked_at": "2026-10-30",
+          "evidence_date": "2026-10-30",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "requires_membership": false,
+          "promo_note": "In de winkel; zolang de voorraad strekt",
+          "without_membership_price": null,
+          "semantic_evidence": {
+            "verified_identity": true,
+            "brand": "",
+            "categories": [
+              "Werelden van nood/Eten en dichtbij voedsel/Diepvriesvoeding (Diepvriesvoeding)/IJs"
+            ]
+          }
         }
       ]
     },

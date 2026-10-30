@@ -1,0 +1,13 @@
+'use strict';
+const assert=require('node:assert/strict'),options=require('../docs/recipe-shop-options.js'),pricing=require('../docs/price-observations.js'),original=require('../docs/product-resolver.js');
+let calls=0;const resolver={...original,matching(...a){calls++;return original.matching(...a)}};
+const catalog={schema_version:1,source_date:'2026-10-30',stores:{lidl:[['Broccoli',1,'500 g',null,'1']]}};
+const meal={ingredients:[{name:'broccoli',quantity:800,unit:'g'}]};
+const one=options.estimate(meal,'lidl',catalog,pricing,resolver,'2026-10-30');assert.equal(one.total,2);const cold=calls;
+for(let i=0;i<100;i++)assert.equal(options.estimate({...meal,id:i},'lidl',catalog,pricing,resolver,'2026-10-30').total,2);
+assert.equal(calls,cold,'Identical ingredients across recipes must not repeat product matching');
+one.rows[0].purchase_total=999;assert.equal(options.estimate(meal,'lidl',catalog,pricing,resolver,'2026-10-30').total,2);
+options.estimate(meal,'lidl',catalog,pricing,resolver,'2026-10-31');assert.ok(calls>cold,'New day invalidates cache');
+const newer={...catalog,stores:{lidl:[['Broccoli',2,'500 g',null,'1']]}};
+assert.equal(options.estimate(meal,'lidl',newer,pricing,resolver,'2026-10-30').total,4,'New feed invalidates cache');
+console.log('100 repeated recipe calculations reuse ingredient matches; new feed/day and returned-object mutations remain safe');

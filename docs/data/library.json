@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "notes": "40 eerdere titel-geïnspireerde concepten (oorspronkelijke bron, kooktechniek en 300g groente per portie niet altijd geverifieerd), 8 eigen uitgewerkte wereldkeukenvarianten (niet proefgekookt). De site toont herkomst en kwaliteitswaarschuwingen; fouten in ingrediëntcategorieën gecorrigeerd. Geen oude bron claimen als 1-op-1 recept.",
+  "notes": "40 eerdere titel-geïnspireerde concepten (oorspronkelijke bron, kooktechniek en 300g groente per portie niet altijd geverifieerd), 8 eigen uitgewerkte wereldkeukenvarianten (niet proefgekookt). De site toont herkomst en kwaliteitswaarschuwingen; fouten in ingrediëntcategorieën gecorrigeerd. Geen oude bron claimen als 1-op-1 recept. Aangevuld met 24 uitgewerkte eigen receptideeën (4 kip, 4 vlees, 4 vis, 12 vega); geen externe instructies overgenomen. Prijzen en macro’s zijn geen vast receptgegeven.",
   "recipes": [
     {
       "id": "drive-01",
@@ -3296,6 +3296,1518 @@
       "source_status": "algemene_inspiratie_bron_geen_1_op_1_recept",
       "quality_status": "uitgewerkt_niet_culinair_getest",
       "quality_issues": []
+    },
+    {
+      "id": "wereld-kip-pinda",
+      "title": "Kip in pindasaus met spitskool en wortel",
+      "category": "kip",
+      "cuisine": "Indonesisch",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "pindakaas",
+          "quantity": 100,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd kip en groenten; roer pindakaas, sojasaus en 150 ml water tot een saus.",
+        "Bak de kip in de olie volledig gaar. Voeg geraspte gember en dun gesneden wortel toe en bak 5 minuten.",
+        "Voeg spitskool en saus toe. Laat onder regelmatig roeren 8 tot 10 minuten zacht garen en verdeel over vier porties."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kip-prei",
+      "title": "Kip-preipan met mosterd en champignons",
+      "category": "kip",
+      "cuisine": "Frans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Was prei en snijd hem in ringen; snijd de kip en champignons.",
+        "Bak de kip in olie volledig gaar. Bak de champignons mee, voeg prei en 100 ml water toe en stoof afgedekt 10 minuten.",
+        "Neem van het vuur. Meng mosterd door de kwark en roer door de pan; verwarm voorzichtig zonder te koken."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kip-kerrie",
+      "title": "Kerriekip met bloemkool en spinazie",
+      "category": "kip",
+      "cuisine": "Indiaas",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verdeel bloemkool in kleine roosjes en snijd de kip in blokjes.",
+        "Bak de kip in olie volledig gaar. Roer kerriepoeder erdoor en voeg kokosmelk, bloemkool en 100 ml water toe.",
+        "Stoof afgedekt 12 tot 15 minuten tot de bloemkool gaar is. Laat spinazie in de saus slinken."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kip-paprika",
+      "title": "Ovenkip met paprika, tomaat en oregano",
+      "category": "kip",
+      "cuisine": "Mediterraans",
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "name": "kipdijfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 200 °C. Snijd paprika en tomaten in stukken.",
+        "Meng groenten en kip met olie en oregano op een ruime bakplaat. Rooster 30 tot 35 minuten; keer halverwege en controleer of de kip volledig gaar is.",
+        "Verdeel over vier borden en serveer yoghurt apart."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-gehakt-bloemkool",
+      "title": "Gehaktpan met bloemkool en tomaat",
+      "category": "vlees",
+      "cuisine": "Turks",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komijn",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd bloemkool klein en tomaten in blokjes. Kook de bloemkool 6 minuten voor.",
+        "Rul het gehakt volledig gaar in olie met komijn. Voeg tomaten toe en stoof 8 minuten.",
+        "Schep de uitgelekte bloemkool erdoor en verwarm 5 minuten. Serveer met yoghurt."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-biefstuk-gember",
+      "title": "Gemberbiefstuk met broccoli en witte kool",
+      "category": "vlees",
+      "cuisine": "Japans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "biefstuk",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "witte kool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gember",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 35,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de biefstuk in dunne reepjes en de groente klein; rasp de gember.",
+        "Roerbak broccoli en kool in de helft van de olie. Voeg 100 ml water toe en gaar afgedekt 8 minuten.",
+        "Bak de vleesreepjes apart in de rest van de olie. Meng met gember, sojasaus en groenten en verhit alles goed."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-varken-mosterd",
+      "title": "Varkenshaas met prei en sperziebonen",
+      "category": "vlees",
+      "cuisine": "Nederlands",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "varkenshaas",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "diepvries sperziebonen",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere kwark",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de sperziebonen volgens de verpakking. Snijd prei in ringen en varkenshaas in medaillons.",
+        "Bak het vlees in olie volledig gaar en houd warm. Stoof prei in dezelfde pan met 100 ml water in 10 minuten gaar.",
+        "Neem de pan van het vuur en meng mosterd en kwark door de prei. Serveer met vlees en bonen."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-gehakt-aubergine",
+      "title": "Auberginebootjes met gehakt en tomaat",
+      "category": "vlees",
+      "cuisine": "Grieks",
+      "servings": 4,
+      "minutes": 50,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 200 °C. Halveer aubergines, kerf het vruchtvlees in en bestrijk met de helft van de olie. Rooster 25 minuten.",
+        "Rul gehakt volledig gaar met de rest van de olie en fijngehakte knoflook. Voeg tomaten en oregano toe en stoof 10 minuten.",
+        "Schep wat zacht auberginevruchtvlees door het gehakt, vul de helften en bak nog 10 minuten in de oven."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-zalm-mosterd",
+      "title": "Mosterdzalm met broccoli en prei",
+      "category": "vis",
+      "cuisine": "Noords",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "zalmfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "prei",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 190 °C. Snijd broccoli en prei en stoom 6 minuten voor.",
+        "Leg groenten met olie en 50 ml water in een ovenschaal. Leg de zalm erop en bestrijk met mosterd.",
+        "Bak 15 tot 20 minuten, afhankelijk van de dikte, tot de vis gaar is. Serveer met yoghurt."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kabeljauw-kerrie",
+      "title": "Kabeljauw in kokos met bloemkool en paksoi",
+      "category": "vis",
+      "cuisine": "Thais",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kabeljauwfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd bloemkool klein en houd de witte en groene delen van paksoi apart.",
+        "Verwarm olie en kerrie kort. Voeg kokosmelk, 100 ml water en bloemkool toe en stoof 10 minuten.",
+        "Voeg de vis en witte paksoi toe. Pocheer zacht tot de vis gaar is, circa 8 tot 12 minuten. Laat het paksoigroen de laatste 2 minuten slinken."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-zalm-sesam",
+      "title": "Sesamzalm met wortel en spitskool",
+      "category": "vis",
+      "cuisine": "Japans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "zalmfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sesamzaad",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 190 °C en snijd de groenten in dunne reepjes.",
+        "Leg de zalm in een ovenschaal, bestrijk met soja en bestrooi met sesam. Bak 15 tot 20 minuten tot gaar.",
+        "Roerbak wortel en kool met olie en geraspte gember. Voeg een scheut water toe en laat 10 minuten gaar worden."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kabeljauw-venkel",
+      "title": "Tomatenvis met venkel en courgette",
+      "category": "vis",
+      "cuisine": "Italiaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kabeljauwfilet",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "venkel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd venkel dun en courgette in halve plakjes. Bak 5 minuten in olie.",
+        "Voeg tomatenblokjes, oregano en 100 ml water toe. Stoof afgedekt 10 minuten.",
+        "Leg de vis in de saus en laat onder een deksel zachtjes garen, circa 10 minuten afhankelijk van de dikte."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-linzen-dahl",
+      "title": "Rode-linzendahl met bloemkool en spinazie",
+      "category": "vega",
+      "cuisine": "Indiaas",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "rode linzen droog",
+          "quantity": 320,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel de linzen. Snijd bloemkool in kleine roosjes en verwarm kerrie kort in olie.",
+        "Voeg linzen, kokosmelk en 700 ml water toe. Laat zacht koken; voeg na 5 minuten de bloemkool toe.",
+        "Kook nog 15 tot 20 minuten tot linzen en bloemkool zacht zijn; voeg zo nodig water toe. Laat spinazie op het einde slinken."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-kikkererwt-paprika",
+      "title": "Kikkererwtenstoof met paprika en courgette",
+      "category": "vega",
+      "cuisine": "Marokkaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "kikkererwten uitgelekt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel en weeg de uitgelekte kikkererwten. Snijd paprika en courgette klein.",
+        "Bak de groenten 5 minuten in olie met komijn. Voeg tomaten en kikkererwten toe en stoof 15 minuten.",
+        "Verdeel over vier kommen en schep cottage cheese ernaast."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-ei-shakshuka",
+      "title": "Shakshuka met spinazie en paprika",
+      "category": "vega",
+      "cuisine": "Noord-Afrikaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "eieren",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd paprika en bak 5 minuten in olie met komijn.",
+        "Voeg tomaten toe en stoof 10 minuten. Laat de spinazie in porties slinken.",
+        "Maak acht kuiltjes en breek in elk een ei. Dek af en laat 8 tot 12 minuten zacht garen tot ook het eiwit gestold is."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-frittata",
+      "title": "Groentefrittata met broccoli en cottage cheese",
+      "category": "vega",
+      "cuisine": "Italiaans",
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "name": "eieren",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 190 °C. Snijd broccoli klein en kook 5 minuten voor.",
+        "Bak gesneden champignons in olie. Klop eieren met cottage cheese en oregano los.",
+        "Doe de groenten in een ingevette ovenschaal en schenk het eimengsel erover. Bak 25 tot 30 minuten tot het midden stevig en gaar is."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-halloumi",
+      "title": "Ovenhalloumi met aubergine en tomaat",
+      "category": "vega",
+      "cuisine": "Cypriotisch",
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "name": "halloumi",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "kikkererwten uitgelekt",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven tot 200 °C. Snijd aubergine in blokjes en meng met olie en oregano. Rooster 20 minuten.",
+        "Spoel kikkererwten, snijd tomaten en dep halloumi droog.",
+        "Voeg kikkererwten, tomaten en plakken halloumi toe. Rooster nog 15 minuten en verdeel over vier porties."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-feta-linzen",
+      "title": "Warme linzenschotel met feta en courgette",
+      "category": "vega",
+      "cuisine": "Grieks",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "groene linzen droog",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "feta",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "courgette",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel linzen en kook volgens de verpakking in ruim water gaar; giet af.",
+        "Snijd courgette en paprika en bak met olie en oregano in 12 tot 15 minuten gaar.",
+        "Meng linzen en groenten. Verkruimel feta erover en warm kort door."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-bonen-chili",
+      "title": "Zwarte-bonenchili met paprika en witte kool",
+      "category": "vega",
+      "cuisine": "Mexicaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "zwarte bonen uitgelekt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "witte kool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel en weeg de bonen. Snijd paprika en kool.",
+        "Bak groenten met olie en kruiden 5 minuten. Voeg tomaten, bonen en 150 ml water toe.",
+        "Stoof afgedekt 15 minuten tot de kool zacht is. Serveer cottage cheese apart."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-tofu-pinda",
+      "title": "Krokante tofu met pindasaus en paksoi",
+      "category": "vega",
+      "cuisine": "Indonesisch",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "stevige tofu",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "pindakaas",
+          "quantity": 100,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Dep tofu goed droog, snijd in blokjes en bak in de helft van de olie rondom goudbruin.",
+        "Roerbak dun gesneden wortel en paksoistelen in de rest van de olie. Voeg een scheut water toe en gaar 8 minuten; laat paksoigroen slinken.",
+        "Roer pindakaas en soja met 150 ml heet water tot saus. Meng met tofu en groenten en warm door."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-tempeh-gember",
+      "title": "Gembertempeh met broccoli en champignons",
+      "category": "vega",
+      "cuisine": "Koreaans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "tempeh",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gember",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 35,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sesamzaad",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd tempeh in dunne blokjes en bak in de helft van de olie goudbruin.",
+        "Roerbak broccoli en champignons in de overige olie. Voeg 100 ml water toe en gaar afgedekt 8 minuten.",
+        "Voeg geraspte gember, soja en tempeh toe. Verwarm 3 minuten en strooi sesam erover."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-edamame",
+      "title": "Edamame-groentepan met ei en sesam",
+      "category": "vega",
+      "cuisine": "Japans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "edamame",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "eieren",
+          "quantity": 4,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "sojasaus",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sesamzaad",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook edamame volgens de verpakking. Snijd de groenten klein.",
+        "Roerbak groenten in olie, voeg een scheut water toe en gaar afgedekt 8 minuten.",
+        "Schuif groenten opzij, breek de eieren in de pan en roer tot volledig gestold. Meng met edamame, soja en sesam."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-witte-bonen",
+      "title": "Witte-bonenpan met prei en champignons",
+      "category": "vega",
+      "cuisine": "Frans",
+      "servings": 4,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "name": "witte bonen uitgelekt",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel en weeg de bonen. Was en snijd de prei; snijd champignons.",
+        "Bak champignons in olie goudbruin. Voeg prei en 150 ml water toe en stoof 10 minuten.",
+        "Warm de bonen 5 minuten mee. Neem van het vuur en meng mosterd en cottage cheese door de pan."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
+    },
+    {
+      "id": "wereld-linzen-bolognese",
+      "title": "Linzenbolognese met aubergine en wortel",
+      "category": "vega",
+      "cuisine": "Italiaans",
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "name": "rode linzen droog",
+          "quantity": 320,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "cottage cheese",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "oregano",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd aubergine en wortel in kleine blokjes; spoel de linzen.",
+        "Bak groenten 5 minuten in olie. Voeg linzen, tomaat, oregano en 500 ml water toe.",
+        "Stoof 25 minuten en roer regelmatig; voeg water toe als het droog wordt. Serveer zodra linzen en groenten zacht zijn met cottage cheese ernaast."
+      ],
+      "vegetables_g_per_portion": 300.0,
+      "origin": "eigen_recept",
+      "source_type": "zelf_samengesteld",
+      "source_status": "eigen_recept_geen_externe_overname",
+      "source_name": "Eigen receptidee",
+      "source_note": "Zelf samengesteld voor vier porties. Niet proefgekookt; prijzen worden apart uit actuele productwaarnemingen berekend. Geen geverifieerde voedingswaarden.",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [],
+      "macro_status": "niet_berekend",
+      "price_status": "onbekend"
     }
   ]
 }
