@@ -4,6 +4,13 @@ on:
     branches: [main]
     paths:
       - 'docs/app.js'
+      - 'docs/product-semantics.js'
+      - 'docs/product-resolver.js'
+      - 'docs/catalog-search.js'
+      - 'docs/price-observations.js'
+      - 'docs/recipe-shop-options.js'
+      - 'scripts/wait_for_site.py'
+      - 'tests/browser-journey.cjs'
       - 'docs/index.html'
       - 'docs/data/recipe-sources.json'
       - '.github/workflows/live-site-check.yml'
@@ -25,9 +32,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Geef Pages na publicatie tijd om het nieuwe commit te serveren
-        if: github.event_name == 'push'
-        run: sleep 90
+      - name: Verify that Pages actually serves the expected code version
+        run: python scripts/wait_for_site.py
       - name: Controleer gepubliceerde data; geen oud weekmateriaal als nieuw
         run: node tests/live-data-freshness.cjs
         env:
