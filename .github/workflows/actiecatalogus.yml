@@ -33,47 +33,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run only at 07:00 Amsterdam or on demand
-        id: gate
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          run=os.getenv("GITHUB_EVENT_NAME")!="schedule" or datetime.now(ZoneInfo("Europe/Amsterdam")).hour==7
-          with open(os.environ["GITHUB_OUTPUT"],"a") as f:f.write("run="+str(run).lower()+"\n")
-          PY
       - name: Compile check
-        if: steps.gate.outputs.run == 'true'
         run: |
           python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py scripts/sync_regular_prices.py
           python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
       - name: Read all public promotions
-        if: steps.gate.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/sync_aanbiedingen.py
       # This source is independent: it must still execute if PrijsProfeet fails or returns zero beer.
       - name: Check supplemental Lidl beer/folder sources
-        if: steps.gate.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/sync_lidl_supplemental.py
       - name: Recheck known regular prices on retailer product pages
-        if: steps.gate.outputs.run == 'true'
         continue-on-error: true
         run: python scripts/sync_regular_prices.py
       - name: Record coverage and unresolved products
-        if: steps.gate.outputs.run == 'true'
         run: |
           node tests/product-resolver.cjs
           node scripts/build_product_resolution.cjs
       - name: Audit all received promotions
-        if: steps.gate.outputs.run == 'true'
         run: |
           node tests/offer-audit.cjs
           node scripts/offer-audit.cjs
       - name: Publish updated catalogue
-        if: steps.gate.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

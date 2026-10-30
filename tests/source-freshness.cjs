@@ -7,3 +7,11 @@ assert.equal(f.available(feed,'2026-10-28T08:30:00+01:00','2026-10-30').length,0
 assert.equal(f.available({...feed,offers:[{...item,end_date:'2026-10-28'}]},'2026-10-28T08:30:00+01:00','2026-10-29').length,0);
 assert.equal(f.available({...feed,status:'error'},'2026-10-28T08:30:00+01:00','2026-10-29').length,0);
 console.log('Grace period: yesterday valid with warning; expired and older excluded');
+const catalog={stores:Object.fromEntries(['lidl','jumbo','ah'].map(s=>[s,{...feed,checked_at:'2026-10-29T08:00:00+01:00'}]))};
+assert.equal(f.summary(catalog,'2026-10-29').warn,false);
+assert.equal(f.summary(catalog,'2026-10-30').text,'Actiescan van gisteren');
+assert.equal(f.summary(catalog,'2026-10-31').warn,true);
+catalog.stores.ah.status='stale';
+assert.equal(f.summary(catalog,'2026-10-29').text,'Actiescan onvolledig');
+assert.equal(f.summary(null,'2026-10-29').warn,true);
+assert.doesNotMatch(require('node:fs').readFileSync('.github/workflows/actiecatalogus.yml','utf8'),/steps\.gate|\.hour==/,'Delayed scheduled scans must still run');
