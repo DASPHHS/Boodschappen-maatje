@@ -19,6 +19,9 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
 (async()=>{
  for(let i=0;i<30&&!el('#view-vandaag').innerHTML;i++)await new Promise(r=>setTimeout(r,20));
  const t=ctx.testApp;
+ t.state.catalog.generated_at=catalog.source_date+'T12:00:00Z';
+ t.state.catalog.stores.ah.offers.unshift({id:'prepared-regression',name:'AH Ovenschotel kipfilet champignon room',category:'kip',price:6,pack_label:'430 g',start_date:catalog.source_date,end_date:catalog.source_date,source_provider:'PrijsProfeet',source:{url:'https://www.ah.nl/producten/product/wi620796/ah-ovenschotel-kipfilet-champignon-room'},verified:false});
+ t.state._offersCache.clear();t.state._matchCache.clear();
  assert.ok(!el('#view-vandaag').innerHTML.includes('[object Object]'));
  for(const store of ['lidl','jumbo','ah']){
   const id='library|'+t.state.library[0].id;
@@ -28,6 +31,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   t.state.store=store;t.state.view='recepten';t.state.recipeQuality='all';t.render();
   assert.ok(el('#view-recepten').innerHTML.includes(label));
   t.openRecipe(store+'|'+id);assert.ok(el('#dialog-content').innerHTML.includes(label));
+  assert.ok(!el('#dialog-content').innerHTML.includes('AH Ovenschotel kipfilet champignon room'),'A complete prepared meal must not be suggested as raw chicken');
   assert.ok(!el('#dialog-content').innerHTML.includes('Voor dit bibliotheekrecept zijn nog niet alle'));
   t.state.savedRecipes=[store+'|'+id];t.state.view='mijn';t.render();
   assert.ok(el('#view-mijn').innerHTML.includes(label));
