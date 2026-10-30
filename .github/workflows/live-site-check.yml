@@ -22,7 +22,7 @@ permissions:
   contents: read
 concurrency:
   group: live-site-quality-check
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   site:
     runs-on: ubuntu-latest

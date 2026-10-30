@@ -67,12 +67,16 @@ return newRecs.concat(templates.filter(r=>!used.has(r.title.toLocaleLowerCase('n
 }
 function norm(s){return String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ')}
 
+function eligibleIngredientOffer(offer,ingredient){
+ const meaning=window.MaatjeSemantics.evaluate(offer,{title:ingredient.name,match:{all:String(ingredient.name||'').split(/\s+/)}},window.MaatjeObservations);
+ return meaning.status!=='reject';
+}
 function offerInfo(recipe,s){
 const key=s+'|'+recipe.id+'|'+today();if(state._matchCache.has(key))return state._matchCache.get(key);
 const active=offers(s),confirmed=[],possible=[],anchors=[],matcher=window.MaatjeProductMatcher;
 const added=new Set();
 function consider(offer,ingredient,role,source){
- if(!offer||!ingredient||added.has(offer.id+'|'+ingredient.name))return;
+ if(!offer||!ingredient||!eligibleIngredientOffer(offer,ingredient)||added.has(offer.id+'|'+ingredient.name))return;
  const m=matcher?.evaluate(offer,ingredient)||{status:offer.name===ingredient.name?'compatible':'unrelated',reason:'geen beschikbare productmatcher'};
  if(m.status==='unrelated'||m.status==='incompatible')return;
  if(role==='eiwitbron'&&offer.category!==recipe.category)return;
@@ -110,7 +114,7 @@ for(const link of links){
 }
 for(const rel of (Array.isArray(recipe.candidate_offer_links)?recipe.candidate_offer_links:[])){
  const offer=active.find(o=>o.id===rel.offer_id),ing=(recipe.ingredients||[]).find(i=>i.name===rel.ingredient_name);
- if(offer&&ing&&['compatible','uncertain'].includes(matcher?.evaluate(offer,ing).status)&&!added.has(offer.id+'|'+ing.name)&&possible.length<8){
+ if(offer&&ing&&eligibleIngredientOffer(offer,ing)&&['compatible','uncertain'].includes(matcher?.evaluate(offer,ing).status)&&!added.has(offer.id+'|'+ing.name)&&possible.length<8){
    added.add(offer.id+'|'+ing.name);possible.push({offer,ingredient:ing,reason:rel.reason||'Productvariant niet onafhankelijk gecontroleerd',source:'suggested'});
  }
 }
@@ -122,6 +126,7 @@ if(matcher&&possible.length<3){
   if([...confirmed,...anchors].some(x=>x.ingredient.name===ing.name))continue;
   for(const o of active){
    if(possible.length>=3)break;
+   if(!eligibleIngredientOffer(o,ing))continue;
    if(added.has(o.id+'|'+ing.name))continue;
    const result=matcher.evaluate(o,ing);
    if(result.status==='unrelated'||result.status==='incompatible')continue;
