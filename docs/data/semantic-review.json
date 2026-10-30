@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-10-30.1",
-  "generated_at": "2026-10-30T14:56:03.210Z",
+  "generated_at": "2026-10-30T14:56:40.417Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
-    "match": 243,
-    "partial": 402,
-    "reject": 179
+    "match": 246,
+    "partial": 393,
+    "reject": 185
   },
   "profiles": {
     "sungold": {
@@ -533,8 +533,8 @@
     },
     "kipfilet": {
       "match": 51,
-      "partial": 95,
-      "reject": 52,
+      "partial": 93,
+      "reject": 54,
       "reasons": {
         "productkenmerken en verpakking passen": 51,
         "productnaam of uitsluitingen passen niet": 6,
@@ -545,7 +545,7 @@
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
         "niet herkende productbeschrijving: flinterdun": 5,
-        "andere productvorm: cooked": 6,
+        "andere productvorm: cooked": 7,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -567,9 +567,9 @@
         "niet herkende productbeschrijving: mexicaanse": 2,
         "andere productvorm: prepared": 2,
         "niet herkende productbeschrijving: satespiesje": 1,
-        "niet herkende productbeschrijving: aldelis": 1,
-        "niet herkende productbeschrijving: ca": 9,
-        "niet herkende productbeschrijving: iglo roerbak sensatie pasta boursin": 1,
+        "andere productvorm: preserved": 1,
+        "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
+        "niet herkende productbeschrijving: ca": 8,
         "niet herkende productbeschrijving: honing mosterd ca": 1,
         "niet herkende productbeschrijving: tuinkruiden ca": 1,
         "niet herkende productbeschrijving: voorgegaard": 1,
@@ -920,17 +920,18 @@
       }
     },
     "sperziebonen": {
-      "match": 0,
-      "partial": 32,
-      "reject": 15,
+      "match": 3,
+      "partial": 25,
+      "reject": 19,
       "reasons": {
-        "vers/diepvries of conserven niet uit productbron vastgesteld": 25,
-        "andere productvorm: preserved": 10,
+        "vers/diepvries of conserven niet uit productbron vastgesteld": 19,
+        "andere productvorm: preserved": 13,
         "niet herkende productbeschrijving: tk": 1,
         "niet herkende productbeschrijving: ardo": 1,
-        "niet herkende productbeschrijving: ella kitchen kipkerrie kokos": 1,
+        "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
-        "niet herkende productbeschrijving: iglo ping klaar lasagnette": 1,
+        "niet herkende productbeschrijving: ping klaar lasagnette": 1,
+        "productkenmerken en verpakking passen": 3,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: maggi sate": 1,
@@ -986,7 +987,20 @@
           "reason": "niet herkende productbeschrijving: ardo"
         }
       ],
-      "groups": {}
+      "groups": {
+        "green_beans|frozen||naturel|kg": {
+          "label": "Sperziebonen · diepvries · per kg",
+          "stores": {
+            "jumbo": 1
+          }
+        },
+        "green_beans|plain||naturel|kg": {
+          "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 2
+          }
+        }
+      }
     },
     "bospeen": {
       "match": 2,
@@ -1449,8 +1463,7 @@
       "reject": 11,
       "reasons": {
         "productkenmerken en verpakking passen": 4,
-        "niet herkende productbeschrijving: clipper morning sunshine mate infusion": 1,
-        "niet herkende productbeschrijving: clipper zen again eucaluptus ginkgo infusion": 1,
+        "winkelpagina noemt een andere verpakking; hercontrole nodig": 2,
         "productnaam of uitsluitingen passen niet": 9,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
         "niet herkende productbeschrijving: tea of life brandnetel kaneel": 1,
@@ -1468,13 +1481,13 @@
           "store": "jumbo",
           "name": "Clipper Morning Sunshine Organic Lemongrass & Maté Infusion 20 Stuks 40 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: clipper morning sunshine mate infusion"
+          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
         },
         {
           "store": "jumbo",
           "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: clipper zen again eucaluptus ginkgo infusion"
+          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
         },
         {
           "store": "jumbo",
@@ -1532,17 +1545,6 @@
   },
   "queue": [
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "aldelis-kipfilet-naturel-155-g-340439BLK",
-      "name": "Aldelis Kipfilet Naturel 155 g",
-      "pack": "155 g",
-      "url": "https://www.jumbo.com/producten/aldelis-kipfilet-naturel-155-g-340439BLK",
-      "reason": "niet herkende productbeschrijving: aldelis",
-      "fingerprint": "d3392e38e70ffe922f74afd5"
-    },
-    {
       "profile": "sperziebonen",
       "priority": 0,
       "store": "jumbo",
@@ -1554,17 +1556,6 @@
       "fingerprint": "6894f8e75f9896f872eed691"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "biologisch-kipfilet-ca-100-g-645708KGR",
-      "name": "Biologisch Kipfilet ca. 100 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/biologisch-kipfilet-ca-100-g-645708KGR",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "6eb9b66e0d3cba6453f1534f"
-    },
-    {
       "profile": "sereh",
       "priority": 0,
       "store": "jumbo",
@@ -1572,7 +1563,7 @@
       "name": "Clipper Morning Sunshine Organic Lemongrass & Maté Infusion 20 Stuks 40 g",
       "pack": "40 g",
       "url": "https://www.jumbo.com/producten/clipper-morning-sunshine-organic-lemongrass-mate-infusion-20-stuks-40-g-609523DS",
-      "reason": "niet herkende productbeschrijving: clipper morning sunshine mate infusion",
+      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
       "fingerprint": "ba1a44c3ad42626ae446b5a7"
     },
     {
@@ -1583,19 +1574,8 @@
       "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
       "pack": "35 g",
       "url": "https://www.jumbo.com/producten/clipper-zen-again-organic-lemongrass-eucaluptus-ginkgo-infusion-20-stuks-35-g-161048DS",
-      "reason": "niet herkende productbeschrijving: clipper zen again eucaluptus ginkgo infusion",
+      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
       "fingerprint": "708fe8ecaf4dcd2d611145a0"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "ella-s-kitchen-organic-bio-kipkerrie-met-sperziebonen-kokos-10-m-190-g-611350ZK",
-      "name": "Ella's Kitchen Organic Bio Kipkerrie met Sperziebonen + Kokos 10 M+ 190 g",
-      "pack": "190 g",
-      "url": "https://www.jumbo.com/producten/ella-s-kitchen-organic-bio-kipkerrie-met-sperziebonen-kokos-10-m-190-g-611350ZK",
-      "reason": "niet herkende productbeschrijving: ella kitchen kipkerrie kokos",
-      "fingerprint": "4eefc051f4df0d93aae99a01"
     },
     {
       "profile": "sereh",
@@ -1627,7 +1607,7 @@
       "name": "Iglo Ping & Klaar Lasagnette met sperziebonen 380 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/iglo-ping-klaar-lasagnette-met-sperziebonen-380-g-188722DS",
-      "reason": "niet herkende productbeschrijving: iglo ping klaar lasagnette",
+      "reason": "niet herkende productbeschrijving: ping klaar lasagnette",
       "fingerprint": "bd8707f7914a35fe8d22d37d"
     },
     {
@@ -1638,7 +1618,7 @@
       "name": "Iglo Roerbak Sensatie Pasta Kipfilet Boursin 450 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/iglo-roerbak-sensatie-pasta-kipfilet-boursin-450-g-201509ZK",
-      "reason": "niet herkende productbeschrijving: iglo roerbak sensatie pasta boursin",
+      "reason": "niet herkende productbeschrijving: roerbak sensatie pasta boursin",
       "fingerprint": "8a1af8ac1069105268a67ba4"
     },
     {
@@ -1660,7 +1640,7 @@
       "name": "Jumbo Biologisch Hele Sperziebonen 450g",
       "pack": "450 g",
       "url": "https://www.jumbo.com/producten/jumbo-biologisch-hele-sperziebonen-450g-621516ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "5d1837761b396605fc4c3f53"
     },
     {
@@ -1766,45 +1746,12 @@
       "profile": "sperziebonen",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-gebroken-sperziebonen-200-g-208825STK",
-      "name": "Jumbo Gebroken Sperziebonen 200 g",
-      "pack": "200 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-200-g-208825STK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
-      "fingerprint": "608f1f497a6d7a7f346f1c0b"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-gebroken-sperziebonen-200-g-790879ZK",
       "name": "Jumbo Gebroken Sperziebonen 200 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-200-g-790879ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "ff64ae64302e042dd71f6ea3"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gebroken-sperziebonen-340g-385527POT",
-      "name": "Jumbo Gebroken Sperziebonen 340g",
-      "pack": "340 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-340g-385527POT",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
-      "fingerprint": "18529d23ba8332250802edc4"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gebroken-sperziebonen-400-g-302286BLK",
-      "name": "Jumbo Gebroken Sperziebonen 400 g",
-      "pack": "400 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-400-g-302286BLK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
-      "fingerprint": "11d1f23b104170794b27fd12"
     },
     {
       "profile": "sperziebonen",
@@ -1814,7 +1761,7 @@
       "name": "Jumbo Gebroken Sperziebonen 400 g",
       "pack": "400 g",
       "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-400-g-583752ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "11d1f23b104170794b27fd12"
     },
     {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T14:56:05.481Z",
+  "generated_at": "2026-10-30T14:56:42.738Z",
   "checked_date": "2026-10-30",
   "summary": {
     "profiles": 20,
@@ -215,9 +215,9 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
-        "product_name": "Jumbo Pindakaas Naturel 600 g",
-        "price": 1.45,
+        "source": "https://www.jumbo.com/producten/calve-pindakaas-100-naturel-600-g-444833POT",
+        "product_name": "Calvé Pindakaas 100% Naturel 600 g",
+        "price": 6.19,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -287,20 +287,20 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
-        "product_name": "Jumbo Stukjes Pompoen 450 g",
-        "price": 1.99,
+        "source": "https://www.jumbo.com/producten/jumbo-blokjes-pompoen-400-g-591347STK",
+        "product_name": "Jumbo Blokjes Pompoen 400 g",
+        "price": 3.49,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/aanbiedingen/verse-sperziebonen-of-snijbonen/3021546",
-        "product_name": "Jumbo gebroken sperziebonen vers 400 g",
-        "price": 1.99,
-        "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": null
+        "source": "https://www.jumbo.com/producten/jumbo-biologisch-hele-sperziebonen-450g-621516ZK",
+        "product_name": "Jumbo Biologisch Hele Sperziebonen 450g",
+        "price": 1.35,
+        "price_status": "externe prijswaarneming · 2026-10-30",
+        "checked_date": "2026-10-30"
       },
       "bospeen": {
         "state": "price_observed",
