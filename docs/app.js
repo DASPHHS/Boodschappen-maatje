@@ -19,7 +19,13 @@ const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
 function read(k,fallback){try{return JSON.parse(localStorage.getItem(k))||fallback}catch{return fallback}}
 function save(){try{localStorage.setItem('bm_selected',JSON.stringify(state.selected));localStorage.setItem('bm_checks',JSON.stringify(state.checks));localStorage.setItem('bm_watch_disabled',JSON.stringify(state.watchDisabled));localStorage.setItem('bm_custom_watches',JSON.stringify(state.customWatches));localStorage.setItem('bm_product_favorites',JSON.stringify(state.favorites));localStorage.setItem('bm_saved_recipes',JSON.stringify(state.savedRecipes));localStorage.setItem('bm_recipe_snapshots',JSON.stringify(state.recipeSnapshots))}catch{}}
-async function load(path){try{const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch{return null}}
+async function load(path){
+ for(let attempt=0;attempt<2;attempt++)try{
+  const r=await fetch(path,{cache:'no-cache',...(typeof AbortSignal!=='undefined'&&AbortSignal.timeout?{signal:AbortSignal.timeout(15000)}:{})});
+  if(!r.ok)throw new Error(r.status);return await r.json();
+ }catch{ /* Retry one transient feed failure; other feeds can still render. */ }
+ return null;
+}
 function storeData(d,s){return (d&&d.stores&&d.stores[s])||{}}
 
 

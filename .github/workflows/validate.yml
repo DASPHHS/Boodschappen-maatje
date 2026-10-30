@@ -130,5 +130,5 @@ jobs:
         if: failure()
         with:
           name: browser-journey-failure
-          path: browser-journey-failure.png
+          path: browser-journey*-failure.png
           if-no-files-found: ignore
