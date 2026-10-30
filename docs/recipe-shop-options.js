@@ -35,6 +35,62 @@
   'spitskool':{all:['spitskool'],none:['maaltijd']},
   'harissa':{all:['harissa'],none:['kruidenmix']}
  };
+ // Explicit ingredient aliases preserve preparation and product type.
+ const aliases={
+ 'broccoli met eetbare stronk':'broccoli','verse paprika':'paprika',
+ 'volkoren pasta droog':'volkoren pasta','volkoren couscous droog':'volkoren couscous',
+ 'volkoren noedels droog':'volkoren noedels','zilvervliesrijst droog':'zilvervliesrijst',
+ 'orzo droog':'orzo','rode linzen droog':'rode linzen','hamlappen dun gesneden':'hamlappen',
+ 'biefstuk dun gesneden':'biefstuk','verse tomaten':'tomaten','olie':'zonnebloemolie',
+ 'kipdijfilet zonder huid':'kipdijfilet','zalmfilet zonder huid':'zalmfilet',
+ 'witvisfilet zonder huid':'kabeljauwfilet','haver':'havermout','za atar':'zaatar'
+ };
+ const simple=['champignons','cottage cheese','paprikapoeder','gerookt paprikapoeder',
+ 'zonnebloemolie','mosterd','prei','volkoren pasta','kerriepoeder','volkoren couscous',
+ 'rozemarijn','komkommer','volkoren noedels','sojasaus','knoflook','ras el hanout',
+ 'kaneel','zilvervliesrijst','groene currypasta','kokosmelk','pindakaas','orzo',
+ 'hamlappen','gember','biefstuk','sperziebonen','ui','eieren','havermout','tomaten',
+ 'komijn','Italiaanse kruiden','varkenshaas','spinazie','appel','dille','gepelde garnalen',
+ 'rode linzen','edamame','tahin','zaatar','aubergine','miso','sesamzaad','chipotle',
+ 'sambal','bloemkool','sumak','kipdijfilet','citroengras','limoensap','citroensap',
+ 'oregano','bosui','vissaus','munt','bospeen','witte kool','tauge'];
+ const extraExclusions=['sap','saus','soep','salade','maaltijd','pizza','chips','burger',
+ 'dressing','snoep','chocolade','cake','taart','brood','wafels','baby','groentehapje',
+ 'supplement','capsules','thee','shampoo','zeep','creams','schoonmaak','bouillon',
+ 'pesto','borsin','boursin','boter','worst','aardappel','naanbrood','snack','borrel',
+ 'gevuld','gekruid','gemarineerd','gerookt','poeder','kruiden','mix','kant en klaar'];
+ for(const name of simple){
+  const key=normalize(name);
+  if(!variants[key])variants[key]={all:[key],none:extraExclusions.filter(x=>!(' '+key+' ').includes(' '+x+' '))};
+ }
+ // Sauces/spices are ingredients themselves; exclusions must not reject their own type.
+ function ingredientRule(name){
+  const key=normalize(name),canonical=aliases[key]||key;
+  return {key:canonical,rule:variants[canonical]};
+ }
+ function measuredPack(row,pricing,unit){
+  const parsed=pricing.pack({name:row[0],pack_label:row[2]});
+  if(parsed)return parsed;
+  if(unit!=='stuk')return null;
+  const label=normalize(row[2]);
+  const match=label.match(/^(\d+) (?:stuks?|st)$/);
+  if(match)return {amount:Number(match[1]),unit:'stuk',approximate:false};
+  if(/^(?:per stuk|1 stuk|stuk)$/.test(label))return {amount:1,unit:'stuk',approximate:false};
+  return null;
+ }
+ const indexes=new WeakMap();
+ function candidates(catalog,store,rule){
+  let stores=indexes.get(catalog);if(!stores){stores=new Map();indexes.set(catalog,stores)}
+  let index=stores.get(store);
+  if(!index){index=new Map();for(const row of catalog.stores[store]){
+   if(!Array.isArray(row))continue;
+   for(const token of new Set(normalize(row[0]).split(' '))){
+    if(!index.has(token))index.set(token,[]);index.get(token).push(row);
+   }
+  }stores.set(store,index)}
+  const lists=(rule.all||[]).flatMap(term=>normalize(term).split(' ')).map(token=>index.get(token)||[]);
+  return lists.length?lists.reduce((a,b)=>a.length<=b.length?a:b):[];
+ }
  function recommend(recipe,store,catalog,pricing,resolver,today){
   const ingredients=Array.isArray(recipe?.ingredients)?recipe.ingredients:[];
   const blank={rows:[],matched:0,required:ingredients.length,source_date:catalog?.source_date||null,
@@ -44,21 +100,21 @@
    !Array.isArray(catalog.stores?.[store])||!catalog.source_date)return blank;
   const age=Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(catalog.source_date+'T12:00:00Z'))/86400000);
   if(!Number.isFinite(age)||age<0||age>3)return blank;
-  const listed=catalog.stores[store],rows=[];
+  const rows=[];
   for(const ing of ingredients){
    const label=normalize(ing?.name),q=Number(ing?.quantity);
-   const requiredUnit=ing?.unit==='g'?'kg':ing?.unit==='ml'?'L':null;
-   const rule=variants[label];
+   const requiredUnit=({g:'kg',kg:'kg',ml:'L',l:'L',L:'L',st:'stuk',stuk:'stuk'})[ing?.unit]||null;
+   const {key,rule}=ingredientRule(label);
    if(!rule||!requiredUnit||!Number.isFinite(q)||q<=0)continue;
-   const required=q/1000,profile={match:{all:rule.all,any:rule.any||[],none:[...forbidden,...(rule.none||[])]}};
+   const required=q/(['g','ml'].includes(ing.unit)?1000:1),profile={match:{all:rule.all,any:rule.any||[],none:[...forbidden.filter(x=>!(' '+key+' ').includes(' '+x+' ')),...(rule.none||[])]}};
    let chosen=null;
-   for(const row of listed){
+   for(const row of candidates(catalog,store,rule)){
     if(!Array.isArray(row)||typeof row[0]!=='string'||!Number.isFinite(row[1])||row[1]<=0||
       typeof row[2]!=='string'||row[2].length>80)continue;
     const name=row[0];
     if(resolver.matching({name,pack_label:row[2]},profile,pricing).status!=='match')continue;
-    const p=pricing.pack({name,pack_label:row[2]});
-    if(!p||p.approximate||p.unit!==requiredUnit||p.amount<=0||p.amount>15)continue;
+    const p=measuredPack(row,pricing,requiredUnit);
+    if(!p||p.approximate||p.unit!==requiredUnit||p.amount<=0||p.amount>(requiredUnit==='stuk'?60:15))continue;
     const count=Math.ceil((required-1e-9)/p.amount);
     if(count<1||count>12)continue;
     const item={name,price:row[1],pack_label:row[2],store,
@@ -72,7 +128,7 @@
       (Math.abs(total-chosen.purchase_total)<0.001&&count<chosen.pack_count)){
      chosen={ingredient:ing.name,quantity:q,unit:ing.unit,product:name,
       pack_label:row[2],pack_count:count,unit_price:Math.round(row[1]*100)/100,
-      purchase_total:total,url:item.url,source_date:catalog.source_date};
+      purchase_total:total,consumption_total:Math.round(required/p.amount*row[1]*100)/100,url:item.url,source_date:catalog.source_date};
     }
    }
    if(chosen)rows.push(chosen);
@@ -80,5 +136,15 @@
   return {rows,matched:rows.length,required:ingredients.length,source_date:catalog.source_date,
    source:'Checkjebon',available:true};
  }
- return {recommend};
+ function estimate(recipe,store,catalog,pricing,resolver,today){
+  const options=recommend(recipe,store,catalog,pricing,resolver,today);
+  const rows=options.rows,missing=(recipe?.ingredients||[]).filter(i=>!rows.some(r=>r.ingredient===i.name)).map(i=>i.name);
+  const partial=Math.round(rows.reduce((sum,r)=>sum+r.purchase_total,0)*100)/100;
+  const complete=options.required>0&&missing.length===0;
+  return {...options,state:complete?'catalog_estimate':rows.length?'partial':'unpriced',
+   total:complete?partial:null,partial,missing,priced_count:rows.length,
+   oldest_date:options.source_date,unverified:true,
+   consumption_total:Math.round(rows.reduce((sum,r)=>sum+r.consumption_total,0)*100)/100};
+ }
+ return {recommend,estimate};
 });

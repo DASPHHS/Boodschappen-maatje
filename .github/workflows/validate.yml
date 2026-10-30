@@ -17,6 +17,7 @@ on:
       - 'scripts/build_weekly_menu.cjs'
       - 'tests/weekly-menu.cjs'
       - 'tests/recipe-shop-options.cjs'
+      - 'tests/recipe-price-ui.cjs'
       - '.github/workflows/weekly-menu.yml'
       - 'docs/data/recipe-sources.json'
       - 'tests/recipe-source-integrity.cjs'
@@ -85,6 +86,7 @@ jobs:
           node scripts/build_weekly_menu.cjs --check
           node tests/weekly-menu.cjs
           node tests/recipe-shop-options.cjs
+          node tests/recipe-price-ui.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
