@@ -47,3 +47,18 @@ const garlic=options.estimate({ingredients:[{name:'knoflook',quantity:10,unit:'g
 assert.equal(garlic.rows[0].product,'Knoflook','Garlic cheese is not garlic');
 assert.equal(options.estimate(meal,'ah',{...fixture,source_date:'2026-11-01'},pricing,resolver,today).partial,0);
 assert.equal(options.estimate(meal,'ah',{...fixture,source_date:'2026-10-20'},pricing,resolver,today).partial,0);
+// Flavor words must not turn mixed foods, pet food, powders or soft tofu into raw ingredients.
+for(const [ingredient,wrong,pack] of [
+ ['knoflook','AH Knoflook croutons','100 g'],['knoflook','AH Knoflook gemalen','40 g'],
+ ['paprika','Aviko Wavy blends paprika','600 g'],['verse paprika','AH Paprika mild gemalen','39 g'],
+ ['wortel','AH Tuinerwten en wortel','500 g'],['prei','VP prei kerriesoep','500 g'],
+ ['ras el hanout','Maza Hoemoes Ras el Hanout','200 g'],['appel','AH Rode kool met appel','500 g'],
+ ['spinazie','AH Spinazie à la crème','500 g'],['dille',"Jumbo's Paté Kip en Dille Puppy",'150 g'],
+ ['biefstuk','Redefine Meat Plantaardige Biefstuk','200 g'],['tahin','Chtoura Hummus Tahin','430 g'],
+ ['miso','Nissin Demae ramen miso','100 g'],['stevige tofu','Vivera Zachte Tofu','550 g'],
+ ['tomaten','Jumbo Tomaten Gepeld','400 g'],['zalmfilet','Wilde zalmfilet in blik','200 g']
+]){
+ const source={...catalog,stores:{ah:[[wrong,.10,pack,null,'wrong']]}};
+ const result=options.estimate({ingredients:[{name:ingredient,quantity:100,unit:'g'}]},'ah',source,pricing,resolver,today);
+ assert.equal(result.total,null,ingredient+' must not use '+wrong);
+}
