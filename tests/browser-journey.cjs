@@ -60,6 +60,7 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('#view-lijst .list-line').first().waitFor();
   const mobile=await browser.newPage({viewport:{width:390,height:844}});
   try{
+   mobile.on('pageerror',e=>failures.push('Mobile: '+(e.stack||e.message)));
    await mobile.goto(start+'#vandaag',{waitUntil:'domcontentloaded',timeout:60000});
    await mobile.waitForFunction(()=>document.querySelector('#feed-status')?.textContent?.includes('Acties'));
    assert.equal(await mobile.locator('.mobile-nav').isVisible(),true,'Mobile navigation must be visible');
@@ -67,6 +68,10 @@ const start=base.endsWith('/')?base:base+'/';
    await mobile.locator('#view-recepten .recipe-source-link').first().waitFor();
    await mobile.locator('.mobile-nav [data-view="lijst"]').click();
    assert.equal(await mobile.locator('#view-lijst:not(.hidden)').count(),1,'Mobile shopping list must work');
+  }catch(e){
+   await mobile.screenshot({path:'browser-journey-mobile-failure.png',fullPage:true}).catch(()=>{});
+   console.error('Mobile failed at '+mobile.url(),await mobile.locator('body').innerText().catch(()=>''));
+   throw e;
   }finally{await mobile.close();}
   assert.deepEqual(failures,[],'Browser JavaScript exceptions found');
   console.log('Chromium verified: home, stores, shelf prices, custom products, persistence, live offers, hearts, recipe sources, saved recipes, shopping list, mobile navigation');
