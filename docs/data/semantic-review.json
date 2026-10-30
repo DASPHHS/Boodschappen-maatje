@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-10-30.1",
-  "generated_at": "2026-10-30T15:22:51.028Z",
+  "generated_at": "2026-10-30T15:23:41.520Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
-    "match": 246,
-    "partial": 389,
-    "reject": 189
+    "match": 247,
+    "partial": 382,
+    "reject": 195
   },
   "profiles": {
     "sungold": {
@@ -532,8 +532,8 @@
     },
     "kipfilet": {
       "match": 51,
-      "partial": 93,
-      "reject": 54,
+      "partial": 89,
+      "reject": 58,
       "reasons": {
         "productkenmerken en verpakking passen": 51,
         "productnaam of uitsluitingen passen niet": 6,
@@ -544,7 +544,7 @@
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
         "niet herkende productbeschrijving: flinterdun": 5,
-        "andere productvorm: cooked": 7,
+        "andere productvorm: cooked": 11,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -568,11 +568,8 @@
         "niet herkende productbeschrijving: satespiesje": 1,
         "andere productvorm: preserved": 1,
         "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
-        "niet herkende productbeschrijving: ca": 8,
-        "niet herkende productbeschrijving: honing mosterd ca": 1,
-        "niet herkende productbeschrijving: tuinkruiden ca": 1,
+        "niet herkende productbeschrijving: ca": 7,
         "niet herkende productbeschrijving: voorgegaard": 1,
-        "niet herkende productbeschrijving: ovengebakken sweet chili ca": 1,
         "niet herkende productbeschrijving: ovengebakken ca": 1,
         "niet herkende productbeschrijving: roasted ca": 1,
         "niet herkende productbeschrijving: flinterdun ca": 1,
@@ -764,8 +761,7 @@
         "pollock|plain||naturel|kg": {
           "label": "Koolvis · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "lidl": 2,
-            "jumbo": 1
+            "lidl": 2
           }
         },
         "salmon|plain||naturel|inhoud onbekend": {
@@ -794,6 +790,12 @@
             "lidl": 10,
             "jumbo": 5,
             "ah": 2
+          }
+        },
+        "pollock|frozen||naturel|kg": {
+          "label": "Koolvis · diepvries · per kg",
+          "stores": {
+            "jumbo": 1
           }
         }
       }
@@ -916,18 +918,18 @@
       }
     },
     "sperziebonen": {
-      "match": 3,
-      "partial": 25,
-      "reject": 19,
+      "match": 4,
+      "partial": 22,
+      "reject": 21,
       "reasons": {
-        "vers/diepvries of conserven niet uit productbron vastgesteld": 19,
-        "andere productvorm: preserved": 13,
+        "vers/diepvries of conserven niet uit productbron vastgesteld": 16,
+        "andere productvorm: preserved": 15,
         "niet herkende productbeschrijving: tk": 1,
         "niet herkende productbeschrijving: ardo": 1,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
-        "productkenmerken en verpakking passen": 3,
+        "productkenmerken en verpakking passen": 4,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: maggi sate": 1,
@@ -993,7 +995,7 @@
         "green_beans|plain||naturel|kg": {
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "jumbo": 2
+            "jumbo": 3
           }
         }
       }
@@ -1768,30 +1770,8 @@
       "name": "Jumbo Gebroken Sperziebonen 600 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-600-g-790920ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "1f69839797a370f9336af141"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gebroken-sperziebonen-680g-318540POT",
-      "name": "Jumbo Gebroken Sperziebonen 680g",
-      "pack": "680 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-680g-318540POT",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
-      "fingerprint": "bfb2a99a0eb33daa37bd1510"
-    },
-    {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gebroken-sperziebonen-800-g-718873BLK",
-      "name": "Jumbo Gebroken Sperziebonen 800 g",
-      "pack": "800 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gebroken-sperziebonen-800-g-718873BLK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
-      "fingerprint": "f081eaa8b18402629b93fe88"
     },
     {
       "profile": "gemengdgehakt",
@@ -1907,39 +1887,6 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-kipfilet-honing-mosterd-ca-100-g-640548KGR",
-      "name": "Jumbo Kipfilet Honing Mosterd ca. 100 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-kipfilet-honing-mosterd-ca-100-g-640548KGR",
-      "reason": "niet herkende productbeschrijving: honing mosterd ca",
-      "fingerprint": "ffac5aabaad99a34914f8a98"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-kipfilet-naturel-ca-110-g-642356KGR",
-      "name": "Jumbo Kipfilet Naturel ca. 110 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-kipfilet-naturel-ca-110-g-642356KGR",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "2fd70b0430faad9dd3234f19"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-kipfilet-tuinkruiden-ca-125-g-783655KGR",
-      "name": "Jumbo Kipfilet Tuinkruiden ca. 125 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-kipfilet-tuinkruiden-ca-125-g-783655KGR",
-      "reason": "niet herkende productbeschrijving: tuinkruiden ca",
-      "fingerprint": "983faecb17f84edf425ad14b"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-kipfiletblokjes-600-g-515014BAK",
       "name": "Jumbo Kipfiletblokjes 600 g",
       "pack": "600 g",
@@ -2001,17 +1948,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-oranje-pompoen-biologisch-68850STK",
       "reason": "niet herkende productbeschrijving: oranje",
       "fingerprint": "f1c7a52b00e7150047369b81"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-ovengebakken-kipfilet-sweet-chili-ca-110-g-783438KGR",
-      "name": "Jumbo Ovengebakken Kipfilet Sweet Chili ca. 110 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-ovengebakken-kipfilet-sweet-chili-ca-110-g-783438KGR",
-      "reason": "niet herkende productbeschrijving: ovengebakken sweet chili ca",
-      "fingerprint": "e8049f8b03dc8b8387faea25"
     },
     {
       "profile": "kipfilet",

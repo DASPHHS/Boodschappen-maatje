@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T15:22:52.660Z",
+  "generated_at": "2026-10-30T15:23:43.712Z",
   "checked_date": "2026-10-30",
   "summary": {
     "profiles": 20,
@@ -271,7 +271,7 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
-        "price": 9.59,
+        "price": 9.19,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
