@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T16:15:40.646321+01:00",
+  "generated_at": "2026-10-30T16:25:51.322213+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-29T14:27:23.912307+01:00",
+      "checked_at": "2026-10-30T16:25:49.466046+01:00",
       "status": "ok",
       "offers": [
         {
@@ -27,7 +27,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-29",
+          "checked_at": "2026-10-30",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -49,7 +49,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-29",
+          "checked_at": "2026-10-30",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -567,14 +567,13 @@
         }
       ],
       "official_check": {
-        "checked_at": "2026-10-30T16:15:40.646321+01:00",
-        "status": "ok",
-        "pages": {
-          "https://www.lidl.nl/c/aanbiedingen/a10008785": 36,
-          "https://www.lidl.nl/c/lidl-plus/s10008463": 15
+        "checked_at": "2026-10-30T16:25:51.322213+01:00",
+        "status": "partial",
+        "pages": {},
+        "errors": {
+          "https://www.lidl.nl/c/aanbiedingen/a10008785": "HTTP Error 503: Service Temporarily Unavailable"
         },
-        "errors": {},
-        "current_offers": 16
+        "current_offers": 0
       },
       "official_prices": [
         {
