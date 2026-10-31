@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-10-30.1",
-  "generated_at": "2026-10-30T15:26:33.987Z",
+  "generated_at": "2026-10-31T10:54:18.097Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
     "match": 247,
-    "partial": 382,
-    "reject": 195
+    "partial": 373,
+    "reject": 204
   },
   "profiles": {
     "sungold": {
@@ -531,11 +531,11 @@
       }
     },
     "kipfilet": {
-      "match": 51,
-      "partial": 89,
-      "reject": 58,
+      "match": 49,
+      "partial": 82,
+      "reject": 67,
       "reasons": {
-        "productkenmerken en verpakking passen": 51,
+        "productkenmerken en verpakking passen": 49,
         "productnaam of uitsluitingen passen niet": 6,
         "andere productvorm: smoked": 24,
         "niet herkende productbeschrijving: a la minute": 4,
@@ -543,8 +543,8 @@
         "andere productvorm: seasoned": 1,
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
-        "niet herkende productbeschrijving: flinterdun": 5,
-        "andere productvorm: cooked": 11,
+        "niet herkende productbeschrijving: flinterdun": 4,
+        "andere productvorm: cooked": 20,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -561,19 +561,15 @@
         "niet herkende productbeschrijving: shaslick": 1,
         "niet herkende productbeschrijving: smok tand": 1,
         "niet herkende productbeschrijving: testsieger": 1,
-        "niet herkende productbeschrijving: tuinkruiden": 6,
+        "niet herkende productbeschrijving: tuinkruiden": 5,
         "niet herkende productbeschrijving: zav": 1,
         "niet herkende productbeschrijving: mexicaanse": 2,
         "andere productvorm: prepared": 2,
         "niet herkende productbeschrijving: satespiesje": 1,
         "andere productvorm: preserved": 1,
         "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
-        "niet herkende productbeschrijving: ca": 7,
+        "niet herkende productbeschrijving: ca": 6,
         "niet herkende productbeschrijving: voorgegaard": 1,
-        "niet herkende productbeschrijving: ovengebakken ca": 1,
-        "niet herkende productbeschrijving: roasted ca": 1,
-        "niet herkende productbeschrijving: flinterdun ca": 1,
-        "niet herkende productbeschrijving: minder": 3,
         "niet herkende productbeschrijving: scharrelkip": 2,
         "niet herkende productbeschrijving: knorr trattoria pastagerecht romana": 1,
         "niet herkende productbeschrijving: knorr trattoria pastagerecht toscana": 1,
@@ -588,6 +584,7 @@
         "niet herkende productbeschrijving: muscle meat meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: wahid": 4,
         "niet herkende productbeschrijving: wahid chilipeper": 2,
+        "niet herkende productbeschrijving: minder": 2,
         "niet herkende productbeschrijving: flinterdunne": 2,
         "andere doelgroep: baby": 1,
         "niet herkende productbeschrijving: bieslook": 1,
@@ -659,7 +656,7 @@
           "label": "Kipfilet · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 12,
-            "jumbo": 6,
+            "jumbo": 4,
             "ah": 12
           }
         },
@@ -788,7 +785,7 @@
           "label": "Zalm · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 10,
-            "jumbo": 5,
+            "jumbo": 2,
             "ah": 2
           }
         },
@@ -796,6 +793,12 @@
           "label": "Koolvis · diepvries · per kg",
           "stores": {
             "jumbo": 1
+          }
+        },
+        "salmon|frozen||naturel|kg": {
+          "label": "Zalm · diepvries · per kg",
+          "stores": {
+            "jumbo": 3
           }
         }
       }
@@ -911,25 +914,31 @@
         "pumpkin|plain||naturel|kg": {
           "label": "Pompoen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "jumbo": 2,
+            "jumbo": 1,
             "ah": 2
+          }
+        },
+        "pumpkin|frozen||naturel|kg": {
+          "label": "Pompoen · diepvries · per kg",
+          "stores": {
+            "jumbo": 1
           }
         }
       }
     },
     "sperziebonen": {
-      "match": 4,
-      "partial": 22,
+      "match": 6,
+      "partial": 20,
       "reject": 21,
       "reasons": {
-        "vers/diepvries of conserven niet uit productbron vastgesteld": 16,
+        "vers/diepvries of conserven niet uit productbron vastgesteld": 14,
         "andere productvorm: preserved": 15,
         "niet herkende productbeschrijving: tk": 1,
         "niet herkende productbeschrijving: ardo": 1,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
-        "productkenmerken en verpakking passen": 4,
+        "productkenmerken en verpakking passen": 6,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: maggi sate": 1,
@@ -995,7 +1004,7 @@
         "green_beans|plain||naturel|kg": {
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "jumbo": 3
+            "jumbo": 5
           }
         }
       }
@@ -1950,17 +1959,6 @@
       "fingerprint": "f1c7a52b00e7150047369b81"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-ovengebakken-scharrel-kipfilet-ca-120-g-783775KGR",
-      "name": "Jumbo Ovengebakken Scharrel Kipfilet ca. 120 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-ovengebakken-scharrel-kipfilet-ca-120-g-783775KGR",
-      "reason": "niet herkende productbeschrijving: ovengebakken ca",
-      "fingerprint": "1efedc1322844f3e3d5fef6b"
-    },
-    {
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
@@ -1981,17 +1979,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-pompoen-stampot-verspakket-4-personen-776392DS",
       "reason": "niet herkende productbeschrijving: stampot verspakket personen",
       "fingerprint": "03670a54b8381a651b0fa289"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-roasted-kipfilet-ca-110-g-783653KGR",
-      "name": "Jumbo Roasted Kipfilet ca. 110 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-roasted-kipfilet-ca-110-g-783653KGR",
-      "reason": "niet herkende productbeschrijving: roasted ca",
-      "fingerprint": "6960a9c32bf6fe2daf84747f"
     },
     {
       "profile": "pompoen",
@@ -2030,83 +2017,6 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-120-g-714364STK",
-      "name": "Jumbo Scharrel Kipfilet 120 g",
-      "pack": "120 g",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-120-g-714364STK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "a74da047d3a4abd62df73e99"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-flinterdun-100-g-783541PAK",
-      "name": "Jumbo Scharrel Kipfilet Flinterdun 100 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-flinterdun-100-g-783541PAK",
-      "reason": "niet herkende productbeschrijving: flinterdun",
-      "fingerprint": "0ec9cef240d3ba42c4678929"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-flinterdun-ca-110-g-641110KGR",
-      "name": "Jumbo Scharrel Kipfilet Flinterdun ca. 110 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-flinterdun-ca-110-g-641110KGR",
-      "reason": "niet herkende productbeschrijving: flinterdun ca",
-      "fingerprint": "8a60f6c48efb8c6749e0596e"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-minder-vet-110-g-776069STK",
-      "name": "Jumbo Scharrel Kipfilet Minder Vet 110 g",
-      "pack": "110 g",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-minder-vet-110-g-776069STK",
-      "reason": "niet herkende productbeschrijving: minder",
-      "fingerprint": "b056c5099672189cc2eceb17"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-naturel-ca-135-g-640583KGR",
-      "name": "Jumbo Scharrel Kipfilet Naturel ca. 135 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-naturel-ca-135-g-640583KGR",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "2b15f6f7f133dd1eb7a2568d"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-tuinkruiden-115-g-655339STK",
-      "name": "Jumbo Scharrel Kipfilet Tuinkruiden 115 g",
-      "pack": "115 g",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-tuinkruiden-115-g-655339STK",
-      "reason": "niet herkende productbeschrijving: tuinkruiden",
-      "fingerprint": "f3e75cdf2f6c76e8604492eb"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-scharrel-kipfilet-voordeelverpakking-200-g-610611STK",
-      "name": "Jumbo Scharrel Kipfilet Voordeelverpakking 200 g",
-      "pack": "200 g",
-      "url": "https://www.jumbo.com/producten/jumbo-scharrel-kipfilet-voordeelverpakking-200-g-610611STK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "95e9591ed90aa0016ec16202"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-scharrelkip-kipfiletblokjes-200-g-515102TRA",
       "name": "Jumbo Scharrelkip Kipfiletblokjes 200 g",
       "pack": "200 g",
@@ -2133,7 +2043,7 @@
       "name": "Jumbo Sperziebonen 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-500-g-302252ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "e99ff35401b8e3a264055866"
     },
     {
@@ -2144,7 +2054,7 @@
       "name": "Jumbo Sperziebonen Biologisch 400 g",
       "pack": "400 g",
       "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-biologisch-400-g-398279ZK",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "6816109c4806306407413c05"
     },
     {

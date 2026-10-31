@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T15:26:36.185Z",
-  "checked_date": "2026-10-30",
+  "generated_at": "2026-10-31T10:54:19.515Z",
+  "checked_date": "2026-10-31",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -287,11 +287,11 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-blokjes-pompoen-400-g-591347STK",
-        "product_name": "Jumbo Blokjes Pompoen 400 g",
-        "price": 3.49,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
+        "product_name": "Jumbo Stukjes Pompoen 450 g",
+        "price": 1.99,
+        "price_status": "externe prijswaarneming · 2026-10-31",
+        "checked_date": "2026-10-31"
       },
       "sperziebonen": {
         "state": "price_observed",
