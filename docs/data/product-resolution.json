@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T10:54:19.515Z",
+  "generated_at": "2026-10-31T11:14:13.663Z",
   "checked_date": "2026-10-31",
   "summary": {
     "profiles": 20,
@@ -332,20 +332,20 @@
       "skuumkoppe": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen",
-        "product_name": "Texels Skuumkoppe Bier Fles 6 × 300 ml",
+        "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
+        "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 7.04,
-        "price_status": "externe actiemelding · bronnen verschillen · t/m 2026-11-03",
-        "checked_date": "2026-10-28"
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-31"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/bier-en-wijn/speciaalbier/texels/?filters=Schappen%3AFles%2CWeizen%3BAanbiedingen%3AAlle+aanbiedingen",
-        "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 × 300 ml",
+        "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
+        "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 7.04,
-        "price_status": "winkelactie · t/m 2026-11-03",
-        "checked_date": "2026-10-28"
+        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "checked_date": "2026-10-31"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",

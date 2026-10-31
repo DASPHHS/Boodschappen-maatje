@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-30T16:25:51.322213+01:00",
+  "generated_at": "2026-10-31T12:13:30.092860+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-30T16:25:49.466046+01:00",
+      "checked_at": "2026-10-31T12:13:27.586373+01:00",
       "status": "ok",
       "offers": [
         {
@@ -27,7 +27,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-30",
+          "checked_at": "2026-10-31",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -49,7 +49,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-30",
+          "checked_at": "2026-10-31",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -567,7 +567,7 @@
         }
       ],
       "official_check": {
-        "checked_at": "2026-10-30T16:25:51.322213+01:00",
+        "checked_at": "2026-10-31T12:13:30.092860+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
