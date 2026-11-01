@@ -55,7 +55,8 @@ Lidl Plus-voorwaarden worden niet als bekend verondersteld.
 Folderz wordt als externe melding getoond, met bronlink en waarschuwing. De bestaande
 onafhankelijke Lidl-, Biernet- en PrijsProfeet-bronnen blijven bestaan. Uitval van de
 directe Lidl-bron blijft zichtbaar als `partial`. De import als geheel mag slagen als
-een daadwerkelijk verse, gedateerde Folderz-aanvulling beschikbaar is; dit maakt de
+een daadwerkelijk verse, gedateerde Folderz-aanvulling of een geslaagde actuele
+PrijsProfeet API-import beschikbaar is; dit maakt de
 directe Lidl-bron niet ineens groen. Als beide ontbreken, blijft de controle falen.
 
 ## Wat hiermee niet is opgelost
@@ -64,3 +65,19 @@ Er is geen gratis, volledige, gegarandeerd actuele Lidl-schapprijs-API aangetoon
 Een betaald PrijsProfeet-abonnement levert volgens de gelezen specificatie evenmin
 Lidl-schapprijzen. Onbekende verpakkingsgewichten en onzekere productvarianten blijven
 ontbrekende gegevens; zij worden niet door een schatting vervangen.
+
+
+## Aanvullende controle vanuit GitHub Actions
+
+De eerste product-bootstrap vanuit GitHub is geslaagd: 85 Lidl-, 2.938 Jumbo- en
+5.836 AH-rijen, waarvan respectievelijk 37, 1.537 en 3.396 de filter voor lopende
+winkelacties passeerden. De interne cursorcache is daadwerkelijk opgeslagen.
+
+De rechtstreekse Lidl-pagina's gaven vanuit die runner HTTP 503. Folderz leverde
+daar geen bruikbare detail-links, ondanks de geslaagde lokale proef met 11 meldingen.
+Die adapter is dus geen bewezen betrouwbare automatische oplossing op GitHub.
+De import bewaart de oorspronkelijke datums, toont bronuitval en blijft de werkende
+API-feed gebruiken. Aanvullende bronuitval is een waarschuwing; als ook de API-import
+geen actuele bron oplevert, blijft de beschikbaarheidscontrole falen. Paginatitels
+worden bij ontbrekende links als beperkte diagnose bijgehouden, zonder blokkades te
+omzeilen of een andere browseridentiteit aan te nemen.

@@ -121,5 +121,8 @@ jobs:
           fallback=json.load(open('docs/data/supplemental-offers.json'))['stores']['lidl'].get('folderz_check',{})
           usable=fallback.get('status')=='ok' and str(fallback.get('checked_at','')).startswith(today) and fallback.get('accepted',0)>0
           if not official and usable: print('::warning::Direct Lidl source unavailable; dated Folderz fallback published. Official source remains explicitly partial.')
-          assert official or usable, {'official':s,'fallback':fallback}
+          feed=json.load(open('docs/data/offers-catalog.json')).get('stores',{}).get('lidl',{})
+          api=feed.get('status')=='ok' and str(feed.get('checked_at','')).startswith(today) and len(feed.get('offers',[]))>0
+          if api and not (official or usable): print('::warning::Supplementary sources unavailable; current PrijsProfeet API observations published. No full Lidl coverage claimed.')
+          assert official or usable or api, {'official':s,'fallback':fallback,'api_status':feed.get('status')}
           PYCODE
