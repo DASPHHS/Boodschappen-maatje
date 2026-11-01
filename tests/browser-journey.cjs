@@ -80,6 +80,7 @@ const start=base.endsWith('/')?base:base+'/';
   const after=Number((await page.locator('#product-favorites-count').innerText())||'0');
   assert.equal(after,before+1,'Favorite heart must update count');
   await page.locator('.sidebar button[data-view="recepten"]').click();
+  if(await page.locator('#cooking-ideas [data-clear-cook]').count())await page.locator('#cooking-ideas [data-clear-cook]').click();
   const newCards=page.locator('#view-recepten .recipe-card.newly-curated');
   assert.equal(await newCards.count(),12,'Show twelve curated cards in the first screen, not three duplicate retailer lists');
   assert.equal(await page.locator('#view-recepten .recipe-card:not(.newly-curated)').count(),0,
