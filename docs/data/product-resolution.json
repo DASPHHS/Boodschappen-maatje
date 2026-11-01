@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T16:55:13.736Z",
-  "checked_date": "2026-11-01",
+  "generated_at": "2026-11-01T23:00:54.024Z",
+  "checked_date": "2026-11-02",
   "summary": {
     "profiles": 20,
     "checked": 60,
     "price_observed": 44,
     "stale_or_unavailable": 0,
-    "needs_variant_evidence": 8,
-    "needs_source": 8
+    "needs_variant_evidence": 7,
+    "needs_source": 9
   },
   "stores": {
     "lidl": {
@@ -451,9 +451,9 @@
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi280081/ah-biologisch-kipfilet",
-        "product_name": "AH Biologisch Kipfilet",
-        "price": 3.39,
+        "source": "https://www.ah.nl/producten/product/wi531825/ah-scharrel-kipfilet",
+        "product_name": "AH Scharrel kipfilet",
+        "price": 9.99,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -469,15 +469,15 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi482844/ah-flespompoen-stukjes",
-        "product_name": "AH Flespompoen stukjes",
-        "price": 3.39,
+        "source": "https://www.ah.nl/producten/product/wi426004/ah-biologisch-flespompoen",
+        "product_name": "AH Biologisch Flespompoen",
+        "price": 2.78,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "sperziebonen": {
-        "state": "needs_variant_evidence",
-        "reason": "product gevonden, productvorm of inhoud onvoldoende bewezen",
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
