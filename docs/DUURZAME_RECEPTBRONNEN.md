@@ -12,8 +12,8 @@ De uitwerking, volledige ingrediëntenlijsten, foto's, allergenen en voedingswaa
 
 ## Dagelijkse ervaring
 
-- De eerste sectie van **Recepten** toont maximaal vier uitgeverskaarten, verdeeld tussen **Allerhande** en **HelloFresh**, en gekoppeld aan passende actuele productsoorten. Er staat duidelijk wanneer de selectie niet op een bevestigde aanbieding berust.
-- De volgende sectie toont maximaal twaalf zelfstandig uitgewerkte gerechten met eigen ingrediënten en boodschappenlijst.
+- De eerste sectie van **Recepten** toont standaard acht uitgeverskaarten en biedt **Toon acht extra recepten**, verdeeld tussen **Allerhande** en **HelloFresh**, en gekoppeld aan passende actuele productsoorten. Er staat duidelijk wanneer de selectie niet op een bevestigde aanbieding berust.
+- Daaronder komen drie zorgvuldig uitgewerkte **tweedaagse gerechten** voor twee personen, met hachee als vaste klassieke keuze. De lange verzameling overige zelfgemaakte actie-ideeën is bereikbaar via een aparte knop, maar verdringt echte uitgeversrecepten niet meer.
 - Zoeken op **riblappen** toont echte uitgeversrecepten zoals hachee en rendang met bronlink; de app bewaart geen onjuiste claims dat snel bereide voorgesneden/voorgegaarde producten uitwisselbaar zijn met rauwe riblappen.
 - Het filter **Kook voor 2 dagen** toont uitsluitend volledige eigen recepten met `batch_cook.days=2`, `people_per_day=2` en `total_portions=4`. Een willekeurig twee- of vierpersoonsrecept van een uitgever is **niet automatisch** geschikt voor twee dagen.
 
@@ -44,3 +44,9 @@ Een match met een supermarktactie is altijd een **ingrediëntsoort-match**, totd
 ## Belangrijke verdere mogelijkheid
 
 Wil je bij álle Allerhande- en HelloFresh-recepten de complete ingrediënten, stappen, hoeveelheden voor twee dagen en automatisch berekende winkelmandjes *binnen* de app? Dan is een expliciete data-/hergebruiklicentie nodig of moeten de gebruiker en uitgever een toegestane persoonlijke importworkflow ondersteunen. Dit is bewust niet geclaimd als al gereed.
+
+## Kwaliteits- en interfacecontrole (1 november 2026)
+
+De standaardvolgorde is nu: **(1) echte Allerhande/HelloFresh-recepten**, (2) **volledige gerechten voor twee dagen, inclusief hachee**, (3) overige eigen recepten na een expliciete klik. De selectie gebruikt `docs/publisher-selection.js` voor afwisseling naar uitgever en kookfamilie, het filteren op zoektekst en alleen passende productsoorten uit actuele supermarktacties. Een uitgeversrecept kan géén exact berekende kassaprijs tonen, tenzij de volledige ingrediënten en het relevante verkooppakket onafhankelijk en rechtmatig beschikbaar zijn.
+
+Vier afzonderlijke originele Allerhande-hacheerecepten zijn als gecontroleerde bronlinks opgenomen; `hachee` wordt hiermee direct door de uitgeverszoekfunctie herkend. De pagina toont niet langer tientallen vermoedelijke weekactierecepten voordat je bij klassiekers komt. De wekelijkse bronindex blijft dezelfde en groeit onafhankelijk van de manier waarop de kaarten worden gepresenteerd.
