@@ -57,7 +57,8 @@
   'Allerhande':/^https:\/\/(?:www\.)?ah\.nl\/allerhande\//,
   'Jumbo':/^https:\/\/(?:www\.)?jumbo\.com\/recepten\//,
   'Voedingscentrum':/^https:\/\/www\.voedingscentrum\.nl\/recepten\/gezond-recept\//,
-  '24Kitchen':/^https:\/\/www\.24kitchen\.nl\/recepten\//
+  '24Kitchen':/^https:\/\/www\.24kitchen\.nl\/recepten\//,
+  'HelloFresh':/^https:\/\/www\.hellofresh\.nl\/recipes\/(?!market\/)[a-z0-9_-]+-[0-9a-f]{24}$/
  };
  const trustedPublisherUrl=(source,url)=>typeof url==='string'&&Boolean(publisherUrlPatterns[source]?.test(url));
  const unsafe=/\b(katten|kattenvoer|honden|hondenvoer|puppy|kitten|olvarit|babyvoeding|baby|schnitzel|worst|burger|saus|soep|snack|chips|crackers|koekjes|chocolade|ijs|reep|repen|salade|pizza|maaltijd|kruidenmix|marinade|dressing|brood|rollade|gerookt|gerookte|gepaneerd|plantaardig|vegetarisch|vegan|vega|dessert|smaak|poeder|thee|supplement|kruiden)\b/;
@@ -107,7 +108,7 @@
   for(const r of index.recipes){
    if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
       typeof r.title!=='string'||!r.title.trim()||!trustedPublisherUrl(r.source,r.url)||
-      !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
+      !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
    if(seen.has(r.url))continue;
    seen.add(r.url);
    // Put main courses and recipes for four people ahead of side dishes,
@@ -116,7 +117,7 @@
      r.families.filter(x=>['broccoli','bloemkool','spinazie','pompoen','paprika','courgette','aubergine','sperziebonen','tomaten','champignons','wortel','paksoi','prei','spitskool','boerenkool','venkel'].includes(x)).length;
    const legume=r.has_legumes||r.families.some(x=>['kikkererwten','linzen','bonen'].includes(x));
    // Official sitemap title does not establish ingredients, portions or health.
-   const score=(r.review_status==='publisher_sitemap_title_only'?0:65)+
+   const score=(r.review_status==='publisher_sitemap_title_only'?0:r.review_status==='publisher_page_title_verified'?24:65)+
     (r.course==='hoofdgerecht'?25:0)+(r.servings===4?6:0)+
     Math.min(vegetableCount,3)*5+(legume?5:0)+
     (r.minutes&&r.minutes<=45?5:0)+
