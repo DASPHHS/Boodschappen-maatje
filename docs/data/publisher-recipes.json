@@ -3490,6 +3490,459 @@
       "has_legumes": false,
       "review_status": "handmatig_gevonden_bij_uitgever",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r428530",
+      "title": "Kipcurry met bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R428530/kipcurry-met-bloemkool",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r512104",
+      "title": "Bloemkool broccolicurry met kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R512104/bloemkool-broccolicurry-met-kip",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r529572",
+      "title": "Curry met aardappel en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R529572/curry-met-aardappel-en-bloemkool",
+      "families": [
+        "aardappelen",
+        "bloemkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194351",
+      "title": "Linzen tomatenstoof met bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194351/linzen-tomatenstoof-met-bloemkool",
+      "families": [
+        "bloemkool",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197097",
+      "title": "Preistamppot met bloemkool en zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197097/preistamppot-met-bloemkool-en-zalm",
+      "families": [
+        "bloemkool",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r845648",
+      "title": "Aardappelcurry met kip en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R845648/aardappelcurry-met-kip-en-bloemkool",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r458108",
+      "title": "Gegrilde kip en bloemkool met broodkruim",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R458108/gegrilde-kip-en-bloemkool-met-broodkruim",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1200402",
+      "title": "Curry met kip en bloemkool van london loy",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200402/curry-met-kip-en-bloemkool-van-london-loy",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194512",
+      "title": "Linzenstoof met bloemkool en vegastukjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194512/linzenstoof-met-bloemkool-en-vegastukjes",
+      "families": [
+        "bloemkool",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195584",
+      "title": "Krokante zalm met bloemkool en notenrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195584/krokante-zalm-met-bloemkool-en-notenrijst",
+      "families": [
+        "bloemkool",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r425706",
+      "title": "Broccoli en bloemkool met gebakken krieltjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R425706/broccoli-en-bloemkool-met-gebakken-krieltjes",
+      "families": [
+        "aardappelen",
+        "bloemkool",
+        "broccoli"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1201248",
+      "title": "Caesarsalade met geroosterde bloemkool en kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201248/caesarsalade-met-geroosterde-bloemkool-en-kip",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1193300",
+      "title": "Gehaktschotel met aardappel kerrie en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193300/gehaktschotel-met-aardappel-kerrie-en-bloemkool",
+      "families": [
+        "aardappelen",
+        "bloemkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r246302",
+      "title": "Forelfilet met scampi en bloemkool aspergessalade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R246302/forelfilet-met-scampi-en-bloemkool-aspergessalade",
+      "families": [
+        "bloemkool",
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1190392",
+      "title": "Noedelsalade met garnalen en geroosterde bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190392/noedelsalade-met-garnalen-en-geroosterde-bloemkool",
+      "families": [
+        "bloemkool",
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197623",
+      "title": "Macaronischotel met spinazie kaassaus en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197623/macaronischotel-met-spinazie-kaassaus-en-bloemkool",
+      "families": [
+        "bloemkool",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197453",
+      "title": "Ravioli ovenschotel met paddenstoelen en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197453/ravioli-ovenschotel-met-paddenstoelen-en-bloemkool",
+      "families": [
+        "bloemkool",
+        "champignons"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197329",
+      "title": "Rijst met kip geroosterde bloemkool en tomatensalsa",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197329/rijst-met-kip-geroosterde-bloemkool-en-tomatensalsa",
+      "families": [
+        "bloemkool",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195545",
+      "title": "Geroosterde bloemkool broccoli en paprika uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195545/geroosterde-bloemkool-broccoli-en-paprika-uit-de-oven",
+      "families": [
+        "bloemkool",
+        "broccoli",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1201577",
+      "title": "Bloemkool aardappelovenschotel met gehakt en kaassaus",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201577/bloemkool-aardappelovenschotel-met-gehakt-en-kaassaus",
+      "families": [
+        "bloemkool",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1190068",
+      "title": "Bloemkool pastinaakstamppot met spinazie en tartaarballen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190068/bloemkool-pastinaakstamppot-met-spinazie-en-tartaarballen",
+      "families": [
+        "bloemkool",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1189320",
+      "title": "Stamppot met spinazie bloemkool en lincolnshire braadworst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189320/stamppot-met-spinazie-bloemkool-en-lincolnshire-braadworst",
+      "families": [
+        "bloemkool",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197327",
+      "title": "Quesadilla s met zwartebonenstoof en bloemkool paprika salade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197327/quesadilla-s-met-zwartebonenstoof-en-bloemkool-paprika-salade",
+      "families": [
+        "bloemkool",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202514",
+      "title": "Herfst sperziebonen met rijst champignons en bloemkool van kindergarden",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202514/herfst-sperziebonen-met-rijst-champignons-en-bloemkool-van-kindergarden",
+      "families": [
+        "bloemkool",
+        "champignons",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185828",
+      "title": "Dahl met spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185828/dahl-met-spinazie",
+      "families": [
+        "linzen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "dahl",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
     }
   ]
 }
