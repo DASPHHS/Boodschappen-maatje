@@ -742,33 +742,73 @@ function cookingIdeasPanel(){
  }
  return html+'</section>';
 }
-function discoveredPublisherCards(store,limit=6){
- const engine=window.MaatjeRecipeDiscovery;
- if(!engine||!state.publisherRecipes?.recipes?.length)return '';
- // Externe recepten als gewone visuele kaarten, maar zonder onbewijsbare porties,
- // boodschappenlijsten, auteursrechtelijk beschermde instructies of prijzen.
- const highlighted=engine.offerRecipeHighlights(offers(store),state.publisherRecipes,30)
-  .filter(hit=>hit.recipe.review_status!=='publisher_sitemap_title_only').slice(0,limit);
- if(!highlighted.length)return '';
- const card=hit=>{
-  const r=hit.recipe,kind=['kip'].includes(hit.family)?'chicken':
-   ['riblappen','gehakt','varkenshaas','hamlappen'].includes(hit.family)?'meat':
-   ['zalm','witvis','forel','makreel','garnalen'].includes(hit.family)?'fish':'vega';
-  const emoji=kind==='chicken'?'🍗':kind==='meat'?'🥩':kind==='fish'?'🐟':'🥦';
-  return '<article class="recipe-card publisher-recipe-card"><div class="recipe-visual '+kind+'">'+
-   '<span class="tag orange">Recept bij uitgever</span><span class="plate" aria-hidden="true">'+emoji+'</span></div>'+
-   '<div class="recipe-offers"><span class="offer-badge candidate">Mogelijk passend actieproduct · niet verrekend</span></div>'+
-   '<h3>'+safe(r.title)+'</h3><p>'+safe(r.source)+' · '+safe(NAMES[store])+'</p>'+
-   '<p class="recipe-origin">Origineel recept bij de maker</p>'+
-   '<div class="recipe-info">'+(r.servings?'<span>'+safe(r.servings)+' porties</span>':'')+
-   (r.minutes?'<span>'+safe(r.minutes)+' min</span>':'')+'<span>Externe bron</span></div>'+
-   '<p class="publisher-note">Ingrediënten en stappen staan bij de uitgever. De volledige maaltijdprijs en productvariant zijn hier niet gecontroleerd.</p>'+
-   '<div class="recipe-bottom"><div><b>Prijs onbekend</b><small>Geen fictieve kassamand</small></div>'+
-   '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Open recept ↗</a></div></article>';
+function discoveredPublisherCards(stores,limit=6){
+ const engine=window.MaatjeRecipeDiscovery,idx=state.publisherRecipes;
+ if(!engine||!Array.isArray(idx?.recipes))return '';
+ const approved=new Set(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified']);
+ const trusted=r=>r&&['Allerhande','HelloFresh'].includes(r.source)&&approved.has(r.review_status)&&
+  engine.trustedPublisherUrl(r.source,r.url)&&Array.isArray(r.families)&&r.families.length;
+ const active=ingredientTarget();
+ const results=new Map();
+ const add=(r,store,matched)=>{if(!trusted(r))return;
+  const old=results.get(r.url);
+  if(!old||(matched&&!old.matched))results.set(r.url,{recipe:r,store,matched:!!matched});
  };
- return '<section class="publisher-discovery"><h3>Meer recepten bij de oorspronkelijke makers</h3>'+
-  '<p class="muted">Ook als volwaardige visuele kaarten. Externe recepten openen bij hun uitgever, omdat hoeveelheden en bereidingsstappen niet van derden worden gekopieerd.</p>'+
-  '<div class="cards">'+highlighted.map(card).join('')+'</div></section>';
+ if(active){
+  const rows=engine.publisherMatches(active,idx,30);
+  for(const x of rows)add(x.recipe,stores[0],true);
+ }else{
+  for(const store of stores){
+   for(const x of engine.offerRecipeHighlights(offers(store),idx,24))add(x.recipe,store,true);
+  }
+  // Always provide both publishers even when this week's feed has a blind spot.
+  // These are clearly marked as inspiration, never as discounted products.
+  const wanted=['Allerhande','HelloFresh'];
+  const known=new Set([...results.values()].map(x=>x.recipe.source));
+  for(const source of wanted){
+   if(known.has(source))continue;
+   const fallback=idx.recipes.filter(r=>trusted(r)&&r.source===source)
+    .sort((a,b)=>(/hachee|stoof|rendang|curry|lasagne/i.test(b.title)?1:0)-
+                  (/hachee|stoof|rendang|curry|lasagne/i.test(a.title)?1:0)||
+       a.title.localeCompare(b.title,'nl')).slice(0,3);
+   for(const r of fallback)add(r,stores[0],false);
+  }
+ }
+ let found=[...results.values()];
+ if(!found.length)return '';
+ // Balanced publisher representation; one source must not bury the other.
+ const groups=new Map(['Allerhande','HelloFresh'].map(name=>[name,found.filter(x=>x.recipe.source===name)]));
+ const chosen=[],seen=new Set();
+ for(let i=0;i<Math.ceil(limit/2);i++){
+  for(const source of ['Allerhande','HelloFresh']){
+   const item=groups.get(source)[i];
+   if(item&&!seen.has(item.recipe.url)&&chosen.length<limit){chosen.push(item);seen.add(item.recipe.url)}
+  }
+ }
+ for(const item of found)if(chosen.length<limit&&!seen.has(item.recipe.url)){
+  chosen.push(item);seen.add(item.recipe.url);
+ }
+ const card=({recipe:r,store,matched})=>{
+  const category=/zalm|vis|kabeljauw|koolvis/i.test(r.title)?'fish':
+   /rund|stoof|hachee|gehakt|vlees/i.test(r.title)?'meat':
+   /kip/i.test(r.title)?'chicken':'vega';
+  const icon=category==='fish'?'🐟':category==='meat'?'🥘':category==='chicken'?'🍗':'🥬';
+  return '<article class="recipe-card publisher-recipe-card"><div class="recipe-visual '+category+'">'+
+   '<span class="tag orange">Recept van '+safe(r.source)+'</span><span class="plate" aria-hidden="true">'+icon+'</span></div>'+
+   '<div class="recipe-offers"><span class="offer-badge '+(matched?'candidate':'neutral')+'">'+
+    (matched?'Recept bij een actuele productsoort · geen prijsclaim':'Receptinspiratie · actie niet bevestigd')+'</span></div>'+
+   '<h3>'+safe(r.title)+'</h3><p>'+safe(r.source)+' · originele uitgever</p>'+
+   '<p class="recipe-origin">Uitgeversrecept · volledige bereidingswijze bij de bron</p>'+
+   '<div class="recipe-info">'+(r.minutes?'<span>'+safe(r.minutes)+' min</span>':'')+
+    '<span>'+safe(r.method||'Avondeten')+'</span></div>'+
+   '<p class="publisher-note">Voor de echte ingrediënten, hoeveelheden en kookstappen open je het originele recept. Een aanbieding of geschiktheid voor twee dagen is niet automatisch bevestigd.</p>'+
+   '<div class="recipe-bottom"><div><b>Prijs niet berekend</b><small>Geen fictieve boodschappenmand</small></div>'+
+   '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Bekijk bij '+safe(r.source)+' ↗</a></div></article>';
+ };
+ return '<section class="publisher-discovery" id="publisher-recipes-main">'+
+  '<h3>Recepten van Allerhande en HelloFresh</h3>'+
+  '<p class="muted">Echte recepten van de uitgevers, automatisch geselecteerd bij beschikbare actieproducten. Zonder passende actie tonen we herkenbare inspiratie. Volledige kookstappen staan bij de bron.</p>'+
+  '<div class="cards">'+chosen.map(card).join('')+'</div></section>';
 }
 function recipeView(){
  header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Kies wat je wilt maken.</span>',
@@ -777,6 +817,7 @@ function recipeView(){
   '<input id="ingredient-discovery" class="search" placeholder="Bijv. riblap, broccoli, zalmfilet" maxlength="100" value="'+attr(state.cookingQuery)+'">'+
   '<button class="button secondary small" data-find-ideas="1">Zoek recepten</button></div>';
  out+=cookingIdeasPanel()+batchFilterControls()+storeControls()+kindControls()+subtypeControls()+recipeControls();
+ if(!state.batchOnly&&state.kind==='alle'&&state.dealFilter==='all')out+=discoveredPublisherCards(ORDER.filter(x=>state.store==='alle'||state.store===x),6);
  const stores=ORDER.filter(s=>state.store==='alle'||state.store===s);
  const all=stores.flatMap(s=>catalog(s));
  const filtered=all.filter(recipeFiltered);
