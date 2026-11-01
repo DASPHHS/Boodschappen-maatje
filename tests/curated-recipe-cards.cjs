@@ -31,8 +31,12 @@ assert.ok(app.includes('load(\'data/curated-recipes.json\')'),'New catalog must 
 assert.ok(app.includes("id:'curated|'"),'Curated recipes need stable shop-specific identities');
 assert.ok(app.includes("id.startsWith('curated|')"),'Curated recipes must reopen after being saved or planned');
 assert.ok(app.includes('newly-curated'),'Curated recipes must render as regular recipe cards');
-assert.ok(app.includes('found.map(recipeCard)'),'They must use the existing recipe renderer');
-assert.ok(app.includes("out+=discoveredPublisherCards(s,6)"),'Publisher cards move below complete dishes');
+assert.ok(app.includes('shown.map(recipeCard)'),'Curated recipes must use the existing card renderer');
+assert.ok(!app.includes('out+=discoveredPublisherCards(s,6)'),'Unrelated publisher cards must not flood the main recipe listing');
 assert.ok(!/out\+=discoveredPublisherCards\(s,12\)/.test(app),'Link tiles should no longer precede real cards');
-assert.ok(html.includes('app.js?v=20261101-new-curated-18'),'Force refresh stale browser cache');
-console.log('18 new full recipes, store-specific card rendering and publishing safeguards verified');
+assert.ok(html.includes('app.js?v=20261101-focused-recipes'),'Force refresh stale browser cache');
+assert.ok(app.includes('dedupeAcrossStores(filtered'),'All-store selection must avoid duplicate recipes');
+assert.ok(app.includes('state.recipePageSize'),'Avoid rendering hundreds of recipes at once');
+assert.ok(app.includes('matchesIngredientSearch(r)'),'Ingredient search must filter main cards');
+assert.ok(app.includes("'Maaltijdprijs onbekend'"),'Never print misleading partial basket totals on cards');
+console.log('18 original recipes, compact unique cards, ingredient search and conservative price labels verified');
