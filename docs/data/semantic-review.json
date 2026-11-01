@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "policy_version": "2026-11-01.1",
-  "generated_at": "2026-11-01T10:58:36.392Z",
+  "policy_version": "2026-11-01.2",
+  "generated_at": "2026-11-01T11:11:46.840Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
@@ -121,32 +121,64 @@
         }
       ],
       "groups": {
-        "peanut_butter|plain||naturel · 100% pindas|kg": {
-          "label": "Pindakaas · naturel · 100% pindas · per kg",
+        "peanut_butter|plain||naturel · structuur niet vermeld · 100% pindas|kg": {
+          "label": "Pindakaas · naturel · structuur niet vermeld · 100% pindas · per kg",
           "stores": {
             "lidl": 3,
-            "jumbo": 10,
-            "ah": 4
+            "jumbo": 5,
+            "ah": 2
           }
         },
-        "peanut_butter|plain||naturel · 100% pindas|inhoud onbekend": {
-          "label": "Pindakaas · naturel · 100% pindas · inhoud niet bevestigd",
+        "peanut_butter|plain||naturel · biologisch · structuur niet vermeld · 100% pindas|inhoud onbekend": {
+          "label": "Pindakaas · naturel · biologisch · structuur niet vermeld · 100% pindas · inhoud niet bevestigd",
           "stores": {
             "lidl": 1
           }
         },
-        "peanut_butter|plain||naturel · regulier|kg": {
-          "label": "Pindakaas · naturel · regulier · per kg",
+        "peanut_butter|plain||naturel · structuur niet vermeld · regulier|kg": {
+          "label": "Pindakaas · naturel · structuur niet vermeld · regulier · per kg",
           "stores": {
             "lidl": 7,
-            "jumbo": 10,
-            "ah": 5
+            "jumbo": 4,
+            "ah": 1
           }
         },
-        "peanut_butter|plain||naturel · regulier|inhoud onbekend": {
-          "label": "Pindakaas · naturel · regulier · inhoud niet bevestigd",
+        "peanut_butter|plain||naturel · structuur niet vermeld · regulier|inhoud onbekend": {
+          "label": "Pindakaas · naturel · structuur niet vermeld · regulier · inhoud niet bevestigd",
           "stores": {
-            "lidl": 4
+            "lidl": 3
+          }
+        },
+        "peanut_butter|plain||naturel · met stukjes · regulier|inhoud onbekend": {
+          "label": "Pindakaas · naturel · met stukjes · regulier · inhoud niet bevestigd",
+          "stores": {
+            "lidl": 1
+          }
+        },
+        "peanut_butter|plain||naturel · met stukjes · regulier|kg": {
+          "label": "Pindakaas · naturel · met stukjes · regulier · per kg",
+          "stores": {
+            "jumbo": 6,
+            "ah": 4
+          }
+        },
+        "peanut_butter|plain||naturel · biologisch · met stukjes · 100% pindas|kg": {
+          "label": "Pindakaas · naturel · biologisch · met stukjes · 100% pindas · per kg",
+          "stores": {
+            "jumbo": 1
+          }
+        },
+        "peanut_butter|plain||naturel · biologisch · structuur niet vermeld · 100% pindas|kg": {
+          "label": "Pindakaas · naturel · biologisch · structuur niet vermeld · 100% pindas · per kg",
+          "stores": {
+            "jumbo": 1
+          }
+        },
+        "peanut_butter|plain||naturel · met stukjes · 100% pindas|kg": {
+          "label": "Pindakaas · naturel · met stukjes · 100% pindas · per kg",
+          "stores": {
+            "jumbo": 3,
+            "ah": 2
           }
         }
       }
@@ -252,22 +284,41 @@
         }
       ],
       "groups": {
-        "quark|plain||naturel|inhoud onbekend": {
-          "label": "Kwark · inhoud niet bevestigd",
+        "quark|plain|extra eiwit|naturel · lactose niet gespecificeerd|inhoud onbekend": {
+          "label": "Kwark · extra eiwit · naturel · lactose niet gespecificeerd · inhoud niet bevestigd",
           "stores": {
-            "lidl": 3
+            "lidl": 1
           }
         },
-        "quark|plain||naturel|kg": {
-          "label": "Kwark · per kg",
+        "quark|plain|extra eiwit|naturel · lactose niet gespecificeerd|kg": {
+          "label": "Kwark · extra eiwit · naturel · lactose niet gespecificeerd · per kg",
           "stores": {
-            "lidl": 6,
-            "jumbo": 4,
-            "ah": 4
+            "lidl": 4
           }
         },
-        "quark|plain||naturel|L": {
-          "label": "Kwark · per L",
+        "quark|plain|mager|naturel · lactose niet gespecificeerd|kg": {
+          "label": "Kwark · mager · naturel · lactose niet gespecificeerd · per kg",
+          "stores": {
+            "lidl": 2,
+            "jumbo": 3,
+            "ah": 3
+          }
+        },
+        "quark|plain|mager|naturel · lactose niet gespecificeerd|inhoud onbekend": {
+          "label": "Kwark · mager · naturel · lactose niet gespecificeerd · inhoud niet bevestigd",
+          "stores": {
+            "lidl": 2
+          }
+        },
+        "quark|plain|mager|naturel · biologisch · lactose niet gespecificeerd|kg": {
+          "label": "Kwark · mager · naturel · biologisch · lactose niet gespecificeerd · per kg",
+          "stores": {
+            "jumbo": 1,
+            "ah": 1
+          }
+        },
+        "quark|plain|mager|naturel · lactose niet gespecificeerd|L": {
+          "label": "Kwark · mager · naturel · lactose niet gespecificeerd · per L",
           "stores": {
             "jumbo": 1
           }
@@ -340,16 +391,22 @@
         }
       ],
       "groups": {
-        "dishwasher|plain||naturel|inhoud onbekend": {
-          "label": "Vaatwastabletten · inhoud niet bevestigd",
+        "dishwasher|plain|Platinum|naturel|inhoud onbekend": {
+          "label": "Vaatwastabletten · Platinum · inhoud niet bevestigd",
           "stores": {
             "jumbo": 2
           }
         },
-        "dishwasher|plain||naturel|stuk": {
-          "label": "Vaatwastabletten · per stuk",
+        "dishwasher|plain|Platinum|naturel|stuk": {
+          "label": "Vaatwastabletten · Platinum · per stuk",
           "stores": {
-            "ah": 5
+            "ah": 1
+          }
+        },
+        "dishwasher|plain|Platinum Plus|naturel|stuk": {
+          "label": "Vaatwastabletten · Platinum Plus · per stuk",
+          "stores": {
+            "ah": 4
           }
         }
       }
@@ -375,8 +432,15 @@
           "label": "Walnoten · naturel · ongebrand · zout niet vermeld · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 1,
-            "jumbo": 4,
-            "ah": 5
+            "jumbo": 3,
+            "ah": 3
+          }
+        },
+        "walnuts|plain||naturel · biologisch · ongebrand · zout niet vermeld|kg": {
+          "label": "Walnoten · naturel · biologisch · ongebrand · zout niet vermeld · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 1,
+            "ah": 2
           }
         }
       }
@@ -454,10 +518,10 @@
         }
       ],
       "groups": {
-        "tofu|plain|naturel|naturel|inhoud onbekend": {
-          "label": "Tofu · naturel · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+        "tofu|plain|naturel|naturel · biologisch|inhoud onbekend": {
+          "label": "Tofu · naturel · naturel · biologisch · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
-            "lidl": 3
+            "lidl": 2
           }
         },
         "tempeh|plain||naturel|kg": {
@@ -468,12 +532,17 @@
             "ah": 2
           }
         },
+        "tofu|plain|naturel|naturel|inhoud onbekend": {
+          "label": "Tofu · naturel · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+          "stores": {
+            "lidl": 1
+          }
+        },
         "tofu|plain|naturel|naturel|kg": {
           "label": "Tofu · naturel · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 1,
-            "jumbo": 2,
-            "ah": 2
+            "jumbo": 2
           }
         },
         "tofu|plain|zacht|naturel|kg": {
@@ -481,6 +550,12 @@
           "stores": {
             "jumbo": 1,
             "ah": 1
+          }
+        },
+        "tofu|plain|naturel|naturel · biologisch|kg": {
+          "label": "Tofu · naturel · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "ah": 2
           }
         }
       }
@@ -651,19 +726,32 @@
         }
       ],
       "groups": {
-        "chicken_breast|plain||naturel|kg": {
-          "label": "Kipfilet · naturel; bewaarmethode niet vermeld · per kg",
+        "chicken_breast|plain||naturel · biologisch|kg": {
+          "label": "Kipfilet · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "lidl": 12,
-            "jumbo": 3,
-            "ah": 12
+            "lidl": 1,
+            "ah": 1
           }
         },
         "chicken_breast|plain||naturel|inhoud onbekend": {
           "label": "Kipfilet · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
             "lidl": 14,
-            "ah": 7
+            "ah": 3
+          }
+        },
+        "chicken_breast|plain||naturel|kg": {
+          "label": "Kipfilet · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "lidl": 11,
+            "jumbo": 3,
+            "ah": 11
+          }
+        },
+        "chicken_breast|plain||naturel · biologisch|inhoud onbekend": {
+          "label": "Kipfilet · naturel · biologisch · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+          "stores": {
+            "ah": 4
           }
         }
       }
@@ -760,11 +848,11 @@
             "lidl": 2
           }
         },
-        "salmon|plain||naturel|inhoud onbekend": {
-          "label": "Zalm · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+        "salmon|plain||naturel · biologisch|inhoud onbekend": {
+          "label": "Zalm · naturel · biologisch · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
-            "lidl": 14,
-            "ah": 5
+            "lidl": 1,
+            "ah": 2
           }
         },
         "trout|plain||naturel|inhoud onbekend": {
@@ -778,6 +866,13 @@
           "stores": {
             "lidl": 1,
             "ah": 1
+          }
+        },
+        "salmon|plain||naturel|inhoud onbekend": {
+          "label": "Zalm · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+          "stores": {
+            "lidl": 13,
+            "ah": 3
           }
         },
         "salmon|plain||naturel|kg": {
@@ -902,8 +997,8 @@
         }
       ],
       "groups": {
-        "pumpkin|plain||naturel|inhoud onbekend": {
-          "label": "Pompoen · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
+        "pumpkin|plain||naturel · biologisch|inhoud onbekend": {
+          "label": "Pompoen · naturel · biologisch · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
             "lidl": 2,
             "jumbo": 2,
@@ -914,13 +1009,19 @@
           "label": "Pompoen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "jumbo": 1,
-            "ah": 2
+            "ah": 1
           }
         },
         "pumpkin|frozen||naturel|kg": {
           "label": "Pompoen · diepvries · per kg",
           "stores": {
             "jumbo": 1
+          }
+        },
+        "pumpkin|plain||naturel · biologisch|kg": {
+          "label": "Pompoen · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "ah": 1
           }
         }
       }
@@ -994,8 +1095,8 @@
         }
       ],
       "groups": {
-        "green_beans|frozen||naturel|kg": {
-          "label": "Sperziebonen · diepvries · per kg",
+        "green_beans|frozen||naturel · biologisch|kg": {
+          "label": "Sperziebonen · naturel · biologisch · diepvries · per kg",
           "stores": {
             "jumbo": 1
           }
@@ -1003,7 +1104,13 @@
         "green_beans|plain||naturel|kg": {
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
-            "jumbo": 5
+            "jumbo": 4
+          }
+        },
+        "green_beans|plain||naturel · biologisch|kg": {
+          "label": "Sperziebonen · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 1
           }
         }
       }
@@ -1161,14 +1268,19 @@
           "label": "Popcorn · pofmais · per kg",
           "stores": {
             "lidl": 1,
-            "jumbo": 1,
-            "ah": 1
+            "jumbo": 1
           }
         },
         "popcorn|plain|pofmais|naturel|inhoud onbekend": {
           "label": "Popcorn · pofmais · inhoud niet bevestigd",
           "stores": {
             "lidl": 1
+          }
+        },
+        "popcorn|plain|pofmais|naturel · biologisch|kg": {
+          "label": "Popcorn · pofmais · naturel · biologisch · per kg",
+          "stores": {
+            "ah": 1
           }
         }
       }
@@ -1240,12 +1352,19 @@
         }
       ],
       "groups": {
-        "milk|plain|houdbaar|naturel|L": {
-          "label": "Melk · houdbaar · per L",
+        "milk|plain|houdbaar|naturel · vol · lactose niet gespecificeerd|L": {
+          "label": "Melk · houdbaar · naturel · vol · lactose niet gespecificeerd · per L",
           "stores": {
             "lidl": 1,
-            "jumbo": 3,
-            "ah": 2
+            "jumbo": 1,
+            "ah": 1
+          }
+        },
+        "milk|plain|houdbaar|naturel · biologisch · vol · lactose niet gespecificeerd|L": {
+          "label": "Melk · houdbaar · naturel · biologisch · vol · lactose niet gespecificeerd · per L",
+          "stores": {
+            "jumbo": 2,
+            "ah": 1
           }
         }
       }
