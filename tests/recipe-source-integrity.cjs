@@ -3,10 +3,10 @@
 const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const d=JSON.parse(fs.readFileSync('docs/data/recipe-sources.json','utf8'));
-const domains={allerhande:'ah.nl',jumbo:'jumbo.com',voedingscentrum:'voedingscentrum.nl', '24kitchen':'24kitchen.nl',lidl:'lidl.nl',eefkooktzo:'eefkooktzo.nl',lekkerensimpel:'lekkerensimpel.com',leukerecepten:'leukerecepten.nl'};
+const domains={allerhande:'ah.nl',hellofresh:'hellofresh.nl',jumbo:'jumbo.com',voedingscentrum:'voedingscentrum.nl', '24kitchen':'24kitchen.nl',lidl:'lidl.nl',eefkooktzo:'eefkooktzo.nl',lekkerensimpel:'lekkerensimpel.com',leukerecepten:'leukerecepten.nl'};
 assert.equal(d.schema_version,1);
 assert.equal(d.policy,'link_only');
-assert.ok(d.sources.length>=8,'Use multiple checked Dutch recipe publishers');
+assert.ok(d.sources.length>=9,'Use multiple checked Dutch recipe publishers');
 for(const source of d.sources){
  assert.equal(source.reuse,'link_only','Never copy source instructions or photos without permissions');
  assert.ok(source.name&&source.tag&&domains[source.id]);
