@@ -138,8 +138,12 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('[data-find-ideas]').click();
   assert.ok(await page.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count()<12,
     'Searching riblappen must suppress unrelated original action ideas');
+  assert.equal(await page.locator('#publisher-recipes-main .publisher-recipe-card').count(),0,
+    'Do not invent a HelloFresh riblap recipe if the verified source index has none');
+  assert.match(await page.locator('#publisher-recipes-main').innerText(),/nog geen gecontroleerde recepten/i);
+  await page.locator('#publisher-recipes-main [data-publisher-source="Allerhande"]').click();
   assert.ok(await page.locator('#publisher-recipes-main .publisher-recipe-card').count()>=2,
-    'The original hachee and rendang recipes must also participate in ingredient search');
+    'Allerhande hachee is available after explicitly switching sources');
   assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Citroenkip|Groentefrittata/.test(t)),
     'Do not show unrelated dishes after an ingredient search');
   await page.locator('#cooking-ideas .publisher-links summary').click();
