@@ -25,18 +25,40 @@ from refresh_publisher_recipes import families_of, VEG, LEGUMES, EXCLUDE
 ROOT = Path(__file__).resolve().parent.parent
 TARGET = ROOT / "docs/data/publisher-recipes.json"
 BASE = "https://www.hellofresh.nl"
+# Start with the real /recipes hub: it links many distinct dinner recipes.
+# Supplement with public category pages, without relying on guessed private APIs.
 CATEGORIES = (
-    "/recipes/indonesische-recepten",
-    "/recipes/traditionele-recepten",
-    "/recipes/vlees-recepten/gehakt",
-    "/recipes/vegetarische-recepten",
-    "/recipes/vis-recepten",
     "/recipes",
+    "/recipes/groente-recepten",
+    "/recipes/vlees-recepten",
+    "/recipes/vis-recepten",
+    "/recipes/vegetarische-recepten",
+    "/recipes/rijst-recepten",
+    "/recipes/indonesische-recepten",
+    "/recipes/hollandse-recepten",
+    "/recipes/pasta-recepten",
 )
 USER_AGENT = "Boodschappenmaatje/1.0 (small publisher link-metadata catalog)"
 RECIPE_PATH = re.compile(r"^/recipes/([a-z0-9][a-z0-9_-]{5,180})-([0-9a-f]{24})$")
 REJECT = re.compile(r"\b(ontbijt|dessert|nagerecht|smoothie|babyvoeding|"
                     r"kant-en-klaar|ready to eat|opwarmmaaltijd|maaltijdbox voor)\b", re.I)
+FAVORITE_MAINS = re.compile(
+    r"hachee|rendang|stoof|sukade|boeuf|stamppot|curry|dahl|lasagne|ovenschotel|"
+    r"kipdij|zalm|kabeljauw|koolvis|visfilet|linzen|kikkererwten|noedels|"
+    r"rijst|bowl|risotto|orzo|bulgur|groent|tofu|tempeh", re.I)
+LESS_MEAL_LIKE = re.compile(r"burger|pizza|snack|broodje|tosti|wrap|nugget", re.I)
+
+def candidate_priority(title, url, week):
+    """Stable culinary rotation; meaningful dinner titles outrank burger/marketing pages."""
+    t = title.casefold()
+    score = (60 if FAVORITE_MAINS.search(t) else 0) + (20 if len(t.split()) >= 5 else 0)
+    if "stoof" in t or "hachee" in t or "rendang" in t:
+        score += 25
+    if LESS_MEAL_LIKE.search(t):
+        score -= 80
+    stable = hashlib.sha1((url + str(week)).encode()).hexdigest()
+    return (-score, stable)
+
 
 def canonical(url):
     """Allowlist exact Dutch publisher hostname, recipe-only paths, no queries."""
@@ -141,7 +163,7 @@ def record_from_page(url, page_html, stamp):
         "review_status":"publisher_page_title_verified","last_checked":stamp
     }
 
-def discover(max_pages=12, day=None, fetcher=fetch, pause=0.3):
+def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
     day = day or dt.date.today()
     data = json.loads(TARGET.read_text("utf-8"))
     existing = {r["url"]:r for r in data["recipes"]}
@@ -150,7 +172,7 @@ def discover(max_pages=12, day=None, fetcher=fetch, pause=0.3):
     except (OSError, ValueError, urllib.error.URLError) as exc:
         print("HelloFresh robots unavailable; retaining previous data:",str(exc)[:160])
         return 0
-    choices=[]
+    choices={}
     for path in CATEGORIES:
         category=BASE+path
         if not rules.can_fetch(USER_AGENT, category):
@@ -159,18 +181,23 @@ def discover(max_pages=12, day=None, fetcher=fetch, pause=0.3):
         try:
             parser=PublicPage()
             parser.feed(fetcher(category, 6_000_000))
-            choices.extend(url for url,_ in parser.links)
+            for url, title in parser.links:
+                if url not in existing and title and len(title) >= 12:
+                    # Prefer full recipe links with a useful public title from
+                    # hellofresh.nl/recipes over arbitrary next-page references.
+                    if url not in choices or len(title) > len(choices[url]):
+                        choices[url] = title
         except (OSError,ValueError,urllib.error.URLError) as exc:
             print("HelloFresh category unavailable:",path,str(exc)[:130])
         time.sleep(pause)
-    choices=sorted(set(url for url in choices if url not in existing))
-    # Bounded stable weekly rotation, no preference for bulk copying.
+    # Deterministic priority for complete evening meals, enough variation through
+    # the week; never invent page titles or construct guessed recipe URLs.
     week=day.isocalendar().week
-    choices.sort(key=lambda url: hashlib.sha1((url+str(week)).encode()).hexdigest())
+    choices=sorted(choices, key=lambda url: candidate_priority(choices[url], url, week))
     checked=0
     added=0
     for url in choices:
-        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=120:
+        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=350:
             break
         if not rules.can_fetch(USER_AGENT, url):
             continue

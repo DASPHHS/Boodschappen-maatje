@@ -25,9 +25,10 @@
     typeof r.title==='string'&&r.title.trim().length>8&&Array.isArray(r.families)&&r.families.length>0&&
     engine?.trustedPublisherUrl?.(r.source,r.url));
  }
- function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle'}){
+ function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all'}){
   if(!engine||!Array.isArray(index?.recipes))return [];
-  const sources=(index.recipes||[]).filter(r=>valid(r,engine));
+  const requested=['all','HelloFresh','Allerhande'].includes(source)?source:'HelloFresh';
+  const sources=(index.recipes||[]).filter(r=>valid(r,engine)&&(requested==='all'||r.source===requested));
   const queryText=norm(query);
   // Only a known culinary family warrants a suggested deal pairing; never claim
   // price/pack compatibility on the basis of title tokens.
@@ -41,7 +42,7 @@
    for(const [family,offer] of uniqueFamilies){
     const hits=engine.publisherMatches(offer,index,150);
     for(const {recipe} of hits){
-     if(!valid(recipe,engine))continue;
+     if(!valid(recipe,engine)||(requested!=='all'&&recipe.source!==requested))continue;
      const match=matches.get(recipe.url);
      if(!match)matches.set(recipe.url,{store,family,offerName:offer.name});
     }
