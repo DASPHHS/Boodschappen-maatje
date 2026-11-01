@@ -2934,6 +2934,493 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r775590",
+      "title": "Kabeljauw met linzen en salade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R775590/kabeljauw-met-linzen-en-salade",
+      "families": [
+        "linzen",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r88056",
+      "title": "Gegrilde scholfilet met wortel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R88056/gegrilde-scholfilet-met-wortel",
+      "families": [
+        "witvis",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r117288",
+      "title": "Kabeljauw met tomaat uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R117288/kabeljauw-met-tomaat-uit-de-oven",
+      "families": [
+        "tomaten",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r390250",
+      "title": "Kabeljauw met broccoli en noedels",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R390250/kabeljauw-met-broccoli-en-noedels",
+      "families": [
+        "broccoli",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1192590",
+      "title": "Zomerstoof met tomaat en pangasius",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1192590/zomerstoof-met-tomaat-en-pangasius",
+      "families": [
+        "tomaten",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1196170",
+      "title": "Andijviestamppot met witvis en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196170/andijviestamppot-met-witvis-en-tomaat",
+      "families": [
+        "tomaten",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r287974",
+      "title": "Ovenschotel met kabeljauw en courgette",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R287974/ovenschotel-met-kabeljauw-en-courgette",
+      "families": [
+        "courgette",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194242",
+      "title": "Ovencurry met rijst kabeljauw en paksoi",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194242/ovencurry-met-rijst-kabeljauw-en-paksoi",
+      "families": [
+        "paksoi",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r146564",
+      "title": "Ovenschotel met kabeljauw en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R146564/ovenschotel-met-kabeljauw-en-sperziebonen",
+      "families": [
+        "sperziebonen",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r483682",
+      "title": "Gebakken koolvis met sperziebonen en dille",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R483682/gebakken-koolvis-met-sperziebonen-en-dille",
+      "families": [
+        "sperziebonen",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r452222",
+      "title": "Kabeljauw en tomaat en courgette uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R452222/kabeljauw-en-tomaat-en-courgette-uit-de-oven",
+      "families": [
+        "courgette",
+        "tomaten",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1189542",
+      "title": "Groene curry met kabeljauw en shanghai paksoi",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189542/groene-curry-met-kabeljauw-en-shanghai-paksoi",
+      "families": [
+        "paksoi",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1193448",
+      "title": "Kurkumarijstbowl met boerenkool avocado en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193448/kurkumarijstbowl-met-boerenkool-avocado-en-ei",
+      "families": [
+        "boerenkool",
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1187111",
+      "title": "Gebakken kabeljauw met gestoofde prei en linzen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187111/gebakken-kabeljauw-met-gestoofde-prei-en-linzen",
+      "families": [
+        "linzen",
+        "prei",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194602",
+      "title": "Kabeljauw uit de oven met venkel en broccolirijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194602/kabeljauw-uit-de-oven-met-venkel-en-broccolirijst",
+      "families": [
+        "venkel",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1187756",
+      "title": "Geroerbakte paksoi met kikkererwten en kabeljauw",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187756/geroerbakte-paksoi-met-kikkererwten-en-kabeljauw",
+      "families": [
+        "kikkererwten",
+        "paksoi",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "roerbak",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194922",
+      "title": "Vegan curry met aardappel boerenkool en kokosmelk",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194922/vegan-curry-met-aardappel-boerenkool-en-kokosmelk",
+      "families": [
+        "aardappelen",
+        "boerenkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1190668",
+      "title": "Kabeljauw met tagliatelle en venkel waterkerssalade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190668/kabeljauw-met-tagliatelle-en-venkel-waterkerssalade",
+      "families": [
+        "venkel",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1193404",
+      "title": "Vegabowl met geroosterde boerenkool en gepocheerd ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193404/vegabowl-met-geroosterde-boerenkool-en-gepocheerd-ei",
+      "families": [
+        "boerenkool",
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195875",
+      "title": "Rijstschotel met champignons boerenkool en amandelen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195875/rijstschotel-met-champignons-boerenkool-en-amandelen",
+      "families": [
+        "boerenkool",
+        "champignons"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1199588",
+      "title": "Pasta met geroosterde aubergine boerenkool en geitenkaas",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199588/pasta-met-geroosterde-aubergine-boerenkool-en-geitenkaas",
+      "families": [
+        "aubergine",
+        "boerenkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202153",
+      "title": "Lentegerecht met koolvis spinazie en rijst van kindergarden",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202153/lentegerecht-met-koolvis-spinazie-en-rijst-van-kindergarden",
+      "families": [
+        "spinazie",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195694",
+      "title": "Stamppot boerenkool met geroosterde pompoen spek en walnoten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195694/stamppot-boerenkool-met-geroosterde-pompoen-spek-en-walnoten",
+      "families": [
+        "boerenkool",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195691",
+      "title": "Pasta met geroosterde pompoen met boerenkool walnoten en tahin",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195691/pasta-met-geroosterde-pompoen-met-boerenkool-walnoten-en-tahin",
+      "families": [
+        "boerenkool",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185050",
+      "title": "Pompoen paprikastoof met ei en brood",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185050/pompoen-paprikastoof-met-ei-en-brood",
+      "families": [
+        "eieren",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-1df19138662231",
+      "source": "HelloFresh",
+      "title": "Nasi goreng met zelfgemaakte kipsaté",
+      "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-zelfgemaakte-kipsate-63c7d6d000ace46356b3f490",
+      "families": [
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-b3a0cfcd1ce0f4",
+      "source": "HelloFresh",
+      "title": "Hawaïaanse stijl hamburger met sticky champignons",
+      "url": "https://www.hellofresh.nl/recipes/hawaiaanse-stijl-hamburger-met-sticky-champignons-6a2c1b5691ca82626ceed606",
+      "families": [
+        "champignons"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
     }
   ]
 }
