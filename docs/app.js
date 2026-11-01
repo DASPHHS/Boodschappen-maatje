@@ -700,11 +700,11 @@ function cookingIdeasPanel(){
  let html='<section class="info-banner" id="cooking-ideas">'+
  '<div class="control-row"><strong>Wat kook je met '+safe(offer.name)+'?</strong><button class="button secondary small" data-clear-cook="1">Wis product</button></div>'+
  '<p>'+safe(NAMES[store])+' · '+safe(idea.label)+(selection?' · actie gemeld t/m '+dateNL(offer.end_date):' · vrije ingrediëntenzoekopdracht')+
- '. Dit zijn <strong>bereidingsmogelijkheden</strong>, geen bevestiging van een identieke productvariant, complete boodschappenmand of afgeprijsd recept.</p>';
+ '. Deze recepten zijn uitgezocht op passende ingrediënten en bereidingswijze. De volledige instructies staan bij de uitgever; het actieproduct is niet de volledige maaltijdprijs.</p>';
  if(trusted.length){
-  html+='<h3>Door ons gevonden recepten bij uitgevers</h3><div class="recipe-source-grid">'+trusted.map(link=>
+  html+='<h3>Door ons geselecteerde recepten</h3><p class="muted">Meerdere gerechten, rechtstreeks bij hun maker — geen zoekresultaten.</p><div class="recipe-source-grid">'+trusted.map(link=>
    '<a class="recipe-source-link" target="_blank" rel="noopener noreferrer" href="'+attr(link.url)+'"><strong>'+
-   safe(link.title)+'</strong><small>'+safe(link.source)+' · origineel recept of themapagina</small><span>Open bij de uitgever ↗</span></a>').join('')+'</div>';
+   safe(link.title)+'</strong><small>'+safe(link.source)+(link.minutes?' · '+safe(link.minutes)+' min':'')+(link.servings?' · '+safe(link.servings)+' personen':'')+'</small><span>Open volledig recept ↗</span></a>').join('')+'</div>';
  }
  if(local.length){
   html+='<h3>Passende eigen recepten</h3><p class="muted">Gematcht op ingrediënt en bereiding, niet op toevallige woorden in een productnaam. Deze recepten zijn niet proefgekookt.</p>'+
@@ -721,7 +721,7 @@ function discoveredPublisherCards(store,limit=8){
  const highlighted=engine.offerRecipeHighlights(offers(store),state.publisherRecipes,limit);
  if(!highlighted.length)return '';
  return '<section class="publisher-discovery"><h3>Uitgezochte recepten bij aanbiedingen van '+safe(NAMES[store])+'</h3>'+
- '<p class="muted">Dit zijn reeds gevonden recepten bij hun oorspronkelijke uitgever, geen links naar zoekresultaten. De actie betreft een passend ingrediënt, niet een automatisch doorgerekend volledig gerecht.</p>'+
+ '<p class="muted">Zelf geselecteerd op actie-ingrediënt, groente en peulvruchten, bereidingstijd en variatie. De volledige recepten staan bij hun oorspronkelijke uitgever. Een product in actie is geen bevestigde maaltijdprijs.</p>'+
  '<div class="recipe-source-grid">'+highlighted.map(hit=>
   '<a class="recipe-source-link" href="'+attr(hit.recipe.url)+'" target="_blank" rel="noopener noreferrer"><strong>'+safe(hit.recipe.title)+'</strong>'+
   '<small>'+safe(hit.recipe.source)+' · '+safe(hit.ingredient)+' in actie'+
@@ -733,10 +733,10 @@ function recipeView(){
 header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Acties die je écht gebruikt.</span>','Uitgewerkte ideeën en actierecepten voorop. De 40 oudere titel-geïnspireerde concepten kun je apart inschakelen. Geen van deze gerechten is door ons proefgekookt.');
 let out='<div class="personal-settings"><label for="ingredient-discovery">Zoek gerechten bij een actieproduct of ingrediënt</label>'+
  '<input id="ingredient-discovery" class="search" placeholder="Bijv. runderriblappen, broccoli, zalmfilet" maxlength="100" value="'+attr(state.cookingQuery)+'">'+
- '<button class="button secondary small" data-find-ideas="1">Zoek bij kookuitgevers</button></div>'+
- cookingIdeasPanel()+recipeSourceDirectory()+storeControls()+kindControls()+subtypeControls()+recipeControls();
+ '<button class="button secondary small" data-find-ideas="1">Zoek geselecteerde recepten</button></div>'+
+ cookingIdeasPanel()+storeControls()+kindControls()+subtypeControls()+recipeControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
-out+=discoveredPublisherCards(s,6);
+out+=discoveredPublisherCards(s,12);
 const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
 const current=all.filter(r=>offerInfo(r,s).confirmed.length).length;const anchored=all.filter(r=>offerInfo(r,s).anchors.length||offerInfo(r,s).confirmed.length).length;
 const potential=all.filter(r=>offerInfo(r,s).possible.length).length;
