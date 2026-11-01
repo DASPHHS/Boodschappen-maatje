@@ -414,7 +414,9 @@ function storeControls(all=true){return '<div class="control-row store-filter">'
 const OFFER_CATEGORY_NAMES={alle:'Alle aanbiedingen',bier:'Bier',dranken:'Fris & koffie',overige_dranken:'Overige dranken',huishouden:'Huishouden',fruit:'Fruit',voorraad:'Voorraad & noten',zuivel:'Zuivel',groente:'Groente',kip:'Kip',vlees:'Vlees',vis:'Vis',vega:'Vega',snacks:'Snacks',brood_graan:'Brood & granen',overig:'Overig'};
 function kindControls(offerPage=false){
  if(offerPage){
- const all=ORDER.flatMap(s=>offers(s)),cats=['alle',...Object.keys(OFFER_CATEGORY_NAMES).filter(c=>c!=='alle'&&all.some(o=>o.category===c))];
+ const future=state.offerMode==='all'&&state.offerWeek==='next';
+ const all=ORDER.flatMap(s=>future?window.MaatjeWeekdeals?.next(s,state.catalog?.stores?.[s],today())||[]:offers(s)),
+ cats=['alle',...Object.keys(OFFER_CATEGORY_NAMES).filter(c=>c!=='alle'&&all.some(o=>o.category===c))];
  const select='<select class="offer-category-select" id="offer-category" aria-label="Productgroep aanbiedingen">'+cats.map(c=>'<option value="'+c+'"'+(state.kind===c?' selected':'')+'>'+safe(OFFER_CATEGORY_NAMES[c])+' ('+(c==='alle'?all.length:all.filter(o=>o.category===c).length)+')</option>').join('')+'</select>';
  const top=['alle','bier','groente','huishouden','fruit','zuivel'].filter(c=>cats.includes(c));
  return '<div class="control-row offer-filter-row">'+top.map(c=>'<button class="pill '+(state.kind===c?'active':'')+'" data-kind="'+c+'">'+safe(OFFER_CATEGORY_NAMES[c])+'</button>').join('')+select+'<input class="search" id="find" aria-label="Zoek aanbiedingen" placeholder="Zoek merk of product..." value="'+attr(state.query)+'"></div>';
@@ -621,7 +623,7 @@ return 0;
 }
 function offerFiltered(o,s){
 if(state.kind!=='alle'&&o.category!==state.kind)return false;
-if(state.query&&!norm(o.name).includes(norm(state.query)))return false;
+if(state.query&&!norm([o.name,o.brand,o.category,o.pack_label,o.ean,NAMES[s]].join(' ')).includes(norm(state.query)))return false;
 if(state.offerEvidence==='official'&&!(isOfficialOfferSource(o,s)&&!o.price_conflict))return false;
 if(state.offerEvidence==='external'&&(isOfficialOfferSource(o,s)&&!o.price_conflict))return false;
 return true;
