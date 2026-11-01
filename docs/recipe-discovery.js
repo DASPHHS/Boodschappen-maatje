@@ -91,6 +91,40 @@
   }
   return matches.sort((a,b)=>b.score-a.score||(a.recipe.minutes||999)-(b.recipe.minutes||999)).slice(0,limit);
  }
+ function publisherMatches(offer,index,limit=10){
+  const type=classify(offer);
+  if(!type||!Array.isArray(index?.recipes))return [];
+  const seen=new Set(),matches=[];
+  for(const r of index.recipes){
+   if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
+      typeof r.title!=='string'||!r.title.trim()||!['Allerhande','Jumbo'].includes(r.source)||
+      typeof r.url!=='string'||!/^https:\/\/(www\.)?(ah\.nl\/allerhande\/|jumbo\.com\/recepten\/)/.test(r.url)||
+      r.review_status!=='handmatig_gevonden_bij_uitgever')continue;
+   if(seen.has(r.url))continue;
+   seen.add(r.url);
+   // Put main courses and recipes for four people ahead of side dishes,
+   // but do not suggest that the original publisher recipe is priced.
+   const score=(r.course==='hoofdgerecht'?15:5)+(r.servings===4?5:0)+
+    (type.key==='riblappen'&&/rendang|hachee|boeuf|stoof/i.test(r.title)?8:0);
+   matches.push({recipe:r,score,ingredient:type.label});
+  }
+  return matches.sort((a,b)=>b.score-a.score||a.recipe.title.localeCompare(b.recipe.title,'nl')).slice(0,limit);
+ }
+ function offerRecipeHighlights(offers,index,limit=9){
+  const selected=[],seen=new Set();
+  for(const offer of offers||[]){
+   const kind=classify(offer);
+   if(!kind)continue;
+   const matched=publisherMatches(offer,index,3);
+   for(const item of matched){
+    if(seen.has(item.recipe.id))continue;
+    seen.add(item.recipe.id);selected.push({...item,offer});
+    if(selected.length>=limit*3)break;
+   }
+   if(selected.length>=limit*3)break;
+  }
+  return selected.sort((a,b)=>b.score-a.score||a.recipe.title.localeCompare(b.recipe.title,'nl')).slice(0,limit);
+ }
  function publisherSearch(offer){
   const item=classify(offer);if(!item)return [];
   const q=item.search;
@@ -99,5 +133,5 @@
    {source:'Jumbo recepten',url:'https://www.google.com/search?q='+encodeURIComponent('site:jumbo.com/recepten/ '+q)}
   ];
  }
- return {classify,matchRecipe,localMatches,publisherSearch};
+ return {classify,matchRecipe,localMatches,publisherSearch,publisherMatches,offerRecipeHighlights};
 });
