@@ -11,7 +11,7 @@ const ctx={console,URL,Intl,Date:Clock,Set,Map,WeakMap,Promise,parseFloat,parseI
  location:{hash:'#vandaag'},localStorage:{getItem:()=>null,setItem(){}},
  fetch:async url=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,String(url).split('?')[0]),'utf8'))})};
 ctx.window=ctx;vm.createContext(ctx);
-for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','offer-identity.js','weekdeals-engine.js','recipe-discovery.js','source-freshness.js','app.js']){
+for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','recipe-presentation.js','offer-identity.js','weekdeals-engine.js','recipe-discovery.js','source-freshness.js','app.js']){
  let source=fs.readFileSync(path.join(root,file),'utf8');
  if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections,offerInfo,proteinSubtype};})();');
  vm.runInContext(source,ctx,{filename:file});
@@ -33,9 +33,9 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   ingredients:[...t.state.library[0].ingredients,{name:'onvindbare achtertuinplant xyz',quantity:250,unit:'g'}]};
  const incomplete=t.recipePrice(deliberatelyIncomplete);
  assert.equal(incomplete.state,'partial','Unknown ingredient must make a non-complete cart');
- assert.ok(incomplete.partial>0,'Show known pack costs separately');
- assert.equal(t.priceQuality(deliberatelyIncomplete),'Bekende verpakkingen '+new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(incomplete.partial),
-  'Show the real known package subtotal, clearly separated from a full meal price');
+ assert.ok(incomplete.partial>0,'Keep known pack costs in detailed shopping calculations');
+ assert.equal(t.priceQuality(deliberatelyIncomplete),'Maaltijdprijs onbekend',
+  'A partially priced basket must never be presented as a recipe-card amount');
  assert.ok(!t.priceQuality(deliberatelyIncomplete).includes('Vanaf '));
  // Do not alter the production recipe catalogue for this regression.
  for(const store of ['lidl','jumbo','ah']){
@@ -45,7 +45,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   const label=t.priceQuality(recipe);
   t.state.store=store;t.state.view='recepten';t.state.recipeQuality='all';t.render();
   assert.ok(el('#view-recepten').innerHTML.includes(label));
-  if(price.state==='partial'&&price.partial>0){assert.ok(label.startsWith('Bekende verpakkingen '));assert.ok(el('#view-recepten').innerHTML.includes('totale maaltijdprijs onbekend'),'Incomplete prices must explicitly name the missing total');}
+  if(price.state==='partial'&&price.partial>0){assert.equal(label,'Maaltijdprijs onbekend');assert.ok(el('#view-recepten').innerHTML.includes('geen totaalprijs'),'Incomplete prices must explicitly name the missing total');}
   assert.ok(!/Vanaf\s*€/.test(el('#view-recepten').innerHTML),'Recipe cards cannot show a partial basket as a starting meal price');
   t.openRecipe(store+'|'+id);assert.ok(el('#dialog-content').innerHTML.includes(label));
   assert.ok(!el('#dialog-content').innerHTML.includes('AH Ovenschotel kipfilet champignon room'),'A complete prepared meal must not be suggested as raw chicken');
