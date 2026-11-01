@@ -102,9 +102,11 @@ def fetch(url, max_bytes=1_000_000):
     with urllib.request.urlopen(req, timeout=16) as response:
         if response.status != 200:
             raise OSError("Publisher response is not 200")
-        payload = response.read(max_bytes + 1)
-        if len(payload) > max_bytes:
-            raise ValueError("Publisher response is too large")
+        # Read only a bounded prefix of large Next.js pages. The source may
+        # include multi-megabyte hydration scripts; we need only public <a>
+        # links on category pages and the original <h1> on detail pages.
+        # A partial parser is acceptable; it must never invent a record.
+        payload = response.read(max_bytes)
         return payload.decode("utf-8", "replace")
 
 def record_from_page(url, page_html, stamp):
@@ -150,7 +152,7 @@ def discover(max_pages=12, day=None, fetcher=fetch, pause=0.3):
             continue
         try:
             parser=PublicPage()
-            parser.feed(fetcher(category, 2_000_000))
+            parser.feed(fetcher(category, 6_000_000))
             choices.extend(url for url,_ in parser.links)
         except (OSError,ValueError,urllib.error.URLError) as exc:
             print("HelloFresh category unavailable:",path,str(exc)[:130])
