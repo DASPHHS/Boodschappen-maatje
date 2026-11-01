@@ -39,7 +39,7 @@ vm.createContext(context);
 for(const src of [
  'recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js',
  'price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js',
- 'recipe-ranking.js','offer-identity.js','weekdeals-engine.js','recipe-discovery.js','source-freshness.js','app.js']){
+ 'recipe-ranking.js','offer-identity.js','weekdeals-engine.js','recipe-discovery.js','dutch-recipe-index.js','source-freshness.js','app.js']){
  vm.runInContext(fs.readFileSync(path.join(ROOT,src),'utf8'),context,{filename:src});
 }
 (async()=>{
