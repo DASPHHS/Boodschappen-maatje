@@ -1883,6 +1883,497 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r324168",
+      "title": "Visstoof met prei en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R324168/visstoof-met-prei-en-tomaat",
+      "families": [
+        "prei",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r983822",
+      "title": "Gestoofde prei met garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R983822/gestoofde-prei-met-garnalen",
+      "families": [
+        "garnalen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r245050",
+      "title": "Rijstschotel met kip en prei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R245050/rijstschotel-met-kip-en-prei",
+      "families": [
+        "kip",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r793666",
+      "title": "Noedels met prei en aardappel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R793666/noedels-met-prei-en-aardappel",
+      "families": [
+        "aardappelen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r577368",
+      "title": "Ovenfarfalle met zalm en prei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R577368/ovenfarfalle-met-zalm-en-prei",
+      "families": [
+        "prei",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r921644",
+      "title": "Gewokte broccoli met garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R921644/gewokte-broccoli-met-garnalen",
+      "families": [
+        "broccoli",
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "wok",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185226",
+      "title": "Gebakken prei met champignons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185226/gebakken-prei-met-champignons",
+      "families": [
+        "champignons",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1088510",
+      "title": "Ovenomelet met prei en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1088510/ovenomelet-met-prei-en-spinazie",
+      "families": [
+        "prei",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r65764",
+      "title": "Roergebakken paksoi met garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R65764/roergebakken-paksoi-met-garnalen",
+      "families": [
+        "garnalen",
+        "paksoi"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1023024",
+      "title": "Pastaschotel met prei en garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1023024/pastaschotel-met-prei-en-garnalen",
+      "families": [
+        "garnalen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r635258",
+      "title": "Pasta met vis garnalen en broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R635258/pasta-met-vis-garnalen-en-broccoli",
+      "families": [
+        "broccoli",
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r377930",
+      "title": "Prei omelet met gebakken krieltjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R377930/prei-omelet-met-gebakken-krieltjes",
+      "families": [
+        "aardappelen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197920",
+      "title": "Ovenschotel met zalm en boerenkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197920/ovenschotel-met-zalm-en-boerenkool",
+      "families": [
+        "boerenkool",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1190078",
+      "title": "Prei ovenschotel met gehakt en kaas",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190078/prei-ovenschotel-met-gehakt-en-kaas",
+      "families": [
+        "gehakt",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r921850",
+      "title": "Pittige gewokte garnalen met paksoi",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R921850/pittige-gewokte-garnalen-met-paksoi",
+      "families": [
+        "garnalen",
+        "paksoi"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "wok",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r593174",
+      "title": "Roergebakken mihoen met tofu en prei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R593174/roergebakken-mihoen-met-tofu-en-prei",
+      "families": [
+        "prei",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185542",
+      "title": "Stoof van prei tomaat aardappel en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185542/stoof-van-prei-tomaat-aardappel-en-ei",
+      "families": [
+        "aardappelen",
+        "eieren",
+        "prei",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r673118",
+      "title": "Prei met zalm en aardappel uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R673118/prei-met-zalm-en-aardappel-uit-de-oven",
+      "families": [
+        "aardappelen",
+        "prei",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195514",
+      "title": "Romige kip met broccoli prei en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195514/romige-kip-met-broccoli-prei-en-rijst",
+      "families": [
+        "broccoli",
+        "kip",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1149174",
+      "title": "Kip met in wijn gestoofde prei en tijm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1149174/kip-met-in-wijn-gestoofde-prei-en-tijm",
+      "families": [
+        "kip",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1302800",
+      "title": "Zomerstamppot met prei en masala tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1302800/zomerstamppot-met-prei-en-masala-tofu",
+      "families": [
+        "prei",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r485658",
+      "title": "Pittige curry met broccoli en garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R485658/pittige-curry-met-broccoli-en-garnalen",
+      "families": [
+        "broccoli",
+        "garnalen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1196176",
+      "title": "Bloemkoolrijst met garnalen en paprika",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196176/bloemkoolrijst-met-garnalen-en-paprika",
+      "families": [
+        "garnalen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r983834",
+      "title": "Stamppot groene kool met prei en wortel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R983834/stamppot-groene-kool-met-prei-en-wortel",
+      "families": [
+        "prei",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r465570",
+      "title": "Pasta met boerenkool en gedroogde tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R465570/pasta-met-boerenkool-en-gedroogde-tomaat",
+      "families": [
+        "boerenkool",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r660022",
+      "title": "Geroerbakte garnalen met gember en paksoi",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R660022/geroerbakte-garnalen-met-gember-en-paksoi",
+      "families": [
+        "garnalen",
+        "paksoi"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "roerbak",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186954",
+      "title": "Franse kipschotel met prei linzen en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186954/franse-kipschotel-met-prei-linzen-en-rijst",
+      "families": [
+        "kip",
+        "linzen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
     }
   ]
 }
