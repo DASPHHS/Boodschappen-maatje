@@ -1,0 +1,64 @@
+name: Ontdek betrouwbare uitgeversrecepten
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/refresh_publisher_recipes.py'
+      - 'docs/data/publisher-recipes.json'
+      - '.github/workflows/recipe-discovery.yml'
+  schedule:
+    - cron: '45 7 * * 3'
+permissions:
+  contents: write
+concurrency:
+  group: publisher-recipe-discovery
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test metadata filters and existing recipe index
+        run: |
+          python -m unittest discover -s tests -p 'test_publisher_recipes.py' -v
+          node tests/publisher-recipe-index.cjs
+      - name: Discover a bounded selection from the official publisher sitemap
+        run: python scripts/refresh_publisher_recipes.py
+      - name: Publish only the newly checked recipe index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp docs/data/publisher-recipes.json /tmp/new-publisher-recipes.json
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("docs/data/publisher-recipes.json")
+          new=json.loads(Path("/tmp/new-publisher-recipes.json").read_text())
+          current=json.loads(path.read_text())
+          records={r["url"]:r for r in current["recipes"]}
+          for r in new["recipes"]:
+              if r["url"] not in records:records[r["url"]]=r
+          current["recipes"]=list(records.values())
+          if len(records)>len(json.loads(path.read_text())["recipes"]):
+              current["generated_at"]=new["generated_at"]
+              path.write_text(json.dumps(current,ensure_ascii=False,indent=2)+"\n")
+          PY
+            node tests/publisher-recipe-index.cjs
+            git add docs/data/publisher-recipes.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Voeg gecontroleerde recepten uit officiële uitgeverssitemap toe"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
