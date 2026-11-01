@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T11:39:50.286Z",
+  "generated_at": "2026-11-01T11:40:30.881Z",
   "checked_date": "2026-11-01",
   "summary": {
     "profiles": 20,
@@ -263,24 +263,24 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
         "product_name": "Jumbo Gemengd Gehakt 500 g",
         "price": 4.59,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "price_status": "externe prijswaarneming · 2026-11-01",
+        "checked_date": "2026-11-01"
       },
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/lezziz-kipfiletblokjes-halal-350-g-623150TRA",
-        "product_name": "Lezziz Kipfiletblokjes Halal 350 g",
-        "price": 6.39,
+        "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
+        "product_name": "Jumbo Kipfilet 800 g",
+        "price": 9.19,
         "price_status": "externe prijswaarneming · 2026-11-01",
         "checked_date": "2026-11-01"
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/queens-alaska-koolvis-filets-375-g-419422ZK",
-        "product_name": "Queens Alaska Koolvis Filets 375 g",
-        "price": 4.09,
+        "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
+        "product_name": "Jumbo Koolvis Filet 400 g",
+        "price": 2.99,
         "price_status": "externe prijswaarneming · 2026-11-01",
         "checked_date": "2026-11-01"
       },
@@ -368,9 +368,9 @@
       "sereh": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/go-tan-sereh-citroengras-22g-125753POT",
-        "product_name": "Go-Tan Sereh Citroengras 22g",
-        "price": 2.29,
+        "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
+        "product_name": "Jumbo Citroengras 100 g",
+        "price": 3.38,
         "price_status": "externe prijswaarneming · 2026-11-01",
         "checked_date": "2026-11-01"
       }
