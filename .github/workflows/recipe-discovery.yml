@@ -30,8 +30,13 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_publisher_recipes.py' -v
           node tests/publisher-recipe-index.cjs
+          node scripts/build_dutch_recipe_guide.cjs --check
+          node tests/dutch-recipe-guide.cjs
       - name: Discover a bounded selection from the official publisher sitemap
-        run: python scripts/refresh_publisher_recipes.py
+        run: |
+          python scripts/refresh_publisher_recipes.py
+          node scripts/build_dutch_recipe_guide.cjs
+          node scripts/build_dutch_recipe_guide.cjs --check
       - name: Publish only the newly checked recipe index
         run: |
           git config user.name "github-actions[bot]"
@@ -54,8 +59,11 @@ jobs:
               current["generated_at"]=new["generated_at"]
               path.write_text(json.dumps(current,ensure_ascii=False,indent=2)+"\n")
           PY
+            node scripts/build_dutch_recipe_guide.cjs
+            node scripts/build_dutch_recipe_guide.cjs --check
             node tests/publisher-recipe-index.cjs
-            git add docs/data/publisher-recipes.json
+            node tests/dutch-recipe-guide.cjs
+            git add docs/data/publisher-recipes.json NEDERLANDSE_RECEPTENGIDS.md
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Voeg gecontroleerde recepten uit officiële uitgeverssitemap toe"
             if git push origin HEAD:main; then exit 0; fi
