@@ -21,14 +21,14 @@
     {
       "id": "ah-hachee",
       "title": "Hachee met riblappen",
-      "source": "Allerhande",
-      "url": "https://www.ah.nl/allerhande/recepten/hachee",
+      "source": "Jumbo",
+      "url": "https://www.jumbo.com/recepten/hachee-503571",
       "families": [
         "riblappen"
       ],
-      "minutes": null,
+      "minutes": 170,
       "servings": 4,
-      "course": "recept_en_themaverzameling",
+      "course": "hoofdgerecht",
       "review_status": "handmatig_gevonden_bij_uitgever",
       "last_checked": "2026-11-01"
     },
@@ -251,29 +251,15 @@
       "id": "ah-linzendahl",
       "title": "Dahl van rode linzen en bloemkool",
       "source": "Allerhande",
-      "url": "https://www.ah.nl/allerhande/recepten/dahl/",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196812/dahl-van-rode-linzen-en-bloemkool",
       "families": [
         "linzen",
         "bloemkool",
         "tomaten"
       ],
-      "minutes": null,
+      "minutes": 55,
       "servings": 4,
-      "course": "recept_en_themaverzameling",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
-    },
-    {
-      "id": "jumbo-satesaus",
-      "title": "Satésaus van pindakaas",
-      "source": "Jumbo",
-      "url": "https://www.jumbo.com/recepten/saus/satesaus",
-      "families": [
-        "pindakaas"
-      ],
-      "minutes": 5,
-      "servings": 4,
-      "course": "recept_en_themaverzameling",
+      "course": "hoofdgerecht",
       "review_status": "handmatig_gevonden_bij_uitgever",
       "last_checked": "2026-11-01"
     },
@@ -547,6 +533,23 @@
         "broccoli"
       ],
       "minutes": 45,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-dahl-lentil-beans-egg",
+      "title": "Dahl met rode linzen, sperziebonen en gekookt ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194782/dahl-met-rode-linzen-sperziebonen-en-gekookt-ei",
+      "families": [
+        "linzen",
+        "sperziebonen",
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": 35,
       "servings": 4,
       "course": "hoofdgerecht",
       "review_status": "handmatig_gevonden_bij_uitgever",
