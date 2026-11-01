@@ -75,6 +75,8 @@ on:
       - 'tests/curated-recipe-cards.cjs'
       - 'tests/batch-cooking.cjs'
       - 'docs/recipe-presentation.js'
+      - 'docs/publisher-selection.js'
+      - 'tests/publisher-first-selection.cjs'
       - 'tests/recipe-presentation.cjs'
       - 'tests/recipe-price-cache.cjs'
       - 'docs/data/lidl-source-registry.json'
@@ -128,6 +130,7 @@ jobs:
           node tests/weekdeals-engine.cjs
           node tests/recipe-discovery.cjs
           node tests/publisher-recipe-index.cjs
+          node tests/publisher-first-selection.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
