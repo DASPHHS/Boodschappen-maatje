@@ -59,6 +59,13 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),customVariantCount,
     'A user-added product must persist across page reload');
   await page.locator('[data-offer-mode="all"]').click();
+  assert.equal(await page.locator('[data-offer-week="now"]').count(),1,'Weekdeals: this week tab');
+  await page.locator('[data-offer-week="next"]').click();
+  assert.ok((await page.locator('#view-aanbiedingen').innerText()).includes('Vooruitblik'),
+   'Weekdeals: next-week control must clearly distinguish upcoming promotions');
+  assert.ok((await page.locator('#view-aanbiedingen').innerText()).includes('Albert Heijn'),
+   'All three stores remain represented');
+  await page.locator('[data-offer-week="now"]').click();
   await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
   const before=Number((await page.locator('#product-favorites-count').innerText())||'0');
   await page.locator('#view-aanbiedingen .deal-card [data-fav-toggle]').first().click();
