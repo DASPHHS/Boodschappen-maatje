@@ -117,3 +117,14 @@
 /* Source provenance must not squeeze a product title out of its card. */
 .deal-card-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}
 .deal-card-top>.tag{grid-column:1/-1;justify-self:start;max-width:100%;white-space:normal}
+
+/* Nieuwe originele gerechten: dezelfde visuele kaarten en knoppen als het bestaande menu. */
+.recipe-card.newly-curated{border-color:#cde3c3}
+.recipe-new-label{position:absolute;left:14px;bottom:11px;z-index:1;padding:5px 9px;border-radius:8px;background:#fffef0;color:#376246;font-size:11px;font-weight:800;line-height:1.2;box-shadow:0 1px 5px rgba(30,55,30,.08)}
+.curated-intro strong{color:#214f37}
+.publisher-recipe-card .recipe-source-link{border:0;min-height:0;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:10px 13px;background:#234d38;color:white;text-decoration:none;font-weight:800;font-size:12px;flex-shrink:0}
+.publisher-recipe-card .recipe-source-link:hover{background:#346347;color:white}
+.publisher-recipe-card .recipe-bottom{margin-top:auto}
+.publisher-recipe-card .publisher-note{margin-top:10px}
+@media(min-width:1380px){#view-recepten .cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:740px){.recipe-new-label{font-size:10px}.publisher-recipe-card .recipe-bottom{flex-wrap:wrap}}

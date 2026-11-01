@@ -1,0 +1,38 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const data=JSON.parse(fs.readFileSync('docs/data/curated-recipes.json','utf8'));
+const app=fs.readFileSync('docs/app.js','utf8');
+const html=fs.readFileSync('docs/index.html','utf8');
+const recipes=data.recipes;
+assert.equal(data.schema_version,1);
+assert.equal(recipes.length,18,'Expected eighteen complete new recipe cards');
+assert.equal(new Set(recipes.map(r=>r.id)).size,recipes.length);
+assert.equal(new Set(recipes.map(r=>r.title)).size,recipes.length);
+assert.deepEqual(Object.fromEntries(['kip','vlees','vis','vega'].map(k=>[k,recipes.filter(r=>r.category===k).length])),{kip:4,vlees:4,vis:4,vega:6});
+const produce=/(groente|paprika|spinazie|broccoli|bloemkool|courgette|tomaten|wortel|paksoi|peulvruchten|pompoen)/;
+for(const r of recipes){
+ assert.match(r.id,/^nieuw-202611-/);
+ assert.equal(r.servings,4);
+ assert.ok(r.minutes>=25&&r.minutes<=200,'Cooking duration must be plausible');
+ assert.ok(r.quality_status==='uitgewerkt_niet_culinair_getest');
+ assert.equal(r.price_status,'onbekend','Never claim unavailable final meal prices');
+ assert.ok(r.instructions.length>=4);
+ assert.ok(r.instructions.every(x=>typeof x==='string'&&x.trim().length>30),'Steps must be detailed, not placeholders');
+ assert.ok(r.ingredients.length>=6);
+ assert.ok(r.ingredients.every(i=>typeof i.name==='string'&&i.name&&i.quantity>0&&['g','ml','st'].includes(i.unit)));
+ assert.ok(r.ingredients.some(i=>produce.test(i.name)),'Each main dish needs vegetables');
+ const grams=r.ingredients.filter(x=>x.department==='Groente & fruit'&&x.unit==='g').reduce((n,x)=>n+x.quantity,0);
+ assert.ok(grams>=1200,'Aim for >=300 g vegetables/person: '+r.title);
+ assert.ok(!r.macros&&!r.cost,'No invented price or nutrition data');
+ assert.ok(!r.source_url&&!r.image,'Do not copy publisher images or recipe text');
+}
+assert.ok(app.includes('load(\'data/curated-recipes.json\')'),'New catalog must be fetched in the real browser');
+assert.ok(app.includes("id:'curated|'"),'Curated recipes need stable shop-specific identities');
+assert.ok(app.includes("id.startsWith('curated|')"),'Curated recipes must reopen after being saved or planned');
+assert.ok(app.includes('newly-curated'),'Curated recipes must render as regular recipe cards');
+assert.ok(app.includes('found.map(recipeCard)'),'They must use the existing recipe renderer');
+assert.ok(app.includes("out+=discoveredPublisherCards(s,6)"),'Publisher cards move below complete dishes');
+assert.ok(!/out\+=discoveredPublisherCards\(s,12\)/.test(app),'Link tiles should no longer precede real cards');
+assert.ok(html.includes('app.js?v=20261101-new-curated-18'),'Force refresh stale browser cache');
+console.log('18 new full recipes, store-specific card rendering and publishing safeguards verified');

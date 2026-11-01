@@ -1,0 +1,1447 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-01",
+  "description": "Nieuwe zelfstandig geschreven complete maaltijdrecepten: 4 porties, geen bewezen prijzen of macro's. Recepten zijn niet proefgekookt.",
+  "recipes": [
+    {
+      "id": "nieuw-202611-citroenkip",
+      "title": "Citroenkip van de ovenplaat met broccoli, paprika en couscous",
+      "category": "kip",
+      "cuisine": "Mediterraans",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode paprika",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde oregano",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 200 °C. Snijd de broccoli in roosjes, de stronk in dunne plakken en de paprika in repen.",
+        "Meng de groenten met 15 ml olie en oregano; rooster 15 minuten op een ruime bakplaat.",
+        "Snijd de kipfilet in stukken en meng met de rest van de olie en citroenrasp. Leg tussen de groenten en rooster nog 18–22 minuten, tot de kip volledig gaar is.",
+        "Bereid de volkoren couscous volgens de verpakking. Schep om met citroensap en serveer bij kip en groenten."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 313
+    },
+    {
+      "id": "nieuw-202611-kiprijst",
+      "title": "Kerriekip met sperziebonen, spinazie en zilvervliesrijst",
+      "category": "kip",
+      "cuisine": "Indiaas-Nederlands",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "sperziebonen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "lichte kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kerriepoeder",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de zilvervliesrijst volgens de verpakking. Maak de sperziebonen schoon en snijd de kip in stukken.",
+        "Verhit de olie en bak de kip rondom aan met het kerriepoeder.",
+        "Voeg de sperziebonen, kokosmelk en 150 ml water toe; laat zachtjes sudderen tot de bonen gaar zijn en de kip volledig gaar is.",
+        "Roer op het einde de spinazie in delen door de saus. Serveer samen met de rijst."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 313
+    },
+    {
+      "id": "nieuw-202611-kipbonen",
+      "title": "Mexicaanse kip met kidneybonen, paprika en tomaat",
+      "category": "kip",
+      "cuisine": "Mexicaans",
+      "minutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipfilet",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "paprika",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kidneybonen, uitgelekt",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "volkoren tortilla's",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "ui",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de kip, paprika, tomaten en ui klein. Spoel de kidneybonen af en laat uitlekken.",
+        "Bak de kip in olie rondom aan. Fruit de ui met komijn enkele minuten mee.",
+        "Voeg paprika en tomaat toe, doe de deksel op de pan en laat 10 minuten zacht garen.",
+        "Schep de kidneybonen erdoor en warm volledig door. Controleer of de kip gaar is en serveer in verwarmde volkoren tortilla's."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-grieksekip",
+      "title": "Griekse ovenschotel met kip, aubergine en courgette",
+      "category": "kip",
+      "cuisine": "Grieks",
+      "minutes": 50,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipdijfilet",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren bulgur",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gedroogde oregano",
+          "quantity": 7,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 205 °C. Snijd aubergine en courgette in gelijke blokken en verdeel over een bakplaat.",
+        "Meng de kipdijfilet met olie, oregano en citroenrasp. Verdeel tussen de groenten.",
+        "Rooster circa 30–35 minuten en schep tussendoor om. Controleer of de kip volledig gaar is.",
+        "Kook de bulgur zoals op de verpakking. Roer citroensap door yoghurt en serveer als frisse saus."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-runderstoof",
+      "title": "Langzaam gestoofde runderlappen met wortel en rode kool",
+      "category": "vlees",
+      "cuisine": "Hollands",
+      "minutes": 175,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "runderlappen om te stoven",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "wortel",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode kool",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kruimige aardappelen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenpuree",
+          "quantity": 70,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "laurierblad",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd het rundvlees in grote blokken, dep droog en braad in een braadpan aan met olie.",
+        "Snipper de uien en voeg toe met tomatenpuree en laurier. Schenk zoveel warm water bij dat het vlees net onderstaat.",
+        "Laat met de deksel schuin op de pan 2–2½ uur zeer zacht stoven tot het vlees mals is; voeg zo nodig water toe.",
+        "Kook de aardappelen apart gaar. Stoof rode kool en wortel in een tweede pan met een scheut water tot ze zacht zijn; serveer samen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 375
+    },
+    {
+      "id": "nieuw-202611-chilirund",
+      "title": "Rundergehaktchili met paprika, bonen en zilvervliesrijst",
+      "category": "vlees",
+      "cuisine": "Tex-Mex",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "mager rundergehakt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "paprika",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kidneybonen, uitgelekt",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 9,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 15,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de zilvervliesrijst volgens de verpakking. Snijd paprika, tomaten en ui klein.",
+        "Bak het gehakt rul en gaar in een ruime pan met olie. Voeg ui, komijn en paprikapoeder toe.",
+        "Voeg tomaten en paprika toe en laat circa 15 minuten zachtjes koken.",
+        "Schep de afgespoelde kidneybonen erdoor, laat doorwarmen en serveer met rijst."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-varkenshaas",
+      "title": "Varkenshaas met geroosterde spruitjes, wortel en krieltjes",
+      "category": "vlees",
+      "cuisine": "Hollands",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "varkenshaas",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spruitjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "krieltjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "appel",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde tijm",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 200 °C. Halveer de spruitjes, snijd wortels in stukken en meng met krieltjes, tijm en twee derde van de olie.",
+        "Rooster de groenten en aardappeltjes ongeveer 30–35 minuten; schep halverwege om.",
+        "Braad de varkenshaas rondom aan in de resterende olie en gaar verder op matig vuur tot veilig gaar. Laat kort rusten.",
+        "Snijd de appel in partjes, bak 5 minuten in dezelfde pan en roer de mosterd door het bakvocht. Serveer als saus bij het vlees en de groenten."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-rundspitskool",
+      "title": "Kruidige runderreepjes met spitskool, paprika en bulgur",
+      "category": "vlees",
+      "cuisine": "Midden-Oosters",
+      "minutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "rundvleesreepjes",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren bulgur",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "korianderpoeder",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Bereid de bulgur volgens de verpakking. Snijd spitskool in dunne repen, de paprika in stukken en ui in halve ringen.",
+        "Bak de runderreepjes kort in een hete pan in de helft van de olie. Neem uit de pan en zet apart.",
+        "Roerbak ui, spitskool en paprika met de rest van de olie en specerijen tot de groenten beetgaar zijn.",
+        "Voeg het vlees terug en verwarm tot de passende gaarheid. Schep bij de bulgur."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 350
+    },
+    {
+      "id": "nieuw-202611-ovenvis",
+      "title": "Ovenzalm met venkel, broccoli en kruidige krieltjes",
+      "category": "vis",
+      "cuisine": "Mediterraans",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "zalmfilet",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "venkel",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "krieltjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "dille",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven op 200 °C. Halveer de krieltjes, snijd venkel in dunne parten en broccoli in roosjes.",
+        "Meng krieltjes en groenten met olie en rooster 20 minuten in een ovenschaal.",
+        "Leg de zalm erop, besprenkel met citroensap en strooi dille erover. Bak nog 12–15 minuten of tot de vis gaar is.",
+        "Verdeel zalm, aardappeltjes en alle geroosterde groenten over vier borden."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-kabeljauwstoof",
+      "title": "Kabeljauwstoof met spinazie, tomaten en kikkererwten",
+      "category": "vis",
+      "cuisine": "Mediterraans",
+      "minutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kabeljauwfilet",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "kikkererwten, uitgelekt",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "volkoren brood",
+          "quantity": 320,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 7,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snipper de ui, snijd de tomaten klein en spoel de kikkererwten af.",
+        "Fruit de ui in olie met gerookt paprikapoeder en voeg de tomaten toe. Laat 10 minuten inkoken.",
+        "Voeg de kikkererwten toe en leg de kabeljauw in stukken in de saus. Gaar zachtjes met een deksel op de pan tot de vis gaar is.",
+        "Laat de spinazie op het einde slinken in de saus. Serveer met volkoren brood."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 350
+    },
+    {
+      "id": "nieuw-202611-koolvis",
+      "title": "Witvispannetje met prei, wortel en aardappelen",
+      "category": "vis",
+      "cuisine": "Hollands",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "koolvisfilet",
+          "quantity": 760,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "prei",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "vastkokende aardappelen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "groentebouillon met weinig zout",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde tijm",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Schil de aardappelen en snijd in hapklare blokjes. Snijd de prei in ringen, spoel goed en snijd de wortel fijn.",
+        "Fruit prei en wortel zachtjes met olie. Voeg de aardappelblokjes, tijm en bouillon toe en laat 15 minuten afgedekt koken.",
+        "Leg de koolvis in stukken boven op de groenten. Laat met de deksel op de pan nog 8–12 minuten zacht garen, afhankelijk van de dikte.",
+        "Controleer de gaarheid van vis en aardappelen en serveer direct als een eenpansmaaltijd."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 338
+    },
+    {
+      "id": "nieuw-202611-thaisevis",
+      "title": "Thaise vis met paksoi, paprika en zilvervliesrijst",
+      "category": "vis",
+      "cuisine": "Thais",
+      "minutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "witvisfilet",
+          "quantity": 760,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "lichte kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "limoen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gember",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de zilvervliesrijst volgens de verpakking. Snijd de paksoi (wit en groen apart) en paprika in reepjes.",
+        "Fruit geraspte gember kort in olie, voeg paprika, het witte deel van de paksoi en kokosmelk toe.",
+        "Leg de vis in de saus en laat circa 10 minuten zachtjes garen. Voeg het groene paksoideel de laatste 2 minuten toe.",
+        "Breng op smaak met limoensap en serveer met de rijst."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 325
+    },
+    {
+      "id": "nieuw-202611-tempehpinda",
+      "title": "Indonesische tempeh met pindasaus, broccoli en wortel",
+      "category": "vega",
+      "cuisine": "Indonesisch",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "tempeh",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "100% pindakaas",
+          "quantity": 80,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus met minder zout",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de zilvervliesrijst volgens de verpakking en stoom de broccoli en wortel beetgaar.",
+        "Snijd tempeh in blokken, dep droog en bak goudbruin in olie.",
+        "Meng pindakaas, sojasaus en fijngehakte gember met ongeveer 200 ml warm water tot een schenkbare saus.",
+        "Verwarm de saus kort in de tempehpan en schep de groenten erdoor. Serveer met de rijst."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 313
+    },
+    {
+      "id": "nieuw-202611-linzendahl",
+      "title": "Rode-linzendahl met bloemkool, spinazie en tomaat",
+      "category": "vega",
+      "cuisine": "Indiaas",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "rode linzen, droog",
+          "quantity": 330,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 240,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "garam masala",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de zilvervliesrijst volgens de verpakking. Spoel de rode linzen onder koud water af.",
+        "Fruit de ui met garam masala in olie, voeg tomatenblokjes, linzen en 700 ml water toe. Breng zachtjes aan de kook.",
+        "Voeg de bloemkool in kleine roosjes toe en laat 18–22 minuten zacht garen; roer regelmatig en voeg zo nodig water toe.",
+        "Schep de spinazie in delen door de dahl tot ze geslonken is. Serveer met de rijst."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 463
+    },
+    {
+      "id": "nieuw-202611-kikkererwten",
+      "title": "Mediterrane kikkererwtenpan met aubergine, paprika en bulgur",
+      "category": "vega",
+      "cuisine": "Mediterraans",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kikkererwten, uitgelekt",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "paprika",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren bulgur",
+          "quantity": 260,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "feta",
+          "quantity": 140,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "oregano",
+          "quantity": 7,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de volkoren bulgur volgens de verpakking. Snijd aubergine, paprika en tomaat in blokjes.",
+        "Bak de aubergine in een ruime pan met olie tot ze zacht wordt. Voeg paprika, tomaat en oregano toe en laat 10 minuten sudderen.",
+        "Spoel de kikkererwten af en warm ze volledig door in de groenten.",
+        "Serveer met bulgur en verkruimel over ieder bord een beetje feta."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 400
+    },
+    {
+      "id": "nieuw-202611-frittata",
+      "title": "Groentefrittata met broccoli, courgette, doperwten en aardappel",
+      "category": "vega",
+      "cuisine": "Italiaans",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "eieren",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "broccoli",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "doperwten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "vastkokende aardappelen",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "geraspte 30+ kaas",
+          "quantity": 120,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde oregano",
+          "quantity": 5,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 190 °C. Snijd de aardappelen in blokjes en kook 8 minuten voor. Maak broccoli klein en snijd courgette in halve plakjes.",
+        "Stoom broccoli en doperwten kort voor en meng met de courgette en aardappelen in een ingevette ovenschaal.",
+        "Klop de eieren los met oregano en geraspte kaas. Giet over de groenten.",
+        "Bak 22–28 minuten in de oven tot het midden volledig gestold is. Snijd in vier stukken."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 363
+    },
+    {
+      "id": "nieuw-202611-tofu-noedels",
+      "title": "Tofu met paksoi, champignons en volkoren noedels",
+      "category": "vega",
+      "cuisine": "Aziatisch",
+      "minutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "stevige tofu",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paksoi",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "champignons",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 350,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren noedels",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus met minder zout",
+          "quantity": 40,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gember",
+          "quantity": 25,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de volkoren noedels volgens de verpakking. Dep tofu droog en snijd in dobbelstenen.",
+        "Snijd paksoi, champignons en wortel. Houd het paksoigroen apart.",
+        "Bak tofu in olie goudbruin en voeg vervolgens champignons, wortel, gember en het witte deel van paksoi toe.",
+        "Voeg paksoigroen en sojasaus toe, roerbak kort en meng met de noedels."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 375
+    },
+    {
+      "id": "nieuw-202611-pompoentajine",
+      "title": "Pompoentajine met witte bonen, spinazie en volkoren couscous",
+      "category": "vega",
+      "cuisine": "Marokkaans",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "witte bonen, uitgelekt",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "pompoen",
+          "quantity": 850,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous",
+          "quantity": 260,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "uien",
+          "quantity": 180,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "ras el hanout",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Schil de pompoen indien nodig en snijd in blokken. Snipper de ui en spoel de bonen af.",
+        "Fruit ui en ras el hanout in olie. Voeg pompoen en tomatenblokjes met 250 ml water toe.",
+        "Stoof 20–25 minuten zachtjes tot de pompoen gaar is. Voeg de bonen de laatste 8 minuten toe.",
+        "Schep de spinazie in delen door de stoof en bereid de volkoren couscous volgens de verpakking. Serveer samen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": 370
+    }
+  ]
+}
