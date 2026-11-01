@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-01T11:11:46.840Z",
+  "generated_at": "2026-11-01T11:12:28.192Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
-    "match": 237,
-    "partial": 380,
-    "reject": 207
+    "match": 239,
+    "partial": 376,
+    "reject": 209
   },
   "profiles": {
     "sungold": {
@@ -607,8 +607,8 @@
     },
     "kipfilet": {
       "match": 48,
-      "partial": 80,
-      "reject": 70,
+      "partial": 78,
+      "reject": 72,
       "reasons": {
         "productkenmerken en verpakking passen": 48,
         "productnaam of uitsluitingen passen niet": 6,
@@ -619,7 +619,7 @@
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
         "niet herkende productbeschrijving: flinterdun": 4,
-        "andere productvorm: cooked": 23,
+        "andere productvorm: cooked": 25,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -655,8 +655,6 @@
         "niet herkende productbeschrijving: meals chunks risotto spinaci": 1,
         "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw": 1,
         "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
-        "niet herkende productbeschrijving: wahid": 4,
-        "niet herkende productbeschrijving: wahid chilipeper": 2,
         "niet herkende productbeschrijving: minder": 2,
         "niet herkende productbeschrijving: flinterdunne": 2,
         "andere doelgroep: baby": 1,
@@ -673,6 +671,8 @@
         "niet herkende productbeschrijving: knorr trattoria romana": 1,
         "niet herkende productbeschrijving: marhaba": 1,
         "niet herkende productbeschrijving: streeckgenoten ovengebakken": 1,
+        "niet herkende productbeschrijving: wahid": 3,
+        "niet herkende productbeschrijving: wahid chilipeper": 1,
         "niet herkende productbeschrijving: wahid provence": 1
       },
       "samples": [
@@ -757,11 +757,11 @@
       }
     },
     "vis": {
-      "match": 43,
-      "partial": 26,
+      "match": 44,
+      "partial": 25,
       "reject": 28,
       "reasons": {
-        "productkenmerken en verpakking passen": 43,
+        "productkenmerken en verpakking passen": 44,
         "niet herkende productbeschrijving: blue planet": 1,
         "niet herkende productbeschrijving: deense": 1,
         "niet herkende productbeschrijving: deense ger": 1,
@@ -780,8 +780,7 @@
         "niet herkende productbeschrijving: ca": 4,
         "andere productvorm: prepared": 2,
         "andere productvorm: mixed": 2,
-        "niet herkende productbeschrijving: queens": 1,
-        "niet herkende productbeschrijving: rosewood strips": 1,
+        "niet herkende productbeschrijving: strips": 1,
         "plantaardige variant in vlees/visvergelijking": 1,
         "niet herkende productbeschrijving: op": 3,
         "niet herkende productbeschrijving: warmgerookte": 2,
@@ -886,7 +885,7 @@
         "pollock|frozen||naturel|kg": {
           "label": "Koolvis · diepvries · per kg",
           "stores": {
-            "jumbo": 1
+            "jumbo": 2
           }
         },
         "salmon|frozen||naturel|kg": {
@@ -933,7 +932,7 @@
         "niet herkende productbeschrijving: mini": 1,
         "niet herkende productbeschrijving: lampjes": 1,
         "niet herkende productbeschrijving: lantaarn": 1,
-        "niet herkende productbeschrijving: slooow crispy broodjes": 1,
+        "niet herkende productbeschrijving: crispy broodjes": 1,
         "niet herkende productbeschrijving: abdij broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
         "niet herkende productbeschrijving: maaltijdhapje rijst kip": 1,
@@ -1027,18 +1026,17 @@
       }
     },
     "sperziebonen": {
-      "match": 6,
-      "partial": 20,
+      "match": 7,
+      "partial": 19,
       "reject": 21,
       "reasons": {
         "vers/diepvries of conserven niet uit productbron vastgesteld": 14,
         "andere productvorm: preserved": 15,
         "niet herkende productbeschrijving: tk": 1,
-        "niet herkende productbeschrijving: ardo": 1,
+        "productkenmerken en verpakking passen": 7,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
-        "productkenmerken en verpakking passen": 6,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: sate": 1,
@@ -1089,12 +1087,18 @@
         },
         {
           "store": "jumbo",
-          "name": "Ardo Gebroken Sperziebonen 1KG",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: ardo"
+          "name": "Ella's Kitchen Organic Bio Kipkerrie met Sperziebonen + Kokos 10 M+ 190 g",
+          "status": "reject",
+          "reason": "andere doelgroep: baby"
         }
       ],
       "groups": {
+        "green_beans|frozen||naturel|kg": {
+          "label": "Sperziebonen · diepvries · per kg",
+          "stores": {
+            "jumbo": 1
+          }
+        },
         "green_beans|frozen||naturel · biologisch|kg": {
           "label": "Sperziebonen · naturel · biologisch · diepvries · per kg",
           "stores": {
@@ -1591,10 +1595,10 @@
         "winkelpagina noemt een andere verpakking; hercontrole nodig": 2,
         "productnaam of uitsluitingen passen niet": 9,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
-        "niet herkende productbeschrijving: tea of life brandnetel kaneel": 1,
+        "niet herkende productbeschrijving: brandnetel kaneel": 1,
         "andere productvorm: prepared": 2,
-        "niet herkende productbeschrijving: zonnatura brandnetel zakjes": 1,
-        "niet herkende productbeschrijving: zonnatura gember zakjes": 1,
+        "niet herkende productbeschrijving: brandnetel zakjes": 1,
+        "niet herkende productbeschrijving: gember zakjes": 1,
         "niet herkende productbeschrijving: bruiswater gember": 2,
         "niet herkende productbeschrijving: ecover allesreiniger gember": 1,
         "niet herkende productbeschrijving: ecover allesreiniger gember navul": 1,
@@ -1630,7 +1634,7 @@
           "store": "jumbo",
           "name": "Tea of Life Brandnetel citroengras kaneel 20 stuks",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: tea of life brandnetel kaneel"
+          "reason": "niet herkende productbeschrijving: brandnetel kaneel"
         },
         {
           "store": "jumbo",
@@ -1677,7 +1681,7 @@
       "name": "Ardo Gebroken Sperziebonen 1KG",
       "pack": "",
       "url": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
-      "reason": "niet herkende productbeschrijving: ardo",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "6894f8e75f9896f872eed691"
     },
     {
@@ -2458,7 +2462,7 @@
       "name": "Queens Alaska Koolvis Filets 375 g",
       "pack": "375 g",
       "url": "https://www.jumbo.com/producten/queens-alaska-koolvis-filets-375-g-419422ZK",
-      "reason": "niet herkende productbeschrijving: queens",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d7c19e31f892209053227e38"
     },
     {
@@ -2469,7 +2473,7 @@
       "name": "Rosewood Zalmfilet Strips 150g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/rosewood-zalmfilet-strips-150g-150326STK",
-      "reason": "niet herkende productbeschrijving: rosewood strips",
+      "reason": "niet herkende productbeschrijving: strips",
       "fingerprint": "93047f8afc29924401356511"
     },
     {
@@ -2480,7 +2484,7 @@
       "name": "SlooOW Bio Organic Crispy Pompoen Broodjes 320 g",
       "pack": "320 g",
       "url": "https://www.jumbo.com/producten/slooow-bio-organic-crispy-pompoen-broodjes-320-g-406137ZK",
-      "reason": "niet herkende productbeschrijving: slooow crispy broodjes",
+      "reason": "niet herkende productbeschrijving: crispy broodjes",
       "fingerprint": "44420ef787eeb52628cf61fe"
     },
     {
@@ -2502,30 +2506,8 @@
       "name": "Tea of Life Brandnetel citroengras kaneel 20 stuks",
       "pack": "",
       "url": "https://www.jumbo.com/producten/tea-of-life-brandnetel-citroengras-kaneel-20-stuks-749297DS",
-      "reason": "niet herkende productbeschrijving: tea of life brandnetel kaneel",
+      "reason": "niet herkende productbeschrijving: brandnetel kaneel",
       "fingerprint": "e83e4c21273478b76dfa71a9"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "wahid-kipfilet-125-g-608653PAK",
-      "name": "Wahid Kipfilet 125 g",
-      "pack": "125 g",
-      "url": "https://www.jumbo.com/producten/wahid-kipfilet-125-g-608653PAK",
-      "reason": "niet herkende productbeschrijving: wahid",
-      "fingerprint": "c42c28c8d9aad6ca7ae437cc"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "wahid-kipfilet-chilipeper-125-g-608651TRA",
-      "name": "Wahid Kipfilet Chilipeper 125 g",
-      "pack": "125 g",
-      "url": "https://www.jumbo.com/producten/wahid-kipfilet-chilipeper-125-g-608651TRA",
-      "reason": "niet herkende productbeschrijving: wahid chilipeper",
-      "fingerprint": "369737c87d737eabfda534ba"
     },
     {
       "profile": "pompoen",
@@ -3734,7 +3716,7 @@
       "name": "Zonnatura Bio 100% Brandnetel Citroengras 20 Zakjes 32 g",
       "pack": "32 g",
       "url": "https://www.jumbo.com/producten/zonnatura-bio-100-brandnetel-citroengras-20-zakjes-32-g-158160DS",
-      "reason": "niet herkende productbeschrijving: zonnatura brandnetel zakjes",
+      "reason": "niet herkende productbeschrijving: brandnetel zakjes",
       "fingerprint": "80a3d3321f6c3cf42dcc9c64"
     },
     {
@@ -3745,7 +3727,7 @@
       "name": "Zonnatura Bio 100% Gember Citroengras 20 Zakjes 30 g",
       "pack": "30 g",
       "url": "https://www.jumbo.com/producten/zonnatura-bio-100-gember-citroengras-20-zakjes-30-g-194715DS",
-      "reason": "niet herkende productbeschrijving: zonnatura gember zakjes",
+      "reason": "niet herkende productbeschrijving: gember zakjes",
       "fingerprint": "47d820d5f3c8251db4311f31"
     },
     {

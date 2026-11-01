@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T11:11:49.109Z",
+  "generated_at": "2026-11-01T11:12:29.938Z",
   "checked_date": "2026-11-01",
   "summary": {
     "profiles": 20,
@@ -278,11 +278,11 @@
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-wilde-zalmfilet-2-x-125-g-76159PAK",
-        "product_name": "Jumbo Wilde Zalmfilet 2 x 125 g",
-        "price": 2.99,
-        "price_status": "externe prijswaarneming · 2026-10-31",
-        "checked_date": "2026-10-31"
+        "source": "https://www.jumbo.com/producten/queens-alaska-koolvis-filets-375-g-419422ZK",
+        "product_name": "Queens Alaska Koolvis Filets 375 g",
+        "price": 4.09,
+        "price_status": "externe prijswaarneming · 2026-11-01",
+        "checked_date": "2026-11-01"
       },
       "pompoen": {
         "state": "price_observed",
@@ -296,11 +296,11 @@
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-500-g-302252ZK",
-        "product_name": "Jumbo Sperziebonen 500 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-10-31",
-        "checked_date": "2026-10-31"
+        "source": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
+        "product_name": "Ardo Gebroken Sperziebonen 1KG",
+        "price": 2.07,
+        "price_status": "externe prijswaarneming · 2026-11-01",
+        "checked_date": "2026-11-01"
       },
       "bospeen": {
         "state": "price_observed",
@@ -368,11 +368,11 @@
       "sereh": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
-        "product_name": "Jumbo Citroengras 100 g",
-        "price": 3.38,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "source": "https://www.jumbo.com/producten/go-tan-sereh-citroengras-22g-125753POT",
+        "product_name": "Go-Tan Sereh Citroengras 22g",
+        "price": 2.29,
+        "price_status": "externe prijswaarneming · 2026-11-01",
+        "checked_date": "2026-11-01"
       }
     },
     "ah": {
