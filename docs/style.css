@@ -168,3 +168,9 @@
 .recipe-library-gate h3{font-size:18px;margin:0 0 8px}
 .recipe-library-gate p{font-size:13px;line-height:1.65;color:var(--muted);max-width:720px}
 @media(max-width:740px){.publisher-heading{align-items:flex-start}.publisher-heading h3{font-size:17px}.recipe-library-gate{padding:16px}}
+
+/* HelloFresh is the first, deliberately selected cookbook source. */
+.publisher-source-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.publisher-source-toggle .pill{font-weight:750}
+.publisher-source-toggle>a{font-size:12px;color:var(--ink);margin-left:auto;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:650px){.publisher-source-toggle>a{width:100%;margin:3px 0 0}}
