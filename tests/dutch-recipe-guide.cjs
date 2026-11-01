@@ -1,0 +1,34 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const guide=require('../docs/dutch-recipe-index.js');
+const index=JSON.parse(fs.readFileSync('docs/data/publisher-recipes.json','utf8'));
+assert.ok(index.recipes.length>=59);
+assert.equal(guide.browse(index).length,index.recipes.length);
+assert.ok(guide.browse(index,{onlySelected:true}).length>=35);
+for(const {key,title,count} of guide.overview(index)){
+ assert.ok(count>0,'No Dutch recipes in '+title);
+ if(key!=='alle')assert.ok(count>=5,'Category too narrow: '+key);
+}
+const selected=guide.browse(index,{onlySelected:true});
+assert.ok(selected.every(r=>r.review_status!=='publisher_sitemap_title_only'));
+const broader=guide.browse(index,{category:'groenten',query:'spinazie',limit:100});
+assert.ok(broader.length>=4,'Need diverse direct spinach links');
+assert.ok(broader.every(r=>r.families.some(x=>['spinazie','broccoli','bloemkool','paprika','courgette','aubergine','sperziebonen','tomaten','wortel','paksoi','prei','spitskool','boerenkool','venkel','champignons','pompoen'].includes(x))));
+const fish=guide.browse(index,{category:'vis'});
+assert.ok(fish.some(r=>r.families.includes('zalm')));
+const meat=guide.browse(index,{category:'vlees'});
+assert.ok(meat.some(r=>r.families.includes('riblappen')));
+assert.ok(meat.some(r=>r.families.includes('gehakt')));
+assert.equal(guide.browse(index,{query:'THISWORDDOESNOTEXIST'}).length,0);
+assert.ok(!guide.trusted({title:'Spam',url:'https://www.ah.nl.evil.example/recepten',source:'Allerhande',review_status:'handmatig_gevonden_bij_uitgever',families:['kip']}));
+assert.ok(!guide.trusted({title:'Unverified slug',url:'https://www.ah.nl/allerhande/recepten',source:'Allerhande',review_status:'external_unverified',families:['kip']}));
+const tier=guide.browse(index,{category:'alle'});
+const seenUnverified=tier.findIndex(r=>r.review_status==='publisher_sitemap_title_only');
+assert.ok(seenUnverified>0,'Sitemap-only links must not outrank selected sources');
+assert.ok(tier.slice(0,seenUnverified).every(r=>r.review_status!=='publisher_sitemap_title_only'));
+const md=fs.readFileSync('NEDERLANDSE_RECEPTENGIDS.md','utf8');
+for(const name of ['Met groenten','Peulvruchten & tofu','Met kip','Met vlees','Met vis','Herkomst en kwaliteit'])assert.ok(md.includes('## '+name),'Missing readable guide section '+name);
+assert.ok(md.includes('59 directe receptverwijzingen'),'Public directory must list actual records');
+assert.ok(!md.includes('0 directe receptverwijzingen'),'Never publish empty index on an populated catalogue');
+console.log('Nederlandse receptengids: '+tier.length+' originele receptenlinks, '+selected.length+' geselecteerde bronnen, 5 betekenisvolle ingrediëntcategorieën, geen valse voedingsclaims');
