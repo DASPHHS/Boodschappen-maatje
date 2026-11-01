@@ -71,6 +71,8 @@ on:
       - 'tests/test_lidl_official.py'
       - 'tests/recipe-variety.cjs'
       - 'tests/curated-recipe-cards.cjs'
+      - 'docs/recipe-presentation.js'
+      - 'tests/recipe-presentation.cjs'
       - 'tests/recipe-price-cache.cjs'
       - 'docs/data/lidl-source-registry.json'
       - 'docs/data/supplemental-offers.json'
@@ -114,6 +116,7 @@ jobs:
           node tests/recipe-shop-options.cjs
           node tests/recipe-variety.cjs
           node tests/curated-recipe-cards.cjs
+          node tests/recipe-presentation.cjs
           node tests/recipe-price-cache.cjs
           node tests/recipe-price-ui.cjs
           node tests/recipe-price-coverage.cjs
