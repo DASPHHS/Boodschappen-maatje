@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T10:19:01.764837+01:00",
+  "generated_at": "2026-11-01T10:26:15.492733+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-10-31T12:13:27.586373+01:00",
+      "checked_at": "2026-11-01T10:26:13.656087+01:00",
       "status": "ok",
       "offers": [
         {
@@ -27,7 +27,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-31",
+          "checked_at": "2026-11-01",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -49,7 +49,7 @@
           },
           "promotion_status": "active",
           "verified": false,
-          "checked_at": "2026-10-31",
+          "checked_at": "2026-11-01",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
         },
@@ -599,19 +599,17 @@
         }
       ],
       "official_check": {
-        "checked_at": "2026-11-01T10:19:01.764837+01:00",
-        "status": "ok",
-        "pages": {
-          "https://www.lidl.nl/c/aanbiedingen/a10008785": 51,
-          "https://www.lidl.nl/c/lidl-plus/s10008463": 0
+        "checked_at": "2026-11-01T10:26:15.492733+01:00",
+        "status": "partial",
+        "pages": {},
+        "errors": {
+          "https://www.lidl.nl/c/aanbiedingen/a10008785": "HTTP Error 503: Service Temporarily Unavailable",
+          "https://www.lidl.nl/c/lidl-plus/s10008463": "HTTP Error 503: Service Temporarily Unavailable"
         },
-        "errors": {},
-        "current_offers": 1,
-        "retained_offers": 16,
-        "regular_prices": 1,
-        "skipped_pages": {
-          "https://www.lidl.nl/c/lidl-plus/s10008463": "Public page currently has no product grid"
-        },
+        "current_offers": 0,
+        "retained_offers": 17,
+        "regular_prices": 0,
+        "skipped_pages": {},
         "last_success_at": "2026-11-01T10:19:01.764837+01:00"
       },
       "official_prices": [
