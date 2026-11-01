@@ -2,13 +2,15 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const index=JSON.parse(fs.readFileSync('docs/data/publisher-recipes.json','utf8'));
 const e=require('../docs/recipe-discovery.js');
-assert.ok(index.recipes.length>=35,'At least 35 verified recipe page candidates from publishers');
+assert.ok(index.recipes.length>=75,'At least 35 verified recipe page candidates from publishers');
 const urls=new Set(),families=new Set(),methods=new Set();
 for(const r of index.recipes){
  assert.ok(!urls.has(r.url),'Canonical recipe URLs must be unique: '+r.url);urls.add(r.url);
  assert.match(r.title,/\S{5}/);
  assert.ok((r.source==='Allerhande'&&r.url.startsWith('https://www.ah.nl/allerhande/'))||
-  (r.source==='Jumbo'&&r.url.startsWith('https://www.jumbo.com/recepten/')),'Trusted publishing host only');
+  (r.source==='Jumbo'&&r.url.startsWith('https://www.jumbo.com/recepten/'))||
+  (r.source==='Voedingscentrum'&&r.url.startsWith('https://www.voedingscentrum.nl/recepten/gezond-recept/'))||
+  (r.source==='24Kitchen'&&r.url.startsWith('https://www.24kitchen.nl/recepten/')),'Trusted publishing host only');
  assert.ok(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status));
  assert.ok(Array.isArray(r.families)&&r.families.length>0);
  r.families.forEach(x=>families.add(x));if(r.method)methods.add(r.method);
@@ -31,4 +33,19 @@ assert.ok(new Set(mixed.map(x=>x.family)).size>=3,'Do not recommend only one ing
 assert.ok(!mixed.some(x=>/google.com\/search/.test(x.recipe.url)),'No more search engine result links');
 const example=e.publisherMatches({name:'Runderriblappen',category:'vlees'},index,10);
 assert.ok(example.some(x=>/rendang/i.test(x.recipe.title)));
+// Each new publisher must be visible in the deal -> recipe matching mechanism.
+for(const [name,category,source] of [
+ ['Broccoli','groente','Voedingscentrum'],
+ ['Kikkererwten','vega','24Kitchen'],
+ ['Kabeljauwfilet','vis','Voedingscentrum'],
+ ['Boerenkool','groente','Voedingscentrum']
+]){
+ const hits=e.publisherMatches({name,category},index,100);
+ assert.ok(hits.some(x=>x.recipe.source===source),name+' should match '+source);
+}
+const forged={recipes:[{title:'Fictieve brochure',source:'Voedingscentrum',
+ url:'https://www.voedingscentrum.nl.attacker.example/recepten/gezond-recept/fake',
+ families:['broccoli'],review_status:'handmatig_gevonden_bij_uitgever'}]};
+assert.deepEqual(e.publisherMatches({name:'Broccoli',category:'groente'},forged),[],
+ 'Reject lookalike publisher domains');
 console.log('Publisher index:',index.recipes.length,'curated real links,',families.size,'ingredient families, ranked and diversified');
