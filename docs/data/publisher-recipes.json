@@ -2374,6 +2374,583 @@
       "has_legumes": true,
       "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194435",
+      "title": "Ovenschotel met gehakt en spitskool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194435/ovenschotel-met-gehakt-en-spitskool",
+      "families": [
+        "gehakt",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1189429",
+      "title": "Vegan curry met spitskool en paddenstoelen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189429/vegan-curry-met-spitskool-en-paddenstoelen",
+      "families": [
+        "champignons",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198017",
+      "title": "Curry met kokosmelk kikkererwten en spitskool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198017/curry-met-kokosmelk-kikkererwten-en-spitskool",
+      "families": [
+        "kikkererwten",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198631",
+      "title": "Snelle rijstbowl met krokante kip en spitskool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198631/snelle-rijstbowl-met-krokante-kip-en-spitskool",
+      "families": [
+        "kip",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r148018",
+      "title": "Stamppot met spitskool gebakken salami en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R148018/stamppot-met-spitskool-gebakken-salami-en-tomaat",
+      "families": [
+        "spitskool",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186243",
+      "title": "Zoetzure kip met spitskool en romige kokosrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186243/zoetzure-kip-met-spitskool-en-romige-kokosrijst",
+      "families": [
+        "kip",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1199092",
+      "title": "Omelet met spitskool avocado en gebakken garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199092/omelet-met-spitskool-avocado-en-gebakken-garnalen",
+      "families": [
+        "garnalen",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195918",
+      "title": "Rijstroerbak met spitskool paprika en tex mex tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195918/rijstroerbak-met-spitskool-paprika-en-tex-mex-tofu",
+      "families": [
+        "paprika",
+        "spitskool",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "roerbak",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197092",
+      "title": "Kip kerrierijstschotel met champignons en spitskool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197092/kip-kerrierijstschotel-met-champignons-en-spitskool",
+      "families": [
+        "champignons",
+        "kip",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1200868",
+      "title": "Mealprep noedels met 5 spice tofu spitskool en edamame",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200868/mealprep-noedels-met-5-spice-tofu-spitskool-en-edamame",
+      "families": [
+        "spitskool",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198520",
+      "title": "Spitskool uit de oven met tomatensaus rijst en gekookt ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198520/spitskool-uit-de-oven-met-tomatensaus-rijst-en-gekookt-ei",
+      "families": [
+        "eieren",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197328",
+      "title": "Aardappelpuree met gebakken spitskool kikkererwten en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197328/aardappelpuree-met-gebakken-spitskool-kikkererwten-en-tomaat",
+      "families": [
+        "kikkererwten",
+        "spitskool",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 2,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r246346",
+      "title": "Stoofpotje van kip en champignons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R246346/stoofpotje-van-kip-en-champignons",
+      "families": [
+        "champignons",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r401272",
+      "title": "Ovenschotel met aubergine en gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R401272/ovenschotel-met-aubergine-en-gehakt",
+      "families": [
+        "aubergine",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r921846",
+      "title": "Groentecurry met aubergine en pompoen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R921846/groentecurry-met-aubergine-en-pompoen",
+      "families": [
+        "aubergine",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r413102",
+      "title": "Pasta met kip courgette en champignons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R413102/pasta-met-kip-courgette-en-champignons",
+      "families": [
+        "champignons",
+        "courgette",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202282",
+      "title": "Gevulde aubergine met linzen en bulgur",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202282/gevulde-aubergine-met-linzen-en-bulgur",
+      "families": [
+        "aubergine",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186126",
+      "title": "Sobanoedelsoep met paddenstoelen en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186126/sobanoedelsoep-met-paddenstoelen-en-ei",
+      "families": [
+        "champignons",
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r480286",
+      "title": "Pasta met gestoofde aubergine en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R480286/pasta-met-gestoofde-aubergine-en-tomaat",
+      "families": [
+        "aubergine",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1302801",
+      "title": "Noedels met gepofte aubergine en tempeh",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1302801/noedels-met-gepofte-aubergine-en-tempeh",
+      "families": [
+        "aubergine",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1130712",
+      "title": "Gevulde aubergine en paprika met bulgur",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1130712/gevulde-aubergine-en-paprika-met-bulgur",
+      "families": [
+        "aubergine",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197995",
+      "title": "Ovenschotel van aardappel en champignons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197995/ovenschotel-van-aardappel-en-champignons",
+      "families": [
+        "aardappelen",
+        "champignons"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r361528",
+      "title": "Met witte kaas en gehakt gevulde aubergine",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R361528/met-witte-kaas-en-gehakt-gevulde-aubergine",
+      "families": [
+        "aubergine",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186181",
+      "title": "Noedels met kip bonen paddenstoelen en sla",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186181/noedels-met-kip-bonen-paddenstoelen-en-sla",
+      "families": [
+        "champignons",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1193919",
+      "title": "Kikkererwtenpasta met aubergine en tomaten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193919/kikkererwtenpasta-met-aubergine-en-tomaten",
+      "families": [
+        "aubergine",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1187622",
+      "title": "Truffelrisotto met champignons en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187622/truffelrisotto-met-champignons-en-spinazie",
+      "families": [
+        "champignons",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185473",
+      "title": "Indiase curry met kip aardappel en aubergine",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185473/indiase-curry-met-kip-aardappel-en-aubergine",
+      "families": [
+        "aardappelen",
+        "aubergine",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1302916",
+      "title": "Eenpansrisotto met kip champignons en nduja",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1302916/eenpansrisotto-met-kip-champignons-en-nduja",
+      "families": [
+        "champignons",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-176c4acdfc1acd",
+      "source": "HelloFresh",
+      "title": "Klassieke boerenkoolstamppot met rookworst",
+      "url": "https://www.hellofresh.nl/recipes/klassieke-boerenkoolstamppot-met-rookworst-566f10164dab71d3128b4567",
+      "families": [
+        "boerenkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-d25e91d7aa0f6c",
+      "source": "HelloFresh",
+      "title": "Noord-Indiase stijl masala-pasta met veggie gehakt en koriander",
+      "url": "https://www.hellofresh.nl/recipes/noord-indiase-stijl-masala-pasta-met-veggie-gehakt-en-koriander-6a16d7667200e2f203e8d767",
+      "families": [
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-220a85ad785796",
+      "source": "HelloFresh",
+      "title": "Zalm met mangochutney",
+      "url": "https://www.hellofresh.nl/recipes/zalm-met-mangochutney-65c101b4633eb6f93b8c62a5",
+      "families": [
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-7967751e2293de",
+      "source": "HelloFresh",
+      "title": "Witte asperges in romige dragonsaus",
+      "url": "https://www.hellofresh.nl/recipes/witte-asperges-met-romige-dragonsaus-65b02207733ee86f886dfbc2",
+      "families": [
+        "aardappelen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
     }
   ]
 }
