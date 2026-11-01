@@ -15,7 +15,7 @@ def cursor_page(data):
 
 def sync(retailer,previous,get):
     """get(path, params) handles transport/rate limits. State is scoped per retailer."""
-    if previous and previous.get('retailer')==retailer and type(previous.get('cursor')) is int and isinstance(previous.get('products'),dict):
+    if previous and previous.get('retailer')==retailer and type(previous.get('cursor')) is int and isinstance(previous.get('products'),dict) and all(isinstance(p,dict) and p.get('product_id')==k and p.get('retailer')==retailer for k,p in previous['products'].items()):
         state=deepcopy(previous);mode='delta'
     else:state=None
     if state is None:return bootstrap(retailer,get)

@@ -38,6 +38,7 @@ def parse(html,url,today):
         candidates=product.get('offers',[]);candidates=[candidates] if isinstance(candidates,dict) else candidates
         accepted=[]
         for offer in candidates:
+            if not isinstance(offer,dict) or not isinstance(offer.get('seller'),dict) or isinstance(offer.get('price'),bool):continue
             if offer.get('seller',{}).get('@id') not in sellers or offer.get('url')!=url or offer.get('priceCurrency')!='EUR':continue
             try:
                 start=datetime.fromisoformat(offer['validFrom']).astimezone(ZoneInfo('Europe/Amsterdam')).date()

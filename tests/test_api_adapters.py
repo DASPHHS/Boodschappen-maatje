@@ -37,6 +37,10 @@ class ChangeFeed(unittest.TestCase):
         old={'retailer':'lidl','cursor':1,'products':{}}
         for data in [{'cursor':1,'has_more':True,'changes':[]},{'cursor':2,'has_more':False,'changes':[{'retailer':'jumbo','product_id':'x','change':'delete'}]}]:
             with self.assertRaises(ValueError):sync('lidl',old,lambda *a:data)
+    def test_corrupt_cached_rows_bootstrap_instead_of_sticking(self):
+        def get(path,params):return {'cursor':20,'has_more':False,'changes':[]} if path.endswith('changes') else {'total':0,'products':[]}
+        state,mode=sync('lidl',{'retailer':'lidl','cursor':1,'products':{'bad':'broken'}},get)
+        self.assertEqual(mode,'bootstrap');self.assertEqual(state['products'],{})
     def test_truncated_full_sync_rejected(self):
         def get(path,params):return {'cursor':1,'has_more':False,'changes':[]} if path.endswith('changes') else {'total':101,'products':[self.product('one')]}
         with self.assertRaises(ValueError):sync('lidl',None,get)
@@ -48,7 +52,7 @@ class Folderz(unittest.TestCase):
     def test_dated_external_price_without_guessed_weight(self):
         o=parse(self.html(),self.url,date(2026,11,1));self.assertEqual(o['price'],.69);self.assertFalse(o['verified']);self.assertIsNone(o['regular_price']);self.assertEqual(o['pack_label'],'inhoud niet bevestigd')
     def test_wrong_seller_expired_currency_missing_dates_rejected(self):
-        for kw in [dict(seller={'@id':'ah'}),dict(priceCurrency='USD'),dict(validFrom=''),dict(validThrough='2026-10-30T23:59:59+01:00')]:self.assertIsNone(parse(self.html(**kw),self.url,date(2026,11,1)))
+        for kw in [dict(seller='lidl'),dict(price=True),dict(seller={'@id':'ah'}),dict(priceCurrency='USD'),dict(validFrom=''),dict(validThrough='2026-10-30T23:59:59+01:00')]:self.assertIsNone(parse(self.html(**kw),self.url,date(2026,11,1)))
 class ImportTransaction(unittest.TestCase):
     def test_main_bootstrap_delta_then_failure_retains_both_versions(self):
         import tempfile

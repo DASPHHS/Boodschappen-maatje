@@ -128,6 +128,7 @@ def main():
     state_path=SYNC_STATE
     try:sync_state=json.loads(state_path.read_text())
     except (OSError,ValueError):sync_state={'schema_version':1,'stores':{}}
+    if not isinstance(sync_state,dict) or sync_state.get('schema_version')!=1 or not isinstance(sync_state.get('stores'),dict):sync_state={'schema_version':1,'stores':{}}
     def get(path,params):
         # Stay below the documented unauthenticated 30 bulk requests/minute.
         time.sleep(2.2 if not os.environ.get('PRIJS_PROFEET_KEY') else .45)
