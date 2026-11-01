@@ -129,7 +129,9 @@ def candidates(sitemap,existing,today):
         if url in existing or EXCLUDE.search(url):continue
         slug=url.rsplit("/",1)[-1].replace("-"," ")
         groups=families_of(slug)
-        if not groups:continue
+        # Filter official sitemap titles to viable balanced *meals* BEFORE
+        # spending the bounded request budget on inaccessible recipe pages.
+        if not groups or not sitemap_record(url,today.isoformat()):continue
         urls.append((url,groups))
     # Deterministic per week; prioritize undercovered families without a fixed category bias
     existing_counts=Counter(key for r in existing.values() for key in r.get("families",[]))
@@ -166,16 +168,18 @@ def sync(today=None,max_pages=28):
     try:items=candidates(fetch(SITEMAP),existing,today)
     except (OSError,ValueError,ET.ParseError) as exc:
         print("Sitemap unavailable, keeping reviewed recipes:",str(exc)[:220]);return 0
-    added=0;checked=0;methods=Counter()
+    added=0;checked=0;methods=Counter();page_blocked=False
     for url,_ in items:
         if checked>=max_pages or len(existing)>=225:break
-        try:
-            page=fetch(url,1_100_000)
-            records=schema_recipes(page)
-        except (OSError,ValueError) as exc:
-            # AH blocks automated recipe pages with HTTP 403, even though the
-            # official sitemap is public. Never pretend we saw Recipe JSON-LD.
-            records=[]
+        records=[]
+        if not page_blocked:
+            try:
+                page=fetch(url,1_100_000)
+                records=schema_recipes(page)
+            except (OSError,ValueError) as exc:
+                # An actual 403 is a refusal. Stop automated page requests
+                # immediately; only public sitemap titles may be indexed.
+                if getattr(exc,'code',None)==403:page_blocked=True
         checked+=1
         record=next((x for meta in records
             if (x:=to_record(url,meta,today.isoformat()))),None)
