@@ -687,7 +687,18 @@ function cookingIdeasPanel(){
  if(!selection&&!state.cookingQuery)return '';
  const offer=selection?offers(store).find(x=>x.id===selection.id):{name:state.cookingQuery};
  const idea=window.MaatjeRecipeDiscovery?.classify(offer);
- if(!offer||!idea)return '';
+ if(!offer)return '';
+ if(!idea){
+  if(selection)return '';
+  const q=String(state.cookingQuery||'').slice(0,100);
+  return '<section id="cooking-ideas" class="info-banner warning"><strong>Geen betrouwbare automatische ingrediëntkoppeling voor '+safe(q)+'</strong>'+
+   '<p>Dit product is nog niet culinair herkend. Ik verbind het niet zomaar aan een bestaand recept of prijs. Bekijk eventueel recepten bij de oorspronkelijke uitgever.</p>'+
+   ['ah.nl/allerhande/recept/','jumbo.com/recepten/'].map((domain,i)=>
+    '<a class="button secondary small" target="_blank" rel="noopener noreferrer" href="'+
+    attr('https://www.google.com/search?q='+encodeURIComponent('site:'+domain+' '+q))+'">'+
+    (i?'Zoek bij Jumbo':'Zoek bij Allerhande')+' ↗</a>').join(' ')+
+   ' <button class="button secondary small" data-clear-cook="1">Wis product</button></section>';
+ }
  const local=window.MaatjeRecipeDiscovery.localMatches(offer,catalog(store),7);
  const trusted=idea.links||[],searches=window.MaatjeRecipeDiscovery.publisherSearch(offer);
  let html='<section class="info-banner" id="cooking-ideas">'+
