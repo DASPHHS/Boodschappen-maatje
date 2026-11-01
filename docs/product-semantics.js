@@ -3,7 +3,7 @@
  * descriptions go to evidence review rather than a cheapest-product claim. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.MaatjeSemantics=api;})(typeof window!=='undefined'?window:null,function(){
 'use strict';
-const VERSION='2026-10-30.1';
+const VERSION='2026-11-01.1';
 const norm=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
 const word=(s,t)=>(' '+s+' ').includes(' '+t+' ');
 // Families are reusable product concepts, not retailer SKU exceptions.
@@ -13,12 +13,13 @@ const definitions=[
  ['mince','Gehakt',['gehakt','rundergehakt','varkensgehakt','kipgehakt']],
  ['salmon','Zalm',['zalm','zalmfilet']],['trout','Forel',['forel']],['mackerel','Makreel',['makreel']],
  ['cod','Kabeljauw',['kabeljauw','kabeljauwfilet']],['pollock','Koolvis',['koolvis','koolvisfilet']],['herring','Haring',['haring','haringfilet']],
+ ['lemon','Citroen',['citroen','citroenen']],['lime','Limoen',['limoen','limoenen']],
  ['pumpkin','Pompoen',['pompoen','flespompoen']],['green_beans','Sperziebonen',['sperziebonen']],
  ['carrot','Wortel',['bospeen','wortel','wortelen','wortels','winterpeen','waspeen']],
- ['broccoli','Broccoli',['broccoli']],['cauliflower','Bloemkool',['bloemkool']],['courgette','Courgette',['courgette']],
+ ['broccoli','Broccoli',['broccoli','broccoliroosjes']],['cauliflower','Bloemkool',['bloemkool','bloemkoolroosjes']],['courgette','Courgette',['courgette']],
  ['paprika','Paprika',['paprika']],['tomato','Tomaat',['tomaat','tomaten']],['garlic','Knoflook',['knoflook']],
  ['lemongrass','Citroengras',['sereh','citroengras','lemongrass']],['almonds','Amandelen',['amandelen']],['walnuts','Walnoten',['walnoten']],
- ['peanut_butter','Pindakaas',['pindakaas']],['quark','Kwark',['kwark','fransekwark']],['milk','Melk',['melk']],['eggs','Eieren',['eieren']],
+ ['peanut_butter','Pindakaas',['pindakaas']],['quark','Kwark',['kwark','fransekwark']],['milk','Melk',['melk']],['eggs','Eieren',['eieren','scharreleieren','vrijeuitloopeieren']],
  ['tofu','Tofu',['tofu']],['tempeh','Tempeh',['tempeh','tempe']],['popcorn','Popcorn',['popcorn']],
  ['beer','Bier',['bier','skuumkoppe']],['dishwasher','Vaatwastabletten',['vaatwastabletten','vaatwascapsules','vaatwaspods']],
  ['boemboe','Boemboe',['boemboe']]
@@ -70,7 +71,7 @@ function intent(profile){
  if(!forms&&family.length&&!family.includes('boemboe')&&!family.includes('dishwasher'))forms=/\b(gerookt|gerookte)\b/.test(q)?['smoked']:/\b(blik|pot|conserven)\b/.test(q)?['preserved']:/\b(poeder|gemalen)\b/.test(q)?['powder']:['plain','frozen'];
  return {families:family,audience:expectedAudience,forms,query:q};
 }
-const descriptors=new Set(norm('vers verse rauw rauwe onbewerkt naturel biologische biologisch bio scharrel halal beter leven bl xxl grootverpakking voordeelverpakking kleinverpakking voordeel verpakking blokken blokjes reepjes roosjes heel hele gebroken gesneden fijn fijngesneden fijne grof grove zacht zachte stevig stevige zijde zijden silken firm gerookt gerookte gekruid gekruide gemalen poeder diepvries bevroren dv alaska wilde wild noorse atlantische porties asc msc ggn filet filets zonder met huid vel z h hu zon ongebrand ongebrande ongezouten gezouten geroosterd geroosterde wit witte rood rode groen groene geel gele mager magere franse proteine protein high procent vet light romig romige volle vol halfvol halfvolle houdbaar houdbare uht langlekker melk koemelk vollemelk houdbaarheid net zak zakje bos stronk stronken stengel stengels pot fles blik blikjes flesjes flessen blikken boerderij gemengd half om rund rundvlees varken varkensvlees pindas pinda s stukjes crunchy smooth naturel calve ah jumbo lidl albert heijn de zaanse hoeve milbona freshona golden seafood vemondo vivera bio organic texels mais maiskorrels pofmais magnetron microwave platinum plus all in one dreft vaatwas citroen lemon diep deep clean capsules original kg g ml cl l stuks stuk st bos x gram liter kilogram s m xl').split(' '));
+const descriptors=new Set(norm('vrije uitloop maat maten vers verse rauw rauwe onbewerkt naturel biologische biologisch bio scharrel halal beter leven bl xxl grootverpakking voordeelverpakking kleinverpakking voordeel verpakking blokken blokjes reepjes roosjes heel hele gebroken gesneden fijn fijngesneden fijne grof grove zacht zachte stevig stevige zijde zijden silken firm gerookt gerookte gekruid gekruide gemalen poeder diepvries bevroren dv alaska wilde wild noorse atlantische porties asc msc ggn filet filets zonder met huid vel z h hu zon ongebrand ongebrande ongezouten gezouten geroosterd geroosterde wit witte rood rode groen groene geel gele mager magere franse proteine protein high procent vet light romig romige volle vol halfvol halfvolle houdbaar houdbare uht langlekker melk koemelk vollemelk houdbaarheid net zak zakje bos stronk stronken stengel stengels pot fles blik blikjes flesjes flessen blikken boerderij gemengd half om rund rundvlees varken varkensvlees pindas pinda s stukjes crunchy smooth naturel calve ah jumbo lidl albert heijn de zaanse hoeve milbona freshona golden seafood vemondo vivera bio organic texels mais maiskorrels pofmais magnetron microwave platinum plus all in one dreft vaatwas citroen lemon diep deep clean capsules original kg g ml cl l stuks stuk st bos x gram liter kilogram s m xl').split(' '));
 function unexplained(actual,profile,product){
  const own=definitions.find(d=>d[0]===actual.family)?.[2]||[];
  const brand=product?.semantic_evidence?.verified_identity===true?norm(product.semantic_evidence.brand):'';

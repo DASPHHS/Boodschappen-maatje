@@ -19,7 +19,9 @@
   'mager rundergehakt':{all:['mager','rundergehakt'],none:['gemengd']},
   'kabeljauwfilet':{all:['kabeljauwfilet'],none:['vissticks','gerookt']},
   'zalmfilet':{all:['zalmfilet'],none:['gerookt','kruiden','gravad','burger']},
-  'broccoli':{all:['broccoli'],none:['rijst','puree','schotel','wokmix','saus','diepvries']},
+  'broccoli':{all:[],any:['broccoli','broccoliroosjes'],none:['rijst','puree','schotel','wokmix','saus','diepvries']},
+  'bloemkool':{all:[],any:['bloemkool','bloemkoolroosjes'],none:['rijst','couscous','puree','schotel','saus']},
+  'eieren':{all:[],any:['eieren','scharreleieren','vrijeuitloopeieren']},
   'boerenkool':{all:['boerenkool'],none:['stamppot','gekruid','schotel']},
   'paprika':{all:['paprika'],none:['poeder','pasta','saus','chips','mix','puntpaprika']},
   'diepvries sperziebonen':{all:['sperziebonen'],any:['diepvries','bevroren']},
@@ -32,7 +34,9 @@
   'paksoi':{all:['paksoi'],none:['wokmix']},
   'courgette':{all:['courgette'],none:['gevuld']},
   'venkel':{all:['venkel'],none:['thee']},
-  'wortel':{all:['wortel'],none:['taart','sap']},
+  'wortel':{all:[],any:['wortel','wortelen','wortels','winterpeen','waspeen'],none:['taart','sap']},
+  'citroen':{all:[],any:['citroen','citroenen'],none:['sap','cake','taart','smaak']},
+  'limoen':{all:[],any:['limoen','limoenen'],none:['sap','smaak']},
   'spitskool':{all:['spitskool'],none:['maaltijd']},
   'harissa':{all:['harissa'],none:['kruidenmix']}
  };
@@ -111,7 +115,7 @@
   pindakaas:'pinda pindas pinda s pinda’s stukjes',
   'Italiaanse kruiden':'italiaanse italiaans kruiden kruidenmix',
  };
- const freshProduce=new Set(['paprika','tomaten','knoflook','gember','citroengras','wortel','courgette','komkommer','aubergine','venkel','prei','ui','bosui','paksoi','appel']);
+ const freshProduce=new Set(['citroen','limoen','paprika','tomaten','knoflook','gember','citroengras','wortel','courgette','komkommer','aubergine','venkel','prei','ui','bosui','paksoi','appel']);
  function plainIngredient(name,key,rule){
   const allowed=new Set([...commonWords,...(rule.drained?['uitlekgewicht','uitgelekt','blik','pot']:[]),...normalize(key).split(' '),
    ...(rule.all||[]).flatMap(x=>normalize(x).split(' ')),
@@ -120,7 +124,7 @@
   if((freshProduce.has(key)||['sperziebonen','broccoli','bloemkool','spinazie','boerenkool'].includes(key))&&/\bhak\b/.test(normalize(name)))return false;
   if(freshProduce.has(key)&&/\b(gemalen|poeder|gedroogd|gedroogde|gepeld|gepelde|gezeefd|gezeefde|blik|pot)\b/.test(normalize(name)))return false;
   if(key==='stevige tofu'&&/\b(zacht|zachte|zijde|zijden|silken)\b/.test(normalize(name)))return false;
-  return normalize(name).split(' ').every(word=>/^\d+(?:g|kg|ml|cl|l|st|stuks)?$/.test(word)||allowed.has(word));
+  return normalize(name).split(' ').every(word=>/^\d+(?:g|kg|ml|cl|l|st|stk|stuks)?$/.test(word)||allowed.has(word));
  }
  function measuredPack(row,pricing,unit,drained=false){
   if(drained){
@@ -141,14 +145,14 @@
  function candidates(catalog,store,rule){
   let stores=indexes.get(catalog);if(!stores){stores=new Map();indexes.set(catalog,stores)}
   let index=stores.get(store);
-  if(!index){index=new Map();for(const row of catalog.stores[store]){
+  if(!index||index.rows!==catalog.stores[store]){index=new Map();index.rows=catalog.stores[store];for(const row of catalog.stores[store]){
    if(!Array.isArray(row))continue;
    for(const token of new Set(normalize(row[0]).split(' '))){
     if(!index.has(token))index.set(token,[]);index.get(token).push(row);
    }
   }stores.set(store,index)}
   const lists=(rule.all||[]).flatMap(term=>normalize(term).split(' ')).map(token=>index.get(token)||[]);
-  return lists.length?lists.reduce((a,b)=>a.length<=b.length?a:b):[];
+  return lists.length?lists.reduce((a,b)=>a.length<=b.length?a:b):[...new Set((rule.any||[]).flatMap(term=>index.get(normalize(term))||[]))];
  }
  function calculate(recipe,store,catalog,pricing,resolver,today){
   const ingredients=Array.isArray(recipe?.ingredients)?recipe.ingredients:[];

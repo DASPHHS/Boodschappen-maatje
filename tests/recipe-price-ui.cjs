@@ -13,12 +13,14 @@ const ctx={console,URL,Intl,Date:Clock,Set,Map,WeakMap,Promise,parseFloat,parseI
 ctx.window=ctx;vm.createContext(ctx);
 for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','offer-identity.js','source-freshness.js','app.js']){
  let source=fs.readFileSync(path.join(root,file),'utf8');
- if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections,offerInfo};})();');
+ if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipePrice,priceQuality,findRecipe,openRecipe,normalize,currentSelections,offerInfo,proteinSubtype};})();');
  vm.runInContext(source,ctx,{filename:file});
 }
 (async()=>{
  for(let i=0;i<30&&!el('#view-vandaag').innerHTML;i++)await new Promise(r=>setTimeout(r,20));
  const t=ctx.testApp;
+ for(const [name,expected] of [['rode linzen droog','peulvruchten'],['eieren','ei-kaas'],['tofu','tofu'],['tempeh','tofu']])assert.equal(t.proteinSubtype({category:'vega',ingredients:[{name,department:'Vega & peulvruchten'}]}),expected);
+ t.state.view='recepten';t.state.kind='vega';t.state.subtype='peulvruchten';t.render();assert.ok(el('#view-recepten').innerHTML.includes('Linzen & bonen'));assert.ok(!el('#view-recepten').innerHTML.includes('Indonesische sambaltofu'));t.state.kind='alle';t.state.subtype='alle';
  t.state.catalog.generated_at=catalog.source_date+'T12:00:00Z';
  t.state.catalog.stores.ah.offers.unshift({id:'prepared-regression',name:'AH Ovenschotel kipfilet champignon room',category:'kip',price:6,pack_label:'430 g',start_date:catalog.source_date,end_date:catalog.source_date,source_provider:'PrijsProfeet',source:{url:'https://www.ah.nl/producten/product/wi620796/ah-ovenschotel-kipfilet-champignon-room'},verified:false});
  for(const name of ['Olvarit Knijpfruit wortel 12m+','Organix Mais knabbels met wortel 6m+','De Kleine Keuken Knijpmix wortel blauwe bes & haver 12m+'])t.state.catalog.stores.ah.offers.unshift({...t.state.catalog.stores.ah.offers[0],id:name,name});

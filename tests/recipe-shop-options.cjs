@@ -70,3 +70,19 @@ for(const [pack_label,total] of [['400 g',null],['400 g; uitlekgewicht 240 g',4]
  const r=options.estimate({ingredients:[{name:'kikkererwten uitgelekt',quantity:400,unit:'g'}]},'ah',c,pricing,resolver,today);
  assert.equal(r.total,total,'Use measured drained mass, never gross can weight');
 }
+// Exact Dutch product synonyms, without admitting mixed or prepared alternatives.
+for(const [name,unit,product,label,total] of [
+ ['wortel','g','Biologische wortelen','1000 g',1.5],
+ ['broccoli','g','Broccoliroosjes','500 g',3],
+ ['bloemkool','g','Bloemkoolroosjes','500 g',3],
+ ['citroen','stuk','AH Citroen','per stuk',1.5],
+ ['limoen','stuk','AH Limoenen','3 stuks',1.5],
+ ['eieren','st','Bio eieren 15stk XXL','',1.5],
+]){
+ const c={...catalog,stores:{ah:[[product,1.5,label,null,'synonym']]}};
+ assert.equal(options.estimate({ingredients:[{name,quantity:unit==='g'?600:1,unit}]},'ah',c,pricing,resolver,today).total,total,product);
+}
+for(const product of ['AH Wortelen baby 12m+','Wortelen in saus','AH Citroen cake','AH Broccolirijst','AH Bloemkoolcouscous']){
+ const name=product.includes('Citroen')?'citroen':product.includes('Broccoli')?'broccoli':product.includes('Bloemkool')?'bloemkool':'wortel';
+ assert.equal(options.estimate({ingredients:[{name,quantity:600,unit:'g'}]},'ah',{...catalog,stores:{ah:[[product,.1,'1000 g',null,'wrong']]}},pricing,resolver,today).total,null);
+}

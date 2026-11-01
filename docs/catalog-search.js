@@ -17,14 +17,14 @@
  const indexes=new WeakMap();
  function searchIndex(catalog,store){
   let stores=indexes.get(catalog);if(!stores){stores=new Map();indexes.set(catalog,stores)}
-  if(stores.has(store))return stores.get(store);
+  if(stores.get(store)?.rows===catalog.stores?.[store])return stores.get(store);
   const words=new Map(),normalized=new Map(),memo=new Map();
   for(const row of catalog.stores?.[store]||[]){
    if(!Array.isArray(row)||typeof row[0]!=='string')continue;
    const name=norm(row[0]);normalized.set(row,name);
    for(const word of new Set(name.split(' '))){if(!words.has(word))words.set(word,[]);words.get(word).push(row)}
   }
-  const index={words,normalized,memo};stores.set(store,index);return index;
+  const index={words,normalized,memo,rows:catalog.stores?.[store]};stores.set(store,index);return index;
  }
  // Blend freshly read public Lidl shelf observations into the same adapter.
  // Only the non-member price enters recipe baskets. Plus stays an offer condition.
