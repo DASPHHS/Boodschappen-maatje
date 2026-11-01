@@ -10,8 +10,9 @@ for(const r of index.recipes){
  assert.ok((r.source==='Allerhande'&&r.url.startsWith('https://www.ah.nl/allerhande/'))||
   (r.source==='Jumbo'&&r.url.startsWith('https://www.jumbo.com/recepten/'))||
   (r.source==='Voedingscentrum'&&r.url.startsWith('https://www.voedingscentrum.nl/recepten/gezond-recept/'))||
-  (r.source==='24Kitchen'&&r.url.startsWith('https://www.24kitchen.nl/recepten/')),'Trusted publishing host only');
- assert.ok(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status));
+  (r.source==='24Kitchen'&&r.url.startsWith('https://www.24kitchen.nl/recepten/'))||
+  (r.source==='HelloFresh'&&/^https:\/\/www\.hellofresh\.nl\/recipes\/[a-z0-9_-]+-[0-9a-f]{24}$/.test(r.url)),'Trusted publishing host only');
+ assert.ok(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified','publisher_sitemap_title_only'].includes(r.review_status));
  assert.ok(Array.isArray(r.families)&&r.families.length>0);
  r.families.forEach(x=>families.add(x));if(r.method)methods.add(r.method);
  assert.ok(!r.instructions&&!r.recipeInstructions&&!r.image,'Do not copy recipe text or images');
@@ -48,4 +49,9 @@ const forged={recipes:[{title:'Fictieve brochure',source:'Voedingscentrum',
  families:['broccoli'],review_status:'handmatig_gevonden_bij_uitgever'}]};
 assert.deepEqual(e.publisherMatches({name:'Broccoli',category:'groente'},forged),[],
  'Reject lookalike publisher domains');
+assert.ok(index.recipes.filter(x=>x.source==='HelloFresh').length>=6,'HelloFresh must appear as first-class curated publisher');
+assert.ok(index.recipes.some(x=>x.source==='Allerhande'&&/rendang/i.test(x.title)),'Allerhande should include proper stews');
+assert.ok(e.publisherMatches({name:'Kipfilet',category:'kip'},index,100).some(x=>x.recipe.source==='HelloFresh'),'HelloFresh chicken recipes should be searchable by an offer');
+const spoof={recipes:[{source:'HelloFresh',title:'Fake',url:'https://www.hellofresh.nl.evil.example/recipes/kip-5e4a3e6bb19a1757fe76da26',families:['kip'],review_status:'publisher_page_title_verified'}]};
+assert.deepEqual(e.publisherMatches({name:'Kipfilet',category:'kip'},spoof),[]);
 console.log('Publisher index:',index.recipes.length,'curated real links,',families.size,'ingredient families, ranked and diversified');
