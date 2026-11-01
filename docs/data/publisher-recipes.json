@@ -3943,6 +3943,216 @@
       "has_legumes": true,
       "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r699998",
+      "title": "Kip en pompoen uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R699998/kip-en-pompoen-uit-de-oven",
+      "families": [
+        "kip",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1201773",
+      "title": "Visstoofpotje met pompoen en aardappel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201773/visstoofpotje-met-pompoen-en-aardappel",
+      "families": [
+        "aardappelen",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186932",
+      "title": "Kleurrijke pompoen paprika chorizostoof",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186932/kleurrijke-pompoen-paprika-chorizostoof",
+      "families": [
+        "paprika",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-d3f17626a9c2ce",
+      "source": "HelloFresh",
+      "title": "Indonesische-stijl stoofpot met sukadelap en kokos",
+      "url": "https://www.hellofresh.nl/recipes/w44-open-briefing-use-nid-sukadelap-6728f043d49f300fd61638df",
+      "families": [
+        "riblappen",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-a45aacb421230a",
+      "source": "HelloFresh",
+      "title": "Kippenbout met citroen en krieltjes uit de oven",
+      "url": "https://www.hellofresh.nl/recipes/kippenbout-met-citroen-en-krieltjes-uit-de-oven-5f466d56c307ef72fb0155ec",
+      "families": [
+        "aardappelen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-cc3343ce0caa9e",
+      "source": "HelloFresh",
+      "title": "Kipfilet met rodewijnstoof",
+      "url": "https://www.hellofresh.nl/recipes/kipfilet-met-rodewijnstoof-69aeba5eca28cbe15d08530e",
+      "families": [
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-6eb4fae03dc0ea",
+      "source": "HelloFresh",
+      "title": "Visstoof met kokosmelk",
+      "url": "https://www.hellofresh.nl/recipes/visstoof-met-koolvis-en-spekjes-5d7a1220e410d4001452eb29",
+      "families": [
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-9c5da8ab1cc759",
+      "source": "HelloFresh",
+      "title": "Toscaanse groentestoof met boerenkool",
+      "url": "https://www.hellofresh.nl/recipes/toscaanse-groentestoof-met-boerenkool-5f3d0750a910e1052e77097a",
+      "families": [
+        "boerenkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-6ebabdd2621e51",
+      "source": "HelloFresh",
+      "title": "Braziliaanse visstoof met rijst, limoen en verse koriander",
+      "url": "https://www.hellofresh.nl/recipes/braziliaanse-visstoof-met-rijst-limoen-en-verse-koriander-58fa045f2310a863de2c2152",
+      "families": [
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-f5ffcd1079838b",
+      "source": "HelloFresh",
+      "title": "Braziliaanse visstoof met rijst, limoen en verse koriander",
+      "url": "https://www.hellofresh.nl/recipes/braziliaanse-visstoof-met-rijst-en-verse-koriander-598db57fa2882a3aa57e263c",
+      "families": [
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-e4d969b6bd57d7",
+      "source": "HelloFresh",
+      "title": "Braziliaanse visstoof met kabeljauw en rijst",
+      "url": "https://www.hellofresh.nl/recipes/braziliaanse-visstoof-met-kabeljauw-en-rijst-64d38b72b199bd79fa7173dd",
+      "families": [
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-e0a01b02630966",
+      "source": "HelloFresh",
+      "title": "Oosterse visstoof met tomaat, broccoli en rijst",
+      "url": "https://www.hellofresh.nl/recipes/oosterse-visstoof-met-tomaat-broccoli-en-rijst-56004e4bf8b25ee34c8b4567",
+      "families": [
+        "broccoli",
+        "tomaten",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
     }
   ]
 }
