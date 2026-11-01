@@ -3,7 +3,7 @@
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
-import json, os, re, sys, time
+import json, os, re, sys, time, math
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -91,18 +91,24 @@ def item(p,today):
     k=category(name)
     if p.get("promotion_status")!="active" or p.get("online_only"):return
     start=str(p.get("valid_from") or "")[:10];end=str(p.get("valid_until") or "")[:10]
-    if not(start<=today<=end):return
+    if not(start<=today<=end) or start>end:return
     price=p.get("price")
-    if not isinstance(price,(int,float)) or isinstance(price,bool) or price<=0:return
+    if not isinstance(price,(int,float)) or isinstance(price,bool) or not math.isfinite(price) or price<=0:return
     oid=p.get("product_id")
     if not oid:return
     orig=p.get("original_price")
     lp=p.get("loyalty_price")
+    # Reference prices and member-only amounts are untrusted external fields.
+    # Invalid numbers or inverted discounts must not be displayed as savings.
+    if not isinstance(orig,(int,float)) or isinstance(orig,bool) or not math.isfinite(orig) or orig<=price:
+        orig=None
+    if not isinstance(lp,(int,float)) or isinstance(lp,bool) or not math.isfinite(lp) or lp<=0 or lp>=price:
+        lp=None
     url=p.get("product_url")
     if not isinstance(url,str) or not url.startswith("https://"):url="https://www.prijsprofeet.nl/"
     return {"id":"pp-"+str(oid),"name":name,"category":k,
-      "price":round(price,2),"regular_price":orig if isinstance(orig,(int,float)) else None,
-      "loyalty_price":lp if isinstance(lp,(int,float)) else None,
+      "price":round(price,2),"regular_price":round(orig,2) if orig is not None else None,
+      "loyalty_price":round(lp,2) if lp is not None else None,
       "loyalty_program":p.get("loyalty_program"),
       "pack_label":p.get("quantity") or "inhoud onbekend","unit":p.get("unit"),
       "unit_price":p.get("unit_price"),"unit_price_status":"external_reported_recalculate_for_multibuy","start_date":start,"end_date":end,
