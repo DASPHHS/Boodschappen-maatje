@@ -9,10 +9,10 @@
  const norm=x=>String(x||'').toLocaleLowerCase('nl-NL').normalize('NFD')
    .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const token=(text,t)=>(' '+norm(text)+' ').includes(' '+norm(t)+' ');
- function valid(c,day){
+ function valid(c,day,maxAge=3){
   if(!c||c.schema_version!==1||!c.stores||!/^\d{4}-\d\d-\d\d$/.test(c.source_date||''))return false;
   const age=Math.round((Date.parse(day+'T12:00:00Z')-Date.parse(c.source_date+'T12:00:00Z'))/86400000);
-  return age>=0&&age<=3;
+  return age>=0&&age<=maxAge;
  }
  const indexes=new WeakMap();
  function searchIndex(catalog,store){
@@ -57,7 +57,7 @@
    return item;
  }
  function candidates(profile,store,catalog,pricing,resolver,today,limit=120){
-  if(!valid(catalog,today)||profile?.requires_specific_variant)return [];
+  if(!valid(catalog,today,7)||profile?.requires_specific_variant)return [];
   const rule=profile?.match||{},all=rule.all||[],any=rule.any||[],none=rule.none||[];
   if(!all.length&&!any.length)return [];
   const index=searchIndex(catalog,store);
@@ -80,7 +80,11 @@
    if(match.status!=='match')continue;
    const check=pricing.inspect(item,store,today);
    if(!check||!check.current)continue;
-   found.push({...check,match,score:check.score+45});
+   const snapshotAge=Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(catalog.source_date+'T12:00:00Z'))/86400000);
+   // A delayed update must not erase known prices, but observations older than
+   // the three-day live window are explicitly historical, never current.
+   found.push({...check,match,score:check.score+45,
+    ...(snapshotAge>3?{current:false,fresh:false,status:'oud',label:'Oude cataloguswaarneming '+catalog.source_date}: {})});
   }
   // Cheapest comparable unit cost, then cheapest per purchase only when no
   // comparable quantity exists. Every displayed price retains its exact pack.
@@ -134,7 +138,7 @@
     source:x.o.source_provider||x.o.status,url:x.o.url,date:x.checked,status:x.status};
  }
  function favoritePrices(store,saved,catalog,pricing,resolver,favorites,today){
-  if(!valid(catalog,today))return [];
+  if(!valid(catalog,today,7))return [];
   const picked=[],seen=new Set();
   for(const f of saved||[]){
    const raw=norm(f.name).replace(/^(ah|jumbo|lidl|albert heijn)\s+/,'')
