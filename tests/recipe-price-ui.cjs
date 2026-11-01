@@ -43,7 +43,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   const recipe=t.findRecipe(store,id);assert.equal(recipe.store,store);assert.equal(recipe.id,id,'Library identifiers must survive opening, saving and planning');
   const price=t.recipePrice(recipe);assert.ok(price.partial>0,store+' must have a catalog estimate');
   const label=t.priceQuality(recipe);
-  t.state.store=store;t.state.view='recepten';t.state.recipeQuality='all';t.render();
+  t.state.store=store;t.state.view='recepten';t.state.recipeQuality='all';t.state.query=recipe.title;t.state.cookingQuery='';t.state.cookingOffer=null;t.render();
   assert.ok(el('#view-recepten').innerHTML.includes(label));
   if(price.state==='partial'&&price.partial>0){assert.equal(label,'Maaltijdprijs onbekend');assert.ok(el('#view-recepten').innerHTML.includes('geen totaalprijs'),'Incomplete prices must explicitly name the missing total');}
   assert.ok(!/Vanaf\s*€/.test(el('#view-recepten').innerHTML),'Recipe cards cannot show a partial basket as a starting meal price');
