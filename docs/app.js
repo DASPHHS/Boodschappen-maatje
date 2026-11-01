@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',batchOnly:false,publisherPageSize:8,showRecipeLibrary:false,recipePageSize:12,cookingOffer:null,cookingQuery:'',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,recipeSources:null,publisherRecipes:null,curatedRecipes:[],sourceHealth:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',offerWeek:'now',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',batchOnly:false,publisherSource:'HelloFresh',publisherPageSize:8,showRecipeLibrary:false,recipePageSize:12,cookingOffer:null,cookingQuery:'',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,recipeSources:null,publisherRecipes:null,curatedRecipes:[],sourceHealth:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',offerWeek:'now',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 // Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
 const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
@@ -731,8 +731,9 @@ function cookingIdeasPanel(){
  if(!idea){
   return html+'<p>Voor dit ingrediënt is de productsoort niet voldoende herkend. Alleen letterlijke overeenkomsten worden getoond; er worden geen recepten verzonnen.</p></section>';
  }
- const trusted=window.MaatjeRecipeDiscovery.publisherMatches(offer,state.publisherRecipes,10)
-  .map(m=>m.recipe).filter(r=>r.review_status!=='publisher_sitemap_title_only');
+ const trusted=window.MaatjeRecipeDiscovery.publisherMatches(offer,state.publisherRecipes,30)
+  .map(m=>m.recipe).filter(r=>r.review_status!=='publisher_sitemap_title_only'&&
+     (state.publisherSource==='all'||r.source===state.publisherSource)).slice(0,10);
  html+='<p>Hieronder staan de volledige receptkaarten die bij dit ingrediënt passen. '+(selection?'Actie gecontroleerd op producttype; exacte verpakking en prijs vereisen afzonderlijk bewijs.':'Dit is een ingrediëntenzoekopdracht, geen bevestigde aanbieding.')+'</p>';
  if(trusted.length){
   html+='<details class="publisher-links"><summary>Bekijk ook '+trusted.length+' recepten bij de oorspronkelijke uitgevers</summary>'+
@@ -747,7 +748,7 @@ function discoveredPublisherCards(stores,limit=8){
  if(!selector||!engine||!state.publisherRecipes?.recipes?.length)return '';
  const search=state.query?.trim()||'';
  let rows=selector.recipesForOffers({
-  index:state.publisherRecipes,stores,engine,search,ingredient:ingredientTarget(),
+  index:state.publisherRecipes,stores,engine,search,ingredient:ingredientTarget(),source:state.publisherSource,
   category:state.kind,offersByStore:Object.fromEntries(stores.map(s=>[s,offers(s)]))
  });
  if(state.batchOnly)rows=rows.filter(x=>x.slow);
@@ -770,12 +771,17 @@ function discoveredPublisherCards(stores,limit=8){
     '<div class="recipe-bottom"><span class="publisher-recipe-footer">Alle stappen bij de maker</span>'+
     '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Bekijk recept ↗</a></div></article>';
  };
- const titleText=state.batchOnly?'Stoof- en ovengerechten bij de uitgevers':'Recepten van Allerhande en HelloFresh';
+ const titleText=state.batchOnly?'Langzaam koken met HelloFresh':'Recepten rechtstreeks van HelloFresh';
  const notice=state.batchOnly?
   'Kookinspiratie voor rustig koken. Controleer op de originele pagina of het gerecht geschikt is om te bewaren; deze externe recepten zijn niet automatisch een twee-dagen-maaltijd.':
   'Originele, uitgebreid uitgewerkte recepten met directe links. Productsoortmatches zijn nog geen bevestigde kassakorting. De volledige ingrediënten en stappen blijven bij de uitgever.';
  return '<section class="publisher-discovery" id="publisher-recipes-main">'+
-  '<div class="publisher-heading"><h3>'+titleText+'</h3><span>'+rows.length+' recepten beschikbaar</span></div>'+
+  '<div class="publisher-heading"><h3>'+(state.publisherSource==='HelloFresh'?titleText:state.publisherSource==='Allerhande'?'Recepten van Allerhande':'HelloFresh en Allerhande')+'</h3><span>'+rows.length+' recepten beschikbaar</span></div>'+
+  '<div class="publisher-source-toggle" role="group" aria-label="Receptenbron">'+
+   [['HelloFresh','HelloFresh'],['Allerhande','Allerhande'],['all','Beide bronnen']].map(([value,label])=>
+    '<button type="button" class="pill '+(state.publisherSource===value?'active':'')+
+    '" data-publisher-source="'+value+'" aria-pressed="'+(state.publisherSource===value)+'">'+label+'</button>').join('')+
+   '<a href="https://www.hellofresh.nl/recipes" target="_blank" rel="noopener noreferrer">Alle recepten op HelloFresh ↗</a></div>'+
   '<p class="muted">'+notice+'</p>'+
   '<div class="cards">'+shown.map(card).join('')+'</div>'+
   (rows.length>shown.length?'<div class="recipe-more-row"><button class="button secondary" data-more-publishers="1">Toon 8 extra recepten van de uitgevers ('+
@@ -783,7 +789,7 @@ function discoveredPublisherCards(stores,limit=8){
 }
 function recipeView(){
  header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Wat eten we?</span>',
-  'Ontdek recepten van Allerhande en HelloFresh, kies een passende supermarktactie of kook meteen genoeg voor twee dagen.');
+  'De recepten van HelloFresh.nl/recipes vormen het uitgangspunt. Bekijk originele gerechten, kies passende aanbiedingen of kook voor twee dagen.');
  let out='<div class="personal-settings"><label for="ingredient-discovery">Zoek gerechten bij een actieproduct of ingrediënt</label>'+
   '<input id="ingredient-discovery" class="search" placeholder="Bijv. riblappen, broccoli, zalmfilet" maxlength="100" value="'+attr(state.cookingQuery)+'">'+
   '<button class="button secondary small" data-find-ideas="1">Zoek recepten</button></div>';
@@ -987,6 +993,7 @@ if(b.dataset.findIdeas){const value=String($('#ingredient-discovery')?.value||''
 if(b.dataset.clearCook){state.cookingOffer=null;state.cookingQuery='';state.recipePageSize=12;recipeView();return}
 if(b.dataset.batchOnly){state.batchOnly=b.dataset.batchOnly==='two';state.recipePageSize=12;state.publisherPageSize=8;state.kind='alle';state.subtype='alle';state.query='';state.cookingQuery='';state.cookingOffer=null;state.dealFilter='all';recipeView();return}
 if(b.dataset.showRecipeLibrary){state.showRecipeLibrary=true;state.recipePageSize=12;recipeView();return}
+if(b.dataset.publisherSource){state.publisherSource=b.dataset.publisherSource;state.publisherPageSize=8;recipeView();return}
 if(b.dataset.morePublishers){state.publisherPageSize+=8;recipeView();return}
 if(b.dataset.moreRecipes){state.recipePageSize+=12;recipeView();return}
 if(b.dataset.open){openRecipe(b.dataset.open);return}
