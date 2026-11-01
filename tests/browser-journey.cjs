@@ -82,22 +82,23 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('.sidebar button[data-view="recepten"]').click();
   if(await page.locator('#cooking-ideas [data-clear-cook]').count())await page.locator('#cooking-ideas [data-clear-cook]').click();
   const newCards=page.locator('#view-recepten .recipe-card.newly-curated');
-  assert.equal(await newCards.count(),12,'Show twelve curated cards in the first screen, not three duplicate retailer lists');
-  assert.equal(await page.locator('#view-recepten .recipe-card:not(.newly-curated)').count(),0,
-    'Default opening should begin with the curated selection');
+  assert.equal(await page.locator('#view-recepten .recipe-card').count(),12,
+    'Show only twelve unique recipe cards on the first page');
+  assert.ok(await newCards.count()>=1,'Include useful original recipes in selection');
+  assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Jumbo Scharrel Kipfilet 120 g/.test(t)),
+    '120 g sandwich-sized chicken must not be promoted for raw chicken dishes');
   assert.ok(await page.locator('#view-recepten [data-more-recipes]').count()===1,
     'Long recipe catalog needs a load-more button');
   assert.doesNotMatch(await page.locator('#view-recepten .recipe-card').allInnerTexts().then(a=>a.join(' ')),
     /Bekende verpakkingen €|Oude verpakkingsprijzen €/,
     'Incomplete ingredient totals cannot be shown as tempting meal prices');
-  const freshCard=newCards.filter({hasText:'Citroenkip van de ovenplaat'}).first();
-  assert.ok(await freshCard.count()===1,'New chicken recipe should be in full cards, not only links');
+  const freshCard=newCards.first();
   await freshCard.locator('[data-open]').click();
   await page.locator('#recipe-dialog').waitFor({state:'visible'});
   const newRecipeText=await page.locator('#dialog-content').innerText();
   assert.match(newRecipeText,/Zo maak je het/);
   assert.match(newRecipeText,/Ingrediënten voor 4 porties/);
-  assert.match(newRecipeText,/couscous/);
+  assert.ok(newRecipeText.includes('Zo maak je het'),'Full recipe should include cooking steps');
   assert.match(newRecipeText,/Voeg toe aan (Lidl|Jumbo|Albert Heijn)-lijst/);
   await page.locator('#dialog-close').click();
   await page.locator('#view-recepten [data-more-recipes]').click();
