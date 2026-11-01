@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T09:22:35.752Z",
+  "generated_at": "2026-11-01T09:23:14.484Z",
   "checked_date": "2026-11-01",
   "summary": {
     "profiles": 20,
@@ -269,11 +269,11 @@
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
-        "product_name": "Jumbo Kipfilet 800 g",
-        "price": 9.59,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "source": "https://www.jumbo.com/producten/lezziz-kipfiletblokjes-halal-350-g-623150TRA",
+        "product_name": "Lezziz Kipfiletblokjes Halal 350 g",
+        "price": 6.39,
+        "price_status": "externe prijswaarneming · 2026-11-01",
+        "checked_date": "2026-11-01"
       },
       "vis": {
         "state": "price_observed",

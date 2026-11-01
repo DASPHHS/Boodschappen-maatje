@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.1",
-  "generated_at": "2026-11-01T09:22:34.535Z",
+  "generated_at": "2026-11-01T09:23:12.249Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
-    "match": 238,
-    "partial": 382,
-    "reject": 204
+    "match": 237,
+    "partial": 380,
+    "reject": 207
   },
   "profiles": {
     "sungold": {
@@ -531,11 +531,11 @@
       }
     },
     "kipfilet": {
-      "match": 49,
-      "partial": 82,
-      "reject": 67,
+      "match": 48,
+      "partial": 80,
+      "reject": 70,
       "reasons": {
-        "productkenmerken en verpakking passen": 49,
+        "productkenmerken en verpakking passen": 48,
         "productnaam of uitsluitingen passen niet": 6,
         "andere productvorm: smoked": 24,
         "niet herkende productbeschrijving: a la minute": 4,
@@ -544,7 +544,7 @@
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
         "niet herkende productbeschrijving: flinterdun": 4,
-        "andere productvorm: cooked": 20,
+        "andere productvorm: cooked": 23,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -571,17 +571,15 @@
         "niet herkende productbeschrijving: ca": 6,
         "niet herkende productbeschrijving: voorgegaard": 1,
         "niet herkende productbeschrijving: scharrelkip": 2,
-        "niet herkende productbeschrijving: knorr trattoria pastagerecht romana": 1,
-        "niet herkende productbeschrijving: knorr trattoria pastagerecht toscana": 1,
-        "niet herkende productbeschrijving: overgebakken": 1,
-        "niet herkende productbeschrijving: marhaba": 2,
-        "niet herkende productbeschrijving: muscle meat meals spicy nuggets": 1,
-        "niet herkende productbeschrijving: muscle meat meals chunks base nasi goreng": 1,
-        "niet herkende productbeschrijving: muscle meat meals chunks oriental rijstmix": 1,
-        "niet herkende productbeschrijving: muscle meat meals chunks penne spinazie mediterranea": 1,
-        "niet herkende productbeschrijving: muscle meat meals chunks risotto spinaci": 1,
-        "niet herkende productbeschrijving: muscle meat meals chunks tortelloni ricotta spinazie spieropbouw": 1,
-        "niet herkende productbeschrijving: muscle meat meals mexican style rijst mexicana spieropbouw": 1,
+        "niet herkende productbeschrijving: trattoria pastagerecht romana": 1,
+        "niet herkende productbeschrijving: trattoria pastagerecht toscana": 1,
+        "niet herkende productbeschrijving: meals spicy nuggets": 1,
+        "niet herkende productbeschrijving: meals chunks base nasi goreng": 1,
+        "niet herkende productbeschrijving: meals chunks oriental rijstmix": 1,
+        "niet herkende productbeschrijving: meals chunks penne spinazie mediterranea": 1,
+        "niet herkende productbeschrijving: meals chunks risotto spinaci": 1,
+        "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw": 1,
+        "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: wahid": 4,
         "niet herkende productbeschrijving: wahid chilipeper": 2,
         "niet herkende productbeschrijving: minder": 2,
@@ -598,6 +596,7 @@
         "niet herkende productbeschrijving: iglo roerbak sensatie pasta": 1,
         "niet herkende productbeschrijving: knorr tratorria toscana": 1,
         "niet herkende productbeschrijving: knorr trattoria romana": 1,
+        "niet herkende productbeschrijving: marhaba": 1,
         "niet herkende productbeschrijving: streeckgenoten ovengebakken": 1,
         "niet herkende productbeschrijving: wahid provence": 1
       },
@@ -656,7 +655,7 @@
           "label": "Kipfilet · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 12,
-            "jumbo": 4,
+            "jumbo": 3,
             "ah": 12
           }
         },
@@ -941,7 +940,7 @@
         "productkenmerken en verpakking passen": 6,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
-        "niet herkende productbeschrijving: maggi sate": 1,
+        "niet herkende productbeschrijving: sate": 1,
         "andere doelgroep: pet": 1
       },
       "samples": [
@@ -2171,22 +2170,11 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "kipfilet-175-g-612985TRA",
-      "name": "Kipfilet 175 g",
-      "pack": "175 g",
-      "url": "https://www.jumbo.com/producten/kipfilet-175-g-612985TRA",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "ac08a8fe37b2a9346bf0a392"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "knorr-trattoria-pastagerecht-kipfilet-romana-269-g-693715DS",
       "name": "Knorr Trattoria Pastagerecht Kipfilet Romana 269 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/knorr-trattoria-pastagerecht-kipfilet-romana-269-g-693715DS",
-      "reason": "niet herkende productbeschrijving: knorr trattoria pastagerecht romana",
+      "reason": "niet herkende productbeschrijving: trattoria pastagerecht romana",
       "fingerprint": "f1ccbc0a1d7900cf1ee69176"
     },
     {
@@ -2197,7 +2185,7 @@
       "name": "Knorr Trattoria Pastagerecht Kipfilet Toscana 231 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/knorr-trattoria-pastagerecht-kipfilet-toscana-231-g-693714DS",
-      "reason": "niet herkende productbeschrijving: knorr trattoria pastagerecht toscana",
+      "reason": "niet herkende productbeschrijving: trattoria pastagerecht toscana",
       "fingerprint": "b90e3808b0cb5184eff7b477"
     },
     {
@@ -2223,17 +2211,6 @@
       "fingerprint": "92f70edac67a57f7e089d891"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "lezziz-overgebakken-kipfilet-xl-100g-741078STK",
-      "name": "Lezziz Overgebakken Kipfilet XL 100g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/lezziz-overgebakken-kipfilet-xl-100g-741078STK",
-      "reason": "niet herkende productbeschrijving: overgebakken",
-      "fingerprint": "f8e1e175e594b103e2e3a96d"
-    },
-    {
       "profile": "sperziebonen",
       "priority": 0,
       "store": "jumbo",
@@ -2241,19 +2218,8 @@
       "name": "MAGGI Sperziebonen Sate 70g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/maggi-sperziebonen-sate-70g-390223ZK",
-      "reason": "niet herkende productbeschrijving: maggi sate",
+      "reason": "niet herkende productbeschrijving: sate",
       "fingerprint": "d43711852689120581f017a9"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "marhaba-kipfilet-100-g-637322BAK",
-      "name": "Marhaba Kipfilet 100 g",
-      "pack": "100 g",
-      "url": "https://www.jumbo.com/producten/marhaba-kipfilet-100-g-637322BAK",
-      "reason": "niet herkende productbeschrijving: marhaba",
-      "fingerprint": "4296685dcae07b4476bd8278"
     },
     {
       "profile": "pompoen",
@@ -2274,7 +2240,7 @@
       "name": "Muscle Meat High Protein Meals High Protein Kipfilet Spicy Nuggets 400 g",
       "pack": "400 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-high-protein-kipfilet-spicy-nuggets-400-g-754530TRA",
-      "reason": "niet herkende productbeschrijving: muscle meat meals spicy nuggets",
+      "reason": "niet herkende productbeschrijving: meals spicy nuggets",
       "fingerprint": "e19ed3fd5ac56e1474c3a9ee"
     },
     {
@@ -2285,7 +2251,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Chunks Base Nasi Goreng 450 g",
       "pack": "450 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-base-nasi-goreng-450-g-698644TRA",
-      "reason": "niet herkende productbeschrijving: muscle meat meals chunks base nasi goreng",
+      "reason": "niet herkende productbeschrijving: meals chunks base nasi goreng",
       "fingerprint": "9663171269e63283eadb52ec"
     },
     {
@@ -2296,7 +2262,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Chunks Oriental Rijstmix 450 g",
       "pack": "450 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-oriental-rijstmix-450-g-686524TRA",
-      "reason": "niet herkende productbeschrijving: muscle meat meals chunks oriental rijstmix",
+      "reason": "niet herkende productbeschrijving: meals chunks oriental rijstmix",
       "fingerprint": "3fd54f72a7d91b963c21712f"
     },
     {
@@ -2307,7 +2273,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Chunks Penne - Spinazie Mediterranea 500 g",
       "pack": "500 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-penne-spinazie-mediterranea-500-g-686522TRA",
-      "reason": "niet herkende productbeschrijving: muscle meat meals chunks penne spinazie mediterranea",
+      "reason": "niet herkende productbeschrijving: meals chunks penne spinazie mediterranea",
       "fingerprint": "8307f77b71e1c1c14bed3a88"
     },
     {
@@ -2318,7 +2284,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Chunks Risotto Spinaci 450 g",
       "pack": "450 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-risotto-spinaci-450-g-587176SC",
-      "reason": "niet herkende productbeschrijving: muscle meat meals chunks risotto spinaci",
+      "reason": "niet herkende productbeschrijving: meals chunks risotto spinaci",
       "fingerprint": "7d35c43b2ea8f9dc96d8230f"
     },
     {
@@ -2329,7 +2295,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Chunks Tortelloni Ricotta-Spinazie Spieropbouw 450 g",
       "pack": "450 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-tortelloni-ricotta-spinazie-spieropbouw-450-g-587177SC",
-      "reason": "niet herkende productbeschrijving: muscle meat meals chunks tortelloni ricotta spinazie spieropbouw",
+      "reason": "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw",
       "fingerprint": "68470be4795a443ce2aa97b9"
     },
     {
@@ -2340,7 +2306,7 @@
       "name": "Muscle Meat High Protein Meals Kipfilet Mexican Style Witte Rijst - Mais Mexicana Spieropbouw 450 g",
       "pack": "450 Gram",
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-mexican-style-witte-rijst-mais-mexicana-spieropbouw-450-g-587175SC",
-      "reason": "niet herkende productbeschrijving: muscle meat meals mexican style rijst mexicana spieropbouw",
+      "reason": "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw",
       "fingerprint": "17fdb2da32fca1de4af5c6af"
     },
     {
