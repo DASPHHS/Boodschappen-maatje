@@ -81,7 +81,14 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(after,before+1,'Favorite heart must update count');
   await page.locator('.sidebar button[data-view="recepten"]').click();
   const newCards=page.locator('#view-recepten .recipe-card.newly-curated');
-  assert.ok(await newCards.count()>=18,'New full recipes must be visible as normal recipe cards');
+  assert.equal(await newCards.count(),12,'Show twelve curated cards in the first screen, not three duplicate retailer lists');
+  assert.equal(await page.locator('#view-recepten .recipe-card:not(.newly-curated)').count(),0,
+    'Default opening should begin with the curated selection');
+  assert.ok(await page.locator('#view-recepten [data-more-recipes]').count()===1,
+    'Long recipe catalog needs a load-more button');
+  assert.doesNotMatch(await page.locator('#view-recepten .recipe-card').allInnerTexts().then(a=>a.join(' ')),
+    /Bekende verpakkingen €|Oude verpakkingsprijzen €/,
+    'Incomplete ingredient totals cannot be shown as tempting meal prices');
   const freshCard=newCards.filter({hasText:'Citroenkip van de ovenplaat'}).first();
   assert.ok(await freshCard.count()===1,'New chicken recipe should be in full cards, not only links');
   await freshCard.locator('[data-open]').click();
@@ -90,10 +97,18 @@ const start=base.endsWith('/')?base:base+'/';
   assert.match(newRecipeText,/Zo maak je het/);
   assert.match(newRecipeText,/Ingrediënten voor 4 porties/);
   assert.match(newRecipeText,/couscous/);
-  assert.match(newRecipeText,/Voeg toe aan Lidl-lijst/);
+  assert.match(newRecipeText,/Voeg toe aan (Lidl|Jumbo|Albert Heijn)-lijst/);
   await page.locator('#dialog-close').click();
+  await page.locator('#view-recepten [data-more-recipes]').click();
+  assert.equal(await page.locator('#view-recepten .recipe-card').count(),24,
+    'Load more must reveal another twelve unique dishes');
   await page.locator('#ingredient-discovery').fill('runderriblappen');
   await page.locator('[data-find-ideas]').click();
+  assert.ok(await page.locator('#view-recepten .recipe-card').count()<12,
+    'Searching riblappen must suppress unrelated recipe cards from all stores');
+  assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Citroenkip|Groentefrittata/.test(t)),
+    'Do not show unrelated dishes after an ingredient search');
+  await page.locator('#cooking-ideas .publisher-links summary').click();
   const beefPanel=await page.locator('#cooking-ideas').innerText();
   assert.match(beefPanel,/Rendang/,'Riblappen must suggest real publisher rendang recipe');
   assert.match(beefPanel,/Hachee/,'Riblappen must suggest hachee');
@@ -101,7 +116,7 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('[data-clear-cook]').click();
   await page.locator('#ingredient-discovery').fill('nieuwe onbekende groente 2027');
   await page.locator('[data-find-ideas]').click();
-  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Geen passend uitgeversrecept'),
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('productsoort niet voldoende herkend'),
    'Unknown future ingredients must not produce fictitious publisher recipes');
   await page.locator('[data-clear-cook]').click();
   await page.locator('#ingredient-discovery').fill('broccoli');
@@ -139,9 +154,9 @@ const start=base.endsWith('/')?base:base+'/';
    assert.equal(await mobile.locator('.mobile-nav').isVisible(),true,'Mobile navigation must be visible');
    await mobile.locator('.mobile-nav [data-view="recepten"]').click();
    await mobile.locator('#view-recepten .recipe-card.newly-curated').first().waitFor();
-   assert.ok(await mobile.locator('#view-recepten .recipe-card.newly-curated').count()>=18,
-     'Mobile must display new recipe cards, not just source tiles');
-   await mobile.locator('#view-recepten .recipe-source-link').first().waitFor();
+   assert.equal(await mobile.locator('#view-recepten .recipe-card').count(),12,
+     'Mobile must display a concise page of twelve cards');
+   await mobile.locator('#view-recepten .recipe-source-link').first().waitFor({state:'attached'});
    await mobile.locator('.mobile-nav [data-view="lijst"]').click();
    assert.equal(await mobile.locator('#view-lijst:not(.hidden)').count(),1,'Mobile shopping list must work');
   }catch(e){
