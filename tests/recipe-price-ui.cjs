@@ -28,6 +28,16 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  const bad=t.offerInfo({id:'baby-regression',category:'vis',ingredients:[{name:'wortel',quantity:600,unit:'g'}]},'ah');
  assert.ok(!JSON.stringify(bad).match(/Olvarit|Organix|De Kleine Keuken/),'Baby foods never suggested for ordinary vegetables');
  assert.ok(!el('#view-vandaag').innerHTML.includes('[object Object]'));
+
+ const deliberatelyIncomplete={...t.state.library[0],id:'regression-incomplete-cart',store:'ah',
+  ingredients:[...t.state.library[0].ingredients,{name:'onvindbare achtertuinplant xyz',quantity:250,unit:'g'}]};
+ const incomplete=t.recipePrice(deliberatelyIncomplete);
+ assert.equal(incomplete.state,'partial','Unknown ingredient must make a non-complete cart');
+ assert.ok(incomplete.partial>0,'Show known pack costs separately');
+ assert.equal(t.priceQuality(deliberatelyIncomplete),'Totaalprijs onbekend',
+  'Never label one salmon or seasoning package as a starting meal price');
+ assert.ok(!t.priceQuality(deliberatelyIncomplete).includes('Vanaf '));
+ t.state.library.unshift(deliberatelyIncomplete);
  for(const store of ['lidl','jumbo','ah']){
   const id='library|'+t.state.library[0].id;
   const recipe=t.findRecipe(store,id);assert.equal(recipe.store,store);assert.equal(recipe.id,id,'Library identifiers must survive opening, saving and planning');
@@ -35,6 +45,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   const label=t.priceQuality(recipe);
   t.state.store=store;t.state.view='recepten';t.state.recipeQuality='all';t.render();
   assert.ok(el('#view-recepten').innerHTML.includes(label));
+  assert.ok(!/Vanaf\s*€/.test(el('#view-recepten').innerHTML),'Recipe cards cannot show a partial basket as a starting meal price');
   t.openRecipe(store+'|'+id);assert.ok(el('#dialog-content').innerHTML.includes(label));
   assert.ok(!el('#dialog-content').innerHTML.includes('AH Ovenschotel kipfilet champignon room'),'A complete prepared meal must not be suggested as raw chicken');
   assert.ok(!el('#dialog-content').innerHTML.includes('Voor dit bibliotheekrecept zijn nog niet alle'));
@@ -49,6 +60,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   const expected=ctx.MaatjeRecipeShopOptions.estimate({ingredients:[...merged.values()]},store,catalog,ctx.MaatjeObservations,ctx.MaatjeResolver,catalog.source_date);
   const money=x=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(x);
   assert.ok(el('#view-lijst').innerHTML.includes(money(expected.partial)),store+' combined list must use merged quantities');
+  assert.ok(!/Vanaf\s*€/.test(el('#view-lijst').innerHTML),'Shopping list must distinguish known package subtotal from full meal price');
   assert.ok(expected.partial<=picks.reduce((sum,r)=>sum+t.recipePrice(r).partial,0)+.01,'Shared pantry packs must not be purchased twice');
   assert.ok(!el('#view-lijst').innerHTML.includes('NaN'));
  }
