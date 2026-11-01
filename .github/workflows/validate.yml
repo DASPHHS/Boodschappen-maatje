@@ -30,6 +30,8 @@ on:
       - 'tests/publisher-recipe-index.cjs'
       - 'tests/test_publisher_recipes.py'
       - 'scripts/refresh_publisher_recipes.py'
+      - 'scripts/refresh_hellofresh_recipes.py'
+      - 'tests/test_hellofresh_recipes.py'
       - '.github/workflows/recipe-discovery.yml'
       - 'tests/weekdeals-engine.cjs'
       - '.github/workflows/weekly-menu.yml'
@@ -109,6 +111,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_retailer_catalog.py'
           python -m unittest discover -s tests -p 'test_product_evidence.py'
           python -m unittest discover -s tests -p 'test_publisher_recipes.py'
+          python -m unittest discover -s tests -p 'test_hellofresh_recipes.py'
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
