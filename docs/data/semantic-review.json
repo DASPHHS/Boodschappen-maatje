@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "policy_version": "2026-10-30.1",
-  "generated_at": "2026-10-31T12:37:21.817Z",
+  "policy_version": "2026-11-01.1",
+  "generated_at": "2026-11-01T09:22:34.535Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
-    "match": 247,
-    "partial": 373,
+    "match": 238,
+    "partial": 382,
     "reject": 204
   },
   "profiles": {
@@ -177,7 +177,7 @@
         "niet herkende productbeschrijving: optimel yoghurt vanille": 1,
         "niet herkende productbeschrijving: optimel yoghurt aardbei": 1,
         "niet herkende productbeschrijving: optimel yoghurt appel kaneel": 1,
-        "niet herkende productbeschrijving: optimel yoghurt limited edition": 1,
+        "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: optimel yoghurt sinaasappel abrikoos": 1,
         "niet herkende productbeschrijving: optimel yoghurt stracciatella smaak": 1,
         "niet herkende productbeschrijving: optimel yoghurt bosbes beker": 1,
@@ -275,21 +275,33 @@
       }
     },
     "dreft": {
-      "match": 16,
-      "partial": 7,
+      "match": 7,
+      "partial": 16,
       "reject": 2,
       "reasons": {
-        "productkenmerken en verpakking passen": 16,
+        "productkenmerken en verpakking passen": 7,
+        "productsoort niet voldoende bevestigd": 10,
         "andere doelgroep: human": 2,
         "niet herkende productbeschrijving: anti dofheidstechnologie": 1,
         "niet herkende productbeschrijving: bries": 1,
         "niet herkende productbeschrijving: miracle maxi": 1,
         "niet herkende productbeschrijving: miracle mega": 1,
-        "niet herkende productbeschrijving: miracle": 1,
         "niet herkende productbeschrijving: pack": 1,
         "niet herkende productbeschrijving: regular": 1
       },
       "samples": [
+        {
+          "store": "jumbo",
+          "name": "Dreft Platinum Citroen Vaatwascapsules 21 X",
+          "status": "partial",
+          "reason": "productsoort niet voldoende bevestigd"
+        },
+        {
+          "store": "jumbo",
+          "name": "Dreft Platinum Citroen Vaatwascapsules 39 X",
+          "status": "partial",
+          "reason": "productsoort niet voldoende bevestigd"
+        },
         {
           "store": "jumbo",
           "name": "Dreft Platinum Miracle All In One, 20X",
@@ -315,41 +327,29 @@
           "reason": "niet herkende productbeschrijving: bries"
         },
         {
-          "store": "ah",
-          "name": "Dreft Platinum miracle maxi vaatwascapsules",
+          "store": "jumbo",
+          "name": "Dreft Platinum Plus Citroen Vaatwascapsules 19 Stuks",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: miracle maxi"
+          "reason": "productsoort niet voldoende bevestigd"
         },
         {
-          "store": "ah",
-          "name": "Dreft Platinum miracle mega vaatwascapsules",
+          "store": "jumbo",
+          "name": "Dreft Platinum Plus Citroen Vaatwascapsules 40 Stuks",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: miracle mega"
-        },
-        {
-          "store": "ah",
-          "name": "Dreft Platinum miracle vaatwascapsules citroen",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: miracle"
-        },
-        {
-          "store": "ah",
-          "name": "Dreft Platinum plus vaatwastabletten 6-pack",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: pack"
+          "reason": "productsoort niet voldoende bevestigd"
         }
       ],
       "groups": {
         "dishwasher|plain||naturel|inhoud onbekend": {
           "label": "Vaatwastabletten · inhoud niet bevestigd",
           "stores": {
-            "jumbo": 8
+            "jumbo": 2
           }
         },
         "dishwasher|plain||naturel|stuk": {
           "label": "Vaatwastabletten · per stuk",
           "stores": {
-            "ah": 8
+            "ah": 5
           }
         }
       }
@@ -3968,7 +3968,7 @@
       "name": "Dreft Platinum Citroen Vaatwascapsules 21 X",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-citroen-vaatwascapsules-21-x-738705ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "ec74b079d6a7231dfd31d799"
     },
     {
@@ -3979,7 +3979,7 @@
       "name": "Dreft Platinum Citroen Vaatwascapsules 39 X",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-citroen-vaatwascapsules-39-x-738706ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "a8836530922f03eb28b47240"
     },
     {
@@ -4012,7 +4012,7 @@
       "name": "Dreft Platinum Plus Citroen Vaatwascapsules 19 Stuks",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-19-stuks-738188ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "e4f247ffbfaa38ce2df76b5c"
     },
     {
@@ -4023,7 +4023,7 @@
       "name": "Dreft Platinum Plus, Citroen, Vaatwascapsules 30 X",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-30-x-738708ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "5e813674482ce0162e7b0934"
     },
     {
@@ -4034,7 +4034,7 @@
       "name": "Dreft Platinum Plus Citroen Vaatwascapsules 40 Stuks",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-40-stuks-738233ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "be32ec0559ec6b9f84c737a7"
     },
     {
@@ -4045,7 +4045,7 @@
       "name": "Dreft Platinum Plus, Citroen, Vaatwascapsules 59 X",
       "pack": "",
       "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-59-x-739042ZK",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "c607d734e25f7b559ab66cdc"
     },
     {
@@ -4782,7 +4782,7 @@
       "name": "Optimel Magere Kwark met Magere Yoghurt Citroen 0% Vet Limited Edition 500g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-citroen-0-vet-limited-edition-500g-68927BAK",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt limited edition",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "443d9c12f0e7e424d453b47e"
     },
     {
@@ -5838,7 +5838,7 @@
       "name": "Dreft Platinum plus vaatwascapsules citroen",
       "pack": "36 stuks",
       "url": "https://www.ah.nl/producten/product/wi571444/dreft-platinum-plus-vaatwascapsules-citroen",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "edda14ef6abc46f3c4596cf4"
     },
     {
@@ -5849,7 +5849,7 @@
       "name": "Dreft Platinum plus vaatwascapsules citroen",
       "pack": "19 stuks",
       "url": "https://www.ah.nl/producten/product/wi571447/dreft-platinum-plus-vaatwascapsules-citroen",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "058f09e84d7e8d774f80c707"
     },
     {
@@ -6036,7 +6036,7 @@
       "name": "Dreft Platinum plus vaatwascapsules citroen",
       "pack": "59 stuks",
       "url": "https://www.ah.nl/producten/product/wi587721/dreft-platinum-plus-vaatwascapsules-citroen",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "292c0fbe6c3a23f00fc1fc27"
     },
     {
@@ -6157,7 +6157,7 @@
       "name": "Dreft Platinum miracle vaatwascapsules citroen",
       "pack": "20 stuks",
       "url": "https://www.ah.nl/producten/product/wi600230/dreft-platinum-miracle-vaatwascapsules-citroen",
-      "reason": "niet herkende productbeschrijving: miracle",
+      "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "bffe863209a69aff20a52f79"
     },
     {
