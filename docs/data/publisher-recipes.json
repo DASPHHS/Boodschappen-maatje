@@ -988,6 +988,306 @@
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-quinoasalade",
+      "title": "Quinoasalade met kikkererwten",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/quinoasalade-met-kikkererwten.aspx",
+      "families": [
+        "kikkererwten",
+        "paprika",
+        "tomaten",
+        "spinazie"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "salade",
+      "vegetable_families": 3,
+      "has_legumes": true,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-kikkererwtensalade",
+      "title": "Kikkererwtensalade met gegrilde zoete ui",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/kikkererwtensalade-met-gegrilde-zoete-ui.aspx",
+      "families": [
+        "kikkererwten",
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "salade",
+      "vegetable_families": 2,
+      "has_legumes": true,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-rijst-broccoli-tofu",
+      "title": "Rijst met broccoli, tofu en ananassalsa",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/rijst-met-broccoli-tofu-en-ananassalsa.aspx",
+      "families": [
+        "broccoli",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-aardappelstoof-tofu",
+      "title": "Aardappelstoofschotel met kruidige tofu",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/aardappelstoofschotel-met-kruidige-tofu.aspx",
+      "families": [
+        "aardappelen",
+        "wortel",
+        "prei",
+        "paprika",
+        "tofu"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stoof",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-paksoi-tofu",
+      "title": "Geroerbakte tofu met paksoi en rijst",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/geroerbakte-tofu-met-paksoi-en-rijst.aspx",
+      "families": [
+        "tofu",
+        "paksoi",
+        "paprika"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "wok",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-hutspot-tofu",
+      "title": "Hutspot met kruidige tofu en hazelnoten",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/hutspot-met-kruidige-tofu-en-hazelnoten.aspx",
+      "families": [
+        "tofu",
+        "wortel",
+        "aardappelen"
+      ],
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-boerenkool-gratin",
+      "title": "Gegratineerde boerenkoolstamppot",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/gegratineerde-boerenkoolstamppot.aspx",
+      "families": [
+        "boerenkool",
+        "aardappelen"
+      ],
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-boerenkool-noten",
+      "title": "Boerenkoolstamppot met rode ui en noten",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/boerenkoolstamppot-met-rode-ui-en-noten.aspx",
+      "families": [
+        "boerenkool",
+        "aardappelen"
+      ],
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-zalm-couscous",
+      "title": "Zalm met couscous en sinaasappel",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/zalm-met-couscous-en-sinaasappel.aspx",
+      "families": [
+        "zalm",
+        "prei",
+        "paprika"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-zeekraal-zalm",
+      "title": "Zeekraal met gestoofde zalm",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/zeekraal-met-gestoofde-zalm.aspx",
+      "families": [
+        "zalm",
+        "aardappelen"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stoof",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-kabeljauw-krieltjes",
+      "title": "Kabeljauw met groente en krieltjes",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/kabeljauw-met-groente-en-krieltjes.aspx",
+      "families": [
+        "witvis",
+        "wortel",
+        "paprika",
+        "aardappelen"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-kabeljauw-spaghetti",
+      "title": "Spaghetti met kabeljauw en groente",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/spaghetti-met-kabeljauw-en-groente.aspx",
+      "families": [
+        "witvis",
+        "paprika"
+      ],
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "vc-boerenkoolstoof-kapucijners",
+      "title": "Boerenkoolstoofpot met kapucijners en varkensfilet",
+      "source": "Voedingscentrum",
+      "url": "https://www.voedingscentrum.nl/recepten/gezond-recept/boerenkoolstoofpot-met-kapucijners-en-varkensfilet.aspx",
+      "families": [
+        "boerenkool",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "k24-pompoencurry",
+      "title": "Pompoencurry met kikkererwten",
+      "source": "24Kitchen",
+      "url": "https://www.24kitchen.nl/recepten/pompoencurry-kikkererwten",
+      "families": [
+        "pompoen",
+        "kikkererwten",
+        "paprika"
+      ],
+      "minutes": 60,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "vegetable_families": 2,
+      "has_legumes": true,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "k24-cannelloni",
+      "title": "Cannelloni met ricotta en spinazie",
+      "source": "24Kitchen",
+      "url": "https://www.24kitchen.nl/recepten/cannelloni-met-ricotta-en-spinazie",
+      "families": [
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "oven",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "k24-tandoori-linzen",
+      "title": "Tandoori linzen met andijvie en uiencompote",
+      "source": "24Kitchen",
+      "url": "https://www.24kitchen.nl/recepten/tandoori-linzen-met-andijvie-en-uiencompote",
+      "families": [
+        "linzen",
+        "wortel"
+      ],
+      "minutes": 30,
+      "servings": 8,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
     }
   ]
 }

@@ -51,6 +51,15 @@
   champignons:{label:'Champignons',search:'champignons hoofdgerecht risotto',match:/\b(champignons|kastanjechampignons)\b/,tags:['risotto','champignonpan']},
   wortel:{label:'Wortel',search:'wortel gezonde ovenschotel',match:/\b(wortelen|wortels|wortel|bospeen|winterpeen)\b/,tags:['wortelstoof','ovenschotel']}
  };
+ // Each publisher has a strict HTTPS allowlist; never promote arbitrary domains.
+ // Only factual metadata and links are displayed, not their copyrighted instructions.
+ const publisherUrlPatterns={
+  'Allerhande':/^https:\/\/(?:www\.)?ah\.nl\/allerhande\//,
+  'Jumbo':/^https:\/\/(?:www\.)?jumbo\.com\/recepten\//,
+  'Voedingscentrum':/^https:\/\/www\.voedingscentrum\.nl\/recepten\/gezond-recept\//,
+  '24Kitchen':/^https:\/\/www\.24kitchen\.nl\/recepten\//
+ };
+ const trustedPublisherUrl=(source,url)=>typeof url==='string'&&Boolean(publisherUrlPatterns[source]?.test(url));
  const unsafe=/\b(katten|kattenvoer|honden|hondenvoer|puppy|kitten|olvarit|babyvoeding|baby|schnitzel|worst|burger|saus|soep|snack|chips|crackers|koekjes|chocolade|ijs|reep|repen|salade|pizza|maaltijd|kruidenmix|marinade|dressing|brood|rollade|gerookt|gerookte|gepaneerd|plantaardig|vegetarisch|vegan|vega|dessert|smaak|poeder|thee|supplement|kruiden)\b/;
  function classify(offer){
   const raw=norm(offer?.name),cat=offer?.category;
@@ -97,8 +106,7 @@
   const seen=new Set(),matches=[];
   for(const r of index.recipes){
    if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
-      typeof r.title!=='string'||!r.title.trim()||!['Allerhande','Jumbo'].includes(r.source)||
-      typeof r.url!=='string'||!/^https:\/\/(www\.)?(ah\.nl\/allerhande\/|jumbo\.com\/recepten\/)/.test(r.url)||
+      typeof r.title!=='string'||!r.title.trim()||!trustedPublisherUrl(r.source,r.url)||
       !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
    if(seen.has(r.url))continue;
    seen.add(r.url);
