@@ -29,6 +29,12 @@ const start=base.endsWith('/')?base:base+'/';
   assert.ok(await page.locator('#view-aanbiedingen .compare-table tbody tr').count()>=15);
   const comparisonText=await page.locator('#view-aanbiedingen .compare-table').innerText();
   assert.doesNotMatch(comparisonText,/Kipfilet Americanos|Gerookte Kipfilet Plakjes|Kipfilet pepersaus|Blik brokjes zalm forel|Pureersoep pompoen|Knijpfruit Pompoen|groenteshot pompoen/i,'Wrong product classes must never appear in grocery comparisons');
+  const peanutRows=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Pindakaas'});
+  if(await peanutRows.count()>0){
+   const rows=await peanutRows.allInnerTexts();
+   assert.ok(!rows.some(t=>/regulier/i.test(t)&&/Calvé Pindakaas met stukjes pinda/i.test(t)),
+    'A regular peanut butter comparison row must never include Calvé crunchy');
+  }
   const milk=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Houdbare volle melk voor cappuccino'});
   assert.equal(await milk.count(),1,'UHT full milk is an exact saved preference');
   for(const name of ['Lidl','Jumbo','Albert Heijn'])assert.ok((await page.locator('#view-aanbiedingen .compare-table').innerText()).includes(name));
@@ -61,6 +67,8 @@ const start=base.endsWith('/')?base:base+'/';
   assert.ok((await page.locator('#view-recepten').innerText()).includes('Groentefrittata'),'Egg/cheese filter has distinct recipes');
   await page.locator('#view-recepten [data-kind="alle"]').click();
   await page.locator('#view-recepten .recipe-card').first().waitFor();
+  assert.ok(!(await page.locator('#view-recepten .recipe-card').allTextContents()).some(t=>/Vanaf\s*€/.test(t)),
+   'Incomplete ingredient totals cannot be shown as meal starting prices');
   await page.locator('#view-recepten .recipe-card [data-recipe-save]').first().click();
   await page.locator('.sidebar button[data-view="mijn"]').click();
   assert.ok(await page.locator('#view-mijn .my-saved-card').count()>=1,'Saved recipe must appear');
