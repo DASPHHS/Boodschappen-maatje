@@ -3,7 +3,7 @@ from scripts import refresh_publisher_recipes as p
 class TestPublisherMetadata(unittest.TestCase):
     def test_official_sitemap_parsing_and_targeting(self):
         xml='''<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url><loc>https://www.ah.nl/allerhande/recept/R-R123456/kikkererwtencurry-met-broccoli</loc></url>
+        <url><loc>https://www.ah.nl/allerhande/recept/R-R123456/curry-met-kikkererwten-en-broccoli</loc></url>
         <url><loc>https://www.ah.nl/allerhande/recepten/curry</loc></url>
         <url><loc>https://evil.com/allerhande/recept/R-R1234/broccoli</loc></url></urlset>'''
         urls=p.candidates(xml,{},__import__('datetime').date(2026,11,1))
