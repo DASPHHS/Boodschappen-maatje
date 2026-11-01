@@ -8,6 +8,8 @@ on:
       - 'scripts/offer-audit.cjs'
       - 'scripts/sync_lidl_supplemental.py'
       - 'scripts/sync_lidl_official.py'
+      - 'scripts/promotion_changefeed.py'
+      - 'scripts/sync_folderz.py'
       - 'scripts/sync_regular_prices.py'
       - 'docs/data/personal-prices.json'
       - 'docs/data/watchlist.json'
@@ -40,6 +42,12 @@ jobs:
           python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
           python -m unittest discover -s tests -p 'test_lidl_official.py'
+          python -m unittest discover -s tests -p 'test_api_adapters.py'
+      - uses: actions/cache/restore@v4
+        with:
+          path: .sync/promotion-state.json
+          key: promotion-cursor-v1-${{ github.run_id }}
+          restore-keys: promotion-cursor-v1-
       - name: Read all public promotions
         continue-on-error: true
         run: python scripts/sync_aanbiedingen.py
@@ -50,6 +58,9 @@ jobs:
       - name: Read dated public Lidl product grids and Lidl Plus conditions
         continue-on-error: true
         run: python scripts/sync_lidl_official.py
+      - name: Read bounded independent Lidl detail observations
+        continue-on-error: true
+        run: python scripts/sync_folderz.py
       - name: Recheck known regular prices on retailer product pages
         continue-on-error: true
         run: python scripts/sync_regular_prices.py
@@ -91,7 +102,13 @@ jobs:
             sleep 4
           done
           exit 1
-      - name: Report a failed official Lidl refresh after publishing source health
+      # Save cursor only after the matching public feed was successfully committed.
+      - uses: actions/cache/save@v4
+        if: success() && hashFiles('.sync/promotion-state.json') != ''
+        with:
+          path: .sync/promotion-state.json
+          key: promotion-cursor-v1-${{ github.run_id }}
+      - name: Report source availability and explicit fallback after publication
         if: always()
         run: |
           python - <<'PYCODE'
@@ -100,5 +117,9 @@ jobs:
           from zoneinfo import ZoneInfo
           s=json.load(open('docs/data/supplemental-offers.json'))['stores']['lidl'].get('official_check',{})
           today=datetime.now(ZoneInfo('Europe/Amsterdam')).date().isoformat()
-          assert s.get('status')=='ok' and str(s.get('checked_at','')).startswith(today), s
+          official=s.get('status')=='ok' and str(s.get('checked_at','')).startswith(today)
+          fallback=json.load(open('docs/data/supplemental-offers.json'))['stores']['lidl'].get('folderz_check',{})
+          usable=fallback.get('status')=='ok' and str(fallback.get('checked_at','')).startswith(today) and fallback.get('accepted',0)>0
+          if not official and usable: print('::warning::Direct Lidl source unavailable; dated Folderz fallback published. Official source remains explicitly partial.')
+          assert official or usable, {'official':s,'fallback':fallback}
           PYCODE

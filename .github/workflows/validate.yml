@@ -56,6 +56,9 @@ on:
       - 'scripts/sync_aanbiedingen.py'
       - 'scripts/sync_lidl_supplemental.py'
       - 'scripts/sync_lidl_official.py'
+      - 'scripts/promotion_changefeed.py'
+      - 'scripts/sync_folderz.py'
+      - 'tests/test_api_adapters.py'
       - 'tests/test_lidl_official.py'
       - 'tests/recipe-variety.cjs'
       - 'tests/recipe-price-cache.cjs'
@@ -87,6 +90,7 @@ jobs:
           python -m py_compile scripts/sync_aanbiedingen.py scripts/sync_lidl_supplemental.py
           python -m unittest discover -s tests -p 'test_lidl_supplemental.py'
           python -m unittest discover -s tests -p 'test_lidl_official.py'
+          python -m unittest discover -s tests -p 'test_api_adapters.py'
           python -m unittest discover -s tests -p 'test_sync_aanbiedingen.py'
           python -m unittest discover -s tests -p 'test_regular_prices.py'
           python -m unittest discover -s tests -p 'test_retailer_catalog.py'

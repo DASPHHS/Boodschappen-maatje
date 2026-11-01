@@ -47,6 +47,7 @@
    return officialHost||retailerSource?'confirmed':'reported';
   }
   if(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')return 'reported';
+  if(o.source_provider==='Folderz'&&/^https:\/\/www\.folderz\.nl\/winkels\/lidl\/aanbiedingen\//.test(o.source?.url||'')&&o.promotion_status==='active')return 'reported';
   if(o.source_provider==='user_folder_image'&&o.evidence_date&&o.evidence_date<=today)return 'reported';
   return 'excluded';
  }

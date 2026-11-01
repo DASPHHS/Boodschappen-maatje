@@ -35,3 +35,5 @@ assert.equal(m.classify({...offer,end_date:'2026-10-28'},today),'excluded');
 assert.equal(m.classify({...offer,source:{url:''}},today),'excluded');
 assert.equal(m.classify({...offer,price:NaN},today),'excluded');
 console.log('Promotion evidence gate and precise package/variant matching validated');
+
+assert.equal(m.classify({id:'folderz-1',name:'Broccoli',price:.69,start_date:'2026-10-26',end_date:'2026-11-01',source_provider:'Folderz',verified:false,promotion_status:'active',source:{url:'https://www.folderz.nl/winkels/lidl/aanbiedingen/broccoli-aanbieding-123/'}},'2026-11-01'),'reported');

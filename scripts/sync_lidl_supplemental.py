@@ -61,8 +61,8 @@ def main():
     # erase its evidence on a transient official-source failure.
     if OUT.exists():
         previous=json.loads(OUT.read_text()).get('stores',{}).get('lidl',{})
-        result['stores']['lidl']['offers'] += [o for o in previous.get('offers',[]) if o.get('source_provider')=='lidl_official']
-        for key in ['official_check','official_prices']:
+        result['stores']['lidl']['offers'] += [o for o in previous.get('offers',[]) if o.get('source_provider') in ('lidl_official','Folderz')]
+        for key in ['official_check','official_prices','folderz_check']:
             if key in previous:result['stores']['lidl'][key]=previous[key]
     OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
     print("Lidl supplemental: ",len(offers),"current offers,",len(errors),"errors")
