@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_policy": "publisher_link_metadata_only",
   "generated_at": "2026-11-01",
-  "notice": "Door Boodschappenmaatje geselecteerde originele recepten bij Allerhande en Jumbo. Alleen titel, link, geselecteerde ingrediëntfamilies en globale metadata worden getoond; volledige recepten en foto's blijven bij de uitgever. Geen zelfstandig geverifieerde kassaprijzen. Uitgevers controleren zelf de bereidingsinstructies.",
+  "notice": "Geselecteerde recepten van originele uitgevers, waaronder Allerhande en HelloFresh. Alleen feitelijke metadata en directe links; volledige receptinstructies, afbeeldingen en ingredientenlijsten blijven bij de uitgever. Titel-/familiekoppelingen bevestigen niet de ingredientvarianten of supermarktprijzen.",
   "recipes": [
     {
       "id": "ah-rendang",
@@ -1777,6 +1777,111 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-indonesische-kipcurry",
+      "title": "Indonesische zoete curry met kippendij en limoen",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-zoete-curry-met-kippendij-en-limoen-5e4a3e6bb19a1757fe76da26",
+      "families": [
+        "kip",
+        "wortel"
+      ],
+      "minutes": 35,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-nasigoreng-ei",
+      "title": "Nasi goreng met roerei en zoetzure tomatensaus",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-roerei-en-zoetzure-tomatensaus-633eee0477adddd743098bd6",
+      "families": [
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-gado-gado",
+      "title": "Gado gado met sperziebonen en kokos-pindasaus",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/gado-gado-met-sperziebonen-en-kokos-pindasaus-6203b8ae0d67ec06723ad270",
+      "families": [
+        "sperziebonen",
+        "pindakaas"
+      ],
+      "minutes": 25,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-koolvis-curry",
+      "title": "Koolvis met romige kokoscurry",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/superconvenience_fish-663e2bec2d4c511687b2c49c",
+      "families": [
+        "witvis"
+      ],
+      "minutes": 10,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-nasigoreng-kipsate",
+      "title": "Nasi goreng met zelfgemaakte kipsaté",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-zelfgemaakte-kipsate-63d3145af3cad3f4f35bf1d8",
+      "families": [
+        "kip"
+      ],
+      "minutes": 25,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-rendang-boontjes",
+      "title": "Rendang met rundvlees en pittige boontjes",
+      "source": "HelloFresh",
+      "url": "https://www.hellofresh.nl/recipes/rendang-met-rundvlees-en-pittige-boontjes-5f7dd7545bcfcc650644ece3",
+      "families": [
+        "sperziebonen"
+      ],
+      "minutes": 35,
+      "servings": null,
+      "course": "hoofdgerecht",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-01"
     }
   ]
