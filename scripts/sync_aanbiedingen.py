@@ -10,6 +10,7 @@ from urllib.error import HTTPError, URLError
 
 OUT=Path(__file__).resolve().parents[1]/"docs/data/offers-catalog.json"
 BASE="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
+SYNC_STATE=Path(__file__).resolve().parents[1]/".sync/promotion-state.json"
 RETAILERS={"lidl":"lidl","jumbo":"jumbo","ah":"albert_heijn"}
 REGEX={
 "kip":r"\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)[a-z]*\b",
@@ -69,8 +70,8 @@ def category(name):
         return "groente"
     return "overig"
 
-def request(params):
-    url=BASE+"?"+urlencode(params)
+def request(params,base=BASE):
+    url=base+"?"+urlencode(params)
     headers={"User-Agent":"BoodschappenMaatje/1.0 (+https://github.com/DASPHHS/Boodschappen-maatje)"}
     key=os.environ.get("PRIJS_PROFEET_KEY")
     if key:headers["X-API-Key"]=key
@@ -122,28 +123,31 @@ def main():
     output={"schema_version":1,"generated_at":timestamp.isoformat(),"source":"PrijsProfeet public API",
       "notice":"ALLE API-gemelde winkelpromoties inclusief bier, dranken, huishouden en overige categorieën. Geen onafhankelijke winkelcontrole; geen volledige reguliere schapprijzen. Categorieën zijn indicatief; alleen expliciete product-ID kan een recept koppelen.",
       "stores":{}}
+    try:from .promotion_changefeed import sync
+    except ImportError:from promotion_changefeed import sync
+    state_path=SYNC_STATE
+    try:sync_state=json.loads(state_path.read_text())
+    except (OSError,ValueError):sync_state={'schema_version':1,'stores':{}}
+    if not isinstance(sync_state,dict) or sync_state.get('schema_version')!=1 or not isinstance(sync_state.get('stores'),dict):sync_state={'schema_version':1,'stores':{}}
+    def get(path,params):
+        # Stay below the documented unauthenticated 30 bulk requests/minute.
+        time.sleep(2.2 if not os.environ.get('PRIJS_PROFEET_KEY') else .45)
+        return request(params,'https://www.prijsprofeet.nl/api/v1'+path)
     failures=0
     for store,retailer in RETAILERS.items():
         try:
-            page=1;found={};total=None
-            while True:
-                data=request({"retailer":retailer,"page":page,"page_size":100})
-                if data.get("retailer_filter"):raise ValueError("retailer filter not applied")
-                rows=data.get("products")
-                if not isinstance(rows,list):raise ValueError("products missing")
-                if total is None:total=int(data.get("total") or 0)
-                for row in rows:
-                    x=item(row,today)
-                    if x:found[x["id"]]=x
-                if len(rows)<100 or page*100>=total:break
-                page+=1
-                if page>90:raise RuntimeError("pagination exceeded")
-                time.sleep(2.2 if not os.environ.get("PRIJS_PROFEET_KEY") else 0.45)
+            updated,mode=sync(retailer,sync_state.get('stores',{}).get(store),get)
+            found={}
+            for row in updated['products'].values():
+                x=item(row,today)
+                if x:found[x['id']]=x
+            total=len(updated['products'])
+            sync_state.setdefault('stores',{})[store]=updated
             counts={}
             for offer in found.values():
                 c=offer["category"]
                 counts[c]=counts.get(c,0)+1
-            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"imported_total":len(found),"categories":counts,"status":"ok","checked_at":timestamp.isoformat()}
+            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"imported_total":len(found),"categories":counts,"status":"ok","sync_mode":mode,"checked_at":timestamp.isoformat()}
             print(store,total,"total,",len(found),"active in-store promotions across all categories",flush=True)
         except Exception as e:
             failures+=1
@@ -151,8 +155,11 @@ def main():
             output["stores"][store]={"offers":old.get("offers",[]),"reported_total":old.get("reported_total"),
               "status":"stale","checked_at":old.get("checked_at"),"error":str(e)[:200]}
             print(store,"FAILED",e,file=sys.stderr,flush=True)
-    if failures==3:return 1
+    if failures==len(RETAILERS):return 1
     OUT.parent.mkdir(parents=True,exist_ok=True)
+    # The workflow saves this internal cursor only after publishing the matching feed.
+    state_path.parent.mkdir(parents=True,exist_ok=True)
+    state_path.write_text(json.dumps(sync_state,ensure_ascii=False,separators=(',',':'))+'\n')
     OUT.write_text(json.dumps(output,ensure_ascii=False,separators=(",",":"))+"\n")
     return 2 if failures else 0
 
