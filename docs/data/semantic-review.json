@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-01T11:40:47.915Z",
+  "generated_at": "2026-11-01T11:48:37.100Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
@@ -1295,14 +1295,14 @@
       "reject": 5,
       "reasons": {
         "productkenmerken en verpakking passen": 6,
-        "exacte inhoud ontbreekt": 3,
-        "niet herkende productbeschrijving: campina": 6,
-        "niet herkende productbeschrijving: campina 12x1": 1,
+        "exacte inhoud ontbreekt": 6,
+        "niet herkende productbeschrijving: 12x1": 1,
         "niet herkende productbeschrijving: campina voordeelpak": 1,
         "niet herkende productbeschrijving: holland jersey jersey": 1,
         "verpakkingsgrootte verschilt": 3,
         "productnaam of uitsluitingen passen niet": 2,
         "niet herkende productbeschrijving: pack": 1,
+        "niet herkende productbeschrijving: campina": 3,
         "niet herkende productbeschrijving: campina pack": 1
       },
       "samples": [
@@ -1328,25 +1328,25 @@
           "store": "jumbo",
           "name": "Campina Langlekker Volle Melk 1 L",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina"
+          "reason": "exacte inhoud ontbreekt"
         },
         {
           "store": "jumbo",
           "name": "Campina Langlekker Volle Melk 1,5 L",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina"
+          "reason": "exacte inhoud ontbreekt"
         },
         {
           "store": "jumbo",
           "name": "Campina Langlekker Volle Melk 12x1 L",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina 12x1"
+          "reason": "niet herkende productbeschrijving: 12x1"
         },
         {
           "store": "jumbo",
           "name": "Campina Langlekker volle melk voordeel 4 x 1 L",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina"
+          "reason": "exacte inhoud ontbreekt"
         },
         {
           "store": "jumbo",
@@ -3881,7 +3881,7 @@
       "name": "Campina Langlekker Volle Melk 1 L",
       "pack": "1 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-1-l-293405STK",
-      "reason": "niet herkende productbeschrijving: campina",
+      "reason": "exacte inhoud ontbreekt",
       "fingerprint": "5d71414f04ec2424a5d00f52"
     },
     {
@@ -3892,7 +3892,7 @@
       "name": "Campina Langlekker Volle Melk 1,5 L",
       "pack": "8 x 1.5 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-1,5-l-167830KSL",
-      "reason": "niet herkende productbeschrijving: campina",
+      "reason": "exacte inhoud ontbreekt",
       "fingerprint": "36d556283a4fd6b6aab6c484"
     },
     {
@@ -3903,7 +3903,7 @@
       "name": "Campina Langlekker Volle Melk 12x1 L",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-12x1-l-293405DSL",
-      "reason": "niet herkende productbeschrijving: campina 12x1",
+      "reason": "niet herkende productbeschrijving: 12x1",
       "fingerprint": "090595c3e2dacdd4a325610a"
     },
     {
@@ -3914,7 +3914,7 @@
       "name": "Campina Langlekker volle melk voordeel 4 x 1 L",
       "pack": "4 x 1 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-voordeel-4-x-1-l-293487STK",
-      "reason": "niet herkende productbeschrijving: campina",
+      "reason": "exacte inhoud ontbreekt",
       "fingerprint": "f62b6194d4daca793e3845b2"
     },
     {
