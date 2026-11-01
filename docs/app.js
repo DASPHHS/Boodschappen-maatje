@@ -13,7 +13,7 @@ const validdate=x=>typeof x==='string'&&/^\d{4}-\d\d-\d\d$/.test(x);
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
 const dateNL=x=>validdate(x)?new Date(x+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'short'}):'Onbekend';
 const pick=(x,k)=>x&&typeof x==='object'?x[k]:undefined;
-const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',cookingOffer:null,cookingQuery:'',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,recipeSources:null,publisherRecipes:null,sourceHealth:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',offerWeek:'now',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
+const state={view:'vandaag',store:'alle',kind:'alle',subtype:'alle',query:'',sortBy:'deals',recipeQuality:'developed',guideCategory:'alle',guideQuery:'',guideSitemap:false,guideLimit:12,cookingOffer:null,cookingQuery:'',dealFilter:'all',offerSort:'relevant',offerEvidence:'all',daily:null,weekly:null,archive:null,catalog:null,spotlight:null,watchlist:null,recipeSources:null,publisherRecipes:null,sourceHealth:null,personalPrices:null,retailerCatalog:null,verification:null,supplemental:null,audit:null,library:[],offerMode:'personal',offerWeek:'now',manageWatch:false,customWatches:read('bm_custom_watches',[]),resolution:null,favorites:read('bm_product_favorites',[]),watchDisabled:read('bm_watch_disabled',[]),_offersCache:new Map(),_matchCache:new Map(),pageSize:{lidl:24,jumbo:24,ah:24},selected:read('bm_selected',{}),checks:read('bm_checks',{}),savedRecipes:read('bm_saved_recipes',[]),recipeSnapshots:read('bm_recipe_snapshots',{})};
 // Migrate old favorites saved with equivalent units (0,33 l = 330 ml).
 const normalizedFavorites=window.MaatjeFavorites?.dedupe(state.favorites)||state.favorites;
 if(normalizedFavorites.length!==state.favorites.length){state.favorites=normalizedFavorites;save();}
@@ -729,12 +729,38 @@ function discoveredPublisherCards(store,limit=8){
   (hit.recipe.servings?' · '+safe(hit.recipe.servings)+' personen':'')+
   '</small><span>Open volledig recept ↗</span></a>').join('')+'</div></section>';
 }
+function dutchRecipeGuide(){
+ const finder=window.MaatjeDutchGuide;
+ if(!finder||!state.publisherRecipes?.recipes?.length)return '';
+ const all=finder.browse(state.publisherRecipes,{category:state.guideCategory,query:state.guideQuery,onlySelected:!state.guideSitemap});
+ const cards=all.slice(0,state.guideLimit);
+ let html='<section id="dutch-guide" class="publisher-discovery">'+
+ '<h3>Nederlandse receptengids · uitgezocht voor lekker koken</h3>'+
+ '<p class="muted">Directe recepten van Allerhande en Jumbo. Kies een ingrediëntgroep of zoek een gerecht. Geen vertalingen of gekopieerde instructies; uit een sitemap afgeleide titels staan standaard uit.</p>'+
+ '<div class="control-row" role="group" aria-label="Receptencategorieën">'+finder.categories.map(cat=>
+ '<button type="button" class="pill '+(state.guideCategory===cat.key?'active':'')+'" data-guide-category="'+attr(cat.key)+'">'+safe(cat.title)+'</button>').join('')+'</div>'+
+ '<div class="control-row"><label for="guide-find">Zoek in geselecteerde recepten</label>'+
+ '<input class="search" id="guide-find" value="'+attr(state.guideQuery)+'" placeholder="Bijv. kip, curry, linzen of broccoli" maxlength="80"></div>'+
+ '<div class="control-row"><button type="button" class="button secondary small" data-guide-sitemap="1">'+
+ (state.guideSitemap?'Toon alleen uitgezochte recepten':'Toon ook niet-inhoudelijk gecontroleerde sitemap-titels')+'</button>'+
+ '<small>'+all.length+' recepten in deze selectie</small></div>';
+ if(cards.length)html+='<div class="recipe-source-grid">'+cards.map(r=>
+ '<a class="recipe-source-link" target="_blank" rel="noopener noreferrer" href="'+attr(r.url)+'">'+
+ '<strong>'+safe(r.title)+'</strong><small>'+safe(r.source)+' · '+safe(finder.label(r))+
+ (r.minutes?' · '+safe(r.minutes)+' min':'')+(r.servings?' · '+safe(r.servings)+' personen':'')+
+ '</small><span>Bekijk recept bij uitgever ↗</span></a>').join('')+'</div>';
+ else html+='<p class="muted">Geen recepten met deze combinatie van filters. Kies een andere ingrediëntgroep.</p>';
+ if(all.length>cards.length)html+='<button type="button" class="button secondary" data-guide-more="1">Toon meer recepten ('+safe(all.length-cards.length)+' resterend)</button>';
+ html+='<p class="muted">Tijd, porties en voedingswaarde zijn alleen vermeld wanneer bekend. Titel uit sitemap betekent dat ingrediënten niet onafhankelijk bevestigd zijn. Een recept is niet automatisch gezond of volledig geprijsd. '+
+ '<a href="https://github.com/DASPHHS/Boodschappen-maatje/blob/main/NEDERLANDSE_RECEPTENGIDS.md" target="_blank" rel="noopener noreferrer">Bekijk de complete Nederlandstalige gids op GitHub ↗</a></p></section>';
+ return html;
+}
 function recipeView(){
 header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Acties die je écht gebruikt.</span>','Uitgewerkte ideeën en actierecepten voorop. De 40 oudere titel-geïnspireerde concepten kun je apart inschakelen. Geen van deze gerechten is door ons proefgekookt.');
 let out='<div class="personal-settings"><label for="ingredient-discovery">Zoek gerechten bij een actieproduct of ingrediënt</label>'+
  '<input id="ingredient-discovery" class="search" placeholder="Bijv. runderriblappen, broccoli, zalmfilet" maxlength="100" value="'+attr(state.cookingQuery)+'">'+
  '<button class="button secondary small" data-find-ideas="1">Zoek geselecteerde recepten</button></div>'+
- cookingIdeasPanel()+storeControls()+kindControls()+subtypeControls()+recipeControls();
+ cookingIdeasPanel()+dutchRecipeGuide()+storeControls()+kindControls()+subtypeControls()+recipeControls();
 for(const s of ORDER.filter(s=>state.store==='alle'||state.store===s)){
 out+=discoveredPublisherCards(s,12);
 const all=catalog(s),found=all.filter(recipeFiltered).sort(recipeSort);
@@ -876,6 +902,9 @@ if(b.dataset.removeWatch){state.customWatches=state.customWatches.filter(w=>w.ke
 if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.offerWeek){state.offerWeek=b.dataset.offerWeek;state.pageSize={lidl:24,jumbo:24,ah:24};offersView();return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
 if(b.dataset.store){state.store=b.dataset.store;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;render();return}
+if(b.dataset.guideCategory){state.guideCategory=b.dataset.guideCategory;state.guideLimit=12;recipeView();return}
+if(b.dataset.guideSitemap){state.guideSitemap=!state.guideSitemap;state.guideLimit=12;recipeView();return}
+if(b.dataset.guideMore){state.guideLimit+=12;recipeView();return}
 if(b.dataset.cookOffer){const [store,...parts]=b.dataset.cookOffer.split('|');const id=parts.join('|');
  if(ORDER.includes(store)&&offers(store).some(o=>o.id===id)){state.cookingOffer={store,id};state.store=store;setView('recepten')}return}
 if(b.dataset.findIdeas){const value=String($('#ingredient-discovery')?.value||'').trim();
@@ -887,7 +916,11 @@ if(b.dataset.remove){unplanRecipe(state.store+'|'+b.dataset.remove);render();ret
 if(b.dataset.copyList){copyList(b.dataset.copyList);return}
 if(b.dataset.resetChecks){Object.keys(state.checks).filter(x=>x.startsWith(b.dataset.resetChecks+'|')).forEach(k=>delete state.checks[k]);save();render();return}
 });
-document.addEventListener('input',e=>{if(e.target.id==='find'){let x=e.target.value;state.query=x;let pos=e.target.selectionStart;state.view==='recepten'?recipeView():offersView();let inp=$('#find');inp.focus();inp.setSelectionRange(pos,pos)}});
+document.addEventListener('input',e=>{if(e.target.id==='guide-find'){
+ const query=e.target.value,pos=e.target.selectionStart;
+ state.guideQuery=query;state.guideLimit=12;recipeView();
+ const input=$('#guide-find');if(input){input.focus();input.setSelectionRange(pos,pos)}return;
+}if(e.target.id==='find'){let x=e.target.value;state.query=x;let pos=e.target.selectionStart;state.view==='recepten'?recipeView():offersView();let inp=$('#find');inp.focus();inp.setSelectionRange(pos,pos)}});
 document.addEventListener('change',e=>{if(e.target.matches('[data-watch-key]')){const k=e.target.dataset.watchKey;state.watchDisabled=state.watchDisabled.filter(x=>x!==k);if(!e.target.checked)state.watchDisabled.push(k);save();offersView();return}if(e.target.id==='recipe-quality'){state.recipeQuality=e.target.value;recipeView();return}if(e.target.id==='offer-category'){state.kind=e.target.value;offersView();return}if(e.target.id==='offer-sort'){state.offerSort=e.target.value;offersView();return}if(e.target.id==='offer-evidence'){state.offerEvidence=e.target.value;offersView();return}if(e.target.id==='recipe-sort'){state.sortBy=e.target.value;recipeView();return}if(e.target.id==='deal-filter'){state.dealFilter=e.target.value;recipeView();return}if(e.target.matches('[data-check]')){state.checks[e.target.dataset.check]=e.target.checked;save();e.target.closest('.list-line').querySelector('.item-name').classList.toggle('done',e.target.checked)}});
 $('#dialog-close').addEventListener('click',()=>$('#recipe-dialog').close());
 document.querySelector('#clock').textContent=new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Amsterdam'});
