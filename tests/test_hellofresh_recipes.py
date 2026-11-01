@@ -43,6 +43,18 @@ class HelloFreshTests(unittest.TestCase):
                  "https://www.hellofresh.nl/recipes/hachee-"+("a"*24),44),
              hf.candidate_priority("Broodje hamburger met mayonaise",
                  "https://www.hellofresh.nl/recipes/burger-"+("b"*24),44))
+    def test_diversity_and_deduplication(self):
+        titles={
+            "https://www.hellofresh.nl/recipes/tofu-"+("a"*24):"Kruidige tofu met rijst en wortel",
+            "https://www.hellofresh.nl/recipes/kip-"+("b"*24):"Kip met geroosterde bloemkool en couscous",
+            "https://www.hellofresh.nl/recipes/vis-"+("c"*24):"Zalm met citroen en geroosterde spruitjes",
+            "https://www.hellofresh.nl/recipes/vlees-"+("d"*24):"Rendang met gestoofd rundvlees en rijst",
+            "https://www.hellofresh.nl/recipes/duplicate-"+("e"*24):"Rendang met gestoofd rundvlees en rijst",
+        }
+        ordered=hf.varied_candidates(titles,44)
+        self.assertEqual(len(ordered),4)
+        self.assertEqual([hf.candidate_group(titles[u]) for u in ordered],
+            ["vega","kip","vis","vlees"])
     def test_bounded_network_and_failure_keeps_index(self):
         link="https://www.hellofresh.nl/recipes/nasi-goreng-met-roerei-633eee0477adddd743098bd6"
         listing=f'<a href="{link}">Nasi goreng met roerei</a>'
