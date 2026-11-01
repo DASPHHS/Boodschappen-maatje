@@ -162,7 +162,7 @@
    !resolver?.matching||!(/^\d{4}-\d\d-\d\d$/.test(today))||
    !Array.isArray(catalog.stores?.[store])||!catalog.source_date)return blank;
   const age=Math.round((Date.parse(today+'T12:00:00Z')-Date.parse(catalog.source_date+'T12:00:00Z'))/86400000);
-  if(!Number.isFinite(age)||age<0||age>3)return blank;
+  if(!Number.isFinite(age)||age<0||age>7)return blank;
   const rows=[];
   for(const ing of ingredients){
    const label=normalize(ing?.name),q=Number(ing?.quantity);
@@ -197,7 +197,7 @@
    if(chosen)rows.push(chosen);
   }
   return {rows,matched:rows.length,required:ingredients.length,source_date:catalog.source_date,
-   source:'Checkjebon',available:true};
+   source:'Checkjebon',available:true,stale:age>3};
  }
  // Shared ingredients occur in many recipes. Reuse the measured purchase result,
  // including missing results, only for the same immutable feed and dependencies.
@@ -226,7 +226,7 @@
   const rows=options.rows,missing=(recipe?.ingredients||[]).filter(i=>!rows.some(r=>r.ingredient===i.name)).map(i=>i.name);
   const partial=Math.round(rows.reduce((sum,r)=>sum+r.purchase_total,0)*100)/100;
   const complete=options.required>0&&missing.length===0;
-  return {...options,state:complete?'catalog_estimate':rows.length?'partial':'unpriced',
+  return {...options,state:complete?(options.stale?'historical_estimate':'catalog_estimate'):rows.length?'partial':'unpriced',
    total:complete?partial:null,partial,missing,priced_count:rows.length,
    oldest_date:options.source_date,unverified:true,
    consumption_total:Math.round(rows.reduce((sum,r)=>sum+r.consumption_total,0)*100)/100};
