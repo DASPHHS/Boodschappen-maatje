@@ -6,11 +6,11 @@ const app=fs.readFileSync('docs/app.js','utf8');
 const html=fs.readFileSync('docs/index.html','utf8');
 const recipes=data.recipes;
 assert.equal(data.schema_version,1);
-assert.equal(recipes.length,18,'Expected eighteen complete new recipe cards');
+assert.equal(recipes.length,24,'Expected twenty-four complete original recipe cards');
 assert.equal(new Set(recipes.map(r=>r.id)).size,recipes.length);
 assert.equal(new Set(recipes.map(r=>r.title)).size,recipes.length);
-assert.deepEqual(Object.fromEntries(['kip','vlees','vis','vega'].map(k=>[k,recipes.filter(r=>r.category===k).length])),{kip:4,vlees:4,vis:4,vega:6});
-const produce=/(groente|paprika|spinazie|broccoli|bloemkool|courgette|tomaten|wortel|paksoi|peulvruchten|pompoen)/;
+assert.deepEqual(Object.fromEntries(['kip','vlees','vis','vega'].map(k=>[k,recipes.filter(r=>r.category===k).length])),{kip:5,vlees:6,vis:5,vega:8});
+const produce=/(groente|paprika|spinazie|broccoli|bloemkool|courgette|tomaten|wortel|paksoi|peulvruchten|pompoen|prei|venkel|boerenkool|rode kool|spruitjes)/;
 for(const r of recipes){
  assert.match(r.id,/^nieuw-202611-/);
  assert.equal(r.servings,4);
@@ -39,4 +39,5 @@ assert.ok(app.includes('dedupeAcrossStores(filtered'),'All-store selection must 
 assert.ok(app.includes('state.recipePageSize'),'Avoid rendering hundreds of recipes at once');
 assert.ok(app.includes('matchesIngredientSearch(r)'),'Ingredient search must filter main cards');
 assert.ok(app.includes("'Maaltijdprijs onbekend'"),'Never print misleading partial basket totals on cards');
-console.log('18 original recipes, compact unique cards, ingredient search and conservative price labels verified');
+for(const r of recipes.filter(r=>r.editorial_action_focus)){assert.ok(['lidl','jumbo','ah'].includes(r.editorial_action_focus.store));assert.ok(r.culinary_note?.length>40)}
+console.log('24 original recipes, six action-focused meals, full steps, vegetables and honest pricing validated');
