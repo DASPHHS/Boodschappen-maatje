@@ -128,3 +128,13 @@
 .publisher-recipe-card .publisher-note{margin-top:10px}
 @media(min-width:1380px){#view-recepten .cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:740px){.recipe-new-label{font-size:10px}.publisher-recipe-card .recipe-bottom{flex-wrap:wrap}}
+
+/* Rustige receptselectie: maximaal twaalf zichtbare kaarten, daarna bewust verder bladeren. */
+.recipe-list-note{color:var(--muted);font-size:13px;line-height:1.6;margin:10px 0 20px}
+.recipe-more-row{display:flex;justify-content:center;margin:22px 0 30px}
+.recipe-more-row .button{min-width:220px}
+.publisher-links,.sources-disclosure{border:1px solid var(--line);border-radius:14px;background:white;padding:12px 16px;margin:14px 0 22px}
+.publisher-links summary,.sources-disclosure summary{font-size:13px;color:#315a42;font-weight:800;cursor:pointer}
+.publisher-links .recipe-source-grid,.sources-disclosure .recipe-source-grid{margin-bottom:0}
+.sources-disclosure{margin-top:32px}
+.recipe-footer-note{margin:20px 0 12px;font-size:12px;line-height:1.6}
