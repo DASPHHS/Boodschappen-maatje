@@ -753,7 +753,6 @@ function discoveredPublisherCards(stores,limit=8){
  });
  if(state.batchOnly)rows=rows.filter(x=>x.slow);
  const shown=rows.slice(0,state.publisherPageSize);
- if(!shown.length)return '';
  const card=({recipe:r,category,matched,slow})=>{
   const visual=category==='kip'?'chicken':category==='vis'?'fish':category==='vlees'?'meat':'vega';
   const emoji=category==='kip'?'🍗':category==='vis'?'🐟':category==='vlees'?'🥘':'🥬';
@@ -783,7 +782,8 @@ function discoveredPublisherCards(stores,limit=8){
     '" data-publisher-source="'+value+'" aria-pressed="'+(state.publisherSource===value)+'">'+label+'</button>').join('')+
    '<a href="https://www.hellofresh.nl/recipes" target="_blank" rel="noopener noreferrer">Alle recepten op HelloFresh ↗</a></div>'+
   '<p class="muted">'+notice+'</p>'+
-  '<div class="cards">'+shown.map(card).join('')+'</div>'+
+  (shown.length?'<div class="cards">'+shown.map(card).join('')+'</div>':
+  '<p class="muted">Hier zijn nog geen gecontroleerde recepten voor deze selectie. Kies een andere zoekterm of open de oorspronkelijke HelloFresh-receptenbank.</p>')+
   (rows.length>shown.length?'<div class="recipe-more-row"><button class="button secondary" data-more-publishers="1">Toon 8 extra recepten van de uitgevers ('+
    (rows.length-shown.length)+' resterend)</button></div>':'')+'</section>';
 }
