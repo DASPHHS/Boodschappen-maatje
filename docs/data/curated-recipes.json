@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_at": "2026-11-01",
-  "description": "Nieuwe zelfstandig geschreven complete maaltijdrecepten: 4 porties, geen bewezen prijzen of macro's. Recepten zijn niet proefgekookt.",
+  "description": "Zelfstandig geschreven complete hoofdgerechten: 4 porties. Inclusief zes nieuwe seizoen-/actiegerichte gerechten; alleen gecontroleerde productmatches tellen als actie. Niet proefgekookt.",
   "recipes": [
     {
       "id": "nieuw-202611-citroenkip",
@@ -1442,6 +1442,600 @@
       "candidate_offer_links": [],
       "offer_anchors": [],
       "vegetables_g_per_portion": 370
+    },
+    {
+      "id": "nieuw-202611-zalm-prei-gerst",
+      "title": "Zalm met krokante huid, zachte prei, venkel en citroengerst",
+      "category": "vis",
+      "cuisine": "Noords",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "zalmfilet op huid",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "prei",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "venkel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "doperwten",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren parelgort",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 18,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "dille",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Kook de parelgort volgens de verpakking. Bewaar een kopje kookwater en meng de gort na het afgieten met fijngeraspte citroenschil.",
+        "Snijd de prei in halve ringen en spoel goed. Snijd venkel dun. Stoof samen met 15 ml olie en een scheut water ongeveer 12 minuten tot de groenten zacht zijn.",
+        "Voeg de doperwten toe en warm 4 minuten door. Roer mosterd, fijngehakte dille en een deel van het citroensap door de groenten.",
+        "Dep de zalm droog. Verhit 10 ml olie in een koekenpan, leg de vis met de huid naar beneden en bak rustig tot de huid krokant is. Draai kort om en gaar de vis volledig.",
+        "Verdeel de gerst en groenten over de borden. Leg de zalm met de krokante huid naar boven erop, en voeg vlak voor het eten de rest van het citroensap toe."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor verse zalmfilet is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Zachte prei en anijsachtige venkel tegenover krokante huid, mosterd en frisse citroen.",
+      "editorial_action_focus": {
+        "store": "lidl",
+        "ingredient": "verse zalmfilet",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 375
+    },
+    {
+      "id": "nieuw-202611-riblappen-rodekool",
+      "title": "Langzaam gestoofde riblappen met rode kool, wortel en appel",
+      "category": "vlees",
+      "cuisine": "Hollands",
+      "minutes": 180,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "runderriblappen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "rode kool",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "appel",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "aardappelen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenpuree",
+          "quantity": 60,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "appelazijn",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "laurierblad",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Dep het vlees goed droog en braad de riblappen in porties donkerbruin in de olie. Haal ze uit de braadpan.",
+        "Bak de ui langzaam goudbruin in het achtergebleven bakvet. Voeg tomatenpuree toe, bak één minuut mee en blus af met appelazijn en een scheutje water.",
+        "Leg het vlees met laurier terug. Voeg warm water toe tot ongeveer halverwege het vlees; stoof 2½–3 uur op laag vuur met het deksel erop, tot de riblappen gemakkelijk uit elkaar vallen.",
+        "Snijd rode kool en wortel fijn. Stoof apart met een bodempje water tot de groenten zacht zijn; voeg de appelpartjes pas de laatste 15 minuten toe.",
+        "Kook de aardappelen gaar. Haal laurier uit de stoof, proef de saus op zuur en hartigheid en serveer met de warme kool en aardappelen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor runderriblappen is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Door het bruinen en langzame stoven krijgt de saus diepte; appel en azijn geven tegenwicht.",
+      "editorial_action_focus": {
+        "store": "lidl",
+        "ingredient": "runderriblappen",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 388
+    },
+    {
+      "id": "nieuw-202611-shoarma-bulgur",
+      "title": "Kruidige plantaardige shoarmabowl met geroosterde bloemkool en citroenyoghurt",
+      "category": "vega",
+      "cuisine": "Midden-Oosters",
+      "minutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Vivera plantaardige shoarma",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode paprika",
+          "quantity": 550,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode ui",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren bulgur",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 5,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 5,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 210 °C. Snijd bloemkool klein, paprika in repen en rode ui in parten. Meng met 15 ml olie, komijn en paprikapoeder.",
+        "Rooster de groenten 25–30 minuten op een grote bakplaat; schep halverwege om voor bruine randjes. Kook intussen de bulgur volgens de verpakking.",
+        "Rasp de citroenschil en meng met de yoghurt en een beetje citroensap. Voeg zo nodig enkele eetlepels water toe voor een schenksaus.",
+        "Bak de plantaardige shoarma in de resterende olie volgens de verpakking, tot het goed verwarmd en licht gekaramelliseerd is.",
+        "Schep bulgur, geroosterde groenten en shoarma in diepe kommen. Lepel de frisse saus erover en serveer direct."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor Vivera plantaardige shoarma is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Ovenroosteren voor zoete, bruine randjes; citroenyoghurt balanceert de kruidige shoarma.",
+      "editorial_action_focus": {
+        "store": "jumbo",
+        "ingredient": "Vivera plantaardige shoarma",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 363
+    },
+    {
+      "id": "nieuw-202611-gehakt-boerenkool",
+      "title": "Eenpansschotel met gehakt, boerenkool, paprika en kruidige aardappel",
+      "category": "vlees",
+      "cuisine": "Hollands-Mediterraans",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "gemengd gehakt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "boerenkool",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode paprika",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "vastkokende aardappelen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 20,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de aardappelen in blokjes en kook ze 8 minuten voor in water. Laat goed uitdampen, zodat ze in de pan knapperig kunnen worden.",
+        "Bak het gehakt in een ruime hapjespan rul en volledig gaar. Schep het tijdelijk uit de pan.",
+        "Fruit de gesnipperde ui en paprika in olie en voeg paprikapoeder toe. Voeg de voorgekookte aardappelen toe en bak ze rondom goudbruin.",
+        "Doe tomatenblokjes en fijngesneden boerenkool erbij. Laat afgedekt ongeveer 10–12 minuten garen, tot de kool zacht is en de aardappel gaar.",
+        "Schep het gehakt terug en warm alles door. Roer de mosterd pas op het einde door de saus zodat de smaak fris blijft."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor Jumbo gemengd gehakt is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Gerookt paprikapoeder, bruine aardappelen en een kleine mosterdtoets maken de boerenkool anders dan stamppot.",
+      "editorial_action_focus": {
+        "store": "jumbo",
+        "ingredient": "Jumbo gemengd gehakt",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 350
+    },
+    {
+      "id": "nieuw-202611-pompoen-bloemkool-dahl",
+      "title": "Pompoen-bloemkooldahl met rode linzen, gember en frisse yoghurt",
+      "category": "vega",
+      "cuisine": "Indiaas",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "rode linzen",
+          "quantity": 330,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "flespompoen",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "bloemkool",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "ui",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 240,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 220,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "gember",
+          "quantity": 30,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "garam masala",
+          "quantity": 12,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Spoel de rode linzen af. Kook de zilvervliesrijst volgens de verpakking. Snijd pompoen en bloemkool in kleine, gelijkmatige blokjes en roosjes.",
+        "Fruit ui en fijngehakte gember in olie. Voeg garam masala toe en bak 30 seconden zacht mee zodat de specerijen geuren, zonder ze te laten verbranden.",
+        "Roer tomatenblokjes, linzen en circa 750 ml water erdoor. Voeg pompoen en bloemkool toe en laat 20–25 minuten zacht sudderen. Voeg water toe als de dahl te dik wordt.",
+        "Roer de spinazie in delen door de pan tot deze geslonken is. Proef op kruiding en verdeel de dahl met de rijst over vier kommen.",
+        "Lepel vlak voor het opdienen een beetje magere yoghurt over de warme dahl voor een fris contrast met de specerijen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor flespompoen en bloemkool is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Geroosterde specerijen en gember geven diepte; frisse yoghurt voorkomt een vlakke dahl.",
+      "editorial_action_focus": {
+        "store": "ah",
+        "ingredient": "flespompoen en bloemkool",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 450
+    },
+    {
+      "id": "nieuw-202611-kip-spruit-mosterd",
+      "title": "Mosterdkip uit de oven met geroosterde spruitjes, wortel en appel",
+      "category": "kip",
+      "cuisine": "Hollands",
+      "minutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipfilethaasjes",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "spruitjes",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "appel",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "krieltjes",
+          "quantity": 750,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "mosterd",
+          "quantity": 35,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde tijm",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "appelazijn",
+          "quantity": 15,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 205 °C. Halveer de spruitjes en kleine krieltjes, snijd wortel in dunne schuine stukken en ui in partjes.",
+        "Meng de groenten en krieltjes met 15 ml olie, tijm en een beetje mosterd. Verdeel op twee bakplaten zodat ze roosteren in plaats van stomen; bak 15 minuten.",
+        "Meng de kipfilethaasjes met de overige mosterd en olie. Schuif de groenten opzij en verdeel de kip ertussen; rooster nog ongeveer 15–20 minuten tot de kip volledig gaar is.",
+        "Snijd de appel in partjes en leg deze de laatste 8 minuten tussen de groenten zodat de partjes zacht worden en wat kleur krijgen.",
+        "Besprenkel de warme groenten met een beetje appelazijn. Serveer de kip met krokante spruitjes, de frisse appel en de aardappeltjes."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen recept, niet proefgekookt. De aanbieding voor kipfilethaasjes en spruitjes is alleen een mogelijke productmatch, zonder gecontroleerde receptprijs.",
+      "culinary_note": "Roosteren maakt spruitjes minder bitter; mosterd, tijm, zoete appel en azijn zorgen voor balans.",
+      "editorial_action_focus": {
+        "store": "ah",
+        "ingredient": "kipfilethaasjes en spruitjes",
+        "proof": "controle per winkel en datum vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 388
     }
   ]
 }
