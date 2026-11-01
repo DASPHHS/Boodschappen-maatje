@@ -37,7 +37,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  assert.equal(t.priceQuality(deliberatelyIncomplete),'Totaalprijs onbekend',
   'Never label one salmon or seasoning package as a starting meal price');
  assert.ok(!t.priceQuality(deliberatelyIncomplete).includes('Vanaf '));
- t.state.library.unshift(deliberatelyIncomplete);
+ // Do not alter the production recipe catalogue for this regression.
  for(const store of ['lidl','jumbo','ah']){
   const id='library|'+t.state.library[0].id;
   const recipe=t.findRecipe(store,id);assert.equal(recipe.store,store);assert.equal(recipe.id,id,'Library identifiers must survive opening, saving and planning');
