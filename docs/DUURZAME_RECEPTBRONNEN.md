@@ -50,3 +50,13 @@ Wil je bij álle Allerhande- en HelloFresh-recepten de complete ingrediënten, s
 De standaardvolgorde is nu: **(1) echte Allerhande/HelloFresh-recepten**, (2) **volledige gerechten voor twee dagen, inclusief hachee**, (3) overige eigen recepten na een expliciete klik. De selectie gebruikt `docs/publisher-selection.js` voor afwisseling naar uitgever en kookfamilie, het filteren op zoektekst en alleen passende productsoorten uit actuele supermarktacties. Een uitgeversrecept kan géén exact berekende kassaprijs tonen, tenzij de volledige ingrediënten en het relevante verkooppakket onafhankelijk en rechtmatig beschikbaar zijn.
 
 Vier afzonderlijke originele Allerhande-hacheerecepten zijn als gecontroleerde bronlinks opgenomen; `hachee` wordt hiermee direct door de uitgeverszoekfunctie herkend. De pagina toont niet langer tientallen vermoedelijke weekactierecepten voordat je bij klassiekers komt. De wekelijkse bronindex blijft dezelfde en groeit onafhankelijk van de manier waarop de kaarten worden gepresenteerd.
+
+## HelloFresh.nl/recipes als primaire bron (1 november 2026)
+
+De standaard receptenervaring selecteert **alleen actuele, individueel gecontroleerde HelloFresh.nl-receptpagina's** die rechtstreeks via `https://www.hellofresh.nl/recipes` en de openbare categorieën bereikbaar zijn. De knop `Allerhande` is optioneel. `Beide bronnen` toont expliciet de gemengde selectie; de standaardweergave wisselt niet stilzwijgend tussen uitgevers.
+
+De zelfstandige adapter `scripts/refresh_hellofresh_recipes.py` begint bij de **echte HelloFresh-receptenhub**, volgt uitsluitend de gevonden eigen recept-URL's, kent voorrang toe aan volledige avondmaaltijden (o.a. stoof, curry, lasagne, dahl, vis en rijstgerechten) boven hamburgersnacks en verhoogt de wekelijkse beperkte controle van 12 naar maximaal 36 individuele pagina's. De veiligheidsgrens is maximaal 350 geïndexeerde HelloFresh-links. Een bron wordt niet toegevoegd als de individuele pagina niet bereikbaar is of de titel onvoldoende identificeerbaar is. Robots.txt, bronweigeringen, limieten en rechten blijven leidend.
+
+`docs/publisher-selection.js` kiest per oproep alleen de gevraagde uitgever. `tests/publisher-first-selection.cjs` en de echte Chromium-browsertest verifiëren dat de opening uitsluitend rechtstreekse HelloFresh.nl/recipes-links toont en dat Allerhande alleen via de expliciete bronkeuze verschijnt.
+
+HelloFresh is de receptenbron, niet de bron van de supermarktprijs: koppelingen met Lidl, Jumbo en Albert Heijn blijven aparte, conservatieve productsoortmatches. Volledige externe receptteksten, foto's en uitgeversspecifieke boodschappenlijsten worden zonder gebruiksrecht niet hergepubliceerd.
