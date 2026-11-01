@@ -817,7 +817,7 @@ function recipeView(){
   '<input id="ingredient-discovery" class="search" placeholder="Bijv. riblap, broccoli, zalmfilet" maxlength="100" value="'+attr(state.cookingQuery)+'">'+
   '<button class="button secondary small" data-find-ideas="1">Zoek recepten</button></div>';
  out+=cookingIdeasPanel()+batchFilterControls()+storeControls()+kindControls()+subtypeControls()+recipeControls();
- if(!state.batchOnly&&state.kind==='alle'&&state.dealFilter==='all')out+=discoveredPublisherCards(ORDER.filter(x=>state.store==='alle'||state.store===x),6);
+ if(!state.batchOnly&&state.kind==='alle'&&state.dealFilter==='all')out+=discoveredPublisherCards(ORDER.filter(x=>state.store==='alle'||state.store===x),4);
  const stores=ORDER.filter(s=>state.store==='alle'||state.store===s);
  const all=stores.flatMap(s=>catalog(s));
  const filtered=all.filter(recipeFiltered);
