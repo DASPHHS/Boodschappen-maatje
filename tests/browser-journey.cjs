@@ -67,6 +67,16 @@ const start=base.endsWith('/')?base:base+'/';
    'All three stores remain represented');
   await page.locator('[data-offer-week="now"]').click();
   await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
+  const cookingButtons=page.locator('#view-aanbiedingen .deal-card [data-cook-offer]');
+  assert.ok(await cookingButtons.count()>0,'At least one currently discounted ingredient should suggest real recipes');
+  await cookingButtons.first().click();
+  await page.locator('#view-recepten #cooking-ideas').waitFor();
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Meer geschikte gerechten vinden'),
+   'Cooking suggestions must offer publisher-backed discovery for sale ingredients');
+  assert.ok(await page.locator('#cooking-ideas a[href*="google.com/search"]').count()>=2,
+   'Relevant recipe searches must lead to trusted publisher domains');
+  await page.locator('.sidebar button[data-view="aanbiedingen"]').click();
+  await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
   const before=Number((await page.locator('#product-favorites-count').innerText())||'0');
   await page.locator('#view-aanbiedingen .deal-card [data-fav-toggle]').first().click();
   const after=Number((await page.locator('#product-favorites-count').innerText())||'0');
