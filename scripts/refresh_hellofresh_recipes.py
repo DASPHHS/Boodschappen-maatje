@@ -48,12 +48,42 @@ FAVORITE_MAINS = re.compile(
     r"rijst|bowl|risotto|orzo|bulgur|groent|tofu|tempeh", re.I)
 LESS_MEAL_LIKE = re.compile(r"burger|pizza|snack|broodje|tosti|wrap|nugget", re.I)
 
+def candidate_group(title):
+    """Broadly alternate protein/meal styles across original HelloFresh pages."""
+    t = title.casefold()
+    if re.search(r"veggie|vegetari|vegan|plantaardig|tofu|tempeh|linzen|kikkererwten|dahl|bonenstoof", t):
+        return "vega"
+    if re.search(r"kip|kippendij|kalkoen|coq au vin", t):
+        return "kip"
+    if re.search(r"vis|zalm|kabeljauw|koolvis|garnalen|heek|tonijn|pangasius", t):
+        return "vis"
+    if re.search(r"rund|sukade|hachee|rendang|varkens|gehakt|biefstuk|hamburger", t):
+        return "vlees"
+    return "anders"
+
+def varied_candidates(titles, week):
+    """Round robin across cuisines/proteins; de-duplicate titles before crawling."""
+    keys=("vega","kip","vis","vlees","anders")
+    buckets={key:[] for key in keys}
+    seen_titles=set()
+    for url in sorted(titles,key=lambda u:candidate_priority(titles[u],u,week)):
+        title=" ".join(titles[url].casefold().split())
+        if title in seen_titles: continue
+        seen_titles.add(title)
+        buckets[candidate_group(title)].append(url)
+    result=[]
+    while any(buckets.values()):
+        for key in keys:
+            if buckets[key]:
+                result.append(buckets[key].pop(0))
+    return result
+
 def candidate_priority(title, url, week):
     """Stable culinary rotation; meaningful dinner titles outrank burger/marketing pages."""
     t = title.casefold()
     score = (60 if FAVORITE_MAINS.search(t) else 0) + (20 if len(t.split()) >= 5 else 0)
     if "stoof" in t or "hachee" in t or "rendang" in t:
-        score += 25
+        score += 8
     if LESS_MEAL_LIKE.search(t):
         score -= 80
     stable = hashlib.sha1((url + str(week)).encode()).hexdigest()
@@ -193,7 +223,9 @@ def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
     # Deterministic priority for complete evening meals, enough variation through
     # the week; never invent page titles or construct guessed recipe URLs.
     week=day.isocalendar().week
-    choices=sorted(choices, key=lambda url: candidate_priority(choices[url], url, week))
+    choices=varied_candidates(choices, week)
+    known_titles={" ".join(r.get("title","").casefold().split())
+                  for r in existing.values() if r.get("source")=="HelloFresh"}
     checked=0
     added=0
     for url in choices:
@@ -212,8 +244,11 @@ def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
         except (OSError,ValueError,urllib.error.URLError):
             continue
         if record:
-            existing[url]=record
-            added+=1
+            title_key=" ".join(record["title"].casefold().split())
+            if title_key not in known_titles:
+                existing[url]=record
+                known_titles.add(title_key)
+                added+=1
         time.sleep(pause)
     if added:
         data["recipes"]=list(existing.values())
