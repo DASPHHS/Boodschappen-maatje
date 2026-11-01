@@ -1288,6 +1288,496 @@
       "has_legumes": true,
       "review_status": "handmatig_gevonden_bij_uitgever",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1185380",
+      "title": "Curry met kidneybonen en zoete aardappel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185380/curry-met-kidneybonen-en-zoete-aardappel",
+      "families": [
+        "aardappelen",
+        "bonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1189361",
+      "title": "Ovenschotel met aubergine en witte bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189361/ovenschotel-met-aubergine-en-witte-bonen",
+      "families": [
+        "aubergine",
+        "bonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198011",
+      "title": "Burrito met rijst kidneybonen en tomaten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198011/burrito-met-rijst-kidneybonen-en-tomaten",
+      "families": [
+        "bonen",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195508",
+      "title": "Visstoofpot met courgette en witte bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195508/visstoofpot-met-courgette-en-witte-bonen",
+      "families": [
+        "bonen",
+        "courgette"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1201268",
+      "title": "Bruine bonen met rijst en kip van london loy",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201268/bruine-bonen-met-rijst-en-kip-van-london-loy",
+      "families": [
+        "bonen",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198022",
+      "title": "Rijstsalade met kidneybonen komkommer en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198022/rijstsalade-met-kidneybonen-komkommer-en-ei",
+      "families": [
+        "bonen",
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202561",
+      "title": "Spicy komkommersalade met kip en witte bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202561/spicy-komkommersalade-met-kip-en-witte-bonen",
+      "families": [
+        "bonen",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197729",
+      "title": "Kidneybonen maissalade met gepaneerde broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197729/kidneybonen-maissalade-met-gepaneerde-broccoli",
+      "families": [
+        "bonen",
+        "broccoli"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1199181",
+      "title": "Kidneybonen tomatencurry met spinazie en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199181/kidneybonen-tomatencurry-met-spinazie-en-rijst",
+      "families": [
+        "bonen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194385",
+      "title": "Lunchbowl met kidneybonen spinazie en gebakken ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194385/lunchbowl-met-kidneybonen-spinazie-en-gebakken-ei",
+      "families": [
+        "bonen",
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195678",
+      "title": "Gestoofde pompoen met puntpaprika en kidneybonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195678/gestoofde-pompoen-met-puntpaprika-en-kidneybonen",
+      "families": [
+        "bonen",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197313",
+      "title": "Rijst uit de oven met tomaat artisjok en witte bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197313/rijst-uit-de-oven-met-tomaat-artisjok-en-witte-bonen",
+      "families": [
+        "bonen",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197741",
+      "title": "Tomatenrijst met kidneybonen spinazie en komkommer",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197741/tomatenrijst-met-kidneybonen-spinazie-en-komkommer",
+      "families": [
+        "bonen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194801",
+      "title": "Kipstoof met pompoen zwarte bonen en carribean spice",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194801/kipstoof-met-pompoen-zwarte-bonen-en-carribean-spice",
+      "families": [
+        "bonen",
+        "kip",
+        "pompoen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1195577",
+      "title": "Rijsttraybake met zwarte bonen sperziebonen en tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195577/rijsttraybake-met-zwarte-bonen-sperziebonen-en-tofu",
+      "families": [
+        "bonen",
+        "sperziebonen",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1191928",
+      "title": "Witte bonen in tomatensaus met bloemkool en gegrilde kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1191928/witte-bonen-in-tomatensaus-met-bloemkool-en-gegrilde-kip",
+      "families": [
+        "bloemkool",
+        "bonen",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1186282",
+      "title": "Rijkgevulde chili met kip zwarte bonen en knapperige mais",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186282/rijkgevulde-chili-met-kip-zwarte-bonen-en-knapperige-mais",
+      "families": [
+        "bonen",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1194842",
+      "title": "Gestoofde sukadelapjes met paprika pastinaak en witte bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194842/gestoofde-sukadelapjes-met-paprika-pastinaak-en-witte-bonen",
+      "families": [
+        "bonen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1190862",
+      "title": "Flatbreads met gebakken zwarte bonen gekruide bloemkool en hummus",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190862/flatbreads-met-gebakken-zwarte-bonen-gekruide-bloemkool-en-hummus",
+      "families": [
+        "bloemkool",
+        "bonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202480",
+      "title": "Kikkererwten zwarte bonen en aardappelstoofschotel van geneal harreman",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202480/kikkererwten-zwarte-bonen-en-aardappelstoofschotel-van-geneal-harreman",
+      "families": [
+        "bonen",
+        "kikkererwten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1187140",
+      "title": "Gevulde courgette met kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187140/gevulde-courgette-met-kip",
+      "families": [
+        "courgette",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r387698",
+      "title": "Gevulde courgettes met zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R387698/gevulde-courgettes-met-zalm",
+      "families": [
+        "courgette",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r377928",
+      "title": "Tofu met courgette uit de wok",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R377928/tofu-met-courgette-uit-de-wok",
+      "families": [
+        "courgette",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "wok",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r197382",
+      "title": "Tomaat en courgette uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R197382/tomaat-en-courgette-uit-de-oven",
+      "families": [
+        "courgette",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r581588",
+      "title": "Curry van kabeljauw en courgette",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R581588/curry-van-kabeljauw-en-courgette",
+      "families": [
+        "courgette",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r387432",
+      "title": "Pasta met kip roomsaus en courgette",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R387432/pasta-met-kip-roomsaus-en-courgette",
+      "families": [
+        "courgette",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r555304",
+      "title": "Pasta met zalm roomkaas en courgette",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R555304/pasta-met-zalm-roomkaas-en-courgette",
+      "families": [
+        "courgette",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
     }
   ]
 }
