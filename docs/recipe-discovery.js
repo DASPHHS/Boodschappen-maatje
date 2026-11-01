@@ -44,7 +44,7 @@
   const raw=norm(offer?.name),cat=offer?.category;
   if(!raw||['bier','huishouden','overige_dranken','dranken','snacks'].includes(cat))return null;
   const household=/\b(vaatwas|wasmiddel|toiletpapier|shampoo|zeep|reiniger)\b/;
-  if(household.test(raw)||unsafe.test(raw))return null;
+  if(household.test(raw)||unsafe.test(raw)||/(?:saus|soep|schotel|puree|salade|curry|pasta|burger|schnitzel|wokmix|groentemix|kruidenmix|maaltijd|crouton|pizza|brood|taart|cake|chips)\b/.test(raw))return null;
   for(const [key,meta] of Object.entries(recipes)){
    if(meta.match.test(raw)){
     if(key==='riblappen'&&/\b(biefstuk|rundergehakt|ossenhaas|entrecote)\b/.test(raw))return null;
