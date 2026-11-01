@@ -89,6 +89,11 @@ const start=base.endsWith('/')?base:base+'/';
   assert.match(beefPanel,/Hachee/,'Riblappen must suggest hachee');
   assert.match(beefPanel,/Boeuf bourguignon/,'Riblappen must suggest a slow stew');
   await page.locator('[data-clear-cook]').click();
+  await page.locator('#ingredient-discovery').fill('nieuwe onbekende groente 2027');
+  await page.locator('[data-find-ideas]').click();
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Geen betrouwbare automatische ingrediëntkoppeling'),
+   'Unknown future ingredients must fall back to publisher search, never fabricate a recipe');
+  await page.locator('[data-clear-cook]').click();
   assert.ok(await page.locator('.recipe-source-link').count()>=4,'External originals are accessible');
   const external=page.locator('.recipe-source-link').first();
   assert.ok((await external.getAttribute('href')).startsWith('https://'));
