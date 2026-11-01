@@ -34,7 +34,7 @@ CATEGORIES = (
     "/recipes",
 )
 USER_AGENT = "Boodschappenmaatje/1.0 (small publisher link-metadata catalog)"
-RECIPE_PATH = re.compile(r"^/recipes/([a-z0-9][a-z0-9-]{5,180})-([0-9a-f]{24})$")
+RECIPE_PATH = re.compile(r"^/recipes/([a-z0-9][a-z0-9_-]{5,180})-([0-9a-f]{24})$")
 REJECT = re.compile(r"\b(ontbijt|dessert|nagerecht|smoothie|babyvoeding|"
                     r"kant-en-klaar|ready to eat|opwarmmaaltijd|maaltijdbox voor)\b", re.I)
 
