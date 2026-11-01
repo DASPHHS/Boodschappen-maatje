@@ -12,6 +12,13 @@
       "reuse": "link_only"
     },
     {
+      "id": "hellofresh",
+      "name": "HelloFresh Recepten",
+      "url": "https://www.hellofresh.nl/recipes",
+      "tag": "Nederlandstalige recepten uit verschillende wereldkeukens; complete bereiding bij de oorspronkelijke uitgever",
+      "reuse": "link_only"
+    },
+    {
       "id": "jumbo",
       "name": "Jumbo Recepten",
       "url": "https://www.jumbo.com/recepten/zoeken",
