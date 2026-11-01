@@ -6,6 +6,10 @@
  const norm=v=>String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const families=[
   ['zalm',/\b(zalm|zalmfilet|wilde zalm)\b/],
+  ['riblappen',/\b(runderriblappen|runderlappen|riblappen|riblap|sukadelappen|stooflappen)\b/],
+  ['prei',/\bprei\b/],
+  ['shoarma',/\bshoarma\b/],
+  ['aardappelen',/\b(aardappelen|stamppotaardappelen|krieltjes)\b/],
   ['kabeljauw',/\b(kabeljauw|kabeljauwfilet)\b/],
   ['broccoli',/\bbroccoli\b/],
   ['bloemkool',/\bbloemkool\b/],
