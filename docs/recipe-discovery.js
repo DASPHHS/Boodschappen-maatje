@@ -99,7 +99,7 @@
    if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
       typeof r.title!=='string'||!r.title.trim()||!['Allerhande','Jumbo'].includes(r.source)||
       typeof r.url!=='string'||!/^https:\/\/(www\.)?(ah\.nl\/allerhande\/|jumbo\.com\/recepten\/)/.test(r.url)||
-      !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified'].includes(r.review_status))continue;
+      !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
    if(seen.has(r.url))continue;
    seen.add(r.url);
    // Put main courses and recipes for four people ahead of side dishes,
@@ -107,7 +107,9 @@
    const vegetableCount=Number.isInteger(r.vegetable_families)?r.vegetable_families:
      r.families.filter(x=>['broccoli','bloemkool','spinazie','pompoen','paprika','courgette','aubergine','sperziebonen','tomaten','champignons','wortel','paksoi','prei','spitskool','boerenkool','venkel'].includes(x)).length;
    const legume=r.has_legumes||r.families.some(x=>['kikkererwten','linzen','bonen'].includes(x));
-   const score=(r.course==='hoofdgerecht'?25:0)+(r.servings===4?6:0)+
+   // Official sitemap title does not establish ingredients, portions or health.
+   const score=(r.review_status==='publisher_sitemap_title_only'?0:65)+
+    (r.course==='hoofdgerecht'?25:0)+(r.servings===4?6:0)+
     Math.min(vegetableCount,3)*5+(legume?5:0)+
     (r.minutes&&r.minutes<=45?5:0)+
     (type.key==='riblappen'&&/rendang|hachee|boeuf|stoof/i.test(r.title)?8:0);

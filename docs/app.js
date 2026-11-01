@@ -704,7 +704,7 @@ function cookingIdeasPanel(){
  if(trusted.length){
   html+='<h3>Door ons geselecteerde recepten</h3><p class="muted">Meerdere gerechten, rechtstreeks bij hun maker — geen zoekresultaten.</p><div class="recipe-source-grid">'+trusted.map(link=>
    '<a class="recipe-source-link" target="_blank" rel="noopener noreferrer" href="'+attr(link.url)+'"><strong>'+
-   safe(link.title)+'</strong><small>'+safe(link.source)+(link.minutes?' · '+safe(link.minutes)+' min':'')+(link.servings?' · '+safe(link.servings)+' personen':'')+'</small><span>Open volledig recept ↗</span></a>').join('')+'</div>';
+   safe(link.title)+'</strong><small>'+safe(link.source)+(link.review_status==='publisher_sitemap_title_only'?' · titel uit officiële sitemap; ingrediënten niet gecontroleerd':' · recept bij uitgever')+(link.minutes?' · '+safe(link.minutes)+' min':'')+(link.servings?' · '+safe(link.servings)+' personen':'')+'</small><span>Open volledig recept ↗</span></a>').join('')+'</div>';
  }
  if(local.length){
   html+='<h3>Passende eigen recepten</h3><p class="muted">Gematcht op ingrediënt en bereiding, niet op toevallige woorden in een productnaam. Deze recepten zijn niet proefgekookt.</p>'+
@@ -724,7 +724,7 @@ function discoveredPublisherCards(store,limit=8){
  '<p class="muted">Zelf geselecteerd op actie-ingrediënt, groente en peulvruchten, bereidingstijd en variatie. De volledige recepten staan bij hun oorspronkelijke uitgever. Een product in actie is geen bevestigde maaltijdprijs.</p>'+
  '<div class="recipe-source-grid">'+highlighted.map(hit=>
   '<a class="recipe-source-link" href="'+attr(hit.recipe.url)+'" target="_blank" rel="noopener noreferrer"><strong>'+safe(hit.recipe.title)+'</strong>'+
-  '<small>'+safe(hit.recipe.source)+' · '+safe(hit.ingredient)+' in actie'+
+  '<small>'+safe(hit.recipe.source)+(hit.recipe.review_status==='publisher_sitemap_title_only'?' · titel uit officiële sitemap; nog niet volledig gecontroleerd':' · recept bij uitgever')+' · '+safe(hit.ingredient)+' in actie'+
   (hit.recipe.minutes?' · '+safe(hit.recipe.minutes)+' minuten':'')+
   (hit.recipe.servings?' · '+safe(hit.recipe.servings)+' personen':'')+
   '</small><span>Open volledig recept ↗</span></a>').join('')+'</div></section>';

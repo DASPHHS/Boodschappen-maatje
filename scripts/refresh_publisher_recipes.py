@@ -21,7 +21,7 @@ SITEMAP="https://www.ah.nl/sitemaps/entities/allerhande/recipes.xml"
 FAMILIES={
  "riblappen":r"\b(?:riblappen|riblap|sukadelappen|sukadelap|stooflappen)\b",
  "gehakt":r"\b(?:gehakt|gehaktballen|rundergehakt|varkensgehakt)\b",
- "kip":r"\b(?:kip|kipfilet|kipdij|kippen)\b",
+ "kip":r"\b(?:kip|kipfilet|kipdij|kippen|kipcurry|kipkerrie|kipstoof|kipschotel|kipwok|kipovenschotel)\b",
  "zalm":r"\b(?:zalm|zalmfilet)\b",
  "witvis":r"\b(?:kabeljauw|koolvis|scholfilet|pangasius|witvis|heek)\b",
  "garnalen":r"\b(?:garnalen|scampi)\b",
@@ -135,6 +135,30 @@ def candidates(sitemap,existing,today):
     existing_counts=Counter(key for r in existing.values() for key in r.get("families",[]))
     week=int(today.isocalendar().week)
     return sorted(urls,key=lambda pair:(min(existing_counts[f] for f in pair[1]),(sum(ord(c) for c in pair[0])+week*137)%10007))
+def sitemap_record(url,stamp):
+    """Title-only discovery. URL is from AH's official sitemap, not a verified recipe."""
+    match=re.fullmatch(r"https://www\.ah\.nl/allerhande/recept/(R-R\d+)/([a-z0-9-]+)",url)
+    if not match:return None
+    words=match.group(2).replace("-"," ")
+    tags=families_of(words)
+    veg=VEG.intersection(tags)
+    pulse=LEGUMES.intersection(tags)
+    # Title must describe a meaningful meal with a vegetable/legume
+    # and at least one more known ingredient. No dessert / marketing / baby food.
+    if len(tags)<2 or not (veg or pulse) or EXCLUDE.search(words):return None
+    preparation=("curry","stoof","wok","roerbak","oven","pasta","rijst",
+       "dahl","tajine","risotto","stamppot","noedels","gevulde","schotel",
+       "gegrilde","gebakken","salade","bowl")
+    method=next((m for m in preparation if m in words),None)
+    if not method:return None
+    title=" ".join(w.capitalize() if i==0 else w for i,w in enumerate(words.split()))
+    return {"id":"ah-sitemap-"+match.group(1).lower(),"title":title,
+       "source":"Allerhande","url":url,"families":tags,
+       "minutes":None,"servings":None,"course":"niet_gecontroleerd",
+       "method":method,"vegetable_families":len(veg),
+       "has_legumes":bool(pulse),
+       "review_status":"publisher_sitemap_title_only","last_checked":stamp}
+
 def sync(today=None,max_pages=28):
     today=today or dt.date.today()
     data=json.loads(TARGET.read_text(encoding="utf-8"))
@@ -149,13 +173,18 @@ def sync(today=None,max_pages=28):
             page=fetch(url,1_100_000)
             records=schema_recipes(page)
         except (OSError,ValueError) as exc:
-            print("Skipping inaccessible recipe",url,str(exc)[:100]);checked+=1;continue
+            # AH blocks automated recipe pages with HTTP 403, even though the
+            # official sitemap is public. Never pretend we saw Recipe JSON-LD.
+            records=[]
         checked+=1
-        for meta in records:
-            record=to_record(url,meta,today.isoformat())
-            if not record or url in existing:continue
-            if methods[record["method"]]>=7:continue
-            existing[url]=record;methods[record["method"]]+=1;added+=1;break
+        record=next((x for meta in records
+            if (x:=to_record(url,meta,today.isoformat()))),None)
+        if not record:
+            record=sitemap_record(url,today.isoformat())
+        if record and url not in existing and methods[record["method"]]<(5 if record["review_status"]=="publisher_sitemap_title_only" else 7):
+            existing[url]=record
+            methods[record["method"]]+=1
+            added+=1
         time.sleep(.22)
     if added:
         data["recipes"]=list(existing.values())

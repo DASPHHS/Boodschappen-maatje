@@ -37,6 +37,17 @@ class TestPublisherMetadata(unittest.TestCase):
         standard['name']='Baby kip met paprika'
         standard['recipeIngredient'].append('400 g paprika')
         self.assertIsNone(p.to_record(url,standard,'2026-11-01'))
+    def test_official_sitemap_title_only_avoids_false_quality_claims(self):
+        r=p.sitemap_record('https://www.ah.nl/allerhande/recept/R-R123456/kipcurry-met-broccoli-en-paprika','2026-11-01')
+        self.assertIsNotNone(r)
+        self.assertEqual(r['review_status'],'publisher_sitemap_title_only')
+        self.assertEqual(r['families'],['broccoli','kip','paprika'])
+        self.assertEqual(r['course'],'niet_gecontroleerd')
+        self.assertIsNone(r['servings'])
+        self.assertIsNone(r['minutes'])
+        self.assertNotIn('recipeIngredient',r)
+        self.assertIsNone(p.sitemap_record('https://www.ah.nl/allerhande/recept/R-R1234/gehaktballen','2026-11-01'))
+        self.assertIsNone(p.sitemap_record('https://www.ah.nl/allerhande/recept/R-R1234/babybroccoli-met-ei','2026-11-01'))
     def test_duration(self):
         self.assertEqual(p.minutes('PT1H25M'),85)
         self.assertEqual(p.minutes('PT30M'),30)
