@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T10:31:24.553558+01:00",
+  "generated_at": "2026-11-01T10:43:19.348178+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-01T10:26:13.656087+01:00",
+      "checked_at": "2026-11-01T10:43:12.919922+01:00",
       "status": "ok",
       "offers": [
         {
@@ -52,6 +52,215 @@
           "checked_at": "2026-11-01",
           "status": "third_party_price_observation",
           "note": "Exacte verpakking en actieperiode uit onafhankelijke derdepartijdetailpagina; geen officiële Lidl-kassacontrole."
+        },
+        {
+          "id": "folderz-lidl-69469774",
+          "name": "Broccoli",
+          "category": "groente",
+          "price": 0.69,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/broccoli-aanbieding-69469774/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469667",
+          "name": "Edet Toilet papier",
+          "category": "overig",
+          "price": 7.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/edet-toilet-papier-aanbieding-69469667/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469832",
+          "name": "Dreft Platinum Plus",
+          "category": "huishouden",
+          "price": 14.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/dreft-platinum-plus-aanbieding-69469832/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469658",
+          "name": "Dr. Oetker Ristorante pizza",
+          "category": "overig",
+          "price": 1.88,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/dr-oetker-ristorante-pizza-aanbieding-69469658/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69470090",
+          "name": "TRONIC Keramische wandverwarming",
+          "category": "overig",
+          "price": 24.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/tronic-keramische-wandverwarming-aanbieding-69470090/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469666",
+          "name": "Milbona Yoghurt Griekse stijl 10% vet",
+          "category": "zuivel",
+          "price": 1.59,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/milbona-yoghurt-griekse-stijl-10-vet-aanbieding-69469666/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469677",
+          "name": "Scharreleieren",
+          "category": "overig",
+          "price": 4.19,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/scharreleieren-aanbieding-69469677/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469634",
+          "name": "Alesto Cashew- of pistachenoten",
+          "category": "voorraad",
+          "price": 4.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/alesto-cashew-of-pistachenoten-aanbieding-69469634/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469668",
+          "name": "Coca-Cola",
+          "category": "dranken",
+          "price": 1.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/coca-cola-aanbieding-69469668/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469928",
+          "name": "Tronic Bladloze ventilatorkachel",
+          "category": "overig",
+          "price": 79.99,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/tronic-bladloze-ventilatorkachel-aanbieding-69469928/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
+        },
+        {
+          "id": "folderz-lidl-69469772",
+          "name": "Uien",
+          "category": "groente",
+          "price": 0.69,
+          "regular_price": null,
+          "pack_label": "inhoud niet bevestigd",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-01",
+          "promotion_status": "active",
+          "verified": false,
+          "source_provider": "Folderz",
+          "source": {
+            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/uien-aanbieding-69469772/",
+            "label": "Folderz externe aanbiedingsmelding"
+          },
+          "checked_at": "2026-11-01",
+          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
         },
         {
           "id": "lidl-official-11561032",
@@ -596,219 +805,10 @@
               "Werelden van nood/Eten en dichtbij voedsel/Dranken/Vruchtensappen"
             ]
           }
-        },
-        {
-          "id": "folderz-lidl-69469774",
-          "name": "Broccoli",
-          "category": "groente",
-          "price": 0.69,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/broccoli-aanbieding-69469774/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469667",
-          "name": "Edet Toilet papier",
-          "category": "overig",
-          "price": 7.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/edet-toilet-papier-aanbieding-69469667/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469832",
-          "name": "Dreft Platinum Plus",
-          "category": "huishouden",
-          "price": 14.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/dreft-platinum-plus-aanbieding-69469832/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469658",
-          "name": "Dr. Oetker Ristorante pizza",
-          "category": "overig",
-          "price": 1.88,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/dr-oetker-ristorante-pizza-aanbieding-69469658/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69470090",
-          "name": "TRONIC Keramische wandverwarming",
-          "category": "overig",
-          "price": 24.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/tronic-keramische-wandverwarming-aanbieding-69470090/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469666",
-          "name": "Milbona Yoghurt Griekse stijl 10% vet",
-          "category": "zuivel",
-          "price": 1.59,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/milbona-yoghurt-griekse-stijl-10-vet-aanbieding-69469666/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469677",
-          "name": "Scharreleieren",
-          "category": "overig",
-          "price": 4.19,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/scharreleieren-aanbieding-69469677/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469634",
-          "name": "Alesto Cashew- of pistachenoten",
-          "category": "voorraad",
-          "price": 4.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/alesto-cashew-of-pistachenoten-aanbieding-69469634/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469668",
-          "name": "Coca-Cola",
-          "category": "dranken",
-          "price": 1.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/coca-cola-aanbieding-69469668/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469928",
-          "name": "Tronic Bladloze ventilatorkachel",
-          "category": "overig",
-          "price": 79.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/tronic-bladloze-ventilatorkachel-aanbieding-69469928/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-69469772",
-          "name": "Uien",
-          "category": "groente",
-          "price": 0.69,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-10-26",
-          "end_date": "2026-11-01",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/uien-aanbieding-69469772/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-01",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
         }
       ],
       "official_check": {
-        "checked_at": "2026-11-01T10:26:15.492733+01:00",
+        "checked_at": "2026-11-01T10:43:14.704526+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
@@ -856,11 +856,13 @@
         }
       ],
       "folderz_check": {
-        "checked_at": "2026-11-01T10:31:24.553558+01:00",
-        "status": "ok",
-        "details_checked": 12,
-        "accepted": 11,
-        "errors": {},
+        "checked_at": "2026-11-01T10:43:19.348178+01:00",
+        "status": "partial",
+        "details_checked": 0,
+        "accepted": 0,
+        "errors": {
+          "https://www.folderz.nl/winkels/lidl/aanbiedingen": "No detail links; source layout may have changed"
+        },
         "coverage": "bounded_first_listing_page"
       }
     },
