@@ -69,7 +69,7 @@
   };
   filtered.sort((a,b)=>score(b)-score(a)||a.title.localeCompare(b.title,'nl'));
   const queues=new Map(['Allerhande','HelloFresh'].map(source=>[source,filtered.filter(r=>r.source===source)]));
-  const result=[],selected=new Set(),groups=new Map();
+  const result=[],selected=new Set(),seenTitles=new Set(),groups=new Map();
   const take=source=>{
    const q=queues.get(source)||[];
    if(!q.length)return false;
@@ -82,7 +82,8 @@
     }
    }
    const r=q.splice(best,1)[0];
-   if(selected.has(r.url))return false;
+   if(selected.has(r.url)||seenTitles.has(norm(r.title)))return take(source);
+   seenTitles.add(norm(r.title));
    selected.add(r.url);groups.set(group(r),(groups.get(group(r))||0)+1);
    result.push({recipe:r,matched:matches.get(r.url)||null,category:group(r),slow:slow(r),score:score(r)});
    return true;
