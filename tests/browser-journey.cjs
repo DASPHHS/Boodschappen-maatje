@@ -115,7 +115,7 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await riblappen.count(),1,'Buy the meat only once');
   assert.match(await riblappen.innerText(),/800 g/);
   await page.locator('.sidebar button[data-view="recepten"]').click();
-  await page.locator('#view-recepten [data-batch-only="two"]').click();
+  await page.locator('#view-recepten .batch-toggle [data-batch-only="two"]').click();
   assert.equal(await page.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count(),6,
     'Two-day filter should show all six original batch meals');
   await page.locator('#view-recepten [data-batch-only="all"]').click();
@@ -127,8 +127,10 @@ const start=base.endsWith('/')?base:base+'/';
     'Load more reveals another twelve original ideas');
   await page.locator('#ingredient-discovery').fill('runderriblappen');
   await page.locator('[data-find-ideas]').click();
-  assert.ok(await page.locator('#view-recepten .recipe-card').count()<12,
-    'Searching riblappen must suppress unrelated recipe cards from all stores');
+  assert.ok(await page.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count()<12,
+    'Searching riblappen must suppress unrelated original action ideas');
+  assert.ok(await page.locator('#publisher-recipes-main .publisher-recipe-card').count()>=2,
+    'The original hachee and rendang recipes must also participate in ingredient search');
   assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Citroenkip|Groentefrittata/.test(t)),
     'Do not show unrelated dishes after an ingredient search');
   await page.locator('#cooking-ideas .publisher-links summary').click();
