@@ -44,6 +44,47 @@ class ChangeFeed(unittest.TestCase):
     def test_truncated_full_sync_rejected(self):
         def get(path,params):return {'cursor':1,'has_more':False,'changes':[]} if path.endswith('changes') else {'total':101,'products':[self.product('one')]}
         with self.assertRaises(ValueError):sync('lidl',None,get)
+    def test_non_advancing_cursor_with_changes_is_rejected(self):
+        old={'retailer':'lidl','cursor':20,'products':{}}
+        data={'cursor':20,'has_more':False,'changes':[{'seq':21,'change':'delete','product_id':'x','retailer':'lidl'}]}
+        with self.assertRaisesRegex(ValueError,'without advancing'):
+            sync('lidl',old,lambda *_:data)
+        self.assertEqual(old['cursor'],20)
+    def test_duplicate_or_unsorted_change_sequences_rejected_without_committing(self):
+        old={'retailer':'lidl','cursor':12,'products':{'one':self.product('one')}}
+        for seqs in ([5,5],[8,7],[-1,2],['8',9]):
+            data={'cursor':30,'has_more':False,'changes':[
+                {'seq':s,'change':'delete','product_id':'one','retailer':'lidl'} for s in seqs]}
+            with self.subTest(seqs=seqs),self.assertRaisesRegex(ValueError,'sequence'):
+                sync('lidl',old,lambda *_:data)
+            self.assertIn('one',old['products'])
+    def test_cursor_is_opaque_and_not_used_as_sequence_limit(self):
+        old={'retailer':'lidl','cursor':15,'products':{'one':self.product('one')}}
+        data={'cursor':100,'has_more':False,'changes':[
+            {'seq':500,'change':'delete','product_id':'one','retailer':'lidl'}]}
+        updated,mode=sync('lidl',old,lambda *_:data)
+        self.assertEqual(updated['products'],{})
+        self.assertEqual(updated['cursor'],100)
+        self.assertEqual(mode,'delta')
+
+class PrijsProfeetPriceEvidence(unittest.TestCase):
+    def test_only_active_valid_prices_and_honest_discounts(self):
+        from scripts.sync_aanbiedingen import item
+        base={'product_id':'100','name':'Broccoli 500 g','price':1.45,
+              'promotion_status':'active','valid_from':'2026-10-29','valid_until':'2026-11-04',
+              'product_url':'https://www.ah.nl/producten/product/wi123/example','quantity':'500 g'}
+        valid=item(dict(base,original_price=2.5,loyalty_price=1.1,valid_until_estimated=True),'2026-11-01')
+        self.assertAlmostEqual(valid['regular_price'],2.5)
+        self.assertAlmostEqual(valid['loyalty_price'],1.1)
+        self.assertTrue(valid['date_estimated'])
+        self.assertFalse(valid['verified'])
+        for raw in [dict(base,price=float('nan')),dict(base,price=float('inf')),dict(base,price=True),
+                    dict(base,promotion_status='upcoming'),dict(base,valid_from='2026-11-08'),
+                    dict(base,valid_until='2026-10-31')]:
+            self.assertIsNone(item(raw,'2026-11-01'))
+        bad=item(dict(base,original_price=1.0,loyalty_price=4.0),'2026-11-01')
+        self.assertIsNone(bad['regular_price'])
+        self.assertIsNone(bad['loyalty_price'])
 class Folderz(unittest.TestCase):
     url='https://www.folderz.nl/winkels/lidl/aanbiedingen/broccoli-aanbieding-123/'
     def html(self,**kw):
