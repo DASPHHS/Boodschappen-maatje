@@ -21,7 +21,7 @@ SITEMAP="https://www.ah.nl/sitemaps/entities/allerhande/recipes.xml"
 FAMILIES={
  "riblappen":r"\b(?:riblappen|riblap|sukadelappen|sukadelap|stooflappen)\b",
  "gehakt":r"\b(?:gehakt|gehaktballen|rundergehakt|varkensgehakt)\b",
- "kip":r"\b(?:kip|kipfilet|kipdij|kippen)\b",
+ "kip":r"\b(?:kip|kipfilet|kipdij|kippen|kipcurry|kipkerrie|kipstoof|kipschotel|kipwok|kipovenschotel)\b",
  "zalm":r"\b(?:zalm|zalmfilet)\b",
  "witvis":r"\b(?:kabeljauw|koolvis|scholfilet|pangasius|witvis|heek)\b",
  "garnalen":r"\b(?:garnalen|scampi)\b",
