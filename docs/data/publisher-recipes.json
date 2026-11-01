@@ -554,6 +554,440 @@
       "course": "hoofdgerecht",
       "review_status": "handmatig_gevonden_bij_uitgever",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r95664",
+      "title": "Rijst met paksoi en gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R95664/rijst-met-paksoi-en-gehakt",
+      "families": [
+        "gehakt",
+        "paksoi"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r704252",
+      "title": "Ovenpasta gehakt spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R704252/ovenpasta-gehakt-spinazie",
+      "families": [
+        "gehakt",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1189011",
+      "title": "Risotto met zalm en venkel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189011/risotto-met-zalm-en-venkel",
+      "families": [
+        "venkel",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r626126",
+      "title": "Provencaalse kip met venkel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R626126/provencaalse-kip-met-venkel",
+      "families": [
+        "kip",
+        "venkel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202071",
+      "title": "Spitskool met pasta en zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202071/spitskool-met-pasta-en-zalm",
+      "families": [
+        "spitskool",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1198142",
+      "title": "Curry met spitskool en tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198142/curry-met-spitskool-en-tofu",
+      "families": [
+        "spitskool",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r478180",
+      "title": "Gevulde courgette met gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R478180/gevulde-courgette-met-gehakt",
+      "families": [
+        "courgette",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r931360",
+      "title": "Panang curry met kip en venkel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R931360/panang-curry-met-kip-en-venkel",
+      "families": [
+        "kip",
+        "venkel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r624706",
+      "title": "Gevulde aubergines met linzen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R624706/gevulde-aubergines-met-linzen",
+      "families": [
+        "aubergine",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1188662",
+      "title": "Venkel en malse kip uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1188662/venkel-en-malse-kip-uit-de-oven",
+      "families": [
+        "kip",
+        "venkel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r197538",
+      "title": "Gegrilde aubergine met kipfilet",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R197538/gegrilde-aubergine-met-kipfilet",
+      "families": [
+        "aubergine",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1201600",
+      "title": "Broccoli ovenschotel met gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201600/broccoli-ovenschotel-met-gehakt",
+      "families": [
+        "broccoli",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r577912",
+      "title": "Pastaschelpjes met venkel en zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R577912/pastaschelpjes-met-venkel-en-zalm",
+      "families": [
+        "venkel",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r405070",
+      "title": "Ovenschotel met spinazie en gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R405070/ovenschotel-met-spinazie-en-gehakt",
+      "families": [
+        "gehakt",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r7514",
+      "title": "Limoen kabeljauw met gebakken venkel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R7514/limoen-kabeljauw-met-gebakken-venkel",
+      "families": [
+        "venkel",
+        "witvis"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1197727",
+      "title": "Gevulde paprika met gehakt en bonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197727/gevulde-paprika-met-gehakt-en-bonen",
+      "families": [
+        "gehakt",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1149218",
+      "title": "Pasta met tomaat venkel en garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1149218/pasta-met-tomaat-venkel-en-garnalen",
+      "families": [
+        "garnalen",
+        "tomaten",
+        "venkel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r436160",
+      "title": "Risotto met paddenstoelen en gehakt",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R436160/risotto-met-paddenstoelen-en-gehakt",
+      "families": [
+        "champignons",
+        "gehakt"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r235854",
+      "title": "Gehakt sateschotel met sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R235854/gehakt-sateschotel-met-sperziebonen",
+      "families": [
+        "gehakt",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r292582",
+      "title": "Kipfilet met roergebakken spitskool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R292582/kipfilet-met-roergebakken-spitskool",
+      "families": [
+        "kip",
+        "spitskool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r657500",
+      "title": "Aubergine kipcurry met sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R657500/aubergine-kipcurry-met-sperziebonen",
+      "families": [
+        "aubergine",
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1200449",
+      "title": "Teriyaki tofu met aubergine en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200449/teriyaki-tofu-met-aubergine-en-rijst",
+      "families": [
+        "aubergine",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r1202074",
+      "title": "Gebakken rijst met spitskool en tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202074/gebakken-rijst-met-spitskool-en-tofu",
+      "families": [
+        "spitskool",
+        "tofu"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-sitemap-r-r529490",
+      "title": "Rijstschotel met wilde zalm en venkel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R529490/rijstschotel-met-wilde-zalm-en-venkel",
+      "families": [
+        "venkel",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-01"
     }
   ]
 }
