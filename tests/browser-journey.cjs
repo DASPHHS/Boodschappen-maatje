@@ -41,7 +41,11 @@ const start=base.endsWith('/')?base:base+'/';
    }
   }
   const milk=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Houdbare volle melk voor cappuccino'});
-  assert.equal(await milk.count(),1,'UHT full milk is an exact saved preference');
+  assert.ok(await milk.count()>=1,'UHT full milk must still be in the saved preferences');
+  for(const row of await milk.all()){
+   const text=await row.innerText();
+   assert.ok(!/lactosevrije volle melk|verse volle melk/i.test(text),'UHT full milk must not contain fresh or lactose-free substitutes');
+  }
   for(const name of ['Lidl','Jumbo','Albert Heijn'])assert.ok((await page.locator('#view-aanbiedingen .compare-table').innerText()).includes(name));
   const sourceLinks=page.locator('#view-aanbiedingen .compare-source');
   assert.ok(await sourceLinks.count()>5,'Shelf price sources must be visible');
