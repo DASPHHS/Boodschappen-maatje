@@ -26,7 +26,7 @@ FAMILIES={
  "witvis":r"\b(?:kabeljauw|koolvis|scholfilet|pangasius|witvis|heek)\b",
  "garnalen":r"\b(?:garnalen|scampi)\b",
  "tofu":r"\b(?:tofu|tempeh)\b",
- "kikkererwten":r"\b(?:kikkererwten|kikkererwt)\b",
+ "kikkererwten":r"\b(?:kikkererwten|kikkererwt|kikkererwtencurry|kikkererwtenstoof)\b",
  "linzen":r"\b(?:linzen|linzenstoof|dahl)\b",
  "broccoli":r"\b(?:broccoli|broccoliroosjes)\b",
  "bloemkool":r"\b(?:bloemkool|bloemkoolroosjes)\b",
