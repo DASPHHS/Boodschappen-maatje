@@ -114,3 +114,6 @@
 /* Allow source status to wrap without overflowing the mobile header. */
 .topbar{height:auto;min-height:84px;padding-block:12px}.topbar-right{min-width:0}.status-pill{display:block;max-width:360px;overflow-wrap:anywhere}
 @media(max-width:740px){.topbar{min-height:61px;flex-wrap:wrap;gap:8px;padding-block:10px}.mobile-brand{flex-shrink:0}.topbar-right{max-width:100%;margin-left:auto}.status-pill{max-width:190px;border-radius:12px;line-height:1.4}}
+/* Source provenance must not squeeze a product title out of its card. */
+.deal-card-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}
+.deal-card-top>.tag{grid-column:1/-1;justify-self:start;max-width:100%;white-space:normal}
