@@ -86,3 +86,15 @@ for(const product of ['AH Wortelen baby 12m+','Wortelen in saus','AH Citroen cak
  const name=product.includes('Citroen')?'citroen':product.includes('Broccoli')?'broccoli':product.includes('Bloemkool')?'bloemkool':'wortel';
  assert.equal(options.estimate({ingredients:[{name,quantity:600,unit:'g'}]},'ah',{...catalog,stores:{ah:[[product,.1,'1000 g',null,'wrong']]}},pricing,resolver,today).total,null);
 }
+
+
+const historicalShop=options.estimate(meal,'ah',{...fixture,source_date:'2026-10-25'},pricing,resolver,today);
+assert.equal(historicalShop.state,'historical_estimate');
+assert.equal(historicalShop.total,9);
+assert.equal(historicalShop.stale,true);
+const oldPartial=options.estimate({ingredients:[...meal.ingredients,{name:'courgette',quantity:600,unit:'g'}]},'ah',
+ {...fixture,source_date:'2026-10-25'},pricing,resolver,today);
+assert.equal(oldPartial.state,'partial');
+assert.equal(oldPartial.stale,true);
+assert.equal(oldPartial.partial,9);
+console.log('Outdated snapshot retains known package prices with historic status and unknown total');
