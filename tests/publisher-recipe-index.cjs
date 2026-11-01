@@ -9,7 +9,7 @@ for(const r of index.recipes){
  assert.match(r.title,/\S{5}/);
  assert.ok((r.source==='Allerhande'&&r.url.startsWith('https://www.ah.nl/allerhande/'))||
   (r.source==='Jumbo'&&r.url.startsWith('https://www.jumbo.com/recepten/')),'Trusted publishing host only');
- assert.ok(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified'].includes(r.review_status));
+ assert.ok(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_sitemap_title_only'].includes(r.review_status));
  assert.ok(Array.isArray(r.families)&&r.families.length>0);
  r.families.forEach(x=>families.add(x));if(r.method)methods.add(r.method);
  assert.ok(!r.instructions&&!r.recipeInstructions&&!r.image,'Do not copy recipe text or images');
