@@ -162,5 +162,5 @@
    {source:'Jumbo recepten',url:'https://www.google.com/search?q='+encodeURIComponent('site:jumbo.com/recepten/ '+q)}
   ];
  }
- return {classify,matchRecipe,localMatches,publisherSearch,publisherMatches,offerRecipeHighlights};
+ return {classify,matchRecipe,localMatches,publisherSearch,publisherMatches,offerRecipeHighlights,trustedPublisherUrl};
 });
