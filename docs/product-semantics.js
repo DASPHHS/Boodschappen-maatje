@@ -3,7 +3,7 @@
  * descriptions go to evidence review rather than a cheapest-product claim. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.MaatjeSemantics=api;})(typeof window!=='undefined'?window:null,function(){
 'use strict';
-const VERSION='2026-11-01.1';
+const VERSION='2026-11-01.2';
 const norm=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
 const word=(s,t)=>(' '+s+' ').includes(' '+t+' ');
 // Families are reusable product concepts, not retailer SKU exceptions.
@@ -57,9 +57,18 @@ function classify(product){
   family==='tofu'?/\b(zacht|zachte|silken|zijde|zijden)\b/.test(n)?'zacht':'naturel':
   family==='popcorn'?/\b(mais|maiskorrels|pofmais)\b/.test(n)?'pofmais':/\b(magnetron|microwave)\b/.test(n)?'magnetron':'gepofte popcorn':
   family==='beer'?/\b(0 0|alcoholvrij)\b/.test(n)?'alcoholvrij':'alcoholhoudend':
-  family==='milk'?/\b(houdbaar|houdbare|uht|langlekker)\b/.test(n)?'houdbaar':'vers of niet gespecificeerd':'';
+  family==='milk'?/\b(houdbaar|houdbare|uht|langlekker)\b/.test(n)?'houdbaar':'vers of niet gespecificeerd':
+  family==='quark'?/\b(high protein|proteine|proteinrijk|eiwitrijk)\b/.test(n)?'extra eiwit':/\b(magere|mager|0 vet)\b/.test(n)?'mager':/\b(volle|vol)\b/.test(n)?'vol':'vetgehalte niet vermeld':
+  family==='dishwasher'?/\bplatinum plus\b/.test(n)?'Platinum Plus':/\bplatinum\b/.test(n)?'Platinum':/\b(original|classic)\b/.test(n)?'Original':/\ball in one\b/.test(n)?'All-in-One':'serie niet vermeld':'';
  const flavor=['vanille','aardbei','chocolade','karamel','banaan','bosvruchten'].find(t=>word(name,t))||'naturel';
- const attributes={flavor,...(['almonds','walnuts'].includes(family)?{roast:/\b(ongebrand|ongebrande)\b/.test(n)?'ongebrand':/\b(gebrand|gebrande|geroosterd|geroosterde)\b/.test(n)?'geroosterd':'bereiding niet vermeld',salt:/\bongezouten\b/.test(n)?'ongezouten':/\bgezouten\b/.test(n)?'gezouten':'zout niet vermeld'}:{}),...(family==='peanut_butter'?{recipe:/\b100\b/.test(name)?'100% pindas':'regulier'}:{}),...(family==='beer'?{container:/\b(blik|blikjes|blikken)\b/.test(name)?'blik':/\b(fles|flesjes|flessen)\b/.test(name)?'fles':'verpakking niet bevestigd'}:{})};
+ const peanutTexture=/\b(stukjes|stukjes pinda|crunchy|crunch|grof|grove)\b/.test(n)?'met stukjes':
+  /\b(smooth|smeuig|romig|glad|creamy|zonder stukjes)\b/.test(n)?'glad':'structuur niet vermeld';
+ const organic=/\b(biologisch|biologische|bio|organic)\b/.test(n);
+ const attributes={flavor,...(organic?{teelt:'biologisch'}:{}),
+  ...(family==='peanut_butter'?{structuur:peanutTexture}:{}),
+  ...(family==='milk'?{vet:/\b(halfvolle|halfvol)\b/.test(n)?'halfvol':/\b(magere|mager)\b/.test(n)?'mager':/\b(volle|vollemelk)\b/.test(n)?'vol':'vetgehalte niet vermeld'}:{}),
+  ...(['milk','quark'].includes(family)?{lactose:/\b(lactosevrij|lactosevrije)\b/.test(n)?'lactosevrij':'lactose niet gespecificeerd'}:{}),
+  ...(['almonds','walnuts'].includes(family)?{roast:/\b(ongebrand|ongebrande)\b/.test(n)?'ongebrand':/\b(gebrand|gebrande|geroosterd|geroosterde)\b/.test(n)?'geroosterd':'bereiding niet vermeld',salt:/\bongezouten\b/.test(n)?'ongezouten':/\bgezouten\b/.test(n)?'gezouten':'zout niet vermeld'}:{}),...(family==='peanut_butter'?{recipe:/\b100\s*(?:%|procent\b|percent\b)/.test(String(product?.name||'').toLowerCase())?'100% pindas':'regulier'}:{}),...(family==='beer'?{container:/\b(blik|blikjes|blikken)\b/.test(name)?'blik':/\b(fles|flesjes|flessen)\b/.test(name)?'fles':'verpakking niet bevestigd'}:{})};
  return {family,families:matches,audience,form,plant,variant,name,meta:!!meta&&structured.includes(family),attributes};
 }
 function intent(profile){
@@ -97,7 +106,7 @@ function evaluate(product,profile,pricing){
  const p=pricing?.pack?.(product);
  if(plain.has(actual.family)&&p&&p.unit==='L')return result('reject','volume is geen vergelijkbaar eetbaar gewicht');
  const basis=p&&!p.approximate?p.unit:'inhoud onbekend';
- const detail=Object.values(actual.attributes).join(' · ');
+ const detail=Object.values(actual.attributes).filter(Boolean).join(' · ');
  const key=[actual.family||'literal:'+norm((profile?.match?.all||[]).join(' ')),actual.form,actual.variant,detail,basis].join('|');
  const formLabel={plain:'naturel; bewaarmethode niet vermeld',frozen:'diepvries',smoked:'gerookt',preserved:'conserven',powder:'poeder',cooked:'bereid',seasoned:'gekruid',prepared:'bereid gerecht',mixed:'mengsel'}[actual.form]||actual.form;
  return {...result('match','productsoort, doelgroep en vorm passend'),comparison_key:key,

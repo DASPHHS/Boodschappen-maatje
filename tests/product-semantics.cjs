@@ -38,3 +38,35 @@ assert.equal(resolver.matching(branded,profile('kipfilet'),pricing).status,'matc
 assert.equal(resolver.matching({...branded,name:'Nieuwmerk Kipfilet Verrassing'},profile('kipfilet'),pricing).status,'partial','Broad category evidence must not excuse an unexplained preparation');
 
 assert.equal(check('sperziebonen','AH Gebroken sperziebonen','660 g').status,'partial','Jar net weight cannot be presumed to be fresh/frozen edible weight');
+
+
+const peanut=(name,pack='600 g')=>check('pindakaas',name,pack);
+const plainPeanut=peanut('Jumbo Pindakaas Naturel 600 g');
+const chunks=peanut('Calvé Pindakaas met stukjes pinda', '1 kg');
+assert.equal(plainPeanut.status,'match');
+assert.equal(chunks.status,'match');
+assert.notEqual(plainPeanut.comparison_key,chunks.comparison_key,'Pindakaas met stukjes is geen gewone naturelvariant');
+assert.match(chunks.comparison_label,/met stukjes/);
+const smooth=peanut('Jumbo Pindakaas Smooth 600 g');
+assert.equal(smooth.status,'match');
+assert.notEqual(smooth.comparison_key,chunks.comparison_key);
+assert.notEqual(smooth.comparison_key,plainPeanut.comparison_key,'Onbekende textuur is niet automatisch glad');
+const pure=peanut('Jumbo Pindakaas 100% Pinda', '600 g');
+assert.equal(pure.status,'match');
+assert.notEqual(pure.comparison_key,plainPeanut.comparison_key);
+assert.equal(peanut('Jumbo Pindakaas 100 g','100 g').actual.attributes.recipe,'regulier',
+ '100 g verpakkingsgewicht is geen 100% pinda');
+const bio=peanut('AH Biologische Pindakaas Naturel', '600 g');
+assert.notEqual(bio.comparison_key,plainPeanut.comparison_key,'Biologisch en niet als bio aangeduid blijven apart');
+const flavourMilk={match:{all:['melk']}};
+const compare=(name,profile,pack='1 L')=>resolver.matching({name,pack_label:pack},profile,pricing);
+assert.notEqual(compare('AH Houdbare volle melk',flavourMilk).comparison_key,
+ compare('AH Houdbare halfvolle melk',flavourMilk).comparison_key,'Volle en halfvolle melk moeten apart');
+const kwarkProfile={match:{all:['kwark']}};
+assert.notEqual(compare('AH Magere kwark',kwarkProfile,'500 g').comparison_key,
+ compare('AH High Protein kwark',kwarkProfile,'500 g').comparison_key,'Magere kwark en high protein zijn niet gelijk');
+const detergent={match:{all:['dreft'],any:['vaatwastabletten','vaatwascapsules']}};
+assert.notEqual(compare('Dreft Platinum Plus vaatwastabletten',detergent,'36 stuks').comparison_key,
+ compare('Dreft Original vaatwastabletten',detergent,'36 stuks').comparison_key,
+ 'Vaatwastabletten van andere productserie mogen niet samen');
+console.log('Variantvergelijking: pindakaastextuur, 100% vs 100g, biologische varianten, melkvet, kwark en Dreft geverifieerd');

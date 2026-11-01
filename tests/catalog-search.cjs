@@ -73,3 +73,24 @@ assert.equal(blended.stores.lidl[0][1],2.19);
 assert.equal(search.withLidlPrices(catalog,officialSupplement,'2026-11-10'),catalog,'Old official data must not gain a fresh snapshot date');
 officialSupplement.stores.lidl.official_prices[0].member_required=true;
 assert.equal(search.withLidlPrices(catalog,officialSupplement,today),catalog,'Member discount cannot silently become a regular basket price');
+
+
+const peanutProfile=watch.find(x=>x.key==='pindakaas');
+const peanutCatalog={schema_version:1,source_date:today,source_url:catalog.source_url,stores:{
+ lidl:[['Pindakaas',1.38,'600 g',null,'pb-lidl']],
+ jumbo:[['Jumbo Pindakaas Naturel 600 g',1.45,'600 g','https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-12345STK','12345STK']],
+ ah:[['Calvé Pindakaas met stukjes pinda',7.29,'1 kg','https://www.ah.nl/producten/product/wi12345/calve-pindakaas-stukjes','wi12345'],
+ ['AH Pindakaas Naturel',2.30,'600 g','https://www.ah.nl/producten/product/wi12346/ah-pindakaas','wi12346']]}};
+const peanutRows={};
+for(const shop of ['lidl','jumbo','ah'])peanutRows[shop]=search.combined(peanutProfile,shop,peanutCatalog,[],[],pricing,resolver,today);
+const jumboPlain=peanutRows.jumbo.find(x=>x.o.name.includes('Naturel'));
+const lidlPlain=peanutRows.lidl.find(x=>x.o.name==='Pindakaas');
+const ahPlain=peanutRows.ah.find(x=>x.o.name==='AH Pindakaas Naturel');
+const ahChunks=peanutRows.ah.find(x=>x.o.name.includes('stukjes'));
+assert.ok(jumboPlain&&lidlPlain&&ahPlain&&ahChunks,'Realistic brand fixtures must match intended names');
+assert.equal(jumboPlain.match.comparison_key,lidlPlain.match.comparison_key);
+assert.equal(jumboPlain.match.comparison_key,ahPlain.match.comparison_key);
+assert.notEqual(jumboPlain.match.comparison_key,ahChunks.match.comparison_key,
+ 'The 1 kg Calvé crunchy variant must never appear as the price for regular naturel');
+assert.match(ahChunks.match.comparison_label,/met stukjes/);
+console.log('Comparison screenshot regression: 600 g natural and 1 kg Calvé chunks have separate comparison rows');
