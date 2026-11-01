@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Full public promotion catalogue; never treats these as full shelf prices."""
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import json, os, re, sys, time, math
@@ -120,6 +120,21 @@ def item(p,today):
       "promotion_status":"active","verified":False,
       "member_required":False,"brand":p.get("brand"),"ean":p.get("ean")}
 
+def future_item(p,today):
+    # Future promotions are a separate preview, never promoted as an active deal.
+    status=p.get("promotion_status")
+    if status not in ("active","upcoming") or p.get("online_only") is True:return None
+    try:
+        day=date.fromisoformat(today)
+        start=date.fromisoformat(str(p.get("valid_from") or "")[:10])
+        end=date.fromisoformat(str(p.get("valid_until") or "")[:10])
+    except ValueError:return None
+    next_monday=day+timedelta(days=7-day.weekday())
+    next_sunday=next_monday+timedelta(days=6)
+    if not(day<start<=next_sunday and end>=next_monday and start<=end):return None
+    current=item({**p,"promotion_status":"active"},start.isoformat())
+    return {**current,"promotion_status":"upcoming"} if current else None
+
 def main():
     timestamp=datetime.now(ZoneInfo("Europe/Amsterdam"));today=timestamp.date().isoformat()
     previous={}
@@ -143,22 +158,24 @@ def main():
     for store,retailer in RETAILERS.items():
         try:
             updated,mode=sync(retailer,sync_state.get('stores',{}).get(store),get)
-            found={}
+            found={};upcoming={}
             for row in updated['products'].values():
                 x=item(row,today)
                 if x:found[x['id']]=x
+                future=future_item(row,today)
+                if future:upcoming[future['id']]=future
             total=len(updated['products'])
             sync_state.setdefault('stores',{})[store]=updated
             counts={}
             for offer in found.values():
                 c=offer["category"]
                 counts[c]=counts.get(c,0)+1
-            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"imported_total":len(found),"categories":counts,"status":"ok","sync_mode":mode,"checked_at":timestamp.isoformat()}
+            output["stores"][store]={"offers":list(found.values()),"reported_total":total,"imported_total":len(found),"upcoming_offers":list(upcoming.values()),"categories":counts,"status":"ok","sync_mode":mode,"checked_at":timestamp.isoformat()}
             print(store,total,"total,",len(found),"active in-store promotions across all categories",flush=True)
         except Exception as e:
             failures+=1
             old=previous.get(store,{})
-            output["stores"][store]={"offers":old.get("offers",[]),"reported_total":old.get("reported_total"),
+            output["stores"][store]={"offers":old.get("offers",[]),"upcoming_offers":old.get("upcoming_offers",[]),"reported_total":old.get("reported_total"),
               "status":"stale","checked_at":old.get("checked_at"),"error":str(e)[:200]}
             print(store,"FAILED",e,file=sys.stderr,flush=True)
     if failures==len(RETAILERS):return 1

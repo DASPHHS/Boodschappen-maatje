@@ -23,6 +23,11 @@ on:
       - 'tests/weekly-menu.cjs'
       - 'tests/recipe-shop-options.cjs'
       - 'tests/recipe-price-ui.cjs'
+      - 'tests/recipe-price-coverage.cjs'
+      - 'docs/weekdeals-engine.js'
+      - 'docs/recipe-discovery.js'
+      - 'tests/recipe-discovery.cjs'
+      - 'tests/weekdeals-engine.cjs'
       - '.github/workflows/weekly-menu.yml'
       - 'docs/data/recipe-sources.json'
       - 'tests/recipe-source-integrity.cjs'
@@ -104,6 +109,9 @@ jobs:
           node tests/recipe-variety.cjs
           node tests/recipe-price-cache.cjs
           node tests/recipe-price-ui.cjs
+          node tests/recipe-price-coverage.cjs
+          node tests/weekdeals-engine.cjs
+          node tests/recipe-discovery.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs

@@ -59,12 +59,41 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),customVariantCount,
     'A user-added product must persist across page reload');
   await page.locator('[data-offer-mode="all"]').click();
+  assert.equal(await page.locator('[data-offer-week="now"]').count(),1,'Weekdeals: this week tab');
+  await page.locator('[data-offer-week="next"]').click();
+  assert.ok((await page.locator('#view-aanbiedingen').innerText()).includes('Vooruitblik'),
+   'Weekdeals: next-week control must clearly distinguish upcoming promotions');
+  assert.ok((await page.locator('#view-aanbiedingen').innerText()).includes('Albert Heijn'),
+   'All three stores remain represented');
+  await page.locator('[data-offer-week="now"]').click();
+  await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
+  const cookingButtons=page.locator('#view-aanbiedingen .deal-card [data-cook-offer]');
+  assert.ok(await cookingButtons.count()>0,'At least one currently discounted ingredient should suggest real recipes');
+  await cookingButtons.first().click();
+  await page.locator('#view-recepten #cooking-ideas').waitFor();
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Meer geschikte gerechten vinden'),
+   'Cooking suggestions must offer publisher-backed discovery for sale ingredients');
+  assert.ok(await page.locator('#cooking-ideas a[href*="google.com/search"]').count()>=2,
+   'Relevant recipe searches must lead to trusted publisher domains');
+  await page.locator('.sidebar button[data-view="aanbiedingen"]').click();
   await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
   const before=Number((await page.locator('#product-favorites-count').innerText())||'0');
   await page.locator('#view-aanbiedingen .deal-card [data-fav-toggle]').first().click();
   const after=Number((await page.locator('#product-favorites-count').innerText())||'0');
   assert.equal(after,before+1,'Favorite heart must update count');
   await page.locator('.sidebar button[data-view="recepten"]').click();
+  await page.locator('#ingredient-discovery').fill('runderriblappen');
+  await page.locator('[data-find-ideas]').click();
+  const beefPanel=await page.locator('#cooking-ideas').innerText();
+  assert.match(beefPanel,/Rendang/,'Riblappen must suggest real publisher rendang recipe');
+  assert.match(beefPanel,/Hachee/,'Riblappen must suggest hachee');
+  assert.match(beefPanel,/Boeuf bourguignon/,'Riblappen must suggest a slow stew');
+  await page.locator('[data-clear-cook]').click();
+  await page.locator('#ingredient-discovery').fill('nieuwe onbekende groente 2027');
+  await page.locator('[data-find-ideas]').click();
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Geen betrouwbare automatische ingrediëntkoppeling'),
+   'Unknown future ingredients must fall back to publisher search, never fabricate a recipe');
+  await page.locator('[data-clear-cook]').click();
   assert.ok(await page.locator('.recipe-source-link').count()>=4,'External originals are accessible');
   const external=page.locator('.recipe-source-link').first();
   assert.ok((await external.getAttribute('href')).startsWith('https://'));

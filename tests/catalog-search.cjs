@@ -94,3 +94,14 @@ assert.notEqual(jumboPlain.match.comparison_key,ahChunks.match.comparison_key,
  'The 1 kg Calvé crunchy variant must never appear as the price for regular naturel');
 assert.match(ahChunks.match.comparison_label,/met stukjes/);
 console.log('Comparison screenshot regression: 600 g natural and 1 kg Calvé chunks have separate comparison rows');
+
+
+const staleCatalog={...catalog,source_date:'2026-10-25'};
+const staleRows=search.candidates(milk,'ah',staleCatalog,pricing,resolver,today);
+assert.equal(search.valid(staleCatalog,today),false,'Four-day-old source is not a current catalogue');
+assert.ok(staleRows.length>0,'Historical snapshots should remain visible temporarily, not vanish');
+assert.equal(staleRows[0].current,false);
+assert.equal(staleRows[0].status,'oud');
+assert.deepEqual(search.candidates(milk,'ah',{...catalog,source_date:'2026-10-20'},pricing,resolver,today),[],
+ 'Snapshots beyond 7 days should remain unavailable');
+console.log('Graceful historic shelf-price fallback retains dated prices, never marks them current');
