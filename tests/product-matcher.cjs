@@ -28,4 +28,12 @@ assert.equal(m.exactIdentity(o('Broccoli',{ean:'12345678'}),i('Broccoli'),identi
 assert.equal(m.exactIdentity(o('Broccoli',{product_id:'ret-1'}),i('Broccoli',{product_id:'ret-1'}),identity),true);
 assert.equal(m.exactIdentity(o('Texels Skuumkoppe 6x300ML'),i('Texels Skuumkoppe 0.0 6x300ML'),identity),false);
 assert.equal(m.exactIdentity(o('Texels Skuumkoppe Bier Fles 6x300ML',{pack_label:'6x300ML'}),i('Texels Skuumkoppe Bier Blik 6x300ML',{pack_label:'6x300ML'}),identity),false);
+assert.equal(m.family('runderriblappen'),'riblappen');
+assert.equal(m.family('verse prei'),'prei');
+assert.equal(m.family('Vivera plantaardige shoarma'),'shoarma');
+assert.equal(m.family('Gerookt kipfilet broodbeleg'),null);
+assert.equal(m.culinaryOfferSuitability(o('Jumbo Scharrel Kipfilet 120 g',{pack_label:'120 g'}),i('kipfilet',{quantity:720,unit:'g'})),false,
+ 'Do not promote 120 g sandwich-size chicken as a match for 720 g raw chicken');
+assert.equal(m.culinaryOfferSuitability(o('Jumbo Kipfilethaasjes',{pack_label:'300 g'}),i('kipfilethaasjes',{quantity:720,unit:'g'})),true);
+assert.equal(m.culinaryOfferSuitability(o('Jumbo Kipfilet plakjes',{pack_label:'120 g'}),i('kipfilet',{quantity:720,unit:'g'})),false);
 console.log('Productmatching: identieke soorten, afwijkende varianten en exacte actiebedragen gecontroleerd');

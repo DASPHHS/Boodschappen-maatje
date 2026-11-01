@@ -6,6 +6,10 @@
  const norm=v=>String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const families=[
   ['zalm',/\b(zalm|zalmfilet|wilde zalm)\b/],
+  ['riblappen',/\b(runderriblappen|runderlappen|riblappen|riblap|sukadelappen|stooflappen)\b/],
+  ['prei',/\bprei\b/],
+  ['shoarma',/\bshoarma\b/],
+  ['aardappelen',/\b(aardappelen|stamppotaardappelen|krieltjes)\b/],
   ['kabeljauw',/\b(kabeljauw|kabeljauwfilet)\b/],
   ['broccoli',/\bbroccoli\b/],
   ['bloemkool',/\bbloemkool\b/],
@@ -28,7 +32,7 @@
  ];
  function family(name){
   const n=norm(name);
-  if(/\b(saus|soep|kruiden|kruidenmix|maaltijdmix|chips|burger|schnitzel|visstick)\b/.test(n))return null;
+  if(/\b(saus|soep|kruiden|kruidenmix|maaltijdmix|chips|burger|schnitzel|visstick|broodbeleg|vleeswaren|kipfiletplakjes|kipfiletbeleg|voorgegaard|gegrild|gerookt|gebraden|kant en klaar|gemarineerde plakjes)\b/.test(n))return null;
   for(const [family,regex] of families)if(regex.test(n))return family;
   return null;
  }
@@ -86,6 +90,26 @@
    const one=x.match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
    return one?Number(one[1].replace(',','.'))*(one[2]==='kg'?1000:1):null;
  }
+ // Similar food is not necessarily a sensible promotion for a four-serving recipe.
+ // Avoid deli-meat mini packs (e.g. 120 g chicken slices for 720 g raw chicken).
+ // This gate only affects suggestions, never claims a purchase price.
+ function culinaryOfferSuitability(offer,ingredient){
+  if(!offer||!ingredient)return false;
+  if(!['compatible','uncertain'].includes(evaluate(offer,ingredient).status))return false;
+  const familyName=family(ingredient.name);
+  if(!familyName||family(offer.name)!==familyName)return false;
+  const label=norm(String(offer.name||'')+' '+String(offer.pack_label||''));
+  if(/\b(plakjes|broodbeleg|vleeswaren|gerookt|gebraden|gekookt|voorgegaard|kant en klaar|maaltijd|rollade|schnitzel)\b/.test(label)&&
+     ['kipfilet','gehakt','zalm','kabeljauw'].includes(familyName))return false;
+  const grams=packGrams(offer)||packGrams({pack_label:offer.name});
+  if(grams&&ingredient.unit==='g'&&Number(ingredient.quantity)>0){
+   const ratio=grams/Number(ingredient.quantity);
+   if(['kipfilet','gehakt','zalm','kabeljauw'].includes(familyName)&&ratio<0.4)return false;
+   if(ratio<0.2)return false;
+  }
+  return true;
+ }
+
  function priceApplied(offer,ingredient){
   if(evaluate(offer,ingredient).status!=='compatible')return false;
   if(offer.price_conflict||ingredient.price_status!=='folder_current'||!Number.isFinite(offer.price)||!Number.isFinite(ingredient.pack_price))return false;
@@ -97,5 +121,5 @@
   const expected=offer.price*packages;
   return Math.abs(expected-ingredient.pack_price)<=0.015;
  }
- return {norm,family,features,evaluate,exactIdentity,packGrams,priceApplied};
+ return {norm,family,features,evaluate,exactIdentity,packGrams,priceApplied,culinaryOfferSuitability};
 });
