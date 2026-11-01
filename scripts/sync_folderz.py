@@ -14,16 +14,19 @@ from sync_aanbiedingen import category
 OUT=Path(__file__).resolve().parents[1]/'docs/data/supplemental-offers.json'
 SEED='https://www.folderz.nl/winkels/lidl/aanbiedingen'
 class Page(HTMLParser):
-    def __init__(self):super().__init__();self.links=[];self.graph=[];self.script=False;self.buffer=''
+    def __init__(self):super().__init__();self.links=[];self.graph=[];self.script=False;self.buffer='';self.in_title=False;self.title=''
     def handle_starttag(self,t,a):
         a=dict(a)
+        if t=='title':self.in_title=True
         if t=='script' and a.get('type')=='application/ld+json':self.script=True;self.buffer=''
         if t=='a':
             u=urljoin(SEED,a.get('href',''))
             if urlparse(u).hostname=='www.folderz.nl' and re.search(r'^/winkels/lidl/aanbiedingen/[^/]+-aanbieding-\d+/$',urlparse(u).path):self.links.append(u)
     def handle_data(self,s):
+        if self.in_title:self.title+=s
         if self.script:self.buffer+=s
     def handle_endtag(self,t):
+        if t=='title':self.in_title=False
         if t=='script' and self.script:
             self.script=False
             try:
@@ -65,7 +68,7 @@ def main():
     try:
         page=Page();page.feed(fetch(SEED))
         links=list(dict.fromkeys(page.links))
-        if not links:raise ValueError('No detail links; source layout may have changed')
+        if not links:raise ValueError('No detail links; returned page: '+page.title.strip()[:90])
         priority=lambda u:0 if re.search(r'broccoli|vega|tofu|groente|fruit|melk|dreft|toilet|wasmiddel',u) else 1
         for url in sorted(links,key=priority)[:12]:
             try:
@@ -78,7 +81,7 @@ def main():
     except Exception as e:errors[SEED]=str(e)[:120]
     data=json.loads(OUT.read_text());shop=data['stores']['lidl']
     keep=[o for o in shop.get('offers',[]) if o.get('source_provider')!='Folderz' or (o.get('end_date','')>=now.date().isoformat() and o['id'] not in found)]
-    shop['offers']=keep+list(found.values());shop['folderz_check']={'checked_at':now.isoformat(),'status':'partial' if errors else 'ok','details_checked':checked,'accepted':len(found),'errors':errors,'coverage':'bounded_first_listing_page'}
+    shop['offers']=keep+list(found.values());shop['folderz_check']={'checked_at':now.isoformat(),'status':'partial' if errors else 'ok','details_checked':checked,'accepted':len(found),'retained':sum(o.get('source_provider')=='Folderz' for o in keep),'errors':errors,'coverage':'bounded_first_listing_page'}
     data['generated_at']=now.isoformat();OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(shop['folderz_check'],ensure_ascii=False));return 2 if errors else 0
 if __name__=='__main__':raise SystemExit(main())
