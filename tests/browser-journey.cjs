@@ -84,8 +84,11 @@ const start=base.endsWith('/')?base:base+'/';
   const publisherCards=page.locator('#publisher-recipes-main .publisher-recipe-card');
   assert.equal(await publisherCards.count(),8,'Show eight real publisher recipes prominently, not only four');
   const publisherTexts=await page.locator('#publisher-recipes-main').innerText();
-  assert.match(publisherTexts,/Allerhande/);
   assert.match(publisherTexts,/HelloFresh/);
+  assert.equal(await page.locator('#publisher-recipes-main .publisher-recipe-card .tag').filter({hasText:'Allerhande'}).count(),0,
+    'Default publisher cards must come from HelloFresh NL, not Allerhande');
+  assert.equal(await page.locator('#publisher-recipes-main .publisher-source-toggle [data-publisher-source="HelloFresh"]').getAttribute('aria-pressed'),'true',
+    'HelloFresh is selected by default');
   assert.ok(await page.locator('#publisher-recipes-main .recipe-source-link').count()===8,
     'Real external recipes must open at publisher');
   assert.ok(await page.locator('#batch-featured .recipe-card').count()===3,
@@ -97,7 +100,13 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.locator('#view-recepten .recipe-library-gate [data-show-recipe-library]').count(),1);
   assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Jumbo Scharrel Kipfilet 120 g/.test(t)));
   await page.locator('#view-recepten [data-more-publishers]').click();
-  assert.equal(await publisherCards.count(),16,'More publisher recipes should load without an external search');
+  assert.ok(await publisherCards.count()>=9,'Load more retrieves further original HelloFresh recipes');
+  assert.equal(await page.locator('#publisher-recipes-main .publisher-recipe-card .tag').filter({hasText:'Allerhande'}).count(),0);
+  await page.locator('#publisher-recipes-main [data-publisher-source="Allerhande"]').click();
+  assert.equal(await page.locator('#publisher-recipes-main .publisher-recipe-card .tag').filter({hasText:'HelloFresh'}).count(),0,
+    'Switching to Allerhande is explicit, not a hidden mix');
+  await page.locator('#publisher-recipes-main [data-publisher-source="HelloFresh"]').click();
+  assert.equal(await publisherCards.count(),8,'Switch back to HelloFresh resets pagination');
   const hachee=page.locator('#batch-featured .recipe-card').filter({hasText:'Hachee van runderriblappen'}).first();
   await hachee.locator('[data-open]').click();
   await page.locator('#recipe-dialog').waitFor({state:'visible'});
@@ -182,8 +191,10 @@ const start=base.endsWith('/')?base:base+'/';
    assert.equal(await mobile.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count(),3,
      'Mobile begins with three purposeful two-day meals rather than synthetic cards');
    assert.ok(await mobile.locator('#publisher-recipes-main .publisher-recipe-card').count()===8,
-     'Mobile must show genuine Allerhande and HelloFresh recipe cards');
+     'Mobile must show genuine HelloFresh-only recipe cards');
    await mobile.locator('#view-recepten .recipe-source-link').first().waitFor({state:'attached'});
+   assert.equal(await mobile.locator('#publisher-recipes-main .publisher-recipe-card .tag').filter({hasText:'Allerhande'}).count(),0,
+     'Mobile should default to HelloFresh original recipe URLs');
    await mobile.locator('.mobile-nav [data-view="lijst"]').click();
    assert.equal(await mobile.locator('#view-lijst:not(.hidden)').count(),1,'Mobile shopping list must work');
   }catch(e){
