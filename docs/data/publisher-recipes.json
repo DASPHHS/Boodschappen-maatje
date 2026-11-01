@@ -4153,6 +4153,111 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-d4fd73210e503c",
+      "source": "HelloFresh",
+      "title": "Pittige stamppot van paksoi met spekjes",
+      "url": "https://www.hellofresh.nl/recipes/pittige-stamppot-van-paksoi-met-spekjes-621f72b86c3e551cd153308b",
+      "families": [
+        "paksoi"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-b4b5c71997e635",
+      "source": "HelloFresh",
+      "title": "Lentestamppot met champignons en kruidenkaas",
+      "url": "https://www.hellofresh.nl/recipes/lentestamppot-met-champignons-en-kruidenkaas-56e2d840fd2cb9a44f8b4568",
+      "families": [
+        "aardappelen",
+        "champignons",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-f0c2d16d2ec396",
+      "source": "HelloFresh",
+      "title": "Indonesische soto met een gekookt ei, peultjes en rijstvermicelli",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-soto-met-een-gekookt-ei-peultjes-en-rijstvermicelli-58de6587c9fd080cef56f632",
+      "families": [
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-d8a217985aab69",
+      "source": "HelloFresh",
+      "title": "Baba ganoush bowl met couscous en feta",
+      "url": "https://www.hellofresh.nl/recipes/baba-ganoush-bowl-met-couscous-en-feta-62a19ce3d1e4152bd60d225e",
+      "families": [
+        "aubergine"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-eea1f1971f77fa",
+      "source": "HelloFresh",
+      "title": "Geroosterde bloemkool in groene currysaus",
+      "url": "https://www.hellofresh.nl/recipes/geroosterde-bloemkool-in-groene-currysaus-61f2c49fdbdce245092d9b86",
+      "families": [
+        "bloemkool"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "hf-page-f4cc0a8431c65a",
+      "source": "HelloFresh",
+      "title": "Stamppot met gemarineerde kipfilet",
+      "url": "https://www.hellofresh.nl/recipes/stamppot-met-gemarineerde-kipfilet-63c7d17700ace46356b3e406",
+      "families": [
+        "broccoli",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-01"
     }
   ]
 }
