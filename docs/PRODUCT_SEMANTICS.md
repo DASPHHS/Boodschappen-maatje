@@ -125,3 +125,31 @@ new dates and mutation of returned results.
 Promotion suggestions now require a positive semantic match; partial/unknown
 product meanings are not presented as comparable ingredient suggestions. Baby
 food age labels (`12m+`), knijpmix and baby brands supplement audience detection.
+
+
+## Follow-up after unattended operation (2026-11-01)
+
+Observed scheduled failure: Lidl's offers page returned HTTP 503 on GitHub Actions
+on 2026-10-31. The import now retries transient HTTP 500/502/503/504 once, with a
+short pause; 403 and 429 stop immediately. The already known public Lidl Plus page
+is an independent seed, so a generic service failure of one page does not prevent
+reading the other. Empty optional editorial pages are recorded as skipped rather
+than treated as a broken product feed; an empty primary grid still fails. Original
+checked dates remain on retained offers until their explicit expiry. The health
+record separates freshly seen offers, retained offers, regular observations and
+last complete success. Reading now runs four times daily (05:35, 10:35, 15:35 and
+19:35 UTC); failures remain visible and do not become fabricated current prices.
+
+Recipe retrieval uses controlled Dutch alternatives (wortel/wortelen/winterpeen,
+broccoli/broccoliroosjes, bloemkool/bloemkoolroosjes and singular/plural citrus).
+These are exact product heads, not fuzzy description matches. Raw egg counts may
+come from explicit names such as `15stk`; gram weights are never converted to an
+invented egg count. Prepared products, baby food and unknown weights stay excluded.
+The 2026-10-31 catalog at evaluation day 2026-11-01 gives complete indications for
+3/72 Lidl, 5/72 Jumbo and 12/72 AH library recipes, versus 0/72, 2/72 and 6/72 before
+these changes. This measures coverage, not a guarantee of checkout prices.
+
+Vega recipes have reusable protein filters for pulses, eggs/cheese, tofu/tempeh and
+other vegetarian sources. Search indexes now also invalidate when the store row
+array is replaced inside an existing catalog object, preventing an old index from
+outliving a fresh ingredient price calculation.

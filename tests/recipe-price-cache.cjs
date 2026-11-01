@@ -11,3 +11,6 @@ options.estimate(meal,'lidl',catalog,pricing,resolver,'2026-10-31');assert.ok(ca
 const newer={...catalog,stores:{lidl:[['Broccoli',2,'500 g',null,'1']]}};
 assert.equal(options.estimate(meal,'lidl',newer,pricing,resolver,'2026-10-30').total,4,'New feed invalidates cache');
 console.log('100 repeated recipe calculations reuse ingredient matches; new feed/day and returned-object mutations remain safe');
+
+catalog.stores.lidl=[['Broccoli',3,'500 g',null,'replacement']];
+assert.equal(options.estimate(meal,'lidl',catalog,pricing,resolver,'2026-10-30').total,6,'Replacing store rows invalidates both ingredient result and product search index');

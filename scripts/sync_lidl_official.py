@@ -14,6 +14,7 @@ from sync_aanbiedingen import category
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'docs/data/supplemental-offers.json'
 SEED='https://www.lidl.nl/c/aanbiedingen/a10008785'
+PLUS_SEED='https://www.lidl.nl/c/lidl-plus/s10008463'
 class Grid(HTMLParser):
     def __init__(self): super().__init__();self.products=[];self.links=[];self.errors=0
     def handle_starttag(self,tag,attrs):
@@ -68,16 +69,24 @@ def parse_product(p,today,url,discount_only=True):
         semantic_evidence={'verified_identity':True,'brand':(p.get('brand') or {}).get('name',''),'categories':[(p.get('keyfacts') or {}).get('wonCategoryPrimary','')]})
 def fetch(url):
     req=Request(url,headers={'User-Agent':'BoodschappenMaatje/1.0 (public offer check; max 10 pages per run)'})
-    with urlopen(req,timeout=20) as r:return r.read(8000000).decode('utf8','replace')
+    # Retry transient service failures once. Never retry access/rate-limit denials.
+    for attempt in range(2):
+        try:
+            with urlopen(req,timeout=20) as r:return r.read(8000000).decode('utf8','replace')
+        except HTTPError as exc:
+            if attempt or exc.code not in (500,502,503,504):raise
+            time.sleep(2)
+
 def main():
-    now=datetime.now(ZoneInfo('Europe/Amsterdam'));today=now.date();pending=[SEED];seen=set();offers={};regulars={};errors={};counts={}
+    now=datetime.now(ZoneInfo('Europe/Amsterdam'));today=now.date();pending=[SEED,PLUS_SEED];seen=set();offers={};regulars={};errors={};counts={};skipped={}
     while pending and len(seen)<10:
         url=pending.pop(0)
         if url in seen:continue
         seen.add(url)
         try:
             g=Grid();g.feed(fetch(url));counts[url]=len(g.products)
-            if g.errors or not g.products:errors[url]='No usable grid products or malformed product data'
+            if g.errors or (url==SEED and not g.products):errors[url]='No usable grid products or malformed product data'
+            elif not g.products:skipped[url]='Public page currently has no product grid'
             for p in g.products:
                 o=parse_product(p,today,url)
                 if o:offers[o['id']]=o
@@ -93,8 +102,8 @@ def main():
     st=old.setdefault('stores',{}).setdefault('lidl',{})
     others=[o for o in st.get('offers',[]) if o.get('source_provider')!='lidl_official']
     # Do not refresh timestamps on retained observations after network failure.
-    retained=[o for o in st.get('offers',[]) if o.get('source_provider')=='lidl_official' and o.get('end_date','')>=today.isoformat() and o['id'] not in offers] if errors else []
-    st['official_prices']=list(regulars.values()) if regulars else st.get('official_prices',[]);st['offers']=others+retained+list(offers.values());st['official_check']={'checked_at':now.isoformat(),'status':'partial' if errors else 'ok','pages':counts,'errors':errors,'current_offers':len(offers)}
+    retained=[o for o in st.get('offers',[]) if o.get('source_provider')=='lidl_official' and o.get('end_date','')>=today.isoformat() and o['id'] not in offers]
+    old_prices=st.get('official_prices',[]);st['official_prices']=list(regulars.values())+([o for o in old_prices if o['id'] not in regulars and o.get('end_date','')>=today.isoformat()] if errors else []);st['offers']=others+retained+list(offers.values());st['official_check']={'checked_at':now.isoformat(),'status':'partial' if errors else 'ok','pages':counts,'errors':errors,'current_offers':len(offers),'retained_offers':len(retained),'regular_prices':len(regulars),'skipped_pages':skipped,'last_success_at':now.isoformat() if not errors else st.get('official_check',{}).get('last_success_at')}
     old['generated_at']=now.isoformat();OUT.write_text(json.dumps(old,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(st['official_check'],ensure_ascii=False));return 2 if errors else 0
 if __name__=='__main__':sys.exit(main())

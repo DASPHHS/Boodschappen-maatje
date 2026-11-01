@@ -28,4 +28,39 @@ class LidlOfficial(unittest.TestCase):
             out=Path(td)/'out.json';out.write_text(json.dumps({'stores':{'lidl':{'offers':[o],'official_prices':[o]}}}))
             with patch.object(s,'OUT',out),patch.object(s,'fetch',side_effect=OSError('unavailable')):self.assertEqual(s.main(),2)
             data=json.loads(out.read_text())['stores']['lidl'];self.assertEqual(data['offers'][0]['checked_at'],'2026-10-20');self.assertEqual(data['official_check']['status'],'partial')
+    def test_service_failure_retried_once(self):
+        from urllib.error import HTTPError
+        from io import BytesIO
+        error=HTTPError(s.SEED,503,'Service unavailable',{},None)
+        with patch.object(s,'urlopen',side_effect=[error,BytesIO(b'ok')]) as request,patch.object(s.time,'sleep'):
+            self.assertEqual(s.fetch(s.SEED),'ok');self.assertEqual(request.call_count,2)
+        for code in [403,429]:
+            with patch.object(s,'urlopen',side_effect=HTTPError(s.SEED,code,'Denied',{},None)) as request,patch.object(s.time,'sleep'):
+                with self.assertRaises(HTTPError):s.fetch(s.SEED)
+                self.assertEqual(request.call_count,1)
+    def test_secondary_source_runs_after_primary_service_failure(self):
+        from html import escape
+        # Keep fixture dates current for this integration check.
+        p=copy.deepcopy(self.p)
+        from datetime import timedelta
+        now=s.datetime.now(s.ZoneInfo('Europe/Amsterdam'));today=now.date()
+        p['storeStartDate']=int(now.timestamp());p['storeEndDate']=int((now+timedelta(days=1)).timestamp())
+        price=p['regionsPrices']['1']['currentLidlPlusPrice']['price']
+        price['startDate']=now.isoformat();price['endDate']=(now+timedelta(days=1)).isoformat()
+        p['regionsPrices']['1']['currentPrice']['startDate']=now.isoformat()
+        html='<div data-grid-data="'+escape(json.dumps(p),quote=True)+'"></div>'
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/'out.json'
+            with patch.object(s,'OUT',out),patch.object(s,'fetch',side_effect=[OSError('service unavailable'),html]),patch.object(s.time,'sleep'):
+                self.assertEqual(s.main(),2)
+            st=json.loads(out.read_text())['stores']['lidl'];self.assertEqual(st['official_check']['current_offers'],1)
+            self.assertEqual(st['offers'][0]['price'],1.89)
+    def test_optional_editorial_page_without_grid_is_not_broken_import(self):
+        from html import escape
+        html='<div data-grid-data="'+escape(json.dumps(self.p),quote=True)+'"></div>'
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/'out.json'
+            with patch.object(s,'OUT',out),patch.object(s,'fetch',side_effect=[html,'<main>Lidl Plus</main>']),patch.object(s.time,'sleep'):
+                self.assertEqual(s.main(),0)
+            self.assertIn(s.PLUS_SEED,json.loads(out.read_text())['stores']['lidl']['official_check']['skipped_pages'])
 if __name__=='__main__':unittest.main()

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-31T12:37:24.000Z",
-  "checked_date": "2026-10-31",
+  "generated_at": "2026-11-01T09:20:41.721Z",
+  "checked_date": "2026-11-01",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -215,9 +215,9 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/calve-pindakaas-100-naturel-600-g-444833POT",
-        "product_name": "Calvé Pindakaas 100% Naturel 600 g",
-        "price": 6.19,
+        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
+        "product_name": "Jumbo Pindakaas Naturel 600 g",
+        "price": 1.45,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -233,9 +233,9 @@
       "dreft": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/dreft-platinum-citroen-vaatwascapsules-21-x-738705ZK",
-        "product_name": "Dreft Platinum Citroen Vaatwascapsules 21 X",
-        "price": 12.99,
+        "source": "https://www.jumbo.com/producten/dreft-platinum-all-in-one-vaatwastabletten-original-34-capsules-620970ZK",
+        "product_name": "Dreft Platinum All In One Vaatwastabletten, Original, 34 Capsules",
+        "price": 20.33,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
@@ -271,18 +271,18 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
-        "price": 9.19,
+        "price": 9.59,
         "price_status": "externe prijswaarneming · 2026-10-30",
         "checked_date": "2026-10-30"
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
-        "product_name": "Jumbo Koolvis Filet 400 g",
+        "source": "https://www.jumbo.com/producten/jumbo-wilde-zalmfilet-2-x-125-g-76159PAK",
+        "product_name": "Jumbo Wilde Zalmfilet 2 x 125 g",
         "price": 2.99,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "price_status": "externe prijswaarneming · 2026-10-31",
+        "checked_date": "2026-10-31"
       },
       "pompoen": {
         "state": "price_observed",
@@ -296,11 +296,11 @@
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologisch-hele-sperziebonen-450g-621516ZK",
-        "product_name": "Jumbo Biologisch Hele Sperziebonen 450g",
-        "price": 1.35,
-        "price_status": "externe prijswaarneming · 2026-10-30",
-        "checked_date": "2026-10-30"
+        "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-500-g-302252ZK",
+        "product_name": "Jumbo Sperziebonen 500 g",
+        "price": 1.99,
+        "price_status": "externe prijswaarneming · 2026-10-31",
+        "checked_date": "2026-10-31"
       },
       "bospeen": {
         "state": "price_observed",
