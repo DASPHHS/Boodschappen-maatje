@@ -1,5 +1,5 @@
 import unittest
-from scripts.sync_aanbiedingen import category, kind, item
+from scripts.sync_aanbiedingen import category, kind, item, future_item
 
 class PromotionCoverageTest(unittest.TestCase):
     def test_all_shopping_categories(self):
@@ -19,6 +19,21 @@ class PromotionCoverageTest(unittest.TestCase):
         for name, expected in examples.items():
             with self.subTest(name=name):
                 self.assertEqual(category(name), expected)
+
+    def test_future_weekdeals_are_separate_from_active_promotions(self):
+        base=dict(product_id="next-1",name="Jumbo Broccoli 500 g",price=1.29,
+                  promotion_status="upcoming",valid_from="2026-11-02",
+                  valid_until="2026-11-08",product_url="https://www.jumbo.com/producten/broccoli-12345STK")
+        self.assertIsNone(item(base,"2026-11-01"))
+        x=future_item(base,"2026-11-01")
+        self.assertIsNotNone(x)
+        self.assertEqual(x["promotion_status"],"upcoming")
+        self.assertEqual(x["price"],1.29)
+        self.assertEqual(x["end_date"],"2026-11-08")
+        self.assertIsNone(future_item({**base,"valid_from":"2026-11-09"},"2026-11-01"))
+        self.assertIsNone(future_item({**base,"online_only":True},"2026-11-01"))
+        self.assertIsNone(future_item({**base,"price":float("nan")},"2026-11-01"))
+        self.assertIsNone(future_item({**base,"valid_from":"2026-10-30"},"2026-11-01"))
 
     def test_recipe_matching_remains_strict(self):
         self.assertIsNone(kind("Knorr Kipkruiden"))
