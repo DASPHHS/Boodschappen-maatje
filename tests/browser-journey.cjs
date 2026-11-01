@@ -31,9 +31,14 @@ const start=base.endsWith('/')?base:base+'/';
   assert.doesNotMatch(comparisonText,/Kipfilet Americanos|Gerookte Kipfilet Plakjes|Kipfilet pepersaus|Blik brokjes zalm forel|Pureersoep pompoen|Knijpfruit Pompoen|groenteshot pompoen/i,'Wrong product classes must never appear in grocery comparisons');
   const peanutRows=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Pindakaas'});
   if(await peanutRows.count()>0){
-   const rows=await peanutRows.allInnerTexts();
-   assert.ok(!rows.some(t=>/regulier/i.test(t)&&/Calvé Pindakaas met stukjes pinda/i.test(t)),
-    'A regular peanut butter comparison row must never include Calvé crunchy');
+   for(const row of await peanutRows.all()){
+    const header=await row.locator('th').innerText();
+    const content=await row.innerText();
+    if(/Calvé Pindakaas met stukjes pinda/i.test(content))
+     assert.ok(/met stukjes/i.test(header),'Calvé crunchy must be labelled as chunky, not generic peanut butter');
+    if(/structuur niet vermeld/i.test(header))
+     assert.ok(!/Calvé Pindakaas met stukjes pinda/i.test(content),'Chunky product must not appear in generic texture row');
+   }
   }
   const milk=page.locator('#view-aanbiedingen .compare-table tbody tr').filter({hasText:'Houdbare volle melk voor cappuccino'});
   assert.equal(await milk.count(),1,'UHT full milk is an exact saved preference');
