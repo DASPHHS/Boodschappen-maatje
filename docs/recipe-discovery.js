@@ -91,6 +91,58 @@
   }
   return matches.sort((a,b)=>b.score-a.score||(a.recipe.minutes||999)-(b.recipe.minutes||999)).slice(0,limit);
  }
+ function publisherMatches(offer,index,limit=10){
+  const type=classify(offer);
+  if(!type||!Array.isArray(index?.recipes))return [];
+  const seen=new Set(),matches=[];
+  for(const r of index.recipes){
+   if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
+      typeof r.title!=='string'||!r.title.trim()||!['Allerhande','Jumbo'].includes(r.source)||
+      typeof r.url!=='string'||!/^https:\/\/(www\.)?(ah\.nl\/allerhande\/|jumbo\.com\/recepten\/)/.test(r.url)||
+      !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified'].includes(r.review_status))continue;
+   if(seen.has(r.url))continue;
+   seen.add(r.url);
+   // Put main courses and recipes for four people ahead of side dishes,
+   // but do not suggest that the original publisher recipe is priced.
+   const vegetableCount=Number.isInteger(r.vegetable_families)?r.vegetable_families:
+     r.families.filter(x=>['broccoli','bloemkool','spinazie','pompoen','paprika','courgette','aubergine','sperziebonen','tomaten','champignons','wortel','paksoi','prei','spitskool','boerenkool','venkel'].includes(x)).length;
+   const legume=r.has_legumes||r.families.some(x=>['kikkererwten','linzen','bonen'].includes(x));
+   const score=(r.course==='hoofdgerecht'?25:0)+(r.servings===4?6:0)+
+    Math.min(vegetableCount,3)*5+(legume?5:0)+
+    (r.minutes&&r.minutes<=45?5:0)+
+    (type.key==='riblappen'&&/rendang|hachee|boeuf|stoof/i.test(r.title)?8:0);
+   matches.push({recipe:r,score,ingredient:type.label});
+  }
+  return matches.sort((a,b)=>b.score-a.score||a.recipe.title.localeCompare(b.recipe.title,'nl')).slice(0,limit);
+ }
+ function offerRecipeHighlights(offers,index,limit=12){
+  const candidates=[],seen=new Set();
+  for(const offer of offers||[]){
+   const family=classify(offer);
+   if(!family)continue;
+   for(const m of publisherMatches(offer,index,12)){
+    const identity=m.recipe.url;
+    if(seen.has(identity))continue;
+    seen.add(identity);
+    candidates.push({...m,offer,family:family.key});
+   }
+  }
+  candidates.sort((a,b)=>b.score-a.score||a.recipe.title.localeCompare(b.recipe.title,'nl'));
+  const found=[],used=new Set(),counts=new Map(),methods=new Map();
+  for(let step=0;step<2;step++){
+   for(const item of candidates){
+    if(found.length>=limit)break;
+    if(used.has(item.recipe.url))continue;
+    const method=item.recipe.method||(/curry/i.test(item.recipe.title)?'curry':/stoof|rendang|hachee/i.test(item.recipe.title)?'stoof':/oven/i.test(item.recipe.title)?'oven':/wok|roerbak/i.test(item.recipe.title)?'wok':'anders');
+    const byFamily=counts.get(item.family)||0,byMethod=methods.get(method)||0;
+    if(byFamily>=(step===0?2:4)||byMethod>=(step===0?3:6))continue;
+    found.push(item);used.add(item.recipe.url);
+    counts.set(item.family,byFamily+1);methods.set(method,byMethod+1);
+   }
+   if(found.length>=limit)break;
+  }
+  return found;
+ }
  function publisherSearch(offer){
   const item=classify(offer);if(!item)return [];
   const q=item.search;
@@ -99,5 +151,5 @@
    {source:'Jumbo recepten',url:'https://www.google.com/search?q='+encodeURIComponent('site:jumbo.com/recepten/ '+q)}
   ];
  }
- return {classify,matchRecipe,localMatches,publisherSearch};
+ return {classify,matchRecipe,localMatches,publisherSearch,publisherMatches,offerRecipeHighlights};
 });

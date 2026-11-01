@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "source_policy": "publisher_link_metadata_only",
+  "generated_at": "2026-11-01",
+  "notice": "Door Boodschappenmaatje geselecteerde originele recepten bij Allerhande en Jumbo. Alleen titel, link, geselecteerde ingrediëntfamilies en globale metadata worden getoond; volledige recepten en foto's blijven bij de uitgever. Geen zelfstandig geverifieerde kassaprijzen. Uitgevers controleren zelf de bereidingsinstructies.",
+  "recipes": [
+    {
+      "id": "ah-rendang",
+      "title": "Rendang met runderriblappen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194447/rendang",
+      "families": [
+        "riblappen"
+      ],
+      "minutes": 330,
+      "servings": 8,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-hachee",
+      "title": "Hachee met riblappen",
+      "source": "Jumbo",
+      "url": "https://www.jumbo.com/recepten/hachee-503571",
+      "families": [
+        "riblappen"
+      ],
+      "minutes": 170,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-boeuf",
+      "title": "Boeuf bourguignon met riblappen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/video/R-V2697132/boeuf-bourguignon",
+      "families": [
+        "riblappen",
+        "champignons",
+        "wortel"
+      ],
+      "minutes": 180,
+      "servings": null,
+      "course": "receptvideo",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-kipcurry",
+      "title": "Kipcurry met broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R418888/kipcurry",
+      "families": [
+        "kip",
+        "broccoli",
+        "aardappelen"
+      ],
+      "minutes": 50,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-curry-kip-groente",
+      "title": "Curry van kip en groente",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R660104/curry-van-kip-en-groente",
+      "families": [
+        "kip"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "jumbo-kipbroccoli",
+      "title": "Ovenschotel met broccoli en kip",
+      "source": "Jumbo",
+      "url": "https://www.jumbo.com/recepten/ovenschotel-met-broccoli-en-kip-994057-7",
+      "families": [
+        "kip",
+        "broccoli"
+      ],
+      "minutes": 45,
+      "servings": 3,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-zalm-aardappel",
+      "title": "Zalmfilet en curryaardappel uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R529554/zalmfilet-en-curryaardappel-uit-de-oven",
+      "families": [
+        "zalm",
+        "sperziebonen",
+        "aardappelen"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-zalm-gevuld",
+      "title": "Gevulde zalmfilet",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R680328/gevulde-zalmfilet",
+      "families": [
+        "zalm"
+      ],
+      "minutes": 38,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-bloemkoolcurry",
+      "title": "Bloemkoolcurry",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R385194/bloemkoolcurry",
+      "families": [
+        "bloemkool",
+        "eieren",
+        "paprika",
+        "aardappelen"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-bloemkool-broccoli",
+      "title": "Curry van bloemkool en broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193373/curry-van-bloemkool-en-broccoli",
+      "families": [
+        "bloemkool",
+        "broccoli",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-bloemkool-kikkererwten",
+      "title": "Curry met bloemkool, basmatirijst en ananas-amandelsalsa",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186979/curry-met-bloemkool-basmatirijst-en-ananas-amandelsalsa",
+      "families": [
+        "bloemkool",
+        "kikkererwten"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-bloemkool-aardappel-ei",
+      "title": "Curry van bloemkool, aardappelen en eieren",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R687454/curry-van-bloemkool-aardappelen-en-eieren",
+      "families": [
+        "bloemkool",
+        "aardappelen",
+        "eieren"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-bloemkool-bonen",
+      "title": "Gewokte bloemkool met rode curry en boontjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R921646/gewokte-bloemkool-met-rode-curry-en-boontjes",
+      "families": [
+        "bloemkool",
+        "sperziebonen"
+      ],
+      "minutes": 15,
+      "servings": 4,
+      "course": "bijgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-tofu-spinazie",
+      "title": "Tofu met paddestoelen en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R385250/tofu-met-paddestoelen-en-spinazie",
+      "families": [
+        "tofu",
+        "champignons",
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-garnalencurry",
+      "title": "Garnalen gemarineerd in rode curry en kokosmelk",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R558164/garnalen-gemarineerd-in-rode-curry-en-kokosmelk",
+      "families": [
+        "garnalen"
+      ],
+      "minutes": 85,
+      "servings": 4,
+      "course": "voorgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-garnalen-kool",
+      "title": "Curry met groene kool en garnalen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R692384/curry-met-groene-kool-en-garnalen",
+      "families": [
+        "garnalen"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-linzendahl",
+      "title": "Dahl van rode linzen en bloemkool",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196812/dahl-van-rode-linzen-en-bloemkool",
+      "families": [
+        "linzen",
+        "bloemkool",
+        "tomaten"
+      ],
+      "minutes": 55,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-chickpea-spinach",
+      "title": "Kikkererwtencurry met pinda en spinazie en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195651/kikkererwtencurry-met-pinda-en-spinazie-en-rijst",
+      "families": [
+        "kikkererwten",
+        "spinazie",
+        "pindakaas",
+        "tomaten"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-indian-fish-spinach",
+      "title": "Indiase viscurry met kikkererwten en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186674/indiase-viscurry-met-kikkererwten-en-spinazie",
+      "families": [
+        "zalm",
+        "kikkererwten",
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-salmon-curry-spinach",
+      "title": "Zalmcurry met spinazie en kikkererwten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186691/zalmcurry-met-spinazie-en-kikkererwten",
+      "families": [
+        "zalm",
+        "kikkererwten",
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-curry-pumpkin-lentil",
+      "title": "Pompoencurry met linzen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197895/pompoencurry-met-linzen",
+      "families": [
+        "pompoen",
+        "linzen"
+      ],
+      "minutes": 40,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-lentil-pumpkin-flatbread",
+      "title": "Linzencurry met pompoen en volkoren platbrood",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199626/linzencurry-met-pompoen-met-volkoren-platbrood",
+      "families": [
+        "linzen",
+        "pompoen",
+        "wortel"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-wokchicken-greens",
+      "title": "Roergebakken groenten met kipfilet en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R401308/roergebakken-groenten-met-kipfilet-en-rijst",
+      "families": [
+        "kip",
+        "paprika",
+        "courgette"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-tofu-sesame-veg",
+      "title": "Tofu met groenten en sesamsaus",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R241618/tofu-met-groenten-en-sesamsaus",
+      "families": [
+        "tofu",
+        "wortel",
+        "prei",
+        "paprika"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-tofu-spinach-curry",
+      "title": "Spinaziecurry met tofu en kikkererwten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R861200/spinaziecurry",
+      "families": [
+        "tofu",
+        "spinazie",
+        "kikkererwten",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-wokpaksoi-tofu",
+      "title": "Woknoedels met paksoi en tofu",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R349638/woknoedels-met-paksoi-en-tofu",
+      "families": [
+        "tofu",
+        "paksoi",
+        "paprika"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-mie-tofu-paksoi",
+      "title": "Mie met gewokte tofu, paksoi en champignons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R419296/mie-met-gewokte-tofu-paksoi-en-champignons",
+      "families": [
+        "tofu",
+        "paksoi",
+        "champignons"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-mie-paksoi",
+      "title": "Mie-wokschotel met paksoi",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R245046/mie-wokschotel-met-paksoi",
+      "families": [
+        "tofu",
+        "paksoi",
+        "paprika"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-veg-chickpea-rice",
+      "title": "Romige spinazie met kikkererwtensalade en korianderrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199790/romige-spinazie-met-kikkererwtensalade-en-korianderrijst",
+      "families": [
+        "spinazie",
+        "kikkererwten",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-fishchickpea",
+      "title": "Viscurry met spinazie en kikkererwten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1154202/viscurry-met-spinazie-en-kikkererwten",
+      "families": [
+        "witvis",
+        "spinazie",
+        "kikkererwten",
+        "tomaten"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-pumpkin-beans-eggs",
+      "title": "Curry met pompoensaus, sperziebonen en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189066/curry-met-pompoensaus-sperziebonen-en-ei",
+      "families": [
+        "sperziebonen",
+        "eieren",
+        "pompoen"
+      ],
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-salmon-broccoli",
+      "title": "Gegrilde zalmfilet met broccoli-couscoussalade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197024/gegrilde-zalmfilet-met-broccoli-couscousalade",
+      "families": [
+        "zalm",
+        "broccoli"
+      ],
+      "minutes": 30,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "jumbo-salmon-green-beans",
+      "title": "Zalm met sperziebonen uit de oven",
+      "source": "Jumbo",
+      "url": "https://www.jumbo.com/recepten/zalm-met-sperziebonen-uit-de-oven-1357957-7",
+      "families": [
+        "zalm",
+        "sperziebonen",
+        "tomaten"
+      ],
+      "minutes": 25,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "jumbo-chicken-broccoli-four",
+      "title": "Kip-broccoli ovenschotel",
+      "source": "Jumbo",
+      "url": "https://www.jumbo.com/recepten/kip-broccoli-ovenschotel-1051016-7",
+      "families": [
+        "kip",
+        "broccoli"
+      ],
+      "minutes": 45,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    },
+    {
+      "id": "ah-dahl-lentil-beans-egg",
+      "title": "Dahl met rode linzen, sperziebonen en gekookt ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194782/dahl-met-rode-linzen-sperziebonen-en-gekookt-ei",
+      "families": [
+        "linzen",
+        "sperziebonen",
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": 35,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "review_status": "handmatig_gevonden_bij_uitgever",
+      "last_checked": "2026-11-01"
+    }
+  ]
+}

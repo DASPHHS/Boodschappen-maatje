@@ -71,10 +71,8 @@ const start=base.endsWith('/')?base:base+'/';
   assert.ok(await cookingButtons.count()>0,'At least one currently discounted ingredient should suggest real recipes');
   await cookingButtons.first().click();
   await page.locator('#view-recepten #cooking-ideas').waitFor();
-  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Meer geschikte gerechten vinden'),
-   'Cooking suggestions must offer publisher-backed discovery for sale ingredients');
-  assert.ok(await page.locator('#cooking-ideas a[href*="google.com/search"]').count()>=2,
-   'Relevant recipe searches must lead to trusted publisher domains');
+  assert.equal(await page.locator('#cooking-ideas a[href*="google.com/search"]').count(),0,
+   'Offer suggestions must not require users to search publishers');
   await page.locator('.sidebar button[data-view="aanbiedingen"]').click();
   await page.locator('#view-aanbiedingen .deal-card').first().waitFor();
   const before=Number((await page.locator('#product-favorites-count').innerText())||'0');
@@ -91,8 +89,13 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('[data-clear-cook]').click();
   await page.locator('#ingredient-discovery').fill('nieuwe onbekende groente 2027');
   await page.locator('[data-find-ideas]').click();
-  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Geen betrouwbare automatische ingrediëntkoppeling'),
-   'Unknown future ingredients must fall back to publisher search, never fabricate a recipe');
+  assert.ok((await page.locator('#cooking-ideas').innerText()).includes('Geen passend uitgeversrecept'),
+   'Unknown future ingredients must not produce fictitious publisher recipes');
+  await page.locator('[data-clear-cook]').click();
+  await page.locator('#ingredient-discovery').fill('broccoli');
+  await page.locator('[data-find-ideas]').click();
+  assert.ok(await page.locator('#cooking-ideas .recipe-source-link').count()>=3,
+   'Broccoli must have several actual publisher recipes, no manual search required');
   await page.locator('[data-clear-cook]').click();
   assert.ok(await page.locator('.recipe-source-link').count()>=4,'External originals are accessible');
   const external=page.locator('.recipe-source-link').first();
