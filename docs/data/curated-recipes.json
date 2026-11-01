@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_at": "2026-11-01",
-  "description": "Zelfstandig geschreven complete hoofdgerechten: 4 porties. Inclusief zes nieuwe seizoen-/actiegerichte gerechten; alleen gecontroleerde productmatches tellen als actie. Niet proefgekookt.",
+  "description": "Zelfstandig geschreven hoofdgerechten voor vier porties. Zes extra uitgebreide kook-voor-2-dagen-recepten, elk voor twee personen op twee dagen, met dagindeling en veilig bewaaradvies. Niet proefgekookt.",
   "recipes": [
     {
       "id": "nieuw-202611-citroenkip",
@@ -2036,6 +2036,804 @@
       "offer_anchors": [],
       "candidate_offer_links": [],
       "vegetables_g_per_portion": 388
+    },
+    {
+      "id": "nieuw-202611-hachee-twee-dagen",
+      "title": "Hachee van runderriblappen met rode kool en aardappelen",
+      "category": "vlees",
+      "cuisine": "Hollands",
+      "minutes": 195,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "runderriblappen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "uien",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode kool",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "appel",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "vastkokende aardappelen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "runderbouillon met weinig zout",
+          "quantity": 500,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "appelazijn",
+          "quantity": 30,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenpuree",
+          "quantity": 40,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "laurierblad",
+          "quantity": 2,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kruidnagels",
+          "quantity": 3,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "bloem",
+          "quantity": 18,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gemalen zwarte peper",
+          "quantity": 2,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Dep de runderriblappen droog met keukenpapier en snijd ze in stukken van circa 3 centimeter. Snijd de uien in dunne halve ringen. Verwarm een braadpan met dikke bodem en verhit daarin 15 ml olie.",
+        "Bak het vlees in twee porties op middelhoog vuur rondom diepbruin, ongeveer 4 minuten per portie. Leg het op een bord. Bak niet alles tegelijk: dan gaat het vlees koken in plaats van bruinen.",
+        "Draai het vuur lager. Voeg de rest van de olie en alle uien toe. Bak 18–22 minuten zacht onder regelmatig omscheppen tot ze goudbruin en zoet zijn. Roer de tomatenpuree erdoor en bak 1 minuut mee.",
+        "Strooi de bloem over de uien en roer 1 minuut. Voeg de appelazijn toe en schraap de aanbaksels van de bodem los. Schenk de bouillon er beetje bij beetje bij om klontjes te voorkomen.",
+        "Doe het vlees met het uitgelopen vocht terug in de pan. Voeg laurier, kruidnagels en zwarte peper toe. Breng net aan de kook, zet zeer laag en laat 2½–3 uur zacht stoven met het deksel schuin op de pan. Voeg een scheut water toe als de saus te ver inkookt.",
+        "Snijd ondertussen de rode kool fijn en de wortel in dunne halve plakken. Kook of stoof ze samen met een bodempje water 20–30 minuten; voeg appelblokjes pas de laatste 10 minuten toe. Verdeel deze groenten voor beide dagen.",
+        "Kook voor dag 1 slechts 400 g aardappelen gaar en bewaar de andere 400 g ongekookt voor morgen. Haal laurier en kruidnagels uit de hachee. Is het vlees nog taai? Stoof langer in plaats van het vuur hoger te zetten.",
+        "Verdeel de gare hachee en groenten in vier gelijke porties. Serveer twee porties met de aardappelen van dag 1 en zet de andere twee direct volgens de bewaarinstructie apart."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "Goudbruine uien en goed aangebraden vlees geven een volle saus; azijn en appel houden de smaak fris. Riblappen hebben een lange, zachte gaartijd nodig.",
+      "editorial_action_focus": {
+        "store": "lidl",
+        "ingredient": "runderriblappen",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 438,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: serveer de helft van de hachee en de helft van de rode kool/wortel met 400 g versgekookte aardappelen.",
+        "second_day": "Dag 2: kook de resterende 400 g aardappelen vers. Verwarm alleen de twee bewaarde porties hachee en kool volledig door; proef en voeg desgewenst een scheutje water of azijn toe.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
+    },
+    {
+      "id": "nieuw-202611-rendang-twee-dagen",
+      "title": "Kruidige runderrendang met sperziebonen en frisse spitskool",
+      "category": "vlees",
+      "cuisine": "Indonesisch",
+      "minutes": 195,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "runderriblappen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "sperziebonen",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spitskool",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 350,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode ui",
+          "quantity": 180,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kokosmelk",
+          "quantity": 400,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "verse gember",
+          "quantity": 35,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 18,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gemalen koriander",
+          "quantity": 9,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kurkuma",
+          "quantity": 5,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "komijn",
+          "quantity": 5,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "limoen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "sojasaus met minder zout",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd het vlees in grove blokjes. Snijd rode ui fijn, rasp gember en hak knoflook. Roer koriander, kurkuma en komijn met twee eetlepels water tot een kruidige pasta.",
+        "Verhit 15 ml olie in een braadpan en schroei het rundvlees in porties kort bruin. Schep uit de pan en zet apart.",
+        "Bak de ui langzaam 5 minuten. Voeg gember en knoflook toe en fruit 1 minuut. Roer de kruidenpasta erdoor en bak kort totdat het geurt.",
+        "Voeg vlees, kokosmelk, 150 ml water en sojasaus toe. Breng tegen de kook, zet het vuur laag en laat met het deksel op een kier ongeveer 2½–3 uur sudderen. Roer elk halfuur; voeg zo nodig water toe. De saus moet uiteindelijk indikken, niet aanbranden.",
+        "Snijd de spitskool in reepjes, wortel in dunne halve plakken en maak de sperziebonen schoon. Roerbak spitskool en wortel in 10 ml olie 6–8 minuten; gaar de sperziebonen apart in water.",
+        "Kook voor dag 1 de helft van de zilvervliesrijst volgens de verpakking. Bewaar de overige droge rijst om morgen vers te koken.",
+        "Proef de saus na het stoven. Voeg pas vlak voor het serveren limoensap toe, zodat de kruidige saus fris blijft. Controleer of het vlees goed mals is; stoof zo nodig langer.",
+        "Verdeel vlees en groenten in vier gelijke porties. Serveer de eerste twee met de verse rijst. Verpak de overige twee porties snel en bewaar de rijst niet als warme rest in de pan."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "De kruidenpasta eerst bakken en de kokossaus zacht laten inkoken geeft meer smaak; frisse limoen en knapperige kool maken het geheel lichter.",
+      "editorial_action_focus": {
+        "store": "lidl",
+        "ingredient": "runderriblappen",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 458,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: eet twee porties met 140 g droog afgewogen zilvervliesrijst, vers gekookt.",
+        "second_day": "Dag 2: kook de overgebleven 140 g rijst vers; verwarm alleen de twee bewaarde porties rendang en groenten door en voeg vlak voor het serveren wat limoensap toe.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
+    },
+    {
+      "id": "nieuw-202611-chili-con-carne-twee-dagen",
+      "title": "Rokerige chili con carne met paprika, bonen en limoen",
+      "category": "vlees",
+      "cuisine": "Mexicaans",
+      "minutes": 60,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "gemengd gehakt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "kidneybonen uitgelekt",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "paprika",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "zilvervliesrijst",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenpuree",
+          "quantity": 60,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 10,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 9,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "milde chilivlokken",
+          "quantity": 3,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "limoen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "zonnebloemolie",
+          "quantity": 20,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd de paprika en wortel in gelijke kleine blokjes, de tomaten in stukken en de uien fijn. Spoel de kidneybonen in een vergiet af en laat uitlekken.",
+        "Verhit olie in een ruime pan met dikke bodem. Bak het gehakt op middelhoog vuur rul en gaar, terwijl je het in kleine stukjes verdeelt. Laat het licht kleuren voor extra smaak.",
+        "Voeg de ui en wortel toe en bak 5 minuten zacht. Roer komijn, gerookt paprikapoeder en chilivlokken erdoor. Bak 30 seconden mee; laat de specerijen niet verbranden.",
+        "Voeg tomatenpuree toe en bak 1 minuut mee. Schep paprika en tomaten in de pan, voeg circa 200 ml water toe en roer de aanbaksels los.",
+        "Laat de chili 20 minuten zonder volledig gesloten deksel zacht pruttelen, tot wortel gaar is en de saus dikker wordt. Voeg de kidneybonen toe en laat nog 8 minuten doorwarmen.",
+        "Kook voor dag 1 alleen de helft van de zilvervliesrijst volgens de verpakking. Bewaar de andere helft droog voor morgen.",
+        "Breng de chili op smaak met vers limoensap en eventueel wat extra komijn; proef vóór je zout toevoegt. Verdeel direct in vier porties.",
+        "Serveer twee porties met de verse rijst. Laat de andere twee porties chili snel afkoelen en bewaar apart van de droge rijst voor morgen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "Gerookt paprikapoeder en aangebakken tomatenpuree zorgen voor diepte, limoen maakt de stevige bonen-gehaktsaus frisser.",
+      "editorial_action_focus": {
+        "store": "jumbo",
+        "ingredient": "gemengd gehakt",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 438,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: eet twee porties chili met 140 g droog afgewogen, versgekookte zilvervliesrijst.",
+        "second_day": "Dag 2: kook de laatste 140 g zilvervliesrijst vers. Verwarm de bewaarde chili één keer door en voeg eventueel limoensap toe.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
+    },
+    {
+      "id": "nieuw-202611-linzenlasagne-twee-dagen",
+      "title": "Rijke linzenlasagne met aubergine, courgette en spinazie",
+      "category": "vega",
+      "cuisine": "Italiaans",
+      "minutes": 85,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "rode linzen, droog",
+          "quantity": 320,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "aubergine",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "courgette",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 450,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 180,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren lasagnebladen",
+          "quantity": 240,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenpassata",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "ricotta",
+          "quantity": 250,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "geraspte 30+ kaas",
+          "quantity": 100,
+          "unit": "g",
+          "department": "Zuivel"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde oregano",
+          "quantity": 9,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "balsamicoazijn",
+          "quantity": 15,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "knoflook",
+          "quantity": 15,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verwarm de oven voor op 200 °C. Snijd aubergine en courgette in blokjes. Verdeel ze met 15 ml olijfolie over twee bakplaten en rooster 20 minuten, tot de randjes kleuren.",
+        "Spoel de droge linzen af. Snipper de uien en knoflook. Fruit deze 5 minuten in 10 ml olie in een ruime sauspan.",
+        "Voeg tomatenpassata, oregano, balsamicoazijn en circa 350 ml water toe. Roer de linzen erdoor en laat 18–22 minuten zacht koken tot ze bijna gaar zijn. Roer geregeld; voeg water toe als de saus te dik wordt.",
+        "Voeg de geroosterde aubergine en courgette toe. Roer daarna de spinazie er in porties door zodat deze slinkt. Proef de saus en breng zo nodig op smaak met peper.",
+        "Schep een dunne laag saus in een ovenschaal. Leg volkoren lasagnebladen erop, verdeel een deel van de groentesaus erover en herhaal tot alles op is. Laat voldoende saus rond de bladen komen.",
+        "Verdeel de ricotta in kleine lepeltjes over de bovenste sauslaag. Strooi de 30+ kaas er dun over. Zet 30–35 minuten in de oven; controleer de gaarheid van de bladen op de verpakking.",
+        "Laat de lasagne minstens 10 minuten rusten voordat je snijdt; dan blijft de structuur beter intact. Snijd in vier gelijke stukken.",
+        "Serveer twee stukken op dag 1. Laat de andere twee porties snel afkoelen en bewaar afgedekt; warm morgen uitsluitend die twee porties goed door."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "Eerst roosteren voorkomt waterige lasagne; linzen geven vulling, balsamico maakt de tomatensaus levendiger en rusten maakt aansnijden makkelijker.",
+      "editorial_action_focus": {
+        "store": "ah",
+        "ingredient": "aubergine en courgette",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 483,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: eet twee van de vier lasagnestukken met eventueel rauwkost uit de aanwezige groenten.",
+        "second_day": "Dag 2: verwarm de twee bewaarde stukken lasagne volledig door in oven of magnetron; dek af tegen uitdrogen en roer of controleer het midden op gelijkmatige verhitting.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
+    },
+    {
+      "id": "nieuw-202611-pompoentajine-twee-dagen",
+      "title": "Marokkaanse pompoentajine met kikkererwten, wortel en citroen",
+      "category": "vega",
+      "cuisine": "Marokkaans",
+      "minutes": 60,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kikkererwten uitgelekt",
+          "quantity": 700,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "flespompoen",
+          "quantity": 800,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 350,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 200,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren couscous",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "ras el hanout",
+          "quantity": 14,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gemalen komijn",
+          "quantity": 6,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde abrikozen",
+          "quantity": 70,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snipper de ui. Schil de pompoen als de schil hard is en snijd in blokjes van circa 2 centimeter. Snijd de wortels in dunne halve plakken en spoel de kikkererwten af.",
+        "Verhit olie in een brede braadpan. Bak de ui 6 minuten tot deze zacht en licht goudbruin is. Voeg ras el hanout en komijn toe en bak nog 30 seconden mee.",
+        "Voeg pompoen, wortel, tomatenblokjes en circa 250 ml water toe. Roer de fijngehakte abrikozen erdoor en breng rustig aan de kook.",
+        "Laat de stoof 20–25 minuten met het deksel op de pan zacht garen. Roer af en toe voorzichtig zodat de pompoen niet helemaal uit elkaar valt.",
+        "Voeg de afgespoelde kikkererwten toe en verwarm 5 minuten door. Roer de spinazie er vervolgens in delen door totdat deze is geslonken.",
+        "Rasp een beetje citroenschil boven de pan en voeg op smaak citroensap toe. Laat de stoof zo nodig nog enkele minuten zonder deksel inkoken.",
+        "Bereid voor dag 1 slechts 140 g van de volkoren couscous volgens de verpakking, gebruik de andere 140 g morgen vers.",
+        "Verdeel stoof en groenten in vier gelijke porties. Serveer twee porties met couscous en bewaar de twee andere porties snel gekoeld voor de volgende dag."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "Zoete geroosterde specerijen en een klein beetje abrikoos werken goed met pompoen; citroen en spinazie maken het geheel minder zwaar.",
+      "editorial_action_focus": {
+        "store": "ah",
+        "ingredient": "flespompoen",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 463,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: serveer twee porties met 140 g droog afgewogen couscous.",
+        "second_day": "Dag 2: bereid de resterende couscous vers, verwarm alleen de twee bewaarde porties tajine door en voeg eventueel citroensap toe.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
+    },
+    {
+      "id": "nieuw-202611-kip-paprikastoof-twee-dagen",
+      "title": "Langzaam gegaarde kip-paprikastoof met witte bonen en prei",
+      "category": "kip",
+      "cuisine": "Mediterraans",
+      "minutes": 65,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipdijfilet zonder bot",
+          "quantity": 720,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "witte bonen uitgelekt",
+          "quantity": 500,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "prei",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "rode paprika",
+          "quantity": 650,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "wortel",
+          "quantity": 350,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "uien",
+          "quantity": 150,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "volkoren bulgur",
+          "quantity": 280,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomatenblokjes",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gerookt paprikapoeder",
+          "quantity": 8,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "gedroogde oregano",
+          "quantity": 7,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "citroen",
+          "quantity": 1,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 25,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Snijd kipdijfilet in gelijkmatige stukken. Was de prei grondig en snijd in ringen; snijd paprika, wortel en ui in hapklare stukken.",
+        "Verhit 15 ml olijfolie in een braadpan en bak de kip in twee porties rondom goudbruin. De kip hoeft in deze fase nog niet gaar te zijn.",
+        "Schep de kip uit de pan. Bak de ui en wortel in de resterende olie 5 minuten. Voeg prei, paprika, gerookt paprikapoeder en oregano toe en laat 3 minuten zacht meebakken.",
+        "Roer tomatenblokjes en circa 150 ml water door de groenten. Schep kip en vrijkomend vocht terug, breng aan de kook en laat 20 minuten afgedekt zacht sudderen tot de kip helemaal gaar is.",
+        "Spoel de witte bonen af, voeg toe en laat 6 minuten meekoken. Laat de pan nog enkele minuten zonder deksel staan als de saus te dun is.",
+        "Bereid voor dag 1 140 g volkoren bulgur volgens de verpakking. Bewaar de andere 140 g droog voor de tweede dag.",
+        "Breng de stoof op smaak met citroensap en zwarte peper. Verdeel de bereide stoof in vier gelijke porties, zodat de tweede dag apart blijft.",
+        "Serveer twee porties met de versgekookte bulgur. Koel de andere twee porties snel, sluit ze in een schoon bakje af en zet tijdig in de koelkast."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Eigen uitgewerkt gerecht voor twee personen op twee dagen. Niet proefgekookt; ingrediënten, exacte productvariant en prijs zijn niet onafhankelijk geverifieerd.",
+      "culinary_note": "Door kip eerst te bruinen en groenten in het bakvet te stoven krijgt de saus meer smaak; bonen maken het gerecht vullend en citroen houdt de tomatensaus fris.",
+      "editorial_action_focus": {
+        "store": "jumbo",
+        "ingredient": "kipfiletblokjes",
+        "proof": "actuele product- en verpakkingsmatch vereist"
+      },
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "offer_anchors": [],
+      "candidate_offer_links": [],
+      "vegetables_g_per_portion": 450,
+      "batch_cook": {
+        "days": 2,
+        "people_per_day": 2,
+        "total_portions": 4,
+        "first_day": "Dag 1: eet twee porties stoof met de helft van de bulgur.",
+        "second_day": "Dag 2: kook de resterende 140 g bulgur vers en verwarm de twee apart bewaarde porties stoof volledig door.",
+        "cooling": "Verdeel de twee porties voor morgen meteen over een ondiep, schoon bakje. Laat snel afkoelen (eventueel in koud water) en zet het uiterlijk binnen 2 uur na bereiding afgesloten in de koelkast.",
+        "storage": "Bewaar maximaal 2 dagen in een koelkast van 4 °C, of vries direct per portie in (maximaal 3 maanden). Bewaar de bijgerechten bij voorkeur apart.",
+        "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
+        "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
+      }
     }
   ]
 }

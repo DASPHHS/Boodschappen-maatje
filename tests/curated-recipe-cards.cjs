@@ -6,10 +6,10 @@ const app=fs.readFileSync('docs/app.js','utf8');
 const html=fs.readFileSync('docs/index.html','utf8');
 const recipes=data.recipes;
 assert.equal(data.schema_version,1);
-assert.equal(recipes.length,24,'Expected twenty-four complete original recipe cards');
+assert.equal(recipes.length,30,'Expected thirty complete original recipe cards');
 assert.equal(new Set(recipes.map(r=>r.id)).size,recipes.length);
 assert.equal(new Set(recipes.map(r=>r.title)).size,recipes.length);
-assert.deepEqual(Object.fromEntries(['kip','vlees','vis','vega'].map(k=>[k,recipes.filter(r=>r.category===k).length])),{kip:5,vlees:6,vis:5,vega:8});
+assert.deepEqual(Object.fromEntries(['kip','vlees','vis','vega'].map(k=>[k,recipes.filter(r=>r.category===k).length])),{kip:6,vlees:9,vis:5,vega:10});
 const produce=/(groente|paprika|spinazie|broccoli|bloemkool|courgette|tomaten|wortel|paksoi|peulvruchten|pompoen|prei|venkel|boerenkool|rode kool|spruitjes)/;
 for(const r of recipes){
  assert.match(r.id,/^nieuw-202611-/);
@@ -34,10 +34,10 @@ assert.ok(app.includes('newly-curated'),'Curated recipes must render as regular 
 assert.ok(app.includes('shown.map(recipeCard)'),'Curated recipes must use the existing card renderer');
 assert.ok(!app.includes('out+=discoveredPublisherCards(s,6)'),'Unrelated publisher cards must not flood the main recipe listing');
 assert.ok(!/out\+=discoveredPublisherCards\(s,12\)/.test(app),'Link tiles should no longer precede real cards');
-assert.ok(html.includes('app.js?v=20261101-quality-first'),'Force refresh stale browser cache');
+assert.ok(html.includes('app.js?v=20261101-hachee-two-days'),'Force refresh stale browser cache');
 assert.ok(app.includes('dedupeAcrossStores(filtered'),'All-store selection must avoid duplicate recipes');
 assert.ok(app.includes('state.recipePageSize'),'Avoid rendering hundreds of recipes at once');
 assert.ok(app.includes('matchesIngredientSearch(r)'),'Ingredient search must filter main cards');
 assert.ok(app.includes("'Maaltijdprijs onbekend'"),'Never print misleading partial basket totals on cards');
 for(const r of recipes.filter(r=>r.editorial_action_focus)){assert.ok(['lidl','jumbo','ah'].includes(r.editorial_action_focus.store));assert.ok(r.culinary_note?.length>40)}
-console.log('24 original recipes, six action-focused meals, full steps, vegetables and honest pricing validated');
+console.log('30 original recipes, including six detailed two-day meals, validated');

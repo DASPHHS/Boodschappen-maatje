@@ -30,6 +30,8 @@ on:
       - 'tests/publisher-recipe-index.cjs'
       - 'tests/test_publisher_recipes.py'
       - 'scripts/refresh_publisher_recipes.py'
+      - 'scripts/refresh_hellofresh_recipes.py'
+      - 'tests/test_hellofresh_recipes.py'
       - '.github/workflows/recipe-discovery.yml'
       - 'tests/weekdeals-engine.cjs'
       - '.github/workflows/weekly-menu.yml'
@@ -71,6 +73,7 @@ on:
       - 'tests/test_lidl_official.py'
       - 'tests/recipe-variety.cjs'
       - 'tests/curated-recipe-cards.cjs'
+      - 'tests/batch-cooking.cjs'
       - 'docs/recipe-presentation.js'
       - 'tests/recipe-presentation.cjs'
       - 'tests/recipe-price-cache.cjs'
@@ -108,6 +111,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_retailer_catalog.py'
           python -m unittest discover -s tests -p 'test_product_evidence.py'
           python -m unittest discover -s tests -p 'test_publisher_recipes.py'
+          python -m unittest discover -s tests -p 'test_hellofresh_recipes.py'
       - name: Controleer feedstructuur
         run: |
           node scripts/validate.mjs
@@ -116,6 +120,7 @@ jobs:
           node tests/recipe-shop-options.cjs
           node tests/recipe-variety.cjs
           node tests/curated-recipe-cards.cjs
+          node tests/batch-cooking.cjs
           node tests/recipe-presentation.cjs
           node tests/recipe-price-cache.cjs
           node tests/recipe-price-ui.cjs

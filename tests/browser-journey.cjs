@@ -82,9 +82,14 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('.sidebar button[data-view="recepten"]').click();
   if(await page.locator('#cooking-ideas [data-clear-cook]').count())await page.locator('#cooking-ideas [data-clear-cook]').click();
   const newCards=page.locator('#view-recepten .recipe-card.newly-curated');
-  assert.equal(await page.locator('#view-recepten .recipe-card').count(),12,
+  assert.equal(await page.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count(),12,
     'Show only twelve unique recipe cards on the first page');
   assert.ok(await newCards.count()>=1,'Include useful original recipes in selection');
+  assert.ok(await page.locator('#view-recepten #publisher-recipes-main .publisher-recipe-card').count()>=4,
+    'Allerhande and HelloFresh should be visible as publisher cards');
+  const publisherTexts=await page.locator('#publisher-recipes-main').innerText();
+  assert.match(publisherTexts,/Allerhande/);
+  assert.match(publisherTexts,/HelloFresh/);
   assert.ok((await page.locator('#view-recepten .recipe-card').allTextContents()).every(t=>!/Jumbo Scharrel Kipfilet 120 g/.test(t)),
     '120 g sandwich-sized chicken must not be promoted for raw chicken dishes');
   assert.ok(await page.locator('#view-recepten [data-more-recipes]').count()===1,
@@ -102,8 +107,31 @@ const start=base.endsWith('/')?base:base+'/';
   assert.match(newRecipeText,/Voeg toe aan (Lidl|Jumbo|Albert Heijn)-lijst/);
   await page.locator('#dialog-close').click();
   await page.locator('#view-recepten [data-more-recipes]').click();
-  assert.equal(await page.locator('#view-recepten .recipe-card').count(),24,
+  assert.equal(await page.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count(),24,
     'Load more must reveal another twelve unique dishes');
+  await page.locator('#view-recepten [data-batch-only="two"]').click();
+  const batchCards=page.locator('#view-recepten .recipe-card');
+  assert.equal(await batchCards.count(),6,'Two-day filter must show exactly six detailed recipes');
+  const hachee=batchCards.filter({hasText:'Hachee van runderriblappen'}).first();
+  assert.equal(await hachee.count(),1,'Hachee must be a normal, visible card');
+  assert.match(await hachee.innerText(),/2 personen × 2 dagen/);
+  await hachee.locator('[data-open]').click();
+  await page.locator('#recipe-dialog').waitFor({state:'visible'});
+  const batchDialog=await page.locator('#dialog-content').innerText();
+  assert.match(batchDialog,/In één keer koken, twee dagen eten/);
+  assert.match(batchDialog,/Dag 1 · vandaag/);
+  assert.match(batchDialog,/Dag 2 · morgen/);
+  assert.match(batchDialog,/Bewaren en opwarmen/);
+  assert.match(batchDialog,/Ingrediënten voor 4 porties \(2 personen × 2 dagen\)/);
+  assert.ok(await page.locator('#dialog-content .steps li').count()>=8,'Hachee requires extended instructions');
+  await page.locator('#dialog-content [data-add]').click();
+  assert.equal(await page.locator('#view-lijst:not(.hidden)').count(),1,'Batch recipe must open shopping list');
+  assert.equal(await page.locator('#view-lijst [data-remove]').count(),1,'Four portions are one planned dish');
+  const riblappen=page.locator('#view-lijst .list-line').filter({hasText:'runderriblappen'});
+  assert.equal(await riblappen.count(),1,'Do not buy meat for two separate four-portion meals');
+  assert.match(await riblappen.innerText(),/800 g/);
+  await page.locator('.sidebar button[data-view="recepten"]').click();
+  await page.locator('#view-recepten [data-batch-only="all"]').click();
   await page.locator('#ingredient-discovery').fill('runderriblappen');
   await page.locator('[data-find-ideas]').click();
   assert.ok(await page.locator('#view-recepten .recipe-card').count()<12,
@@ -156,7 +184,7 @@ const start=base.endsWith('/')?base:base+'/';
    assert.equal(await mobile.locator('.mobile-nav').isVisible(),true,'Mobile navigation must be visible');
    await mobile.locator('.mobile-nav [data-view="recepten"]').click();
    await mobile.locator('#view-recepten .recipe-card.newly-curated').first().waitFor();
-   assert.equal(await mobile.locator('#view-recepten .recipe-card').count(),12,
+   assert.equal(await mobile.locator('#view-recepten .recipe-card:not(.publisher-recipe-card)').count(),12,
      'Mobile must display a concise page of twelve cards');
    await mobile.locator('#view-recepten .recipe-source-link').first().waitFor({state:'attached'});
    await mobile.locator('.mobile-nav [data-view="lijst"]').click();

@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/refresh_publisher_recipes.py'
+      - 'scripts/refresh_hellofresh_recipes.py'
       - 'docs/data/publisher-recipes.json'
       - '.github/workflows/recipe-discovery.yml'
   schedule:
@@ -29,9 +30,12 @@ jobs:
       - name: Test metadata filters and existing recipe index
         run: |
           python -m unittest discover -s tests -p 'test_publisher_recipes.py' -v
+          python -m unittest discover -s tests -p 'test_hellofresh_recipes.py' -v
           node tests/publisher-recipe-index.cjs
       - name: Discover a bounded selection from the official publisher sitemap
-        run: python scripts/refresh_publisher_recipes.py
+        run: |
+          python scripts/refresh_publisher_recipes.py
+          python scripts/refresh_hellofresh_recipes.py
       - name: Publish only the newly checked recipe index
         run: |
           git config user.name "github-actions[bot]"
