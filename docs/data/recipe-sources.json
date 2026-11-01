@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "policy": "link_only",
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-11-01",
   "notice": "Rechtstreeks naar de oorspronkelijke uitgever. Boodschappenmaatje publiceert deze recepten niet opnieuw, kent er geen eigen voedingswaarden of actuele kassaprijzen aan toe en toont ze niet als door ons proefgekookt.",
   "sources": [
     {
@@ -37,6 +37,27 @@
       "name": "Lidl Recepten",
       "url": "https://www.lidl.nl/c/6658.html",
       "tag": "Receptideeën van Lidl",
+      "reuse": "link_only"
+    },
+    {
+      "id": "eefkooktzo",
+      "name": "Eef Kookt Zo",
+      "url": "https://www.eefkooktzo.nl/recepten/",
+      "tag": "Nederlandstalige gerechten · filter op vegetarisch, tijd en seizoen",
+      "reuse": "link_only"
+    },
+    {
+      "id": "lekkerensimpel",
+      "name": "Lekker en Simpel",
+      "url": "https://www.lekkerensimpel.com/",
+      "tag": "Betaalbare en toegankelijke avondmaaltijden · snelle recepten",
+      "reuse": "link_only"
+    },
+    {
+      "id": "leukerecepten",
+      "name": "Leuke Recepten",
+      "url": "https://www.leukerecepten.nl/recepten-index/",
+      "tag": "Vegetarisch, ovenschotels, verse groente en weekmenu's",
       "reuse": "link_only"
     }
   ]
