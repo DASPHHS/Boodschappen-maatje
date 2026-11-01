@@ -949,7 +949,7 @@ if(b.dataset.cookOffer){const [store,...parts]=b.dataset.cookOffer.split('|');co
 if(b.dataset.findIdeas){const value=String($('#ingredient-discovery')?.value||'').trim();
  if(value.length>=2){state.cookingQuery=value;state.cookingOffer=null;state.recipePageSize=12;state.kind='alle';state.subtype='alle';state.query='';state.dealFilter='all';recipeView()}return}
 if(b.dataset.clearCook){state.cookingOffer=null;state.cookingQuery='';state.recipePageSize=12;recipeView();return}
-if(b.dataset.batchOnly){state.batchOnly=b.dataset.batchOnly==='two';state.recipePageSize=12;state.query='';state.cookingQuery='';state.cookingOffer=null;state.dealFilter='all';recipeView();return}
+if(b.dataset.batchOnly){state.batchOnly=b.dataset.batchOnly==='two';state.recipePageSize=12;state.kind='alle';state.subtype='alle';state.query='';state.cookingQuery='';state.cookingOffer=null;state.dealFilter='all';recipeView();return}
 if(b.dataset.moreRecipes){state.recipePageSize+=12;recipeView();return}
 if(b.dataset.open){openRecipe(b.dataset.open);return}
 if(b.dataset.add){let parts=b.dataset.add.split('|');let s=parts[0],id=parts.slice(1).join('|');state.selected[s]??=[];if(!state.selected[s].includes(id))state.selected[s].push(id);snapshotRecipe(s,id);save();$('#recipe-dialog').close();state.store=s;setView('lijst');return}
