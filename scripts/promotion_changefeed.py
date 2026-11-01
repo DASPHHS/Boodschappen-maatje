@@ -22,15 +22,14 @@ def sync(retailer,previous,get):
     try:
         for _ in range(100):
             data=cursor_page(get('/products/changes',{'retailer':retailer,'cursor':state['cursor'],'limit':500}))
-            old_cursor=state['cursor']
-            if data['cursor']<old_cursor:raise ValueError('Regressed API change cursor')
-            if data['cursor']==old_cursor and data['changes']:raise ValueError('API returned changes without advancing cursor')
-            last_seq=old_cursor
+            # Cursor is opaque according to OpenAPI; only equality may be checked.
+            # Within a page, seq is explicitly ordered oldest first.
+            if data['cursor']==state['cursor'] and data['changes']:
+                raise ValueError('API returned changes without advancing cursor')
+            last_seq=None
             for change in data['changes']:
-                # The published API uses globally increasing sequence numbers.
-                # Never commit a partial or out-of-order delta as a successful sync.
                 seq=change.get('seq')
-                if type(seq) is not int or not last_seq<seq<=data['cursor']:
+                if type(seq) is not int or seq<0 or (last_seq is not None and seq<=last_seq):
                     raise ValueError('Invalid or unordered change sequence')
                 last_seq=seq
                 if change.get('retailer')!=retailer:raise ValueError('Mixed retailer in change feed')
