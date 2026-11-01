@@ -54,4 +54,10 @@ assert.ok(index.recipes.some(x=>x.source==='Allerhande'&&/rendang/i.test(x.title
 assert.ok(e.publisherMatches({name:'Kipfilet',category:'kip'},index,100).some(x=>x.recipe.source==='HelloFresh'),'HelloFresh chicken recipes should be searchable by an offer');
 const spoof={recipes:[{source:'HelloFresh',title:'Fake',url:'https://www.hellofresh.nl.evil.example/recipes/kip-5e4a3e6bb19a1757fe76da26',families:['kip'],review_status:'publisher_page_title_verified'}]};
 assert.deepEqual(e.publisherMatches({name:'Kipfilet',category:'kip'},spoof),[]);
+const fakeVeg={recipes:[{source:'HelloFresh',
+ title:'Masala-pasta met veggie gehakt',
+ url:'https://www.hellofresh.nl/recipes/veggie-gehakt-pasta-6a16d7667200e2f203e8d767',
+ families:['gehakt'],review_status:'publisher_page_title_verified'}]};
+assert.deepEqual(e.publisherMatches({name:'Gemengd gehakt',category:'vlees'},fakeVeg),[],
+ 'Plant-based replacement cannot match animal mince offers');
 console.log('Publisher index:',index.recipes.length,'curated real links,',families.size,'ingredient families, ranked and diversified');

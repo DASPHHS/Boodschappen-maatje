@@ -118,6 +118,12 @@ def record_from_page(url, page_html, stamp):
     # Tags are candidate food families from public title/short description only;
     # never misrepresent them as the publisher's actual ingredient list.
     families = families_of(title, parser.description)
+    # Plant-based substitutes must never become recipe suggestions for animal
+    # meat offers just because the title contains "kip" or "gehakt".
+    if re.search(r"\b(?:veggie|vegetarisch|vegetarische|vegan|plantaardig|plantaardige)\b",
+                 title, re.I):
+        families = [x for x in families if x not in
+                    ("kip", "gehakt", "riblappen", "zalm", "witvis", "garnalen")]
     if not families:
         return None
     method = next((m for m in ("hachee","rendang","stoof","curry","lasagne","dahl",

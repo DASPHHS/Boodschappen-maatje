@@ -109,6 +109,8 @@
    if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
       typeof r.title!=='string'||!r.title.trim()||!trustedPublisherUrl(r.source,r.url)||
       !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
+   if(['riblappen','gehakt','kip','zalm','witvis','garnalen'].includes(type.key)&&
+      /\b(veggie|vegan|vegetarisch|vegetarische|plantaardig|plantaardige)\b/i.test(r.title))continue;
    if(seen.has(r.url))continue;
    seen.add(r.url);
    // Put main courses and recipes for four people ahead of side dishes,
