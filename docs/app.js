@@ -308,9 +308,9 @@ function shopPrices(w,s){
  }
  return pricing?.collect(s,w,state.personalPrices?.products||[],offers(s),today(),window.MaatjeResolver)||[];
 }
-function compareCell(w,s,rows){
+function compareCell(w,s,rows,hasOtherVariant=false){
  if(w.requires_specific_variant)return '<span class="compare-empty">Kies verpakking</span>';
- if(!rows.length)return '<span class="compare-empty">—</span>';
+ if(!rows.length)return '<span class="compare-empty">'+(hasOtherVariant?'Andere variant · niet vergelijkbaar':'Geen passende prijs')+'</span>';
  const x=rows[0],o=x.o,link=o.url||o.source?.url;
  if(x.conflict)return '<span class="compare-empty">Bronprijzen verschillen · hercontrole nodig</span>';
  const isCatalog=o.source_provider==='Checkjebon',aged=!x.current;
@@ -345,7 +345,7 @@ function personalComparison(){
   if(!variants.length)variants.push({label:w.requires_specific_variant?'Kies eerst een exacte variant':'Geen passende productsoort met prijs gevonden',stores:{}});
   for(const variant of variants){
    out+='<tr><th scope="row"><strong>'+safe(w.title)+'</strong><small>'+safe(variant.label)+'</small></th>';
-   for(const s of ORDER)out+='<td>'+compareCell(w,s,variant.stores[s]||[])+'</td>';
+   for(const s of ORDER)out+='<td>'+compareCell(w,s,variant.stores[s]||[],entry.stores.find(x=>x.s===s)?.prices.length>0)+'</td>';
    out+='</tr>';
   }
  }
@@ -393,16 +393,16 @@ function recipePrice(r){
 function weeklyPriceOptions(r,s){return window.MaatjeRecipeShopOptions?.recommend(r,s,state.retailerCatalog,window.MaatjeObservations,window.MaatjeResolver,today())||null}
 function recipeIsCurrentPrice(r){return recipePrice(r).state==='today_confirmed'}
 function priceTagText(r){
- const p=recipePrice(r);return p.state==='today_confirmed'?'Vandaag onderbouwd':p.state==='catalog_estimate'?'Prijsindicatie':p.state==='historical_estimate'?'Historische prijsindicatie':p.state==='partial'?'Deels geprijsd':'Prijs onbekend';
+ const p=recipePrice(r);return p.state==='today_confirmed'?'Vandaag onderbouwd':p.state==='catalog_estimate'?'Prijsindicatie':p.state==='historical_estimate'?'Historische prijsindicatie':p.state==='partial'?'Onvolledige prijs':'Prijs onbekend';
 }
 function priceStatusText(r){
  const p=recipePrice(r);
  if(p.state==='today_confirmed')return '4 porties · vandaag gecontroleerde webshopprijzen, geen kassagarantie';
- if(p.state==='catalog_estimate')return '4 porties · hele verpakkingen, catalogus '+p.oldest_date+', indicatie zonder kassagarantie';
+ if(p.state==='catalog_estimate')return '4 porties · alle ingrediënten met hele verpakkingen geprijsd in catalogus '+p.oldest_date+'; geen kassagarantie';
  if(p.state==='historical_estimate')return '4 porties · historische indicatie'+(p.oldest_date?' (oudste prijs '+p.oldest_date+')':' zonder exacte peildatum')+', geen actuele kassaprijs';
- return '4 porties · '+p.missing.length+' ingrediënten zonder verpakkingsprijs, geen complete mand';
+ return '4 porties · '+p.missing.length+' ingrediënten zonder verpakkingsprijs'+(p.partial>0?' · alleen bekende verpakkingen samen '+money(p.partial):'')+' · totaalprijs onbekend';
 }
-function priceQuality(r){const p=recipePrice(r);return p.state==='today_confirmed'?money(p.total):p.state==='catalog_estimate'?'Circa '+money(p.total):p.state==='historical_estimate'?'Oude indicatie '+money(p.total):p.partial>0?'Vanaf '+money(p.partial):'Prijs onbekend'}
+function priceQuality(r){const p=recipePrice(r);return p.state==='today_confirmed'?money(p.total):p.state==='catalog_estimate'?'Catalogusindicatie '+money(p.total):p.state==='historical_estimate'?'Oude indicatie '+money(p.total):p.state==='partial'?'Totaalprijs onbekend':'Prijs onbekend'}
 function statusTag(r){return '<span class="tag '+(recipeIsCurrentPrice(r)?'fresh':'orange')+'">'+safe(priceTagText(r))+'</span>'}
 function storeLogo(s){return '<span class="store-dot '+s+'">'+(s==='lidl'?'L':s==='jumbo'?'J':'AH')+'</span>'}
 function clearPage(){['vandaag','aanbiedingen','recepten','lijst','mijn'].forEach(v=>$('#view-'+v).classList.toggle('hidden',v!==state.view));document.querySelectorAll('[data-view]').forEach(el=>el.classList.toggle('active',el.dataset.view===state.view))}
@@ -472,7 +472,7 @@ return 'Eigen inspiratie of bewerking · niet proefgekookt';
 }
 function recipeCard(r){
 const id=r.store+'|'+r.id,info=offerInfo(r,r.store),price=recipePrice(r),tip=info.confirmed.length?'Gekoppelde actieproducten: '+info.confirmed.map(x=>x.offer.name).join(' · '):info.anchors.length?'Actieproduct gekoppeld: '+info.anchors.map(x=>x.offer.name).join(' · '):info.possible.length?'Vergelijkbare aanbieding (niet bewezen): '+info.possible.slice(0,3).map(x=>x.offer.name).join(' · '):'';
-return '<article class="recipe-card"><div class="recipe-visual '+(r.category==='kip'?'chicken':r.category==='vis'?'fish':r.category==='vlees'?'meat':'vega')+'">'+statusTag(r)+recipeSaveButton(r)+'<span class="plate" aria-hidden="true">'+(SYMBOLS[r.category]||'🥗')+'</span></div><div class="recipe-offers">'+offerBadge(r)+'</div><h3>'+safe(r.title)+'</h3><p>'+safe(r.cuisine||'Smakelijk & voedzaam')+' · '+safe(NAMES[r.store]||'')+'</p><p class="recipe-origin">'+safe(recipeSourceLabel(r))+'</p>'+featured(r)+(tip?'<p class="offer-hint">'+safe(tip)+'</p>':'')+(r.variant_warning?'<p class="recipe-variant-warning">'+safe(r.variant_warning)+'</p>':'')+(info.discount>0?'<p class="offer-smallnote">Oude vergelijkingsprijzen bekend, maar geen bewezen besparing op de hele maaltijd.</p>':'')+(price.state==='partial'?'<p class="lower-bound">'+price.missing.length+' ingrediënten niet geprijsd · géén volledige kassamand</p>':'')+'<div class="recipe-bottom"><div><b>'+priceQuality(r)+'</b>'+(price.total!==null?'<small>'+money(price.total/4)+' per portie</small>':'')+'<small>4 porties · '+(price.state==='catalog_estimate'?'hele verpakkingen · '+safe(price.oldest_date):price.state==='historical_estimate'?'oude prijspeildatum, niet actueel':price.state==='today_confirmed'?'actuele berekening':'prijs onvolledig')+(r.macros?' · '+(r.macro_status==='verified'?'':'circa ')+safe(r.macros.protein_g)+' g eiwit/p':' · macro’s volgen')+'</small></div><button class="button small" data-open="'+attr(id)+'">Bekijk →</button></div></article>';
+return '<article class="recipe-card"><div class="recipe-visual '+(r.category==='kip'?'chicken':r.category==='vis'?'fish':r.category==='vlees'?'meat':'vega')+'">'+statusTag(r)+recipeSaveButton(r)+'<span class="plate" aria-hidden="true">'+(SYMBOLS[r.category]||'🥗')+'</span></div><div class="recipe-offers">'+offerBadge(r)+'</div><h3>'+safe(r.title)+'</h3><p>'+safe(r.cuisine||'Smakelijk & voedzaam')+' · '+safe(NAMES[r.store]||'')+'</p><p class="recipe-origin">'+safe(recipeSourceLabel(r))+'</p>'+featured(r)+(tip?'<p class="offer-hint">'+safe(tip)+'</p>':'')+(r.variant_warning?'<p class="recipe-variant-warning">'+safe(r.variant_warning)+'</p>':'')+(info.discount>0?'<p class="offer-smallnote">Oude vergelijkingsprijzen bekend, maar geen bewezen besparing op de hele maaltijd.</p>':'')+(price.state==='partial'?'<p class="lower-bound">'+price.missing.length+' ingrediënten niet geprijsd · alleen bekende verpakkingen: '+money(price.partial)+' · géén volledige kassamand</p>':'')+'<div class="recipe-bottom"><div><b>'+priceQuality(r)+'</b>'+(price.total!==null?'<small>'+money(price.total/4)+' per portie (indicatie)</small>':'')+'<small>4 porties · '+(price.state==='catalog_estimate'?'hele verpakkingen · '+safe(price.oldest_date):price.state==='historical_estimate'?'oude prijspeildatum, niet actueel':price.state==='today_confirmed'?'actuele berekening':'prijs onvolledig')+(r.macros?' · '+(r.macro_status==='verified'?'':'circa ')+safe(r.macros.protein_g)+' g eiwit/p':' · macro’s volgen')+'</small></div><button class="button small" data-open="'+attr(id)+'">Bekijk →</button></div></article>';
 }
 
 
@@ -753,7 +753,7 @@ const ing=new Map();for(const r of picks){for(const i of normalize(r)){let k=i.n
 const basketEstimate=window.MaatjeRecipeShopOptions.estimate({ingredients:[...ing.values()]},s,state.retailerCatalog,window.MaatjeObservations,window.MaatjeResolver,today());
 const groups={};[...ing.values()].forEach(i=>(groups[i.department]??=[]).push(i));
 x+=title('Pak dit in de winkel','Hoeveelheden zijn totaalverbruik voor de gekozen gerechten. Hieronder staan beschikbare verpakkingsprijzen uit de winkelcatalogus.');
-x+='<div class="info-banner"><strong>'+safe(basketEstimate.total!==null?'Prijsindicatie '+money(basketEstimate.total):basketEstimate.partial>0?'Vanaf '+money(basketEstimate.partial):'Prijs nog onbekend')+'</strong> · '+basketEstimate.priced_count+' van '+basketEstimate.required+' ingrediënten geprijsd · hele verpakkingen'+(basketEstimate.oldest_date?' · peildatum '+safe(basketEstimate.oldest_date):'')+(basketEstimate.missing.length?'<br>Nog niet inbegrepen: '+safe(basketEstimate.missing.join(' · ')):'')+'</div>';
+x+='<div class="info-banner"><strong>'+safe(basketEstimate.total!==null?'Catalogusindicatie '+money(basketEstimate.total):'Totaalprijs onbekend')+'</strong>'+(basketEstimate.total===null&&basketEstimate.partial>0?' · alleen bekende verpakkingen: '+money(basketEstimate.partial):'')+' · '+basketEstimate.priced_count+' van '+basketEstimate.required+' ingrediënten geprijsd · hele verpakkingen'+(basketEstimate.oldest_date?' · peildatum '+safe(basketEstimate.oldest_date):'')+(basketEstimate.missing.length?'<br>Nog niet inbegrepen: '+safe(basketEstimate.missing.join(' · ')):'')+'</div>';
 for(const dep of [...DEPARTMENTS,...Object.keys(groups).filter(x=>!DEPARTMENTS.includes(x))]){if(!groups[dep])continue;x+='<div class="list-group"><h3>'+safe(dep)+'</h3>'+groups[dep].map(i=>{let key=s+'|'+i.key;const priced=basketEstimate.rows.find(z=>z.ingredient===i.name);return '<label class="list-line"><input type="checkbox" data-check="'+attr(key)+'" '+(state.checks[key]?'checked':'')+'><span class="item-name '+(state.checks[key]?'done':'')+'">'+safe(i.name)+'</span><span class="item-qty">'+safe(Math.round(i.quantity*100)/100)+' '+safe(i.unit)+(priced?'<br><small>'+priced.pack_count+' × '+safe(priced.pack_label)+' · '+money(priced.purchase_total)+'</small>':'<br><small>Prijs onbekend</small>')+'</span></label>'}).join('')+'</div>'}
 x+='<div class="control-row"><button class="button secondary" data-copy-list="'+s+'">Kopieer boodschappenlijst</button><button class="button ghost" data-reset-checks="'+s+'">Vinkjes wissen</button></div>';
 $('#view-lijst').innerHTML=x;
