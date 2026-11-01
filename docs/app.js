@@ -730,19 +730,33 @@ function cookingIdeasPanel(){
  if(!trusted.length)html+='<p class="muted">Voor dit ingrediënt staat nog geen rechtstreeks gecontroleerd uitgeversrecept in onze selectie. We tonen geen willekeurig zoekresultaat.</p>';
  return html+'</section>';
 }
-function discoveredPublisherCards(store,limit=8){
+function discoveredPublisherCards(store,limit=6){
  const engine=window.MaatjeRecipeDiscovery;
  if(!engine||!state.publisherRecipes?.recipes?.length)return '';
- const highlighted=engine.offerRecipeHighlights(offers(store),state.publisherRecipes,limit);
+ // Externe recepten als gewone visuele kaarten, maar zonder onbewijsbare porties,
+ // boodschappenlijsten, auteursrechtelijk beschermde instructies of prijzen.
+ const highlighted=engine.offerRecipeHighlights(offers(store),state.publisherRecipes,30)
+  .filter(hit=>hit.recipe.review_status!=='publisher_sitemap_title_only').slice(0,limit);
  if(!highlighted.length)return '';
- return '<section class="publisher-discovery"><h3>Uitgezochte recepten bij aanbiedingen van '+safe(NAMES[store])+'</h3>'+
- '<p class="muted">Zelf geselecteerd op actie-ingrediënt, groente en peulvruchten, bereidingstijd en variatie. De volledige recepten staan bij hun oorspronkelijke uitgever. Een product in actie is geen bevestigde maaltijdprijs.</p>'+
- '<div class="recipe-source-grid">'+highlighted.map(hit=>
-  '<a class="recipe-source-link" href="'+attr(hit.recipe.url)+'" target="_blank" rel="noopener noreferrer"><strong>'+safe(hit.recipe.title)+'</strong>'+
-  '<small>'+safe(hit.recipe.source)+(hit.recipe.review_status==='publisher_sitemap_title_only'?' · titel uit officiële sitemap; nog niet volledig gecontroleerd':' · recept bij uitgever')+' · '+safe(hit.ingredient)+' in actie'+
-  (hit.recipe.minutes?' · '+safe(hit.recipe.minutes)+' minuten':'')+
-  (hit.recipe.servings?' · '+safe(hit.recipe.servings)+' personen':'')+
-  '</small><span>Open volledig recept ↗</span></a>').join('')+'</div></section>';
+ const card=hit=>{
+  const r=hit.recipe,kind=['kip'].includes(hit.family)?'chicken':
+   ['riblappen','gehakt','varkenshaas','hamlappen'].includes(hit.family)?'meat':
+   ['zalm','witvis','forel','makreel','garnalen'].includes(hit.family)?'fish':'vega';
+  const emoji=kind==='chicken'?'🍗':kind==='meat'?'🥩':kind==='fish'?'🐟':'🥦';
+  return '<article class="recipe-card publisher-recipe-card"><div class="recipe-visual '+kind+'">'+
+   '<span class="tag orange">Recept bij uitgever</span><span class="plate" aria-hidden="true">'+emoji+'</span></div>'+
+   '<div class="recipe-offers"><span class="offer-badge candidate">Mogelijk passend actieproduct · niet verrekend</span></div>'+
+   '<h3>'+safe(r.title)+'</h3><p>'+safe(r.source)+' · '+safe(NAMES[store])+'</p>'+
+   '<p class="recipe-origin">Origineel recept bij de maker</p>'+
+   '<div class="recipe-info">'+(r.servings?'<span>'+safe(r.servings)+' porties</span>':'')+
+   (r.minutes?'<span>'+safe(r.minutes)+' min</span>':'')+'<span>Externe bron</span></div>'+
+   '<p class="publisher-note">Ingrediënten en stappen staan bij de uitgever. De volledige maaltijdprijs en productvariant zijn hier niet gecontroleerd.</p>'+
+   '<div class="recipe-bottom"><div><b>Prijs onbekend</b><small>Geen fictieve kassamand</small></div>'+
+   '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Open recept ↗</a></div></article>';
+ };
+ return '<section class="publisher-discovery"><h3>Meer recepten bij de oorspronkelijke makers</h3>'+
+  '<p class="muted">Ook als volwaardige visuele kaarten. Externe recepten openen bij hun uitgever, omdat hoeveelheden en bereidingsstappen niet van derden worden gekopieerd.</p>'+
+  '<div class="cards">'+highlighted.map(card).join('')+'</div></section>';
 }
 function recipeView(){
 header('Recepten & slimme acties','Lekker koken.<br><span style="color:#719b66">Acties die je écht gebruikt.</span>','Nieuwe, volledig uitgewerkte recepten staan nu als gewone kaarten bij Lidl, Jumbo en AH. Je kunt ze openen, bewaren en aan de boodschappenlijst toevoegen. Recepten zijn niet proefgekookt.');
@@ -759,6 +773,7 @@ const counts=['kip','vlees','vis','vega'].map(k=>(KINDS[k]+' '+all.filter(r=>r.c
 out+=title(NAMES[s]+' recepten',counts+' · '+anchored+' recepten met gekoppeld actieproduct · '+all.filter(r=>recipePrice(r).total!==null).length+' met volledige prijsindicatie · '+potential+' vergelijkbare actie-opties');
 out+='<div class="info-banner">Actiekoppelingen vereisen passende productvarianten, verpakkingen en prijzen. Andere vergelijkbare producten verschijnen alleen als mogelijke aanbieding. '+(s==='jumbo'?'Vis zonder passende aanbieding blijft gewone inspiratie.':'')+'</div>';
 out+=found.length?'<div class="cards">'+found.map(recipeCard).join('')+'</div>':empty('Geen recepten voor deze filters','Wijzig je actiestatus of zoekterm om meer recepten te zien.');
+if(state.kind==='alle'&&state.subtype==='alle'&&!state.query&&state.dealFilter==='all')out+=discoveredPublisherCards(s,6);
 }
 out+='<div class="info-banner warning">De eigen recepten en automatische actie-ideeën zijn niet proefgekookt; externe recepten open je rechtstreeks bij hun maker. De receptenbibliotheek groeit met nieuwe dagelijkse en wekelijkse gerechten. Historische prijzen worden niet als actuele prijzen getoond. De goedkoopste werkelijke kassamand kan pas worden bevestigd als álle productprijzen en verpakkingen gecontroleerd zijn.</div>';
 $('#view-recepten').innerHTML=out;
