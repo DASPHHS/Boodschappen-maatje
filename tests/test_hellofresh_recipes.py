@@ -36,6 +36,13 @@ class HelloFreshTests(unittest.TestCase):
         url="https://www.hellofresh.nl/recipes/veggie-gehakt-pasta-6a16d7667200e2f203e8d767"
         html="<html><head><meta name='description' content='Veggie gehakt in een kruidige saus'></head><body><h1>Masala-pasta met veggie gehakt</h1></body></html>"
         self.assertIsNone(hf.record_from_page(url,html,"2026-11-01"))
+    def test_prioritize_real_hellofresh_dinner_hub(self):
+        self.assertEqual(hf.CATEGORIES[0],"/recipes")
+        self.assertIn("/recipes/groente-recepten",hf.CATEGORIES)
+        self.assertLess(hf.candidate_priority("Hachee met langzaam gestoofd rundvlees",
+                 "https://www.hellofresh.nl/recipes/hachee-"+("a"*24),44),
+             hf.candidate_priority("Broodje hamburger met mayonaise",
+                 "https://www.hellofresh.nl/recipes/burger-"+("b"*24),44))
     def test_bounded_network_and_failure_keeps_index(self):
         link="https://www.hellofresh.nl/recipes/nasi-goreng-met-roerei-633eee0477adddd743098bd6"
         listing=f'<a href="{link}">Nasi goreng met roerei</a>'
