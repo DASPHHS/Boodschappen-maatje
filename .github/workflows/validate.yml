@@ -28,6 +28,10 @@ on:
       - 'docs/recipe-discovery.js'
       - 'tests/recipe-discovery.cjs'
       - 'tests/publisher-recipe-index.cjs'
+      - 'docs/dutch-recipe-index.js'
+      - 'NEDERLANDSE_RECEPTENGIDS.md'
+      - 'scripts/build_dutch_recipe_guide.cjs'
+      - 'tests/dutch-recipe-guide.cjs'
       - 'tests/test_publisher_recipes.py'
       - 'scripts/refresh_publisher_recipes.py'
       - '.github/workflows/recipe-discovery.yml'
@@ -118,6 +122,8 @@ jobs:
           node tests/weekdeals-engine.cjs
           node tests/recipe-discovery.cjs
           node tests/publisher-recipe-index.cjs
+          node scripts/build_dutch_recipe_guide.cjs --check
+          node tests/dutch-recipe-guide.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs
           node tests/price-integrity.cjs
