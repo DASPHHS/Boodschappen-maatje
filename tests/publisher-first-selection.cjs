@@ -12,6 +12,13 @@ const offersByStore={ah:[{name:'AH Runderriblappen 850 g',category:'vlees'},
 const selection=()=>selector.recipesForOffers({index,stores:['ah','jumbo'],
  offersByStore,engine,query:'',category:'alle'});
 const result=selection();
+const hf=selector.recipesForOffers({index,stores:['ah','jumbo'],offersByStore,engine,source:'HelloFresh'});
+const ah=selector.recipesForOffers({index,stores:['ah','jumbo'],offersByStore,engine,source:'Allerhande'});
+assert.ok(hf.length>=8,'HelloFresh must provide at least eight original recipes');
+assert.ok(hf.every(x=>x.recipe.source==='HelloFresh'),'HelloFresh-only view must exclude AH');
+assert.ok(ah.length>=8&&ah.every(x=>x.recipe.source==='Allerhande'),'Allerhande remains optional');
+assert.ok(hf.every(x=>x.recipe.url.startsWith('https://www.hellofresh.nl/recipes/')),
+  'All user-facing primary recipes must originate directly from HelloFresh NL');
 assert.ok(result.length>=12,'Publishers must provide a real browsable recipe selection');
 assert.ok(result.slice(0,8).some(x=>x.recipe.source==='Allerhande'));
 assert.ok(result.slice(0,8).some(x=>x.recipe.source==='HelloFresh'));
@@ -35,6 +42,7 @@ assert.ok(!result.some(x=>x.recipe.review_status==='publisher_sitemap_title_only
 assert.ok(app.includes('data-show-recipe-library'),'Mechanical concepts must not dominate default viewport');
 assert.ok(app.includes('batch-featured'),'Detailed two-day meals must appear in ordinary browsing');
 assert.ok(app.includes('data-more-publishers'),'Many legitimate publisher recipes must be reachable');
-assert.ok(html.includes('publisher-selection.js?v=20261101-publisher-first'),
+assert.ok(html.includes('publisher-selection.js?v=20261101-hellofresh-first'),
  'Publisher selection must be loaded before the app');
+assert.ok(app.includes("publisherSource:'HelloFresh'"),'HelloFresh is the default user-facing recipe source');
 console.log('Publisher-first discovery: '+result.length+' reviewed original recipes; AH hachee, HF, category, browsing and rights verified');
