@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T12:35:27.722Z",
+  "generated_at": "2026-11-02T12:35:52.666Z",
   "checked_date": "2026-11-02",
   "summary": {
     "profiles": 20,
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
         "product_name": "Ardo Gebroken Sperziebonen 1KG",
         "price": 2.07,
-        "price_status": "externe prijswaarneming · 2026-11-01",
-        "checked_date": "2026-11-01"
+        "price_status": "externe prijswaarneming · 2026-11-02",
+        "checked_date": "2026-11-02"
       },
       "bospeen": {
         "state": "price_observed",
