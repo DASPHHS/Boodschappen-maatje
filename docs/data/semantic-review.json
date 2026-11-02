@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-02T11:39:10.405Z",
+  "generated_at": "2026-11-02T12:35:26.233Z",
   "source_date": "2026-10-30",
   "source_commit": "27189152b813d37ac6df4f8f3ddaccf0f904ff99",
   "counts": {
     "match": 239,
-    "partial": 376,
-    "reject": 209
+    "partial": 368,
+    "reject": 217
   },
   "profiles": {
     "sungold": {
@@ -607,19 +607,17 @@
     },
     "kipfilet": {
       "match": 48,
-      "partial": 78,
-      "reject": 72,
+      "partial": 70,
+      "reject": 80,
       "reasons": {
         "productkenmerken en verpakking passen": 48,
         "productnaam of uitsluitingen passen niet": 6,
-        "andere productvorm: smoked": 24,
+        "andere productvorm: cooked": 57,
         "niet herkende productbeschrijving: a la minute": 4,
         "andere productvorm: mixed": 9,
         "andere productvorm: seasoned": 1,
         "niet herkende productbeschrijving: budget": 1,
         "niet herkende productbeschrijving: duo": 1,
-        "niet herkende productbeschrijving: flinterdun": 4,
-        "andere productvorm: cooked": 25,
         "niet herkende productbeschrijving: gr verpak": 1,
         "niet herkende productbeschrijving: hellas": 1,
         "niet herkende productbeschrijving: hot chili": 1,
@@ -656,11 +654,9 @@
         "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw": 1,
         "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: minder": 2,
-        "niet herkende productbeschrijving: flinterdunne": 2,
         "andere doelgroep: baby": 1,
         "niet herkende productbeschrijving: bieslook": 1,
         "niet herkende productbeschrijving: van haas": 1,
-        "niet herkende productbeschrijving: flinterdun minder": 1,
         "niet herkende productbeschrijving: jalapeno": 1,
         "niet herkende productbeschrijving: roerbak": 2,
         "niet herkende productbeschrijving: sweet chili": 1,
@@ -670,7 +666,6 @@
         "niet herkende productbeschrijving: knorr tratorria toscana": 1,
         "niet herkende productbeschrijving: knorr trattoria romana": 1,
         "niet herkende productbeschrijving: marhaba": 1,
-        "niet herkende productbeschrijving: streeckgenoten ovengebakken": 1,
         "niet herkende productbeschrijving: wahid": 3,
         "niet herkende productbeschrijving: wahid chilipeper": 1,
         "niet herkende productbeschrijving: wahid provence": 1
@@ -686,7 +681,7 @@
           "store": "lidl",
           "name": "Gerookte kipfilet",
           "status": "reject",
-          "reason": "andere productvorm: smoked"
+          "reason": "andere productvorm: cooked"
         },
         {
           "store": "lidl",
@@ -2565,17 +2560,6 @@
       "fingerprint": "e5c7c802751cc258d0fefbc6"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi132247/ah-scharrel-flinterdunne-kipfilet",
-      "name": "AH Scharrel flinterdunne kipfilet",
-      "pack": "100 g",
-      "url": "https://www.ah.nl/producten/product/wi132247/ah-scharrel-flinterdunne-kipfilet",
-      "reason": "niet herkende productbeschrijving: flinterdunne",
-      "fingerprint": "e21ed126c18d02b7d0884126"
-    },
-    {
       "profile": "vis",
       "priority": 0,
       "store": "ah",
@@ -2983,17 +2967,6 @@
       "fingerprint": "406b4c85bd7b7df39d68ae31"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi440358/ah-scharrel-flinterdunne-kipfilet",
-      "name": "AH Scharrel flinterdunne kipfilet",
-      "pack": "ca. 110 g",
-      "url": "https://www.ah.nl/producten/product/wi440358/ah-scharrel-flinterdunne-kipfilet",
-      "reason": "niet herkende productbeschrijving: flinterdunne",
-      "fingerprint": "a5fe031dc00f7784ca51ddd3"
-    },
-    {
       "profile": "pompoen",
       "priority": 0,
       "store": "ah",
@@ -3228,17 +3201,6 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "ah",
-      "product_id": "wi516428/streeckgenoten-ovengebakken-kipfilet",
-      "name": "Streeckgenoten Ovengebakken kipfilet",
-      "pack": "ca. 120 g",
-      "url": "https://www.ah.nl/producten/product/wi516428/streeckgenoten-ovengebakken-kipfilet",
-      "reason": "niet herkende productbeschrijving: streeckgenoten ovengebakken",
-      "fingerprint": "da166eae96b9c4ba56281d97"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
       "product_id": "wi519411/wahid-halal-kipfilet-blokjes",
       "name": "Wahid Halal kipfilet blokjes",
       "pack": "ca. 400 g",
@@ -3412,17 +3374,6 @@
       "fingerprint": "e990a8655e366c3b03122164"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi548313/ah-scharrel-kipfilet-flinterdun-minder-vet",
-      "name": "AH Scharrel kipfilet flinterdun minder vet",
-      "pack": "100 g",
-      "url": "https://www.ah.nl/producten/product/wi548313/ah-scharrel-kipfilet-flinterdun-minder-vet",
-      "reason": "niet herkende productbeschrijving: flinterdun minder",
-      "fingerprint": "27201be9793cfeced72ad424"
-    },
-    {
       "profile": "gemengdgehakt",
       "priority": 0,
       "store": "ah",
@@ -3509,17 +3460,6 @@
       "url": "https://www.ah.nl/producten/product/wi571229/ah-warmgerookte-zalmfilet",
       "reason": "niet herkende productbeschrijving: warmgerookte",
       "fingerprint": "07e14929b6045c8d55580cf1"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi572427/ah-biologisch-kipfilet-flinterdun",
-      "name": "AH Biologisch Kipfilet flinterdun",
-      "pack": "ca. 100 g",
-      "url": "https://www.ah.nl/producten/product/wi572427/ah-biologisch-kipfilet-flinterdun",
-      "reason": "niet herkende productbeschrijving: flinterdun",
-      "fingerprint": "0237fcc124db4ea515e5ce0b"
     },
     {
       "profile": "kipfilet",
