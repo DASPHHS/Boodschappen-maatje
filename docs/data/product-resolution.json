@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T13:00:16.217Z",
+  "generated_at": "2026-11-02T13:26:46.248Z",
   "checked_date": "2026-11-02",
   "summary": {
     "profiles": 20,
@@ -263,8 +263,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
         "product_name": "Jumbo Gemengd Gehakt 500 g",
         "price": 4.59,
-        "price_status": "externe prijswaarneming · 2026-11-01",
-        "checked_date": "2026-11-01"
+        "price_status": "externe prijswaarneming · 2026-11-02",
+        "checked_date": "2026-11-02"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,17 +272,17 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "externe prijswaarneming · 2026-11-01",
-        "checked_date": "2026-11-01"
+        "price_status": "externe prijswaarneming · 2026-11-02",
+        "checked_date": "2026-11-02"
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
-        "price": 2.99,
-        "price_status": "externe prijswaarneming · 2026-11-01",
-        "checked_date": "2026-11-01"
+        "price": 2.79,
+        "price_status": "externe prijswaarneming · 2026-11-02",
+        "checked_date": "2026-11-02"
       },
       "pompoen": {
         "state": "price_observed",
