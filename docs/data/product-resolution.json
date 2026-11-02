@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T13:26:46.248Z",
+  "generated_at": "2026-11-02T13:48:10.495Z",
   "checked_date": "2026-11-02",
   "summary": {
     "profiles": 20,
@@ -336,7 +336,7 @@
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 7.04,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": "2026-11-02"
+        "checked_date": "2026-11-01"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
@@ -345,7 +345,7 @@
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 7.04,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": "2026-11-02"
+        "checked_date": "2026-11-01"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
