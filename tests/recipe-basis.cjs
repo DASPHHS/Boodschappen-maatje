@@ -36,3 +36,9 @@ assert.equal(selector.discount(offers[0],{family:'kip'},kip).forFour,null,'Unkno
 assert.equal(selector.discount({...offers[0],pack_label:'ca. 400 g'},products.recipeProfiles(kip)[0],kip).forFour,null,'Approximate packs have no exact quantity saving');
 assert.equal(selector.actionProducts(kip,[{...offers[0],end_date:'2026-11-01'}],engine,day).length,0);
 console.log('Protein-basis ranking, four-portion pack savings and all 13 real wrong-product examples verified');
+
+for(const name of ['Jumbo Scharrel Kipfilet','Jumbo Scharrel Kipfilet Voordeelverpakking 200 g','Jumbo Scharrelkipfilet 500 g'])assert.equal(products.profile({name}),null,'Sandwich meat stays excluded regardless of pack size');
+assert.ok(products.profile({name:'Lidl Scharrelkipfilet 400 g'}));
+assert.ok(products.profile({name:'Jumbo verse scharrel kipfilet 400 g'}));
+const semantics=require('../docs/product-semantics');
+assert.equal(semantics.classify({name:'Jumbo Scharrel Kipfilet Voordeelverpakking 200 g'}).form,'cooked');

@@ -47,6 +47,8 @@ function classify(product){
   /\b(blik|conserven|uitlekgewicht|uitgelekt|pot|potje|jar|canned)\b/.test(preparationText)||/\bhak\b/.test(preparationText)?'preserved':
   /\b(poeder|gemalen|gedroogd|gedroogde|kruidenmix)\b/.test(preparationText)?'powder':
   /\b(diepvries|bevroren|dv|frozen)\b/.test(preparationText)?'frozen':'plain';
+ const culinary=typeof module==='object'&&module.exports?require('./recipe-products.js'):window.MaatjeRecipeProducts;
+ if(culinary?.isDeliChicken(product))form='cooked';
  // Compound words matter: pureersoep and pepersaus are not plain produce/meat.
  const dish=/(?:soep|soup|saus|sauce|salade|salademix|groentemix|groentehap|knijpfruit|smoothie|maaltijd|schotel|pizza|burger|schnitzel|nugget|kroket|crouton|pate|wrap|taart|cake|koek(?:jes|en)?|biscuit|crackers?|chips|puree|stamp(pot)?|tapenade|hoemoes|hummus|smeerkaas|mueslireep|repen|brood)\b/.test(n);
  if(dish&&family!=='boemboe'&&audience==='human')form='prepared';

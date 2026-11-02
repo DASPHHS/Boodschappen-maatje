@@ -51,8 +51,20 @@ function animalGroup(raw){
  if(/\b(rund(?:vlees)?|varken(?:svlees)?|lam(?:svlees)?|lamsgehakt|eend(?:enborst)?|hert(?:envlees)?|gehakt|biefstuk|spek(?:reepjes|blokjes)?|bacon|ham(?:blokjes|lapjes)?|rookworst|worst(?:jes)?|hamburger(?:s)?|runderburger(?:s)?|chorizo|salami|saucijs(?:jes)?)\b/.test(raw))return 'vlees';
  return null;
 }
+function isDeliChicken(o){
+ const name=norm(o?.name),e=o?.semantic_evidence;
+ const categories=e?.verified_identity===true?norm((e.categories||[]).join(' ')):'';
+ if(!/kipfilet|scharrelkipfilet/.test(name))return false;
+ if(/vleeswaren|broodbeleg/.test(categories)||/broodbeleg|vleeswaren|flinterdun|oven(?:ge)?bakken|gerookt|gebraden|plakjes/.test(name))return true;
+ // The Jumbo product sold under this ambiguous name is sandwich meat, also
+ // in larger packs. Weight alone never establishes raw chicken.
+ const jumbo=/^jumbo scharrel ?kipfilet\b/.test(name);
+ const rawEvidence=/\b(rauw|rauwe|vers|verse)\b/.test(name)||/verse kip|vers vlees|kip kalkoen/.test(categories);
+ return jumbo&&!rawEvidence;
+}
 function profile(value,{ingredient=false}={}){
  const o=typeof value==='string'?{name:value}:value||{},raw=norm(o.name).replace(/\bscharrel(?=kip)/g,''),n=raw.replace(/\b\d+(?:g|kg|gr|ml|cl|l|st|stk|stuks)?\b/g,' ').replace(/\s+/g,' ').trim();
+ if(!ingredient&&isDeliChicken(o))return null;
  if(!raw||['huishouden','bier','dranken','overige_dranken','snacks'].includes(o.category))return null;
  if(/(?:katten|honden|babyvoeding|knijpfruit|shampoo|vaatwas|wasmiddel|supplement)/.test(raw))return null;
  // A plant-based fish/meat analogue is a distinct main ingredient; never a vegetable.
@@ -115,5 +127,5 @@ function group(recipe){
  return 'vega';
 }
 function isMain(p,recipe){return p?.group===group(recipe);}
-return {VERSION,norm,profile,compatible,recipeProfiles,group,isMain,quantity};
+return {VERSION,norm,isDeliChicken,profile,compatible,recipeProfiles,group,isMain,quantity};
 });
