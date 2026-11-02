@@ -10,6 +10,7 @@
  const normalizeTitle=s=>String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD')
   .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  function offerWeight(m){
+  if(m?.actionBenefit)return m.actionBenefit.score;
   if(m?.confirmed?.length)return 4;
   if(m?.anchors?.length)return 3;
   if(m?.possible?.length)return 1;
@@ -74,6 +75,7 @@
   return 0; // An uncertain or merely similar offer never outranks real food quality.
  }
  function editorialScore(recipe,info){
+  if(info?.actionBenefit)return info.actionBenefit.score*100+culinaryScore(recipe);
   return evidenceScore(info)*10+culinaryScore(recipe);
  }
  function recommend(rows,matchInfo,limit=12){
@@ -82,6 +84,14 @@
    editorialScore(b,matchInfo(b))-editorialScore(a,matchInfo(a))||
    (Number(a.minutes)||999)-(Number(b.minutes)||999)||
    String(a.title).localeCompare(String(b.title),'nl'));
+  if(sorted.some(r=>matchInfo(r)?.actionBenefit)){
+   const result=[],counts=new Map(),remaining=[...sorted];
+   while(remaining.length){
+    remaining.sort((a,b)=>editorialScore(b,matchInfo(b))-(counts.get(b.category)||0)*300-(editorialScore(a,matchInfo(a))-(counts.get(a.category)||0)*300));
+    const r=remaining.shift();result.push(r);counts.set(r.category,(counts.get(r.category)||0)+1);
+   }
+   return result;
+  }
   const backed=sorted.filter(r=>evidenceScore(matchInfo(r))>0);
   const inspiration=sorted.filter(r=>evidenceScore(matchInfo(r))===0);
   // Only a handful of supported offers at the top; the remaining positions

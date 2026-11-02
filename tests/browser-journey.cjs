@@ -90,9 +90,14 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.locator('#publisher-recipes-main [data-publisher-source="all"]').getAttribute('aria-pressed'),'true');
   for(const card of await publisherCards.all()){
    assert.ok(await card.locator('.publisher-match li').count()>=2,'Every recipe shows two different actionable products');
-   assert.match(await card.innerText(),/actieproducten bij/);
+   const text=await card.innerText();
+   assert.match(text,/actieproducten bij/);
+   assert.doesNotMatch(text,/Honig Bakplaat Mix|Jumbo Gevulde Eieren|Maza Hoemoes Paprika|Jumbo Champignons Knoflook/);
    assert.ok(await card.locator('.publisher-match a[href^="https://"]').count()>=2);
   }
+  await page.locator('#basis-filter').selectOption('main');
+  for(const card of await publisherCards.all())assert.match(await card.innerText(),/eiwitbasis in actie/);
+  await page.locator('#basis-filter').selectOption('all');
   const firstCount=await publisherCards.count();
   if(await page.locator('#view-recepten [data-more-publishers]').count()){
    await page.locator('#view-recepten [data-more-publishers]').click();

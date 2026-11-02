@@ -61,33 +61,20 @@
   'HelloFresh':/^https:\/\/www\.hellofresh\.nl\/recipes\/(?!market\/)[a-z0-9_-]+-[0-9a-f]{24}$/
  };
  const trustedPublisherUrl=(source,url)=>typeof url==='string'&&Boolean(publisherUrlPatterns[source]?.test(url));
- const unsafe=/\b(katten|kattenvoer|honden|hondenvoer|puppy|kitten|olvarit|babyvoeding|baby|schnitzel|worst|burger|saus|soep|snack|chips|crackers|koekjes|chocolade|ijs|reep|repen|salade|pizza|maaltijd|kruidenmix|marinade|dressing|brood|rollade|gerookt|gerookte|gepaneerd|plantaardig|vegetarisch|vegan|vega|dessert|smaak|poeder|thee|supplement|kruiden)\b/;
+ const products=()=>typeof module==='object'&&module.exports?require('./recipe-products.js'):window.MaatjeRecipeProducts;
  function classify(offer){
-  const raw=norm(offer?.name),cat=offer?.category;
-  if(!raw||['bier','huishouden','overige_dranken','dranken','snacks'].includes(cat))return null;
-  const household=/\b(vaatwas|wasmiddel|toiletpapier|shampoo|zeep|reiniger)\b/;
-  if(household.test(raw)||unsafe.test(raw)||/(?:saus|soep|schotel|puree|salade|curry|pasta|burger|schnitzel|wokmix|groentemix|kruidenmix|maaltijd|crouton|pizza|brood|taart|cake|chips)\b/.test(raw))return null;
-  for(const [key,meta] of Object.entries(recipes)){
-   if(meta.match.test(raw)){
-    if(key==='riblappen'&&/\b(biefstuk|rundergehakt|ossenhaas|entrecote)\b/.test(raw))return null;
-    return {key,label:meta.label,tags:meta.tags,search:meta.search,links:meta.links||[]};
-   }
-  }
-  return null;
+  const p=products().profile(offer);
+  if(!p)return null;
+  const meta=recipes[p.family]||{label:p.family.replace(/_/g,' '),tags:[],search:p.family,links:[]};
+  return {key:p.family,label:meta.label,tags:meta.tags,search:meta.search,links:meta.links||[],profile:p};
  }
  function matchRecipe(offer,recipe){
-  const type=classify(offer);if(!type||!Array.isArray(recipe?.ingredients))return null;
-  const meta=recipes[type.key];
-  const ingredient=recipe.ingredients.find(i=>{
-   const t=norm(i.name);
-   if(unsafe.test(t))return false;
-   if(type.key==='riblappen')return meta.match.test(t);
-   return meta.match.test(t);
-  });
-  if(!ingredient)return null;
-  // Slow cuts are never suitable for quick beef stir-fry just because both are red meat.
+  const type=classify(offer);
+  if(!type)return null;
+  const candidate=products().recipeProfiles(recipe).find(p=>products().compatible(type.profile,p));
+  if(!candidate)return null;
   if(type.key==='riblappen'&&Number(recipe.minutes)<95&&!/stoof|rendang|hachee|semur|riblappen/i.test(recipe.title))return null;
-  return {recipe,ingredient:ingredient.name,match:'culinary_family',score:type.key==='riblappen'?15:12};
+  return {recipe,ingredient:type.label,profile:candidate,match:'culinary_variant',score:products().isMain(candidate,recipe)?30:10};
  }
  function localMatches(offer,list,limit=7){
   if(!classify(offer))return [];
@@ -109,6 +96,7 @@
    if(!r||!Array.isArray(r.families)||!r.families.includes(type.key)||
       typeof r.title!=='string'||!r.title.trim()||!trustedPublisherUrl(r.source,r.url)||
       !['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified','publisher_sitemap_title_only'].includes(r.review_status))continue;
+   if(r.ingredient_profile_version===products().VERSION&&!products().recipeProfiles(r).some(p=>products().compatible(type.profile,p)))continue;
    if(['riblappen','gehakt','kip','zalm','witvis','garnalen'].includes(type.key)&&
       /\b(veggie|vegan|vegetarisch|vegetarische|plantaardig|plantaardige)\b/i.test(r.title))continue;
    if(seen.has(r.url))continue;

@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 BASE='https://dasphhs.github.io/Boodschappen-maatje/docs/'
-FILES=('app.js','product-semantics.js','product-resolver.js','catalog-search.js','price-observations.js','recipe-shop-options.js','style.css')
+FILES=('app.js','recipe-products.js','publisher-selection.js','recipe-discovery.js','recipe-presentation.js','product-semantics.js','product-resolver.js','catalog-search.js','price-observations.js','recipe-shop-options.js','style.css')
 def same(local,remote):return hashlib.sha256(local).digest()==hashlib.sha256(remote).digest()
 def main():
     root=Path(__file__).resolve().parents[1]/'docs'

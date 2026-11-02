@@ -34,7 +34,7 @@ assert.ok(app.includes('newly-curated'),'Curated recipes must render as regular 
 assert.ok(app.includes('shown.map(recipeCard)'),'Curated recipes must use the existing card renderer');
 assert.ok(!app.includes('out+=discoveredPublisherCards(s,6)'),'Unrelated publisher cards must not flood the main recipe listing');
 assert.ok(!/out\+=discoveredPublisherCards\(s,12\)/.test(app),'Link tiles should no longer precede real cards');
-assert.ok(html.includes('app.js?v=20261102-two-actions'),'Force refresh stale browser cache');
+assert.ok(html.includes('app.js?v=20261102-main-basis'),'Force refresh stale browser cache');
 assert.ok(app.includes('dedupeAcrossStores(filtered'),'All-store selection must avoid duplicate recipes');
 assert.ok(app.includes('state.recipePageSize'),'Avoid rendering hundreds of recipes at once');
 assert.ok(app.includes('matchesIngredientSearch(r)'),'Ingredient search must filter main cards');

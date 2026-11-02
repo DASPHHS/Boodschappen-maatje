@@ -1,10 +1,11 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const selector=require('../docs/publisher-selection.js'),engine=require('../docs/recipe-discovery.js');
+const products=require('../docs/recipe-products');
 const day='2026-11-02';
 const offer=(id,name,extra={})=>({id,name,price:2,start_date:day,end_date:'2026-11-08',source_provider:'PrijsProfeet',promotion_status:'active',source:{url:'https://www.prijsprofeet.nl/'},...extra});
 const broccoli=offer('b','Broccoli'),kip=offer('k','Kipfilet'),zalm=offer('z','Zalmfilet'),bloemkool=offer('f','Bloemkool');
-const make=(id,source,families,method)=>({id,title:id+' met groenten',source,url:source==='HelloFresh'?'https://www.hellofresh.nl/recipes/'+id+'-'+'a'.repeat(24):'https://www.ah.nl/allerhande/recept/R-R123/'+id,families,ingredient_families:families,ingredient_evidence:'publisher_recipe_schema',method,review_status:'publisher_metadata_verified'});
+const make=(id,source,families,method)=>({id,title:id+' met groenten',source,url:source==='HelloFresh'?'https://www.hellofresh.nl/recipes/'+id+'-'+'a'.repeat(24):'https://www.ah.nl/allerhande/recept/R-R123/'+id,families,ingredient_profile_version:products.VERSION,ingredient_profiles:families.map(f=>products.profile({kip:'kipfilet',zalm:'zalmfilet'}[f]||f,{ingredient:true})).filter(Boolean),ingredient_families:families,ingredient_evidence:'publisher_recipe_schema',method,review_status:'publisher_metadata_verified'});
 const index={recipes:[make('kipcurry','HelloFresh',['kip','broccoli'],'curry'),make('ovenzalm','Allerhande',['zalm','bloemkool'],'oven'),make('frittata','Allerhande',['eieren','broccoli'],'oven')]};
 const run=(offersByStore,options={})=>selector.recipesForOffers({index,stores:['ah','jumbo'],engine,offersByStore,day,...options});
 assert.equal(run({ah:[kip]}).length,0,'A single promotion never qualifies');
@@ -20,11 +21,11 @@ assert.equal(two.length,2);assert.equal(new Set(two.map(x=>x.recipe.source)).siz
 assert.equal(new Set(two.map(x=>x.category)).size,2);assert.equal(new Set(two.map(x=>x.recipe.method)).size,2);
 assert.ok(two.every(x=>x.matched.count>=2&&x.matched.store==='ah'));
 assert.equal(run({ah:[kip,broccoli,zalm,bloemkool]},{source:'HelloFresh'}).length,1);
-const unsupported={recipes:[{...index.recipes[0],ingredient_families:undefined}]};
+const unsupported={recipes:[{...index.recipes[0],ingredient_families:undefined,ingredient_profiles:undefined}]};
 assert.equal(selector.recipesForOffers({index:unsupported,stores:['ah'],offersByStore:{ah:[kip,broccoli]},engine,day}).length,0,'Title-only families never prove ingredients');
 const app=fs.readFileSync('docs/app.js','utf8');
 assert.ok(app.includes("publisherSource:'all'"),'All publishers enabled by default');
 assert.ok(app.includes('query:search'),'Search reaches selector');
 assert.ok(app.includes('recipeActions(r,s).length>=2'),'Own recipes use the same action gate');
-assert.ok(fs.readFileSync('docs/index.html','utf8').includes('publisher-selection.js?v=20261102-two-actions'));
+assert.ok(fs.readFileSync('docs/index.html','utf8').includes('publisher-selection.js?v=20261102-main-basis'));
 console.log('Two-action publisher selection: dates, identity, one-store minimum, source mix, variation, query and ingredient evidence verified');

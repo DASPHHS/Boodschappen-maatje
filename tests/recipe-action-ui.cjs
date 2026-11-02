@@ -12,7 +12,7 @@ const ctx={console,URL,Intl,Date:Clock,Set,Map,WeakMap,Promise,parseFloat,parseI
  location:{hash:'#vandaag'},localStorage:{getItem:()=>null,setItem(){}},
  fetch:async url=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(path.join(root,String(url).split('?')[0]),'utf8'))})};
 ctx.window=ctx;vm.createContext(ctx);
-for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','recipe-presentation.js','publisher-selection.js','offer-identity.js','weekdeals-engine.js','recipe-discovery.js','source-freshness.js','app.js']){
+for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price-integrity.js','price-observations.js','product-semantics.js','product-resolver.js','catalog-search.js','recipe-shop-options.js','recipe-ranking.js','recipe-presentation.js','publisher-selection.js','offer-identity.js','weekdeals-engine.js','recipe-products.js','recipe-discovery.js','source-freshness.js','app.js']){
  let source=fs.readFileSync(path.join(root,file),'utf8');
  if(file==='app.js')source=source.replace(/\}\)\(\);\s*$/,'window.testApp={state,render,recipes,catalog,offers,recipeActions,findRecipe,openRecipe};})();');
  vm.runInContext(source,ctx,{filename:file});
@@ -21,6 +21,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  for(let i=0;i<60&&!el('#view-vandaag').innerHTML;i++)await new Promise(r=>setTimeout(r,20));
  const t=ctx.testApp;
  const index=t.state.publisherRecipes;
+ const culinary=ctx.MaatjeRecipeProducts;
  const offersByStore=Object.fromEntries(['ah','jumbo','lidl'].map(s=>[s,t.offers(s)]));
  const rows=ctx.MaatjePublisherSelection.recipesForOffers({index,stores:['ah','jumbo','lidl'],offersByStore,engine:ctx.MaatjeRecipeDiscovery,day:actionDay});
  assert.ok(index.recipes.some(r=>r.source==='HelloFresh'&&r.ingredient_evidence==='publisher_recipe_schema'));
@@ -28,6 +29,8 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  for(const row of rows){
   assert.ok(row.matched.count>=2);
   assert.equal(new Set(row.matched.products.map(x=>x.family)).size,row.matched.count);
+  assert.ok(row.matched.products.every(x=>culinary.recipeProfiles(row.recipe).some(p=>culinary.compatible(x.profile,p))));
+  if(row.category==='vis')assert.ok(!row.matched.main.some(x=>x.family.startsWith('vega_')));
  }
  for(const s of ['ah','jumbo','lidl'])for(const r of t.catalog(s))assert.ok(t.recipeActions(r,s).length>=2);
  t.state.view='recepten';t.render();
@@ -35,6 +38,10 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  assert.ok(page.includes('Alle bronnen'));
  assert.ok(page.includes(rows.length?'actieproducten bij':'Geen recepten met minimaal twee'));
  assert.ok(page.includes('Allerhande')&&page.includes('HelloFresh'));
+ assert.doesNotMatch(page,/Honig Bakplaat Mix|Jumbo Gevulde Eieren|Maza Hoemoes Paprika|Jumbo Champignons Knoflook/);
+ t.state.recipeBasis='main';t.render();
+ for(const store of ['ah','jumbo','lidl'])for(const r of t.catalog(store).filter(r=>t.recipeActions(r,store).some(x=>x.isMain)))assert.ok(t.recipeActions(r,store).length>=2);
+ t.state.recipeBasis='all';
  assert.ok(!page.includes('undefined')&&!page.includes('[object Object]'));
  // Saved originals remain readable when their promotions expire.
  const id='library|'+t.state.library[0].id;

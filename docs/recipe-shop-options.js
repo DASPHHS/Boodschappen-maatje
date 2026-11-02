@@ -176,6 +176,9 @@
       typeof row[2]!=='string'||row[2].length>80)continue;
     const name=row[0];
     if(!plainIngredient(name,key,rule))continue;
+    const culinary=typeof module==='object'&&module.exports?require('./recipe-products.js'):window.MaatjeRecipeProducts;
+    const target=culinary?.profile(ing.name,{ingredient:true});
+    if(target&&!culinary.compatible(culinary.profile(name),target))continue;
     const candidate=catalogAdapter.observation(row,store,catalog,today,pricing);
     if(resolver.matching(candidate,profile,pricing).status!=='match')continue;
     const p=measuredPack(row,pricing,requiredUnit,rule.drained);

@@ -15,6 +15,9 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
+try:from .recipe_metadata import profiles, PROFILE_VERSION
+except ImportError:from recipe_metadata import profiles, PROFILE_VERSION
+
 ROOT=Path(__file__).resolve().parent.parent
 TARGET=ROOT/"docs/data/publisher-recipes.json"
 SITEMAP="https://www.ah.nl/sitemaps/entities/allerhande/recipes.xml"
@@ -98,7 +101,8 @@ def to_record(url,meta,stamp):
     if isinstance(raw,str):raw=[raw]
     if (len(title)<5 or len(title)>150 or EXCLUDE.search(title)
         or not isinstance(raw,list) or len(raw)<5):return None
-    tags=families_of(*[i for i in raw if isinstance(i,str)])
+    typed=profiles(raw)
+    tags=sorted(set(p["family"] for p in typed))
     if not tags:return None
     has_veg=len(VEG.intersection(tags))
     has_legume=bool(LEGUMES.intersection(tags))
@@ -106,16 +110,16 @@ def to_record(url,meta,stamp):
     category=str(meta.get("recipeCategory") or "").lower()
     if category and not any(k in category for k in ("hoofd","main","dinner","avond","maaltijd")):return None
     total=minutes(meta.get("totalTime")) or minutes(meta.get("cookTime"))
-    if total is not None and not 10<=total<=240:return None
+    if total is not None and not 10<=total<=480:return None
     recipe_yield=meta.get("recipeYield")
     servings=None
     match=re.search(r"\b([2-8])\b",str(recipe_yield or ""))
     if match:servings=int(match.group(1))
-    if servings is not None and servings not in (2,3,4,5,6):return None
+    if servings is not None and servings not in (2,3,4,5,6,8):return None
     method=next((m for m in ("curry","stoof","wok","oven","soep","salade","pasta","rijst","stamppot","noedel","tajine")
        if m in title.lower()),"anders")
     return {"id":"ah-auto-"+re.search(r"/(R-R\d+)/",url).group(1).lower() if re.search(r"/(R-R\d+)/",url) else "ah-auto-"+str(abs(hash(url))),
-       "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,"ingredient_families":tags,"ingredient_evidence":"publisher_recipe_schema",
+       "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,"ingredient_families":tags,"ingredient_evidence":"publisher_recipe_schema","ingredient_profiles":typed,"ingredient_profile_version":PROFILE_VERSION,
        "minutes":total,"servings":servings,"course":"hoofdgerecht",
        "method":method,"cuisine":meta.get("recipeCuisine") if isinstance(meta.get("recipeCuisine"),str) else None,"vegetable_families":has_veg,"has_legumes":has_legume,
        "review_status":"publisher_metadata_verified","last_checked":stamp}
@@ -170,7 +174,7 @@ def sync(today=None,max_pages=28):
         print("Sitemap unavailable, keeping reviewed recipes:",str(exc)[:220]);return 0
     added=0;checked=0;methods=Counter();page_blocked=False
     for url,_ in items:
-        if checked>=max_pages or len(existing)>=225:break
+        if checked>=max_pages or sum(r.get("source")=="Allerhande" for r in existing.values())>=650:break
         records=[]
         if not page_blocked:
             try:

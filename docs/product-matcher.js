@@ -95,6 +95,8 @@
  // This gate only affects suggestions, never claims a purchase price.
  function culinaryOfferSuitability(offer,ingredient){
   if(!offer||!ingredient)return false;
+  const api=typeof module==='object'&&module.exports?require('./recipe-products.js'):window.MaatjeRecipeProducts;
+  if(api){const target=api.profile(ingredient.name,{ingredient:true});if(target&&!api.compatible(api.profile(offer),target))return false;}
   if(!['compatible','uncertain'].includes(evaluate(offer,ingredient).status))return false;
   const familyName=family(ingredient.name);
   if(!familyName||family(offer.name)!==familyName)return false;

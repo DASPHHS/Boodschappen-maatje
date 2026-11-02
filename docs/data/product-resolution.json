@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-01T23:00:54.024Z",
+  "generated_at": "2026-11-02T11:39:09.691Z",
   "checked_date": "2026-11-02",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 44,
+    "price_observed": 46,
     "stale_or_unavailable": 0,
     "needs_variant_evidence": 7,
-    "needs_source": 9
+    "needs_source": 7
   },
   "stores": {
     "lidl": {
@@ -336,7 +336,7 @@
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 7.04,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": "2026-11-01"
+        "checked_date": "2026-11-02"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
@@ -345,7 +345,7 @@
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 7.04,
         "price_status": "externe actiemelding · t/m 2026-11-03",
-        "checked_date": "2026-11-01"
+        "checked_date": "2026-11-02"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
@@ -512,22 +512,22 @@
         "checked_date": "2026-10-30"
       },
       "skuumkoppe": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi606448/texels-skuumkoppe",
+        "product_name": "Texels Skuumkoppe",
+        "price": 1.87,
+        "price_status": "externe actiemelding · t/m 2026-11-08",
+        "checked_date": "2026-11-02"
       },
       "skuumkoppe_00": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi589403/texels-skuumkoppe-0-0",
+        "product_name": "Texels Skuumkoppe 0.0%",
+        "price": 1.31,
+        "price_status": "externe actiemelding · t/m 2026-11-08",
+        "checked_date": "2026-11-02"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",

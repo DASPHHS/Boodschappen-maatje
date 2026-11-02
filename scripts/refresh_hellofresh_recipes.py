@@ -20,6 +20,8 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 
+try:from .recipe_metadata import profiles, PROFILE_VERSION
+except ImportError:from recipe_metadata import profiles, PROFILE_VERSION
 from refresh_publisher_recipes import families_of, VEG, LEGUMES, EXCLUDE, schema_recipes, minutes
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -170,7 +172,8 @@ def record_from_page(url, page_html, stamp):
     metadata=next(iter(schema_recipes(page_html)),{})
     raw=metadata.get("recipeIngredient") or []
     if isinstance(raw,str):raw=[raw]
-    ingredient_families=families_of(*[x for x in raw if isinstance(x,str)])
+    typed=profiles(raw)
+    ingredient_families=sorted(set(p["family"] for p in typed))
     # Tags are candidate food families from public title/short description only;
     # never misrepresent them as the publisher's actual ingredient list.
     families = sorted(set(families_of(title, parser.description)+ingredient_families))
@@ -192,9 +195,9 @@ def record_from_page(url, page_html, stamp):
     return {
         "id":"hf-page-"+hashlib.sha256(url.encode()).hexdigest()[:14],
         "source":"HelloFresh","title":title,"url":url,"families":families,
-        "ingredient_families":ingredient_families,
+        "ingredient_families":ingredient_families,"ingredient_profiles":typed,"ingredient_profile_version":PROFILE_VERSION,
         "ingredient_evidence":"publisher_recipe_schema" if raw else "unavailable",
-        "minutes":minutes(metadata.get("totalTime")),"servings":None,"course":"niet_gecontroleerd",
+        "minutes":minutes(metadata.get("totalTime")),"servings":int(re.search(r"[1-8]",str(metadata.get("recipeYield", ""))).group()) if re.search(r"[1-8]",str(metadata.get("recipeYield", ""))) else None,"course":"hoofdgerecht" if raw else "niet_gecontroleerd",
         "method":method,"cuisine":metadata.get("recipeCuisine") if isinstance(metadata.get("recipeCuisine"),str) else None,"vegetable_families":len(VEG.intersection(ingredient_families)),
         "has_legumes":bool(LEGUMES.intersection(ingredient_families)),
         "review_status":"publisher_page_title_verified","last_checked":stamp
@@ -236,7 +239,7 @@ def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
     checked=0
     added=0
     for url in choices:
-        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=350:
+        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=650:
             break
         if not rules.can_fetch(USER_AGENT, url):
             continue

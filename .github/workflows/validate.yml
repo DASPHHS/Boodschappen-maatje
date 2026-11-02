@@ -78,6 +78,10 @@ on:
       - 'tests/batch-cooking.cjs'
       - 'docs/recipe-presentation.js'
       - 'docs/publisher-selection.js'
+      - 'docs/recipe-products.js'
+      - 'scripts/recipe_profiles.cjs'
+      - 'scripts/recipe_metadata.py'
+      - 'tests/recipe-basis.cjs'
       - 'tests/publisher-first-selection.cjs'
       - 'tests/recipe-action-ui.cjs'
       - 'tests/recipe-presentation.cjs'
@@ -135,6 +139,7 @@ jobs:
           node tests/recipe-discovery.cjs
           node tests/publisher-recipe-index.cjs
           node tests/publisher-first-selection.cjs
+          node tests/recipe-basis.cjs
           node tests/recipe-action-ui.cjs
           node tests/recipe-engine.cjs
           node tests/product-matcher.cjs

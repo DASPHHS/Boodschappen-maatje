@@ -7,10 +7,13 @@ on:
       - 'scripts/refresh_publisher_recipes.py'
       - 'scripts/refresh_hellofresh_recipes.py'
       - 'scripts/refresh_recipe_ingredients.py'
+      - 'scripts/recipe_metadata.py'
+      - 'scripts/recipe_profiles.cjs'
+      - 'docs/recipe-products.js'
       - 'docs/data/publisher-recipes.json'
       - '.github/workflows/recipe-discovery.yml'
   schedule:
-    - cron: '45 7 * * 3'
+    - cron: '45 6 * * *'
 permissions:
   contents: write
 concurrency:
@@ -55,7 +58,7 @@ jobs:
           records={r["url"]:r for r in current["recipes"]}
           for r in new["recipes"]:
               old=records.get(r["url"])
-              rank=lambda x:(x.get("last_checked",""),x.get("ingredient_evidence")=="publisher_recipe_schema",x.get("ingredient_checked_at",""))
+              rank=lambda x:(x.get("ingredient_profile_version",0),x.get("last_checked",""),x.get("ingredient_evidence")=="publisher_recipe_schema",x.get("ingredient_checked_at",""))
               if old is None or rank(r)>rank(old):records[r["url"]]=r
           if list(records.values())!=current["recipes"]:
               current["recipes"]=list(records.values())

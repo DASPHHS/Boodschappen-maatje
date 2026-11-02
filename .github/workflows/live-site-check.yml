@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - 'docs/app.js'
+      - 'docs/recipe-products.js'
+      - 'docs/publisher-selection.js'
+      - 'docs/recipe-discovery.js'
+      - 'docs/recipe-presentation.js'
       - 'docs/product-semantics.js'
       - 'docs/product-resolver.js'
       - 'docs/catalog-search.js'
