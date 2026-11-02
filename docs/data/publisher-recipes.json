@@ -16,7 +16,8 @@
       "servings": 8,
       "course": "hoofdgerecht",
       "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-01",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "ah-hachee",
@@ -1866,7 +1867,8 @@
         "wortel"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Indonesisch"
+      "cuisine": "Indonesisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-nasigoreng-ei",
@@ -1888,7 +1890,8 @@
         "eieren"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Chinees"
+      "cuisine": "Chinees",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-gado-gado",
@@ -1896,7 +1899,10 @@
       "source": "HelloFresh",
       "url": "https://www.hellofresh.nl/recipes/gado-gado-met-sperziebonen-en-kokos-pindasaus-6203b8ae0d67ec06723ad270",
       "families": [
-        "sperziebonen"
+        "eieren",
+        "pindakaas",
+        "sperziebonen",
+        "spitskool"
       ],
       "minutes": 25,
       "servings": null,
@@ -1913,7 +1919,8 @@
         "spitskool"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Aziatisch"
+      "cuisine": "Aziatisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-koolvis-curry",
@@ -1935,7 +1942,8 @@
         "witvis"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Aziatisch"
+      "cuisine": "Aziatisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-nasigoreng-kipsate",
@@ -1959,7 +1967,8 @@
         "wortel"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Indonesisch"
+      "cuisine": "Indonesisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-rendang-boontjes",
@@ -1981,7 +1990,8 @@
         "sperziebonen"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": null
+      "cuisine": null,
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "ah-sitemap-r-r324168",
@@ -3005,7 +3015,8 @@
         "boerenkool"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Europese"
+      "cuisine": "Europese",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-page-220a85ad785796",
@@ -3029,7 +3040,8 @@
         "zalm"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Fusion"
+      "cuisine": "Fusion",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-page-7967751e2293de",
@@ -3055,7 +3067,8 @@
         "spinazie"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Nedeländsk"
+      "cuisine": "Nedeländsk",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "ah-sitemap-r-r775590",
@@ -3533,7 +3546,8 @@
         "wortel"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Indonesisch"
+      "cuisine": "Indonesisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-page-b3a0cfcd1ce0f4",
@@ -3557,7 +3571,8 @@
         "eieren"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "American"
+      "cuisine": "American",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "ah-hachee-basis",
@@ -4158,7 +4173,8 @@
         "wortel"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
-      "cuisine": "Indonesisch"
+      "cuisine": "Indonesisch",
+      "ingredient_checked_at": "2026-11-02"
     },
     {
       "id": "hf-page-a45aacb421230a",
@@ -4220,16 +4236,28 @@
       "title": "Visstoof met kokosmelk",
       "url": "https://www.hellofresh.nl/recipes/visstoof-met-koolvis-en-spekjes-5d7a1220e410d4001452eb29",
       "families": [
-        "prei"
+        "aardappelen",
+        "courgette",
+        "prei",
+        "tomaten"
       ],
-      "minutes": null,
+      "minutes": 45,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
-      "vegetable_families": 1,
+      "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "courgette",
+        "prei",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Fusion"
     },
     {
       "id": "hf-page-9c5da8ab1cc759",
@@ -4237,16 +4265,26 @@
       "title": "Toscaanse groentestoof met boerenkool",
       "url": "https://www.hellofresh.nl/recipes/toscaanse-groentestoof-met-boerenkool-5f3d0750a910e1052e77097a",
       "families": [
-        "boerenkool"
+        "boerenkool",
+        "tomaten",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 45,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
-      "vegetable_families": 1,
+      "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "boerenkool",
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Italiaans"
     },
     {
       "id": "hf-page-6ebabdd2621e51",
@@ -4256,14 +4294,20 @@
       "families": [
         "paprika"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Zuid-amerikaans"
     },
     {
       "id": "hf-page-f5ffcd1079838b",
@@ -4273,14 +4317,20 @@
       "families": [
         "paprika"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Zuid-amerikaans"
     },
     {
       "id": "hf-page-e4d969b6bd57d7",
@@ -4288,16 +4338,23 @@
       "title": "Braziliaanse visstoof met kabeljauw en rijst",
       "url": "https://www.hellofresh.nl/recipes/braziliaanse-visstoof-met-kabeljauw-en-rijst-64d38b72b199bd79fa7173dd",
       "families": [
-        "witvis"
+        "witvis",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 25,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Mexicaans"
     },
     {
       "id": "hf-page-e0a01b02630966",
@@ -4309,14 +4366,21 @@
         "tomaten",
         "witvis"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "broccoli",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Aziatisch"
     },
     {
       "id": "hf-page-d4fd73210e503c",
@@ -4324,16 +4388,24 @@
       "title": "Pittige stamppot van paksoi met spekjes",
       "url": "https://www.hellofresh.nl/recipes/pittige-stamppot-van-paksoi-met-spekjes-621f72b86c3e551cd153308b",
       "families": [
+        "aardappelen",
         "paksoi"
       ],
-      "minutes": null,
+      "minutes": 30,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stamppot",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "paksoi"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Aziatisch"
     },
     {
       "id": "hf-page-b4b5c71997e635",
@@ -4345,14 +4417,21 @@
         "champignons",
         "paprika"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stamppot",
-      "vegetable_families": 2,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "champignons"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Europese"
     },
     {
       "id": "hf-page-f0c2d16d2ec396",
@@ -4362,14 +4441,20 @@
       "families": [
         "eieren"
       ],
-      "minutes": null,
+      "minutes": 30,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "rijst",
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "eieren"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Indonesisch"
     },
     {
       "id": "hf-page-d8a217985aab69",
@@ -4377,16 +4462,23 @@
       "title": "Baba ganoush bowl met couscous en feta",
       "url": "https://www.hellofresh.nl/recipes/baba-ganoush-bowl-met-couscous-en-feta-62a19ce3d1e4152bd60d225e",
       "families": [
-        "aubergine"
+        "aubergine",
+        "courgette"
       ],
-      "minutes": null,
+      "minutes": 20,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "bowl",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "courgette"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Middle East"
     },
     {
       "id": "hf-page-eea1f1971f77fa",
@@ -4394,16 +4486,24 @@
       "title": "Geroosterde bloemkool in groene currysaus",
       "url": "https://www.hellofresh.nl/recipes/geroosterde-bloemkool-in-groene-currysaus-61f2c49fdbdce245092d9b86",
       "families": [
-        "bloemkool"
+        "bloemkool",
+        "spinazie"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "curry",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "bloemkool",
+        "spinazie"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Thais"
     },
     {
       "id": "hf-page-f4cc0a8431c65a",
@@ -4411,17 +4511,571 @@
       "title": "Stamppot met gemarineerde kipfilet",
       "url": "https://www.hellofresh.nl/recipes/stamppot-met-gemarineerde-kipfilet-63c7d17700ace46356b3e406",
       "families": [
+        "aardappelen",
         "broccoli",
-        "kip"
+        "kip",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 45,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "broccoli",
+        "kip",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Mediterranean"
+    },
+    {
+      "id": "hf-page-305e90bb2f2e53",
+      "source": "HelloFresh",
+      "title": "Hollands stoofpotje met appel en peen",
+      "url": "https://www.hellofresh.nl/recipes/hollands-stoofpotje-met-appel-en-peen-57dc088916a86670778b4568",
+      "families": [
+        "aardappelen",
+        "linzen",
+        "prei"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "linzen",
+        "prei"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Europese",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-42c24748aa1771",
+      "source": "HelloFresh",
+      "title": "Verse tagliatelle met coq au vin-stijl stoof",
+      "url": "https://www.hellofresh.nl/recipes/verse-pappardelle-met-pulled-chicken-stoof-696e255b84d22895b02b90bc",
+      "families": [
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Italiaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-3db9ccc358082f",
+      "source": "HelloFresh",
+      "title": "Braziliaanse visstoof met rijst en kokosmelk",
+      "url": "https://www.hellofresh.nl/recipes/braziliaanse-visstoof-met-rijst-en-kokosmelk-63d31449f3cad3f4f35bf1c0",
+      "families": [
+        "witvis",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "witvis",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Mexicaans",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-3927b601e75846",
+      "source": "HelloFresh",
+      "title": "Rendang met kokosrijst",
+      "url": "https://www.hellofresh.nl/recipes/rendang-met-kokosrijst-5e4cf9711db26e09b0350000",
+      "families": [
+        "wortel"
+      ],
+      "ingredient_families": [
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rendang",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-5104bb89d59893",
+      "source": "HelloFresh",
+      "title": "Kipdrumsticks met rodewijnstoof",
+      "url": "https://www.hellofresh.nl/recipes/oven-roasted-chicken-drumsticks-with-red-wine-stew-65b3b73b3ebf28940b30292f",
+      "families": [
+        "aardappelen",
+        "champignons",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "champignons",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Frans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-b945a01148c2f7",
+      "source": "HelloFresh",
+      "title": "Visstoof met ansjovis, heekfilet en volkoren ciabatta",
+      "url": "https://www.hellofresh.nl/recipes/visstoof-met-ansjovis-heekfilet-en-volkoren-ciabatta-546c6fb8ff604df6918b4569",
+      "families": [
+        "paprika",
+        "prei",
+        "tomaten"
+      ],
+      "ingredient_families": [
+        "paprika",
+        "prei",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": null,
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-64da766e44519f",
+      "source": "HelloFresh",
+      "title": "Patatje Rendang",
+      "url": "https://www.hellofresh.nl/recipes/patatje-rendang-5e848aa4a1940065792577f2",
+      "families": [
+        "aardappelen",
+        "paprika",
+        "sperziebonen"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "paprika",
+        "sperziebonen"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rendang",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-f6cd37017b51ab",
+      "source": "HelloFresh",
+      "title": "Stamppot van spruitjes en prei met boerenworst",
+      "url": "https://www.hellofresh.nl/recipes/stamppot-van-spruitjes-en-prei-met-boerenworst-635101af6c9d53571b0e50f7",
+      "families": [
+        "aardappelen",
+        "gehakt",
+        "prei"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "gehakt",
+        "prei"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "cuisine": "Nedeländsk",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-d158d65a8f311f",
+      "source": "HelloFresh",
+      "title": "Krokante kikkererwten met plantaardig gehakt en gele currysaus",
+      "url": "https://www.hellofresh.nl/recipes/quick-andhealthy-15-minutes-high-fiber-veggie-67979a2189d6104200fdd69c",
+      "families": [
+        "kikkererwten",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "kikkererwten",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "cuisine": "Indiase",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-4b6e150c53b428",
+      "source": "HelloFresh",
+      "title": "Balinese rijsttafel met rendang en kipsaté",
+      "url": "https://www.hellofresh.nl/recipes/balinese-rijsttafel-met-rendang-en-kipsate-620e5ab7197f6c77450dc852",
+      "families": [
+        "sperziebonen",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "sperziebonen",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rendang",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-12eb800123f485",
+      "source": "HelloFresh",
+      "title": "Visstoof met kokosmelk en limoen",
+      "url": "https://www.hellofresh.nl/recipes/visstoof-met-kokosmelk-en-limoen-5a6b0d89043c3c2bae449134",
+      "families": [
+        "paprika"
+      ],
+      "ingredient_families": [
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Zuid-amerikaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-cfb633176126ac",
+      "source": "HelloFresh",
+      "title": "Gele rijstpilav met broccolini, sojabonen en Thais basilicum",
+      "url": "https://www.hellofresh.nl/recipes/w44-veggie-super-quick-15-min-no-protein-rice-no-cheese-try-to-use-eid-precut-broad-beans-6729e147b88de70de2e98a2e",
+      "families": [
+        "broccoli",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "broccoli",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "cuisine": "Thais",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-82de0eb3229495",
+      "source": "HelloFresh",
+      "title": "Stamppot met Koreaanse kruiden en sticky champignons",
+      "url": "https://www.hellofresh.nl/recipes/stamppot-met-koreaanse-kruiden-en-sticky-champignons-63c7d6bd788f6ee4ca33e114",
+      "families": [
+        "aardappelen",
+        "champignons",
+        "eieren",
+        "paksoi"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "champignons",
+        "eieren",
+        "paksoi"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "cuisine": "Koreaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-9d204278ce961b",
+      "source": "HelloFresh",
+      "title": "Romige lasagne-soep met worst en Parmigiano Reggiano",
+      "url": "https://www.hellofresh.nl/recipes/romige-lasagne-soep-met-worst-en-parmigiano-reggiano-6a50f345b47c93963c04d71a",
+      "families": [
+        "spinazie",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "spinazie",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "lasagne",
+      "cuisine": "Italiaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-78727cb53918b3",
+      "source": "HelloFresh",
+      "title": "Veggie kipbowl met munt-labnehsaus en aubergine",
+      "url": "https://www.hellofresh.nl/recipes/veggie-kipbowl-met-munt-labnehsaus-en-aubergine-69f9ee01a2b8b19764022d6a",
+      "families": [
+        "aubergine"
+      ],
+      "ingredient_families": [
+        "aubergine"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "cuisine": "Middle Eastern",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-9971d7e6619a7a",
+      "source": "HelloFresh",
+      "title": "Indiase visstoof met verse koriander",
+      "url": "https://www.hellofresh.nl/recipes/indiase-visstoof-met-verse-koriander-54db7f686ced6e5b1f8b456e",
+      "families": [
+        "aardappelen",
+        "sperziebonen",
+        "tomaten"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "sperziebonen",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Fusion",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-d739f9bb656863",
+      "source": "HelloFresh",
+      "title": "Indonesische runderstoofsoep",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-runderstoofsoep-6261217723d2ca040f752b98",
+      "families": [
+        "wortel"
+      ],
+      "ingredient_families": [
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-5280d3a6040850",
+      "source": "HelloFresh",
+      "title": "Gehaktbrood gevuld met mozzarella",
+      "url": "https://www.hellofresh.nl/recipes/gehaktbrood-gevuld-met-mozzarella-6229e62c10068e6a5c0e20a9",
+      "families": [
+        "broccoli",
+        "courgette",
+        "eieren",
+        "gehakt",
+        "paprika"
+      ],
+      "ingredient_families": [
+        "broccoli",
+        "courgette",
+        "eieren",
+        "gehakt",
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 55,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "cuisine": "Italiaans",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-5ed2d9151e7aa9",
+      "source": "HelloFresh",
+      "title": "Steak met ponzu en rijstnoedels",
+      "url": "https://www.hellofresh.nl/recipes/steak-met-ponzu-en-rijstnoedels-69e21b26fe534c766c44c72e",
+      "families": [
+        "paksoi",
+        "paprika",
+        "spitskool"
+      ],
+      "ingredient_families": [
+        "paksoi",
+        "paprika",
+        "spitskool"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "cuisine": "Japans",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-2a873d97e1bf38",
+      "source": "HelloFresh",
+      "title": "Indonesische stijl kippensoep met udonnoedels",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-stijl-kippensoep-met-udonnoedels-63c7cda4788f6ee4ca33c3d2",
+      "families": [
+        "eieren",
+        "kip"
+      ],
+      "ingredient_families": [
+        "eieren",
+        "kip"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-314933637bda5d",
+      "source": "HelloFresh",
+      "title": "Gestoomde vis met meiraap en kokosrijst",
+      "url": "https://www.hellofresh.nl/recipes/gestoomde-vis-met-meiraap-en-kokosrijst-56ab43024dab71de768b4567",
+      "families": [
+        "prei",
+        "witvis"
+      ],
+      "ingredient_families": [
+        "prei"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "hf-page-b7943cdd236c33",
+      "source": "HelloFresh",
+      "title": "Witte grillkaas met kruidige yoghurtsaus",
+      "url": "https://www.hellofresh.nl/recipes/witte-grillkaas-met-kruidige-yoghurtsaus-69f9edf6cad850dbd5c5011e",
+      "families": [
+        "champignons",
+        "paprika"
+      ],
+      "ingredient_families": [
+        "champignons",
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "cuisine": "Mediterranean",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-02"
     }
   ]
 }
