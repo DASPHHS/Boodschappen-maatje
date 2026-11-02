@@ -38,7 +38,8 @@ function offers(s){
  const scan=state.catalog?.stores?.[s];
  const external=window.MaatjeFreshness?.available(scan,state.catalog?.generated_at,today())||[];
  const all=window.MaatjeOfferIdentity?.merge([...manual,...current,...external,...supplements].filter(isOfferActive))||[];
- state._offersCache.set(key,all);return all;
+ const classified=all.map(o=>({...o,category:window.MaatjeRecipeProducts.displayCategory(o)}));
+ state._offersCache.set(key,classified);return classified;
 }
 function isOfferActive(o){
  // One shared evidence gate: price observations are never silently promoted to offers.
@@ -223,6 +224,7 @@ pompoen:/\b(flespompoen|biologische pompoen|oranje pompoen)\b/,
 sperziebonen:/\b(sperziebonen|gebroken bonen)\b/,bospeen:/\bbospeen\b/,popcorn:/\bpopcorn\b/
 };
 function profileKey(o){
+if(window.MaatjeRecipeProducts.isDeliChicken(o))return null;
 const name=norm(o.name);
 if(/\bvolle melk\b/.test(name)&&!/plantaardig|halfvol|mager/.test(name))return 'volle_melk';
 if(/skuumkoppe/.test(name))return 'skuumkoppe';
@@ -453,11 +455,11 @@ function header(eyebrow,title,subtitle){$('#page-intro').innerHTML='<div class="
 function title(t,sub,action){return '<div class="section-heading"><div><h2>'+safe(t)+'</h2>'+(sub?'<p>'+safe(sub)+'</p>':'')+'</div>'+(action||'')+'</div>'}
 function storeControls(all=true){return '<div class="control-row store-filter">'+(all?'<button class="pill '+(state.store==='alle'?'active':'')+'" data-store="alle">Alle winkels</button>':'')+ORDER.map(s=>'<button class="pill '+(state.store===s?'active':'')+'" data-store="'+s+'">'+safe(NAMES[s])+'</button>').join('')+'</div>'}
 
-const OFFER_CATEGORY_NAMES={alle:'Alle aanbiedingen',bier:'Bier',dranken:'Fris & koffie',overige_dranken:'Overige dranken',huishouden:'Huishouden',fruit:'Fruit',voorraad:'Voorraad & noten',zuivel:'Zuivel',groente:'Groente',kip:'Kip',vlees:'Vlees',vis:'Vis',vega:'Vega',snacks:'Snacks',brood_graan:'Brood & granen',overig:'Overig'};
+const OFFER_CATEGORY_NAMES={alle:'Alle aanbiedingen',vleeswaren:'Vleeswaren & broodbeleg',bier:'Bier',dranken:'Fris & koffie',overige_dranken:'Overige dranken',huishouden:'Huishouden',fruit:'Fruit',voorraad:'Voorraad & noten',zuivel:'Zuivel',groente:'Groente',kip:'Kip',vlees:'Vlees',vis:'Vis',vega:'Vega',snacks:'Snacks',brood_graan:'Brood & granen',overig:'Overig'};
 function kindControls(offerPage=false){
  if(offerPage){
  const future=state.offerMode==='all'&&state.offerWeek==='next';
- const all=ORDER.flatMap(s=>future?window.MaatjeWeekdeals?.next(s,state.catalog?.stores?.[s],today())||[]:offers(s)),
+ const all=ORDER.flatMap(s=>future?window.MaatjeWeekdeals?.next(s,state.catalog?.stores?.[s],today())||[]:offers(s)).map(o=>({...o,category:window.MaatjeRecipeProducts.displayCategory(o)})),
  cats=['alle',...Object.keys(OFFER_CATEGORY_NAMES).filter(c=>c!=='alle'&&all.some(o=>o.category===c))];
  const select='<select class="offer-category-select" id="offer-category" aria-label="Productgroep aanbiedingen">'+cats.map(c=>'<option value="'+c+'"'+(state.kind===c?' selected':'')+'>'+safe(OFFER_CATEGORY_NAMES[c])+' ('+(c==='alle'?all.length:all.filter(o=>o.category===c).length)+')</option>').join('')+'</select>';
  const top=['alle','bier','groente','huishouden','fruit','zuivel'].filter(c=>cats.includes(c));
@@ -597,10 +599,11 @@ function reviewLabel(s,o){
 }
 function dealCard(o,s){
 const cooking=window.MaatjeRecipeDiscovery?.classify(o);
+const deli=window.MaatjeRecipeProducts.isDeliChicken(o);
 const alt=o.cheapest_alternative;
 const cheaper=alt&&Number.isFinite(alt.unit_price)&&Number.isFinite(o.unit_price)&&alt.unit===o.unit&&alt.unit_price<o.unit_price;
 const independent=isOfficialOfferSource(o,s)&&!o.price_conflict;
-return '<article class="deal-card"><div class="deal-card-top"><div>'+storePill(s)+'<h3>'+safe(o.name||'Product')+'</h3></div><div class="deal-card-actions">'+favButton(o,s)+'</div><span class="tag '+(independent?'fresh':'orange')+'">'+offerEvidenceLabel(o,s)+'</span></div><div class="price-line"><span class="price">'+money(o.price)+'</span>'+(typeof o.regular_price==='number'&&o.regular_price>o.price?'<span class="oldprice">'+money(o.regular_price)+'</span>':'')+'</div><div class="deal-meta">'+safe(o.pack_label||'Verpakking onbekend')+(o.unit_price?(' · '+money(o.unit_price)+'/'+safe(o.unit||'kg')):'')+' · '+(o.start_date>today()?'begint '+dateNL(o.start_date)+' · ':'')+'geldig t/m '+dateNL(o.end_date)+(o.date_estimated?' (geschat door externe bron)':'')+(o.multi_buy_quantity?' · '+safe(o.multi_buy_quantity)+' voor '+money(o.multi_buy_price):'')+(o.member_required?' · alleen met Lidl Plus / klantenkaart':'')+(['lidl_official','Folderz'].includes(o.source_provider)&&o.checked_at?' · bron gelezen '+dateNL(String(o.checked_at).slice(0,10)):'')+(o.loyalty_price?' · ledenprijs '+money(o.loyalty_price):'')+'</div>'+(o.price_conflict?'<div class="deal-note bad">Prijsverschil tussen bronnen: '+safe(o.price_conflict)+'</div>':'')+(cheaper?'<div class="deal-note bad">Goedkoper per '+safe(o.unit)+': '+safe(alt.name)+' ('+money(alt.unit_price)+' tegenover '+money(o.unit_price)+' per '+safe(o.unit)+'). Controleer beschikbaarheid.</div>':alt?'<div class="deal-note">Alternatief: '+safe(alt.name)+' ('+money(alt.price)+').</div>':'<div class="deal-note">'+(independent?'Officiële actiebron, maar de laagste prijs t.o.v. alternatieven en kassabeschikbaarheid zijn niet gegarandeerd.':'Actie gemeld via een externe bron; niet onafhankelijk bij de supermarkt bevestigd. Vergelijk reguliere alternatieven.')+'</div>')+(o.source?.url?'<div class="deal-meta"><a href="'+attr(/^https:\/\//.test(o.source.url)?o.source.url:'#')+'" rel="noopener noreferrer" target="_blank">Prijsbron ↗</a></div>':'')+reviewLabel(s,o)+auditBadge(o,s)+(cooking?'<div class="dialog-actions"><button class="button secondary small" data-cook-offer="'+attr(s+'|'+o.id)+'">Kook hiermee · recepten zoeken</button></div>':'')+'</article>';
+return '<article class="deal-card"><div class="deal-card-top"><div>'+storePill(s)+'<h3>'+safe(o.name||'Product')+'</h3></div><div class="deal-card-actions">'+favButton(o,s)+'</div><span class="tag '+(independent?'fresh':'orange')+'">'+offerEvidenceLabel(o,s)+'</span></div><div class="price-line"><span class="price">'+money(o.price)+'</span>'+(typeof o.regular_price==='number'&&o.regular_price>o.price?'<span class="oldprice">'+money(o.regular_price)+'</span>':'')+'</div><div class="deal-meta">'+(deli?'<strong>Broodbeleg · geen rauwe kip</strong> · ':'')+safe(o.pack_label||'Verpakking onbekend')+(o.unit_price?(' · '+money(o.unit_price)+'/'+safe(o.unit||'kg')):'')+' · '+(o.start_date>today()?'begint '+dateNL(o.start_date)+' · ':'')+'geldig t/m '+dateNL(o.end_date)+(o.date_estimated?' (geschat door externe bron)':'')+(o.multi_buy_quantity?' · '+safe(o.multi_buy_quantity)+' voor '+money(o.multi_buy_price):'')+(o.member_required?' · alleen met Lidl Plus / klantenkaart':'')+(['lidl_official','Folderz'].includes(o.source_provider)&&o.checked_at?' · bron gelezen '+dateNL(String(o.checked_at).slice(0,10)):'')+(o.loyalty_price?' · ledenprijs '+money(o.loyalty_price):'')+'</div>'+(o.price_conflict?'<div class="deal-note bad">Prijsverschil tussen bronnen: '+safe(o.price_conflict)+'</div>':'')+(cheaper?'<div class="deal-note bad">Goedkoper per '+safe(o.unit)+': '+safe(alt.name)+' ('+money(alt.unit_price)+' tegenover '+money(o.unit_price)+' per '+safe(o.unit)+'). Controleer beschikbaarheid.</div>':alt?'<div class="deal-note">Alternatief: '+safe(alt.name)+' ('+money(alt.price)+').</div>':'<div class="deal-note">'+(independent?'Officiële actiebron, maar de laagste prijs t.o.v. alternatieven en kassabeschikbaarheid zijn niet gegarandeerd.':'Actie gemeld via een externe bron; niet onafhankelijk bij de supermarkt bevestigd. Vergelijk reguliere alternatieven.')+'</div>')+(o.source?.url?'<div class="deal-meta"><a href="'+attr(/^https:\/\//.test(o.source.url)?o.source.url:'#')+'" rel="noopener noreferrer" target="_blank">Prijsbron ↗</a></div>':'')+reviewLabel(s,o)+auditBadge(o,s)+(cooking?'<div class="dialog-actions"><button class="button secondary small" data-cook-offer="'+attr(s+'|'+o.id)+'">Kook hiermee · recepten zoeken</button></div>':'')+'</article>';
 }
 function empty(head,body){return '<div class="empty"><div class="empty-art">◌</div><strong>'+safe(head)+'</strong>'+safe(body)+'</div>'}
 function overview(){
@@ -679,7 +682,7 @@ if(type==='saving'||type==='percent'){
 return 0;
 }
 function offerFiltered(o,s){
-if(state.kind!=='alle'&&o.category!==state.kind)return false;
+if(state.kind!=='alle'&&window.MaatjeRecipeProducts.displayCategory(o)!==state.kind)return false;
 if(state.query&&!norm([o.name,o.brand,o.category,o.pack_label,o.ean,NAMES[s]].join(' ')).includes(norm(state.query)))return false;
 if(state.offerEvidence==='official'&&!(isOfficialOfferSource(o,s)&&!o.price_conflict))return false;
 if(state.offerEvidence==='external'&&(isOfficialOfferSource(o,s)&&!o.price_conflict))return false;

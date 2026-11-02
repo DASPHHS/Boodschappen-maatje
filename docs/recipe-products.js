@@ -62,9 +62,10 @@ function isDeliChicken(o){
  const rawEvidence=/\b(rauw|rauwe|vers|verse)\b/.test(name)||/verse kip|vers vlees|kip kalkoen/.test(categories);
  return jumbo&&!rawEvidence;
 }
+function displayCategory(o){return isDeliChicken(o)?'vleeswaren':o?.category;}
 function profile(value,{ingredient=false}={}){
  const o=typeof value==='string'?{name:value}:value||{},raw=norm(o.name).replace(/\bscharrel(?=kip)/g,''),n=raw.replace(/\b\d+(?:g|kg|gr|ml|cl|l|st|stk|stuks)?\b/g,' ').replace(/\s+/g,' ').trim();
- if(!ingredient&&isDeliChicken(o))return null;
+ if(isDeliChicken(o))return ingredient?{family:'broodbeleg_kip',group:null,variant:null,form:'cooked',...quantity(o.name)}:null;
  if(!raw||['huishouden','bier','dranken','overige_dranken','snacks'].includes(o.category))return null;
  if(/(?:katten|honden|babyvoeding|knijpfruit|shampoo|vaatwas|wasmiddel|supplement)/.test(raw))return null;
  // A plant-based fish/meat analogue is a distinct main ingredient; never a vegetable.
@@ -127,5 +128,5 @@ function group(recipe){
  return 'vega';
 }
 function isMain(p,recipe){return p?.group===group(recipe);}
-return {VERSION,norm,isDeliChicken,profile,compatible,recipeProfiles,group,isMain,quantity};
+return {VERSION,norm,isDeliChicken,displayCategory,profile,compatible,recipeProfiles,group,isMain,quantity};
 });

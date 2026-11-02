@@ -51,6 +51,8 @@
  }
  function evaluate(offer,ingredient){
   if(!offer||!ingredient)return {status:'unrelated',reason:'product ontbreekt'};
+  const culinary=typeof module==='object'&&module.exports?require('./recipe-products.js'):window.MaatjeRecipeProducts;
+  if(culinary&&culinary.isDeliChicken(offer)!==culinary.isDeliChicken(ingredient))return {status:'incompatible',reason:'broodbeleg en rauwe kip zijn verschillende productvormen'};
   const a=features(offer.name),b=features(ingredient.name);
   const e1=String(offer.ean||''),e2=String(ingredient.ean||'');
   const id1=String(offer.product_id||''),id2=String(ingredient.product_id||'');

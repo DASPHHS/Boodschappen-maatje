@@ -79,6 +79,7 @@ function intent(profile){
  const family=explicit.families||families(q);
  const expectedAudience=explicit.audience||(/\b(katten|kattenvoer|honden|hondenvoer|puppy|kitten)\b/.test(q)?'pet':/\b(baby|babyvoeding|olvarit)\b/.test(q)?'baby':family.includes('dishwasher')?'household':'human');
  let forms=explicit.forms;
+ if(!forms&&/\b(broodbeleg|vleeswaren|gekookt|gebraden|ovengebakken)\b/.test(q))forms=['cooked'];
  if(!forms&&family.length&&!family.includes('boemboe')&&!family.includes('dishwasher'))forms=/\b(gerookt|gerookte)\b/.test(q)?['smoked']:/\b(blik|pot|conserven)\b/.test(q)?['preserved']:/\b(poeder|gemalen)\b/.test(q)?['powder']:['plain','frozen'];
  return {families:family,audience:expectedAudience,forms,query:q};
 }

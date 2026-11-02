@@ -61,6 +61,11 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.locator('.compare-table tbody tr').filter({hasText:'Ongebrande amandelen 200 g'}).count(),customVariantCount,
     'A user-added product must persist across page reload');
   await page.locator('[data-offer-mode="all"]').click();
+  await page.locator('#offer-category').selectOption('vleeswaren');
+  assert.ok(await page.locator('#view-aanbiedingen .deal-card').count()>0,'Deli products remain visible as their actual food type');
+  assert.match(await page.locator('#view-aanbiedingen').innerText(),/Broodbeleg · geen rauwe kip/);
+  assert.equal(await page.locator('#view-aanbiedingen [data-cook-offer]').count(),0,'Deli chicken never launches raw chicken recipe suggestions');
+  await page.locator('#offer-category').selectOption('alle');
   assert.equal(await page.locator('[data-offer-week="now"]').count(),1,'Weekdeals: this week tab');
   await page.locator('[data-offer-week="next"]').click();
   assert.ok((await page.locator('#view-aanbiedingen').innerText()).includes('Vooruitblik'),

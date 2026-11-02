@@ -48,6 +48,7 @@ const euro=new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'});
 const qty=(n)=>Math.max(1,Math.round(n));
 const slug=s=>String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'-').slice(0,90);
 function eligible(o,k){
+ if(root.MaatjeRecipeProducts?.isDeliChicken(o))return false;
  if(!o||!valid[k].test(o.name||'')||omit.test(o.name||''))return false;
  const n=String(o.name||'').toLowerCase();
  if(/(schnitzel|burger|knorr|honig|cup.a.soup|bouillon|jus|kruiden|saus|dressing|salade|tapenade|rookvlees|gerookt|snack|cracker|borrel|wrap|rolletje|olvarit|ella.s kitchen|noedels|noodles|baby|maaltijd|visstick|gepaneerd|kipstick|knaks|roti|uit eigen keuken|spread|scholiertje|chocolade|plakjes)/i.test(n))return false;
