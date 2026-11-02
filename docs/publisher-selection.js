@@ -7,7 +7,31 @@
 })(typeof window!=='undefined'?window:null,function(){
  'use strict';
  const reviewed=new Set(['handmatig_gevonden_bij_uitgever','publisher_metadata_verified','publisher_page_title_verified']);
- const safeSources=new Set(['Allerhande','HelloFresh']);
+ const safeSources=new Set(['Allerhande','HelloFresh','Jumbo','Voedingscentrum','24Kitchen']);
+ const offerIdentity=()=>typeof module==='object'&&module.exports?require('./offer-identity.js'):window.MaatjeOfferIdentity;
+ const currentDay=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
+ const candidateCache=new WeakMap();
+ function actionProducts(recipe,offers,engine,day=currentDay()){
+  if(!Array.isArray(offers)||!engine)return [];
+  let cached=candidateCache.get(offers);
+  if(!cached||cached.day!==day||cached.engine!==engine){
+   const byFamily=new Map();
+   for(const offer of offers){
+    const evidence=offerIdentity().classify(offer,day);
+    if(!['confirmed','reported'].includes(evidence)||offer.price_conflict)continue;
+    const type=engine.classify(offer);
+    if(!type)continue;
+    const prior=byFamily.get(type.key);
+    if(!prior||(evidence==='confirmed'&&prior.evidence!=='confirmed'))
+     byFamily.set(type.key,{family:type.key,offer,offerName:offer.name,evidence});
+   }
+   cached={day,engine,candidates:[...byFamily.values()]};candidateCache.set(offers,cached);
+  }
+  const families=new Set(recipe?.ingredient_evidence==='publisher_recipe_schema'?recipe.ingredient_families||[]:[]);
+  // Publisher tags require ingredient evidence; title/description tags never count.
+  return cached.candidates.filter(item=>Array.isArray(recipe?.ingredients)?
+   Boolean(engine.matchRecipe(item.offer,recipe)):families.has(item.family));
+ }
  const norm=x=>String(x||'').toLocaleLowerCase('nl-NL').normalize('NFD')
   .replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
  const slow=r=>/hachee|rendang|stoof|sudderen|draadjes|boeuf|lasagne|tajine/i.test(r?.title||'')||
@@ -22,36 +46,29 @@
  }
  function valid(r,engine){
   return Boolean(r&&safeSources.has(r.source)&&reviewed.has(r.review_status)&&
-    typeof r.title==='string'&&r.title.trim().length>8&&Array.isArray(r.families)&&r.families.length>0&&
+    typeof r.title==='string'&&r.title.trim().length>=5&&Array.isArray(r.families)&&r.families.length>0&&
     engine?.trustedPublisherUrl?.(r.source,r.url));
  }
- function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all'}){
+ function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',day=currentDay()}){
   if(!engine||!Array.isArray(index?.recipes))return [];
-  const requested=['all','HelloFresh','Allerhande'].includes(source)?source:'HelloFresh';
+  const requested=safeSources.has(source)?source:'all';
   const sources=(index.recipes||[]).filter(r=>valid(r,engine)&&(requested==='all'||r.source===requested));
   const queryText=norm(query);
-  // Only a known culinary family warrants a suggested deal pairing; never claim
-  // price/pack compatibility on the basis of title tokens.
   const matches=new Map();
-  for(const store of stores||[]){
-   const uniqueFamilies=new Map();
-   for(const offer of (offersByStore?.[store]||[])){
-    const type=engine.classify(offer);
-    if(type&&!uniqueFamilies.has(type.key))uniqueFamilies.set(type.key,offer);
-   }
-   for(const [family,offer] of uniqueFamilies){
-    const hits=engine.publisherMatches(offer,index,150);
-    for(const {recipe} of hits){
-     if(!valid(recipe,engine)||(requested!=='all'&&recipe.source!==requested))continue;
-     const match=matches.get(recipe.url);
-     if(!match)matches.set(recipe.url,{store,family,offerName:offer.name});
-    }
+  for(const recipe of sources){
+   for(const store of stores||[]){
+    const products=actionProducts(recipe,offersByStore?.[store],engine,day);
+    if(products.length<2)continue;
+    const previous=matches.get(recipe.url);
+    if(!previous||products.length>previous.products.length)
+     matches.set(recipe.url,{store,products,count:products.length,family:products[0].family});
    }
   }
   const target=ingredient?engine.classify(ingredient):null;
   const filtered=sources.filter(r=>{
+   if(!matches.has(r.url))return false;
    if(category!=='alle'&&group(r)!==category)return false;
-   if(target&&!r.families.includes(target.key))return false;
+   if(target&&!(r.ingredient_families||[]).includes(target.key))return false;
    if(ingredient&&!target){
     const q=norm(ingredient.name);
     if(q&&!norm(r.title+' '+r.families.join(' ')).includes(q))return false;
@@ -61,38 +78,33 @@
   });
   const score=r=>{
    const m=matches.get(r.url),modes=r.method||'';
-   return (m?100:0)+(r.review_status==='publisher_metadata_verified'?20:0)+
+   return (m?100+m.count*8:0)+(r.review_status==='publisher_metadata_verified'?20:0)+
     (r.course==='hoofdgerecht'?12:0)+(r.servings===4?5:0)+
     (slow(r)?15:0)+Math.min(r.vegetable_families||0,3)*4+
     (Number(r.minutes)>0&&Number(r.minutes)<=50?5:0)+
     (modes==='anders'?-2:0);
   };
   filtered.sort((a,b)=>score(b)-score(a)||a.title.localeCompare(b.title,'nl'));
-  const queues=new Map(['Allerhande','HelloFresh'].map(source=>[source,filtered.filter(r=>r.source===source)]));
-  const result=[],selected=new Set(),seenTitles=new Set(),groups=new Map();
-  const take=source=>{
-   const q=queues.get(source)||[];
-   if(!q.length)return false;
-   // Avoid three consecutive curries or three consecutive veggie dishes.
-   let best=0;
-   for(let i=0;i<q.length;i++){
-    const method=q[i].method||'anders',g=group(q[i]);
-    if((groups.get(g)||0)<2&&!(result.length&&result.at(-1).recipe.method===method)){
-     best=i;break;
-    }
-   }
-   const r=q.splice(best,1)[0];
-   if(selected.has(r.url)||seenTitles.has(norm(r.title)))return take(source);
-   seenTitles.add(norm(r.title));
-   selected.add(r.url);groups.set(group(r),(groups.get(group(r))||0)+1);
-   result.push({recipe:r,matched:matches.get(r.url)||null,category:group(r),slow:slow(r),score:score(r)});
-   return true;
-  };
-  while(queues.get('Allerhande').length||queues.get('HelloFresh').length){
-   if(!take('Allerhande')&&!queues.get('HelloFresh').length)break;
-   take('HelloFresh');
+  const result=[],seenTitles=new Set(),groups=new Map(),methods=new Map(),publishers=new Map(),cuisines=new Map();
+  // Re-evaluate diversity after every pick: alternate categories, methods and sources
+  // when qualified alternatives exist, without ever relaxing the two-product gate.
+  const remaining=[...filtered];
+  while(remaining.length){
+   const rank=r=>score(r)-(groups.get(group(r))||0)*35-
+    (methods.get(r.method||'anders')||0)*20-(publishers.get(r.source)||0)*12-(r.cuisine?(cuisines.get(r.cuisine)||0)*15:0)-
+    (result.at(-1)?.category===group(r)?35:0)-
+    (result.at(-1)?.recipe.method===r.method?20:0);
+   remaining.sort((a,b)=>rank(b)-rank(a)||a.title.localeCompare(b.title,'nl'));
+   const r=remaining.shift(),title=norm(r.title);
+   if(seenTitles.has(title))continue;
+   seenTitles.add(title);
+   groups.set(group(r),(groups.get(group(r))||0)+1);
+   methods.set(r.method||'anders',(methods.get(r.method||'anders')||0)+1);
+   publishers.set(r.source,(publishers.get(r.source)||0)+1);
+   if(r.cuisine)cuisines.set(r.cuisine,(cuisines.get(r.cuisine)||0)+1);
+   result.push({recipe:r,matched:matches.get(r.url),category:group(r),slow:slow(r),score:score(r)});
   }
   return result;
  }
- return {valid,group,slow,recipesForOffers};
+ return {valid,group,slow,actionProducts,recipesForOffers};
 });

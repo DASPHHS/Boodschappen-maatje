@@ -20,7 +20,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 
-from refresh_publisher_recipes import families_of, VEG, LEGUMES, EXCLUDE
+from refresh_publisher_recipes import families_of, VEG, LEGUMES, EXCLUDE, schema_recipes, minutes
 
 ROOT = Path(__file__).resolve().parent.parent
 TARGET = ROOT / "docs/data/publisher-recipes.json"
@@ -145,7 +145,7 @@ def allowed_robots(fetcher):
     parser.parse(body.splitlines())
     return parser
 
-def fetch(url, max_bytes=1_000_000):
+def fetch(url, max_bytes=6_000_000):
     parsed = urllib.parse.urlsplit(url)
     if parsed.scheme != "https" or parsed.hostname != "www.hellofresh.nl":
         raise ValueError("HelloFresh host allowlist")
@@ -167,9 +167,13 @@ def record_from_page(url, page_html, stamp):
     title = parser.title.strip()
     if len(title) < 9 or len(title) > 150 or REJECT.search(title) or EXCLUDE.search(title):
         return None
+    metadata=next(iter(schema_recipes(page_html)),{})
+    raw=metadata.get("recipeIngredient") or []
+    if isinstance(raw,str):raw=[raw]
+    ingredient_families=families_of(*[x for x in raw if isinstance(x,str)])
     # Tags are candidate food families from public title/short description only;
     # never misrepresent them as the publisher's actual ingredient list.
-    families = families_of(title, parser.description)
+    families = sorted(set(families_of(title, parser.description)+ingredient_families))
     # Plant-based substitutes must never become recipe suggestions for animal
     # meat offers just because the title contains "kip" or "gehakt".
     if re.search(r"\b(?:veggie|vegetarisch|vegetarische|vegan|plantaardig|plantaardige)\b",
@@ -183,13 +187,16 @@ def record_from_page(url, page_html, stamp):
         "soep") if m in title.casefold()), "anders")
     if method == "soep" and not (VEG.intersection(families) or LEGUMES.intersection(families)):
         return None
-    # This is a link to a real, individually opened page, not a copy of its recipe.
+    if re.search(r"veggie|vegetari|vegan|plantaardig",title,re.I):
+        ingredient_families=[x for x in ingredient_families if x not in ("kip","gehakt","riblappen","zalm","witvis","garnalen")]
     return {
         "id":"hf-page-"+hashlib.sha256(url.encode()).hexdigest()[:14],
         "source":"HelloFresh","title":title,"url":url,"families":families,
-        "minutes":None,"servings":None,"course":"niet_gecontroleerd",
-        "method":method,"vegetable_families":len(VEG.intersection(families)),
-        "has_legumes":bool(LEGUMES.intersection(families)),
+        "ingredient_families":ingredient_families,
+        "ingredient_evidence":"publisher_recipe_schema" if raw else "unavailable",
+        "minutes":minutes(metadata.get("totalTime")),"servings":None,"course":"niet_gecontroleerd",
+        "method":method,"cuisine":metadata.get("recipeCuisine") if isinstance(metadata.get("recipeCuisine"),str) else None,"vegetable_families":len(VEG.intersection(ingredient_families)),
+        "has_legumes":bool(LEGUMES.intersection(ingredient_families)),
         "review_status":"publisher_page_title_verified","last_checked":stamp
     }
 

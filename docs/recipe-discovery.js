@@ -18,7 +18,7 @@
     {title:'Boeuf bourguignon uit de slowcooker',source:'Allerhande',url:'https://www.ah.nl/allerhande/recept/R-R1192994/boeuf-bourguignon-uit-de-slowcooker'},
     {title:'Riblappen: hachee, rendang en meer',source:'Jumbo',url:'https://www.jumbo.com/recepten/vlees/rundvlees/riblappen'}]},
   gehakt:{label:'Gehakt',search:'gehakt gehaktballen ovenschotel',match:/\b(rundergehakt|varkensgehakt|gemengd\s+gehakt|half\s+om\s+half\s+gehakt|mager\s+gehakt|gehakt)\b/,tags:['gehaktballen','chili','ovenschotel']},
-  kip:{label:'Onbewerkte kip',search:'kipfilet kipdij curry oven',match:/\b(kipfilet|kipdijfilet|kipdij|kipfiletblokjes|kipfiletreepjes|kiphaasjes|kippenborst)\b/,tags:['kipcurry','ovenschotel','roerbak']},
+  kip:{label:'Onbewerkte kip',search:'kipfilet kipdij curry oven',match:/\b(kipfilet|kipdijfilet|kippendijfilet|kippendijreepjes|kippendij|kipdij|kipfiletblokjes|kipfiletreepjes|kiphaasjes|kippenborst)\b/,tags:['kipcurry','ovenschotel','roerbak']},
   zalm:{label:'Zalmfilet',search:'zalmfilet oven groenten',match:/\b(zalmfilet|zalmzijde|zalm\s+filet)\b/,tags:['ovenzalm','pokebowl','zalm uit de oven']},
   witvis:{label:'Witvis',search:'kabeljauwfilet witvis oven',match:/\b(kabeljauwfilet|koolvisfilet|witvisfilet|heekfilet|pangasiusfilet|scholfilet|kabeljauw)\b/,tags:['visstoof','vis uit de oven']},
   tofu:{label:'Tofu en tempeh',search:'tofu tempeh vegetarische curry',match:/\b(tofu|tempeh|tempe)\b/,tags:['tofu curry','tempeh roerbak']},

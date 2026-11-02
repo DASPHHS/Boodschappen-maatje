@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/refresh_publisher_recipes.py'
       - 'scripts/refresh_hellofresh_recipes.py'
+      - 'scripts/refresh_recipe_ingredients.py'
       - 'docs/data/publisher-recipes.json'
       - '.github/workflows/recipe-discovery.yml'
   schedule:
@@ -18,7 +19,7 @@ concurrency:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,6 +37,7 @@ jobs:
         run: |
           python scripts/refresh_publisher_recipes.py
           python scripts/refresh_hellofresh_recipes.py
+          python scripts/refresh_recipe_ingredients.py
       - name: Publish only the newly checked recipe index
         run: |
           git config user.name "github-actions[bot]"
@@ -52,9 +54,11 @@ jobs:
           current=json.loads(path.read_text())
           records={r["url"]:r for r in current["recipes"]}
           for r in new["recipes"]:
-              if r["url"] not in records:records[r["url"]]=r
-          current["recipes"]=list(records.values())
-          if len(records)>len(json.loads(path.read_text())["recipes"]):
+              old=records.get(r["url"])
+              rank=lambda x:(x.get("last_checked",""),x.get("ingredient_evidence")=="publisher_recipe_schema",x.get("ingredient_checked_at",""))
+              if old is None or rank(r)>rank(old):records[r["url"]]=r
+          if list(records.values())!=current["recipes"]:
+              current["recipes"]=list(records.values())
               current["generated_at"]=new["generated_at"]
               path.write_text(json.dumps(current,ensure_ascii=False,indent=2)+"\n")
           PY

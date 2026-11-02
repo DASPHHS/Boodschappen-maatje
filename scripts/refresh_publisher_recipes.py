@@ -21,7 +21,7 @@ SITEMAP="https://www.ah.nl/sitemaps/entities/allerhande/recipes.xml"
 FAMILIES={
  "riblappen":r"\b(?:riblappen|riblap|sukadelappen|sukadelap|stooflappen)\b",
  "gehakt":r"\b(?:gehakt|gehaktballen|rundergehakt|varkensgehakt)\b",
- "kip":r"\b(?:kip|kipfilet|kipdij|kippen|kipcurry|kipkerrie|kipstoof|kipschotel|kipwok|kipovenschotel)\b",
+ "kip":r"\b(?:kip|kipfilet|kipdij|kippendij|kippendijreepjes|kipdijfilet|kippen|kipcurry|kipkerrie|kipstoof|kipschotel|kipwok|kipovenschotel)\b",
  "zalm":r"\b(?:zalm|zalmfilet)\b",
  "witvis":r"\b(?:kabeljauw|koolvis|scholfilet|pangasius|witvis|heek)\b",
  "garnalen":r"\b(?:garnalen|scampi)\b",
@@ -96,7 +96,7 @@ def to_record(url,meta,stamp):
     title=str(meta.get("name") or "").strip()
     raw=meta.get("recipeIngredient") or []
     if isinstance(raw,str):raw=[raw]
-    if (len(title)<9 or len(title)>150 or EXCLUDE.search(title)
+    if (len(title)<5 or len(title)>150 or EXCLUDE.search(title)
         or not isinstance(raw,list) or len(raw)<5):return None
     tags=families_of(*[i for i in raw if isinstance(i,str)])
     if not tags:return None
@@ -115,9 +115,9 @@ def to_record(url,meta,stamp):
     method=next((m for m in ("curry","stoof","wok","oven","soep","salade","pasta","rijst","stamppot","noedel","tajine")
        if m in title.lower()),"anders")
     return {"id":"ah-auto-"+re.search(r"/(R-R\d+)/",url).group(1).lower() if re.search(r"/(R-R\d+)/",url) else "ah-auto-"+str(abs(hash(url))),
-       "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,
+       "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,"ingredient_families":tags,"ingredient_evidence":"publisher_recipe_schema",
        "minutes":total,"servings":servings,"course":"hoofdgerecht",
-       "method":method,"vegetable_families":has_veg,"has_legumes":has_legume,
+       "method":method,"cuisine":meta.get("recipeCuisine") if isinstance(meta.get("recipeCuisine"),str) else None,"vegetable_families":has_veg,"has_legumes":has_legume,
        "review_status":"publisher_metadata_verified","last_checked":stamp}
 def candidates(sitemap,existing,today):
     root=ET.fromstring(sitemap)

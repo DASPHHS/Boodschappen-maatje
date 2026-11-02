@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_policy": "publisher_link_metadata_only",
-  "generated_at": "2026-11-01",
+  "generated_at": "2026-11-02",
   "notice": "Geselecteerde recepten van originele uitgevers, waaronder Allerhande en HelloFresh. Alleen feitelijke metadata en directe links; volledige receptinstructies, afbeeldingen en ingredientenlijsten blijven bij de uitgever. Titel-/familiekoppelingen bevestigen niet de ingredientvarianten of supermarktprijzen.",
   "recipes": [
     {
@@ -50,19 +50,31 @@
     },
     {
       "id": "ah-kipcurry",
-      "title": "Kipcurry met broccoli",
+      "title": "Kipcurry",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R418888/kipcurry",
       "families": [
-        "kip",
+        "aardappelen",
         "broccoli",
-        "aardappelen"
+        "kip",
+        "tomaten"
       ],
       "minutes": 50,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "broccoli",
+        "kip",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "indiaas, aziatisch",
+      "vegetable_families": 2,
+      "has_legumes": false
     },
     {
       "id": "ah-curry-kip-groente",
@@ -99,15 +111,23 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R529554/zalmfilet-en-curryaardappel-uit-de-oven",
       "families": [
-        "zalm",
         "sperziebonen",
-        "aardappelen"
+        "zalm"
       ],
       "minutes": 30,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "sperziebonen",
+        "zalm"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "",
+      "vegetable_families": 1,
+      "has_legumes": false
     },
     {
       "id": "ah-zalm-gevuld",
@@ -129,16 +149,25 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R385194/bloemkoolcurry",
       "families": [
+        "aardappelen",
         "bloemkool",
-        "eieren",
-        "paprika",
-        "aardappelen"
+        "paprika"
       ],
       "minutes": 25,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "bloemkool",
+        "paprika"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "indiaas, aziatisch",
+      "vegetable_families": 2,
+      "has_legumes": false
     },
     {
       "id": "ah-bloemkool-broccoli",
@@ -147,18 +176,26 @@
       "url": "https://www.ah.nl/allerhande/recept/R-R1193373/curry-van-bloemkool-en-broccoli",
       "families": [
         "bloemkool",
-        "broccoli",
-        "tomaten"
+        "broccoli"
       ],
       "minutes": 25,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "bloemkool",
+        "broccoli"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "indiaas, aziatisch, aziatisch",
+      "vegetable_families": 2,
+      "has_legumes": false
     },
     {
       "id": "ah-bloemkool-kikkererwten",
-      "title": "Curry met bloemkool, basmatirijst en ananas-amandelsalsa",
+      "title": "Curry met bloemkool, basmatirijst & ananas-amandelsalsa",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R1186979/curry-met-bloemkool-basmatirijst-en-ananas-amandelsalsa",
       "families": [
@@ -168,8 +205,17 @@
       "minutes": 20,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "bloemkool",
+        "kikkererwten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": true
     },
     {
       "id": "ah-bloemkool-aardappel-ei",
@@ -177,15 +223,23 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R687454/curry-van-bloemkool-aardappelen-en-eieren",
       "families": [
-        "bloemkool",
         "aardappelen",
-        "eieren"
+        "bloemkool"
       ],
       "minutes": 30,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "bloemkool"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "curry",
+      "cuisine": "indiaas, aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": false
     },
     {
       "id": "ah-bloemkool-bonen",
@@ -208,16 +262,27 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R385250/tofu-met-paddestoelen-en-spinazie",
       "families": [
-        "tofu",
         "champignons",
         "spinazie",
+        "tofu",
         "tomaten"
       ],
       "minutes": 20,
       "servings": 4,
       "course": "hoofdgerecht",
-      "review_status": "handmatig_gevonden_bij_uitgever",
-      "last_checked": "2026-11-01"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "champignons",
+        "spinazie",
+        "tofu",
+        "tomaten"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 3,
+      "has_legumes": false
     },
     {
       "id": "ah-garnalencurry",
@@ -1790,12 +1855,18 @@
       ],
       "minutes": 35,
       "servings": null,
-      "course": "hoofdgerecht",
+      "course": "niet_gecontroleerd",
       "method": "curry",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "kip",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Indonesisch"
     },
     {
       "id": "hf-nasigoreng-ei",
@@ -1803,17 +1874,21 @@
       "source": "HelloFresh",
       "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-roerei-en-zoetzure-tomatensaus-633eee0477adddd743098bd6",
       "families": [
-        "eieren",
-        "tomaten"
+        "eieren"
       ],
       "minutes": 25,
       "servings": null,
-      "course": "hoofdgerecht",
-      "method": "rijst",
-      "vegetable_families": 1,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "eieren"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Chinees"
     },
     {
       "id": "hf-gado-gado",
@@ -1821,17 +1896,24 @@
       "source": "HelloFresh",
       "url": "https://www.hellofresh.nl/recipes/gado-gado-met-sperziebonen-en-kokos-pindasaus-6203b8ae0d67ec06723ad270",
       "families": [
-        "sperziebonen",
-        "pindakaas"
+        "sperziebonen"
       ],
       "minutes": 25,
       "servings": null,
-      "course": "hoofdgerecht",
+      "course": "niet_gecontroleerd",
       "method": "anders",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "eieren",
+        "pindakaas",
+        "sperziebonen",
+        "spitskool"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Aziatisch"
     },
     {
       "id": "hf-koolvis-curry",
@@ -1843,12 +1925,17 @@
       ],
       "minutes": 10,
       "servings": null,
-      "course": "hoofdgerecht",
+      "course": "niet_gecontroleerd",
       "method": "curry",
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "witvis"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Aziatisch"
     },
     {
       "id": "hf-nasigoreng-kipsate",
@@ -1856,16 +1943,23 @@
       "source": "HelloFresh",
       "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-zelfgemaakte-kipsate-63d3145af3cad3f4f35bf1d8",
       "families": [
-        "kip"
+        "kip",
+        "wortel"
       ],
       "minutes": 25,
       "servings": null,
-      "course": "hoofdgerecht",
-      "method": "rijst",
-      "vegetable_families": 0,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "kip",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Indonesisch"
     },
     {
       "id": "hf-rendang-boontjes",
@@ -1877,12 +1971,17 @@
       ],
       "minutes": 35,
       "servings": null,
-      "course": "hoofdgerecht",
-      "method": "stoof",
+      "course": "niet_gecontroleerd",
+      "method": "rendang",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "sperziebonen"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": null
     },
     {
       "id": "ah-sitemap-r-r324168",
@@ -2890,16 +2989,23 @@
       "title": "Klassieke boerenkoolstamppot met rookworst",
       "url": "https://www.hellofresh.nl/recipes/klassieke-boerenkoolstamppot-met-rookworst-566f10164dab71d3128b4567",
       "families": [
+        "aardappelen",
         "boerenkool"
       ],
-      "minutes": null,
+      "minutes": 30,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stamppot",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "boerenkool"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Europese"
     },
     {
       "id": "hf-page-220a85ad785796",
@@ -2907,16 +3013,23 @@
       "title": "Zalm met mangochutney",
       "url": "https://www.hellofresh.nl/recipes/zalm-met-mangochutney-65c101b4633eb6f93b8c62a5",
       "families": [
+        "wortel",
         "zalm"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "anders",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "wortel",
+        "zalm"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Fusion"
     },
     {
       "id": "hf-page-7967751e2293de",
@@ -2924,16 +3037,25 @@
       "title": "Witte asperges in romige dragonsaus",
       "url": "https://www.hellofresh.nl/recipes/witte-asperges-met-romige-dragonsaus-65b02207733ee86f886dfbc2",
       "families": [
-        "aardappelen"
+        "aardappelen",
+        "eieren",
+        "spinazie"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "anders",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "eieren",
+        "spinazie"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Nedeländsk"
     },
     {
       "id": "ah-sitemap-r-r775590",
@@ -3394,16 +3516,24 @@
       "title": "Nasi goreng met zelfgemaakte kipsaté",
       "url": "https://www.hellofresh.nl/recipes/nasi-goreng-met-zelfgemaakte-kipsate-63c7d6d000ace46356b3f490",
       "families": [
-        "garnalen"
+        "garnalen",
+        "kip",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 25,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "anders",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "kip",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Indonesisch"
     },
     {
       "id": "hf-page-b3a0cfcd1ce0f4",
@@ -3411,16 +3541,23 @@
       "title": "Hawaïaanse stijl hamburger met sticky champignons",
       "url": "https://www.hellofresh.nl/recipes/hawaiaanse-stijl-hamburger-met-sticky-champignons-6a2c1b5691ca82626ceed606",
       "families": [
-        "champignons"
+        "champignons",
+        "eieren"
       ],
-      "minutes": null,
+      "minutes": 35,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "anders",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "champignons",
+        "eieren"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "American"
     },
     {
       "id": "ah-hachee-basis",
@@ -4005,16 +4142,23 @@
       "url": "https://www.hellofresh.nl/recipes/w44-open-briefing-use-nid-sukadelap-6728f043d49f300fd61638df",
       "families": [
         "riblappen",
-        "tomaten"
+        "tomaten",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 15,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "riblappen",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Indonesisch"
     },
     {
       "id": "hf-page-a45aacb421230a",
@@ -4022,16 +4166,25 @@
       "title": "Kippenbout met citroen en krieltjes uit de oven",
       "url": "https://www.hellofresh.nl/recipes/kippenbout-met-citroen-en-krieltjes-uit-de-oven-5f466d56c307ef72fb0155ec",
       "families": [
-        "aardappelen"
+        "aardappelen",
+        "boerenkool",
+        "champignons"
       ],
-      "minutes": null,
+      "minutes": 50,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "oven",
-      "vegetable_families": 0,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "boerenkool",
+        "champignons"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Italiaans"
     },
     {
       "id": "hf-page-cc3343ce0caa9e",
@@ -4039,16 +4192,27 @@
       "title": "Kipfilet met rodewijnstoof",
       "url": "https://www.hellofresh.nl/recipes/kipfilet-met-rodewijnstoof-69aeba5eca28cbe15d08530e",
       "families": [
-        "kip"
+        "aardappelen",
+        "champignons",
+        "kip",
+        "wortel"
       ],
-      "minutes": null,
+      "minutes": 45,
       "servings": null,
       "course": "niet_gecontroleerd",
       "method": "stoof",
-      "vegetable_families": 0,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-01"
+      "last_checked": "2026-11-02",
+      "ingredient_families": [
+        "aardappelen",
+        "champignons",
+        "kip",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "cuisine": "Frans"
     },
     {
       "id": "hf-page-6eb4fae03dc0ea",
