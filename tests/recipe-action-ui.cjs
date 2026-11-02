@@ -43,6 +43,18 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  for(const store of ['ah','jumbo','lidl'])for(const r of t.catalog(store).filter(r=>t.recipeActions(r,store).some(x=>x.isMain)))assert.ok(t.recipeActions(r,store).length>=2);
  t.state.recipeBasis='all';
  assert.ok(!page.includes('undefined')&&!page.includes('[object Object]'));
+ // Reproduce the mobile screenshot: Jumbo -> Kip -> exact product match.
+ Object.assign(t.state,{store:'jumbo',kind:'kip',subtype:'alle',query:'',cookingQuery:'',cookingOffer:null,dealFilter:'confirmed',recipeBasis:'all'});
+ t.render();
+ const strict=el('#view-recepten').innerHTML;
+ if(!strict.includes('data-open="')){
+  assert.ok(strict.includes('Geen exacte productkoppelingen beschikbaar'));
+  assert.ok(strict.includes('data-relax-deals="1"'));
+  assert.ok(!strict.includes('publisher-recipe-card'),'Never relabel approximate matches as exact');
+ }
+ t.state.dealFilter='all';t.render();
+ assert.ok(el('#view-recepten').innerHTML.includes('publisher-recipe-card'),'Relaxing only evidence keeps useful Jumbo chicken recipes');
+ assert.ok(el('#view-recepten').innerHTML.includes('geen exacte merk-/EAN-koppeling'));
  // Saved originals remain readable when their promotions expire.
  const id='library|'+t.state.library[0].id;
  assert.ok(t.findRecipe('ah',id));t.openRecipe('ah|'+id);

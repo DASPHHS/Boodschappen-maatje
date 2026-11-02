@@ -96,13 +96,19 @@ const start=base.endsWith('/')?base:base+'/';
   for(const card of await publisherCards.all()){
    assert.ok(await card.locator('.publisher-match li').count()>=2,'Every recipe shows two different actionable products');
    const text=await card.innerText();
-   assert.match(text,/actieproducten bij/);
+   assert.match(text,/(?:passende )?actieproducten bij/);
    assert.doesNotMatch(text,/Honig Bakplaat Mix|Jumbo Gevulde Eieren|Maza Hoemoes Paprika|Jumbo Champignons Knoflook/);
    assert.ok(await card.locator('.publisher-match a[href^="https://"]').count()>=2);
   }
   await page.locator('#basis-filter').selectOption('main');
   for(const card of await publisherCards.all())assert.match(await card.innerText(),/eiwitbasis in actie/);
   await page.locator('#basis-filter').selectOption('all');
+  const exactOption=page.locator('#deal-filter option[value="confirmed"]');
+  if(await exactOption.isDisabled())assert.match(await exactOption.innerText(),/\(0\)/,'A zero-result exact option must say so and be disabled');
+  assert.equal(await page.locator('#deal-filter option[value="anchor"]').count(),0,'No duplicate technical evidence filters');
+  await page.locator('#find').fill('onvindbaar recept xyz');
+  await page.locator('[data-reset-recipes]').click();
+  assert.ok(await publisherCards.count()>0,'Reset must restore useful recipes after an empty selection');
   const firstCount=await publisherCards.count();
   if(await page.locator('#view-recepten [data-more-publishers]').count()){
    await page.locator('#view-recepten [data-more-publishers]').click();

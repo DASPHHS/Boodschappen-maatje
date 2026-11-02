@@ -201,13 +201,14 @@ function matchesIngredientSearch(r){
  const value=norm(ingredient.name);
  return Boolean(value&&norm(r.title+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).includes(value));
 }
-function recipeFiltered(r){
+function recipeFiltered(r,ignoreDealFilter=false){
 if(state.recipeBasis==='main'&&!recipeBenefit(r).hasMain)return false;
 if(state.batchOnly&&!(r.batch_cook?.days===2&&r.batch_cook?.people_per_day===2&&r.batch_cook?.total_portions===4))return false;
 if((state.cookingQuery||state.cookingOffer)&&!matchesIngredientSearch(r))return false;
 if(state.recipeQuality!=='all'&&r.quality_status==='concept_niet_culinair_getest')return false;
 if(state.kind!=='alle'&&r.category!==state.kind)return false;if(state.subtype!=='alle'&&proteinSubtype(r)!==state.subtype)return false;
 if(state.query&&!(r.title+' '+(r.cuisine||'')+' '+(r.ingredients||[]).map(i=>i.name).join(' ')).toLocaleLowerCase('nl-NL').includes(state.query.toLocaleLowerCase('nl-NL')))return false;
+if(ignoreDealFilter)return true;
 const m=offerInfo(r,r.store);
 if(state.dealFilter==='confirmed'&&!m.confirmed.length)return false;if(state.dealFilter==='anchor'&&!(m.anchors.length||m.confirmed.length))return false;
 if(state.dealFilter==='potential'&&!m.possible.length)return false;
@@ -467,7 +468,20 @@ function kindControls(offerPage=false){
  }
  return '<div class="control-row">'+['alle','kip','vlees','vis','vega'].map(k=>'<button class="pill '+(state.kind===k?'active':'')+'" data-kind="'+k+'">'+(KINDS[k]||'Alle soorten')+'</button>').join('')+'<input class="search" id="find" aria-label="Zoek recepten" placeholder="Zoek recept, keuken of ingrediënt…" value="'+attr(state.query)+'"></div>';
 }
-function recipeControls(){return '<div class="recipe-toolbar"><label>Sorteer op <select id="recipe-sort"><option value="deals"'+(state.sortBy==='deals'?' selected':'')+'>Voordeel op de basis eerst</option><option value="price"'+(state.sortBy==='price'?' selected':'')+'>Laagste volledige prijsindicatie (eigen recepten)</option><option value="protein"'+(state.sortBy==='protein'?' selected':'')+'>Meeste eiwit (eigen recepten)</option><option value="time"'+(state.sortBy==='time'?' selected':'')+'>Snelste bereiding</option></select></label><label>Actie op de basis <select id="basis-filter"><option value="all"'+(state.recipeBasis==='all'?' selected':'')+'>Alle recepten · basisvoordeel eerst</option><option value="main"'+(state.recipeBasis==='main'?' selected':'')+'>Alleen eiwitbasis in actie</option></select></label><label>Actiestatus <select id="deal-filter"><option value="all"'+(state.dealFilter==='all'?' selected':'')+'>Alle recepten</option><option value="confirmed"'+(state.dealFilter==='confirmed'?' selected':'')+'>Exact gekoppelde actie</option><option value="anchor"'+(state.dealFilter==='anchor'?' selected':'')+'>Recept met actieproduct</option><option value="potential"'+(state.dealFilter==='potential'?' selected':'')+'>Past bij aanbieding</option></select></label><label>Kwaliteit <select id="recipe-quality"><option value="developed"'+(state.recipeQuality==='developed'?' selected':'')+'>Uitgewerkt & actie-ideeën</option><option value="all"'+(state.recipeQuality==='all'?' selected':'')+'>Ook 40 oudere concepten</option></select></label></div>'}
+function publisherRows(stores){
+ let rows=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,stores,
+  offersByStore:Object.fromEntries(stores.map(s=>[s,offers(s)])),engine:window.MaatjeRecipeDiscovery,
+  query:state.query?.trim()||'',ingredient:ingredientTarget(),source:state.publisherSource,
+  category:state.kind,basis:state.recipeBasis,sort:state.sortBy});
+ if(state.subtype!=='alle')rows=rows.filter(x=>proteinSubtype({category:x.category,title:x.recipe.title,ingredients:window.MaatjeRecipeProducts.recipeProfiles(x.recipe).filter(p=>p.group).map(p=>({name:p.variant==='tempeh'?'tempeh':p.variant==='beef'?'rundergehakt':p.variant==='pork'?'varkensgehakt':p.family,department:'Eiwitbronnen'}))})===state.subtype);
+ return state.batchOnly?rows.filter(x=>x.slow):rows;
+}
+function recipeFilterCounts(){
+ const stores=ORDER.filter(s=>state.store==='alle'||state.store===s),local=stores.flatMap(s=>catalog(s)).filter(r=>recipeFiltered(r,true));
+ const names=new Set([...local.map(r=>norm(r.title)),...publisherRows(stores).map(x=>norm(x.recipe.title))]);
+ return {all:names.size,confirmed:new Set(local.filter(r=>offerInfo(r,r.store).confirmed.length).map(r=>norm(r.title))).size};
+}
+function recipeControls(){const counts=recipeFilterCounts();return '<div class="recipe-toolbar"><label>Sorteer op <select id="recipe-sort"><option value="deals"'+(state.sortBy==='deals'?' selected':'')+'>Voordeel op de basis eerst</option><option value="price"'+(state.sortBy==='price'?' selected':'')+'>Laagste volledige prijsindicatie (eigen recepten)</option><option value="protein"'+(state.sortBy==='protein'?' selected':'')+'>Meeste eiwit (eigen recepten)</option><option value="time"'+(state.sortBy==='time'?' selected':'')+'>Snelste bereiding</option></select></label><label>Actie op de basis <select id="basis-filter"><option value="all"'+(state.recipeBasis==='all'?' selected':'')+'>Alle recepten · basisvoordeel eerst</option><option value="main"'+(state.recipeBasis==='main'?' selected':'')+'>Alleen eiwitbasis in actie</option></select></label><label>Actiestatus <select id="deal-filter"><option value="all"'+(state.dealFilter==='all'?' selected':'')+'>Passende actierecepten ('+counts.all+')</option><option value="confirmed"'+(state.dealFilter==='confirmed'?' selected':'')+(counts.confirmed?'':' disabled')+'>Met exacte productkoppeling ('+counts.confirmed+')</option></select></label><label>Kwaliteit <select id="recipe-quality"><option value="developed"'+(state.recipeQuality==='developed'?' selected':'')+'>Uitgewerkt & actie-ideeën</option><option value="all"'+(state.recipeQuality==='all'?' selected':'')+'>Ook 40 oudere concepten</option></select></label></div>'}
 
 function proteinSubtype(r){
 const names=norm(r.title+' '+(r.ingredients||[]).map(i=>i.name||i.label||'').join(' '));
@@ -768,26 +782,21 @@ function cookingIdeasPanel(){
 function discoveredPublisherCards(stores,limit=8,overviewOnly=false){
  const selector=window.MaatjePublisherSelection,engine=window.MaatjeRecipeDiscovery;
  if(!selector||!engine||!state.publisherRecipes?.recipes?.length)return '';
- const search=state.query?.trim()||'';
- let rows=selector.recipesForOffers({
-  index:state.publisherRecipes,stores,engine,query:search,ingredient:ingredientTarget(),source:state.publisherSource,
-  category:state.kind,basis:state.recipeBasis,sort:state.sortBy,offersByStore:Object.fromEntries(stores.map(s=>[s,offers(s)]))
- });
- if(state.batchOnly)rows=rows.filter(x=>x.slow);
+ let rows=publisherRows(stores);
  const shown=rows.slice(0,limit);
  const card=({recipe:r,category,matched,slow})=>{
   const visual=category==='kip'?'chicken':category==='vis'?'fish':category==='vlees'?'meat':'vega';
   const emoji=category==='kip'?'🍗':category==='vis'?'🐟':category==='vlees'?'🥘':'🥬';
-  const label=matched.count+' actieproducten bij '+NAMES[matched.store]+' · '+(matched.hasMain?'eiwitbasis in actie':'alleen bijproducten');
+  const label=matched.count+' passende actieproducten bij '+NAMES[matched.store]+' · '+(matched.hasMain?'eiwitbasis in actie':'alleen bijproducten');
   return '<article class="recipe-card publisher-recipe-card"><div class="recipe-visual '+visual+'">'+
     '<span class="tag orange">'+safe(r.source)+'</span><span class="plate" aria-hidden="true">'+emoji+'</span></div>'+
     '<div class="recipe-offers"><span class="offer-badge '+(matched?'candidate':'neutral')+'">'+label+'</span></div>'+
     '<h3>'+safe(r.title)+'</h3>'+
-    '<p class="recipe-origin">Origineel recept van '+safe(r.source)+'</p>'+
+    '<p class="recipe-origin">Origineel recept van '+safe(r.source)+'</p><p class="muted">Gekoppeld op productvariant; geen exacte merk-/EAN-koppeling.</p>'+
     '<div class="recipe-info">'+(r.minutes?'<span>'+safe(r.minutes)+' min</span>':'')+
       (slow?'<span>Langzaam koken</span>':'')+
       (r.servings?'<span>'+safe(r.servings)+' personen</span>':'')+'</div>'+
-    '<ul class="publisher-match">'+matched.products.map(({offer:o,isMain,saving})=>'<li><a href="'+attr(o.source.url)+'" target="_blank" rel="noopener noreferrer">'+(isMain?'Basis: ':'')+safe(o.name)+' ↗</a> · '+money(o.price)+' / '+safe(o.pack_label||'verpakking')+' · t/m '+dateNL(o.end_date)+(o.member_required?' · klantenkaart':'')+(saving.perPack!==null?' · '+money(saving.perPack)+' korting per verpakking':'')+'</li>').join('')+'</ul>'+
+    '<ul class="publisher-match">'+matched.products.map(({offer:o,isMain,saving,ingredientProfile,purchase})=>'<li><a href="'+attr(o.source.url)+'" target="_blank" rel="noopener noreferrer">'+(isMain?'Basis: ':'')+safe(o.name)+' ↗</a> · '+money(o.price)+' / '+safe(o.pack_label||'verpakking')+' · t/m '+dateNL(o.end_date)+(o.member_required?' · klantenkaart':'')+(saving.perPack!==null?' · '+money(saving.perPack)+' korting per verpakking':'')+(ingredientProfile.quantity?'<br><small>Nodig voor '+safe(r.servings||'?')+' personen: '+safe(ingredientProfile.quantity)+' '+safe(ingredientProfile.unit)+(purchase?' · voor 4 porties '+purchase.packages+' hele verpakking(en)':' · benodigd aantal verpakkingen niet zeker')+'</small>':'')+'</li>').join('')+'</ul>'+
     (matched.mainSaving!==null?'<p class="offer-hint">Bekende korting op de benodigde basisverpakkingen voor 4 porties: '+money(matched.mainSaving)+'. Geen totale maaltijdprijs.</p>':'')+
     '<div class="recipe-bottom"><span class="publisher-recipe-footer">Alle stappen bij de maker</span>'+
     '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Bekijk recept ↗</a></div></article>';
@@ -819,7 +828,7 @@ function recipeView(){
  const stores=ORDER.filter(s=>state.store==='alle'||state.store===s);
  const presentation=window.MaatjeRecipePresentation;
  const all=stores.flatMap(s=>catalog(s));
- const filtered=all.filter(recipeFiltered);
+ const filtered=all.filter(r=>recipeFiltered(r));
  const unique=state.store==='alle'&&presentation
   ?presentation.dedupeAcrossStores(filtered,r=>offerInfo(r,r.store)):filtered;
  const ranked=unique.sort(recipeSort);
@@ -828,6 +837,12 @@ function recipeView(){
   ?presentation.recommend(ranked,r=>offerInfo(r,r.store),12):ranked;
  // Genuine publisher recipes are the primary discovery view, including search.
  if(['all','potential','anchor'].includes(state.dealFilter))out+=discoveredPublisherCards(stores,state.publisherPageSize);
+ if(state.dealFilter==='confirmed'&&!varied.length){
+  const counts=recipeFilterCounts();
+  out+=empty('Geen exacte productkoppelingen beschikbaar','Een passend ingrediënt is nog geen identiek merkproduct met dezelfde verpakking. Deze selectie bevat geen recepten met zo’n bewezen koppeling.');
+  out+='<div class="control-row"><button class="button" data-relax-deals="1">Toon '+counts.all+' passende actierecepten</button><button class="button secondary" data-reset-recipes="1">Wis alle receptfilters</button></div>';
+  $('#view-recepten').innerHTML=out;return;
+ }
  const defaultView=!state.batchOnly&&!searchActive&&state.kind==='alle'&&state.subtype==='alle'&&
   state.dealFilter==='all'&&state.recipeQuality==='developed'&&state.sortBy==='deals';
  let display=varied;
@@ -863,7 +878,7 @@ function recipeView(){
  out+='<p class="recipe-list-note">'+(state.batchOnly?'2 personen × 2 dagen = 4 porties totaal.':'Toont '+shown.length+' van '+display.length+'.')+
   ' Een productsoort in de aanbieding betekent niet automatisch dat de hele maaltijd goedkoper is.</p>';
  out+=shown.length?'<div class="cards">'+shown.map(recipeCard).join('')+'</div>':
-  empty('Geen passende recepten','Wis de zoekopdracht of kies een andere categorie.');
+  empty('Geen passende recepten binnen deze filters','Er zijn niet genoeg passende actuele aanbiedingen voor deze combinatie. De eis van minimaal twee actieproducten blijft gelden.')+'<button class="button secondary" data-reset-recipes="1">Wis alle receptfilters</button>';
  if(display.length>shown.length)out+='<div class="recipe-more-row"><button class="button secondary" data-more-recipes="1">Toon 12 extra eigen recepten ('+(display.length-shown.length)+' resterend)</button></div>';
  if(state.publisherRecipes?.recipes?.length)out+='<details class="sources-disclosure"><summary>Andere kooksites en originele uitgeversrecepten</summary>'+recipeSourceDirectory()+'</details>';
  out+='<p class="muted recipe-footer-note">De eigen recepten zijn niet proefgekookt. Uitgeversrecepten openen op de originele site. Producten en prijzen worden niet zonder bewijs gelijkgesteld.</p>';
@@ -1008,6 +1023,8 @@ if(b.dataset.view){e.preventDefault();setView(b.dataset.view);return}
 if(b.dataset.addWatch){const value=$('#new-watch')?.value||'';if(addCustomWatch(value))offersView();return}
 if(b.dataset.removeWatch){state.customWatches=state.customWatches.filter(w=>w.key!==b.dataset.removeWatch);save();offersView();return}
 if(b.dataset.recipeSave){toggleSavedRecipe(b.dataset.recipeSave);if($('#recipe-dialog').open)$('#recipe-dialog').close();render();return}if(b.dataset.planRecipe){planRecipe(b.dataset.planRecipe);render();return}if(b.dataset.unplan){unplanRecipe(b.dataset.unplan);render();return}if(b.dataset.myList){state.store=b.dataset.myList;setView('lijst');return}if(b.dataset.favToggle){toggleFavorite({name:b.dataset.favName,pack_label:b.dataset.favPack,ean:b.dataset.favEan||null},b.dataset.favStore);render();return}if(b.dataset.offerMode){state.offerMode=b.dataset.offerMode;offersView();return}if(b.dataset.manageWatch){state.manageWatch=!state.manageWatch;offersView();return}if(b.dataset.openFavorites){state.offerMode='favorites';setView('aanbiedingen');return}if(b.dataset.offerWeek){state.offerWeek=b.dataset.offerWeek;state.pageSize={lidl:24,jumbo:24,ah:24};offersView();return}if(b.dataset.moreOffers){state.pageSize[b.dataset.moreOffers]+=24;offersView();return}if(b.dataset.gotoOffers){state.store=b.dataset.gotoOffers;state.offerMode='all';setView('aanbiedingen');return}if(b.dataset.gotoStore){state.store=b.dataset.gotoStore;setView('recepten');return}
+if(b.dataset.relaxDeals){state.dealFilter='all';state.recipePageSize=12;state.publisherPageSize=8;recipeView();return}
+if(b.dataset.resetRecipes){Object.assign(state,{dealFilter:'all',recipeBasis:'all',kind:'alle',subtype:'alle',store:'alle',query:'',cookingQuery:'',cookingOffer:null,batchOnly:false,publisherSource:'all',sortBy:'deals',recipeQuality:'developed',recipePageSize:12,publisherPageSize:8});recipeView();return}
 if(b.dataset.store){state.store=b.dataset.store;state.recipePageSize=12;render();return}
 if(b.dataset.kind){state.kind=b.dataset.kind;state.subtype='alle';state.recipePageSize=12;render();return}if(b.dataset.subtype){state.subtype=b.dataset.subtype;state.recipePageSize=12;render();return}
 if(b.dataset.cookOffer){const [store,...parts]=b.dataset.cookOffer.split('|');const id=parts.join('|');

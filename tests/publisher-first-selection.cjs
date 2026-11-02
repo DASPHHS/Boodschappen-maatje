@@ -25,7 +25,7 @@ const unsupported={recipes:[{...index.recipes[0],ingredient_families:undefined,i
 assert.equal(selector.recipesForOffers({index:unsupported,stores:['ah'],offersByStore:{ah:[kip,broccoli]},engine,day}).length,0,'Title-only families never prove ingredients');
 const app=fs.readFileSync('docs/app.js','utf8');
 assert.ok(app.includes("publisherSource:'all'"),'All publishers enabled by default');
-assert.ok(app.includes('query:search'),'Search reaches selector');
+assert.ok(app.includes('query:state.query'),'Search reaches selector');
 assert.ok(app.includes('recipeActions(r,s).length>=2'),'Own recipes use the same action gate');
 assert.ok(fs.readFileSync('docs/index.html','utf8').includes('publisher-selection.js?v=20261102-main-basis'));
 console.log('Two-action publisher selection: dates, identity, one-store minimum, source mix, variation, query and ingredient evidence verified');
