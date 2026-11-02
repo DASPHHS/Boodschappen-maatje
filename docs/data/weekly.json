@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-02T10:59:19.150Z",
+  "generated_at": "2026-11-02T14:04:51.164Z",
   "week_start": "2026-11-02",
   "week_end": "2026-11-08",
   "editorial_status": "eigen_bewerkingen_niet_proefgekookt",
   "notice": "Vier eigen weekideeën per supermarkt voor vier porties; gebaseerd op vooraf geselecteerde bibliotheekrecepten. Niet proefgekookt, geen overgenomen uitgeverstekst, geen actuele prijs of volledig kassabedrag bevestigd.",
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-02T10:59:19.151Z",
+      "checked_at": "2026-11-02T14:04:51.165Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
@@ -307,7 +307,7 @@
       "notes": "Automatisch samengesteld uit reeds bestaande eigen ideeën. Controleer het oorspronkelijke recept en de winkelprijzen zelf."
     },
     "jumbo": {
-      "checked_at": "2026-11-02T10:59:19.151Z",
+      "checked_at": "2026-11-02T14:04:51.165Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
@@ -603,7 +603,7 @@
       "notes": "Automatisch samengesteld uit reeds bestaande eigen ideeën. Controleer het oorspronkelijke recept en de winkelprijzen zelf."
     },
     "ah": {
-      "checked_at": "2026-11-02T10:59:19.151Z",
+      "checked_at": "2026-11-02T14:04:51.165Z",
       "status": "own_ideas_unverified",
       "offers": [],
       "recipes": [
