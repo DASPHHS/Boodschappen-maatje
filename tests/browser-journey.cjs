@@ -83,6 +83,7 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(after,before+1,'Favorite heart must update count');
   await page.locator('.sidebar button[data-view="recepten"]').click();
   if(await page.locator('#cooking-ideas [data-clear-cook]').count())await page.locator('#cooking-ideas [data-clear-cook]').click();
+  await page.locator('#view-recepten [data-store="alle"]').click();
   const publisherCards=page.locator('#publisher-recipes-main .publisher-recipe-card');
   assert.ok(await publisherCards.count()>0,'Current offers must yield publisher recipes');
   assert.ok(await publisherCards.count()<=8,'First page is bounded');
