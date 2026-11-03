@@ -68,6 +68,8 @@ jobs:
         run: python scripts/sync_regular_prices.py
       - name: Corroborate imported promotions on exact retailer product pages
         continue-on-error: true
+        env:
+          RETAILER_VERIFY_LIMIT: ${{ github.event_name == 'push' && '24' || '240' }}
         run: python scripts/verify_retailer_offers.py
       - name: Record coverage and unresolved products
         run: |

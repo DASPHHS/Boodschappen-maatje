@@ -122,4 +122,22 @@ class RetailerRecoveryTests(unittest.TestCase):
         self.product['promotions'][0]['tags']=[{'text':'voor 1,99'}]
         self.assertNotEqual(assess(self.offer(),self.nuxt(self.product),date(2026,11,3))['verdict'],'confirmed')
 
+
+    def test_access_denial_does_not_erase_previously_confirmed_imports(self):
+        import tempfile
+        from unittest.mock import patch
+        from urllib.error import HTTPError
+        import verify_retailer_offers as v
+        day=v.dt.datetime.now(v.ZoneInfo('Europe/Amsterdam')).date()
+        o=self.offer();o.update(id='cached',price=2,start_date=day.isoformat(),end_date=(day+v.dt.timedelta(days=1)).isoformat())
+        proof={k:o.get(k) for k in v.FIELDS};proof.update(price=2,status='available',checked_at=day.isoformat(),url=self.url)
+        cached={'checked_at':day.isoformat(),'verifier_version':v.VERIFIER_VERSION,'fingerprint':v.fingerprint(o),'verdict':'confirmed','regular_price':2.79,'promotion_evidence':proof}
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            (root/'offers-catalog.json').write_text(json.dumps({'stores':{'jumbo':{'offers':[{**o,'id':'first-new'},o]}}}))
+            (root/'retailer-offer-evidence.json').write_text(json.dumps({'schema_version':1,'products':{'cached':cached}}))
+            with patch.object(v,'ROOT',root),patch.object(v,'urlopen',side_effect=HTTPError(self.url,403,'Denied',{},None)),patch.dict(v.os.environ,{'RETAILER_VERIFY_IDS':''}):v.main()
+            saved=json.loads((root/'offers-catalog.json').read_text())['stores']['jumbo']['offers']
+            self.assertTrue(next(x for x in saved if x['id']=='cached')['verified'])
+
 if __name__=='__main__':unittest.main()

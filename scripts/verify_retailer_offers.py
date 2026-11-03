@@ -108,6 +108,10 @@ def main():
             o['promotion_status']='active';o.pop('verification_reason',None)
     journal['products']={k:v for k,v in journal['products'].items() if v.get('verifier_version')==VERIFIER_VERSION}
     attempts=0;counts={};limit=max(1,min(int(os.getenv('RETAILER_VERIFY_LIMIT','240')),500))
+    # Replay all still-valid evidence before any request can fail or block.
+    for o in candidates:
+        prior=journal['products'].get(o['id'],{})
+        if reusable(prior,o,day):apply(o,prior)
     selected=set(filter(None,os.getenv('RETAILER_VERIFY_IDS','').split(',')))
     deadline=time.monotonic()+420
     for o in candidates:
