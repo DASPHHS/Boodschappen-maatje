@@ -11,6 +11,8 @@ on:
       - 'scripts/promotion_changefeed.py'
       - 'scripts/sync_folderz.py'
       - 'scripts/sync_regular_prices.py'
+      - 'scripts/verify_retailer_offers.py'
+      - 'scripts/retailer_payloads.py'
       - 'docs/data/personal-prices.json'
       - 'docs/data/watchlist.json'
       - 'docs/product-resolver.js'
@@ -64,6 +66,9 @@ jobs:
       - name: Recheck known regular prices on retailer product pages
         continue-on-error: true
         run: python scripts/sync_regular_prices.py
+      - name: Corroborate imported promotions on exact retailer product pages
+        continue-on-error: true
+        run: python scripts/verify_retailer_offers.py
       - name: Record coverage and unresolved products
         run: |
           node tests/product-resolver.cjs
@@ -80,6 +85,7 @@ jobs:
           # same large files against a newer main: that creates merge conflicts.
           tmp="$(mktemp -d)"
           cp docs/data/offers-catalog.json "$tmp/offers-catalog.json"
+          cp docs/data/retailer-offer-evidence.json "$tmp/retailer-offer-evidence.json"
           cp docs/data/supplemental-offers.json "$tmp/supplemental-offers.json"
           cp docs/data/offer-audit.json "$tmp/offer-audit.json"
           cp docs/data/personal-prices.json "$tmp/personal-prices.json"
@@ -87,6 +93,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp "$tmp/offers-catalog.json" docs/data/offers-catalog.json
+            cp "$tmp/retailer-offer-evidence.json" docs/data/retailer-offer-evidence.json
             cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
             cp "$tmp/offer-audit.json" docs/data/offer-audit.json
             cp "$tmp/personal-prices.json" docs/data/personal-prices.json
@@ -95,7 +102,7 @@ jobs:
             node scripts/audit_product_semantics.cjs
             node scripts/build_product_resolution.cjs
             node scripts/build_product_resolution.cjs --check
-            git add docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json docs/data/semantic-review.json
+            git add docs/data/retailer-offer-evidence.json docs/data/offers-catalog.json docs/data/supplemental-offers.json docs/data/offer-audit.json docs/data/personal-prices.json docs/data/product-resolution.json docs/data/semantic-review.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Update alle promoties en aanvullende Lidl-bronnen"
             if git push origin HEAD:main; then exit 0; fi

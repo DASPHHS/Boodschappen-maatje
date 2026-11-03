@@ -25,7 +25,7 @@ function auditItem(o,store,today,fromBulkFeed=false){
  }
  if(o?.loyalty_price&&!o?.loyalty_program)issues.push('loyalty_conditions_unknown');
  const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing','promotion_not_confirmed','promotion_withdrawn'].includes(i));
- return {status:invalid?'needs_review':retailer&&!fromBulkFeed?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer,independently_retailer_checked:retailer&&!fromBulkFeed&&identity.confirmedPromotion(o,today),source_kind:fromBulkFeed?'external_bulk_with_possible_retailer_link':'direct_report'};
+ return {status:invalid?'needs_review':retailer&&(!fromBulkFeed||identity.confirmedPromotion(o,today))?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer,independently_retailer_checked:retailer&&identity.confirmedPromotion(o,today),source_kind:fromBulkFeed?'external_bulk_with_possible_retailer_link':'direct_report'};
 }
 function audit(data,today=day()){
  const result={schema_version:1,generated_at:new Date().toISOString(),day:today,method:'automatic_consistency_scan_not_cashier_price_verification',stores:{},status_by_id:{},exceptions:[]};

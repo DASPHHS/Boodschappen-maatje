@@ -54,7 +54,7 @@ const shop=feed.stores?.[name];
 if(!shop||!Array.isArray(shop.offers))throw Error('Actiecataloog onvolledig: '+name);
 for(const o of shop.offers){
 if(!o.id||!o.name||typeof o.price!=='number'||!o.source?.url||!o.start_date||!o.end_date)throw Error('Ongeldige actierij '+name);
-if(o.verified===true)throw Error('Externe niet-onafhankelijke actie onterecht geverifieerd');
+if(o.verified===true&&!offerGate.confirmedPromotion(o,String(o.promotion_evidence?.checked_at||'').slice(0,10)))throw Error('Externe actie zonder passend onafhankelijk winkelbewijs als geverifieerd gemarkeerd');
 }
 }
 console.log('Brede promotiecatalogus gecontroleerd');

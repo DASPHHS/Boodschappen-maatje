@@ -8,13 +8,15 @@ import hashlib
 import json
 import re
 import time
+import os
 from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
+from retailer_payloads import breadcrumb_categories, jumbo_product
 ROOT=Path(__file__).resolve().parents[1]/'docs'/'data'
-MAX_REQUESTS=24
-EXTRACTOR_VERSION=1
+MAX_REQUESTS=max(1,min(int(os.getenv("PRODUCT_EVIDENCE_LIMIT","48")),240))
+EXTRACTOR_VERSION=2
 DOMAINS={'ah':'ah.nl','jumbo':'jumbo.com','lidl':'lidl.nl'}
 def fingerprint(name,pack):
     return hashlib.sha256((name+'\n'+pack).encode()).hexdigest()[:24]
@@ -27,11 +29,15 @@ def nodes(value):
 def extract(html,url,store,product_id):
     host=(urlparse(url).hostname or '').removeprefix('www.')
     if host!=DOMAINS[store]:raise ValueError('not an approved retailer host')
+    native=jumbo_product(html,url,product_id) if store=='jumbo' else None
+    if native and native.get('categories') and native.get('observed_price'):
+        native.pop('promotions',None)
+        return native
     docs=[]
     for s in re.findall(r'<script\b[^>]*type=[\"\']application/ld\+json[\"\'][^>]*>(.*?)</script>',html,re.S|re.I):
         try:docs.extend(nodes(json.loads(s)))
         except ValueError:continue
-    breadcrumbs=[]
+    breadcrumbs=breadcrumb_categories(html) if store=='ah' else []
     for item in docs:
         if item.get('@type')=='BreadcrumbList':
             breadcrumbs.extend(x.get('name') or x.get('item',{}).get('name','') for x in item.get('itemListElement',[]) if isinstance(x,dict) and isinstance(x.get('item',{}),dict))
@@ -56,7 +62,9 @@ def extract(html,url,store,product_id):
         price=float(price) if isinstance(price,(int,float,str)) and re.fullmatch(r'\d+(?:\.\d+)?',str(price)) and currency=='EUR' else None
         brand=item.get('brand',{})
         brand=brand.get('name','') if isinstance(brand,dict) else brand if isinstance(brand,str) else ''
-        return {'product_pack':item.get('size') if isinstance(item.get('size'),str) else None,'brand':brand,'observed_price':price if price and 0<price<1000 else None,'price_currency':currency,'verified_identity':True,'product_id':product_id,'name':name,
+        size=item.get('size')
+        if not isinstance(size,str) and isinstance(item.get('weight'),dict):size=item['weight'].get('value')
+        return {'product_pack':size if isinstance(size,str) else None,'brand':brand,'observed_price':price if price and 0<price<1000 else None,'price_currency':currency,'verified_identity':True,'product_id':product_id,'name':name,
                 'categories':list(dict.fromkeys(categories)),'source_url':url,
                 'ean':item.get('gtin13') or item.get('gtin') or None}
     raise ValueError('no matching JSON-LD Product identity')
@@ -67,7 +75,7 @@ def main():
     target=ROOT/'product-evidence.json'
     prior=json.loads(target.read_text()) if target.exists() else {'schema_version':1,'products':{}}
     now=dt.datetime.now(dt.timezone.utc);today=now.date().isoformat()
-    queue.sort(key=lambda x:(x.get('priority',1),prior['products'].get(x['store']+':'+x['product_id'],{}).get('last_attempt','')))
+    queue.sort(key=lambda x:(prior['products'].get(x['store']+':'+x['product_id'],{}).get('status') not in ('needs_evidence','unavailable'),prior['products'].get(x['store']+':'+x['product_id'],{}).get('status')=='ok',x.get('priority',1),prior['products'].get(x['store']+':'+x['product_id'],{}).get('last_attempt','')))
     per_store={s:[x for x in queue if x['store']==s] for s in DOMAINS}
     queue=[per_store[s][i] for i in range(max([len(v) for v in per_store.values()] or [0])) for s in DOMAINS if i<len(per_store[s])]
     blocked=set();attempts=0

@@ -64,7 +64,7 @@ jobs:
             git reset --hard origin/main
             cp "$tmp/retailer-catalog.json" docs/data/retailer-catalog.json
             cp "$tmp/source-health.json" docs/data/source-health.json
-            cp "$tmp/product-evidence.json" docs/data/product-evidence.json
+            python scripts/merge_product_evidence.py "$tmp/product-evidence.json"
             node scripts/audit_product_semantics.cjs
             # Always generate coverage using the freshest committed offers
             # and the new catalog; an earlier calculation is not safe to copy.

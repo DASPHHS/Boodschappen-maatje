@@ -1,0 +1,94 @@
+{
+  "sku": "167830PAK",
+  "title": "Campina Langlekker Volle Melk Voordeelpak 1,5 L",
+  "canonicalUrl": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-voordeelpak-1,5-l-167830PAK",
+  "subtitle": "1.5 liter",
+  "brand": "Campina",
+  "ean": "8713300402994",
+  "categories": [
+    {
+      "__typename": "Category",
+      "name": "Zuivel, boter en eieren",
+      "path": "/producten/zuivel,-boter-en-eieren/",
+      "id": "SG8"
+    },
+    {
+      "__typename": "Category",
+      "name": "Houdbare melk en chocolademelk",
+      "path": "/producten/zuivel,-boter-en-eieren/houdbare-melk-en-chocolademelk/",
+      "id": "SG8HG7_1"
+    },
+    {
+      "__typename": "Category",
+      "name": "Volle melk",
+      "path": "/producten/zuivel,-boter-en-eieren/houdbare-melk-en-chocolademelk/volle-melk/",
+      "id": "1461066920500"
+    }
+  ],
+  "availability": {
+    "__typename": "ProductAvailability",
+    "availabilityNote": null,
+    "label": null,
+    "isAvailable": true,
+    "availability": "AVAILABLE",
+    "stockLimit": null,
+    "reason": null,
+    "delistDate": {
+      "__typename": "DateTime",
+      "iso": null
+    }
+  },
+  "price": {
+    "__typename": "Price",
+    "price": 279,
+    "promoPrice": null,
+    "pricePerUnit": {
+      "__typename": "PricePerUnit",
+      "price": 186,
+      "unit": "l"
+    }
+  },
+  "promotions": [
+    {
+      "__typename": "Promotion",
+      "id": "3021560",
+      "isKiesAndMix": false,
+      "tags": [
+        {
+          "__typename": "PromotionTag",
+          "text": "€ 1,50 bezorgkorting",
+          "inverse": false
+        },
+        {
+          "__typename": "PromotionTag",
+          "text": "Bij elke 2 stuks",
+          "inverse": true
+        }
+      ],
+      "group": "GeenBestelkosten",
+      "image": "https://www.jumbo.com/INTERSHOP/static/WFS/Jumbo-Grocery-Site/-/Jumbo-Grocery/nl_NL/Images_Aanbiedingen/2026/Geen%20bestelkosten/Week%2044/Dealbacks_Week_44_06.png",
+      "url": "/aanbiedingen/campina-milner-of-mona/3021560",
+      "durationTexts": {
+        "__typename": "PromotionDurationTexts",
+        "title": "Geldig van wo 28 okt t/m di 3 nov",
+        "description": "Bij boodschappen bestellen geldt de aanbieding voor bezorg- en ophaalmomenten op wo 28 okt t/m di 3 nov.",
+        "shortTitle": "wo 28 okt t/m di 3 nov"
+      },
+      "primaryBadges": [],
+      "start": {
+        "__typename": "PromotionDateTime",
+        "date": 28,
+        "dayShort": "wo",
+        "monthShort": "okt"
+      },
+      "end": {
+        "__typename": "PromotionDateTime",
+        "date": 3,
+        "dayShort": "di",
+        "monthShort": "nov"
+      },
+      "volumeDiscounts": [],
+      "maxPromotionQuantity": null
+    }
+  ]
+}

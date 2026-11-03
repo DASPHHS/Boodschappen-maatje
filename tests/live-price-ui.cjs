@@ -61,7 +61,8 @@ for(const src of [
   for(const store of ['lidl','jumbo','ah']){
    const prices=p.candidates(q,store,dataset,context.MaatjeObservations,context.MaatjeResolver,dataset.source_date);
    assert.ok(prices.length,'Expected a verified variant match from the snapshot for '+store);
-   assert.ok(html.includes(prices[0].o.name),'Missing product '+prices[0].o.name);
+   assert.ok(prices.some(x=>html.includes(x.o.name)),'No eligible full UHT milk product rendered for '+store);
+   // A freshly checked shelf price may supersede the older snapshot leader.
   }
  }
  assert.ok(html.length<200000,"Personal view should not render hundreds of cards");

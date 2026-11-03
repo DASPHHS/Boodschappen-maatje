@@ -49,7 +49,8 @@
    const packVerified=!!knownPacks&&!packConflict;
    const official=packVerified&&meta?.verified_identity===true&&meta?.status==='ok'&&age>=0&&age<=1&&Number.isFinite(meta.observed_price)&&meta.observed_price>0;
    const item={name:row[0],price:official?meta.observed_price:row[1],pack_label:row[2]||'',
-     pack_conflict:packConflict,product_id:row[4],semantic_evidence:row[5]||null,store,status:'external_regular_observed',
+     pack_conflict:packConflict,product_id:row[4],semantic_evidence:row[5]||null,store,status:official?'official_regular_observed':'external_regular_observed',
+     availability_status:meta?.verified_identity===true&&age>=0&&age<=1?meta.availability_status:undefined,
      checked_date:official?meta.checked_at.slice(0,10):catalog.source_date,
      source_provider:official?'Winkelpagina':'Checkjebon',
      source_verification:official?'retailer_product_page_checked':'published_catalog_snapshot',

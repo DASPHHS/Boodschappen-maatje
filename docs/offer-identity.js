@@ -45,7 +45,7 @@
   try{
    const u=new URL(e.url),h=u.hostname.replace(/^www\./,''),p=u.pathname;
    if(e.url!==o.source?.url)return false;
-   return h==='jumbo.com'?/^\/(aanbiedingen|producten)\/[^/]+\/[^/]+\/?$/.test(p)&&!/^\/aanbiedingen\/nu(?:\/|$)/.test(p):
+   return h==='jumbo.com'?(/^\/producten\/[^/]+-\d+[A-Za-z]*$/.test(p)||/^\/aanbiedingen\/(?!nu(?:\/|$))[^/]+\/[A-Za-z0-9_-]+\/?$/.test(p)):
     h==='ah.nl'?/^\/producten\/product\/wi\d+\//.test(p):
     h==='lidl.nl'?/^\/p\/[^/]+\/p\d+/.test(p):
     h==='view.publitas.com'?/^\/[^/]+\/[^/]+\/page\/\d+/.test(p):false;

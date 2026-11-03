@@ -12,10 +12,13 @@ on:
       - 'docs/product-resolver.js'
       - 'docs/product-semantics.js'
       - 'scripts/audit_product_semantics.cjs'
+      - 'scripts/sync_product_evidence.py'
+      - 'scripts/retailer_payloads.py'
+      - 'scripts/merge_product_evidence.py'
       - 'docs/price-observations.js'
       - 'scripts/build_product_resolution.cjs'
   schedule:
-    - cron: '15 6,7 * * *'
+    - cron: '15 6,7,9,12,15,18 * * *'
 permissions:
   contents: write
 concurrency:
@@ -24,30 +27,42 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve missing product evidence
+        run: |
+          python -m unittest discover -s tests -p 'test_product_evidence.py'
+          node scripts/audit_product_semantics.cjs
+          python scripts/sync_product_evidence.py
+          python scripts/merge_product_evidence.py
       - name: Validate every tracked product and regenerate unresolved queue
         run: |
           node tests/product-resolver.cjs
           node scripts/build_product_resolution.cjs --check
           node scripts/build_product_resolution.cjs
-      - name: Publish only resolution status
+      - name: Publish recovered evidence and resolution atomically
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tmp="$(mktemp -d)"
+          cp docs/data/product-evidence.json "$tmp/product-evidence.json"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git reset --hard origin/main
+            python scripts/merge_product_evidence.py "$tmp/product-evidence.json"
             # Recalculate AFTER rebasing to the newest catalog + offers.
             # Never replay a stale report built before another workflow pushed.
             node scripts/audit_product_semantics.cjs
             node scripts/build_product_resolution.cjs
             node scripts/build_product_resolution.cjs --check
-            git add docs/data/product-resolution.json docs/data/semantic-review.json
+            git add docs/data/product-evidence.json docs/data/retailer-catalog.json docs/data/product-resolution.json docs/data/semantic-review.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Ververs openstaande productbroncontroles"
             if git push origin HEAD:main; then exit 0; fi

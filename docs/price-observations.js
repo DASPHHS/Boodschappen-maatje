@@ -10,7 +10,7 @@
  const validDay=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!Number.isNaN(Date.parse(v+'T12:00:00Z'));
  const days=(a,b)=>validDay(a)&&validDay(b)?Math.round((Date.parse(a+'T12:00:00Z')-Date.parse(b+'T12:00:00Z'))/86400000):null;
  function pack(o){
-  const raw=String(o?.pack_label||o?.name||'').toLowerCase().replace(/,/g,'.').replace(/×/g,'x');
+  const raw=String(o?.pack_label||o?.name||'').toLowerCase().replace(/,/g,'.').replace(/×/g,'x').replace(/\bmilliliters?\b/g,'ml').replace(/\bliters?\b/g,'l').replace(/\bkilogram\b/g,'kg').replace(/\bgram\b/g,'g');
   // A range describes variants, not an exact purchasable quantity.
   if(/\d+(?:\.\d+)?\s*[-–]\s*\d+(?:\.\d+)?\s*(?:g|kg|ml|cl|l)\b/.test(raw))return null;
   const factor={ml:1,cl:10,l:1000,g:1,kg:1000};
