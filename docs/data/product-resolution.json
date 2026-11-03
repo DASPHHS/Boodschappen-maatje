@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T11:52:16.011Z",
+  "generated_at": "2026-11-03T12:44:52.946Z",
   "checked_date": "2026-11-03",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 46,
+    "price_observed": 45,
     "stale_or_unavailable": 0,
     "needs_variant_evidence": 7,
-    "needs_source": 7
+    "needs_source": 8
   },
   "stores": {
     "lidl": {
@@ -303,12 +303,12 @@
         "checked_date": "2026-11-03"
       },
       "bospeen": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
-        "product_name": "Jumbo bospeen",
-        "price": 0.99,
-        "price_status": "externe actiemelding · t/m 2026-11-03",
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
         "checked_date": null
       },
       "popcorn": {

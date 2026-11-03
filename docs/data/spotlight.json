@@ -42,12 +42,14 @@
             "label": "Jumbo Extra's aanbiedingen, alleen in de winkel",
             "url": "https://www.jumbo.com/aanbiedingen/nu"
           },
-          "note": "Extra's-actie alleen in de winkel; online overzicht bevestigt €4,49 per circa 350 g. Controleer jouw Extra's toegang en gewicht.",
+          "note": "Ingetrokken 3 november: generieke overzichtslink bewijst deze actie niet; de oude specifieke actiepagina is niet beschikbaar. Niet als actuele actie of receptbasis gebruiken.",
           "start_date": "2026-10-28",
           "end_date": "2026-11-03",
-          "verified": true,
+          "verified": false,
           "source_provider": "officiele_folder",
-          "member_required": true
+          "member_required": true,
+          "promotion_status": "withdrawn",
+          "reviewed_at": "2026-11-03"
         },
         {
           "id": "jumbo-w44-vivera-shoarma",
@@ -1034,13 +1036,13 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "folder_current",
-              "pack_price": 13.47,
+              "price_status": "unverified_price",
+              "pack_price": null,
               "package_size": 350,
               "package_unit": "g",
               "package_count": 3,
               "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
-              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
+              "note": "Actie ingetrokken: actuele productprijs en actievoorwaarden niet bevestigd."
             },
             {
               "name": "Jumbo biologische pompoen of flespompoen",
@@ -1086,22 +1088,15 @@
             "Rooster pompoen en kook sperziebonen tot ze gaar zijn.",
             "Serveer met een frisse kwarksaus."
           ],
-          "offer_anchor_id": "jumbo-w44-kipblokjes",
-          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
           "origin": "folder-idee",
           "cost": null,
           "macros": null,
           "macro_status": "niet_berekend",
           "source_note": "Origineel aangepast vierportierecept op basis van benoemd folderhoofdproduct; volledige kassaprijs en productmacro's nog niet gecontroleerd.",
-          "minimum_known_spend": 15.54,
+          "minimum_known_spend": 2.07,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
           "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
           "offer_anchors": [
-            {
-              "offer_id": "jumbo-w44-kipblokjes",
-              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
-              "role": "eiwitbron"
-            },
             {
               "offer_id": "jumbo-w44-flespompoen",
               "ingredient_name": "Jumbo biologische pompoen of flespompoen",
@@ -1124,13 +1119,13 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "folder_current",
-              "pack_price": 13.47,
+              "price_status": "unverified_price",
+              "pack_price": null,
               "package_size": 350,
               "package_unit": "g",
               "package_count": 3,
               "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
-              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
+              "note": "Actie ingetrokken: actuele productprijs en actievoorwaarden niet bevestigd."
             },
             {
               "name": "Begro diepvries gebroken bonen",
@@ -1176,8 +1171,6 @@
             "Voeg gesneden bospeen, boontjes en tomatenblokjes toe.",
             "Stoof tot alle groenten gaar zijn."
           ],
-          "offer_anchor_id": "jumbo-w44-kipblokjes",
-          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
           "origin": "folder-idee",
           "cost": null,
           "macros": null,
@@ -1186,16 +1179,10 @@
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
           },
-          "minimum_known_spend": 15.54,
+          "minimum_known_spend": 2.07,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
           "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
-          "offer_anchors": [
-            {
-              "offer_id": "jumbo-w44-kipblokjes",
-              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
-              "role": "eiwitbron"
-            }
-          ]
+          "offer_anchors": []
         },
         {
           "id": "jumbo-kip-thais",
@@ -1212,13 +1199,13 @@
               "quantity": 800,
               "unit": "g",
               "department": "Eiwitbronnen",
-              "price_status": "folder_current",
-              "pack_price": 13.47,
+              "price_status": "unverified_price",
+              "pack_price": null,
               "package_size": 350,
               "package_unit": "g",
               "package_count": 3,
               "source_url": "https://view.publitas.com/jumbo-supermarkten/jumbo-actiefolder-xagm-44/page/16",
-              "note": "De benodigde 800 g vergt naar verwachting drie schaaltjes van circa 350 g; Extra's-voorwaarden gelden."
+              "note": "Actie ingetrokken: actuele productprijs en actievoorwaarden niet bevestigd."
             },
             {
               "name": "spitskool",
@@ -1258,8 +1245,6 @@
             "Roerbak spitskool en champignons gaar.",
             "Meng met sojasaus en serveer zonder rijst."
           ],
-          "offer_anchor_id": "jumbo-w44-kipblokjes",
-          "offer_anchor_name": "Jumbo kipfiletblokjes of -reepjes naturel",
           "origin": "folder-idee",
           "cost": null,
           "macros": null,
@@ -1268,16 +1253,10 @@
           "inspiration_source": {
             "name": "Thematische inspiratie uit je persoonlijke Google Drive-receptencollectie (geen publiek bronbestand)"
           },
-          "minimum_known_spend": 13.47,
+          "minimum_known_spend": 0,
           "budget_feasibility": "budget_above_10_even_without_remaining_ingredients",
           "minimum_spend_note": "Het budget van €10 voor vier porties wordt al overschreden door de bekende actie- en verpakkingsprijzen.",
-          "offer_anchors": [
-            {
-              "offer_id": "jumbo-w44-kipblokjes",
-              "ingredient_name": "Jumbo kipfiletblokjes of -reepjes naturel",
-              "role": "eiwitbron"
-            }
-          ]
+          "offer_anchors": []
         },
         {
           "id": "jumbo-vega-shoarma",

@@ -26,3 +26,7 @@ De reguliere prijscatalogus is afhankelijk van de publicatiefrequentie van een e
 ## Verificatie
 
 Onder meer `recipe-basis.cjs`, `meal-types.cjs`, `recipe-action-ui.cjs`, `recipe-price-ui.cjs`, de bestaande product-, portie- en boodschappenlijstsuites, Python bronparsertests en de Chromium-route voor desktop en mobiel. De publicatie wordt gecontroleerd tegen de werkelijk geserveerde bestanden. Bevindingen van een onafhankelijke actualiteitscontrole blijven zichtbaar wanneer de leverancier geen nieuwe prijzen heeft gepubliceerd.
+
+## Herstel na onjuiste kipactie
+
+De eerdere acceptatie miste een bronfout: `jumbo-w44-kipblokjes` had een oud `verified`-vinkje en een algemene aanbiedingenlink. Deze rij is ingetrokken; de actie-ankers en onbevestigde pakketprijzen zijn verwijderd. Een handmatige winkelactie kan nu alleen bevestigd worden met recent bewijs dat productnaam, verpakking, prijs en geldigheidsvenster aan een specifieke bron koppelt. Oude vinkjes zonder dat bewijs worden uitgesloten, ook bij vergelijking en favorieten. De Lidl-parser levert deze bewijsgegevens uitsluitend na controle van de echte productprijs en begrenst de actieduur tot het prijsvenster. Externe feedmeldingen blijven afzonderlijk herkenbaar en zijn geen onafhankelijke winkelbevestiging. Dit herstel is getest tegen de echte foutieve kiprij en herimport ervan, niet alleen tegen verzonnen voorbeeldproducten.

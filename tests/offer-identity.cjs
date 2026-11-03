@@ -21,6 +21,11 @@ assert.equal(m.pack({pack_label:'6 × 300 ml'}),m.pack({pack_label:'6x30cl'}));
 const today='2026-10-29';
 const offer={...a,start_date:'2026-10-26',end_date:'2026-11-01',
   verified:true,source:{url:'https://www.jumbo.com/aanbiedingen/test'}};
+assert.equal(m.classify(offer,today),'excluded','Legacy verified boolean cannot confirm a promotion');
+offer.promotion_evidence={status:'available',name:offer.name,pack_label:offer.pack_label,price:offer.price,start_date:offer.start_date,end_date:offer.end_date,checked_at:today,url:offer.source.url};
+assert.equal(m.classify(offer,today),'excluded','An incomplete offer URL is insufficient');
+offer.source.url='https://www.jumbo.com/aanbiedingen/texels/123456';
+offer.promotion_evidence.url=offer.source.url;
 assert.equal(m.classify(offer,today),'confirmed');
 assert.equal(m.classify({...offer,price_conflict:'retailer disagrees with its kilo price'},today),'reported','conflict cannot be confirmed');
 const explicit=m.merge([{...offer,id:'original'},{...offer,id:'duplicate',price_conflict:'AH product versus category price'}]);
@@ -37,3 +42,18 @@ assert.equal(m.classify({...offer,price:NaN},today),'excluded');
 console.log('Promotion evidence gate and precise package/variant matching validated');
 
 assert.equal(m.classify({id:'folderz-1',name:'Broccoli',price:.69,start_date:'2026-10-26',end_date:'2026-11-01',source_provider:'Folderz',verified:false,promotion_status:'active',source:{url:'https://www.folderz.nl/winkels/lidl/aanbiedingen/broccoli-aanbieding-123/'}},'2026-11-01'),'reported');
+
+const current='2026-11-03',fs=require('fs');
+const bad=JSON.parse(fs.readFileSync('docs/data/spotlight.json')).stores.jumbo.offers.find(x=>x.id==='jumbo-w44-kipblokjes');
+assert.equal(m.classify(bad,current),'excluded');
+assert.equal(m.classify({...bad,verified:true,promotion_status:'active'},current),'excluded','Reimporting the old true flag must not revive a generic landing-page action');
+assert.equal(m.classify({...offer,promotion_evidence:{...offer.promotion_evidence,checked_at:'2026-10-20'}},today),'excluded');
+assert.equal(m.classify({...offer,promotion_evidence:{...offer.promotion_evidence,price:1}},today),'excluded');
+assert.equal(m.classify({...offer,promotion_status:'withdrawn'},today),'excluded');
+const obs=require('../docs/price-observations');
+assert.equal(obs.inspect({...bad,verified:true,promotion_status:'active'},'jumbo',current),null,'Comparison/favorites resolver must use the same gate');
+const selector=require('../docs/publisher-selection'),engine=require('../docs/recipe-discovery');
+const r={servings:4,ingredients:[{name:'kipfilet',quantity:360,unit:'g'},{name:'sperziebonen',quantity:400,unit:'g'}]};
+assert.equal(selector.actionProducts(r,[bad],engine,current).length,0,'Rejected chicken cannot anchor any recipe');
+
+assert.equal(m.classify({...bad,verified:false,promotion_status:'active',price_conflict:'unknown'},current),'excluded','A conflict flag is not positive promotion evidence');

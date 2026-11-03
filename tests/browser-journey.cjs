@@ -89,6 +89,7 @@ const start=base.endsWith('/')?base:base+'/';
   await page.locator('.sidebar button[data-view="recepten"]').click();
   if(await page.locator('#cooking-ideas [data-clear-cook]').count())await page.locator('#cooking-ideas [data-clear-cook]').click();
   await page.locator('#view-recepten [data-store="alle"]').click();
+  assert.doesNotMatch(await page.locator('#view-recepten').innerText(),/Jumbo kipfiletblokjes of -reepjes naturel/,'Withdrawn legacy chicken action must not return on recipe cards');
   const publisherCards=page.locator('#publisher-recipes-main .publisher-recipe-card');
   assert.ok(await publisherCards.count()>0,'Current offers must yield publisher recipes');
   assert.ok(await publisherCards.count()<=8,'First page is bounded');

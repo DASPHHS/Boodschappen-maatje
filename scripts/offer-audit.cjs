@@ -1,5 +1,6 @@
 'use strict';
 // Audits 100% of AVAILABLE imported offers; this is not independent cashier verification.
+const identity=require('../docs/offer-identity.js');
 const stores=['lidl','jumbo','ah'];
 const validDate=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x));
 const validPrice=x=>typeof x==='number'&&Number.isFinite(x)&&x>0;
@@ -16,13 +17,15 @@ function auditItem(o,store,today,fromBulkFeed=false){
  const retailer=host===domain||host.endsWith('.'+domain);
  if(o?.date_estimated||o?.valid_until_estimated)issues.push('expiry_estimated');
  if(o?.price_conflict)issues.push('source_price_conflict');
+ if(o?.verified===true&&!identity.confirmedPromotion(o,today))issues.push('promotion_not_confirmed');
+ if(['withdrawn','disputed','unverified'].includes(o?.promotion_status))issues.push('promotion_withdrawn');
  if(Number(o?.multi_buy_quantity)>1){
    if(!validPrice(o.multi_buy_price))issues.push('bundle_total_missing');
    else if(Math.abs(o.price-o.multi_buy_price)>0.02)issues.push('bundle_per_item_versus_total_check');
  }
  if(o?.loyalty_price&&!o?.loyalty_program)issues.push('loyalty_conditions_unknown');
- const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing'].includes(i));
- return {status:invalid?'needs_review':retailer&&!fromBulkFeed?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer,independently_retailer_checked:retailer&&!fromBulkFeed,source_kind:fromBulkFeed?'external_bulk_with_possible_retailer_link':'direct_report'};
+ const invalid=issues.some(i=>['product_missing','price_missing','date_missing','date_invalid_or_expired','source_missing','source_price_conflict','bundle_total_missing','promotion_not_confirmed','promotion_withdrawn'].includes(i));
+ return {status:invalid?'needs_review':retailer&&!fromBulkFeed?'retailer_page_reported':'external_feed_reported',issues,retailer_url:retailer,independently_retailer_checked:retailer&&!fromBulkFeed&&identity.confirmedPromotion(o,today),source_kind:fromBulkFeed?'external_bulk_with_possible_retailer_link':'direct_report'};
 }
 function audit(data,today=day()){
  const result={schema_version:1,generated_at:new Date().toISOString(),day:today,method:'automatic_consistency_scan_not_cashier_price_verification',stores:{},status_by_id:{},exceptions:[]};

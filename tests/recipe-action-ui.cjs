@@ -20,6 +20,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
 (async()=>{
  for(let i=0;i<60&&!el('#view-vandaag').innerHTML;i++)await new Promise(r=>setTimeout(r,20));
  const t=ctx.testApp;
+ for(const store of ['lidl','jumbo','ah'])assert.ok(!t.offers(store).some(o=>o.id==='jumbo-w44-kipblokjes'));
  const index=t.state.publisherRecipes;
  const culinary=ctx.MaatjeRecipeProducts;
  const offersByStore=Object.fromEntries(['ah','jumbo','lidl'].map(s=>[s,t.offers(s)]));

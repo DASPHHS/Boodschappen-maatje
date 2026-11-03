@@ -70,12 +70,15 @@
  }
  function inspect(o,store,today){
   if(!o||!validPrice(o.price))return null;
+  const gate=typeof module==='object'&&module.exports?require('./offer-identity.js'):window.MaatjeOfferIdentity;
+  if(['withdrawn','disputed','unverified'].includes(o.promotion_status))return null;
   const promo=!!o.start_date&&!!o.end_date&&!o.is_regular_low_price;
   const p=pack(o),unit=unitCost(o);
   const noted=String(o.checked_date||o.price_observed_at||o.observed_at||o.checked_at||'').slice(0,10);
   const age=days(today,noted);
   if(age!==null&&age<0)return null; // Future shelf observation is invalid evidence.
   const within=promo&&validDay(o.start_date)&&validDay(o.end_date)&&o.start_date<=today&&today<=o.end_date;
+  if(within&&o.verified===true&&!['confirmed','reported'].includes(gate?.classify(o,today)))return null;
   const future=promo&&o.start_date>today;
   const expired=promo&&o.end_date<today;
   const officialSource=retailerUrl(o.url||o.source?.url,store);

@@ -25,12 +25,32 @@
   const zero=/\b0\s+0\b|\balcoholvrij\b/.test(label);
   return (variant==='alcoholvrij'&&!zero)||(variant==='alcoholhoudend'&&zero);
  }
+ // Confirmation binds the actual product, price and validity window to a recent
+ // product/offer-specific source. A retailer hostname or legacy boolean is not proof.
+ function confirmedPromotion(o,today){
+  const e=o?.promotion_evidence;
+  if(!e||e.status!=='available'||e.name!==o.name||e.pack_label!==o.pack_label||
+     e.price!==o.price||e.start_date!==o.start_date||e.end_date!==o.end_date)return false;
+  const stamp=String(e.checked_at||'').slice(0,10);
+  const age=(Date.parse(today+'T12:00:00Z')-Date.parse(stamp+'T12:00:00Z'))/86400000;
+  if(!Number.isFinite(age)||age<0||age>2)return false;
+  try{
+   const u=new URL(e.url),h=u.hostname.replace(/^www\./,''),p=u.pathname;
+   if(e.url!==o.source?.url)return false;
+   return h==='jumbo.com'?/^\/(aanbiedingen|producten)\/[^/]+\/[^/]+\/?$/.test(p)&&!/^\/aanbiedingen\/nu(?:\/|$)/.test(p):
+    h==='ah.nl'?/^\/producten\/product\/wi\d+\//.test(p):
+    h==='lidl.nl'?/^\/p\/[^/]+\/p\d+/.test(p):
+    h==='view.publitas.com'?/^\/[^/]+\/[^/]+\/page\/\d+/.test(p):false;
+  }catch{return false;}
+ }
  function classify(o,today){
   if(!o||!o.id||!o.name||!Number.isFinite(o.price)||o.price<=0||
      !/^\d{4}-\d{2}-\d{2}$/.test(String(o.start_date||''))||
      !/^\d{4}-\d{2}-\d{2}$/.test(String(o.end_date||''))||
      !/^\d{4}-\d{2}-\d{2}$/.test(String(today||''))||
-     o.start_date>today||o.end_date<today||o.start_date>o.end_date||o.online_only)return 'excluded';
+     o.start_date>today||o.end_date<today||o.start_date>o.end_date||o.online_only||
+     ['withdrawn','disputed','unverified'].includes(o.promotion_status)||
+     ['unavailable','discontinued'].includes(o.availability_status))return 'excluded';
   // A historical or regular-price observation is never a promotion.
   if(o.is_regular_low_price||o.status==='third_party_price_observation'||
      o.source_provider==='Biernet'||/^(historical|upcoming|regular|inactive)$/.test(String(o.promotion_status||'')))return 'observation';
@@ -38,14 +58,7 @@
   if(variantConflict(o))return 'excluded';
   if(!/^https:\/\//.test(String(o.source?.url||'')))return 'excluded';
   // An explicit cross-source/retailer price conflict must never become a confirmed promotion.
-  if(o.price_conflict)return 'reported';
-  if(o.verified===true){
-   const provider=String(o.source_provider||'');
-   let host='';try{host=new URL(o.source.url).hostname.toLowerCase().replace(/^www\./,'')}catch{}
-   const officialHost=['lidl.nl','jumbo.com','ah.nl'].some(d=>host===d||host.endsWith('.'+d));
-   const retailerSource=['officiele_folder','jumbo_official','lidl_official','ah_official'].includes(provider);
-   return officialHost||retailerSource?'confirmed':'reported';
-  }
+  if(o.verified===true)return confirmedPromotion(o,today)?(o.price_conflict?'reported':'confirmed'):'excluded';
   if(o.source_provider==='PrijsProfeet'&&o.promotion_status==='active')return 'reported';
   if(o.source_provider==='Folderz'&&/^https:\/\/www\.folderz\.nl\/winkels\/lidl\/aanbiedingen\//.test(o.source?.url||'')&&o.promotion_status==='active')return 'reported';
   if(o.source_provider==='user_folder_image'&&o.evidence_date&&o.evidence_date<=today)return 'reported';
@@ -83,5 +96,5 @@
   }
   return results;
  }
- return {key,pack,container,variantConflict,classify,merge};
+ return {key,pack,container,variantConflict,confirmedPromotion,classify,merge};
 });

@@ -10,6 +10,17 @@ class LidlOfficial(unittest.TestCase):
     def test_real_public_grid(self):
         o=self.parse();self.assertEqual(o['price'],1.89);self.assertEqual(o['without_membership_price'],2.19);self.assertTrue(o['member_required']);self.assertEqual(o['category'],'vega');self.assertEqual(o['end_date'],'2026-11-01')
         regular=s.parse_product(self.p,self.today,s.SEED,False);self.assertEqual(regular['price'],2.19);self.assertFalse(regular['member_required'])
+    def test_promotion_proof_matches_actual_price_window(self):
+        p=copy.deepcopy(self.p)
+        price=p['regionsPrices']['1']['currentLidlPlusPrice']['price']
+        price['endDate']='2026-10-30T22:59:59Z'
+        o=self.parse(p)
+        self.assertEqual(o['end_date'],'2026-10-30')
+        e=o['promotion_evidence']
+        for key in ['name','price','pack_label','start_date','end_date']:
+            self.assertEqual(e[key],o[key])
+        self.assertEqual(e['url'],o['source']['url'])
+        self.assertEqual(e['checked_at'],self.today.isoformat())
     def test_regional_price_not_guessed(self):
         self.p['regionsPrices']['2']=copy.deepcopy(self.p['regionsPrices']['1']);self.p['regionsPrices']['2']['currentPrice']['price']=99
         self.assertIsNone(self.parse())
