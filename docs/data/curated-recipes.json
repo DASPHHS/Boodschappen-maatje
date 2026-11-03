@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_at": "2026-11-01",
-  "description": "Zelfstandig geschreven hoofdgerechten voor vier porties. Zes extra uitgebreide kook-voor-2-dagen-recepten, elk voor twee personen op twee dagen, met dagindeling en veilig bewaaradvies. Niet proefgekookt.",
+  "description": "Zelfstandig geschreven recepten voor ontbijt, lunch en avondeten, steeds vier porties. Niet proefgekookt.",
   "recipes": [
     {
       "id": "nieuw-202611-citroenkip",
@@ -2834,6 +2834,268 @@
         "reheat": "Verwarm op dag 2 uitsluitend de bewaarde porties één keer goed door tot stomend heet. Roer tussendoor en eet de opgewarmde porties direct op.",
         "source_url": "https://www.voedingscentrum.nl/nl/thema/kopen-koken-bewaren/eten-bereiden/koken-met-restjes.aspx"
       }
+    },
+    {
+      "id": "nieuw-202611-kwark-appel",
+      "title": "Kwark met appel, havermout en walnoten",
+      "category": "vega",
+      "cuisine": "Nederlands",
+      "minutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "magere kwark",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "appel",
+          "quantity": 600,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "havermout",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "walnoten",
+          "quantity": 60,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kaneel",
+          "quantity": 4,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Was de appels, verwijder de klokhuizen en snijd het vruchtvlees in kleine blokjes.",
+        "Verdeel de magere kwark over vier kommen en roer de havermout er gelijkmatig door.",
+        "Verdeel de appelblokjes en de kaneel over de kommen en schep ze kort door de kwark.",
+        "Hak de walnoten grof en verdeel deze vlak voor het eten over de vier ontbijtkommen."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": null,
+      "meal_type": "ontbijt"
+    },
+    {
+      "id": "nieuw-202611-kwark-banaan",
+      "title": "Kwark met banaan, pindakaas en havermout",
+      "category": "vega",
+      "cuisine": "Nederlands",
+      "minutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "magere kwark",
+          "quantity": 1000,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "banaan",
+          "quantity": 480,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "pindakaas",
+          "quantity": 60,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "havermout",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "kaneel",
+          "quantity": 4,
+          "unit": "g",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Verdeel de magere kwark over vier kommen en roer de havermout er gelijkmatig door.",
+        "Pel de bananen en snijd ze in plakjes; verdeel de plakjes over de vier kommen.",
+        "Roer de pindakaas met een lepel water los en verdeel de saus over het fruit.",
+        "Strooi de kaneel over de kommen en serveer de vier ontbijtporties direct."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": null,
+      "meal_type": "ontbijt"
+    },
+    {
+      "id": "nieuw-202611-lunch-omelet",
+      "title": "Volkorenbrood met spinazieomelet en witte kaas",
+      "category": "vega",
+      "cuisine": "Nederlands",
+      "minutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "eieren",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "spinazie",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "feta",
+          "quantity": 160,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        },
+        {
+          "name": "volkorenbrood",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "olijfolie",
+          "quantity": 15,
+          "unit": "ml",
+          "department": "Kruiden & voorraad"
+        }
+      ],
+      "instructions": [
+        "Was de spinazie en tomaten; snijd de tomaten in dunne plakken en verkruimel de feta.",
+        "Klop de eieren los en laat de spinazie in de olie slinken in een grote koekenpan.",
+        "Schenk de eieren bij de spinazie en verdeel de feta erover; bak afgedekt op laag vuur tot het ei gestold is.",
+        "Verdeel de omelet in vier porties en leg elke portie met tomaat op twee sneetjes volkorenbrood."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": null,
+      "meal_type": "lunch"
+    },
+    {
+      "id": "nieuw-202611-lunch-broodbeleg",
+      "title": "Volkorenbrood met kipfilet-broodbeleg, tomaat en komkommer",
+      "category": "kip",
+      "cuisine": "Nederlands",
+      "minutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "kipfilet broodbeleg",
+          "quantity": 300,
+          "unit": "g",
+          "department": "Eiwitbronnen"
+        },
+        {
+          "name": "volkorenbrood",
+          "quantity": 8,
+          "unit": "st",
+          "department": "Kruiden & voorraad"
+        },
+        {
+          "name": "tomaten",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "komkommer",
+          "quantity": 400,
+          "unit": "g",
+          "department": "Groente & fruit"
+        },
+        {
+          "name": "magere yoghurt",
+          "quantity": 120,
+          "unit": "g",
+          "department": "Vega & peulvruchten"
+        }
+      ],
+      "instructions": [
+        "Was de tomaten en de komkommer en snijd beide groenten in dunne plakjes.",
+        "Roer de magere yoghurt glad en verdeel deze over de acht sneetjes volkorenbrood.",
+        "Verdeel de kant-en-klare kipfilet als broodbeleg over het brood; gebruik hiervoor geen rauwe kip.",
+        "Leg de tomaat en komkommer op het brood en serveer twee belegde sneetjes per persoon."
+      ],
+      "origin": "redactie_nieuw",
+      "quality_status": "uitgewerkt_niet_culinair_getest",
+      "quality_issues": [
+        "niet_proefgekookt"
+      ],
+      "source_name": "Eigen recept van Boodschappenmaatje",
+      "source_type": "eigen_zelfstandig_samengesteld",
+      "source_status": "geen_externe_receptovername",
+      "source_note": "Zelf samengesteld recept voor vier porties. Niet proefgekookt; controleer gaarheid, smaak en eventuele allergenen. Geen exacte maaltijdprijs of voedingswaarden geclaimd.",
+      "macro_status": "niet_berekend",
+      "macros": null,
+      "cost": null,
+      "price_status": "onbekend",
+      "offer_links": [],
+      "candidate_offer_links": [],
+      "offer_anchors": [],
+      "vegetables_g_per_portion": null,
+      "meal_type": "lunch"
     }
   ]
 }

@@ -5,6 +5,10 @@
 const VERSION=2;
 const norm=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
 const definitions=[
+ ['kwark','vega',/\bkwark\b/],['yoghurt','vega',/\b(yoghurt|yogurt)\b/],
+ ['havermout',null,/\bhavermout\b/],['brood',null,/\b(volkorenbrood|witbrood|meergranenbrood|brood)\b/],
+ ['komkommer',null,/\bkomkommer\b/],['appel',null,/\b(appel|appels|appeltjes)\b/],['banaan',null,/\b(banaan|bananen)\b/],
+ ['blauwe_bessen',null,/\bblauwe bessen\b/],['walnoten',null,/\bwalnoten\b/],
  ['kip','kip',/\b(kipfilet(?:blokjes|reepjes|haasjes)?|kiphaasjes|kippenborst|kip(?:pen)?dij(?:filet)?(?:reepjes|blokjes)?|kippen?bout(?:en)?|kippenpoten|drumsticks)\b/],
  ['riblappen','vlees',/\b(runder\s?rib\s?lappen|runderlappen|riblappen|riblap|sukadelappen|sukadelap|stooflappen|stoofvlees)\b/],
  ['gehakt','vlees',/\b(rundergehakt|varkensgehakt|gemengd gehakt|half om half gehakt|mager gehakt|gehakt)\b/],
@@ -31,7 +35,7 @@ const definitions=[
  ['pasta',null,/\b(pasta|spaghetti|penne|fusilli|tagliatelle|orzo)\b/],['noedels',null,/\b(noedels|noodles|udonnoedels)\b/]
 ];
 const baseWords='ah jumbo lidl albert heijn vivera vemondo freshona milbona bonduelle hak boni bio biologisch biologische scharrel halal beter leven bl vers verse rauw rauwe naturel ongekruid ongekruide neutraal extra fijne fijn fijngesneden gesneden heel hele gebroken roosjes stronk stronken gepeld gepelde zonder met vel huid op wit witte rood rode groen groene geel gele oranje mager magere gemengd half om droog droge uitgelekt uitlekgewicht blik pot zak pak zakje per bos net voordeel voordeelverpakking grootverpakking verpakking xxl xl stuks stuk st s g gram gr kg kilogram ml milliliter cl l liter x ca circa portie porties diepvries bevroren ingevroren gewassen schoon schoongemaakt in blokjes reepjes haasjes filets filet ASC MSC beterleven 1ster 2sterren 3sterren duurzaam hollandse nederlandse noorse atlantische wilde alaska vastkokend vastkokende kruimig kruimige stamppot pofmais pan ovengroente a la of en uit eigen keuken bereid houdbaar houdbare runder varkens rund';
-const brands='calve terra conimex blue elephant go tan koh thai fairtrade lassie grand italia gallo soubry perfect earth koro valle del sole valfrutta mutti cirio la molisana royal green garden naturli de vegetarische slager valess quorn beyond meat heura taylors gold golden seafood dirk damhert leev greenforce ekoplaza';
+const brands='campina kanzi elstar jonagold optimel arla quaker mild milde griekse greeks ongezoet halfvolle volle magere eiwitrijke volkoren 100 procent calve terra conimex blue elephant go tan koh thai fairtrade lassie grand italia gallo soubry perfect earth koro valle del sole valfrutta mutti cirio la molisana royal green garden naturli de vegetarische slager valess quorn beyond meat heura taylors gold golden seafood dirk damhert leev greenforce ekoplaza';
 const allowed=new Set((baseWords+' '+brands).split(' '));
 const forbidden=/(?:saus|sauce|soep|soup|salade|schotel|maaltijd|kruidenmix|maaltijdmix|bakplaatmix|bakmix|brood|wrap|pizza|chips|snack|nuggets?|schnitzel|vissticks?|kroket|koekjes?|taart|cake|smoothie|sap|sapje|tapenade|hoemoes|hummus|dip|dressing|spread|hapjes?|balletjes?|borrel|knijpfruit|bouillon)\b|\b(mix|gevuld|gevulde|americain|gerookt|gerookte|gegrild|gegrilde|gebakken|gebraden|voorgegaard|gepaneerd|gemarineerd|gekruid|kruiden|baby|olvarit|organix|whiskas|felix|sheba|kattenvoer|hondenvoer|poeder)\b/;
 function quantity(text){
@@ -65,7 +69,7 @@ function isDeliChicken(o){
 function displayCategory(o){return isDeliChicken(o)?'vleeswaren':o?.category;}
 function profile(value,{ingredient=false}={}){
  const o=typeof value==='string'?{name:value}:value||{},raw=norm(o.name).replace(/\bscharrel(?=kip)/g,''),n=raw.replace(/\b\d+(?:g|kg|gr|ml|cl|l|st|stk|stuks)?\b/g,' ').replace(/\s+/g,' ').trim();
- if(isDeliChicken(o))return ingredient?{family:'broodbeleg_kip',group:null,variant:null,form:'cooked',...quantity(o.name)}:null;
+ if(isDeliChicken(o))return ingredient?{family:'broodbeleg_kip',group:null,variant:/gerookt/.test(raw)?'smoked':/tuinkruiden/.test(raw)?'herbs':'plain',form:'cooked',...quantity(o.name)}:null;
  if(!raw||['huishouden','bier','dranken','overige_dranken','snacks'].includes(o.category))return null;
  if(/(?:katten|honden|babyvoeding|knijpfruit|shampoo|vaatwas|wasmiddel|supplement)/.test(raw))return null;
  // A plant-based fish/meat analogue is a distinct main ingredient; never a vegetable.
@@ -82,7 +86,7 @@ function profile(value,{ingredient=false}={}){
  if(!matches.length){const animal=ingredient?animalGroup(raw):null;return animal?{family:'other_'+animal,group:animal,variant:'unsupported',form:'unsupported',...quantity(o.name)}:null;}
  let [family,group,pattern]=matches[0];
  // Composite products are rejected before any ingredient word can qualify them.
- if(forbidden.test(raw))return ingredient&&group&&!/bouillon|saus|soep|mix/.test(raw)?{family:'other_'+group,group,variant:'unsupported',form:'unsupported',...quantity(o.name)}:null;
+ if(forbidden.test(family==='brood'?raw.replace(pattern,''):raw))return ingredient&&group&&!/bouillon|saus|soep|mix/.test(raw)?{family:'other_'+group,group,variant:'unsupported',form:'unsupported',...quantity(o.name)}:null;
  // Raw product descriptions naming another ingredient do not establish a plain product.
  if(!ingredient&&matches.length>1)return null;
  let form='plain',variant=null;
@@ -90,6 +94,7 @@ function profile(value,{ingredient=false}={}){
  if(/halfgedroogd|halfgedroogde|zongedroogd|zongedroogde|gedroogd|gedroogde/.test(raw))form='dried';
  if(family==='tomaten'&&/tomatenpuree/.test(raw))form='puree';
  else if(family==='tomaten'&&/tomatenblokjes|gepelde|blik|pot/.test(raw))form='canned';
+ if(['kwark','yoghurt'].includes(family))variant=plant?'plant':/\b(mager|magere)\b/.test(raw)?'lean':/\b(vol|volle)\b/.test(raw)?'full':'dairy';
  if(family==='tofu')variant=/tempeh|tempe\b/.test(raw)?'tempeh':/zacht|zijde|silken/.test(raw)?'soft':'firm';
  if(family==='kip')variant=/dij/.test(raw)?'thigh':/bout|poten|drumstick/.test(raw)?'leg':'breast';
  if(family==='witvis')variant=/kabeljauw/.test(raw)?'cod':/koolvis/.test(raw)?'pollock':/pangasius/.test(raw)?'pangasius':/schol/.test(raw)?'plaice':/heek/.test(raw)?'hake':'whitefish';
@@ -103,11 +108,13 @@ function profile(value,{ingredient=false}={}){
   const brand=norm(o.brand||'').split(' '),unknown=rest.split(/\s+/).filter(t=>t&&!allowed.has(t)&&!brand.includes(t));
   if(unknown.length)return null;
  }
- return {family,group,variant,form,...(/uitgelekt|uitlekgewicht/.test(raw)?{drained:true}:{}),...quantity(o.name)};
+ return {family,group,variant,form,...(['kwark','yoghurt'].includes(family)?{flavour:/vanille|vanilla/.test(raw)?'vanilla':/aardbei|mango|banaan/.test(raw)?'flavoured':'plain'}:{}),...(/uitgelekt|uitlekgewicht/.test(raw)?{drained:true}:{}),...quantity(o.name)};
 }
 function compatible(a,b){
  if(!a||!b||a.family!==b.family||a.form!==b.form)return false;
+ if((a.flavour||'plain')!==(b.flavour||'plain'))return false;
  if(a.variant===b.variant)return true;
+ if(['kwark','yoghurt'].includes(b.family)&&b.variant==='dairy')return ['lean','full'].includes(a.variant);
  // Unspecified mince/lentils/whitefish in an original recipe permit the named kind.
  return ['gehakt','linzen','witvis'].includes(b.family)&&['unspecified','whitefish'].includes(b.variant);
 }

@@ -95,20 +95,22 @@ def minutes(text):
 def families_of(*strings):
     description=" ".join(str(x) for x in strings).lower()
     return sorted(key for key,expr in FAMILIES.items() if re.search(expr,description))
-def to_record(url,meta,stamp):
+def to_record(url,meta,stamp,meal_hint=None):
     title=str(meta.get("name") or "").strip()
     raw=meta.get("recipeIngredient") or []
     if isinstance(raw,str):raw=[raw]
     if (len(title)<5 or len(title)>150 or EXCLUDE.search(title)
-        or not isinstance(raw,list) or len(raw)<5):return None
+        or not isinstance(raw,list) or len(raw)<(3 if meal_hint in ('ontbijt','lunch') else 5)):return None
     typed=profiles(raw)
     tags=sorted(set(p["family"] for p in typed))
     if not tags:return None
     has_veg=len(VEG.intersection(tags))
     has_legume=bool(LEGUMES.intersection(tags))
-    if not(has_veg or has_legume):return None  # vegetable / legume present
+    if meal_hint not in ('ontbijt','lunch') and not(has_veg or has_legume) and not any(k in str(meta.get("recipeCategory","")).lower() for k in ("ontbijt","breakfast","lunch")):return None  # vegetable / legume present
     category=str(meta.get("recipeCategory") or "").lower()
-    if category and not any(k in category for k in ("hoofd","main","dinner","avond","maaltijd")):return None
+    meal="ontbijt" if "ontbijt" in category or "breakfast" in category else "lunch" if "lunch" in category else "avondeten"
+    if meal_hint in ('ontbijt','lunch'):meal=meal_hint
+    if meal_hint not in ('ontbijt','lunch') and category and not any(k in category for k in ("hoofd","main","dinner","avond","maaltijd","ontbijt","breakfast","lunch")):return None
     total=minutes(meta.get("totalTime")) or minutes(meta.get("cookTime"))
     if total is not None and not 10<=total<=480:return None
     recipe_yield=meta.get("recipeYield")
@@ -120,7 +122,7 @@ def to_record(url,meta,stamp):
        if m in title.lower()),"anders")
     return {"id":"ah-auto-"+re.search(r"/(R-R\d+)/",url).group(1).lower() if re.search(r"/(R-R\d+)/",url) else "ah-auto-"+str(abs(hash(url))),
        "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,"ingredient_families":tags,"ingredient_evidence":"publisher_recipe_schema","ingredient_profiles":typed,"ingredient_profile_version":PROFILE_VERSION,
-       "minutes":total,"servings":servings,"course":"hoofdgerecht",
+       "minutes":total,"servings":servings,"course":category or "hoofdgerecht","meal_type":meal,
        "method":method,"cuisine":meta.get("recipeCuisine") if isinstance(meta.get("recipeCuisine"),str) else None,"vegetable_families":has_veg,"has_legumes":has_legume,
        "review_status":"publisher_metadata_verified","last_checked":stamp}
 def candidates(sitemap,existing,today):

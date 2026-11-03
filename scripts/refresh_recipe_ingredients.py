@@ -22,7 +22,7 @@ def refresh(limit=80, pause=0.5, missing_only=False):
         try:
             url=old['url']
             page=(hf.fetch if old['source']=='HelloFresh' else fetch)(url)
-            new=hf.record_from_page(url,page,stamp) if old['source']=='HelloFresh' else next((r for meta in schema_recipes(page) if (r:=to_record(url,meta,stamp))),None)
+            new=hf.record_from_page(url,page,stamp) if old['source']=='HelloFresh' else next((r for meta in schema_recipes(page) if (r:=to_record(url,meta,stamp,meal_hint=old.get('meal_type')))),None)
             return new,False
         except urllib.error.HTTPError as exc:return None,exc.code in (401,403,429)
         except (OSError,ValueError,urllib.error.URLError):return None,False

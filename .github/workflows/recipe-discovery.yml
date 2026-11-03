@@ -8,6 +8,7 @@ on:
       - 'scripts/refresh_hellofresh_recipes.py'
       - 'scripts/refresh_recipe_ingredients.py'
       - 'scripts/recipe_metadata.py'
+      - 'scripts/refresh_meal_recipes.py'
       - 'scripts/recipe_profiles.cjs'
       - 'docs/recipe-products.js'
       - 'docs/data/publisher-recipes.json'
@@ -41,6 +42,7 @@ jobs:
           python scripts/refresh_publisher_recipes.py
           python scripts/refresh_hellofresh_recipes.py
           python scripts/refresh_recipe_ingredients.py
+          python scripts/refresh_meal_recipes.py
       - name: Publish only the newly checked recipe index
         run: |
           git config user.name "github-actions[bot]"

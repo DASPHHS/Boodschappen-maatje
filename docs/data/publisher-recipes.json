@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_policy": "publisher_link_metadata_only",
-  "generated_at": "2026-11-02",
+  "generated_at": "2026-11-03",
   "notice": "Geselecteerde recepten van originele uitgevers, waaronder Allerhande en HelloFresh. Alleen feitelijke metadata en directe links; volledige receptinstructies, afbeeldingen en ingredientenlijsten blijven bij de uitgever. Titel-/familiekoppelingen bevestigen niet de ingredientvarianten of supermarktprijzen.",
   "recipes": [
     {
@@ -17325,6 +17325,450 @@
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-02",
       "ingredient_checked_at": "2026-11-02T13:00:45.223827+00:00"
+    },
+    {
+      "id": "ah-auto-r-r1198663",
+      "title": "Spinazieomelet met brood",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198663/spinazieomelet-met-brood",
+      "families": [
+        "brood",
+        "eieren",
+        "knoflook",
+        "spinazie"
+      ],
+      "ingredient_families": [
+        "brood",
+        "eieren",
+        "knoflook",
+        "spinazie"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "knoflook",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "brood",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "lunch",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1198661",
+      "title": "Spinazieomelet met witte kaas en brood",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198661/spinazieomelet-met-witte-kaas-en-brood",
+      "families": [
+        "brood",
+        "eieren",
+        "feta",
+        "knoflook",
+        "spinazie"
+      ],
+      "ingredient_families": [
+        "brood",
+        "eieren",
+        "feta",
+        "knoflook",
+        "spinazie"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "knoflook",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "brood",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "feta",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "lunch",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1197938",
+      "title": "Volkorensandwich met groente omelet",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197938/volkorensandwich-met-groente-omelet",
+      "families": [
+        "brood",
+        "eieren",
+        "spinazie"
+      ],
+      "ingredient_families": [
+        "brood",
+        "eieren",
+        "spinazie"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "brood",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "lunch",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1197684",
+      "title": "Havermout-bananenpancakes met pindakaas en amandel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197684/havermout-bananenpancakes-met-pindakaas-en-amandel",
+      "families": [
+        "banaan",
+        "havermout",
+        "kwark"
+      ],
+      "ingredient_families": [
+        "banaan",
+        "havermout",
+        "kwark"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "banaan",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "havermout",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 175,
+          "unit": "g"
+        },
+        {
+          "family": "kwark",
+          "group": "vega",
+          "variant": "lean",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "ontbijt",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1197075",
+      "title": "Kwark met banaan, blauwe bessen en pangranola",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197075/kwark-met-banaan-blauwe-bessen-en-pangranola",
+      "families": [
+        "banaan",
+        "blauwe_bessen",
+        "havermout",
+        "kwark",
+        "pindakaas"
+      ],
+      "ingredient_families": [
+        "banaan",
+        "blauwe_bessen",
+        "havermout",
+        "kwark",
+        "pindakaas"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "kwark",
+          "group": "vega",
+          "variant": "lean",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 800,
+          "unit": "g"
+        },
+        {
+          "family": "blauwe_bessen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "havermout",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "family": "pindakaas",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "banaan",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 15,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "ontbijt",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1195926",
+      "title": "Kwark met gebakken banaan met noten en zaden",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195926/kwark-met-gebakken-banaan-met-noten-en-zaden",
+      "families": [
+        "banaan",
+        "kwark"
+      ],
+      "ingredient_families": [
+        "banaan",
+        "kwark"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "banaan",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "kwark",
+          "group": "vega",
+          "variant": "lean",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 800,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 10,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "ontbijt",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1199642",
+      "title": "Yoghurt met banaan, kaneel en geroosterde havermout",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199642/yoghurt-met-banaan-kaneel-en-geroosterde-havermout",
+      "families": [
+        "appel",
+        "banaan",
+        "havermout",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "appel",
+        "banaan",
+        "havermout",
+        "yoghurt"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "havermout",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "banaan",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "appel",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "dairy",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 400,
+          "unit": "ml"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 15,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "meal_type": "ontbijt",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-auto-r-r1187570",
+      "title": "Boterham met groenteomelet",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187570/boterham-met-groenteomelet",
+      "families": [
+        "brood",
+        "eieren"
+      ],
+      "ingredient_families": [
+        "brood",
+        "eieren"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "brood",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "meal_type": "lunch",
+      "method": "anders",
+      "cuisine": "",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03"
     }
   ]
 }

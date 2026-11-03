@@ -5,7 +5,7 @@ const r=JSON.parse(fs.readFileSync('docs/data/curated-recipes.json','utf8')).rec
 const batches=r.filter(x=>x.batch_cook?.days===2);
 const app=fs.readFileSync('docs/app.js','utf8');
 const html=fs.readFileSync('docs/index.html','utf8');
-assert.equal(r.length,30,'The six new dishes are added to the 24 existing originals');
+assert.equal(r.filter(x=>(x.meal_type||'avondeten')==='avondeten').length,30,'All 30 existing dinner recipes remain available');
 assert.equal(batches.length,6,'Six full two-day recipes must be available');
 assert.ok(batches.some(x=>/hachee/i.test(x.title)));
 assert.ok(batches.some(x=>/rendang/i.test(x.title)));
@@ -45,5 +45,5 @@ assert.ok(app.includes("state.batchOnly&&"),'Filter must affect actual cards');
 assert.ok(app.includes("In één keer koken, twee dagen eten"),'Full dialog must show day allocation');
 assert.ok(app.includes("batch_cook:r.batch_cook||null"),'Saved/planned recipes must retain day-two instructions');
 assert.ok(app.includes("(count*4)"),'Four portions are not the same as four days');
-assert.ok(html.includes('app.js?v=20261103-protein-value'),'Browser must refresh updated interface');
+assert.ok(html.includes('app.js?v=20261103-audit-meals'),'Browser must refresh updated interface');
 console.log('Six detailed two-day recipes, 2 x 2 portions, food safety and saved-plan metadata verified');

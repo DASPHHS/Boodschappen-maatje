@@ -74,17 +74,19 @@ function actionProducts(recipe,offers,engine,day=currentDay(),comparison={}){
   for(const offer of offers){
    const evidence=identity().classify(offer,day);
    if(!['confirmed','reported'].includes(evidence)||offer.price_conflict)continue;
-   const type=engine.classify(offer);
+   let type=engine.classify(offer);
+   if(!type&&culinary().isDeliChicken(offer))type={key:'broodbeleg_kip',profile:culinary().profile(offer,{ingredient:true})};
    if(type?.profile)candidates.push({family:type.key,profile:type.profile,offer,offerName:offer.name,evidence});
   }
   cached={day,engine,candidates};candidateCache.set(offers,cached);
  }
  const profiles=culinary().recipeProfiles(recipe),chosen=new Map();
  for(const item of cached.candidates){
+  if(item.family==='broodbeleg_kip'&&recipe.meal_type!=='lunch')continue;
   const profile=profiles.find(p=>culinary().compatible(item.profile,p));
   if(!profile)continue;
   if(item.family==='riblappen'&&Number(recipe.minutes)<95&&!/stoof|rendang|hachee|semur/i.test(recipe.title))continue;
-  const isMain=culinary().isMain(profile,recipe),saving=discount(item.offer,profile,recipe);
+  const isMain=culinary().isMain(profile,recipe)||(recipe.meal_type==='lunch'&&item.family==='broodbeleg_kip'),saving=discount(item.offer,profile,recipe);
   const candidate={...item,ingredientProfile:profile,isMain,saving,purchase:purchase(item.offer,profile,recipe)};
   const prior=chosen.get(item.family);
   // Choose a sensible basket spend for the same variant. Never reward a large
@@ -109,10 +111,11 @@ function benefit(recipe,products){
   (mainCost!==null?10000-Math.min(mainCost,100)*100:0)+Math.min(mainSaving||0,20)*10+Math.min(extraSaving||0,2)*10+Math.min(products.length,5);
  return {hasMain:main.length>0,main,extras,mainSaving,extraSaving,mainCost,priceVerdict:verdict,score};
 }
-function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay(),retailerCatalog=null}){
+function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay(),retailerCatalog=null,meal='alle'}){
  if(!engine||!Array.isArray(index?.recipes))return [];
  const target=ingredient?engine.classify(ingredient):null,q=norm(query),rows=[];
  for(const recipe of index.recipes){
+  if(meal!=='alle'&&(recipe.meal_type||'avondeten')!==meal)continue;
   if(!valid(recipe,engine)||(safeSources.has(source)&&recipe.source!==source))continue;
   if(category!=='alle'&&group(recipe)!==category)continue;
   const profiles=culinary().recipeProfiles(recipe);

@@ -111,6 +111,11 @@ const start=base.endsWith('/')?base:base+'/';
   assert.equal(await page.evaluate(()=>document.activeElement.id),'recipe-find','Recipe search must keep focus in its own visible field');
   await page.locator('[data-reset-recipes]').click();
   assert.ok(await publisherCards.count()>0,'Reset must restore useful recipes after an empty selection');
+  for(const meal of ['ontbijt','lunch','avondeten']){
+   await page.locator('#view-recepten [data-meal="'+meal+'"]').click();
+   assert.equal(await page.locator('#view-recepten [data-meal="'+meal+'"]').getAttribute('aria-pressed'),'true');
+   for(const card of await publisherCards.all())assert.ok(await card.locator('.publisher-match li').count()>=2,'Every meal keeps the two-action gate');
+  }
   const firstCount=await publisherCards.count();
   if(await page.locator('#view-recepten [data-more-publishers]').count()){
    await page.locator('#view-recepten [data-more-publishers]').click();
