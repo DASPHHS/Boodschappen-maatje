@@ -29,7 +29,10 @@
  // Confirmation binds the actual product, price and validity window to a recent
  // product/offer-specific source. A retailer hostname or legacy boolean is not proof.
  function confirmedPromotion(o,today){
-  const e=o?.promotion_evidence;
+  if(!o||o.online_only||o.is_regular_low_price||o.available===false||o.in_stock===false||
+     ['withdrawn','disputed','unverified','historical','upcoming','regular','inactive'].includes(o.promotion_status)||
+     ['unavailable','discontinued','out_of_stock','sold_out','removed'].includes(o.availability_status))return false;
+  const e=o.promotion_evidence;
   if(!e||e.status!=='available'||e.name!==o.name||e.pack_label!==o.pack_label||
      e.price!==o.price||e.start_date!==o.start_date||e.end_date!==o.end_date)return false;
   if(!validDay(today)||!validDay(e.start_date)||!validDay(e.end_date)||e.start_date>today||e.end_date<today||o.date_estimated||o.valid_until_estimated)return false;
@@ -53,7 +56,7 @@
      !validDay(o.start_date)||!validDay(o.end_date)||!validDay(today)||
      o.start_date>today||o.end_date<today||o.start_date>o.end_date||o.online_only||
      ['withdrawn','disputed','unverified'].includes(o.promotion_status)||
-     ['unavailable','discontinued'].includes(o.availability_status))return 'excluded';
+     ['unavailable','discontinued','out_of_stock','sold_out','removed'].includes(o.availability_status)||o.available===false||o.in_stock===false)return 'excluded';
   // A historical or regular-price observation is never a promotion.
   if(o.is_regular_low_price||o.status==='third_party_price_observation'||
      o.source_provider==='Biernet'||/^(historical|upcoming|regular|inactive)$/.test(String(o.promotion_status||'')))return 'observation';

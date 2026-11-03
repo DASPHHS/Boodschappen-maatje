@@ -82,6 +82,7 @@ for(const store of ['jumbo','ah','lidl'])for(const name of names){
  ];
  for(const mutation of mutations){
   const bad={...o,...mutation};
+  assert.equal(m.confirmedPromotion(bad,current),false,'The confirmation helper must also reject the same invalid evidence');
   assert.equal(m.classify(bad,current),'excluded',store+' '+name+' '+JSON.stringify(mutation));
   assert.ok(!obs.inspect(bad,store,current)?.isPromotion);
   assert.equal(weekly.eligible(bad,store,current,'now'),false);
