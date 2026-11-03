@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T13:51:15.613Z",
+  "generated_at": "2026-11-03T13:54:57.599Z",
   "checked_date": "2026-11-03",
   "summary": {
     "profiles": 20,
@@ -260,11 +260,11 @@
       "gemengdgehakt": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
-        "product_name": "Jumbo Gemengd Gehakt 500 g",
-        "price": 4.59,
-        "price_status": "winkelprijswaarneming · 2026-11-02",
-        "checked_date": "2026-11-02"
+        "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
+        "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
+        "price": 4.99,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
+        "checked_date": "2026-11-03"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,17 +272,17 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "winkelprijswaarneming · 2026-11-02",
-        "checked_date": "2026-11-02"
+        "price_status": "winkelprijswaarneming · 2026-11-03",
+        "checked_date": "2026-11-03"
       },
       "vis": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
-        "price": 2.79,
-        "price_status": "winkelprijswaarneming · 2026-11-02",
-        "checked_date": "2026-11-02"
+        "price": 2.75,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
+        "checked_date": "2026-11-03"
       },
       "pompoen": {
         "state": "price_observed",
@@ -371,8 +371,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.38,
-        "price_status": "winkelprijswaarneming · 2026-11-02",
-        "checked_date": "2026-11-02"
+        "price_status": "winkelprijswaarneming · 2026-11-03",
+        "checked_date": "2026-11-03"
       }
     },
     "ah": {

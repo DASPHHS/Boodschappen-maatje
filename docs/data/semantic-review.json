@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-03T13:51:13.436Z",
+  "generated_at": "2026-11-03T13:54:55.338Z",
   "source_date": "2026-11-03",
   "source_commit": "54c16fe9ce6bb26050337a6779e7d521d9c61e5d",
   "counts": {
     "match": 246,
-    "partial": 355,
-    "reject": 223
+    "partial": 354,
+    "reject": 224
   },
   "profiles": {
     "sungold": {
@@ -753,8 +753,8 @@
     },
     "vis": {
       "match": 44,
-      "partial": 25,
-      "reject": 28,
+      "partial": 24,
+      "reject": 29,
       "reasons": {
         "productkenmerken en verpakking passen": 44,
         "niet herkende productbeschrijving: blue planet": 1,
@@ -771,11 +771,10 @@
         "niet herkende productbeschrijving: marinade": 1,
         "niet herkende productbeschrijving: nori wasa": 1,
         "andere productvorm: smoked": 10,
-        "andere doelgroep: pet": 7,
+        "andere doelgroep: pet": 8,
         "niet herkende productbeschrijving: ca": 4,
         "andere productvorm: prepared": 2,
         "andere productvorm: mixed": 2,
-        "niet herkende productbeschrijving: strips": 1,
         "plantaardige variant in vlees/visvergelijking": 1,
         "niet herkende productbeschrijving: op": 3,
         "niet herkende productbeschrijving: warmgerookte": 2,
@@ -1593,7 +1592,8 @@
       "reject": 11,
       "reasons": {
         "productkenmerken en verpakking passen": 4,
-        "winkelpagina noemt een andere verpakking; hercontrole nodig": 2,
+        "niet herkende productbeschrijving: morning sunshine mate infusion": 1,
+        "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion": 1,
         "productnaam of uitsluitingen passen niet": 9,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
         "niet herkende productbeschrijving: brandnetel kaneel": 1,
@@ -1611,13 +1611,13 @@
           "store": "jumbo",
           "name": "Clipper Morning Sunshine Organic Lemongrass & Maté Infusion 20 Stuks 40 g",
           "status": "partial",
-          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
+          "reason": "niet herkende productbeschrijving: morning sunshine mate infusion"
         },
         {
           "store": "jumbo",
           "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
           "status": "partial",
-          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
+          "reason": "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion"
         },
         {
           "store": "jumbo",
@@ -1693,7 +1693,7 @@
       "name": "Clipper Morning Sunshine Organic Lemongrass & Maté Infusion 20 Stuks 40 g",
       "pack": "40 g",
       "url": "https://www.jumbo.com/producten/clipper-morning-sunshine-organic-lemongrass-mate-infusion-20-stuks-40-g-609523DS",
-      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
+      "reason": "niet herkende productbeschrijving: morning sunshine mate infusion",
       "fingerprint": "ba1a44c3ad42626ae446b5a7"
     },
     {
@@ -1704,7 +1704,7 @@
       "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
       "pack": "35 g",
       "url": "https://www.jumbo.com/producten/clipper-zen-again-organic-lemongrass-eucaluptus-ginkgo-infusion-20-stuks-35-g-161048DS",
-      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
+      "reason": "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion",
       "fingerprint": "708fe8ecaf4dcd2d611145a0"
     },
     {
@@ -2465,17 +2465,6 @@
       "url": "https://www.jumbo.com/producten/queens-alaska-koolvis-filets-375-g-419422ZK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d7c19e31f892209053227e38"
-    },
-    {
-      "profile": "vis",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "rosewood-zalmfilet-strips-150g-150326STK",
-      "name": "Rosewood Zalmfilet Strips 150g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/rosewood-zalmfilet-strips-150g-150326STK",
-      "reason": "niet herkende productbeschrijving: strips",
-      "fingerprint": "93047f8afc29924401356511"
     },
     {
       "profile": "pompoen",
