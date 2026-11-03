@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T12:58:55.518Z",
+  "generated_at": "2026-11-03T13:07:58.242Z",
   "checked_date": "2026-11-03",
   "summary": {
     "profiles": 20,
     "checked": 60,
     "price_observed": 45,
     "stale_or_unavailable": 0,
-    "needs_variant_evidence": 7,
-    "needs_source": 8
+    "needs_variant_evidence": 6,
+    "needs_source": 9
   },
   "stores": {
     "lidl": {
@@ -204,8 +204,8 @@
         "checked_date": null
       },
       "sungold": {
-        "state": "needs_variant_evidence",
-        "reason": "product gevonden, productvorm of inhoud onvoldoende bewezen",
+        "state": "needs_source",
+        "reason": "geen passende productprijs uit aangesloten bronnen",
         "source": null,
         "product_name": null,
         "price": null,
