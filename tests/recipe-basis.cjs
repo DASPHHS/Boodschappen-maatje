@@ -73,3 +73,6 @@ console.log('Main priority, actual protein spend, cheaper regular alternatives, 
 
 const independentlyRefreshed={source_date:'2026-10-01',stores:{ah:[['AH Kipfilet',99,'400 g','https://www.ah.nl/producten/product/wi123/kip','123',{status:'ok',verified_identity:true,checked_at:day,observed_price:2,product_pack:'400 g'}]]}};
 assert.equal(selector.actionProducts(kip,offers,engine,day,{catalog:independentlyRefreshed,store:'ah'}).find(x=>x.isMain).priceAssessment.alternative.total,4,'Use a newly observed price, not the obsolete catalog price');
+
+assert.equal(selector.purchase({...offers[0],max_promotion_quantity:1},products.recipeProfiles(kip)[0],kip),null,'Never price more packs than the published promotional cap');
+assert.equal(products.profile('4 preien',{ingredient:true})?.family,'prei');

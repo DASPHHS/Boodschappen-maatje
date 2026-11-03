@@ -45,5 +45,5 @@ assert.ok(app.includes("state.batchOnly&&"),'Filter must affect actual cards');
 assert.ok(app.includes("In één keer koken, twee dagen eten"),'Full dialog must show day allocation');
 assert.ok(app.includes("batch_cook:r.batch_cook||null"),'Saved/planned recipes must retain day-two instructions');
 assert.ok(app.includes("(count*4)"),'Four portions are not the same as four days');
-assert.ok(html.includes('app.js?v=20261103-retailer-recovery'),'Browser must refresh updated interface');
+assert.ok(html.includes('app.js?v=20261103-recipe-reasons'),'Browser must refresh updated interface');
 console.log('Six detailed two-day recipes, 2 x 2 portions, food safety and saved-plan metadata verified');

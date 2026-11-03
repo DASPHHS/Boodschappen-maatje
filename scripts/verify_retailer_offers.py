@@ -17,15 +17,18 @@ from zoneinfo import ZoneInfo
 from retailer_payloads import jumbo_product,promotion_window
 VERIFIER_VERSION=3
 ROOT=Path(__file__).resolve().parents[1]/'docs'/'data'
-FIELDS=('name','price','pack_label','start_date','end_date','member_required','requires_membership','multi_buy_quantity','multi_buy_price','loyalty_price','loyalty_program')
+FIELDS=('name','price','pack_label','start_date','end_date','member_required','requires_membership','multi_buy_quantity','multi_buy_price','loyalty_price','loyalty_program','max_promotion_quantity')
 
 def fingerprint(o):
-    return hashlib.sha256(json.dumps({**{k:o.get(k) for k in FIELDS},'url':o.get('source',{}).get('url'),'ean':o.get('ean')},sort_keys=True).encode()).hexdigest()
+    return hashlib.sha256(json.dumps({**{k:o.get(k) for k in FIELDS if k!='max_promotion_quantity' or o.get(k) is not None},'url':o.get('source',{}).get('url'),'ean':o.get('ean')},sort_keys=True).encode()).hexdigest()
 
 def pack_key(text):
     s=str(text or '').lower().replace(',','.').replace('×','x')
     if re.search(r'\b(ca|circa|ongeveer)\b',s):return None
-    s=re.sub(r'\bliter\b','l',s);s=re.sub(r'\bgram\b','g',s)
+    s=re.sub(r'\bliter\b','l',s);s=re.sub(r'\b(?:gram|gr)\b','g',s)
+    if s.strip()=='per stuk':return (1,'piece')
+    piece=re.fullmatch(r'\s*(\d+)\s*(?:stuks?|st|capsules|tabletten)\s*',s)
+    if piece:return (int(piece[1]),'piece')
     m=re.fullmatch(r'\s*(?:(\d+)\s*x\s*)?(\d+(?:\.\d+)?)\s*(kg|g|l|ml|cl)\s*',s)
     if not m:return None
     count,amount,unit=m.groups();return (round(int(count or 1)*float(amount)*({'kg':1000,'g':1,'l':1000,'ml':1,'cl':10}[unit]),4),'g' if unit in ('g','kg') else 'ml')
@@ -61,7 +64,7 @@ def assess(o,html,today):
         effective=round(total/quantity,2)
         if abs(o['price']-effective)>.011:continue
         proof={k:o.get(k) for k in FIELDS}
-        proof.update(status='available',checked_at=today.isoformat(),url=url,price=effective,pricing_basis='effective_per_item_with_mandatory_bundle')
+        proof.update(status='available',checked_at=today.isoformat(),url=url,max_promotion_quantity=promo.get('maxPromotionQuantity'),price=effective,pricing_basis='effective_per_item_with_mandatory_bundle')
         return {'verdict':'confirmed','promotion_evidence':proof,'regular_price':p['regular_price'],'source_title':p['name']}
     conditional=any(x.get('volumeDiscounts') or x.get('isKiesAndMix') or re.search(r"\d\s+voor|stuks|gratis|halve|extra|kaart|bij elke|\d\s*\+\s*\d",' '.join(str(t.get('text','')) for t in x.get('tags') or [] if isinstance(t,dict)),re.I) for x in p['promotions'] if x.get('group')!='GeenBestelkosten')
     if conditional:return {'verdict':'unresolved','reason':'Conditional retailer promotion: effective per-item price is not a single-pack price'}
@@ -84,7 +87,7 @@ def assess(o,html,today):
         window=promotion_window(promo,today)
         if not window or window!=(o.get('start_date'),o.get('end_date')):continue
         proof={k:o.get(k) for k in FIELDS}
-        proof.update(status='available',checked_at=today.isoformat(),url=url)
+        proof.update(status='available',checked_at=today.isoformat(),url=url,max_promotion_quantity=promo.get('maxPromotionQuantity'))
         return {'verdict':'confirmed','promotion_evidence':proof,'regular_price':p['regular_price'],'source_title':p['name']}
     return {'verdict':'unresolved','reason':'Retailer product discount found; exact validity or conditions not corroborated'}
 
@@ -95,7 +98,7 @@ def reusable(record,o,today):
 
 def apply(o,record):
     if record.get('verdict')=='confirmed':
-        o.update(verified=True,price=record['promotion_evidence']['price'],promotion_evidence=record['promotion_evidence'],regular_price=record['regular_price'],date_estimated=False)
+        o.update(verified=True,max_promotion_quantity=record['promotion_evidence'].get('max_promotion_quantity'),price=record['promotion_evidence']['price'],promotion_evidence=record['promotion_evidence'],regular_price=record['regular_price'],date_estimated=False)
     elif record.get('verdict')=='disputed':
         o.update(verified=False,promotion_status='disputed',verification_reason=record['reason'])
 
@@ -141,7 +144,7 @@ def main():
                 if r.geturl().rstrip('/')!=o['source']['url'].rstrip('/'):raise ValueError('Retailer redirected to another product or listing')
                 result=assess(o,r.read(2500000).decode('utf8','replace'),day)
             result.update(verifier_version=VERIFIER_VERSION,checked_at=day.isoformat(),observed_at=dt.datetime.now(dt.timezone.utc).isoformat(),fingerprint=fingerprint(o))
-            if result.get('verdict')=='confirmed':result['resolved_fingerprint']=fingerprint({**o,'price':result['promotion_evidence']['price']})
+            if result.get('verdict')=='confirmed':result['resolved_fingerprint']=fingerprint({**o,**{k:result['promotion_evidence'].get(k) for k in FIELDS}})
             journal['products'][o['id']]=result;apply(o,result)
         except HTTPError as exc:
             if exc.code in (401,403,429):break

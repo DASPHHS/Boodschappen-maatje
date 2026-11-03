@@ -5193,6 +5193,7 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R324168/visstoof-met-prei-en-tomaat",
       "families": [
+        "prei",
         "rijst",
         "tomaten",
         "ui"
@@ -5201,18 +5202,25 @@
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "stoof",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
+        "prei",
         "rijst",
         "tomaten",
         "ui"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "ingredient_profiles": [
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
         {
           "family": "ui",
           "group": null,
@@ -5235,7 +5243,8 @@
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": ""
+      "cuisine": "",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r983822",
@@ -5505,23 +5514,33 @@
       "url": "https://www.ah.nl/allerhande/recept/R-R1088510/ovenomelet-met-prei-en-spinazie",
       "families": [
         "eieren",
+        "prei",
         "spinazie"
       ],
       "minutes": 40,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "oven",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "eieren",
+        "prei",
         "spinazie"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "ingredient_profiles": [
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
         {
           "family": "spinazie",
           "group": null,
@@ -5538,7 +5557,8 @@
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": ""
+      "cuisine": "",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r65764",
@@ -5707,23 +5727,33 @@
       "url": "https://www.ah.nl/allerhande/recept/R-R377930/prei-omelet-met-gebakken-krieltjes",
       "families": [
         "aardappelen",
-        "eieren"
+        "eieren",
+        "prei"
       ],
       "minutes": 30,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "anders",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "aardappelen",
-        "eieren"
+        "eieren",
+        "prei"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "ingredient_profiles": [
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 800,
+          "unit": "g"
+        },
         {
           "family": "aardappelen",
           "group": null,
@@ -5740,7 +5770,8 @@
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": "nederlands"
+      "cuisine": "nederlands",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r1197920",
@@ -6032,20 +6063,22 @@
       "families": [
         "broccoli",
         "kip",
+        "prei",
         "rijst"
       ],
       "minutes": 20,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "rijst",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "broccoli",
         "kip",
+        "prei",
         "rijst"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
@@ -6073,10 +6106,17 @@
           "form": "plain",
           "quantity": 500,
           "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": ""
+      "cuisine": "",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r1149174",
@@ -6086,21 +6126,23 @@
       "families": [
         "citroen",
         "knoflook",
-        "other_kip"
+        "other_kip",
+        "prei"
       ],
       "minutes": 125,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "stoof",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "citroen",
         "knoflook",
-        "other_kip"
+        "other_kip",
+        "prei"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "ingredient_profiles": [
@@ -6121,10 +6163,17 @@
           "group": null,
           "variant": null,
           "form": "plain"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": "frans"
+      "cuisine": "frans",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r1302800",
@@ -6134,6 +6183,7 @@
       "families": [
         "aardappelen",
         "knoflook",
+        "prei",
         "tofu",
         "ui"
       ],
@@ -6141,14 +6191,15 @@
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "stamppot",
-      "vegetable_families": 0,
+      "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "aardappelen",
         "knoflook",
+        "prei",
         "tofu",
         "ui"
       ],
@@ -6161,6 +6212,12 @@
           "form": "plain",
           "quantity": 1000,
           "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
         },
         {
           "family": "ui",
@@ -6184,7 +6241,8 @@
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": ""
+      "cuisine": "",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r485658",
@@ -6472,20 +6530,22 @@
       "families": [
         "champignons",
         "linzen",
+        "prei",
         "rijst"
       ],
       "minutes": 25,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "rijst",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": true,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "champignons",
         "linzen",
+        "prei",
         "rijst"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
@@ -6507,6 +6567,12 @@
           "unit": "g"
         },
         {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
           "family": "champignons",
           "group": null,
           "variant": null,
@@ -6516,7 +6582,8 @@
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": "frans"
+      "cuisine": "frans",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r1194435",
@@ -10338,20 +10405,22 @@
       "url": "https://www.ah.nl/allerhande/recept/R-R1197097/preistamppot-met-bloemkool-en-zalm",
       "families": [
         "aardappelen",
-        "bloemkool"
+        "bloemkool",
+        "prei"
       ],
       "minutes": 25,
       "servings": 4,
       "course": "hoofdgerecht",
       "method": "stamppot",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_metadata_verified",
-      "last_checked": "2026-11-02",
+      "last_checked": "2026-11-03",
       "ingredient_checked_at": "2026-11-02",
       "ingredient_families": [
         "aardappelen",
-        "bloemkool"
+        "bloemkool",
+        "prei"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "ingredient_profiles": [
@@ -10370,10 +10439,17 @@
           "form": "plain",
           "quantity": 450,
           "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
         }
       ],
       "ingredient_profile_version": 2,
-      "cuisine": ""
+      "cuisine": "",
+      "meal_type": "avondeten"
     },
     {
       "id": "ah-sitemap-r-r845648",
@@ -14058,7 +14134,7 @@
     },
     {
       "id": "ah-sitemap-r-r1199319",
-      "title": "Gestoofde linzen met prei venkel en olijven",
+      "title": "Gestoofde linzen met prei, venkel en olijven",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R1199319/gestoofde-linzen-met-prei-venkel-en-olijven",
       "families": [
@@ -14066,14 +14142,47 @@
         "prei",
         "venkel"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
       "method": "stoof",
       "vegetable_families": 2,
       "has_legumes": true,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "linzen",
+        "prei",
+        "venkel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "venkel",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "family": "linzen",
+          "group": "vega",
+          "variant": "unspecified",
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": ""
     },
     {
       "id": "ah-sitemap-r-r390280",
@@ -14386,22 +14495,75 @@
     },
     {
       "id": "ah-sitemap-r-r386338",
-      "title": "Aardappelschotel met prei champignons en gehakt",
+      "title": "Aardappelschotel met prei, champignons en gehakt",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R386338/aardappelschotel-met-prei-champignons-en-gehakt",
       "families": [
+        "aardappelen",
         "champignons",
         "gehakt",
         "prei"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
-      "method": "schotel",
+      "minutes": 50,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "method": "anders",
       "vegetable_families": 2,
       "has_legumes": false,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "aardappelen",
+        "champignons",
+        "gehakt",
+        "prei"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1000,
+          "unit": "g"
+        },
+        {
+          "family": "gehakt",
+          "group": "vlees",
+          "variant": "beef",
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "family": "champignons",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 390,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": "nederlands"
     },
     {
       "id": "ah-sitemap-r-r1199324",
@@ -14441,21 +14603,45 @@
     },
     {
       "id": "ah-sitemap-r-r1197541",
-      "title": "Gekookte rijst met gehakt prei en bosui van london loy",
+      "title": "Gekookte rijst met gehakt, prei en bosui van London Loy",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R1197541/gekookte-rijst-met-gehakt-prei-en-bosui-van-london-loy",
       "families": [
-        "gehakt",
-        "prei"
+        "prei",
+        "rijst"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
       "method": "rijst",
       "vegetable_families": 1,
       "has_legumes": false,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "prei",
+        "rijst"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": ""
     },
     {
       "id": "hf-page-33244839c31320",
@@ -15604,21 +15790,55 @@
     },
     {
       "id": "ah-sitemap-r-r588248",
-      "title": "Pastaschelpjes met garnalen in prei roomsaus",
+      "title": "Pastaschelpjes met garnalen in prei-roomsaus",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R588248/pastaschelpjes-met-garnalen-in-prei-roomsaus",
       "families": [
-        "garnalen",
-        "prei"
+        "knoflook",
+        "prei",
+        "wortel"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
+      "minutes": 20,
+      "servings": 4,
+      "course": "hoofdgerecht",
       "method": "pasta",
-      "vegetable_families": 1,
+      "vegetable_families": 2,
       "has_legumes": false,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "knoflook",
+        "prei",
+        "wortel"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "knoflook",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": "italiaans"
     },
     {
       "id": "ah-sitemap-r-r1185723",
@@ -17991,21 +18211,79 @@
     },
     {
       "id": "ah-sitemap-r-r1197028",
-      "title": "Noedelsalade met aubergine prei munt en cashewnoten",
+      "title": "Noedelsalade met aubergine, prei, munt en cashewnoten",
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R1197028/noedelsalade-met-aubergine-prei-munt-en-cashewnoten",
       "families": [
         "aubergine",
-        "prei"
+        "knoflook",
+        "limoen",
+        "noedels",
+        "prei",
+        "ui"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
-      "method": "noedels",
+      "minutes": 15,
+      "servings": 4,
+      "course": "hoofdgerecht",
+      "method": "salade",
       "vegetable_families": 2,
       "has_legumes": false,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-03"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "aubergine",
+        "knoflook",
+        "limoen",
+        "noedels",
+        "prei",
+        "ui"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "knoflook",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": ""
     },
     {
       "id": "ah-sitemap-r-r1197212",
@@ -18268,17 +18546,57 @@
       "source": "Allerhande",
       "url": "https://www.ah.nl/allerhande/recept/R-R1198008/gebakken-rijst-met-tofu-en-geroosterde-prei",
       "families": [
+        "knoflook",
         "prei",
-        "tofu"
+        "tofu",
+        "ui"
       ],
-      "minutes": null,
-      "servings": null,
-      "course": "niet_gecontroleerd",
+      "minutes": 85,
+      "servings": 4,
+      "course": "hoofdgerecht",
       "method": "rijst",
       "vegetable_families": 1,
       "has_legumes": false,
-      "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-03"
+      "review_status": "publisher_metadata_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_families": [
+        "knoflook",
+        "prei",
+        "tofu",
+        "ui"
+      ],
+      "ingredient_evidence": "publisher_recipe_schema",
+      "ingredient_profiles": [
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "tofu",
+          "group": "vega",
+          "variant": "firm",
+          "form": "plain",
+          "quantity": 375,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "knoflook",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "meal_type": "avondeten",
+      "cuisine": ""
     },
     {
       "id": "ah-sitemap-r-r1193971",

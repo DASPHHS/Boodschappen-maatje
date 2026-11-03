@@ -95,3 +95,6 @@ for(const store of ['jumbo','ah','lidl'])for(const name of names){
 }
 assert.equal(m.validDay('2026-02-30'),false);
 console.log('Universal evidence policy: '+cases+' invalid product/store cases rejected across offers, price comparisons and week previews');
+
+assert.equal(m.classify({...offer,max_promotion_quantity:4},today),'excluded','An uncorroborated quantity cap must invalidate confirmation');
+assert.equal(m.classify({...offer,max_promotion_quantity:4,promotion_evidence:{...offer.promotion_evidence,max_promotion_quantity:4}},today),'confirmed');

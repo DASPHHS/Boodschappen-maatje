@@ -26,3 +26,11 @@ In de eerste twee metadata-runs steeg het aantal productrecords met gecontroleer
 De geteste Jumbo GraphQL-route gaf zonder extra toegang HTTP 401. De publieke productpagina's werkten wel. De volledige PrijsProfeet-schapprijsroute vereist volgens de aanbieder een betaald account met API-sleutel; die toegang is niet beschikbaar gemaakt voor dit project. De bestaande openbare catalogus blijft een aanvullende prijsbron. Een live workflow liep tegen de gedeelde GitHub-limiet voor anonieme API-aanvragen aan; de catalogusimport gebruikt daarvoor nu de eigen GitHub Actions-token, uitsluitend op api.github.com. Dit vraagt geen nieuw persoonlijk account of token van de gebruiker.
 
 Een ontbrekend assortimentartikel, een winkelafhankelijke voorraad en een niet-gespecificeerde productvoorkeur zijn verschillende problemen. Geen van de onderzochte projecten biedt bewijs dat werkelijk elk product, elke filiaalprijs en elke actievoorwaarde altijd compleet beschikbaar is. Het onderzoek rechtvaardigt daarom meer automatische bronophaling en betere dekking, geen garantie van nul ontbrekende gegevens.
+
+## Controle van de zomerstamppot
+
+De kaart voor Allerhandes zomerstamppot met prei en masala-tofu werd op 3 november gekoppeld aan Jumbo's stevige tofu (2 × 280 g voor €2,19) en kruimige aardappelen (2 × 600 g voor €1,39). Dit zijn twee verschillende passende actieproducten, inclusief de vegetarische eiwitbasis. De bedragen dekken de benodigde tofu en aardappelen voor vier porties; niet de overige ingrediënten.
+
+De productparser miste het meervoud “preien”. Die is hersteld en veertien betrokken Allerhande-recepten zijn opnieuw bij de uitgever gecontroleerd. Een kaart vermeldt nu waarom zij bij een winkel is gekozen. Een seizoen in de oorspronkelijke titel wordt onderscheiden van de selectie op acties; de titel van de maker wordt behouden. Een bronmelding voor prei zonder voldoende verpakkingsbewijs is geen bewezen hoeveelheidsprijs.
+
+Bij het vervolgonderzoek zijn ook expliciete stuksaantallen en “gr” als gram verwerkt. Maximale actieaantallen uit de winkelbron worden bewaard; een berekening voor meer verpakkingen dan die grens geeft geen bevestigd actietotaal.

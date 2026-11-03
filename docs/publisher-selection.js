@@ -29,6 +29,7 @@ function purchase(offer,profile,recipe){
   if(!Number.isInteger(offer.multi_buy_quantity)||!Number.isFinite(offer.multi_buy_price)||offer.multi_buy_price<=0)return null;
   const bundles=Math.ceil(packages/offer.multi_buy_quantity);purchased=bundles*offer.multi_buy_quantity;total=bundles*offer.multi_buy_price;
  }
+ if(Number.isFinite(offer.max_promotion_quantity)&&purchased>offer.max_promotion_quantity)return null;
  return {packages:purchased,total:Math.round(total*100)/100,portions:4};
 }
 function discount(offer,profile,recipe){

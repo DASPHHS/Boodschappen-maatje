@@ -36,8 +36,9 @@
   if(!e||e.status!=='available'||e.name!==o.name||e.pack_label!==o.pack_label||
      e.price!==o.price||e.start_date!==o.start_date||e.end_date!==o.end_date)return false;
   if(!validDay(today)||!validDay(e.start_date)||!validDay(e.end_date)||e.start_date>today||e.end_date<today||o.date_estimated||o.valid_until_estimated)return false;
+  if(o.max_promotion_quantity!=null&&(!Number.isInteger(o.max_promotion_quantity)||o.max_promotion_quantity<1))return false;
   if(Boolean(e.member_required)!==Boolean(o.member_required)||Boolean(e.requires_membership)!==Boolean(o.requires_membership))return false;
-  for(const k of ['multi_buy_quantity','multi_buy_price','loyalty_price','loyalty_program'])if((e[k]??null)!==(o[k]??null))return false;
+  for(const k of ['multi_buy_quantity','multi_buy_price','loyalty_price','loyalty_program','max_promotion_quantity'])if((e[k]??null)!==(o[k]??null))return false;
   const stamp=String(e.checked_at||'').slice(0,10);
   if(!validDay(stamp))return false;
   const age=(Date.parse(today+'T12:00:00Z')-Date.parse(stamp+'T12:00:00Z'))/86400000;

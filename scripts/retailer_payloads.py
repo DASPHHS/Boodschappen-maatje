@@ -66,7 +66,7 @@ def jumbo_product(html,url,product_id):
         current=promo if promo is not None and base is not None and promo<base else base
         source_pack=p.get('subtitle')
         if not source_pack:
-            measures=re.findall(r'(?<![\d.])(?:\d+\s*x\s*)?\d+(?:[.,]\d+)?\s*(?:kg|g|ml|cl|l)\b',p.get('title') or '',re.I)
+            measures=re.findall(r'(?<![\d.])(?:\d+\s*x\s*)?\d+(?:[.,]\d+)?\s*(?:kg|gram|gr|g|ml|cl|l|stuks?|st|capsules|tabletten)\b',p.get('title') or '',re.I)
             if len(measures)==1:source_pack=measures[0]
         categories=[x['name'] for x in p.get('categories') or [] if isinstance(x,dict) and isinstance(x.get('name'),str)]
         availability=p.get('availability') or {}

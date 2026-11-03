@@ -28,7 +28,7 @@ const definitions=[
  ['tomaten',null,/\b(tomaten|tomaat|trostomaten|cherrytomaten|tomatenblokjes|tomatenpuree|gepelde tomaten)\b/],
  ['aardappelen',null,/\b(aardappelen|aardappel|krieltjes|stamppotaardappelen)\b/],
  ['champignons',null,/\b(champignons|kastanjechampignons|paddenstoelen)\b/],['wortel',null,/\b(wortel(?:en|s)?|bospeen|winterpeen|waspeen)\b/],
- ['paksoi',null,/\bpaksoi\b/],['prei',null,/\bprei\b/],['spitskool',null,/\bspitskool\b/],['witte_kool',null,/\bwitte kool\b/],
+ ['paksoi',null,/\bpaksoi\b/],['prei',null,/\bprei(?:en)?\b/],['spitskool',null,/\bspitskool\b/],['witte_kool',null,/\bwitte kool\b/],
  ['boerenkool',null,/\bboerenkool\b/],['venkel',null,/\bvenkel\b/],['spruitjes',null,/\bspruitjes\b/],
  ['ui',null,/\b(uien|ui|sjalot(?:ten)?)\b/],['knoflook',null,/\bknoflook\b/],['citroen',null,/\bcitroen(?:en)?\b/],['limoen',null,/\blimoen(?:en)?\b/],
  ['pindakaas',null,/\bpindakaas\b/],['rijst',null,/\b(basmatirijst|jasmijnrijst|zilvervliesrijst|rijst)\b/],

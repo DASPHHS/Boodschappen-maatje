@@ -37,7 +37,13 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   if(row.category==='vis')assert.ok(!row.matched.main.some(x=>x.family.startsWith('vega_')));
  }
  for(const s of ['ah','jumbo','lidl'])for(const r of t.catalog(s))assert.ok(t.recipeActions(r,s).length>=2);
- t.state.view='recepten';t.render();
+ Object.assign(t.state,{view:'recepten',store:'jumbo',query:'Zomerstamppot met prei en masala-tofu'});t.render();
+ const summer=el('#view-recepten').innerHTML;
+ assert.ok(summer.includes('Waarom dit recept?'));
+ assert.ok(summer.includes('Vivera Stevige Tofu 280 g'));
+ if(![6,7,8].includes(Number(actionDay.slice(5,7))))assert.ok(summer.includes('titel van de maker verwijst naar de zomer'));
+ assert.ok(!summer.includes('Vivera Zachte Tofu'));
+ Object.assign(t.state,{store:'alle',query:''});t.render();
  const page=el('#view-recepten').innerHTML;
  assert.ok(page.includes('Alle bronnen'));
  assert.ok(page.includes(rows.length?'actieproducten bij':'Geen recepten met minimaal twee'));

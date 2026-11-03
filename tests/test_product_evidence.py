@@ -162,4 +162,19 @@ class RetailerRecoveryTests(unittest.TestCase):
         p['start']['dayShort']='di'
         self.assertNotEqual(assess(o,self.nuxt(self.product),date(2026,11,3))['verdict'],'confirmed')
 
+
+    def test_counted_packs_and_promotion_cap_are_preserved(self):
+        from verify_retailer_offers import assess,pack_key,apply
+        from datetime import date
+        self.assertEqual(pack_key('350 gr'),pack_key('350 g'))
+        self.assertEqual(pack_key('60 stuks'),(60,'piece'))
+        self.assertNotEqual(pack_key('60 stuks'),pack_key('60 g'))
+        self.product['subtitle']=None;self.product['title']='Nieuw product 60 stuks'
+        self.product['promotions'][0].update(group='Week',tags=[{'text':'2 voor 4,99'}],maxPromotionQuantity=4)
+        o=self.offer();o.update(pack_label='60 stuks',price=2.50,multi_buy_quantity=2,multi_buy_price=4.99)
+        result=assess(o,self.nuxt(self.product),date(2026,11,3))
+        self.assertEqual(result['verdict'],'confirmed')
+        self.assertEqual(result['promotion_evidence']['max_promotion_quantity'],4)
+        apply(o,result);self.assertEqual(o['max_promotion_quantity'],4)
+
 if __name__=='__main__':unittest.main()
