@@ -17,7 +17,7 @@ class LidlOfficial(unittest.TestCase):
         o=self.parse(p)
         self.assertEqual(o['end_date'],'2026-10-30')
         e=o['promotion_evidence']
-        for key in ['name','price','pack_label','start_date','end_date']:
+        for key in ['name','price','pack_label','start_date','end_date','member_required','requires_membership']:
             self.assertEqual(e[key],o[key])
         self.assertEqual(e['url'],o['source']['url'])
         self.assertEqual(e['checked_at'],self.today.isoformat())

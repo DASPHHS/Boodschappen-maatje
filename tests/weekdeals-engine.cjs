@@ -4,7 +4,7 @@ const week=require('../docs/weekdeals-engine.js');
 const today='2026-11-01';
 assert.deepEqual(week.week(today,'now'),{from:'2026-10-26',through:'2026-11-01'});
 assert.deepEqual(week.week(today,'next'),{from:'2026-11-02',through:'2026-11-08'});
-const base={id:'pp-100',name:'Jumbo Pindakaas naturel 600g',price:1.45,
+const base={source_provider:'PrijsProfeet',id:'pp-100',name:'Jumbo Pindakaas naturel 600g',price:1.45,
  source:{url:'https://www.jumbo.com/producten/test-12345STK'},
  promotion_status:'active',start_date:'2026-10-30',end_date:'2026-11-07'};
 const future={...base,id:'pp-101',start_date:'2026-11-02',end_date:'2026-11-08',promotion_status:'upcoming'};

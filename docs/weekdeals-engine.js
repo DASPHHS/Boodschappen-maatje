@@ -24,6 +24,9 @@
      o.online_only===true||o.price_conflict||o.is_regular_low_price||
      !/^https:\/\//.test(o.source?.url||''))return false;
   if(!['active','upcoming'].includes(o.promotion_status||'')&&o.source_provider==='PrijsProfeet')return false;
+  const gate=typeof module==='object'&&module.exports?require('./offer-identity.js'):window.MaatjeOfferIdentity;
+  const preview=o.start_date>today&&o.promotion_status==='upcoming'?{...o,promotion_status:'active'}:o;
+  if(!['confirmed','reported'].includes(gate?.classify(preview,o.start_date>today?o.start_date:today)))return false;
   const w=week(today,period);
   return !!w&&o.start_date<=w.through&&o.end_date>=w.from&&o.end_date>=today;
  }

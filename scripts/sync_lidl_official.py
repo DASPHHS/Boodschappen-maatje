@@ -64,7 +64,7 @@ def parse_product(p,today,url,discount_only=True):
     return dict(id='lidl-official-'+str(p['productId']),product_id=str(p['productId']),name=p['fullTitle'],category=category(p['fullTitle']),
         price=price,regular_price=regular,pack_label=pack,start_date=start.isoformat(),end_date=end.isoformat(),
         source_provider='lidl_official',source={'url':direct,'label':'Lidl openbare productgegevens'},
-        promotion_evidence=({'status':'available','name':p['fullTitle'],'pack_label':pack,'price':price,'start_date':start.isoformat(),'end_date':end.isoformat(),'checked_at':today.isoformat(),'url':direct} if discount_only else None),
+        promotion_evidence=({'status':'available','name':p['fullTitle'],'pack_label':pack,'price':price,'start_date':start.isoformat(),'end_date':end.isoformat(),'checked_at':today.isoformat(),'url':direct,'member_required':membership,'requires_membership':membership} if discount_only else None),
         source_page=url,checked_at=today.isoformat(),evidence_date=today.isoformat(),verified=True,promotion_status='active',
         member_required=membership,requires_membership=membership,promo_note='Alleen met Lidl Plus' if membership else 'In de winkel; zolang de voorraad strekt',
         without_membership_price=base.get('price') if membership else None,

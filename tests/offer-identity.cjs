@@ -57,3 +57,40 @@ const r={servings:4,ingredients:[{name:'kipfilet',quantity:360,unit:'g'},{name:'
 assert.equal(selector.actionProducts(r,[bad],engine,current).length,0,'Rejected chicken cannot anchor any recipe');
 
 assert.equal(m.classify({...bad,verified:false,promotion_status:'active',price_conflict:'unknown'},current),'excluded','A conflict flag is not positive promotion evidence');
+
+// The evidence policy is independent of product family, retailer and vocabulary.
+// Deliberately include non-food and an unfamiliar future product name.
+const weekly=require('../docs/weekdeals-engine');
+const names=['Kipfilet','Zalm','Tofu','Eieren','Kwark','Houdbare melk','Appels','Volkorenbrood','Rijst','Bier','Wasmiddel','Hondenvoer','Nieuw product zonder bekende familie'];
+let cases=0;
+for(const store of ['jumbo','ah','lidl'])for(const name of names){
+ const url={jumbo:'https://www.jumbo.com/aanbiedingen/product/123456',ah:'https://www.ah.nl/producten/product/wi123456/product',lidl:'https://www.lidl.nl/p/product/p123456'}[store];
+ const o={id:store+'-'+name,name,pack_label:'500 g',price:2,start_date:current,end_date:'2026-11-08',verified:true,source:{url}};
+ o.promotion_evidence={status:'available',name,pack_label:o.pack_label,price:o.price,start_date:o.start_date,end_date:o.end_date,checked_at:current,url};
+ assert.equal(m.classify(o,current),'confirmed');
+ assert.equal(obs.inspect(o,store,current)?.isPromotion,true);
+ assert.equal(weekly.eligible(o,store,current,'now'),true);
+ const mutations=[
+  {promotion_evidence:null},{promotion_status:'withdrawn'},{promotion_status:'disputed'},
+  {source:{url:'https://www.'+({ah:'ah.nl',jumbo:'jumbo.com',lidl:'lidl.nl'}[store])+'/'}},
+  {price:3},{pack_label:'1 kg'},{name:name+' andere variant'},{member_required:true},
+  {requires_membership:true},{multi_buy_quantity:2,multi_buy_price:3},{loyalty_price:1},
+  {loyalty_program:'Klantenkaart'},{date_estimated:true},{valid_until_estimated:true},
+  {start_date:'2026-02-30'},{availability_status:'unavailable'},
+  {promotion_evidence:{...o.promotion_evidence,checked_at:'2026-10-01'}},
+  {promotion_evidence:{...o.promotion_evidence,end_date:'2026-12-31'}}
+ ];
+ for(const mutation of mutations){
+  const bad={...o,...mutation};
+  assert.equal(m.classify(bad,current),'excluded',store+' '+name+' '+JSON.stringify(mutation));
+  assert.ok(!obs.inspect(bad,store,current)?.isPromotion);
+  assert.equal(weekly.eligible(bad,store,current,'now'),false);
+  cases++;
+ }
+ const noProof={...o,verified:false,source_provider:'onbekende_bron'};
+ assert.equal(m.classify(noProof,current),'excluded');
+ assert.equal(obs.inspect(noProof,store,current),null,'Unknown source cannot bypass the gate through price comparisons');
+ assert.equal(weekly.eligible(noProof,store,current,'now'),false);
+}
+assert.equal(m.validDay('2026-02-30'),false);
+console.log('Universal evidence policy: '+cases+' invalid product/store cases rejected across offers, price comparisons and week previews');

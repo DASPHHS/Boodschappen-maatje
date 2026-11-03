@@ -5,6 +5,7 @@
  if(root)root.MaatjeOfferIdentity=api;
 })(typeof window!=='undefined'?window:null,function(){
  const fold=x=>String(x||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+ const validDay=d=>typeof d==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d)&&!Number.isNaN(Date.parse(d+'T12:00:00Z'))&&new Date(d+'T12:00:00Z').toISOString().slice(0,10)===d;
  function pack(o){
   const t=String(o?.pack_label||o?.name||'').toLowerCase().replace(/×/g,'x').replace(/,/g,'.');
   let m=t.match(/(\d+)\s*x\s*(\d+(?:\.\d+)?)\s*(ml|cl|l|g|kg)\b/);
@@ -31,7 +32,11 @@
   const e=o?.promotion_evidence;
   if(!e||e.status!=='available'||e.name!==o.name||e.pack_label!==o.pack_label||
      e.price!==o.price||e.start_date!==o.start_date||e.end_date!==o.end_date)return false;
+  if(!validDay(today)||!validDay(e.start_date)||!validDay(e.end_date)||e.start_date>today||e.end_date<today||o.date_estimated||o.valid_until_estimated)return false;
+  if(Boolean(e.member_required)!==Boolean(o.member_required)||Boolean(e.requires_membership)!==Boolean(o.requires_membership))return false;
+  for(const k of ['multi_buy_quantity','multi_buy_price','loyalty_price','loyalty_program'])if((e[k]??null)!==(o[k]??null))return false;
   const stamp=String(e.checked_at||'').slice(0,10);
+  if(!validDay(stamp))return false;
   const age=(Date.parse(today+'T12:00:00Z')-Date.parse(stamp+'T12:00:00Z'))/86400000;
   if(!Number.isFinite(age)||age<0||age>2)return false;
   try{
@@ -45,9 +50,7 @@
  }
  function classify(o,today){
   if(!o||!o.id||!o.name||!Number.isFinite(o.price)||o.price<=0||
-     !/^\d{4}-\d{2}-\d{2}$/.test(String(o.start_date||''))||
-     !/^\d{4}-\d{2}-\d{2}$/.test(String(o.end_date||''))||
-     !/^\d{4}-\d{2}-\d{2}$/.test(String(today||''))||
+     !validDay(o.start_date)||!validDay(o.end_date)||!validDay(today)||
      o.start_date>today||o.end_date<today||o.start_date>o.end_date||o.online_only||
      ['withdrawn','disputed','unverified'].includes(o.promotion_status)||
      ['unavailable','discontinued'].includes(o.availability_status))return 'excluded';
@@ -96,5 +99,5 @@
   }
   return results;
  }
- return {key,pack,container,variantConflict,confirmedPromotion,classify,merge};
+ return {key,pack,container,variantConflict,validDay,confirmedPromotion,classify,merge};
 });

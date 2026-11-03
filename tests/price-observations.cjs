@@ -34,7 +34,7 @@ assert.equal(price.matchesWatch(milk,'volle_melk'),true);
 assert.equal(price.matchesWatch({...milk,name:'AH Verse volle melk 1 L'},'volle_melk'),false);
 const future={...fakeBundle,pack_label:'1 L',start_date:'2026-11-01',end_date:'2026-11-03'};
 assert.equal(price.collect('ah','volle_melk',[],[future],day).length,0);
-const unknown={name:'Page Vochtig Toiletpapier',pack_label:'inhoud onbekend',price:0.99,
+const unknown={id:'pp-page',promotion_status:'active',name:'Page Vochtig Toiletpapier',pack_label:'inhoud onbekend',price:0.99,
  source_provider:'PrijsProfeet',start_date:'2026-10-26',end_date:'2026-11-01',source:{url:'https://www.prijsprofeet.nl'}};
 assert.equal(price.unitCost(unknown),null);
 const obs=price.inspect(unknown,'jumbo',day);

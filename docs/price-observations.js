@@ -78,7 +78,7 @@
   const age=days(today,noted);
   if(age!==null&&age<0)return null; // Future shelf observation is invalid evidence.
   const within=promo&&validDay(o.start_date)&&validDay(o.end_date)&&o.start_date<=today&&today<=o.end_date;
-  if(within&&o.verified===true&&!['confirmed','reported'].includes(gate?.classify(o,today)))return null;
+  if(within&&!['confirmed','reported'].includes(gate?.classify(o,today)))return null;
   const future=promo&&o.start_date>today;
   const expired=promo&&o.end_date<today;
   const officialSource=retailerUrl(o.url||o.source?.url,store);
