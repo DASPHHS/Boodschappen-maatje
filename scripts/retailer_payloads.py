@@ -68,6 +68,9 @@ def jumbo_product(html,url,product_id):
         if not source_pack:
             measures=re.findall(r'(?<![\d.])(?:\d+\s*x\s*)?\d+(?:[.,]\d+)?\s*(?:kg|gram|gr|g|ml|cl|l|stuks?|st|capsules|tabletten)\b',p.get('title') or '',re.I)
             if len(measures)==1:source_pack=measures[0]
+        unit_price=price.get('pricePerUnit') or {}
+        if not source_pack and unit_price.get('unit') in ('piece','pieces','stuk','stuks') and cents(unit_price.get('price'))==base:
+            source_pack='1 stuk'
         categories=[x['name'] for x in p.get('categories') or [] if isinstance(x,dict) and isinstance(x.get('name'),str)]
         availability=p.get('availability') or {}
         return {'name':p.get('title'),'product_id':product_id,'verified_identity':True,

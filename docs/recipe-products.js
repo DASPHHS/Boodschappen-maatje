@@ -40,7 +40,7 @@ const allowed=new Set((baseWords+' '+brands).split(' '));
 const forbidden=/(?:saus|sauce|soep|soup|salade|schotel|maaltijd|kruidenmix|maaltijdmix|bakplaatmix|bakmix|brood|wrap|pizza|chips|snack|nuggets?|schnitzel|vissticks?|kroket|koekjes?|taart|cake|smoothie|sap|sapje|tapenade|hoemoes|hummus|dip|dressing|spread|hapjes?|balletjes?|borrel|knijpfruit|bouillon)\b|\b(mix|gevuld|gevulde|americain|gerookt|gerookte|gegrild|gegrilde|gebakken|gebraden|voorgegaard|gepaneerd|gemarineerd|gekruid|kruiden|baby|olvarit|organix|whiskas|felix|sheba|kattenvoer|hondenvoer|poeder)\b/;
 function quantity(text){
  let t=String(text||'').replace(/½/g,' 0.5').replace(/¼/g,' 0.25').replace(/¾/g,' 0.75').replace(/⅓/g,' 0.333').replace(/⅔/g,' 0.667').replace(/,/g,'.');
- const m=t.trim().match(/^(\d+(?:\.\d+)?)(?:\s+(0\.\d+))?\s*(kilogram|kg|gram|gr|g|milliliter|ml|liter|l|stuks?|ei(?:eren)?|scharreleieren)\b/i);
+ const m=t.trim().match(/^(\d+(?:\.\d+)?)(?:\s+(0\.\d+))?\s*(kilogram|kg|gram|gr|g|milliliter|ml|liter|l|stuks?|ei(?:eren)?|scharreleieren|preien)\b/i);
  if(!m)return {};
  let n=Number(m[1])+Number(m[2]||0),unit=m[3].toLowerCase();
  if(/^(kg|kilogram)$/.test(unit)){n*=1000;unit='g'}else if(/^(gram|gr)$/.test(unit))unit='g';

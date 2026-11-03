@@ -24,7 +24,7 @@
   m=raw.match(/(\d+(?:\.\d+)?)\s*(ml|cl|l|g|kg)\b/);
   if(m)return result(1,Number(m[1]),m[2],/\bca\.?\b|circa|ongeveer|variabel/.test(raw));
   // Counts are a different dimension, never a guessed litre or kilogram.
-  if(/\b(vaatwascapsules|vaatwastabletten|vaatwaspods|eieren|scharreleieren|vrijeuitloopeieren)\b/.test(fold(o?.name))){
+  if(/\b(vaatwascapsules|vaatwastabletten|vaatwaspods|eieren|scharreleieren|vrijeuitloopeieren|prei|preien|pompoen|flespompoen)\b/.test(fold(o?.name))){
    const count=raw.match(/^(\d+)\s*(stuks?|st|stk|tabletten|capsules|pods|wasbeurten)\b/)||(!o?.pack_label&&/\b(eieren|scharreleieren|vrijeuitloopeieren)\b/.test(fold(o?.name))?raw.match(/\b(\d+)\s*(stuks?|st|stk)\b/):null);
    if(count)return {amount:Number(count[1]),unit:count[2]==='wasbeurten'?'wasbeurt':'stuk',pieces:Number(count[1]),approximate:false};
   }
@@ -52,8 +52,10 @@
  }
  function unitCost(o){
   const p=pack(o);
-  return p&&!p.approximate&&validPrice(o?.price)&&validPrice(p.amount)?
-    {price:Math.round(o.price/p.amount*100)/100,unit:p.unit,amount:p.amount}:null;
+  const bundled=Number(o?.multi_buy_quantity)>1;
+  const price=bundled?(Number.isInteger(o.multi_buy_quantity)&&validPrice(o.multi_buy_price)?o.multi_buy_price/o.multi_buy_quantity:null):o?.price;
+  return p&&!p.approximate&&validPrice(price)&&validPrice(p.amount)?
+    {price:Math.round(price/p.amount*100)/100,unit:p.unit,amount:p.amount}:null;
  }
  function storeDomain(store){return {lidl:'lidl.nl',jumbo:'jumbo.com',ah:'ah.nl'}[store]||null}
  function retailerUrl(url,store){

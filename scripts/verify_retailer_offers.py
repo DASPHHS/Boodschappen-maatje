@@ -51,6 +51,8 @@ def assess(o,html,today):
     if p.get('availability_status')=='unavailable':return {'verdict':'disputed','reason':'Retailer product unavailable'}
     if p.get('availability_status')!='available':return {'verdict':'unresolved','reason':'Retailer availability not explicit'}
     if not p.get('observed_price'):return {'verdict':'unresolved','reason':'Retailer product price missing'}
+    source_pack=p.get('product_pack')
+    corrected_pack=source_pack if not pack_key(o.get('pack_label')) and pack_key(source_pack) else o.get('pack_label')
     # A shelf price and an effective bundle price must not be mistaken for a
     # conflict. Confirm the mandatory quantity and total directly from the tags.
     for promo in p['promotions']:
@@ -58,13 +60,13 @@ def assess(o,html,today):
         terms=bundle_terms(promo,p['regular_price'])
         if not terms or promotion_window(promo,today)!=(o.get('start_date'),o.get('end_date')):continue
         quantity,total=terms
-        if quantity<2 or not pack_key(p.get('product_pack')) or pack_key(p['product_pack'])!=pack_key(o.get('pack_label')):continue
+        if quantity<2 or not pack_key(p.get('product_pack')) or pack_key(p['product_pack'])!=pack_key(corrected_pack):continue
         if o.get('member_required') or o.get('requires_membership') or o.get('loyalty_price'):continue
         if o.get('multi_buy_quantity')!=quantity or not isinstance(o.get('multi_buy_price'),(int,float)) or abs(o['multi_buy_price']-total)>.011:continue
         effective=round(total/quantity,2)
         if abs(o['price']-effective)>.011:continue
         proof={k:o.get(k) for k in FIELDS}
-        proof.update(status='available',checked_at=today.isoformat(),url=url,max_promotion_quantity=promo.get('maxPromotionQuantity'),price=effective,pricing_basis='effective_per_item_with_mandatory_bundle')
+        proof.update(status='available',checked_at=today.isoformat(),url=url,pack_label=corrected_pack,max_promotion_quantity=promo.get('maxPromotionQuantity'),price=effective,pricing_basis='effective_per_item_with_mandatory_bundle')
         return {'verdict':'confirmed','promotion_evidence':proof,'regular_price':p['regular_price'],'source_title':p['name']}
     conditional=any(x.get('volumeDiscounts') or x.get('isKiesAndMix') or re.search(r"\d\s+voor|stuks|gratis|halve|extra|kaart|bij elke|\d\s*\+\s*\d",' '.join(str(t.get('text','')) for t in x.get('tags') or [] if isinstance(t,dict)),re.I) for x in p['promotions'] if x.get('group')!='GeenBestelkosten')
     if conditional:return {'verdict':'unresolved','reason':'Conditional retailer promotion: effective per-item price is not a single-pack price'}
@@ -73,7 +75,7 @@ def assess(o,html,today):
     if not p.get('has_product_discount') and not fixed_promotions:
         if any(x.get('group')!='GeenBestelkosten' for x in p['promotions']):return {'verdict':'unresolved','reason':'Promotion exists but product discount is not explicit in price payload'}
         return {'verdict':'disputed','reason':'No product discount in retailer price; delivery rewards are not product discounts','observed_price':p['observed_price']}
-    if not pack_key(p.get('product_pack')) or pack_key(p['product_pack'])!=pack_key(o.get('pack_label')):
+    if not pack_key(p.get('product_pack')) or pack_key(p['product_pack'])!=pack_key(corrected_pack):
         return {'verdict':'unresolved','reason':'Exact packaging not corroborated'}
     # Membership and multibuys need additional source-specific parsing. Never
     # promote their price to a universal single-pack discount.
@@ -87,7 +89,7 @@ def assess(o,html,today):
         window=promotion_window(promo,today)
         if not window or window!=(o.get('start_date'),o.get('end_date')):continue
         proof={k:o.get(k) for k in FIELDS}
-        proof.update(status='available',checked_at=today.isoformat(),url=url,max_promotion_quantity=promo.get('maxPromotionQuantity'))
+        proof.update(status='available',checked_at=today.isoformat(),url=url,pack_label=corrected_pack,max_promotion_quantity=promo.get('maxPromotionQuantity'))
         return {'verdict':'confirmed','promotion_evidence':proof,'regular_price':p['regular_price'],'source_title':p['name']}
     return {'verdict':'unresolved','reason':'Retailer product discount found; exact validity or conditions not corroborated'}
 
@@ -98,7 +100,8 @@ def reusable(record,o,today):
 
 def apply(o,record):
     if record.get('verdict')=='confirmed':
-        o.update(verified=True,max_promotion_quantity=record['promotion_evidence'].get('max_promotion_quantity'),price=record['promotion_evidence']['price'],promotion_evidence=record['promotion_evidence'],regular_price=record['regular_price'],date_estimated=False)
+        if o.get('pack_label')!=record['promotion_evidence']['pack_label']:o.update(unit_price=None,unit=None)
+        o.update(pack_label=record['promotion_evidence']['pack_label'],verified=True,max_promotion_quantity=record['promotion_evidence'].get('max_promotion_quantity'),price=record['promotion_evidence']['price'],promotion_evidence=record['promotion_evidence'],regular_price=record['regular_price'],date_estimated=False)
     elif record.get('verdict')=='disputed':
         o.update(verified=False,promotion_status='disputed',verification_reason=record['reason'])
 

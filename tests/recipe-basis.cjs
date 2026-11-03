@@ -76,3 +76,12 @@ assert.equal(selector.actionProducts(kip,offers,engine,day,{catalog:independentl
 
 assert.equal(selector.purchase({...offers[0],max_promotion_quantity:1},products.recipeProfiles(kip)[0],kip),null,'Never price more packs than the published promotional cap');
 assert.equal(products.profile('4 preien',{ingredient:true})?.family,'prei');
+
+const summerCase=require('./fixtures/recipe-masala-tofu.json');
+const summerProducts=selector.actionProducts(summerCase.recipe,summerCase.offers,engine,summerCase.day);
+assert.equal(summerProducts.length,3);
+assert.equal(summerProducts.find(x=>x.isMain)?.offerName,'Vivera Stevige Tofu 280 g');
+assert.equal(summerProducts.find(x=>x.family==='tofu')?.purchase.total,2.19);
+assert.equal(summerProducts.find(x=>x.family==='aardappelen')?.purchase.total,1.39);
+assert.equal(summerProducts.find(x=>x.family==='prei')?.purchase.total,1.98);
+assert.ok(summerProducts.every(x=>x.evidence==='confirmed'));

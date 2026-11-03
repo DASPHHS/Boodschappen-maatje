@@ -177,4 +177,18 @@ class RetailerRecoveryTests(unittest.TestCase):
         self.assertEqual(result['promotion_evidence']['max_promotion_quantity'],4)
         apply(o,result);self.assertEqual(o['max_promotion_quantity'],4)
 
+
+    def test_exact_piece_price_fills_unknown_feed_pack_without_weight_guess(self):
+        from verify_retailer_offers import assess,apply
+        from datetime import date
+        self.product['title']='Groente';self.product['subtitle']=None
+        self.product['price'].update(price=99,promoPrice=None,pricePerUnit={'price':99,'unit':'pieces'})
+        self.product['promotions'][0].update(group='Week',tags=[{'text':'voor 0,99'}])
+        o=self.offer();o.update(name='Groente',price=.99,pack_label='inhoud onbekend')
+        r=assess(o,self.nuxt(self.product),date(2026,11,3))
+        self.assertEqual(r['verdict'],'confirmed');apply(o,r)
+        self.assertEqual(o['pack_label'],'1 stuk');self.assertIsNone(o['unit_price'])
+        self.product['price']['pricePerUnit']['unit']='kg'
+        self.assertNotEqual(assess({**o,'pack_label':'inhoud onbekend'},self.nuxt(self.product),date(2026,11,3))['verdict'],'confirmed')
+
 if __name__=='__main__':unittest.main()

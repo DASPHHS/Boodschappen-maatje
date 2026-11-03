@@ -27,5 +27,5 @@ const app=fs.readFileSync('docs/app.js','utf8');
 assert.ok(app.includes("publisherSource:'all'"),'All publishers enabled by default');
 assert.ok(app.includes('query:state.query'),'Search reaches selector');
 assert.ok(app.includes('recipeActions(r,s).length>=2'),'Own recipes use the same action gate');
-assert.ok(fs.readFileSync('docs/index.html','utf8').includes('publisher-selection.js?v=20261103-recipe-reasons'));
+assert.ok(fs.readFileSync('docs/index.html','utf8').includes('publisher-selection.js?v=20261103-recipe-reasons-v2'));
 console.log('Two-action publisher selection: dates, identity, one-store minimum, source mix, variation, query and ingredient evidence verified');

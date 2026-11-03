@@ -62,3 +62,7 @@ for(const pack_label of ['250-295 g','250 – 300 g','0,5-1 kg'])assert.equal(pr
 
 assert.deepEqual(price.pack({pack_label:'1.5 liter'}),price.pack({pack_label:'1500 ml'}));
 assert.deepEqual(price.pack({pack_label:'200 gram'}),price.pack({pack_label:'200 g'}));
+
+assert.equal(price.unitCost({name:'Stevige tofu',pack_label:'280 g',price:1.09,multi_buy_quantity:2,multi_buy_price:2.19}).price,3.91,'Use exact bundle total, not rounded per-item feed price');
+assert.equal(price.unitCost({name:'Tofu',pack_label:'280 g',price:1.09,multi_buy_quantity:2}),null,'Missing required bundle total cannot imply a unit price');
+assert.equal(price.pack({name:'Jumbo Prei',pack_label:'1 stuk'}).unit,'stuk');

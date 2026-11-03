@@ -85,6 +85,7 @@ on:
       - 'scripts/recipe_profiles.cjs'
       - 'scripts/recipe_metadata.py'
       - 'tests/recipe-basis.cjs'
+      - 'tests/fixtures/recipe-masala-tofu.json'
       - 'tests/meal-types.cjs'
       - 'scripts/refresh_meal_recipes.py'
       - 'tests/publisher-first-selection.cjs'

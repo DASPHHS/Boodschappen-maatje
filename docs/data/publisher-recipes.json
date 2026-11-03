@@ -6217,7 +6217,9 @@
           "family": "prei",
           "group": null,
           "variant": null,
-          "form": "plain"
+          "form": "plain",
+          "quantity": 4,
+          "unit": "stuk"
         },
         {
           "family": "ui",
