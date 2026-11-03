@@ -19,3 +19,11 @@ assert.equal(own.length,4);
 for(const r of own){assert.equal(r.servings,4);assert.ok(r.ingredients.every(i=>i.quantity>0&&i.name));assert.ok(r.instructions.length>=4);assert.equal(r.cost,null);assert.equal(r.macros,null);}
 
 assert.ok(!p.compatible(p.profile('Jumbo Scharrel Kipfilet Gerookt 120 g',{ingredient:true}),p.profile('kipfilet broodbeleg',{ingredient:true})),'Smoked deli does not become plain deli');
+
+for(const [name,meal] of [['magere kwark','ontbijt'],['kipfilet broodbeleg','lunch']]){
+ const item={...offer('basis',name+' 500 g'),pack_label:'500 g',price:2};
+ const r={meal_type:meal,servings:4,ingredients:[{name,quantity:1000,unit:'g'},{name:'tomaten',quantity:400,unit:'g'}]};
+ const catalog={source_date:day,stores:{jumbo:[[name+' 500 g',1.5,'500 g','https://www.jumbo.com/producten/']]}};
+ const products=s.actionProducts(r,[item,tomato],engine,day,{catalog,store:'jumbo'});
+ assert.equal(products.find(x=>x.family!== 'tomaten')?.priceAssessment.status,'overpriced','Fresh shelf alternatives must include '+meal+' protein');
+}

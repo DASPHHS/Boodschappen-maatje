@@ -47,12 +47,12 @@ function shelfAlternatives(catalog,store,day){
  const key=store+'|'+day;if(memo.has(key))return memo.get(key);
  const list=[];
  for(const row of catalog.stores[store]){
-  if(!Array.isArray(row)||!Number.isFinite(row[1])||row[1]<=0||!/kip|gehakt|rund|varken|zalm|vis|garnal|tofu|tempe|linzen|bonen|kikkererwt|ei|halloumi|feta|kaas/i.test(row[0]))continue;
+  if(!Array.isArray(row)||!Number.isFinite(row[1])||row[1]<=0||!/kip|gehakt|rund|varken|zalm|vis|garnal|tofu|tempe|linzen|bonen|kikkererwt|ei|halloumi|feta|kaas|kwark|yoghurt|yogurt/i.test(row[0]))continue;
   const e=row[5],stamp=String(e?.checked_at||'').slice(0,10),days=(Date.parse(day+'T12:00:00Z')-Date.parse(stamp+'T12:00:00Z'))/86400000;
   const refreshed=e?.status==='ok'&&(e.verified_identity===true||/^https:\/\/www\.lidl\.nl\/p\//.test(row[3]||''))&&days>=0&&days<=3&&Number.isFinite(e.observed_price)&&e.observed_price>0&&e.product_pack;
   if(!catalogFresh&&!refreshed)continue;
-  const offer={name:row[0],price:refreshed?e.observed_price:row[1],pack_label:refreshed?e.product_pack:row[2],semantic_evidence:e,source:{url:row[3]}},p=culinary().profile(offer);
-  if(p?.group)list.push({offer,profile:p,source_date:catalog.source_date});
+  const offer={name:row[0],price:refreshed?e.observed_price:row[1],pack_label:refreshed?e.product_pack:row[2],semantic_evidence:e,source:{url:row[3]}},p=culinary().profile(offer)||(culinary().isDeliChicken(offer)?culinary().profile(offer,{ingredient:true}):null);
+  if(p?.group||p?.family==='broodbeleg_kip')list.push({offer,profile:p,source_date:catalog.source_date});
  }
  memo.set(key,list);return list;
 }

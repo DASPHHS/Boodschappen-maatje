@@ -160,6 +160,13 @@ const start=base.endsWith('/')?base:base+'/';
    assert.equal(await mobile.locator('#publisher-recipes-main [data-publisher-source="all"]').getAttribute('aria-pressed'),'true');
    for(const card of await mobile.locator('#publisher-recipes-main .publisher-recipe-card').all())
     assert.ok(await card.locator('.publisher-match li').count()>=2);
+   for(const meal of ['ontbijt','lunch','avondeten']){
+    await mobile.locator('#view-recepten [data-meal="'+meal+'"]').click();
+    assert.equal(await mobile.locator('#view-recepten [data-meal="'+meal+'"]').getAttribute('aria-pressed'),'true');
+    const cards=mobile.locator('#publisher-recipes-main .publisher-recipe-card');
+    for(const card of await cards.all())assert.ok(await card.locator('.publisher-match li').count()>=2);
+    if(await cards.count())assert.equal(await mobile.locator('#view-recepten .empty-state').count(),0,'Available source recipes must not be followed by a conflicting empty state');
+   }
    await mobile.locator('.mobile-nav [data-view="lijst"]').click();
    assert.equal(await mobile.locator('#view-lijst:not(.hidden)').count(),1,'Mobile shopping list must work');
   }catch(e){
