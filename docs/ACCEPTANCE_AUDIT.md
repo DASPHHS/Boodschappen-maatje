@@ -10,7 +10,7 @@ Deze controle legt aantoonbare werking vast. Testsucces is geen 100%-garantie vo
 | HelloFresh en Allerhande als bronbasis | Gecontroleerde metadata en originele receptlinks; geen gefingeerde bereidingsinstructies of volledige maaltijdprijzen. |
 | Meer variatie | Categorieën, bereidingswijzen, bronselectie en een uitgebreide geïndexeerde bronreceptenbank met bruikbare actiekoppelingen. Beschikbaarheid wisselt met acties. |
 | Broodbeleg nooit als rauwe kip | Gemeenschappelijke herkenning in vergelijking, productcodes, receptkoppelingen, winkelopties en bewaarde ingrediënten. Lunch kan expliciet broodbeleg gebruiken zonder de rauwe-kipregel te omzeilen. |
-| Ontbijt en lunch | Waren nog niet geïmplementeerd. Nu maaltijdknoppen, acht gecontroleerde Allerhande-bronnen, vier eigen uitgewerkte ontbijt-/lunchgerechten met planning en boodschappenlijst, passende ontbijtproductfamilies en lunchcontext. Op de gecontroleerde actiecatalogus voldoen vier ontbijt- en één lunchrecept aan de actieondergrens. |
+| Ontbijt en lunch | Waren nog niet geïmplementeerd. Nu maaltijdknoppen, acht gecontroleerde Allerhande-bronnen, vier eigen uitgewerkte ontbijt-/lunchgerechten met planning en boodschappenlijst, passende ontbijtproductfamilies en lunchcontext. Het aantal beschikbare gerechten wisselt per winkel en actuele actiecatalogus. |
 | Houdbare volle melk voor cappuccino | Bestaande variant- en verpakkingscontrole, inclusief uitsluiting van verse en lactosevrije vervangingen; browsertest. |
 | Zoeken en filters | Unieke zoekveld-ID's, focusbehoud, aantallen, niet-selecteerbare lege exacte-koppelingen en herstelknoppen. |
 | Mobiel | Onderscheid Recepten/Bewaard; browserroute test maaltijdknoppen en twee-actiesregel. |
@@ -21,7 +21,7 @@ Deze controle legt aantoonbare werking vast. Testsucces is geen 100%-garantie vo
 
 ## Grenzen die open blijven
 
-De reguliere prijscatalogus is afhankelijk van de publicatiefrequentie van een externe leverancier. Een oude catalogus wordt behouden als historische informatie, niet als verse winkelcontrole. Actiemeldingen bewijzen geen filiaalvoorraad of universeel laagste kassaprijs. Veel recepten hebben daarom terecht geen aangetoond prijsvoordeel. Uitgeversrecepten blijven externe links; volledige kookstappen en het plannen van een complete ingrediëntenlijst zijn alleen beschikbaar bij de eigen uitgewerkte recepten.
+De reguliere prijscatalogus is afhankelijk van de publicatiefrequentie van een externe leverancier. Tijdens de controle is de catalogus van 3 november succesvol geïmporteerd. Extra geplande imports na de ochtendpublicatie van de leverancier verkleinen de kans op achterstand. Een oude catalogus wordt behouden als historische informatie, niet als verse winkelcontrole. Actiemeldingen bewijzen geen filiaalvoorraad of universeel laagste kassaprijs. Veel recepten hebben daarom terecht geen aangetoond prijsvoordeel. Uitgeversrecepten blijven externe links; volledige kookstappen en het plannen van een complete ingrediëntenlijst zijn alleen beschikbaar bij de eigen uitgewerkte recepten.
 
 ## Verificatie
 
