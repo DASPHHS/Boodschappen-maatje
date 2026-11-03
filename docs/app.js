@@ -78,13 +78,13 @@ return all.filter(r=>recipeActions(r,s).length>=2);
 const recipeActionCache=new Map();
 function recipeActions(r,s){
  const key=s+'|'+r.id+'|'+today();
- if(!recipeActionCache.has(key))recipeActionCache.set(key,window.MaatjePublisherSelection.actionProducts(r,offers(s),window.MaatjeRecipeDiscovery,today()));
+ if(!recipeActionCache.has(key))recipeActionCache.set(key,window.MaatjePublisherSelection.actionProducts(r,offers(s),window.MaatjeRecipeDiscovery,today(),{catalog:state.retailerCatalog,store:s}));
  return recipeActionCache.get(key);
 }
 function recipeBenefit(r,s=r.store){return window.MaatjePublisherSelection.benefit(r,recipeActions(r,s));}
 function benefitLabel(r,s=r.store){
  const b=recipeBenefit(r,s);
- if(b.hasMain)return 'Basis in actie: '+b.main.map(x=>x.offerName).join(' · ')+(b.mainSaving!==null?' · bekende korting op benodigde verpakkingen voor 4 porties '+money(b.mainSaving):'');
+ if(b.hasMain)return 'Basis in actie: '+b.main.map(x=>x.offerName).join(' · ')+(b.mainCost!==null?' · basisverpakkingen voor 4 porties '+money(b.mainCost):'')+' · '+(b.priceVerdict==='competitive'?'vergeleken met beschikbare prijsopties':b.priceVerdict==='overpriced'?'goedkopere passende prijsoptie beschikbaar':'prijsvoordeel niet aangetoond')+(b.mainSaving!==null?' · gemelde korting op benodigde verpakkingen voor 4 porties '+money(b.mainSaving):'');
  return b.extras.length?'Alleen bijproducten in actie · eiwitbasis niet in actie':'Geen passende actuele actie';
 }
 function norm(s){return String(s||'').toLocaleLowerCase('nl-NL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ')}
@@ -472,7 +472,7 @@ function publisherRows(stores){
  let rows=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,stores,
   offersByStore:Object.fromEntries(stores.map(s=>[s,offers(s)])),engine:window.MaatjeRecipeDiscovery,
   query:state.query?.trim()||'',ingredient:ingredientTarget(),source:state.publisherSource,
-  category:state.kind,basis:state.recipeBasis,sort:state.sortBy});
+  category:state.kind,basis:state.recipeBasis,sort:state.sortBy,retailerCatalog:state.retailerCatalog});
  if(state.subtype!=='alle')rows=rows.filter(x=>proteinSubtype({category:x.category,title:x.recipe.title,ingredients:window.MaatjeRecipeProducts.recipeProfiles(x.recipe).filter(p=>p.group).map(p=>({name:p.variant==='tempeh'?'tempeh':p.variant==='beef'?'rundergehakt':p.variant==='pork'?'varkensgehakt':p.family,department:'Eiwitbronnen'}))})===state.subtype);
  return state.batchOnly?rows.filter(x=>x.slow):rows;
 }
@@ -626,7 +626,7 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 
 x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
-const publisher=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,stores:[s],offersByStore:{[s]:offers(s)},engine:window.MaatjeRecipeDiscovery});
+const publisher=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,stores:[s],offersByStore:{[s]:offers(s)},engine:window.MaatjeRecipeDiscovery,retailerCatalog:state.retailerCatalog});
 const deals=publisher.filter(x=>x.matched.hasMain).length+recipes(s).filter(r=>recipeBenefit(r,s).hasMain).length;
  const knownOffers=offers(s).filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict).length;
  const otherReports=offers(s).length-knownOffers;
@@ -769,7 +769,7 @@ function cookingIdeasPanel(){
  }
  const trusted=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,
   stores:[store],offersByStore:{[store]:offers(store)},engine:window.MaatjeRecipeDiscovery,
-  ingredient:offer,source:state.publisherSource,basis:state.recipeBasis,sort:state.sortBy}).map(x=>x.recipe).slice(0,10);
+  ingredient:offer,source:state.publisherSource,basis:state.recipeBasis,sort:state.sortBy,retailerCatalog:state.retailerCatalog}).map(x=>x.recipe).slice(0,10);
  html+='<p>Hieronder staan recepten met minimaal twee passende actieproducten bij dezelfde winkel. '+(selection?'Actie gecontroleerd op producttype; exacte verpakking en prijs vereisen afzonderlijk bewijs.':'Dit is een ingrediëntenzoekopdracht, geen bevestigde aanbieding.')+'</p>';
  if(trusted.length){
   html+='<details class="publisher-links"><summary>Bekijk ook '+trusted.length+' recepten bij de oorspronkelijke uitgevers</summary>'+
@@ -796,8 +796,9 @@ function discoveredPublisherCards(stores,limit=8,overviewOnly=false){
     '<div class="recipe-info">'+(r.minutes?'<span>'+safe(r.minutes)+' min</span>':'')+
       (slow?'<span>Langzaam koken</span>':'')+
       (r.servings?'<span>'+safe(r.servings)+' personen</span>':'')+'</div>'+
-    '<ul class="publisher-match">'+matched.products.map(({offer:o,isMain,saving,ingredientProfile,purchase})=>'<li><a href="'+attr(o.source.url)+'" target="_blank" rel="noopener noreferrer">'+(isMain?'Basis: ':'')+safe(o.name)+' ↗</a> · '+money(o.price)+' / '+safe(o.pack_label||'verpakking')+' · t/m '+dateNL(o.end_date)+(o.member_required?' · klantenkaart':'')+(saving.perPack!==null?' · '+money(saving.perPack)+' korting per verpakking':'')+(ingredientProfile.quantity?'<br><small>Nodig voor '+safe(r.servings||'?')+' personen: '+safe(ingredientProfile.quantity)+' '+safe(ingredientProfile.unit)+(purchase?' · voor 4 porties '+purchase.packages+' hele verpakking(en)':' · benodigd aantal verpakkingen niet zeker')+'</small>':'')+'</li>').join('')+'</ul>'+
-    (matched.mainSaving!==null?'<p class="offer-hint">Bekende korting op de benodigde basisverpakkingen voor 4 porties: '+money(matched.mainSaving)+'. Geen totale maaltijdprijs.</p>':'')+
+    '<p class="offer-hint">'+(matched.mainCost!==null?'Benodigde eiwitbasis voor 4 porties: '+money(matched.mainCost)+' aan hele verpakkingen. ':'')+(matched.hasMain?(matched.priceVerdict==='competitive'?'Niet duurder dan beschikbare vergelijkbare prijsopties.':matched.priceVerdict==='overpriced'?'Een goedkopere passende prijsoptie is gevonden.':'Prijsvoordeel nog niet aangetoond met actuele alternatieven.'):'Alleen bijproducten in actie.')+' Geen totale maaltijdprijs.</p>'+
+    '<ul class="publisher-match">'+matched.products.map(({offer:o,isMain,saving,ingredientProfile,purchase,priceAssessment})=>'<li><a href="'+attr(o.source.url)+'" target="_blank" rel="noopener noreferrer">'+(isMain?'Basis: ':'')+safe(o.name)+' ↗</a> · '+money(o.price)+' / '+safe(o.pack_label||'verpakking')+' · t/m '+dateNL(o.end_date)+(o.member_required?' · klantenkaart':'')+(saving.perPack!==null?' · '+money(saving.perPack)+' gemelde korting per verpakking':'')+(priceAssessment?.status==='overpriced'?'<br><small>Alternatief: '+safe(priceAssessment.alternative.name)+' · '+money(priceAssessment.alternative.total)+' aan verpakkingen voor 4 porties</small>':'')+(ingredientProfile.quantity?'<br><small>Nodig voor '+safe(r.servings||'?')+' personen: '+safe(ingredientProfile.quantity)+' '+safe(ingredientProfile.unit)+(purchase?' · voor 4 porties '+purchase.packages+' hele verpakking(en)':' · benodigd aantal verpakkingen niet zeker')+'</small>':'')+'</li>').join('')+'</ul>'+
+    (matched.mainSaving!==null?'<p class="offer-hint">Gemelde korting op de benodigde basisverpakkingen voor 4 porties: '+money(matched.mainSaving)+'. Geen totale maaltijdprijs.</p>':'')+
     '<div class="recipe-bottom"><span class="publisher-recipe-footer">Alle stappen bij de maker</span>'+
     '<a class="recipe-source-link" href="'+attr(r.url)+'" target="_blank" rel="noopener noreferrer">Bekijk recept ↗</a></div></article>';
  };

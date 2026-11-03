@@ -53,3 +53,23 @@ assert.equal(resolver.matching(deli,{title:'Kipfilet broodbeleg',match:{all:['ki
 assert.equal(products.displayCategory({...deli,category:'kip'}),'vleeswaren');
 assert.equal(products.profile(deli,{ingredient:true}).form,'cooked','Old saved ingredient names must not turn deli meat into raw chicken');
 console.log('Deli chicken is consistent in classification, exact IDs, price application, resolver and saved ingredient profiles');
+// Main-ingredient priority is a hard invariant, even under inflated reference prices.
+const inflated=[offers[0],{...offers[1],regular_price:99999},{...offers[2],regular_price:99999}];
+const primary=selector.recipesForOffers({index:{recipes:[vis,kip]},stores:['ah'],offersByStore:{ah:inflated},engine,day});
+assert.equal(primary[0].recipe.id,'kip');
+const premium=offer('premium','Zalmfilet',30,90);
+const spending=selector.recipesForOffers({index:{recipes:[vis,kip]},stores:['ah'],offersByStore:{ah:[...offers,premium]},engine,day});
+assert.equal(spending[0].recipe.id,'kip','A huge advertised saving cannot beat lower actual protein spend');
+const catalogNow={source_date:day,stores:{ah:[['AH Kipfilet',2,'400 g','https://www.ah.nl/producten/product/wi123/kip','123']]}};
+const checked=selector.actionProducts(kip,offers,engine,day,{catalog:catalogNow,store:'ah'}).find(x=>x.isMain);
+assert.equal(checked.priceAssessment.status,'overpriced');assert.equal(checked.priceAssessment.alternative.total,4);
+const old={...catalogNow,source_date:'2026-10-01'};
+assert.equal(selector.actionProducts(kip,offers,engine,day,{catalog:old,store:'ah'}).find(x=>x.isMain).priceAssessment.status,'unknown','Stale shelf prices never prove attractiveness');
+assert.equal(selector.purchase({...offers[0],multi_buy_quantity:3,multi_buy_price:10},products.recipeProfiles(kip)[0],kip).total,10);
+assert.equal(selector.purchase({...offers[0],multi_buy_quantity:3,multi_buy_price:10},products.recipeProfiles(kip)[0],kip).packages,3,'Pay for all required bundle units');
+const tooBig=offer('big','AH Kipfilet',8,10,'1000 g'),smallPack=offer('small','AH Kipfilet',4,5,'400 g');
+assert.equal(selector.actionProducts({...kip,ingredient_profiles:[products.profile('300 g kipfilet',{ingredient:true})]},[tooBig,smallPack],engine,day)[0].offer.id,'small','A lower kilo price can still cost more at checkout');
+console.log('Main priority, actual protein spend, cheaper regular alternatives, stale evidence and mandatory bundles verified');
+
+const independentlyRefreshed={source_date:'2026-10-01',stores:{ah:[['AH Kipfilet',99,'400 g','https://www.ah.nl/producten/product/wi123/kip','123',{status:'ok',verified_identity:true,checked_at:day,observed_price:2,product_pack:'400 g'}]]}};
+assert.equal(selector.actionProducts(kip,offers,engine,day,{catalog:independentlyRefreshed,store:'ah'}).find(x=>x.isMain).priceAssessment.alternative.total,4,'Use a newly observed price, not the obsolete catalog price');

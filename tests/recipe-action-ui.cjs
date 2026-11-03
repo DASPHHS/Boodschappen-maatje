@@ -26,6 +26,9 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  const rows=ctx.MaatjePublisherSelection.recipesForOffers({index,stores:['ah','jumbo','lidl'],offersByStore,engine:ctx.MaatjeRecipeDiscovery,day:actionDay});
  assert.ok(index.recipes.some(r=>r.source==='HelloFresh'&&r.ingredient_evidence==='publisher_recipe_schema'));
  assert.ok(index.recipes.some(r=>r.source==='Allerhande'&&r.ingredient_evidence==='publisher_recipe_schema'));
+ let sawSideOnly=false;
+ for(const row of rows){if(!row.matched.hasMain)sawSideOnly=true;else assert.ok(!sawSideOnly,'Protein basis must stay ahead of every side-only deal');}
+ console.log('Price evidence: '+JSON.stringify(rows.reduce((n,r)=>(n[r.matched.priceVerdict]=(n[r.matched.priceVerdict]||0)+1,n),{})));
  for(const row of rows){
   assert.ok(row.matched.count>=2);
   assert.equal(new Set(row.matched.products.map(x=>x.family)).size,row.matched.count);

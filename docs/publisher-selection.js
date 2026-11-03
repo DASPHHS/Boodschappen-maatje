@@ -24,7 +24,12 @@ function purchase(offer,profile,recipe){
  if(['bonen','linzen','kikkererwten'].includes(profile.family)&&profile.form==='plain')return null;
  const packages=Math.ceil((amount*4/servings-1e-8)/pack.amount);
  if(packages<1||packages>30)return null;
- return {packages,total:Math.round(offer.price*packages*100)/100,portions:4};
+ let purchased=packages,total=offer.price*packages;
+ if(Number(offer.multi_buy_quantity)>1){
+  if(!Number.isInteger(offer.multi_buy_quantity)||!Number.isFinite(offer.multi_buy_price)||offer.multi_buy_price<=0)return null;
+  const bundles=Math.ceil(packages/offer.multi_buy_quantity);purchased=bundles*offer.multi_buy_quantity;total=bundles*offer.multi_buy_price;
+ }
+ return {packages:purchased,total:Math.round(total*100)/100,portions:4};
 }
 function discount(offer,profile,recipe){
  const reference=Number(offer.regular_price),price=Number(offer.price);
@@ -33,7 +38,35 @@ function discount(offer,profile,recipe){
  const delta=Math.round((reference-price)*100)/100,cart=purchase(offer,profile,recipe);
  return {perPack:delta,forFour:cart?Math.round(delta*cart.packages*100)/100:null,packages:cart?.packages||null};
 }
-function actionProducts(recipe,offers,engine,day=currentDay()){
+const shelfCache=new WeakMap();
+function shelfAlternatives(catalog,store,day){
+ if(!catalog||!Array.isArray(catalog.stores?.[store]))return [];
+ const age=(Date.parse(day+'T12:00:00Z')-Date.parse(catalog.source_date+'T12:00:00Z'))/86400000;
+ const catalogFresh=Number.isFinite(age)&&age>=0&&age<=3;
+ let memo=shelfCache.get(catalog);if(!memo){memo=new Map();shelfCache.set(catalog,memo);}
+ const key=store+'|'+day;if(memo.has(key))return memo.get(key);
+ const list=[];
+ for(const row of catalog.stores[store]){
+  if(!Array.isArray(row)||!Number.isFinite(row[1])||row[1]<=0||!/kip|gehakt|rund|varken|zalm|vis|garnal|tofu|tempe|linzen|bonen|kikkererwt|ei|halloumi|feta|kaas/i.test(row[0]))continue;
+  const e=row[5],stamp=String(e?.checked_at||'').slice(0,10),days=(Date.parse(day+'T12:00:00Z')-Date.parse(stamp+'T12:00:00Z'))/86400000;
+  const refreshed=e?.status==='ok'&&(e.verified_identity===true||/^https:\/\/www\.lidl\.nl\/p\//.test(row[3]||''))&&days>=0&&days<=3&&Number.isFinite(e.observed_price)&&e.observed_price>0&&e.product_pack;
+  if(!catalogFresh&&!refreshed)continue;
+  const offer={name:row[0],price:refreshed?e.observed_price:row[1],pack_label:refreshed?e.product_pack:row[2],semantic_evidence:e,source:{url:row[3]}},p=culinary().profile(offer);
+  if(p?.group)list.push({offer,profile:p,source_date:catalog.source_date});
+ }
+ memo.set(key,list);return list;
+}
+function assessPrice(item,recipe,alternatives){
+ if(!item.purchase)return {status:'unknown',label:'Prijsvoordeel onbekend: benodigde hoeveelheid of verpakking niet zeker',compared:0};
+ const comparable=alternatives.filter(x=>x.offer!==item.offer&&culinary().compatible(x.profile,item.ingredientProfile))
+  .filter(x=>!(x.offer.name===item.offer.name&&x.offer.pack_label===item.offer.pack_label&&x.offer.price===item.offer.price))
+  .map(x=>({...x,basket:purchase(x.offer,item.ingredientProfile,recipe)})).filter(x=>x.basket);
+ if(!comparable.length)return {status:'unknown',label:'Korting gemeld; geen actuele vergelijkbare prijsoptie beschikbaar',compared:0};
+ comparable.sort((a,b)=>a.basket.total-b.basket.total);const best=comparable[0],difference=Math.round((best.basket.total-item.purchase.total)*100)/100;
+ return {status:difference<-.01?'overpriced':'competitive',label:difference<-.01?'Goedkopere passende prijsoptie beschikbaar':'Niet duurder dan de beschikbare vergelijkbare prijsopties',compared:comparable.length,
+  difference,alternative:{name:best.offer.name,total:best.basket.total,url:best.offer.source?.url},basisTotal:item.purchase.total};
+}
+function actionProducts(recipe,offers,engine,day=currentDay(),comparison={}){
  if(!Array.isArray(offers)||!engine)return [];
  let cached=candidateCache.get(offers);
  if(!cached||cached.day!==day||cached.engine!==engine){
@@ -60,19 +93,23 @@ function actionProducts(recipe,offers,engine,day=currentDay()){
   if(!prior||(candidate.purchase&&!prior.purchase)||(Boolean(candidate.purchase)===Boolean(prior.purchase)&&priceRank(candidate)<priceRank(prior))||
     (priceRank(candidate)===priceRank(prior)&&item.evidence==='confirmed'&&prior.evidence!=='confirmed'))chosen.set(item.family,candidate);
  }
+ const alternatives=[...cached.candidates,...shelfAlternatives(comparison.catalog,comparison.store,day)];
+ for(const item of chosen.values())if(item.isMain)item.priceAssessment=assessPrice(item,recipe,alternatives);
  return [...chosen.values()].sort((a,b)=>Number(b.isMain)-Number(a.isMain)||(b.saving.forFour??b.saving.perPack??0)-(a.saving.forFour??a.saving.perPack??0));
 }
 function benefit(recipe,products){
  const main=products.filter(x=>x.isMain),extras=products.filter(x=>!x.isMain);
  const sum=(list,field)=>{const known=list.filter(x=>Number.isFinite(x.saving?.[field]));return known.length?Math.round(known.reduce((n,x)=>n+x.saving[field],0)*100)/100:null};
  const mainSaving=sum(main,'forFour'),extraSaving=sum(extras,'forFour');
- // Actual four-portion savings outweigh product counts. Unknown amounts never turn
- // into a fabricated meal saving; a main promotion still gets relevance credit.
- const score=(main.length?80:0)+(mainSaving||0)*100+(extraSaving||0)*30+
-  main.reduce((n,x)=>n+(x.saving.forFour===null?(x.saving.perPack||0)*20:0),0)+Math.min(products.length,5)*2;
- return {hasMain:main.length>0,main,extras,mainSaving,extraSaving,score};
+ const mainCost=main.length&&main.every(x=>x.purchase)?Math.round(main.reduce((n,x)=>n+x.purchase.total,0)*100)/100:null;
+ const verdict=main.some(x=>x.priceAssessment?.status==='overpriced')?'overpriced':main.length&&main.every(x=>x.priceAssessment?.status==='competitive')?'competitive':'unknown';
+ // A large advertised percentage, numerous side discounts or variety bonuses can
+ // never displace a main-ingredient promotion. Within that tier, actual spend wins.
+ const score=(main.length?1000000:0)+(verdict==='competitive'?100:verdict==='overpriced'?-1000:0)+
+  (mainCost!==null?10000-Math.min(mainCost,100)*100:0)+Math.min(mainSaving||0,20)*10+Math.min(extraSaving||0,2)*10+Math.min(products.length,5);
+ return {hasMain:main.length>0,main,extras,mainSaving,extraSaving,mainCost,priceVerdict:verdict,score};
 }
-function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay()}){
+function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay(),retailerCatalog=null}){
  if(!engine||!Array.isArray(index?.recipes))return [];
  const target=ingredient?engine.classify(ingredient):null,q=norm(query),rows=[];
  for(const recipe of index.recipes){
@@ -83,7 +120,7 @@ function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient
   if(q&&!norm(recipe.title+' '+(recipe.cuisine||'')+' '+profiles.map(x=>x.family).join(' ')).includes(q))continue;
   let best=null;
   for(const store of stores||[]){
-   const products=actionProducts(recipe,offersByStore?.[store],engine,day);
+   const products=actionProducts(recipe,offersByStore?.[store],engine,day,{catalog:retailerCatalog,store});
    if(products.length<2)continue;
    const value=benefit(recipe,products);
    if(basis==='main'&&!value.hasMain)continue;
@@ -104,5 +141,5 @@ function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient
  }
  return result;
 }
-return {valid,group,slow,purchase,discount,actionProducts,benefit,recipesForOffers};
+return {valid,group,slow,purchase,discount,assessPrice,shelfAlternatives,actionProducts,benefit,recipesForOffers};
 });
