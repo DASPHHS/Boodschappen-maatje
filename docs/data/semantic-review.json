@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-03T13:42:52.331Z",
+  "generated_at": "2026-11-03T13:46:40.999Z",
   "source_date": "2026-11-03",
   "source_commit": "54c16fe9ce6bb26050337a6779e7d521d9c61e5d",
   "counts": {
-    "match": 241,
-    "partial": 360,
+    "match": 246,
+    "partial": 355,
     "reject": 223
   },
   "profiles": {
@@ -40,11 +40,11 @@
       "groups": {}
     },
     "pindakaas": {
-      "match": 44,
-      "partial": 41,
+      "match": 48,
+      "partial": 37,
       "reject": 9,
       "reasons": {
-        "productkenmerken en verpakking passen": 44,
+        "productkenmerken en verpakking passen": 48,
         "niet herkende productbeschrijving: noot": 3,
         "niet herkende productbeschrijving: creamy": 4,
         "niet herkende productbeschrijving: crispy ch": 1,
@@ -60,8 +60,7 @@
         "niet herkende productbeschrijving: regular 12x": 1,
         "andere doelgroep: baby": 2,
         "niet herkende productbeschrijving: reep banaan": 1,
-        "niet herkende productbeschrijving: skippy super chunk noot": 1,
-        "niet herkende productbeschrijving: whole earth": 4,
+        "niet herkende productbeschrijving: super chunk noot": 1,
         "niet herkende productbeschrijving: smeuige": 3,
         "niet herkende productbeschrijving: smeuige honing": 1,
         "niet herkende productbeschrijving: smeuige noot": 1,
@@ -158,7 +157,7 @@
         "peanut_butter|plain||naturel · met stukjes · regulier|kg": {
           "label": "Pindakaas · naturel · met stukjes · regulier · per kg",
           "stores": {
-            "jumbo": 6,
+            "jumbo": 8,
             "ah": 4
           }
         },
@@ -180,17 +179,23 @@
             "jumbo": 3,
             "ah": 2
           }
+        },
+        "peanut_butter|plain||naturel · glad · regulier|kg": {
+          "label": "Pindakaas · naturel · glad · regulier · per kg",
+          "stores": {
+            "jumbo": 2
+          }
         }
       }
     },
     "kwark": {
-      "match": 19,
-      "partial": 45,
+      "match": 20,
+      "partial": 44,
       "reject": 1,
       "reasons": {
         "niet herkende productbeschrijving: almhof": 1,
         "niet herkende productbeschrijving: campina": 2,
-        "productkenmerken en verpakking passen": 19,
+        "productkenmerken en verpakking passen": 20,
         "niet herkende productbeschrijving: arla lactofree lactosevrij": 1,
         "niet herkende productbeschrijving: n vleugje aardbei": 1,
         "niet herkende productbeschrijving: n vleugje banaan": 1,
@@ -202,22 +207,18 @@
         "niet herkende productbeschrijving: perzik passievrucht": 1,
         "niet herkende productbeschrijving: lekker vrij van lactose": 1,
         "niet herkende productbeschrijving: yoghurt aardbei framboos": 1,
-        "niet herkende productbeschrijving: yoghurt appel kaneel": 1,
+        "niet herkende productbeschrijving: yoghurt appel kaneel": 2,
         "niet herkende productbeschrijving: yoghurt mango passievrucht": 1,
-        "niet herkende productbeschrijving: yoghurt vanille": 2,
-        "niet herkende productbeschrijving: oing": 1,
-        "niet herkende productbeschrijving: optimel yoghurt vanille": 1,
-        "niet herkende productbeschrijving: optimel yoghurt aardbei": 1,
-        "niet herkende productbeschrijving: optimel yoghurt appel kaneel": 1,
+        "niet herkende productbeschrijving: yoghurt vanille": 3,
+        "niet herkende productbeschrijving: yoghurt aardbei": 2,
         "productsoort niet voldoende bevestigd": 1,
-        "niet herkende productbeschrijving: optimel yoghurt sinaasappel abrikoos": 1,
-        "niet herkende productbeschrijving: optimel yoghurt stracciatella smaak": 1,
-        "niet herkende productbeschrijving: optimel yoghurt bosbes beker": 1,
-        "niet herkende productbeschrijving: nutrition fit perzik passievrucht": 1,
+        "niet herkende productbeschrijving: yoghurt sinaasappel abrikoos": 1,
+        "niet herkende productbeschrijving: yoghurt stracciatella smaak": 1,
+        "niet herkende productbeschrijving: yoghurt bosbes beker": 1,
+        "niet herkende productbeschrijving: nutrition perzik passievrucht": 1,
         "niet herkende productbeschrijving: biogarde": 1,
         "niet herkende productbeschrijving: lactosevrije": 1,
         "niet herkende productbeschrijving: yoghurt stracciatella": 1,
-        "niet herkende productbeschrijving: yoghurt aardbei": 1,
         "andere productvorm: prepared": 1,
         "niet herkende productbeschrijving: arla lactofree": 1,
         "niet herkende productbeschrijving: campina aardbei": 1,
@@ -301,7 +302,7 @@
           "label": "Kwark · mager · naturel · lactose niet gespecificeerd · per kg",
           "stores": {
             "lidl": 2,
-            "jumbo": 4,
+            "jumbo": 5,
             "ah": 3
           }
         },
@@ -1185,13 +1186,12 @@
         "niet herkende productbeschrijving: sweet": 1,
         "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: dunne maiswafels zoute smaak": 1,
-        "niet herkende productbeschrijving: zout": 3,
+        "niet herkende productbeschrijving: zout": 4,
         "niet herkende productbeschrijving: chili lime": 1,
         "niet herkende productbeschrijving: karamel zeezout": 1,
         "niet herkende productbeschrijving: rotsjes crispy": 1,
-        "niet herkende productbeschrijving: oatly the barista edition flavour": 1,
-        "niet herkende productbeschrijving: pathe zout": 2,
-        "niet herkende productbeschrijving: tony chocolonely melkchocolade crunch 180grm verpakt wikkel": 1,
+        "niet herkende productbeschrijving: the barista edition flavour": 1,
+        "niet herkende productbeschrijving: chocolonely melkchocolade crunch 180grm verpakt wikkel": 1,
         "niet herkende productbeschrijving: zoute": 1,
         "niet herkende productbeschrijving: duca chicken nuggets": 1,
         "niet herkende productbeschrijving: jimmy butter flavoured salt": 1,
@@ -1201,6 +1201,7 @@
         "niet herkende productbeschrijving: jimmy sweet salt": 1,
         "niet herkende productbeschrijving: jimmy sweet salt pack": 1,
         "niet herkende productbeschrijving: jimmy zout pack": 1,
+        "niet herkende productbeschrijving: pathe zout": 1,
         "niet herkende productbeschrijving: proper sea salted": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: proper sweet salty": 1
@@ -1507,7 +1508,7 @@
       "partial": 2,
       "reject": 0,
       "reasons": {
-        "niet herkende productbeschrijving: toko lien soto": 1,
+        "niet herkende productbeschrijving: soto": 1,
         "niet herkende productbeschrijving: kokki djawa soto": 1
       },
       "samples": [
@@ -1515,7 +1516,7 @@
           "store": "jumbo",
           "name": "Toko Lien Boemboe Soto 100g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: toko lien soto"
+          "reason": "niet herkende productbeschrijving: soto"
         },
         {
           "store": "ah",
@@ -4673,7 +4674,7 @@
       "name": "Oatly! The Original Barista Edition Popcorn Flavour 1 L",
       "pack": "1 L",
       "url": "https://www.jumbo.com/producten/oatly-the-original-barista-edition-popcorn-flavour-1-l-712032PAK",
-      "reason": "niet herkende productbeschrijving: oatly the barista edition flavour",
+      "reason": "niet herkende productbeschrijving: the barista edition flavour",
       "fingerprint": "f93471686885c745ea2673a8"
     },
     {
@@ -4684,7 +4685,7 @@
       "name": "Öing Magere Kwark 500 g",
       "pack": "500 g",
       "url": "https://www.jumbo.com/producten/oing-magere-kwark-500-g-226296CUP",
-      "reason": "niet herkende productbeschrijving: oing",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "e8637f931f00354c2102d23c"
     },
     {
@@ -4695,7 +4696,7 @@
       "name": "Optimel Kwark met Magere Yoghurt Vanille 0% Vet 500g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-kwark-met-magere-yoghurt-vanille-0-vet-500g-202676STK",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt vanille",
+      "reason": "niet herkende productbeschrijving: yoghurt vanille",
       "fingerprint": "be8da0f52787b2e0926cbf9c"
     },
     {
@@ -4706,7 +4707,7 @@
       "name": "Optimel Magere Kwark met Magere Yoghurt Aardbei 0% Vet 500g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-aardbei-0-vet-500g-712760PAK",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt aardbei",
+      "reason": "niet herkende productbeschrijving: yoghurt aardbei",
       "fingerprint": "dfd0ec053bb2248228001e75"
     },
     {
@@ -4717,7 +4718,7 @@
       "name": "Optimel Magere Kwark met Magere Yoghurt Appel Kaneel 0% Vet 500g",
       "pack": "500 g",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-appel-kaneel-0-vet-500g-512896CUP",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt appel kaneel",
+      "reason": "niet herkende productbeschrijving: yoghurt appel kaneel",
       "fingerprint": "25f6b5aa0af4cbfdd3497133"
     },
     {
@@ -4739,7 +4740,7 @@
       "name": "Optimel Magere Kwark met Magere Yoghurt Sinaasappel Abrikoos 0% Vet 500g",
       "pack": "500 g",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-sinaasappel-abrikoos-0-vet-500g-498984CUP",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt sinaasappel abrikoos",
+      "reason": "niet herkende productbeschrijving: yoghurt sinaasappel abrikoos",
       "fingerprint": "379f647f4c9a49af0b9f15fb"
     },
     {
@@ -4750,7 +4751,7 @@
       "name": "Optimel Magere Kwark met Magere Yoghurt Stracciatella Smaak 0% Vet 500g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-stracciatella-smaak-0-vet-500g-421722CUP",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt stracciatella smaak",
+      "reason": "niet herkende productbeschrijving: yoghurt stracciatella smaak",
       "fingerprint": "3c2fbeccf90434f09672e9ef"
     },
     {
@@ -4761,7 +4762,7 @@
       "name": "Optimel Magere Kwark met yoghurt Bosbes 0% Vet 500 g beker",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-yoghurt-bosbes-0-vet-500-g-beker-457844CUP",
-      "reason": "niet herkende productbeschrijving: optimel yoghurt bosbes beker",
+      "reason": "niet herkende productbeschrijving: yoghurt bosbes beker",
       "fingerprint": "69e6e9d5d5c5f75a6edb8384"
     },
     {
@@ -4772,7 +4773,7 @@
       "name": "Pathé Popcorn Zout",
       "pack": "90 g",
       "url": "https://www.jumbo.com/producten/pathe-popcorn-zout-746280ZK",
-      "reason": "niet herkende productbeschrijving: pathe zout",
+      "reason": "niet herkende productbeschrijving: zout",
       "fingerprint": "7c3960803198e77a3e48a935"
     },
     {
@@ -4794,7 +4795,7 @@
       "name": "Skippy Super Chunk Pindakaas met Stukjes Noot 340 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/skippy-super-chunk-pindakaas-met-stukjes-noot-340-g-515346POT",
-      "reason": "niet herkende productbeschrijving: skippy super chunk noot",
+      "reason": "niet herkende productbeschrijving: super chunk noot",
       "fingerprint": "8b8dbe410760fde729cd4c62"
     },
     {
@@ -4871,7 +4872,7 @@
       "name": "Toko Lien Boemboe Soto 100g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/toko-lien-boemboe-soto-100g-699720ZK",
-      "reason": "niet herkende productbeschrijving: toko lien soto",
+      "reason": "niet herkende productbeschrijving: soto",
       "fingerprint": "f9426fa29ecf80d585e0dec7"
     },
     {
@@ -4882,7 +4883,7 @@
       "name": "Tony's Chocolonely Melkchocolade Popcorn Crunch 180GRM verpakt, wikkel",
       "pack": "",
       "url": "https://www.jumbo.com/producten/tony-s-chocolonely-melkchocolade-popcorn-crunch-180grm-verpakt-wikkel-779530PAK",
-      "reason": "niet herkende productbeschrijving: tony chocolonely melkchocolade crunch 180grm verpakt wikkel",
+      "reason": "niet herkende productbeschrijving: chocolonely melkchocolade crunch 180grm verpakt wikkel",
       "fingerprint": "c6a7f3693e31ae807faedd4a"
     },
     {
@@ -4915,7 +4916,7 @@
       "name": "Whole Earth Crunchy Pindakaas 340 g",
       "pack": "340 g",
       "url": "https://www.jumbo.com/producten/whole-earth-crunchy-pindakaas-340-g-730861POT",
-      "reason": "niet herkende productbeschrijving: whole earth",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "caaae8d5fd5d4d558d568a32"
     },
     {
@@ -4926,7 +4927,7 @@
       "name": "Whole Earth Crunchy Pindakaas 600 g",
       "pack": "600 g",
       "url": "https://www.jumbo.com/producten/whole-earth-crunchy-pindakaas-600-g-737614POT",
-      "reason": "niet herkende productbeschrijving: whole earth",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d12ed609ba1658a50879ef6d"
     },
     {
@@ -4937,7 +4938,7 @@
       "name": "Whole Earth Smooth Pindakaas 340 g",
       "pack": "340 g",
       "url": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-340-g-730860POT",
-      "reason": "niet herkende productbeschrijving: whole earth",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "c06b31a8a7f4f93bc220e770"
     },
     {
@@ -4948,7 +4949,7 @@
       "name": "Whole Earth Smooth Pindakaas 600 g",
       "pack": "600 g",
       "url": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-600-g-730862POT",
-      "reason": "niet herkende productbeschrijving: whole earth",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "a4cd79fcebc5f3abf9a99345"
     },
     {
@@ -6158,7 +6159,7 @@
       "name": "XXL Nutrition Fit High Protein Kwark Perzik - Passievrucht 205g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/xxl-nutrition-fit-high-protein-kwark-perzik-passievrucht-205g-685839ZK",
-      "reason": "niet herkende productbeschrijving: nutrition fit perzik passievrucht",
+      "reason": "niet herkende productbeschrijving: nutrition perzik passievrucht",
       "fingerprint": "f27811b835454666a2f6716c"
     }
   ]
