@@ -3311,7 +3311,7 @@
       "has_legumes": true,
       "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-01",
-      "ingredient_checked_at": "2026-11-02"
+      "ingredient_checked_at": "2026-11-03T14:42:53.244662+00:00"
     },
     {
       "id": "ah-sitemap-r-r1189361",
@@ -4474,7 +4474,7 @@
       "has_legumes": true,
       "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-01",
-      "ingredient_checked_at": "2026-11-02"
+      "ingredient_checked_at": "2026-11-03T14:42:53.245595+00:00"
     },
     {
       "id": "ah-sitemap-r-r1187140",
@@ -4844,7 +4844,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-03T11:50:41.086132+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:18.707609+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4912,7 +4912,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Chinees",
-      "ingredient_checked_at": "2026-11-03T11:50:41.086163+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:19.874371+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4964,7 +4964,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-03T11:50:41.810731+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:20.724456+00:00",
       "ingredient_profiles": [
         {
           "family": "sperziebonen",
@@ -5040,7 +5040,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-03T11:50:43.370927+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:20.765173+00:00",
       "ingredient_profiles": [
         {
           "family": "noedels",
@@ -5098,7 +5098,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-03T11:50:45.671668+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:22.578193+00:00",
       "ingredient_profiles": [
         {
           "family": "kip",
@@ -5166,7 +5166,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": null,
-      "ingredient_checked_at": "2026-11-03T11:50:45.671702+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:22.578227+00:00",
       "ingredient_profiles": [
         {
           "family": "sperziebonen",
@@ -8281,7 +8281,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Europese",
-      "ingredient_checked_at": "2026-11-03T11:50:47.523384+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:23.450529+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -8337,7 +8337,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Fusion",
-      "ingredient_checked_at": "2026-11-03T11:50:47.523415+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:23.450563+00:00",
       "ingredient_profiles": [
         {
           "family": "zalm",
@@ -8401,7 +8401,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Nedeländsk",
-      "ingredient_checked_at": "2026-11-03T11:50:12.368345+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:03.848338+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -9822,7 +9822,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-03T11:50:50.508314+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:24.240928+00:00",
       "ingredient_profiles": [
         {
           "family": "kip",
@@ -9900,7 +9900,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "American",
-      "ingredient_checked_at": "2026-11-03T11:50:50.508347+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:24.568281+00:00",
       "ingredient_profiles": [
         {
           "family": "champignons",
@@ -11565,7 +11565,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-03T11:50:52.309661+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:25.434601+00:00",
       "ingredient_profiles": [
         {
           "family": "riblappen",
@@ -11633,7 +11633,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Italiaans",
-      "ingredient_checked_at": "2026-11-03T11:50:14.236652+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:04.711360+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -11715,7 +11715,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Frans",
-      "ingredient_checked_at": "2026-11-03T11:50:53.550008+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:26.002856+00:00",
       "ingredient_profiles": [
         {
           "family": "champignons",
@@ -11780,7 +11780,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:56.399073+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:27.901821+00:00",
       "ingredient_families": [
         "aardappelen",
         "courgette",
@@ -11853,7 +11853,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:56.399105+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:27.901878+00:00",
       "ingredient_families": [
         "boerenkool",
         "tomaten",
@@ -11918,7 +11918,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:58.532647+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:28.814430+00:00",
       "ingredient_families": [
         "limoen",
         "paprika",
@@ -11990,7 +11990,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:58.532676+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:28.814462+00:00",
       "ingredient_families": [
         "limoen",
         "paprika",
@@ -12061,7 +12061,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:00.986848+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:29.688182+00:00",
       "ingredient_families": [
         "tomaten",
         "ui",
@@ -12124,7 +12124,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:00.986879+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:29.729759+00:00",
       "ingredient_families": [
         "broccoli",
         "rijst",
@@ -12189,7 +12189,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:03.280091+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:33.382179+00:00",
       "ingredient_families": [
         "aardappelen",
         "komkommer",
@@ -12270,7 +12270,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:04.292646+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:33.382214+00:00",
       "ingredient_families": [
         "aardappelen",
         "champignons",
@@ -12323,7 +12323,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:06.101930+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:34.194032+00:00",
       "ingredient_families": [
         "eieren",
         "ui"
@@ -12371,7 +12371,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:06.101960+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:34.234688+00:00",
       "ingredient_families": [
         "citroen",
         "courgette",
@@ -12444,7 +12444,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:09.390469+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:36.834513+00:00",
       "ingredient_families": [
         "bloemkool",
         "limoen",
@@ -12509,7 +12509,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:09.390500+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:36.834547+00:00",
       "ingredient_families": [
         "aardappelen",
         "broccoli",
@@ -12594,7 +12594,7 @@
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:11.432476+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:37.691061+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -12660,7 +12660,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:11.432505+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:37.692418+00:00",
       "ingredient_profiles": [
         {
           "family": "tomaten",
@@ -12714,7 +12714,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:13.221037+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:39.553325+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -12772,7 +12772,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:13.221067+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:39.553358+00:00",
       "ingredient_profiles": [
         {
           "family": "wortel",
@@ -12820,7 +12820,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:15.016916+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:40.385765+00:00",
       "ingredient_profiles": [
         {
           "family": "champignons",
@@ -12888,7 +12888,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:15.440879+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:40.385803+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -12974,7 +12974,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:17.496389+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:41.275479+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -13028,7 +13028,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:18.235945+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:41.275513+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -13084,7 +13084,7 @@
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:18.890646+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:42.053562+00:00",
       "ingredient_profiles": [
         {
           "family": "kikkererwten",
@@ -13144,7 +13144,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:18.959298+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:42.053595+00:00",
       "ingredient_profiles": [
         {
           "family": "limoen",
@@ -13210,7 +13210,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:21.119739+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:42.903411+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13278,7 +13278,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:21.119778+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:42.903447+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -13342,7 +13342,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:24.279580+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:43.696659+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -13404,7 +13404,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:25.691543+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:44.149379+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13458,7 +13458,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:28.242148+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:45.969762+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13516,7 +13516,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:28.242181+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:45.969794+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13590,7 +13590,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:30.766733+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:47.687999+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13666,7 +13666,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:30.766759+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:47.688032+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -13746,7 +13746,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:33.832449+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:50.164169+00:00",
       "ingredient_profiles": [
         {
           "family": "paprika",
@@ -13810,7 +13810,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:33.832479+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:50.164202+00:00",
       "ingredient_profiles": [
         {
           "family": "kip",
@@ -13872,7 +13872,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:35.637633+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:51.004730+00:00",
       "ingredient_profiles": [
         {
           "family": "prei",
@@ -13930,7 +13930,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:38.341995+00:00",
+      "ingredient_checked_at": "2026-11-03T14:42:51.403261+00:00",
       "ingredient_profiles": [
         {
           "family": "ui",
@@ -14500,7 +14500,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:41.081709+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:52.268382+00:00"
     },
     {
       "id": "hf-page-c71f7a100e9557",
@@ -14554,7 +14554,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:51:42.125785+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:52.643367+00:00"
     },
     {
       "id": "hf-page-90d2874c83911c",
@@ -15388,8 +15388,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-02",
-      "ingredient_checked_at": "2026-11-02T13:01:59.362229+00:00"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:54.080980+00:00"
     },
     {
       "id": "hf-page-c09b6ea5134734",
@@ -15462,8 +15462,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-02",
-      "ingredient_checked_at": "2026-11-02T13:02:01.709470+00:00"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:54.081020+00:00"
     },
     {
       "id": "hf-page-f2ed5926f87ec7",
@@ -15517,8 +15517,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-02",
-      "ingredient_checked_at": "2026-11-02T13:02:01.709498+00:00"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:54.959744+00:00"
     },
     {
       "id": "hf-page-736f837639dd23",
@@ -15582,7 +15582,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:12.368305+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:02.772099+00:00"
     },
     {
       "id": "ah-sitemap-r-r1185253",
@@ -16147,7 +16147,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:22.920632+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:07.308693+00:00"
     },
     {
       "id": "hf-page-6525a73dee82df",
@@ -16182,7 +16182,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:25.504831+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:08.191859+00:00"
     },
     {
       "id": "hf-page-b380572af0aaf2",
@@ -16246,7 +16246,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:27.261953+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:08.998554+00:00"
     },
     {
       "id": "hf-page-c917daee45cb7b",
@@ -16318,7 +16318,7 @@
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:27.692915+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:09.063162+00:00"
     },
     {
       "id": "hf-page-173b5ce92037ef",
@@ -16382,7 +16382,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:31.463576+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:11.124497+00:00"
     },
     {
       "id": "hf-page-8c426c364fa128",
@@ -16436,7 +16436,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:31.463608+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:11.124533+00:00"
     },
     {
       "id": "hf-page-d4b4152034f695",
@@ -16500,7 +16500,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:33.678555+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:11.955471+00:00"
     },
     {
       "id": "hf-page-867fc5e0e060a1",
@@ -16564,7 +16564,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:33.741118+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:13.957212+00:00"
     },
     {
       "id": "hf-page-eb01a0f1949475",
@@ -16618,7 +16618,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:35.961678+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:14.800991+00:00"
     },
     {
       "id": "hf-page-28694056f215da",
@@ -16682,7 +16682,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:35.961710+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:15.996422+00:00"
     },
     {
       "id": "hf-page-9d30285d301102",
@@ -16736,7 +16736,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:37.751808+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:17.956779+00:00"
     },
     {
       "id": "hf-page-6e3b3d0ab98151",
@@ -16790,7 +16790,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:38.244549+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:17.956811+00:00"
     },
     {
       "id": "ah-sitemap-r-r383266",
@@ -17270,7 +17270,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:14.373674+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:04.711394+00:00"
     },
     {
       "id": "hf-page-901b9db26f0cf3",
@@ -17343,7 +17343,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:18.251669+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:05.529439+00:00"
     },
     {
       "id": "hf-page-8fc318a982f332",
@@ -17417,7 +17417,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:18.251697+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:05.582177+00:00"
     },
     {
       "id": "hf-page-4f62b12b97f60d",
@@ -17481,7 +17481,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:21.100272+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:06.464911+00:00"
     },
     {
       "id": "hf-page-e5a44c1be11d89",
@@ -17525,7 +17525,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-03",
-      "ingredient_checked_at": "2026-11-03T11:50:21.100305+00:00"
+      "ingredient_checked_at": "2026-11-03T14:42:06.464944+00:00"
     },
     {
       "id": "ah-auto-r-r1198663",
@@ -18467,7 +18467,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-03"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:54.959778+00:00"
     },
     {
       "id": "hf-page-91d0c40965670e",
@@ -18538,7 +18539,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-03"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:57.910701+00:00"
     },
     {
       "id": "hf-page-ad1aebadbe2c96",
@@ -18619,7 +18621,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-03"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:57.910734+00:00"
     },
     {
       "id": "hf-page-673b0d1931744f",
@@ -18692,7 +18695,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-03"
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:41:58.733378+00:00"
     },
     {
       "id": "hf-page-856e5190e6b0d0",
@@ -18765,7 +18769,735 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:42:00.437343+00:00"
+    },
+    {
+      "id": "ah-sitemap-r-r1197098",
+      "title": "Rijst met zwarte bonen en geroosterde zoete aardappel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197098/rijst-met-zwarte-bonen-en-geroosterde-zoete-aardappel",
+      "families": [
+        "aardappelen",
+        "bonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r178206",
+      "title": "Kipschotel met sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R178206/kipschotel-met-sperziebonen",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1194399",
+      "title": "Kip ketjap met sperziebonen en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194399/kip-ketjap-met-sperziebonen-en-rijst",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r845646",
+      "title": "Pasta met aardappel kip en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R845646/pasta-met-aardappel-kip-en-sperziebonen",
+      "families": [
+        "aardappelen",
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r577392",
+      "title": "Gepaneerde kip met pasta en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R577392/gepaneerde-kip-met-pasta-en-sperziebonen",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1191046",
+      "title": "Gele curry met linzen paprika en malse kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1191046/gele-curry-met-linzen-paprika-en-malse-kip",
+      "families": [
+        "kip",
+        "linzen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1191349",
+      "title": "Romige kipcurry met rijst en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1191349/romige-kipcurry-met-rijst-en-sperziebonen",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r490848",
+      "title": "Tonijnsalade met aardappel en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R490848/tonijnsalade-met-aardappel-en-sperziebonen",
+      "families": [
+        "aardappelen",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r568676",
+      "title": "Salade met sperziebonen aardappel en tonijn",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R568676/salade-met-sperziebonen-aardappel-en-tonijn",
+      "families": [
+        "aardappelen",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r549880",
+      "title": "Italiaanse rijst met sperziebonen en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R549880/italiaanse-rijst-met-sperziebonen-en-tomaat",
+      "families": [
+        "sperziebonen",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1200765",
+      "title": "Gevulde paprika met bulgur linzen en harissa",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200765/gevulde-paprika-met-bulgur-linzen-en-harissa",
+      "families": [
+        "linzen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1198137",
+      "title": "Maaltijdsalade van linzen spinazie en radijs",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198137/maaltijdsalade-van-linzen-spinazie-en-radijs",
+      "families": [
+        "linzen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1190171",
+      "title": "Vegetarische linzenstoof met paprika en mais",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190171/vegetarische-linzenstoof-met-paprika-en-mais",
+      "families": [
+        "linzen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1302805",
+      "title": "Zoete aardappel linzenstoof uit de slowcooker",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1302805/zoete-aardappel-linzenstoof-uit-de-slowcooker",
+      "families": [
+        "aardappelen",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r10088",
+      "title": "Kip met wilde rijst en sperziebonen taugesalade",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R10088/kip-met-wilde-rijst-en-sperziebonen-taugesalade",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1190581",
+      "title": "Linzen quinoabowl met gegrilde zalm en groente",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190581/linzen-quinoabowl-met-gegrilde-zalm-en-groente",
+      "families": [
+        "linzen",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 0,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1195877",
+      "title": "Volkorenrijst met linzen broccoli en ansjovis",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195877/volkorenrijst-met-linzen-broccoli-en-ansjovis",
+      "families": [
+        "broccoli",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r181080",
+      "title": "Stoofgerecht met kip courgette en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R181080/stoofgerecht-met-kip-courgette-en-sperziebonen",
+      "families": [
+        "courgette",
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1199093",
+      "title": "Venkelsalade met sperziebonen olijven zalm en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199093/venkelsalade-met-sperziebonen-olijven-zalm-en-ei",
+      "families": [
+        "eieren",
+        "sperziebonen",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r524722",
+      "title": "Gevulde kipfilet met tapenade en sperzieboontjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R524722/gevulde-kipfilet-met-tapenade-en-sperzieboontjes",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1189618",
+      "title": "Ovenschotel met krieltjes sperziebonen en tonijn",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1189618/ovenschotel-met-krieltjes-sperziebonen-en-tonijn",
+      "families": [
+        "aardappelen",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1185645",
+      "title": "Salade van wortel rode biet linzen en gerookte zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1185645/salade-van-wortel-rode-biet-linzen-en-gerookte-zalm",
+      "families": [
+        "linzen",
+        "wortel",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1202671",
+      "title": "Pastasalade met pesto kikkererwten en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202671/pastasalade-met-pesto-kikkererwten-en-sperziebonen",
+      "families": [
+        "kikkererwten",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1187768",
+      "title": "Steak de boeuf met gebakken aardappel en sperziebonen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1187768/steak-de-boeuf-met-gebakken-aardappel-en-sperziebonen",
+      "families": [
+        "aardappelen",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r1197988",
+      "title": "Pastasalade met courgette sperziebonen en witte kaas",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197988/pastasalade-met-courgette-sperziebonen-en-witte-kaas",
+      "families": [
+        "courgette",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "ah-sitemap-r-r721578",
+      "title": "Curry van bloemkool met linzen en minigehaktballetjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R721578/curry-van-bloemkool-met-linzen-en-minigehaktballetjes",
+      "families": [
+        "bloemkool",
+        "linzen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-03"
+    },
+    {
+      "id": "hf-page-aad7c466d17752",
+      "source": "HelloFresh",
+      "title": "Bulgogi biefstukreepjes met rijst en zoetzure groenten",
+      "url": "https://www.hellofresh.nl/recipes/bulgogi-biefstukreepjes-met-rijst-en-zoetzure-groenten-62611cb2d51b5d4b4926f474",
+      "families": [
+        "biefstuk",
+        "eieren",
+        "komkommer",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "biefstuk",
+        "eieren",
+        "komkommer",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "biefstuk",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Koreaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:42:01.216805+00:00"
+    },
+    {
+      "id": "hf-page-feeb977b308945",
+      "source": "HelloFresh",
+      "title": "Groene risotto met ham en spinaziepesto",
+      "url": "https://www.hellofresh.nl/recipes/groene-risotto-met-ham-en-spinaziepesto-62458c57655b5f6dc779263e",
+      "families": [
+        "citroen",
+        "courgette",
+        "spinazie",
+        "ui"
+      ],
+      "ingredient_families": [
+        "citroen",
+        "courgette",
+        "spinazie",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Italiaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:42:01.216859+00:00"
+    },
+    {
+      "id": "hf-page-f3958390bafa3a",
+      "source": "HelloFresh",
+      "title": "Noedels met biefstukreepjes in zoet-pittige chilisaus",
+      "url": "https://www.hellofresh.nl/recipes/noedels-met-biefstukreepjes-in-zoet-pittige-chilisaus-5f4fade2dbe49666a74dd76b",
+      "families": [
+        "biefstuk",
+        "limoen",
+        "noedels"
+      ],
+      "ingredient_families": [
+        "biefstuk",
+        "limoen",
+        "noedels"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "biefstuk",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "noedels",
+      "cuisine": "Thais",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:42:01.970861+00:00"
+    },
+    {
+      "id": "hf-page-61258a1e86e222",
+      "source": "HelloFresh",
+      "title": "Griekse rijst met gebakken feta",
+      "url": "https://www.hellofresh.nl/recipes/griekse-rijst-met-gebakken-feta-5c0520a3c445fa37f97fd082",
+      "families": [
+        "feta",
+        "rijst",
+        "tomaten"
+      ],
+      "ingredient_families": [
+        "feta",
+        "rijst",
+        "tomaten"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 4,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 125,
+          "unit": "g"
+        },
+        {
+          "family": "feta",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Grieks",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-03",
+      "ingredient_checked_at": "2026-11-03T14:42:01.970897+00:00"
     }
   ]
 }
