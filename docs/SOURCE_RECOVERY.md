@@ -23,6 +23,6 @@ In de eerste twee metadata-runs steeg het aantal productrecords met gecontroleer
 
 ## Wat niet door broncode alleen oplosbaar is
 
-De geteste Jumbo GraphQL-route gaf zonder extra toegang HTTP 401. De publieke productpagina's werkten wel. De volledige PrijsProfeet-schapprijsroute vereist volgens de aanbieder een betaald account met API-sleutel; die toegang is niet beschikbaar gemaakt voor dit project. De bestaande openbare catalogus blijft een aanvullende prijsbron.
+De geteste Jumbo GraphQL-route gaf zonder extra toegang HTTP 401. De publieke productpagina's werkten wel. De volledige PrijsProfeet-schapprijsroute vereist volgens de aanbieder een betaald account met API-sleutel; die toegang is niet beschikbaar gemaakt voor dit project. De bestaande openbare catalogus blijft een aanvullende prijsbron. Een live workflow liep tegen de gedeelde GitHub-limiet voor anonieme API-aanvragen aan; de catalogusimport gebruikt daarvoor nu de eigen GitHub Actions-token, uitsluitend op api.github.com. Dit vraagt geen nieuw persoonlijk account of token van de gebruiker.
 
 Een ontbrekend assortimentartikel, een winkelafhankelijke voorraad en een niet-gespecificeerde productvoorkeur zijn verschillende problemen. Geen van de onderzochte projecten biedt bewijs dat werkelijk elk product, elke filiaalprijs en elke actievoorwaarde altijd compleet beschikbaar is. Het onderzoek rechtvaardigt daarom meer automatische bronophaling en betere dekking, geen garantie van nul ontbrekende gegevens.

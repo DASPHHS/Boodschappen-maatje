@@ -14,6 +14,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 from urllib.error import URLError
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "docs" / "data"
@@ -24,8 +25,10 @@ MAX_AGE_DAYS = 3
 
 
 def fetch_json(url):
-    req = Request(url, headers={"User-Agent": "Boodschappenmaatje/1.0 price-source-audit",
-                                "Accept": "application/json"})
+    headers={"User-Agent":"Boodschappenmaatje/1.0 price-source-audit","Accept":"application/json"}
+    token=os.environ.get("GITHUB_TOKEN")
+    if token and urlparse(url).hostname=="api.github.com":headers["Authorization"]="Bearer "+token
+    req = Request(url, headers=headers)
     with urlopen(req, timeout=65) as response:
         if response.status != 200: raise ValueError("Source HTTP response not OK")
         return json.load(response)

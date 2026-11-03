@@ -9,6 +9,21 @@ DAY=dt.date(2026,10,29)
 COMMIT=[{"sha":"abc123","commit":{"committer":{"date":"2026-10-29T06:06:06Z"}}}]
 
 class CatalogTest(unittest.TestCase):
+    def test_actions_token_only_sent_to_exact_github_api_host(self):
+        from unittest.mock import patch
+        from io import BytesIO
+        requests=[]
+        def respond(req,timeout):
+            requests.append(req)
+            r=BytesIO(b'{}');r.status=200;return r
+        with patch.dict(m.os.environ,{'GITHUB_TOKEN':'unit-test-token'}),patch.object(m,'urlopen',side_effect=respond):
+            m.fetch_json('https://api.github.com/repos/supermarkt/checkjebon/commits')
+            m.fetch_json('https://raw.githubusercontent.com/supermarkt/checkjebon/main/data/supermarkets.json')
+            m.fetch_json('https://api.github.com.attacker.example/data')
+        self.assertEqual(requests[0].get_header('Authorization'),'Bearer unit-test-token')
+        self.assertIsNone(requests[1].get_header('Authorization'))
+        self.assertIsNone(requests[2].get_header('Authorization'))
+
     def test_official_links_not_guessed_for_lidl(self):
         a=m.normalize({"n":"Houdbare volle melk","p":.98,"s":"1 L","l":"128759"},"lidl")
         b=m.normalize({"n":"AH Houdbare volle melk","p":1.29,"s":"1 l","l":"wi450535/ah-houdbare-volle-melk"},"ah")
