@@ -89,6 +89,9 @@ def promotion_window(promotion,today):
         try:
             a=dt.date(year,months[start['monthShort']],int(start['date']))
             b=dt.date(year+(months[end['monthShort']]<a.month),months[end['monthShort']],int(end['date']))
-            if a<=today<=b and (b-a).days<=35:matches.append((a.isoformat(),b.isoformat()))
+            weekdays=('ma','di','wo','do','vr','za','zo')
+            if start.get('dayShort') and start['dayShort']!=weekdays[a.weekday()]:continue
+            if end.get('dayShort') and end['dayShort']!=weekdays[b.weekday()]:continue
+            if a<=today<=b and (b-a).days<=366:matches.append((a.isoformat(),b.isoformat()))
         except (KeyError,TypeError,ValueError):continue
     return matches[0] if len(matches)==1 else None

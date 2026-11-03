@@ -3,6 +3,7 @@ Persistent evidence survives imports; changed product/price/terms invalidate it.
 No browser impersonation, login, proxy rotation or access-control workarounds.
 """
 import datetime as dt
+from decimal import Decimal,ROUND_HALF_UP
 import hashlib
 import json
 import os
@@ -34,6 +35,8 @@ def bundle_terms(promo,base):
     if promo.get('isKiesAndMix') or re.search(r'extra|klanten|kaart|online|bezorg',text,re.I):return None
     m=re.fullmatch(r'\s*(\d+)\s+voor\s+€?\s*(\d+[,.]\d{2})\s*',text,re.I)
     if m:return int(m[1]),round(float(m[2].replace(',','.')),2)
+    if re.fullmatch(r'2e\s+halve\s+prijs',text,re.I):return 2,float((Decimal(str(base))*Decimal('1.5')).quantize(Decimal('.01'),rounding=ROUND_HALF_UP))
+    if re.fullmatch(r'2e\s+gratis',text,re.I):return 2,base
     m=re.fullmatch(r'\s*(\d+)\s*\+\s*(\d+)\s*gratis\s*',text,re.I)
     if m:return int(m[1])+int(m[2]),round(int(m[1])*base,2)
     return None
@@ -126,7 +129,9 @@ def main():
     deadline=time.monotonic()+420
     for o in candidates:
         prior=journal['products'].get(o['id'],{})
-        if reusable(prior,o,day):apply(o,prior);continue
+        if reusable(prior,o,day):
+            apply(o,prior)
+            if prior.get('verdict')=='confirmed' or prior.get('verdict')=='disputed':continue
         if selected and o['id'] not in selected:continue
         if attempts>=limit or time.monotonic()>=deadline:continue
         attempts+=1

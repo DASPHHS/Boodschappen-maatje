@@ -149,4 +149,17 @@ class RetailerRecoveryTests(unittest.TestCase):
         self.assertEqual(set(merged),{'a','b','c'})
         self.assertEqual(merged['a']['observed_at'],'2026-11-03T12:00:00Z')
 
+
+    def test_second_half_price_and_source_confirmed_six_week_window(self):
+        from verify_retailer_offers import assess,bundle_terms
+        from datetime import date
+        self.assertEqual(bundle_terms({'tags':[{'text':'2e halve prijs'}]},2.49),(2,3.74))
+        self.product['price']['promoPrice']=200
+        p=self.product['promotions'][0]
+        p.update(group='Week',tags=[{'text':'Korting'}],start={'date':23,'monthShort':'sep','dayShort':'wo'})
+        o=self.offer();o.update(price=2,start_date='2026-09-23')
+        self.assertEqual(assess(o,self.nuxt(self.product),date(2026,11,3))['verdict'],'confirmed')
+        p['start']['dayShort']='di'
+        self.assertNotEqual(assess(o,self.nuxt(self.product),date(2026,11,3))['verdict'],'confirmed')
+
 if __name__=='__main__':unittest.main()
