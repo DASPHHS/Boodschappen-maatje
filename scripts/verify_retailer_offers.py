@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -95,11 +96,20 @@ def apply(o,record):
     elif record.get('verdict')=='disputed':
         o.update(verified=False,promotion_status='disputed',verification_reason=record['reason'])
 
+def merge_journals(current,incoming):
+    products=dict(current.get('products',{}))
+    for key,record in incoming.get('products',{}).items():
+        previous=products.get(key,{})
+        if record.get('observed_at',record.get('checked_at',''))>=previous.get('observed_at',previous.get('checked_at','')):products[key]=record
+    return {**current,'products':products}
+
 def main():
     day=dt.datetime.now(ZoneInfo('Europe/Amsterdam')).date()
     catalogpath=ROOT/'offers-catalog.json';c=json.loads(catalogpath.read_text())
     journalpath=ROOT/'retailer-offer-evidence.json'
     journal=json.loads(journalpath.read_text()) if journalpath.exists() else {'schema_version':1,'products':{}}
+    replay_only=len(sys.argv)>2 and sys.argv[1]=='--merge-replay'
+    if replay_only:journal=merge_journals(journal,json.loads(Path(sys.argv[2]).read_text()))
     # Include all product categories; food is checked first, not exclusively.
     candidates=[o for o in c.get('stores',{}).get('jumbo',{}).get('offers',[]) if o.get('start_date','z')<=day.isoformat()<=o.get('end_date','') and re.match(r'^https://www\.jumbo\.com/producten/[^/]+-\d+[A-Za-z]*$',o.get('source',{}).get('url',''))]
     candidates.sort(key=lambda o:(journal['products'].get(o['id'],{}).get('checked_at',''),o.get('category') in ('overig','huishouden'),o['id']))
@@ -107,7 +117,7 @@ def main():
         if o.get('promotion_status')=='disputed' and journal['products'].get(o['id'],{}).get('verifier_version')!=VERIFIER_VERSION:
             o['promotion_status']='active';o.pop('verification_reason',None)
     journal['products']={k:v for k,v in journal['products'].items() if v.get('verifier_version')==VERIFIER_VERSION}
-    attempts=0;counts={};limit=max(1,min(int(os.getenv('RETAILER_VERIFY_LIMIT','240')),500))
+    attempts=0;counts={};limit=0 if replay_only else max(1,min(int(os.getenv('RETAILER_VERIFY_LIMIT','240')),500))
     # Replay all still-valid evidence before any request can fail or block.
     for o in candidates:
         prior=journal['products'].get(o['id'],{})
@@ -125,7 +135,7 @@ def main():
             with urlopen(req,timeout=15) as r:
                 if r.geturl().rstrip('/')!=o['source']['url'].rstrip('/'):raise ValueError('Retailer redirected to another product or listing')
                 result=assess(o,r.read(2500000).decode('utf8','replace'),day)
-            result.update(verifier_version=VERIFIER_VERSION,checked_at=day.isoformat(),fingerprint=fingerprint(o))
+            result.update(verifier_version=VERIFIER_VERSION,checked_at=day.isoformat(),observed_at=dt.datetime.now(dt.timezone.utc).isoformat(),fingerprint=fingerprint(o))
             if result.get('verdict')=='confirmed':result['resolved_fingerprint']=fingerprint({**o,'price':result['promotion_evidence']['price']})
             journal['products'][o['id']]=result;apply(o,result)
         except HTTPError as exc:

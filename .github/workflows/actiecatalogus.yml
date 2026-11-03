@@ -95,7 +95,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp "$tmp/offers-catalog.json" docs/data/offers-catalog.json
-            cp "$tmp/retailer-offer-evidence.json" docs/data/retailer-offer-evidence.json
+            python scripts/verify_retailer_offers.py --merge-replay "$tmp/retailer-offer-evidence.json"
             cp "$tmp/supplemental-offers.json" docs/data/supplemental-offers.json
             cp "$tmp/offer-audit.json" docs/data/offer-audit.json
             cp "$tmp/personal-prices.json" docs/data/personal-prices.json

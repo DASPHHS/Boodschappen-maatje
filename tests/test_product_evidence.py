@@ -140,4 +140,13 @@ class RetailerRecoveryTests(unittest.TestCase):
             saved=json.loads((root/'offers-catalog.json').read_text())['stores']['jumbo']['offers']
             self.assertTrue(next(x for x in saved if x['id']=='cached')['verified'])
 
+
+    def test_rebased_offer_journal_keeps_all_newer_confirmations(self):
+        from verify_retailer_offers import merge_journals
+        current={'products':{'a':{'observed_at':'2026-11-03T12:00:00Z'},'b':{'checked_at':'2026-11-03'}}}
+        incoming={'products':{'a':{'observed_at':'2026-11-03T11:00:00Z'},'c':{'checked_at':'2026-11-03'}}}
+        merged=merge_journals(current,incoming)['products']
+        self.assertEqual(set(merged),{'a','b','c'})
+        self.assertEqual(merged['a']['observed_at'],'2026-11-03T12:00:00Z')
+
 if __name__=='__main__':unittest.main()
