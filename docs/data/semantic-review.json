@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-03T13:08:55.066Z",
+  "generated_at": "2026-11-03T13:42:42.686Z",
   "source_date": "2026-11-03",
   "source_commit": "54c16fe9ce6bb26050337a6779e7d521d9c61e5d",
   "counts": {
-    "match": 239,
-    "partial": 368,
-    "reject": 217
+    "match": 241,
+    "partial": 360,
+    "reject": 223
   },
   "profiles": {
     "sungold": {
@@ -59,7 +59,7 @@
         "niet herkende productbeschrijving: regular": 3,
         "niet herkende productbeschrijving: regular 12x": 1,
         "andere doelgroep: baby": 2,
-        "niet herkende productbeschrijving: hipro reep banaan": 1,
+        "niet herkende productbeschrijving: reep banaan": 1,
         "niet herkende productbeschrijving: skippy super chunk noot": 1,
         "niet herkende productbeschrijving: whole earth": 4,
         "niet herkende productbeschrijving: smeuige": 3,
@@ -184,20 +184,20 @@
       }
     },
     "kwark": {
-      "match": 18,
-      "partial": 46,
+      "match": 19,
+      "partial": 45,
       "reject": 1,
       "reasons": {
         "niet herkende productbeschrijving: almhof": 1,
-        "niet herkende productbeschrijving: campina": 3,
-        "productkenmerken en verpakking passen": 18,
+        "niet herkende productbeschrijving: campina": 2,
+        "productkenmerken en verpakking passen": 19,
         "niet herkende productbeschrijving: arla lactofree lactosevrij": 1,
-        "niet herkende productbeschrijving: campina n vleugje aardbei": 1,
-        "niet herkende productbeschrijving: campina n vleugje banaan": 1,
-        "niet herkende productbeschrijving: campina n vleugje mango": 1,
-        "niet herkende productbeschrijving: campina n vleugje vanille": 1,
-        "niet herkende productbeschrijving: campina n vleugje vanille voordeelpak": 1,
-        "niet herkende productbeschrijving: campina voordeelpak": 2,
+        "niet herkende productbeschrijving: n vleugje aardbei": 1,
+        "niet herkende productbeschrijving: n vleugje banaan": 1,
+        "niet herkende productbeschrijving: n vleugje mango": 1,
+        "niet herkende productbeschrijving: n vleugje vanille": 1,
+        "niet herkende productbeschrijving: n vleugje vanille voordeelpak": 1,
+        "niet herkende productbeschrijving: voordeelpak": 1,
         "niet herkende productbeschrijving: framboos": 1,
         "niet herkende productbeschrijving: perzik passievrucht": 1,
         "niet herkende productbeschrijving: lekker vrij van lactose": 1,
@@ -224,6 +224,7 @@
         "niet herkende productbeschrijving: campina aardbei granola": 1,
         "niet herkende productbeschrijving: campina kokos": 1,
         "niet herkende productbeschrijving: campina vleugje vanille": 1,
+        "niet herkende productbeschrijving: campina voordeelpak": 1,
         "niet herkende productbeschrijving: campina vanille granola": 1,
         "niet herkende productbeschrijving: campina vanille voordeelpak": 1,
         "niet herkende productbeschrijving: optimel aardbei": 1,
@@ -256,31 +257,31 @@
           "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Aardbei 500 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina n vleugje aardbei"
+          "reason": "niet herkende productbeschrijving: n vleugje aardbei"
         },
         {
           "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Banaan 500 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina n vleugje banaan"
+          "reason": "niet herkende productbeschrijving: n vleugje banaan"
         },
         {
           "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Mango 500 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina n vleugje mango"
+          "reason": "niet herkende productbeschrijving: n vleugje mango"
         },
         {
           "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille 500 g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina n vleugje vanille"
+          "reason": "niet herkende productbeschrijving: n vleugje vanille"
         },
         {
           "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille Voordeelpak 1 kg",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina n vleugje vanille voordeelpak"
+          "reason": "niet herkende productbeschrijving: n vleugje vanille voordeelpak"
         }
       ],
       "groups": {
@@ -300,7 +301,7 @@
           "label": "Kwark · mager · naturel · lactose niet gespecificeerd · per kg",
           "stores": {
             "lidl": 2,
-            "jumbo": 3,
+            "jumbo": 4,
             "ah": 3
           }
         },
@@ -454,8 +455,8 @@
         "productkenmerken en verpakking passen": 14,
         "niet herkende productbeschrijving: sw chi gem": 1,
         "niet herkende productbeschrijving: sweet chili": 2,
-        "niet herkende productbeschrijving: easteco kimbap fried": 1,
-        "niet herkende productbeschrijving: garden gourmet vleesvervanger": 1,
+        "niet herkende productbeschrijving: kimbap fried": 1,
+        "niet herkende productbeschrijving: vleesvervanger": 1,
         "niet herkende productbeschrijving: curry indiase stijl": 1,
         "niet herkende productbeschrijving: rooksmaak": 1,
         "niet herkende productbeschrijving: asian style": 1,
@@ -490,13 +491,13 @@
           "store": "jumbo",
           "name": "EastEco Kimbap Fried Tofu 230g",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: easteco kimbap fried"
+          "reason": "niet herkende productbeschrijving: kimbap fried"
         },
         {
           "store": "jumbo",
           "name": "GARDEN GOURMET Vleesvervanger Crunchy Tofu 160 Gram",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: garden gourmet vleesvervanger"
+          "reason": "niet herkende productbeschrijving: vleesvervanger"
         },
         {
           "store": "jumbo",
@@ -606,13 +607,13 @@
       }
     },
     "kipfilet": {
-      "match": 48,
-      "partial": 70,
-      "reject": 80,
+      "match": 46,
+      "partial": 67,
+      "reject": 85,
       "reasons": {
-        "productkenmerken en verpakking passen": 48,
+        "productkenmerken en verpakking passen": 46,
         "productnaam of uitsluitingen passen niet": 6,
-        "andere productvorm: cooked": 57,
+        "andere productvorm: cooked": 62,
         "niet herkende productbeschrijving: a la minute": 4,
         "andere productvorm: mixed": 9,
         "andere productvorm: seasoned": 1,
@@ -655,20 +656,18 @@
         "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: minder": 2,
         "andere doelgroep: baby": 1,
-        "niet herkende productbeschrijving: bieslook": 1,
         "niet herkende productbeschrijving: van haas": 1,
         "niet herkende productbeschrijving: jalapeno": 1,
         "niet herkende productbeschrijving: roerbak": 2,
         "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: thais": 1,
         "niet herkende productbeschrijving: roasted": 1,
-        "niet herkende productbeschrijving: iglo roerbak sensatie pasta": 1,
+        "niet herkende productbeschrijving: roerbak sensatie pasta": 1,
         "niet herkende productbeschrijving: knorr tratorria toscana": 1,
         "niet herkende productbeschrijving: knorr trattoria romana": 1,
         "niet herkende productbeschrijving: marhaba": 1,
-        "niet herkende productbeschrijving: wahid": 3,
-        "niet herkende productbeschrijving: wahid chilipeper": 1,
-        "niet herkende productbeschrijving: wahid provence": 1
+        "niet herkende productbeschrijving: wahid": 2,
+        "niet herkende productbeschrijving: wahid chilipeper": 1
       },
       "samples": [
         {
@@ -732,7 +731,7 @@
           "label": "Kipfilet · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
             "lidl": 14,
-            "ah": 3
+            "ah": 2
           }
         },
         "chicken_breast|plain||naturel|kg": {
@@ -740,7 +739,7 @@
           "stores": {
             "lidl": 11,
             "jumbo": 3,
-            "ah": 11
+            "ah": 10
           }
         },
         "chicken_breast|plain||naturel · biologisch|inhoud onbekend": {
@@ -874,7 +873,7 @@
           "stores": {
             "lidl": 10,
             "jumbo": 2,
-            "ah": 2
+            "ah": 1
           }
         },
         "pollock|frozen||naturel|kg": {
@@ -886,7 +885,8 @@
         "salmon|frozen||naturel|kg": {
           "label": "Zalm · diepvries · per kg",
           "stores": {
-            "jumbo": 3
+            "jumbo": 3,
+            "ah": 1
           }
         }
       }
@@ -928,7 +928,7 @@
         "niet herkende productbeschrijving: lampjes": 1,
         "niet herkende productbeschrijving: lantaarn": 1,
         "niet herkende productbeschrijving: crispy broodjes": 1,
-        "niet herkende productbeschrijving: abdij broodmix": 1,
+        "niet herkende productbeschrijving: broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
         "niet herkende productbeschrijving: maaltijdhapje rijst kip": 1,
         "niet herkende productbeschrijving: robuust broodjes": 1,
@@ -1021,14 +1021,14 @@
       }
     },
     "sperziebonen": {
-      "match": 7,
-      "partial": 19,
+      "match": 8,
+      "partial": 18,
       "reject": 21,
       "reasons": {
-        "vers/diepvries of conserven niet uit productbron vastgesteld": 14,
+        "vers/diepvries of conserven niet uit productbron vastgesteld": 13,
         "andere productvorm: preserved": 15,
         "niet herkende productbeschrijving: tk": 1,
-        "productkenmerken en verpakking passen": 7,
+        "productkenmerken en verpakking passen": 8,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
@@ -1091,7 +1091,8 @@
         "green_beans|frozen||naturel|kg": {
           "label": "Sperziebonen · diepvries · per kg",
           "stores": {
-            "jumbo": 1
+            "jumbo": 1,
+            "ah": 1
           }
         },
         "green_beans|frozen||naturel · biologisch|kg": {
@@ -1176,13 +1177,13 @@
         "niet herkende productbeschrijving: zout bak": 1,
         "niet herkende productbeschrijving: crepe maker": 1,
         "niet herkende productbeschrijving: pumpkin sp": 1,
-        "niet herkende productbeschrijving: jimmy air popped salted caramel": 1,
-        "niet herkende productbeschrijving: jimmy butter flavoured salt": 2,
-        "niet herkende productbeschrijving: jimmy nacho cheese jalapeno": 1,
-        "niet herkende productbeschrijving: jimmy salted": 2,
-        "niet herkende productbeschrijving: jimmy sweet salt": 2,
-        "niet herkende productbeschrijving: jimmy sweet": 2,
-        "niet herkende productbeschrijving: jimmy sweet chili": 1,
+        "niet herkende productbeschrijving: air popped salted caramel": 1,
+        "niet herkende productbeschrijving: butter flavoured salt": 1,
+        "niet herkende productbeschrijving: nacho cheese jalapeno": 1,
+        "niet herkende productbeschrijving: salted": 1,
+        "niet herkende productbeschrijving: sweet salt": 1,
+        "niet herkende productbeschrijving: sweet": 1,
+        "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: dunne maiswafels zoute smaak": 1,
         "niet herkende productbeschrijving: zout": 3,
         "niet herkende productbeschrijving: chili lime": 1,
@@ -1193,7 +1194,11 @@
         "niet herkende productbeschrijving: tony chocolonely melkchocolade crunch 180grm verpakt wikkel": 1,
         "niet herkende productbeschrijving: zoute": 1,
         "niet herkende productbeschrijving: duca chicken nuggets": 1,
+        "niet herkende productbeschrijving: jimmy butter flavoured salt": 1,
         "niet herkende productbeschrijving: jimmy nacho cheese": 1,
+        "niet herkende productbeschrijving: jimmy salted": 1,
+        "niet herkende productbeschrijving: jimmy sweet": 1,
+        "niet herkende productbeschrijving: jimmy sweet salt": 1,
         "niet herkende productbeschrijving: jimmy sweet salt pack": 1,
         "niet herkende productbeschrijving: jimmy zout pack": 1,
         "niet herkende productbeschrijving: proper sea salted": 1,
@@ -1285,16 +1290,16 @@
       }
     },
     "volle_melk": {
-      "match": 6,
-      "partial": 14,
-      "reject": 5,
+      "match": 8,
+      "partial": 11,
+      "reject": 6,
       "reasons": {
-        "productkenmerken en verpakking passen": 6,
-        "exacte inhoud ontbreekt": 6,
+        "productkenmerken en verpakking passen": 8,
+        "exacte inhoud ontbreekt": 3,
+        "winkelpagina noemt een andere verpakking; hercontrole nodig": 1,
         "niet herkende productbeschrijving: 12x1": 1,
-        "niet herkende productbeschrijving: campina voordeelpak": 1,
-        "niet herkende productbeschrijving: holland jersey jersey": 1,
-        "verpakkingsgrootte verschilt": 3,
+        "verpakkingsgrootte verschilt": 4,
+        "niet herkende productbeschrijving: voordeelpak": 1,
         "productnaam of uitsluitingen passen niet": 2,
         "niet herkende productbeschrijving: pack": 1,
         "niet herkende productbeschrijving: campina": 3,
@@ -1321,15 +1326,9 @@
         },
         {
           "store": "jumbo",
-          "name": "Campina Langlekker Volle Melk 1 L",
-          "status": "partial",
-          "reason": "exacte inhoud ontbreekt"
-        },
-        {
-          "store": "jumbo",
           "name": "Campina Langlekker Volle Melk 1,5 L",
           "status": "partial",
-          "reason": "exacte inhoud ontbreekt"
+          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
         },
         {
           "store": "jumbo",
@@ -1340,14 +1339,20 @@
         {
           "store": "jumbo",
           "name": "Campina Langlekker volle melk voordeel 4 x 1 L",
-          "status": "partial",
-          "reason": "exacte inhoud ontbreekt"
+          "status": "reject",
+          "reason": "verpakkingsgrootte verschilt"
         },
         {
           "store": "jumbo",
           "name": "Campina Langlekker Volle Melk Voordeelpak 1,5 L",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: campina voordeelpak"
+          "reason": "niet herkende productbeschrijving: voordeelpak"
+        },
+        {
+          "store": "jumbo",
+          "name": "Jumbo Houdbare Volle Melk 500ML",
+          "status": "reject",
+          "reason": "verpakkingsgrootte verschilt"
         }
       ],
       "groups": {
@@ -1355,7 +1360,7 @@
           "label": "Melk · houdbaar · naturel · vol · lactose niet gespecificeerd · per L",
           "stores": {
             "lidl": 1,
-            "jumbo": 1,
+            "jumbo": 3,
             "ah": 1
           }
         },
@@ -2549,17 +2554,6 @@
       "fingerprint": "a3aafd5dd03852581d56cf0c"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi132220/ah-kipfilet-grootverpakking",
-      "name": "AH Kipfilet grootverpakking",
-      "pack": "250 g",
-      "url": "https://www.ah.nl/producten/product/wi132220/ah-kipfilet-grootverpakking",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "e5c7c802751cc258d0fefbc6"
-    },
-    {
       "profile": "vis",
       "priority": 0,
       "store": "ah",
@@ -2569,17 +2563,6 @@
       "url": "https://www.ah.nl/producten/product/wi135757/ah-zalmfilet",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "5304a24bec3b29f49eb9042b"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi137939/ah-scharrel-kipfilet",
-      "name": "AH Scharrel kipfilet",
-      "pack": "ca. 125 g",
-      "url": "https://www.ah.nl/producten/product/wi137939/ah-scharrel-kipfilet",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "c608fc16fdc457f624a81cc7"
     },
     {
       "profile": "vis",
@@ -2604,17 +2587,6 @@
       "fingerprint": "7179e1153c82da3a6509f59a"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi162009/wahid-kipfilet",
-      "name": "Wahid kipfilet",
-      "pack": "125 g",
-      "url": "https://www.ah.nl/producten/product/wi162009/wahid-kipfilet",
-      "reason": "niet herkende productbeschrijving: wahid",
-      "fingerprint": "52fef6e03c7c0ee1d10bc3e3"
-    },
-    {
       "profile": "pompoen",
       "priority": 0,
       "store": "ah",
@@ -2622,7 +2594,7 @@
       "name": "Abdij Broodmix pompoen",
       "pack": "1 kg",
       "url": "https://www.ah.nl/producten/product/wi164734/abdij-broodmix-pompoen",
-      "reason": "niet herkende productbeschrijving: abdij broodmix",
+      "reason": "niet herkende productbeschrijving: broodmix",
       "fingerprint": "6e20f1e1161a838d46125599"
     },
     {
@@ -2677,7 +2649,7 @@
       "name": "Iglo Roerbak sensatie pasta kipfilet",
       "pack": "450 g",
       "url": "https://www.ah.nl/producten/product/wi187167/iglo-roerbak-sensatie-pasta-kipfilet",
-      "reason": "niet herkende productbeschrijving: iglo roerbak sensatie pasta",
+      "reason": "niet herkende productbeschrijving: roerbak sensatie pasta",
       "fingerprint": "b58042e1f0c84e52761a3076"
     },
     {
@@ -2703,17 +2675,6 @@
       "fingerprint": "81b4efd2350b5c333b41f370"
     },
     {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi191122/wahid-kipfilet-provence",
-      "name": "Wahid Kipfilet provence",
-      "pack": "125 g",
-      "url": "https://www.ah.nl/producten/product/wi191122/wahid-kipfilet-provence",
-      "reason": "niet herkende productbeschrijving: wahid provence",
-      "fingerprint": "8c16f3dc86403583582a8cd8"
-    },
-    {
       "profile": "vis",
       "priority": 0,
       "store": "ah",
@@ -2723,17 +2684,6 @@
       "url": "https://www.ah.nl/producten/product/wi191133/ah-biologisch-zalmfilet",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "0089219a96b395c4f4be8b7f"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "ah",
-      "product_id": "wi192850/ah-scharrel-kipfilet-bieslook",
-      "name": "AH Scharrel kipfilet bieslook",
-      "pack": "ca. 125 g",
-      "url": "https://www.ah.nl/producten/product/wi192850/ah-scharrel-kipfilet-bieslook",
-      "reason": "niet herkende productbeschrijving: bieslook",
-      "fingerprint": "0b637c7cb37b4a83d4ddc23d"
     },
     {
       "profile": "kipfilet",
@@ -2787,7 +2737,7 @@
       "name": "AH Sperziebonen gebroken",
       "pack": "450 g",
       "url": "https://www.ah.nl/producten/product/wi226498/ah-sperziebonen-gebroken",
-      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "9f19801953fd7b7c7889bc6e"
     },
     {
@@ -3821,7 +3771,7 @@
       "name": "Campina Langlekker Volle Melk 1 L",
       "pack": "1 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-1-l-293405STK",
-      "reason": "exacte inhoud ontbreekt",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "5d71414f04ec2424a5d00f52"
     },
     {
@@ -3832,7 +3782,7 @@
       "name": "Campina Langlekker Volle Melk 1,5 L",
       "pack": "8 x 1.5 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-1,5-l-167830KSL",
-      "reason": "exacte inhoud ontbreekt",
+      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
       "fingerprint": "36d556283a4fd6b6aab6c484"
     },
     {
@@ -3850,22 +3800,11 @@
       "profile": "volle_melk",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "campina-langlekker-volle-melk-voordeel-4-x-1-l-293487STK",
-      "name": "Campina Langlekker volle melk voordeel 4 x 1 L",
-      "pack": "4 x 1 liter",
-      "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-voordeel-4-x-1-l-293487STK",
-      "reason": "exacte inhoud ontbreekt",
-      "fingerprint": "f62b6194d4daca793e3845b2"
-    },
-    {
-      "profile": "volle_melk",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "campina-langlekker-volle-melk-voordeelpak-1,5-l-167830PAK",
       "name": "Campina Langlekker Volle Melk Voordeelpak 1,5 L",
       "pack": "1.5 liter",
       "url": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-voordeelpak-1,5-l-167830PAK",
-      "reason": "niet herkende productbeschrijving: campina voordeelpak",
+      "reason": "niet herkende productbeschrijving: voordeelpak",
       "fingerprint": "2f96903b3a3ab4ab543e850b"
     },
     {
@@ -3876,7 +3815,7 @@
       "name": "Campina Magere Milde Kwark met 'n Vleugje Aardbei 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-aardbei-500-g-347423CUP",
-      "reason": "niet herkende productbeschrijving: campina n vleugje aardbei",
+      "reason": "niet herkende productbeschrijving: n vleugje aardbei",
       "fingerprint": "0eaa74c4cd402694cd99bdb3"
     },
     {
@@ -3887,7 +3826,7 @@
       "name": "Campina Magere Milde Kwark met 'n Vleugje Banaan 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-banaan-500-g-499036CUP",
-      "reason": "niet herkende productbeschrijving: campina n vleugje banaan",
+      "reason": "niet herkende productbeschrijving: n vleugje banaan",
       "fingerprint": "05699899ae0db6ed77cecad8"
     },
     {
@@ -3898,7 +3837,7 @@
       "name": "Campina Magere Milde Kwark met 'n Vleugje Mango 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-mango-500-g-206342STK",
-      "reason": "niet herkende productbeschrijving: campina n vleugje mango",
+      "reason": "niet herkende productbeschrijving: n vleugje mango",
       "fingerprint": "eec207c7d66e0f67830ddd97"
     },
     {
@@ -3909,7 +3848,7 @@
       "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-vanille-500-g-168787CUP",
-      "reason": "niet herkende productbeschrijving: campina n vleugje vanille",
+      "reason": "niet herkende productbeschrijving: n vleugje vanille",
       "fingerprint": "17ef431ebccc244967112c89"
     },
     {
@@ -3920,7 +3859,7 @@
       "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille Voordeelpak 1 kg",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-vanille-voordeelpak-1-kg-567727CUP",
-      "reason": "niet herkende productbeschrijving: campina n vleugje vanille voordeelpak",
+      "reason": "niet herkende productbeschrijving: n vleugje vanille voordeelpak",
       "fingerprint": "5305490c66d98d2e5c22750e"
     },
     {
@@ -3931,7 +3870,7 @@
       "name": "Campina Magere Milde Kwark Naturel 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-naturel-500-g-168786CUP",
-      "reason": "niet herkende productbeschrijving: campina",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "819d3e862fe4a8193cc31c04"
     },
     {
@@ -3942,7 +3881,7 @@
       "name": "Campina Magere Milde Kwark Naturel Voordeelpak 1 kg",
       "pack": "1 kg",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-naturel-voordeelpak-1-kg-194964BAK",
-      "reason": "niet herkende productbeschrijving: campina voordeelpak",
+      "reason": "niet herkende productbeschrijving: voordeelpak",
       "fingerprint": "0e4ad6a9bd1b8b54fe445631"
     },
     {
@@ -4063,7 +4002,7 @@
       "name": "EastEco Kimbap Fried Tofu 230g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/easteco-kimbap-fried-tofu-230g-668002DS",
-      "reason": "niet herkende productbeschrijving: easteco kimbap fried",
+      "reason": "niet herkende productbeschrijving: kimbap fried",
       "fingerprint": "a9d55761855ee5c52b156865"
     },
     {
@@ -4074,7 +4013,7 @@
       "name": "GARDEN GOURMET Vleesvervanger Crunchy Tofu 160 Gram",
       "pack": "",
       "url": "https://www.jumbo.com/producten/garden-gourmet-vleesvervanger-crunchy-tofu-160-gram-774148TRA",
-      "reason": "niet herkende productbeschrijving: garden gourmet vleesvervanger",
+      "reason": "niet herkende productbeschrijving: vleesvervanger",
       "fingerprint": "26031c55c388e92bfe76a554"
     },
     {
@@ -4085,7 +4024,7 @@
       "name": "HiPRO Protein Reep Banaan Pindakaas 45 g",
       "pack": "45 g",
       "url": "https://www.jumbo.com/producten/hipro-protein-reep-banaan-pindakaas-45-g-671846STK",
-      "reason": "niet herkende productbeschrijving: hipro reep banaan",
+      "reason": "niet herkende productbeschrijving: reep banaan",
       "fingerprint": "3bbc892aa77f2ff42b0cd41d"
     },
     {
@@ -4096,7 +4035,7 @@
       "name": "Holland Jersey Houdbare Volle Jersey Melk 1 L",
       "pack": "",
       "url": "https://www.jumbo.com/producten/holland-jersey-houdbare-volle-jersey-melk-1-l-218535STK",
-      "reason": "niet herkende productbeschrijving: holland jersey jersey",
+      "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d7e0b008e52546a17994e0bc"
     },
     {
@@ -4107,7 +4046,7 @@
       "name": "Jimmy's Air Popped Popcorn Salted Caramel 150 g",
       "pack": "150 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-air-popped-popcorn-salted-caramel-150-g-646833ZK",
-      "reason": "niet herkende productbeschrijving: jimmy air popped salted caramel",
+      "reason": "niet herkende productbeschrijving: air popped salted caramel",
       "fingerprint": "f7772bab7e4721140fe2f759"
     },
     {
@@ -4118,7 +4057,7 @@
       "name": "JIMMY's Popcorn Butter Flavoured Salt",
       "pack": "80 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-butter-flavoured-salt-683288ZK",
-      "reason": "niet herkende productbeschrijving: jimmy butter flavoured salt",
+      "reason": "niet herkende productbeschrijving: butter flavoured salt",
       "fingerprint": "9664b1dee63f8a5d5f27e7f6"
     },
     {
@@ -4129,7 +4068,7 @@
       "name": "JIMMY's Popcorn Nacho Cheese & Jalapeño",
       "pack": "90 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-nacho-cheese-jalapeno-746283ZK",
-      "reason": "niet herkende productbeschrijving: jimmy nacho cheese jalapeno",
+      "reason": "niet herkende productbeschrijving: nacho cheese jalapeno",
       "fingerprint": "f37316ae643a9649604c0a6c"
     },
     {
@@ -4140,7 +4079,7 @@
       "name": "JIMMY's Popcorn Salted 80 g",
       "pack": "80 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-salted-80-g-486334ZK",
-      "reason": "niet herkende productbeschrijving: jimmy salted",
+      "reason": "niet herkende productbeschrijving: salted",
       "fingerprint": "311829531028f88abe016b71"
     },
     {
@@ -4151,7 +4090,7 @@
       "name": "JIMMY's Popcorn Sweet 100 g",
       "pack": "100 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-sweet-100-g-612650ZK",
-      "reason": "niet herkende productbeschrijving: jimmy sweet",
+      "reason": "niet herkende productbeschrijving: sweet",
       "fingerprint": "1ad34484f15c1a53d38edb46"
     },
     {
@@ -4162,7 +4101,7 @@
       "name": "JIMMY's Popcorn Sweet Chili",
       "pack": "90 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-sweet-chili-746281ZK",
-      "reason": "niet herkende productbeschrijving: jimmy sweet chili",
+      "reason": "niet herkende productbeschrijving: sweet chili",
       "fingerprint": "f30161e32aeaf8f314e906f6"
     },
     {
@@ -4173,7 +4112,7 @@
       "name": "JIMMY's Popcorn Sweet & Salt 100g",
       "pack": "100 g",
       "url": "https://www.jumbo.com/producten/jimmy-s-popcorn-sweet-salt-100g-559730ZK",
-      "reason": "niet herkende productbeschrijving: jimmy sweet salt",
+      "reason": "niet herkende productbeschrijving: sweet salt",
       "fingerprint": "c430eb67bfe29dbbfd58e8cf"
     },
     {

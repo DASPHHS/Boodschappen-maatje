@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T13:08:56.401Z",
+  "generated_at": "2026-11-03T13:42:44.021Z",
   "checked_date": "2026-11-03",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 45,
+    "price_observed": 46,
     "stale_or_unavailable": 0,
     "needs_variant_evidence": 6,
-    "needs_source": 9
+    "needs_source": 8
   },
   "stores": {
     "lidl": {
@@ -217,8 +217,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
         "product_name": "Jumbo Pindakaas Naturel 600 g",
-        "price": 1.45,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price": 1.35,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "kwark": {
@@ -226,8 +226,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
         "product_name": "Jumbo Franse Kwark Mager 1000 g",
-        "price": 1.85,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price": 1.69,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "dreft": {
@@ -244,8 +244,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
         "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
-        "price": 6.39,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price": 4.99,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "tofu": {
@@ -263,7 +263,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
         "product_name": "Jumbo Gemengd Gehakt 500 g",
         "price": 4.59,
-        "price_status": "externe prijswaarneming · 2026-11-02",
+        "price_status": "winkelprijswaarneming · 2026-11-02",
         "checked_date": "2026-11-02"
       },
       "kipfilet": {
@@ -272,7 +272,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "externe prijswaarneming · 2026-11-02",
+        "price_status": "winkelprijswaarneming · 2026-11-02",
         "checked_date": "2026-11-02"
       },
       "vis": {
@@ -281,7 +281,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.79,
-        "price_status": "externe prijswaarneming · 2026-11-02",
+        "price_status": "winkelprijswaarneming · 2026-11-02",
         "checked_date": "2026-11-02"
       },
       "pompoen": {
@@ -290,7 +290,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "sperziebonen": {
@@ -299,7 +299,7 @@
         "source": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
         "product_name": "Ardo Gebroken Sperziebonen 1KG",
         "price": 2.07,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "bospeen": {
@@ -317,7 +317,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "volle_melk": {
@@ -325,8 +325,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
         "product_name": "Jumbo Houdbare Volle Melk 1 L",
-        "price": 0.99,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price": 0.98,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "skuumkoppe": {
@@ -371,7 +371,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.38,
-        "price_status": "externe prijswaarneming · 2026-11-02",
+        "price_status": "winkelprijswaarneming · 2026-11-02",
         "checked_date": "2026-11-02"
       }
     },
@@ -460,10 +460,10 @@
       "vis": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi178129/ah-wilde-zalmfilet",
-        "product_name": "AH Wilde zalmfilet",
-        "price": 2.99,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "source": "https://www.ah.nl/producten/product/wi135757/ah-zalmfilet",
+        "product_name": "AH Zalmfilet",
+        "price": 4.75,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "pompoen": {
@@ -476,21 +476,21 @@
         "checked_date": "2026-11-03"
       },
       "sperziebonen": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi226498/ah-sperziebonen-gebroken",
+        "product_name": "AH Sperziebonen gebroken",
+        "price": 1.19,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
+        "checked_date": "2026-11-03"
       },
       "bospeen": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.ah.nl/producten/product/wi127590/ah-bospeen",
         "product_name": "AH Bospeen",
-        "price": 1.55,
-        "price_status": "externe prijswaarneming · 2026-11-03",
+        "price": 1.59,
+        "price_status": "winkelprijswaarneming · 2026-11-03",
         "checked_date": "2026-11-03"
       },
       "popcorn": {
