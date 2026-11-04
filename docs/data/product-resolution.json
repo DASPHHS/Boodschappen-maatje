@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T12:59:11.172Z",
+  "generated_at": "2026-11-04T13:20:13.043Z",
   "checked_date": "2026-11-04",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 46,
+    "price_observed": 45,
     "stale_or_unavailable": 0,
-    "needs_variant_evidence": 6,
+    "needs_variant_evidence": 7,
     "needs_source": 8
   },
   "stores": {
@@ -233,11 +233,11 @@
       "dreft": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/dreft-platinum-all-in-one-vaatwastabletten-original-34-capsules-620970ZK",
-        "product_name": "Dreft Platinum All In One Vaatwastabletten, Original, 34 Capsules",
-        "price": 20.33,
-        "price_status": "externe prijswaarneming · 2026-11-03",
-        "checked_date": "2026-11-03"
+        "source": "https://www.jumbo.com/producten/dreft-platinum-all-in-one-vaatwastabletten-original-39-capsules-620977ZK",
+        "product_name": "Dreft Platinum All In One Vaatwastabletten, Original, 39 Capsules",
+        "price": 10.49,
+        "price_status": "externe actiemelding · t/m 2026-11-17",
+        "checked_date": "2026-11-04"
       },
       "walnoten": {
         "state": "price_observed",
@@ -335,8 +335,8 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-03",
-        "checked_date": "2026-11-03"
+        "price_status": "externe actiemelding · t/m 2026-11-10",
+        "checked_date": "2026-11-04"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
@@ -344,8 +344,8 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-03",
-        "checked_date": "2026-11-03"
+        "price_status": "externe actiemelding · t/m 2026-11-10",
+        "checked_date": "2026-11-04"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
@@ -521,13 +521,13 @@
         "checked_date": "2026-11-02"
       },
       "skuumkoppe_00": {
-        "state": "price_observed",
-        "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi589403/texels-skuumkoppe-0-0",
-        "product_name": "Texels Skuumkoppe 0.0%",
-        "price": 1.31,
-        "price_status": "externe actiemelding · t/m 2026-11-08",
-        "checked_date": "2026-11-02"
+        "state": "needs_variant_evidence",
+        "reason": "product gevonden, productvorm of inhoud onvoldoende bewezen",
+        "source": null,
+        "product_name": null,
+        "price": null,
+        "price_status": null,
+        "checked_date": null
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
