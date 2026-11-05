@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T13:33:16.797Z",
+  "generated_at": "2026-11-05T14:35:19.562Z",
   "checked_date": "2026-11-05",
   "summary": {
     "profiles": 20,
@@ -251,10 +251,10 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-11-05",
+        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
+        "product_name": "Jumbo Tofu Naturel 375g",
+        "price": 1.44,
+        "price_status": "winkelprijswaarneming · 2026-11-05",
         "checked_date": "2026-11-05"
       },
       "gemengdgehakt": {
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-04",
-        "checked_date": "2026-11-04"
+        "price_status": "winkelprijswaarneming · 2026-11-05",
+        "checked_date": "2026-11-05"
       },
       "sperziebonen": {
         "state": "price_observed",
