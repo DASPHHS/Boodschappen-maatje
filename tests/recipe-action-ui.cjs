@@ -36,7 +36,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
   assert.ok(row.matched.products.every(x=>culinary.recipeProfiles(row.recipe).some(p=>culinary.compatible(x.profile,p))));
   if(row.category==='vis')assert.ok(!row.matched.main.some(x=>x.family.startsWith('vega_')));
  }
- for(const s of ['ah','jumbo','lidl'])for(const r of t.catalog(s))assert.ok(t.recipeActions(r,s).length>=2);
+ for(const s of ['ah','jumbo','lidl'])for(const r of t.catalog(s)){assert.ok(t.recipeActions(r,s).length>=2);assert.ok(!culinary.containsLeek(r),'Leek preference also covers own recipe suggestions');}
  Object.assign(t.state,{view:'recepten',store:'jumbo',query:'Zomerstamppot met prei en masala-tofu'});t.render();
  const summer=el('#view-recepten').innerHTML;
  if(summer.includes('Zomerstamppot met prei en masala-tofu')&&summer.includes('publisher-recipe-card')){
@@ -49,7 +49,7 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  const page=el('#view-recepten').innerHTML;
  assert.equal(t.state.excludePrei,true);
  assert.ok(page.includes('id="cuisine-filter"'));
- assert.ok(page.includes('id="exclude-prei" checked')); 
+ assert.ok(page.includes('id="exclude-prei" checked'));
  assert.ok(page.includes('Alle bronnen'));
  assert.ok(page.includes(rows.length?'actieproducten bij':'Geen recepten met minimaal twee'));
  assert.ok(page.includes('Allerhande')&&page.includes('HelloFresh'));

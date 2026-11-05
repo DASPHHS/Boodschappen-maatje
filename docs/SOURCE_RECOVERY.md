@@ -34,3 +34,10 @@ De kaart voor Allerhandes zomerstamppot met prei en masala-tofu werd op 3 novemb
 De productparser miste het meervoud “preien”. Die is hersteld en veertien betrokken Allerhande-recepten zijn opnieuw bij de uitgever gecontroleerd. Een kaart vermeldt nu waarom zij bij een winkel is gekozen. Een seizoen in de oorspronkelijke titel wordt onderscheiden van de selectie op acties; de titel van de maker wordt behouden. De aanvankelijk onvolledige preimelding is vervolgens gecontroleerd: de winkel publiceert expliciet een stukprijs en 3 voor €0,99. Voor de vier preien uit het recept zijn dus twee bundels nodig: zes preien voor €1,98. De drie actieonderdelen kosten samen €5,56; dit is geen totale maaltijdprijs. Een stuksaantal wordt uitsluitend afgeleid uit expliciete productgegevens, niet uit een geschat gewicht.
 
 Bij het vervolgonderzoek zijn ook expliciete stuksaantallen en “gr” als gram verwerkt. Maximale actieaantallen uit de winkelbron worden bewaard; een berekening voor meer verpakkingen dan die grens geeft geen bevestigd actietotaal.
+
+
+## Meer keukens — 5 november 2026
+
+Het keukenfilter gebruikt 24 vaste benamingen en herkent Nederlandse en Engelse uitgeverslabels. Recepten zonder herkenbare keuken blijven apart onder “Keuken niet vermeld”; ingrediënten worden niet gebruikt om een herkomst te verzinnen. Dezelfde selectie werkt voor eigen recepten en uitgeversrecepten, naast winkel, maaltijd en eiwitcategorie. De voorkeur zonder prei staat standaard aan, kan worden uitgezet en blijft lokaal bewaard. Bewaarde recepten blijven direct te openen.
+
+De bronontdekking wisselt keukens af in plaats van alle verzoeken aan één keuken te besteden. De begrensde ronde controleert maximaal 100 Allerhande- en 60 HelloFresh-pagina’s; de bronlimiet is 2000 per uitgever. De workflow draait tweemaal per dag. Weigeringen en robotsregels blijven leidend. Een sitemapvermelding zonder bevestigde ingrediënten wordt nooit als actierecept geteld. Minimaal twee passende, verschillende actieproducten bij één winkel en voorrang voor voordeel op de eiwitbasis blijven verplicht.

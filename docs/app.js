@@ -58,7 +58,7 @@ function recipes(s){
    }
  }
  // Geen automatische synthese meer uit gedeeltelijke productnaammatches.
- return found.filter(r=>recipeActions(r,s).length>=2);
+ return found.filter(r=>(!state.excludePrei||!window.MaatjeRecipeProducts.containsLeek(r))&&recipeActions(r,s).length>=2);
 }
 function catalog(s){
 const newRecs=recipes(s);
@@ -73,7 +73,7 @@ for(const r of [...curated,...newRecs,...templates]){
  if(!title||used.has(title))continue;
  used.add(title);all.push(r);
 }
-return all.filter(r=>recipeActions(r,s).length>=2);
+return all.filter(r=>(!state.excludePrei||!window.MaatjeRecipeProducts.containsLeek(r))&&recipeActions(r,s).length>=2);
 }
 const recipeActionCache=new Map();
 function recipeActions(r,s){
@@ -752,7 +752,7 @@ if(s==='lidl'){const check=state.supplemental?.stores?.lidl?.official_check;if(c
 }}
 $('#view-aanbiedingen').innerHTML=out;
 }
-function allRecipes(){let found=ORDER.filter(s=>state.store==='alle'||state.store===s).flatMap(s=>recipes(s));let known=new Set(found.map(r=>r.title?.toLowerCase()));let suggestions=state.library.filter(r=>!known.has(r.title?.toLowerCase())&&ORDER.some(s=>recipeActions(r,s).length>=2)).map(r=>({...r,store:null,origin:'bibliotheek'}));return found.concat(suggestions)}
+function allRecipes(){let found=ORDER.filter(s=>state.store==='alle'||state.store===s).flatMap(s=>recipes(s));let known=new Set(found.map(r=>r.title?.toLowerCase()));let suggestions=state.library.filter(r=>(!state.excludePrei||!window.MaatjeRecipeProducts.containsLeek(r))&&!known.has(r.title?.toLowerCase())&&ORDER.some(s=>recipeActions(r,s).length>=2)).map(r=>({...r,store:null,origin:'bibliotheek'}));return found.concat(suggestions)}
 
 function recipeSourceDirectory(){
  const rows=state.recipeSources?.sources||[];
