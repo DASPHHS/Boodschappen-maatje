@@ -4844,7 +4844,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-05T15:00:15.724342+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:30.231900+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4912,7 +4912,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Chinees",
-      "ingredient_checked_at": "2026-11-05T15:00:15.724373+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:30.272393+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4964,7 +4964,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-05T15:00:16.422595+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:31.117047+00:00",
       "ingredient_profiles": [
         {
           "family": "sperziebonen",
@@ -5040,7 +5040,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-05T15:00:17.636335+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:31.117078+00:00",
       "ingredient_profiles": [
         {
           "family": "noedels",
@@ -8461,7 +8461,7 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
+      "last_checked": "2026-11-05",
       "ingredient_families": [
         "aardappelen",
         "eieren",
@@ -8470,7 +8470,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Nedeländsk",
-      "ingredient_checked_at": "2026-11-04T14:56:14.928525+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:01.560003+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -11700,7 +11700,7 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
+      "last_checked": "2026-11-05",
       "ingredient_families": [
         "aardappelen",
         "boerenkool",
@@ -11711,7 +11711,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Italiaans",
-      "ingredient_checked_at": "2026-11-04T14:56:17.109231+00:00",
+      "ingredient_checked_at": "2026-11-05T22:59:02.390409+00:00",
       "ingredient_profiles": [
         {
           "family": "aardappelen",
@@ -14206,7 +14206,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-05T22:59:31.806017+00:00"
     },
     {
       "id": "ah-sitemap-r-r1186288",
@@ -14224,7 +14225,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-05T22:59:31.874707+00:00"
     },
     {
       "id": "ah-sitemap-r-r1198239",
@@ -15773,8 +15775,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:14.033633+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:01.559974+00:00"
     },
     {
       "id": "ah-sitemap-r-r1185253",
@@ -16372,8 +16374,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:26.334179+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:05.039318+00:00"
     },
     {
       "id": "hf-page-6525a73dee82df",
@@ -16407,8 +16409,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:27.287469+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:05.182762+00:00"
     },
     {
       "id": "hf-page-b380572af0aaf2",
@@ -16471,8 +16473,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:29.384312+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:06.036343+00:00"
     },
     {
       "id": "hf-page-c917daee45cb7b",
@@ -16543,8 +16545,8 @@
       "vegetable_families": 2,
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:30.403933+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:06.036372+00:00"
     },
     {
       "id": "hf-page-173b5ce92037ef",
@@ -16607,8 +16609,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:32.254500+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:07.021756+00:00"
     },
     {
       "id": "hf-page-8c426c364fa128",
@@ -16661,8 +16663,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:33.446024+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:07.021785+00:00"
     },
     {
       "id": "hf-page-d4b4152034f695",
@@ -16726,7 +16728,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:07.870077+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:27.648744+00:00"
     },
     {
       "id": "hf-page-867fc5e0e060a1",
@@ -16790,7 +16792,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:07.870109+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:27.689359+00:00"
     },
     {
       "id": "hf-page-eb01a0f1949475",
@@ -16844,7 +16846,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:08.853956+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:28.554636+00:00"
     },
     {
       "id": "hf-page-28694056f215da",
@@ -16908,7 +16910,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:10.271611+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:28.554663+00:00"
     },
     {
       "id": "hf-page-9d30285d301102",
@@ -16962,7 +16964,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:11.063974+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:29.401107+00:00"
     },
     {
       "id": "hf-page-6e3b3d0ab98151",
@@ -17016,7 +17018,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-05T15:00:13.302764+00:00"
+      "ingredient_checked_at": "2026-11-05T22:59:29.401136+00:00"
     },
     {
       "id": "ah-sitemap-r-r383266",
@@ -17495,8 +17497,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:17.109264+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:02.442871+00:00"
     },
     {
       "id": "hf-page-901b9db26f0cf3",
@@ -17568,8 +17570,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:21.058350+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:03.243204+00:00"
     },
     {
       "id": "hf-page-8fc318a982f332",
@@ -17642,8 +17644,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:21.058387+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:03.345222+00:00"
     },
     {
       "id": "hf-page-4f62b12b97f60d",
@@ -17706,8 +17708,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:24.087072+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:04.164523+00:00"
     },
     {
       "id": "hf-page-e5a44c1be11d89",
@@ -17750,8 +17752,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:24.087104+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:04.211823+00:00"
     },
     {
       "id": "ah-auto-r-r1198663",
@@ -18863,8 +18865,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:02.712978+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:57.915220+00:00"
     },
     {
       "id": "hf-page-ad1aebadbe2c96",
@@ -18945,8 +18947,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:02.944429+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:57.915255+00:00"
     },
     {
       "id": "hf-page-673b0d1931744f",
@@ -19019,8 +19021,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:05.273770+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:58.772881+00:00"
     },
     {
       "id": "hf-page-856e5190e6b0d0",
@@ -19093,8 +19095,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:05.696615+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:58.772913+00:00"
     },
     {
       "id": "ah-sitemap-r-r1197098",
@@ -19640,8 +19642,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:08.436761+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:59.598914+00:00"
     },
     {
       "id": "hf-page-feeb977b308945",
@@ -19704,8 +19706,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:08.436789+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:58:59.764498+00:00"
     },
     {
       "id": "hf-page-f3958390bafa3a",
@@ -19758,8 +19760,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:11.860567+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:00.693018+00:00"
     },
     {
       "id": "hf-page-61258a1e86e222",
@@ -19820,8 +19822,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-04",
-      "ingredient_checked_at": "2026-11-04T14:56:11.860597+00:00"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:00.693046+00:00"
     },
     {
       "id": "ah-sitemap-r-r1194979",
@@ -22400,7 +22402,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-05"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:08.195916+00:00"
     },
     {
       "id": "hf-page-e67900c19cd47c",
@@ -22510,7 +22513,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-05"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:08.195946+00:00"
     },
     {
       "id": "hf-page-67d7152a71fa93",
@@ -22573,7 +22577,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-05"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:09.015921+00:00"
     },
     {
       "id": "hf-page-2960a03ac3ac56",
@@ -22645,7 +22650,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-05"
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:09.069719+00:00"
     },
     {
       "id": "hf-page-a35d19e7f676ed",
@@ -22709,7 +22715,3726 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:10.083871+00:00"
+    },
+    {
+      "id": "ah-sitemap-r-r1191924",
+      "title": "Chinese rijstschotel met broccoli en gebakken ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1191924/chinese-rijstschotel-met-broccoli-en-gebakken-ei",
+      "families": [
+        "broccoli",
+        "eieren"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
       "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r352634",
+      "title": "Gegrilde kipfilet met griekse yoghurt en paprika",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R352634/gegrilde-kipfilet-met-griekse-yoghurt-en-paprika",
+      "families": [
+        "kip",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1190662",
+      "title": "Indiase korma met ei spinazie en bloemkoolrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190662/indiase-korma-met-ei-spinazie-en-bloemkoolrijst",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r810326",
+      "title": "Hollandse salade met ei en tomaat",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R810326/hollandse-salade-met-ei-en-tomaat",
+      "families": [
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r554076",
+      "title": "Gebakken rijst met gerookte zalm en broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R554076/gebakken-rijst-met-gerookte-zalm-en-broccoli",
+      "families": [
+        "broccoli",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1194800",
+      "title": "Volkorenpasta met zalm en tomaat uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194800/volkorenpasta-met-zalm-en-tomaat-uit-de-oven",
+      "families": [
+        "tomaten",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1198637",
+      "title": "Pastasalade pesto met zalm spinazie en tuinerwten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198637/pastasalade-pesto-met-zalm-spinazie-en-tuinerwten",
+      "families": [
+        "spinazie",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1186687",
+      "title": "Zalm uit de oven met krieltjes spinazie en peultjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186687/zalm-uit-de-oven-met-krieltjes-spinazie-en-peultjes",
+      "families": [
+        "aardappelen",
+        "spinazie",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1194088",
+      "title": "Lauwwarme soba noedels met sugarsnaps paprika en zalm",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194088/lauwwarme-soba-noedels-met-sugarsnaps-paprika-en-zalm",
+      "families": [
+        "paprika",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1188270",
+      "title": "Courgettegratin uit de oven met verse zalm en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1188270/courgettegratin-uit-de-oven-met-verse-zalm-en-spinazie",
+      "families": [
+        "spinazie",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1195905",
+      "title": "Ontbijtbowl met spinazie gerookte zalm dille avocadospread en croutons",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195905/ontbijtbowl-met-spinazie-gerookte-zalm-dille-avocadospread-en-croutons",
+      "families": [
+        "spinazie",
+        "zalm"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1196403",
+      "title": "Romige zoete aardappelschotel met tonijn prei en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196403/romige-zoete-aardappelschotel-met-tonijn-prei-en-spinazie",
+      "families": [
+        "prei",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1193514",
+      "title": "Vega vissticks met aardappel erwtenpuree en gestoofde prei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193514/vega-vissticks-met-aardappel-erwtenpuree-en-gestoofde-prei",
+      "families": [
+        "aardappelen",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1194775",
+      "title": "Gezonde ovenschotel met kip champignonsaus prei en aardappelpuree",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194775/gezonde-ovenschotel-met-kip-champignonsaus-prei-en-aardappelpuree",
+      "families": [
+        "kip",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1186720",
+      "title": "Alain carons kip met mosterd gembersaus pilav rijst en gestoofde prei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1186720/alain-carons-kip-met-mosterd-gembersaus-pilav-rijst-en-gestoofde-prei",
+      "families": [
+        "kip",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202118",
+      "title": "Gevulde gehaktbal met gestoofde prei aardappel en geroosterde broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202118/gevulde-gehaktbal-met-gestoofde-prei-aardappel-en-geroosterde-broccoli",
+      "families": [
+        "aardappelen",
+        "broccoli",
+        "prei"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r443692",
+      "title": "Pasta met kip en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R443692/pasta-met-kip-en-spinazie",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202307",
+      "title": "Pasta met spinazie en kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202307/pasta-met-spinazie-en-kip",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1088564",
+      "title": "Spinazie couscoussalade met ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1088564/spinazie-couscoussalade-met-ei",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r377992",
+      "title": "Stamppot rauwe spinazie met kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R377992/stamppot-rauwe-spinazie-met-kip",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r545318",
+      "title": "Roergebakken spinazie met wortel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R545318/roergebakken-spinazie-met-wortel",
+      "families": [
+        "spinazie",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1195125",
+      "title": "Noedelsoep met kip spinazie en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195125/noedelsoep-met-kip-spinazie-en-ei",
+      "families": [
+        "eieren",
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "noedels",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1197071",
+      "title": "Broodje met gebakken spinazie en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197071/broodje-met-gebakken-spinazie-en-ei",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1199321",
+      "title": "Gevulde paprika s spinazie tonijn en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199321/gevulde-paprika-s-spinazie-tonijn-en-ei",
+      "families": [
+        "eieren",
+        "paprika",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1194232",
+      "title": "Vega teriyaki kip met spinazie en rijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194232/vega-teriyaki-kip-met-spinazie-en-rijst",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r7550",
+      "title": "Gevulde paprika s met spinazie kaasrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R7550/gevulde-paprika-s-met-spinazie-kaasrijst",
+      "families": [
+        "paprika",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "rijst",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1190534",
+      "title": "Pasta pesto met spinazie en krokante kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190534/pasta-pesto-met-spinazie-en-krokante-kip",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r721610",
+      "title": "Spinazie met spek en aardappel uit de oven",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R721610/spinazie-met-spek-en-aardappel-uit-de-oven",
+      "families": [
+        "aardappelen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "oven",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r476630",
+      "title": "Gegrilde tartaar met krieltjes en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R476630/gegrilde-tartaar-met-krieltjes-en-spinazie",
+      "families": [
+        "aardappelen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1190267",
+      "title": "Toast met pesto roergebakken spinazie en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190267/toast-met-pesto-roergebakken-spinazie-en-ei",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r527656",
+      "title": "Risotto met geroosterde paprika en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R527656/risotto-met-geroosterde-paprika-en-spinazie",
+      "families": [
+        "paprika",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1194854",
+      "title": "Kipburger met gebakken aardappel en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1194854/kipburger-met-gebakken-aardappel-en-spinazie",
+      "families": [
+        "aardappelen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1195286",
+      "title": "Snelle risotto met spinazie en cherrytomaten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195286/snelle-risotto-met-spinazie-en-cherrytomaten",
+      "families": [
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1198531",
+      "title": "Curry met krieltjes ei tuinerwten en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1198531/curry-met-krieltjes-ei-tuinerwten-en-spinazie",
+      "families": [
+        "aardappelen",
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r644180",
+      "title": "Tagliatelleschotel met spinazie en cherrytomaten",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R644180/tagliatelleschotel-met-spinazie-en-cherrytomaten",
+      "families": [
+        "spinazie",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1200841",
+      "title": "Gevulde kip met romige spinazie en aardappelpuree",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200841/gevulde-kip-met-romige-spinazie-en-aardappelpuree",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1197089",
+      "title": "Kipburger met gebakken aardappelen en romige spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197089/kipburger-met-gebakken-aardappelen-en-romige-spinazie",
+      "families": [
+        "aardappelen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gebakken",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1190384",
+      "title": "Spinaziesalade met spek ei en spinazie yoghurtdressing",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190384/spinaziesalade-met-spek-ei-en-spinazie-yoghurtdressing",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1193431",
+      "title": "Kikkererwtenbowl met zoete aardappel quinoa en spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1193431/kikkererwtenbowl-met-zoete-aardappel-quinoa-en-spinazie",
+      "families": [
+        "aardappelen",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202189",
+      "title": "Gepofte aardappel met tartaar paprika en gestoofde spinazie",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202189/gepofte-aardappel-met-tartaar-paprika-en-gestoofde-spinazie",
+      "families": [
+        "aardappelen",
+        "paprika",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202411",
+      "title": "Spinazie cassavestamppot met masala en gerookte kip van hans",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202411/spinazie-cassavestamppot-met-masala-en-gerookte-kip-van-hans",
+      "families": [
+        "kip",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1201406",
+      "title": "Risotto met zwarte knoflook spinazie shiitake en gepocheerd ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1201406/risotto-met-zwarte-knoflook-spinazie-shiitake-en-gepocheerd-ei",
+      "families": [
+        "eieren",
+        "spinazie"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "risotto",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1196401",
+      "title": "Kip aardappelstoof met kerrie tomatenblokjes sperziebonen en rotivellen",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196401/kip-aardappelstoof-met-kerrie-tomatenblokjes-sperziebonen-en-rotivellen",
+      "families": [
+        "kip",
+        "sperziebonen"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stoof",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r644184",
+      "title": "Curry van kip en wortel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R644184/curry-van-kip-en-wortel",
+      "families": [
+        "kip",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1192866",
+      "title": "Tajine met zoete aardappel wortel en dadels",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1192866/tajine-met-zoete-aardappel-wortel-en-dadels",
+      "families": [
+        "aardappelen",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "tajine",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1196197",
+      "title": "Curry van aardappel en wortel met volkoren flatbread",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1196197/curry-van-aardappel-en-wortel-met-volkoren-flatbread",
+      "families": [
+        "aardappelen",
+        "wortel"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r387374",
+      "title": "Gevulde tomaten met ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R387374/gevulde-tomaten-met-ei",
+      "families": [
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r674492",
+      "title": "Ei paprika chorizoschotel",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R674492/ei-paprika-chorizoschotel",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "schotel",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1190391",
+      "title": "Rucolastamppot met paprika en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1190391/rucolastamppot-met-paprika-en-ei",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1200985",
+      "title": "Bagel met roomkaas gegrilde paprika en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1200985/bagel-met-roomkaas-gegrilde-paprika-en-ei",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202476",
+      "title": "Hartige yoghurtbowl met ei en paprika boter",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202476/hartige-yoghurtbowl-met-ei-en-paprika-boter",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "bowl",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1197190",
+      "title": "Courgettesalade met sojabonen paprika en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1197190/courgettesalade-met-sojabonen-paprika-en-ei",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1199327",
+      "title": "Sperziebonensalade met tomaat olijven spekjes en ei",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1199327/sperziebonensalade-met-tomaat-olijven-spekjes-en-ei",
+      "families": [
+        "eieren",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "salade",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1192553",
+      "title": "Gevulde portobello met gegrilde paprika ei en rauwe ham",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1192553/gevulde-portobello-met-gegrilde-paprika-ei-en-rauwe-ham",
+      "families": [
+        "eieren",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1191000",
+      "title": "Aziatische pastasalade met lichtpittige kip en broccoli",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1191000/aziatische-pastasalade-met-lichtpittige-kip-en-broccoli",
+      "families": [
+        "broccoli",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "pasta",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1195934",
+      "title": "Cashew tomatencurry met kip broccoli en zilvervliesrijst",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1195934/cashew-tomatencurry-met-kip-broccoli-en-zilvervliesrijst",
+      "families": [
+        "broccoli",
+        "kip"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r405076",
+      "title": "Gevulde paprika met kip",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R405076/gevulde-paprika-met-kip",
+      "families": [
+        "kip",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gevulde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r386342",
+      "title": "Rode curry met kipfilet en paprika",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R386342/rode-curry-met-kipfilet-en-paprika",
+      "families": [
+        "kip",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "curry",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r785822",
+      "title": "Fusilli met kip en gegrilde paprika",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R785822/fusilli-met-kip-en-gegrilde-paprika",
+      "families": [
+        "kip",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r438394",
+      "title": "Tortilla met gegrilde kip en paprika",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R438394/tortilla-met-gegrilde-kip-en-paprika",
+      "families": [
+        "kip",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "gegrilde",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r460616",
+      "title": "Kebab en gewokte paprika met krieltjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R460616/kebab-en-gewokte-paprika-met-krieltjes",
+      "families": [
+        "aardappelen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "wok",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r644174",
+      "title": "Gewokte runderreepjes met paprika aardappel en roti",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R644174/gewokte-runderreepjes-met-paprika-aardappel-en-roti",
+      "families": [
+        "aardappelen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "wok",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r629790",
+      "title": "Haaskarbonade met geroerbakte paprika s en krieltjes",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R629790/haaskarbonade-met-geroerbakte-paprika-s-en-krieltjes",
+      "families": [
+        "aardappelen",
+        "paprika"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "roerbak",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "ah-sitemap-r-r1202517",
+      "title": "Herfst stamppot met tomaat paprika en bonen van kindergarden",
+      "source": "Allerhande",
+      "url": "https://www.ah.nl/allerhande/recept/R-R1202517/herfst-stamppot-met-tomaat-paprika-en-bonen-van-kindergarden",
+      "families": [
+        "paprika",
+        "tomaten"
+      ],
+      "minutes": null,
+      "servings": null,
+      "course": "niet_gecontroleerd",
+      "method": "stamppot",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_sitemap_title_only",
+      "last_checked": "2026-11-05"
+    },
+    {
+      "id": "hf-page-271c877582d085",
+      "source": "HelloFresh",
+      "title": "Jokie's Chinese inspiratie: kleurrijke kipnoedels",
+      "url": "https://www.hellofresh.nl/recipes/jokies-chinese-inspiratie-kleurrijke-kipnoedels-met-courgette-65dc43eced8dba64009384ad",
+      "families": [
+        "courgette",
+        "noedels",
+        "other_kip"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "noedels",
+        "other_kip"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "other_kip",
+          "group": "kip",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "noedels",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:10.083901+00:00"
+    },
+    {
+      "id": "hf-page-370bf09d24a707",
+      "source": "HelloFresh",
+      "title": "Griekse stijl pita's met vis en frisse komkommeryoghurt",
+      "url": "https://www.hellofresh.nl/recipes/quick-25-min-and-calorie-smart-white-fish-try-bread-6756ce7d99d409f3ec8a2aa5",
+      "families": [
+        "komkommer",
+        "tomaten",
+        "witvis",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "komkommer",
+        "tomaten",
+        "witvis",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "witvis",
+          "group": "vis",
+          "variant": "pangasius",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Grieks",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:10.796090+00:00"
+    },
+    {
+      "id": "hf-page-194ced3c967629",
+      "source": "HelloFresh",
+      "title": "Pompoen-kikkererwtensoep met bruine ciabatta",
+      "url": "https://www.hellofresh.nl/recipes/pompoen-kikkererwtensoep-met-bruine-ciabatta-5630d025fd2cb958618b4567",
+      "families": [
+        "kikkererwten",
+        "pompoen",
+        "ui"
+      ],
+      "ingredient_families": [
+        "kikkererwten",
+        "pompoen",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "pompoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "kikkererwten",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "soep",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": true,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:10.835558+00:00"
+    },
+    {
+      "id": "hf-page-1f5b97eb22058f",
+      "source": "HelloFresh",
+      "title": "Indonesische curry met lamsgehakt",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-curry-met-lamsgehakt-58c27a6dc9fd086b6b0769d2",
+      "families": [
+        "aardappelen",
+        "kip",
+        "linzen",
+        "other_vlees",
+        "paksoi",
+        "tomaten",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "linzen",
+        "other_vlees",
+        "paksoi",
+        "tomaten",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "puree"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "linzen",
+          "group": "vega",
+          "variant": "unspecified",
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 2,
+      "has_legumes": true,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:11.564236+00:00"
+    },
+    {
+      "id": "hf-page-a49e185663d307",
+      "source": "HelloFresh",
+      "title": "Provençaals gehaktbrood",
+      "url": "https://www.hellofresh.nl/recipes/provencaals-gehaktbrood-6363fedfe9d253e3010c88d6",
+      "families": [
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "dried",
+          "quantity": 35,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "oven",
+      "cuisine": "Mediterranean",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:11.609960+00:00"
+    },
+    {
+      "id": "hf-page-3b3f26fdf1f875",
+      "source": "HelloFresh",
+      "title": "Japans geïnspireerde miso-aubergine met spiegelei",
+      "url": "https://www.hellofresh.nl/recipes/japans-geinspireerde-miso-aubergine-met-spiegelei-6440fb0efe894e553312462e",
+      "families": [
+        "aubergine",
+        "eieren",
+        "komkommer",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "eieren",
+        "komkommer",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.667,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Japans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:12.395735+00:00"
+    },
+    {
+      "id": "hf-page-560135e41261f3",
+      "source": "HelloFresh",
+      "title": "Rijke pasta met Mexicaanse twist",
+      "url": "https://www.hellofresh.nl/recipes/rijke-pasta-met-mexicaanse-twist-63c7cdbc6ab9cacaa3736f66",
+      "families": [
+        "other_vlees",
+        "paprika",
+        "pasta",
+        "ui"
+      ],
+      "ingredient_families": [
+        "other_vlees",
+        "paprika",
+        "pasta",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Mexicaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:12.395764+00:00"
+    },
+    {
+      "id": "hf-page-1246a23a307201",
+      "source": "HelloFresh",
+      "title": "Fusion penne met rundergehakt en peterselie-yoghurtsaus",
+      "url": "https://www.hellofresh.nl/recipes/fussili-with-beef-merguez-and-eggplant-671119bae7611b708ed65f7c",
+      "families": [
+        "aubergine",
+        "gehakt",
+        "other_vlees",
+        "pasta",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "other_vlees",
+        "pasta",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Italiaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:13.164405+00:00"
+    },
+    {
+      "id": "hf-page-8e83c482d89ca4",
+      "source": "HelloFresh",
+      "title": "Bulgur met Hollandse boerenkool, feta en knapperige amandelen",
+      "url": "https://www.hellofresh.nl/recipes/bulgur-met-hollandse-boerenkool-feta-en-knapperige-amandelen-547f2fabff604dc31f8b4569",
+      "families": [
+        "boerenkool"
+      ],
+      "ingredient_families": [],
+      "ingredient_profiles": [],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "unavailable",
+      "minutes": 35,
+      "servings": 2,
+      "course": "niet_gecontroleerd",
+      "method": "anders",
+      "cuisine": null,
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:13.164458+00:00"
+    },
+    {
+      "id": "hf-page-9bd34e74a4b5cf",
+      "source": "HelloFresh",
+      "title": "Spaanse gehaktballetjes met zoete aardappel",
+      "url": "https://www.hellofresh.nl/recipes/spaanse-gehaktballetjes-met-zoete-aardappel-65afa704b1758b5c6f892537",
+      "families": [
+        "aardappelen",
+        "broccoli",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "broccoli",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "broccoli",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 360,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Fusion",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:13.953056+00:00"
+    },
+    {
+      "id": "hf-page-8d58bb31c07d2c",
+      "source": "HelloFresh",
+      "title": "Surinaamse stijl roerbak met tempeh",
+      "url": "https://www.hellofresh.nl/recipes/surinaamse-stijl-roerbak-met-tempeh-648c4ce325862a444bdb6366",
+      "families": [
+        "aardappelen",
+        "paprika",
+        "sperziebonen",
+        "tofu",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "paprika",
+        "sperziebonen",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "sperziebonen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "roerbak",
+      "cuisine": "Sydamerikansk",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:14.000903+00:00"
+    },
+    {
+      "id": "hf-page-7c6c41bebe02fd",
+      "source": "HelloFresh",
+      "title": "Turkse soep met ras el hanout-kip, parelcouscous, pompoen, courgette en rozemarijn",
+      "url": "https://www.hellofresh.nl/recipes/turkse-soep-met-ras-el-hanout-kip-parelcouscous-pompoen-courgette-en-rozemarijn-590c4a73c6243b61796b14b2",
+      "families": [
+        "courgette",
+        "kip",
+        "pompoen",
+        "ui"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "soep",
+      "cuisine": "Turks",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:14.716090+00:00"
+    },
+    {
+      "id": "hf-page-957396756cd8e9",
+      "source": "HelloFresh",
+      "title": "Vietnamese stijl gehakt met rijst",
+      "url": "https://www.hellofresh.nl/recipes/vietnamese-stijl-gehakt-met-rijst-63c7d40f788f6ee4ca33d857",
+      "families": [
+        "gehakt",
+        "komkommer",
+        "limoen",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_families": [
+        "komkommer",
+        "limoen",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Vietnamees",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:14.767031+00:00"
+    },
+    {
+      "id": "hf-page-12de1aa668effe",
+      "source": "HelloFresh",
+      "title": "Stamppot met Chinese kool en kokosmelk",
+      "url": "https://www.hellofresh.nl/recipes/stamppot-met-chinese-kool-en-kokosmelk-614b4658e6720c43bc188452",
+      "families": [
+        "aardappelen",
+        "eieren"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "eieren"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stamppot",
+      "cuisine": "Fusion",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:15.545614+00:00"
+    },
+    {
+      "id": "hf-page-3ba564ebdedf47",
+      "source": "HelloFresh",
+      "title": "Indonesische smoor terong met rijst, ei, zoete tomaat en zachte aubergine",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-smoor-terong-met-rijst-ei-zoete-tomaat-en-zachte-aubergine-592174eb51d3f14a96030343",
+      "families": [
+        "aubergine",
+        "eieren",
+        "rijst",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "eieren",
+        "rijst",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:15.545641+00:00"
+    },
+    {
+      "id": "hf-page-0009f213caed81",
+      "source": "HelloFresh",
+      "title": "Gekonfijte kip met romige rijst op Italiaanse wijze",
+      "url": "https://www.hellofresh.nl/recipes/gekonfijte-kip-met-romige-rijst-op-italiaanse-wijze-5c4883cbc445fa2f167501a3",
+      "families": [
+        "courgette",
+        "kip",
+        "other_vlees",
+        "ui"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "kip",
+        "other_vlees",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 40,
+          "unit": "g"
+        },
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "thigh",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Italiaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:16.382084+00:00"
+    },
+    {
+      "id": "hf-page-821f723ca3c2f1",
+      "source": "HelloFresh",
+      "title": "Gemarineerde varkenshaas op z'n Japans met paddenstoelen",
+      "url": "https://www.hellofresh.nl/recipes/gemarineerde-varkenshaas-op-zn-japans-met-paddenstoelen-63529fc2048677e5df0aa5eb",
+      "families": [
+        "aardappelen",
+        "champignons",
+        "komkommer",
+        "varkenshaas"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "champignons",
+        "komkommer",
+        "varkenshaas"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "varkenshaas",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 600,
+          "unit": "g"
+        },
+        {
+          "family": "champignons",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 350,
+          "unit": "g"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 50,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Japans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:16.382114+00:00"
+    },
+    {
+      "id": "hf-page-8a1a611bac63ba",
+      "source": "HelloFresh",
+      "title": "Pittig spiegelei in kimchisaus",
+      "url": "https://www.hellofresh.nl/recipes/pittig-spiegelei-in-kimchisaus-639b077ac24712af450d600f",
+      "families": [
+        "eieren",
+        "rijst"
+      ],
+      "ingredient_families": [
+        "eieren",
+        "rijst"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 4,
+          "unit": "stuk"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Koreaans",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:17.101904+00:00"
+    },
+    {
+      "id": "hf-page-f63d71b577e411",
+      "source": "HelloFresh",
+      "title": "Mexicaanse stijl biefstukreepjes met geroosterde zoete-aardappelbowl",
+      "url": "https://www.hellofresh.nl/recipes/mexican-steak-salad-65c4986d770ae9faa079dfa3",
+      "families": [
+        "aardappelen",
+        "biefstuk",
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "biefstuk",
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "biefstuk",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 450,
+          "unit": "g"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "bowl",
+      "cuisine": "Mexicaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:17.158603+00:00"
+    },
+    {
+      "id": "hf-page-ea67d87b2004b9",
+      "source": "HelloFresh",
+      "title": "Aubergine met Midden-Oosterse kruiden en bulgur",
+      "url": "https://www.hellofresh.nl/recipes/aubergine-met-midden-oosterse-kruiden-en-bulgur-67dc224040b689c29045a049",
+      "families": [
+        "aubergine",
+        "citroen",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "citroen",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Middle Eastern",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:17.990092+00:00"
+    },
+    {
+      "id": "hf-page-8ca0495c2d1a2a",
+      "source": "HelloFresh",
+      "title": "Hollandse hutspot met oude kaas en rundergehaktballetjes",
+      "url": "https://www.hellofresh.nl/recipes/hollandse-hutspot-met-oude-kaas-en-rundergehaktballetjes-581218dc4cdfb564b7032942",
+      "families": [
+        "aardappelen",
+        "gehakt",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 600,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": null,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Europese",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:17.990120+00:00"
+    },
+    {
+      "id": "hf-page-cf5578eb6db9f7",
+      "source": "HelloFresh",
+      "title": "Supersimpele Spaanse hamburger",
+      "url": "https://www.hellofresh.nl/recipes/supersimpele-spaanse-hamburger-61cdc6b59d495c1e481559c2",
+      "families": [
+        "other_vlees",
+        "paprika",
+        "tomaten"
+      ],
+      "ingredient_families": [
+        "other_vlees",
+        "paprika",
+        "tomaten"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 250,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Spaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:18.774296+00:00"
+    },
+    {
+      "id": "hf-page-6a56d69853a2af",
+      "source": "HelloFresh",
+      "title": "Heldere Thaise currysoep met rammenas en gebakken vis",
+      "url": "https://www.hellofresh.nl/recipes/heldere-thaise-currysoep-met-rammenas-en-gebakken-vis-57ebcbbc4cdfb5622e521812",
+      "families": [
+        "noedels",
+        "venkel"
+      ],
+      "ingredient_families": [
+        "noedels",
+        "venkel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "venkel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:18.774324+00:00"
+    },
+    {
+      "id": "hf-page-bab751dceec6a0",
+      "source": "HelloFresh",
+      "title": "Hollandse hutspot met bataat, scholfilet en Turkse yoghurt",
+      "url": "https://www.hellofresh.nl/recipes/hollandse-hutspot-met-bataat-scholfilet-en-turkse-yoghurt-5646066bf8b25e391c8b4568",
+      "families": [
+        "aardappelen",
+        "ui",
+        "witvis",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "ui",
+        "witvis"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "witvis",
+          "group": "vis",
+          "variant": "plaice",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Europese",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:19.578890+00:00"
+    },
+    {
+      "id": "hf-page-77d49105513de1",
+      "source": "HelloFresh",
+      "title": "Indonesische speklapreepjes in zoete saus",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-speklapreepjes-in-zoete-saus-5d1383fe5a85a80009492982",
+      "families": [
+        "pindakaas",
+        "rijst",
+        "tomaten"
+      ],
+      "ingredient_families": [
+        "pindakaas",
+        "rijst",
+        "tomaten"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 250,
+          "unit": "g"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 170,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        },
+        {
+          "family": "pindakaas",
+          "group": null,
+          "variant": null,
+          "form": "plain"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:19.578918+00:00"
+    },
+    {
+      "id": "hf-page-2bc5e95278d4bd",
+      "source": "HelloFresh",
+      "title": "Snelle pasta met gehakt en tomatentapenade",
+      "url": "https://www.hellofresh.nl/recipes/snelle-pasta-met-gehakt-en-tomatentapenade-5fd0c5bb94faca78d47ed5bc",
+      "families": [
+        "gehakt",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 125,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Italiaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:20.295851+00:00"
+    },
+    {
+      "id": "hf-page-bfb8df233cf04c",
+      "source": "HelloFresh",
+      "title": "Koreaanse stijl gefrituurde kip met 'swicy' saus",
+      "url": "https://www.hellofresh.nl/recipes/korean-fried-chicken-66c87bb502090b0cfbd293c6",
+      "families": [
+        "kip",
+        "komkommer",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_families": [
+        "kip",
+        "komkommer",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "breast",
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Koreaans",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:20.358917+00:00"
+    },
+    {
+      "id": "hf-page-9cc9da67509615",
+      "source": "HelloFresh",
+      "title": "Snelle pasta met Mexicaanse twist",
+      "url": "https://www.hellofresh.nl/recipes/snelle-pasta-met-mexicaanse-twist-5e0e0ab59bb9d13b687a6a07",
+      "families": [
+        "paprika",
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "paprika",
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Fusion",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:21.129043+00:00"
+    },
+    {
+      "id": "hf-page-3518020cc10048",
+      "source": "HelloFresh",
+      "title": "Bulgurbowl met kip en frisse yoghurtsaus",
+      "url": "https://www.hellofresh.nl/recipes/bulgurbowl-met-veggie-kip-en-yoghurtsaus-6a0475acb5c58db9dbcf625a",
+      "families": [
+        "courgette",
+        "kip",
+        "limoen",
+        "tomaten",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "kip",
+        "limoen",
+        "tomaten",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "thigh",
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "bowl",
+      "cuisine": "Afrikaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:21.181155+00:00"
+    },
+    {
+      "id": "hf-page-d11f57bc2a4a1a",
+      "source": "HelloFresh",
+      "title": "Hollandse boerenkool-peterseliewortelstamppot met worst",
+      "url": "https://www.hellofresh.nl/recipes/hollandse-boerenkool-peterseliewortelstamppot-met-worst-58384de79df18140131018d2",
+      "families": [
+        "aardappelen",
+        "boerenkool",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "boerenkool",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "boerenkool",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stamppot",
+      "cuisine": "Traditional",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:21.944917+00:00"
+    },
+    {
+      "id": "hf-page-97e81dd34aaae4",
+      "source": "HelloFresh",
+      "title": "Spaanse stijl linguine met zeevruchten en vis",
+      "url": "https://www.hellofresh.nl/recipes/spaanse-linguine-met-garnalen-en-vismelange-6827109197a36a9824b3e49e",
+      "families": [
+        "citroen",
+        "garnalen",
+        "paprika",
+        "tomaten",
+        "ui",
+        "zalm"
+      ],
+      "ingredient_families": [
+        "citroen",
+        "garnalen",
+        "paprika",
+        "tomaten",
+        "ui",
+        "zalm"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "garnalen",
+          "group": "vis",
+          "variant": null,
+          "form": "plain",
+          "quantity": 120,
+          "unit": "g"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "zalm",
+          "group": "vis",
+          "variant": null,
+          "form": "plain",
+          "quantity": 260,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Spaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:21.944947+00:00"
+    },
+    {
+      "id": "hf-page-305f3a3dcf5425",
+      "source": "HelloFresh",
+      "title": "Feestelijke kabeljauwfilet uit de oven in Mediterraanse saus",
+      "url": "https://www.hellofresh.nl/recipes/feestelijke-kabeljauwfilet-uit-de-oven-in-mediterraanse-saus-62d93c5c64cf2227b000b326",
+      "families": [
+        "aardappelen",
+        "citroen",
+        "feta",
+        "komkommer",
+        "paprika",
+        "tomaten",
+        "ui",
+        "witvis",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "citroen",
+        "feta",
+        "komkommer",
+        "paprika",
+        "tomaten",
+        "ui",
+        "witvis",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "witvis",
+          "group": "vis",
+          "variant": "cod",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "feta",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "oven",
+      "cuisine": "Grieks",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:22.752841+00:00"
+    },
+    {
+      "id": "hf-page-d25e91d7aa0f6c",
+      "source": "HelloFresh",
+      "title": "Noord-Indiase stijl masala-pasta met veggie gehakt en koriander",
+      "url": "https://www.hellofresh.nl/recipes/noord-indiase-stijl-masala-pasta-met-veggie-gehakt-en-koriander-6a16d7667200e2f203e8d767",
+      "families": [
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Indiase",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:22.752872+00:00"
+    },
+    {
+      "id": "hf-page-74241d9fd280c4",
+      "source": "HelloFresh",
+      "title": "Indonesische currry-noedelsoep",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-currry-noedelsoep-5b14e2ad30006c0cf27b44e3",
+      "families": [
+        "broccoli",
+        "noedels"
+      ],
+      "ingredient_families": [
+        "broccoli",
+        "noedels"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "broccoli",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        },
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "noedels",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:23.515267+00:00"
+    },
+    {
+      "id": "hf-page-661cbf42a1774a",
+      "source": "HelloFresh",
+      "title": "Italiaanse stijl tortellonisoep met spinazie",
+      "url": "https://www.hellofresh.nl/recipes/veggie-ravioli-soup-6585b15ef9c7ff8689946aa5",
+      "families": [
+        "paprika",
+        "spinazie",
+        "tomaten",
+        "ui",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "paprika",
+        "spinazie",
+        "tomaten",
+        "ui",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "soep",
+      "cuisine": "Italiaans",
+      "vegetable_families": 4,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:23.558726+00:00"
+    },
+    {
+      "id": "hf-page-b36822f6521d6b",
+      "source": "HelloFresh",
+      "title": "Koreaans gekruide kip met gegrilde groenten",
+      "url": "https://www.hellofresh.nl/recipes/koreaans-gekruide-kip-met-gegrilde-groenten-620e5aa563146a0ffb38f8b5",
+      "families": [
+        "aardappelen",
+        "aubergine",
+        "courgette",
+        "kip",
+        "paprika",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "aubergine",
+        "courgette",
+        "kip",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "thigh",
+          "form": "plain",
+          "quantity": 4,
+          "unit": "stuk"
+        },
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 400,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 45,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Koreaans",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:24.269043+00:00"
+    },
+    {
+      "id": "hf-page-5e96b2b4ec5fa0",
+      "source": "HelloFresh",
+      "title": "Pulled-chickenbowl met avocadosaus",
+      "url": "https://www.hellofresh.nl/recipes/superconvenience_10min_chicken_salade-662f4a217ceb4fe1685f0d19",
+      "families": [
+        "aardappelen",
+        "limoen"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "limoen"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 10,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "bowl",
+      "cuisine": "Mexicaans",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:24.316237+00:00"
+    },
+    {
+      "id": "hf-page-c8175e9e493cc5",
+      "source": "HelloFresh",
+      "title": "Hollandse salade met gerookte forel",
+      "url": "https://www.hellofresh.nl/recipes/hollandse-salade-met-gerookte-forel-56c6e3fb4dab710d188b4567",
+      "families": [
+        "aardappelen",
+        "other_vis",
+        "sperziebonen"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "other_vis",
+        "sperziebonen"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "sperziebonen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "other_vis",
+          "group": "vis",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 140,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "salade",
+      "cuisine": "Europese",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:25.092377+00:00"
+    },
+    {
+      "id": "hf-page-48148a1b29eca0",
+      "source": "HelloFresh",
+      "title": "Geitenkaasomelet met gebakken aardappelen",
+      "url": "https://www.hellofresh.nl/recipes/geitenkaasomelet-met-gebakken-aardappelen-65d4c6c12fd93ee7e59eb03f",
+      "families": [
+        "aardappelen",
+        "eieren",
+        "paprika"
+      ],
+      "ingredient_families": [
+        "eieren",
+        "paprika"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 4,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Spaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:25.092405+00:00"
+    },
+    {
+      "id": "hf-page-e19fffa06c1e86",
+      "source": "HelloFresh",
+      "title": "Indonesische viscurry met venkel en sperziebonen",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-viscurry-met-venkel-en-sperziebonen-57591bdcfd2cb947768b4567",
+      "families": [
+        "kip",
+        "rijst",
+        "sperziebonen",
+        "venkel"
+      ],
+      "ingredient_families": [
+        "rijst",
+        "sperziebonen",
+        "venkel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "venkel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "sperziebonen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 170,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:25.918704+00:00"
+    },
+    {
+      "id": "hf-page-6050e2fa4996c4",
+      "source": "HelloFresh",
+      "title": "Italiaanse soep met gepocheerde kipfilet",
+      "url": "https://www.hellofresh.nl/recipes/italiaanse-soep-met-gepocheerde-kipfilet-63e0e4bc84fc3c82a5383be6",
+      "families": [
+        "kip",
+        "spinazie",
+        "ui"
+      ],
+      "ingredient_families": [
+        "kip",
+        "spinazie",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "breast",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "spinazie",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 55,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "soep",
+      "cuisine": "Italiaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:25.918731+00:00"
+    },
+    {
+      "id": "hf-page-acab7110e3dc19",
+      "source": "HelloFresh",
+      "title": "Snelle pasta met vegetarisch gehakt",
+      "url": "https://www.hellofresh.nl/recipes/snelle-pasta-met-vegetarisch-gehakt-63c7d25800ace46356b3e6b4",
+      "families": [
+        "courgette",
+        "pasta",
+        "ui",
+        "vega_gehakt"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "pasta",
+        "ui",
+        "vega_gehakt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "vega_gehakt",
+          "group": "vega",
+          "variant": "gehakt",
+          "form": "substitute",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Mexicaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:26.719755+00:00"
+    },
+    {
+      "id": "hf-page-5b813b27fa9bbe",
+      "source": "HelloFresh",
+      "title": "Indonesische stijl satésausfrietjes met kipgehakt",
+      "url": "https://www.hellofresh.nl/recipes/indonesische-stijl-satesausfrietjes-met-kipgehakt-63c7d43200ace46356b3eba3",
+      "families": [
+        "limoen",
+        "other_kip"
+      ],
+      "ingredient_families": [
+        "limoen",
+        "other_kip"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "other_kip",
+          "group": "kip",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Indonesisch",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-05",
+      "ingredient_checked_at": "2026-11-05T22:59:26.719784+00:00"
     }
   ]
 }
