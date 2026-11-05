@@ -101,6 +101,15 @@ const start=base.endsWith('/')?base:base+'/';
    assert.doesNotMatch(text,/Honig Bakplaat Mix|Jumbo Gevulde Eieren|Maza Hoemoes Paprika|Jumbo Champignons Knoflook/);
    assert.ok(await card.locator('.publisher-match a[href^="https://"]').count()>=2);
   }
+  assert.ok(await page.locator('#exclude-prei').isChecked(),'Leek exclusion defaults on');
+  await page.locator('#exclude-prei').uncheck();
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('bm_recipe_preferences')).excludePrei),false);
+  await page.locator('#exclude-prei').check();
+  const cuisines=await page.locator('#cuisine-filter option').evaluateAll(xs=>xs.filter(x=>!['alle','onbekend'].includes(x.value)).map(x=>({value:x.value,label:x.textContent})));
+  assert.ok(cuisines.length>=20,'Discover a broad range of kitchens');
+  await page.locator('#cuisine-filter').selectOption('italiaans');
+  for(const card of await publisherCards.all())assert.match(await card.locator('.recipe-info').innerText(),/Italiaans/);
+  await page.locator('#cuisine-filter').selectOption('alle');
   await page.locator('#basis-filter').selectOption('main');
   for(const card of await publisherCards.all())assert.match(await card.innerText(),/eiwitbasis in actie/);
   await page.locator('#basis-filter').selectOption('all');

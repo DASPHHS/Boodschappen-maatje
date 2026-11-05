@@ -123,8 +123,23 @@ def to_record(url,meta,stamp,meal_hint=None):
     return {"id":"ah-auto-"+re.search(r"/(R-R\d+)/",url).group(1).lower() if re.search(r"/(R-R\d+)/",url) else "ah-auto-"+str(abs(hash(url))),
        "title":title,"source":"Allerhande","url":url.split("?")[0],"families":tags,"ingredient_families":tags,"ingredient_evidence":"publisher_recipe_schema","ingredient_profiles":typed,"ingredient_profile_version":PROFILE_VERSION,
        "minutes":total,"servings":servings,"course":category or "hoofdgerecht","meal_type":meal,
-       "method":method,"cuisine":meta.get("recipeCuisine") if isinstance(meta.get("recipeCuisine"),str) else None,"vegetable_families":has_veg,"has_legumes":has_legume,
+       "method":method,"cuisine":meta.get("recipeCuisine") if isinstance(meta.get("recipeCuisine"),(str,list)) else None,"vegetable_families":has_veg,"has_legumes":has_legume,
        "review_status":"publisher_metadata_verified","last_checked":stamp}
+def cuisine_bucket(text):
+    text=str(text or '').casefold()
+    groups={'italiaans':r'italia|italian','indiaas':r'india|indiase','indonesisch':r'indones','thais':r'thais|thai ','japans':r'japan','koreaans':r'korea','vietnamees':r'vietna','chinees':r'chine','mexicaans':r'mexic','surinaams':r'surina','marokkaans':r'marokk|morocc','turks':r'turk','grieks':r'griek|greek','spaans':r'spaan|spanish','frans':r'frans|french','midden-oosters':r'midden.oost|middle east','nederlands':r'nederlands|dutch|holland'}
+    return next((k for k,p in groups.items() if re.search(p,text)), 'onbekend')
+
+def cuisine_rotation(items,title):
+    buckets={}
+    for item in items:buckets.setdefault(cuisine_bucket(title(item)),[]).append(item)
+    order=sorted(buckets,key=lambda k:(k=='onbekend',k))
+    result=[]
+    while any(buckets.values()):
+        for k in order:
+            if buckets[k]:result.append(buckets[k].pop(0))
+    return result
+
 def candidates(sitemap,existing,today):
     root=ET.fromstring(sitemap)
     urls=[]
@@ -142,7 +157,8 @@ def candidates(sitemap,existing,today):
     # Deterministic per week; prioritize undercovered families without a fixed category bias
     existing_counts=Counter(key for r in existing.values() for key in r.get("families",[]))
     week=int(today.isocalendar().week)
-    return sorted(urls,key=lambda pair:(min(existing_counts[f] for f in pair[1]),(sum(ord(c) for c in pair[0])+week*137)%10007))
+    ranked=sorted(urls,key=lambda pair:(min(existing_counts[f] for f in pair[1]),(sum(ord(c) for c in pair[0])+week*137)%10007))
+    return cuisine_rotation(ranked,lambda x:x[0].rsplit('/',1)[-1].replace('-',' '))
 def sitemap_record(url,stamp):
     """Title-only discovery. URL is from AH's official sitemap, not a verified recipe."""
     match=re.fullmatch(r"https://www\.ah\.nl/allerhande/recept/(R-R\d+)/([a-z0-9-]+)",url)
@@ -167,25 +183,27 @@ def sitemap_record(url,stamp):
        "has_legumes":bool(pulse),
        "review_status":"publisher_sitemap_title_only","last_checked":stamp}
 
-def sync(today=None,max_pages=28):
+def sync(today=None,max_pages=100):
     today=today or dt.date.today()
     data=json.loads(TARGET.read_text(encoding="utf-8"))
     existing={r["url"]:r for r in data["recipes"] if isinstance(r.get("url"),str)}
     try:items=candidates(fetch(SITEMAP),existing,today)
     except (OSError,ValueError,ET.ParseError) as exc:
         print("Sitemap unavailable, keeping reviewed recipes:",str(exc)[:220]);return 0
-    added=0;checked=0;methods=Counter();page_blocked=False
+    added=0;checked=0;methods=Counter();page_blocked=False;failures=0
     for url,_ in items:
-        if checked>=max_pages or sum(r.get("source")=="Allerhande" for r in existing.values())>=650:break
+        if checked>=max_pages or sum(r.get("source")=="Allerhande" for r in existing.values())>=2000:break
         records=[]
         if not page_blocked:
             try:
                 page=fetch(url,1_100_000)
                 records=schema_recipes(page)
+                failures=0
             except (OSError,ValueError) as exc:
                 # An actual 403 is a refusal. Stop automated page requests
                 # immediately; only public sitemap titles may be indexed.
-                if getattr(exc,'code',None)==403:page_blocked=True
+                failures+=1
+                if getattr(exc,'code',None) in (401,403,429) or failures>=3:page_blocked=True
         checked+=1
         record=next((x for meta in records
             if (x:=to_record(url,meta,today.isoformat()))),None)

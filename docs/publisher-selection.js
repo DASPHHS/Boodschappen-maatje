@@ -112,10 +112,12 @@ function benefit(recipe,products){
   (mainCost!==null?10000-Math.min(mainCost,100)*100:0)+Math.min(mainSaving||0,20)*10+Math.min(extraSaving||0,2)*10+Math.min(products.length,5);
  return {hasMain:main.length>0,main,extras,mainSaving,extraSaving,mainCost,priceVerdict:verdict,score};
 }
-function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay(),retailerCatalog=null,meal='alle'}){
+function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient=null,category='alle',source='all',basis='all',sort='deals',day=currentDay(),retailerCatalog=null,meal='alle',cuisine='alle',excludePrei=false}){
  if(!engine||!Array.isArray(index?.recipes))return [];
  const target=ingredient?engine.classify(ingredient):null,q=norm(query),rows=[];
  for(const recipe of index.recipes){
+  if(excludePrei&&culinary().containsLeek(recipe))continue;
+  if(cuisine!=='alle'&&culinary().cuisine(recipe)!==cuisine)continue;
   if(meal!=='alle'&&(recipe.meal_type||'avondeten')!==meal)continue;
   if(!valid(recipe,engine)||(safeSources.has(source)&&recipe.source!==source))continue;
   if(category!=='alle'&&group(recipe)!==category)continue;
@@ -137,11 +139,11 @@ function recipesForOffers({index,stores,offersByStore,engine,query='',ingredient
  // meaningful difference in the main-ingredient discount.
  const result=[],seen=new Set(),groups=new Map(),methods=new Map(),sources=new Map(),cuisines=new Map(),remaining=[...rows];
  while(remaining.length){
-  const rank=x=>x.score-(groups.get(x.category)||0)*3-(methods.get(x.recipe.method)||0)*2-(sources.get(x.recipe.source)||0)*2-(cuisines.get(x.recipe.cuisine)||0)*2-(result.at(-1)?.category===x.category?5:0)-(result.at(-1)?.recipe.method===x.recipe.method?3:0);
+  const rank=x=>x.score-(groups.get(x.category)||0)*3-(methods.get(x.recipe.method)||0)*2-(sources.get(x.recipe.source)||0)*2-(cuisines.get(culinary().cuisine(x.recipe))||0)*2-(result.at(-1)?.category===x.category?5:0)-(result.at(-1)?.recipe.method===x.recipe.method?3:0);
   remaining.sort((a,b)=>sort==='time'?(a.recipe.minutes||999)-(b.recipe.minutes||999)||rank(b)-rank(a):rank(b)-rank(a)||a.recipe.title.localeCompare(b.recipe.title,'nl'));
   const row=remaining.shift(),title=norm(row.recipe.title);
   if(seen.has(title))continue;seen.add(title);result.push(row);
-  groups.set(row.category,(groups.get(row.category)||0)+1);methods.set(row.recipe.method,(methods.get(row.recipe.method)||0)+1);sources.set(row.recipe.source,(sources.get(row.recipe.source)||0)+1);if(row.recipe.cuisine)cuisines.set(row.recipe.cuisine,(cuisines.get(row.recipe.cuisine)||0)+1);
+  groups.set(row.category,(groups.get(row.category)||0)+1);methods.set(row.recipe.method,(methods.get(row.recipe.method)||0)+1);sources.set(row.recipe.source,(sources.get(row.recipe.source)||0)+1);cuisines.set(culinary().cuisine(row.recipe),(cuisines.get(culinary().cuisine(row.recipe))||0)+1);
  }
  return result;
 }

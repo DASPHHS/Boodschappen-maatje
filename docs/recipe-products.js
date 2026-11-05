@@ -135,5 +135,27 @@ function group(recipe){
  return 'vega';
 }
 function isMain(p,recipe){return p?.group===group(recipe);}
-return {VERSION,norm,isDeliChicken,displayCategory,profile,compatible,recipeProfiles,group,isMain,quantity};
+const CUISINES=[
+ ['italiaans','Italiaans','italian|italiaans'],['indiaas','Indiaas','indian|indiaas|indiase'],
+ ['indonesisch','Indonesisch','indonesian|indonesisch'],['thais','Thais','thai|thais'],
+ ['japans','Japans','japanese|japans'],['koreaans','Koreaans','korean|koreaans'],
+ ['vietnamees','Vietnamees','vietnamese|vietnamees'],['chinees','Chinees','chinese|chinees'],
+ ['mexicaans','Mexicaans','mexican|mexicaans'],['surinaams','Surinaams','surinamese|surinaams'],
+ ['marokkaans','Marokkaans','moroccan|marokkaans'],['turks','Turks','turkish|turks'],
+ ['grieks','Grieks','greek|grieks'],['spaans','Spaans','spanish|spaans'],
+ ['frans','Frans','french|frans'],['nederlands','Nederlands','dutch|nederlands|nedeland|nedelandsk|hollands'],
+ ['belgisch','Belgisch','belgian|belgisch|belgisk'],['amerikaans','Amerikaans','american|amerikaans'],
+ ['midden-oosters','Midden-Oosters','middle east|middle eastern|midden oosters'],
+ ['zuid-amerikaans','Zuid-Amerikaans','south american|zuid amerikaans'],
+ ['mediterraan','Mediterraan','mediterranean|mediterraan'],['aziatisch','Aziatisch','asian|aziatisch'],
+ ['europees','Europees','european|europese|europees'],['fusion','Fusion','fusion']
+];
+const CUISINE_PATTERNS=CUISINES.map(([key,label,terms])=>[key,new RegExp('\\b(?:'+terms+')(?:e)?\\b')]);
+function cuisine(recipe){
+ const explicit=norm(Array.isArray(recipe?.cuisine)?recipe.cuisine.join(' '):recipe?.cuisine);
+ const text=explicit||norm(recipe?.title);
+ return CUISINE_PATTERNS.find(([,pattern])=>pattern.test(text))?.[0]||'onbekend';
+}
+function containsLeek(recipe){return recipeProfiles(recipe).some(p=>p.family==='prei')||/\bprei/.test(norm((recipe?.title||'')+' '+(recipe?.ingredients||[]).map(x=>x.name).join(' ')));}
+return {VERSION,norm,CUISINES,cuisine,containsLeek,isDeliChicken,displayCategory,profile,compatible,recipeProfiles,group,isMain,quantity};
 });

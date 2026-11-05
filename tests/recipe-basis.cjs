@@ -85,3 +85,14 @@ assert.equal(summerProducts.find(x=>x.family==='tofu')?.purchase.total,2.19);
 assert.equal(summerProducts.find(x=>x.family==='aardappelen')?.purchase.total,1.39);
 assert.equal(summerProducts.find(x=>x.family==='prei')?.purchase.total,1.98);
 assert.ok(summerProducts.every(x=>x.evidence==='confirmed'));
+
+// Publisher language aliases and title styles share the same cuisine filter.
+for(const [label,expected] of [['Italian','italiaans'],['Italiaanse','italiaans'],['Indiase','indiaas'],['Marokkaanse','marokkaans'],['Nederlands','nederlands'],['Koreaanse','koreaans']])assert.equal(products.cuisine({cuisine:label}),expected);
+assert.equal(products.cuisine({title:'Vietnamese kip met broccoli'}),'vietnamees');
+assert.equal(products.cuisine({title:'Kip met broccoli'}),'onbekend');
+const italian={...kip,id:'italian',cuisine:'Italian'},thai={...kip,id:'thai',cuisine:'Thais'},leek={...italian,id:'leek',title:'Italiaanse kip met prei',ingredient_profiles:[...kip.ingredient_profiles,products.profile('4 preien',{ingredient:true})]};
+const options={index:{recipes:[italian,thai,leek]},stores:['ah'],offersByStore:{ah:offers},engine,day};
+assert.deepEqual(selector.recipesForOffers({...options,cuisine:'italiaans',excludePrei:true}).map(x=>x.recipe.id),['italian']);
+assert.equal(selector.recipesForOffers({...options,cuisine:'italiaans',excludePrei:false}).length,2);
+assert.equal(products.containsLeek(summerCase.recipe),true);
+console.log('Cuisine aliases, cuisine selection and optional leek exclusion verified');

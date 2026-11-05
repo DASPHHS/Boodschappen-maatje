@@ -22,7 +22,7 @@ from pathlib import Path
 
 try:from .recipe_metadata import profiles, PROFILE_VERSION
 except ImportError:from recipe_metadata import profiles, PROFILE_VERSION
-from refresh_publisher_recipes import families_of, VEG, LEGUMES, EXCLUDE, schema_recipes, minutes
+from refresh_publisher_recipes import cuisine_rotation, families_of, VEG, LEGUMES, EXCLUDE, schema_recipes, minutes
 
 ROOT = Path(__file__).resolve().parent.parent
 TARGET = ROOT / "docs/data/publisher-recipes.json"
@@ -78,7 +78,7 @@ def varied_candidates(titles, week):
         for key in keys:
             if buckets[key]:
                 result.append(buckets[key].pop(0))
-    return result
+    return cuisine_rotation(result,lambda url:titles[url])
 
 def candidate_priority(title, url, week):
     """Stable culinary rotation; meaningful dinner titles outrank burger/marketing pages."""
@@ -203,7 +203,7 @@ def record_from_page(url, page_html, stamp):
         "review_status":"publisher_page_title_verified","last_checked":stamp
     }
 
-def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
+def discover(max_pages=60, day=None, fetcher=fetch, pause=0.3):
     day = day or dt.date.today()
     data = json.loads(TARGET.read_text("utf-8"))
     existing = {r["url"]:r for r in data["recipes"]}
@@ -239,7 +239,7 @@ def discover(max_pages=36, day=None, fetcher=fetch, pause=0.3):
     checked=0
     added=0
     for url in choices:
-        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=650:
+        if checked >= max_pages or sum(r.get("source")=="HelloFresh" for r in existing.values())>=2000:
             break
         if not rules.can_fetch(USER_AGENT, url):
             continue

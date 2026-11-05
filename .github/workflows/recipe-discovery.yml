@@ -14,7 +14,7 @@ on:
       - 'docs/data/publisher-recipes.json'
       - '.github/workflows/recipe-discovery.yml'
   schedule:
-    - cron: '45 6 * * *'
+    - cron: '45 6,12 * * *'
 permissions:
   contents: write
 concurrency:

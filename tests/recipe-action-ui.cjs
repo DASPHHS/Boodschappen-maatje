@@ -47,6 +47,9 @@ for(const file of ['recipe-engine.js','favorites.js','product-matcher.js','price
  }
  Object.assign(t.state,{store:'alle',query:''});t.render();
  const page=el('#view-recepten').innerHTML;
+ assert.equal(t.state.excludePrei,true);
+ assert.ok(page.includes('id="cuisine-filter"'));
+ assert.ok(page.includes('id="exclude-prei" checked')); 
  assert.ok(page.includes('Alle bronnen'));
  assert.ok(page.includes(rows.length?'actieproducten bij':'Geen recepten met minimaal twee'));
  assert.ok(page.includes('Allerhande')&&page.includes('HelloFresh'));

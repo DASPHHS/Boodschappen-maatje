@@ -48,6 +48,12 @@ class TestPublisherMetadata(unittest.TestCase):
         self.assertNotIn('recipeIngredient',r)
         self.assertIsNone(p.sitemap_record('https://www.ah.nl/allerhande/recept/R-R1234/gehaktballen','2026-11-01'))
         self.assertIsNone(p.sitemap_record('https://www.ah.nl/allerhande/recept/R-R1234/babybroccoli-met-ei','2026-11-01'))
+    def test_cuisine_rotation_preserves_and_spreads_candidates(self):
+        items=['Italiaanse kip','Italiaanse pasta','Koreaanse tofu','Mexicaanse bonen','groentecurry']
+        result=p.cuisine_rotation(items,lambda x:x)
+        self.assertEqual(set(result),set(items))
+        self.assertEqual(len(set(p.cuisine_bucket(x) for x in result[:3])),3)
+
     def test_duration(self):
         self.assertEqual(p.minutes('PT1H25M'),85)
         self.assertEqual(p.minutes('PT30M'),30)
