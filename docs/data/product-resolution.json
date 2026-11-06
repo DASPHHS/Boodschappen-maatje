@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T14:12:27.414Z",
+  "generated_at": "2026-11-06T20:52:45.469Z",
   "checked_date": "2026-11-06",
   "summary": {
     "profiles": 20,
@@ -215,20 +215,20 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-s-100-pindakaas-stukjes-pinda-1-kg-668566EM",
-        "product_name": "Jumbo's 100% Pindakaas Stukjes Pinda 1 kg",
-        "price": 5.29,
-        "price_status": "winkelprijswaarneming · 2026-11-05",
-        "checked_date": "2026-11-05"
+        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
+        "product_name": "Jumbo Pindakaas Naturel 600 g",
+        "price": 1.35,
+        "price_status": "winkelprijswaarneming · 2026-11-06",
+        "checked_date": "2026-11-06"
       },
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/oing-magere-kwark-500-g-226296CUP",
-        "product_name": "Öing Magere Kwark 500 g",
-        "price": 0.99,
-        "price_status": "winkelprijswaarneming · 2026-11-05",
-        "checked_date": "2026-11-05"
+        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
+        "product_name": "Jumbo Franse Kwark Mager 1000 g",
+        "price": 1.69,
+        "price_status": "winkelprijswaarneming · 2026-11-06",
+        "checked_date": "2026-11-06"
       },
       "dreft": {
         "state": "price_observed",
@@ -244,9 +244,9 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
         "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
-        "price": 6.39,
-        "price_status": "externe prijswaarneming · 2026-11-05",
-        "checked_date": "2026-11-05"
+        "price": 6.19,
+        "price_status": "winkelprijswaarneming · 2026-11-06",
+        "checked_date": "2026-11-06"
       },
       "tofu": {
         "state": "price_observed",
@@ -317,17 +317,17 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-11-05",
-        "checked_date": "2026-11-05"
+        "price_status": "winkelprijswaarneming · 2026-11-06",
+        "checked_date": "2026-11-06"
       },
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/campina-langlekker-volle-melk-1-l-293405STK",
-        "product_name": "Campina Langlekker Volle Melk 1 L",
-        "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-05",
-        "checked_date": "2026-11-05"
+        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
+        "product_name": "Jumbo Houdbare Volle Melk 1 L",
+        "price": 0.98,
+        "price_status": "winkelprijswaarneming · 2026-11-06",
+        "checked_date": "2026-11-06"
       },
       "skuumkoppe": {
         "state": "price_observed",
