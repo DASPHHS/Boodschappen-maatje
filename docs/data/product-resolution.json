@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T11:59:32.300Z",
+  "generated_at": "2026-11-07T12:55:20.171Z",
   "checked_date": "2026-11-07",
   "summary": {
     "profiles": 20,
@@ -251,10 +251,10 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-11-07",
+        "source": "https://www.jumbo.com/producten/jumbo-tempeh-naturel-395g-680367BAK",
+        "product_name": "Jumbo Tempeh Naturel 395g",
+        "price": 2.29,
+        "price_status": "winkelprijswaarneming · 2026-11-07",
         "checked_date": "2026-11-07"
       },
       "gemengdgehakt": {
@@ -281,8 +281,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.75,
-        "price_status": "winkelprijswaarneming · 2026-11-06",
-        "checked_date": "2026-11-06"
+        "price_status": "winkelprijswaarneming · 2026-11-07",
+        "checked_date": "2026-11-07"
       },
       "pompoen": {
         "state": "price_observed",
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-06",
-        "checked_date": "2026-11-06"
+        "price_status": "winkelprijswaarneming · 2026-11-07",
+        "checked_date": "2026-11-07"
       },
       "sperziebonen": {
         "state": "price_observed",
