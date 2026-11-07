@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-06T21:06:14.178Z",
-  "source_date": "2026-11-05",
-  "source_commit": "b0455ccc257330ec1becbea9aa89d96a386c84ca",
+  "generated_at": "2026-11-07T11:42:49.529Z",
+  "source_date": "2026-11-07",
+  "source_commit": "f8e8af6d920231c845c15ca9c4aa173594ec50fb",
   "counts": {
-    "match": 246,
-    "partial": 353,
+    "match": 250,
+    "partial": 354,
     "reject": 225
   },
   "profiles": {
@@ -190,7 +190,7 @@
     },
     "kwark": {
       "match": 20,
-      "partial": 44,
+      "partial": 46,
       "reject": 1,
       "reasons": {
         "niet herkende productbeschrijving: almhof": 1,
@@ -205,16 +205,18 @@
         "niet herkende productbeschrijving: voordeelpak": 1,
         "niet herkende productbeschrijving: framboos": 1,
         "niet herkende productbeschrijving: perzik passievrucht": 1,
+        "niet herkende productbeschrijving: bar aardbei smaak": 1,
+        "niet herkende productbeschrijving: bar vanille smaak": 1,
         "niet herkende productbeschrijving: lekker vrij van lactose": 1,
         "niet herkende productbeschrijving: yoghurt aardbei framboos": 1,
         "niet herkende productbeschrijving: yoghurt appel kaneel": 2,
         "niet herkende productbeschrijving: yoghurt mango passievrucht": 1,
         "niet herkende productbeschrijving: yoghurt vanille": 3,
         "niet herkende productbeschrijving: yoghurt aardbei": 2,
-        "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: yoghurt sinaasappel abrikoos": 1,
         "niet herkende productbeschrijving: yoghurt stracciatella smaak": 1,
         "niet herkende productbeschrijving: yoghurt bosbes beker": 1,
+        "niet herkende productbeschrijving: winter orange limited edition": 1,
         "niet herkende productbeschrijving: nutrition perzik passievrucht": 1,
         "niet herkende productbeschrijving: biogarde": 1,
         "niet herkende productbeschrijving: lactosevrije": 1,
@@ -752,11 +754,11 @@
       }
     },
     "vis": {
-      "match": 44,
-      "partial": 24,
+      "match": 48,
+      "partial": 22,
       "reject": 29,
       "reasons": {
-        "productkenmerken en verpakking passen": 44,
+        "productkenmerken en verpakking passen": 48,
         "niet herkende productbeschrijving: blue planet": 1,
         "niet herkende productbeschrijving: deense": 1,
         "niet herkende productbeschrijving: deense ger": 1,
@@ -772,7 +774,8 @@
         "niet herkende productbeschrijving: nori wasa": 1,
         "andere productvorm: smoked": 10,
         "andere doelgroep: pet": 8,
-        "niet herkende productbeschrijving: ca": 4,
+        "niet herkende productbeschrijving: ca": 1,
+        "niet herkende productbeschrijving: warmgerookt": 1,
         "andere productvorm: prepared": 2,
         "andere productvorm: mixed": 2,
         "plantaardige variant in vlees/visvergelijking": 1,
@@ -872,8 +875,14 @@
           "label": "Zalm · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 10,
-            "jumbo": 2,
+            "jumbo": 5,
             "ah": 1
+          }
+        },
+        "salmon|plain||naturel · biologisch|kg": {
+          "label": "Zalm · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 1
           }
         },
         "pollock|frozen||naturel|kg": {
@@ -912,6 +921,7 @@
         "niet herkende productbeschrijving: sw lightning": 1,
         "andere productvorm: mixed": 3,
         "niet herkende productbeschrijving: sierkussen": 1,
+        "niet herkende productbeschrijving: mini spark": 1,
         "andere doelgroep: baby": 22,
         "niet herkende productbeschrijving: boeren knapperig en": 1,
         "niet herkende productbeschrijving: grijze": 1,
@@ -924,7 +934,6 @@
         "niet herkende productbeschrijving: stampot verspakket personen": 1,
         "niet herkende productbeschrijving: traybake knolselderij mix": 1,
         "niet herkende productbeschrijving: pasta mezzelune kaas": 1,
-        "niet herkende productbeschrijving: mini": 1,
         "niet herkende productbeschrijving: lampjes": 1,
         "niet herkende productbeschrijving: lantaarn": 1,
         "niet herkende productbeschrijving: crispy broodjes": 1,
@@ -1023,10 +1032,10 @@
     "sperziebonen": {
       "match": 8,
       "partial": 18,
-      "reject": 21,
+      "reject": 22,
       "reasons": {
         "vers/diepvries of conserven niet uit productbron vastgesteld": 13,
-        "andere productvorm: preserved": 15,
+        "andere productvorm: preserved": 16,
         "niet herkende productbeschrijving: tk": 1,
         "productkenmerken en verpakking passen": 8,
         "andere doelgroep: baby": 1,
@@ -1091,7 +1100,7 @@
         "green_beans|frozen||naturel|kg": {
           "label": "Sperziebonen · diepvries · per kg",
           "stores": {
-            "jumbo": 1,
+            "jumbo": 2,
             "ah": 1
           }
         },
@@ -1105,12 +1114,6 @@
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "jumbo": 4
-          }
-        },
-        "green_beans|plain||naturel · biologisch|kg": {
-          "label": "Sperziebonen · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
-          "stores": {
-            "jumbo": 1
           }
         }
       }
@@ -1155,7 +1158,7 @@
     },
     "popcorn": {
       "match": 6,
-      "partial": 52,
+      "partial": 53,
       "reject": 2,
       "reasons": {
         "niet herkende productbeschrijving: almdudler": 1,
@@ -1171,7 +1174,7 @@
         "niet herkende productbeschrijving: emmer": 2,
         "niet herkende productbeschrijving: magnetr sk16": 1,
         "niet herkende productbeschrijving: zeezout": 1,
-        "niet herkende productbeschrijving: zoet": 4,
+        "niet herkende productbeschrijving: zoet": 5,
         "niet herkende productbeschrijving: zoet bak": 1,
         "niet herkende productbeschrijving: zoet zout xx": 1,
         "niet herkende productbeschrijving: zout bak": 1,
@@ -1588,14 +1591,14 @@
     "sereh": {
       "match": 4,
       "partial": 12,
-      "reject": 11,
+      "reject": 10,
       "reasons": {
         "productkenmerken en verpakking passen": 4,
         "niet herkende productbeschrijving: morning sunshine mate infusion": 1,
         "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion": 1,
-        "productnaam of uitsluitingen passen niet": 9,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
         "niet herkende productbeschrijving: brandnetel kaneel": 1,
+        "productnaam of uitsluitingen passen niet": 8,
         "andere productvorm: prepared": 2,
         "niet herkende productbeschrijving: brandnetel zakjes": 1,
         "niet herkende productbeschrijving: gember zakjes": 1,
@@ -1617,12 +1620,6 @@
           "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
           "status": "partial",
           "reason": "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion"
-        },
-        {
-          "store": "jumbo",
-          "name": "Jumbo Biologisch Citroengras Gember Thee 30 g",
-          "status": "reject",
-          "reason": "productnaam of uitsluitingen passen niet"
         },
         {
           "store": "jumbo",
@@ -1653,6 +1650,12 @@
           "name": "YumYum Thai Spicy Soup with Shrimp & Lemongrass (Tom Yum) 100 g",
           "status": "reject",
           "reason": "andere productvorm: prepared"
+        },
+        {
+          "store": "jumbo",
+          "name": "Zonnatura Bio 100% Brandnetel Citroengras 20 Zakjes 32 g",
+          "status": "partial",
+          "reason": "niet herkende productbeschrijving: brandnetel zakjes"
         }
       ],
       "groups": {
@@ -1683,6 +1686,17 @@
       "url": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "6894f8e75f9896f872eed691"
+    },
+    {
+      "profile": "pompoen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "biologische-mini-spark-pompoen-387334STK",
+      "name": "Biologische Mini Spark Pompoen",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/biologische-mini-spark-pompoen-387334STK",
+      "reason": "niet herkende productbeschrijving: mini spark",
+      "fingerprint": "311c86baa4c97099f7669301"
     },
     {
       "profile": "sereh",
@@ -1815,6 +1829,17 @@
       "url": "https://www.jumbo.com/producten/jumbo-biologische-pompoen-208854STK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "12ad4a3601e623b962687471"
+    },
+    {
+      "profile": "vis",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-biologische-zalmfilet-met-huid-175-g-782942TRA",
+      "name": "Jumbo Biologische Zalmfilet met Huid 175 g",
+      "pack": "175 g",
+      "url": "https://www.jumbo.com/producten/jumbo-biologische-zalmfilet-met-huid-175-g-782942TRA",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "9b23802969218a9c9bdfc437"
     },
     {
       "profile": "pompoen",
@@ -2172,12 +2197,12 @@
       "profile": "sperziebonen",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-sperziebonen-biologisch-400-g-398279ZK",
-      "name": "Jumbo Sperziebonen Biologisch 400 g",
-      "pack": "400 g",
-      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-biologisch-400-g-398279ZK",
+      "product_id": "jumbo-sperziebonen-gebroken-750-g-785878STK",
+      "name": "Jumbo Sperziebonen Gebroken 750 g",
+      "pack": "750 GRAM",
+      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
       "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "6816109c4806306407413c05"
+      "fingerprint": "3c2572f980adabf25bdb2666"
     },
     {
       "profile": "pompoen",
@@ -2227,6 +2252,28 @@
       "profile": "vis",
       "priority": 0,
       "store": "jumbo",
+      "product_id": "jumbo-zalmfilet-met-huid-naturel-270-g-715172STK",
+      "name": "Jumbo Zalmfilet met Huid Naturel 270 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-270-g-715172STK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "154c1e967874b36c66b3472d"
+    },
+    {
+      "profile": "vis",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-zalmfilet-met-huid-naturel-360-g-715170STK",
+      "name": "Jumbo Zalmfilet met Huid Naturel 360 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-360-g-715170STK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "92001faa9282522dd4c4e9d0"
+    },
+    {
+      "profile": "vis",
+      "priority": 0,
+      "store": "jumbo",
       "product_id": "jumbo-zalmfilet-met-huid-naturel-500-g-769823TRA",
       "name": "Jumbo Zalmfilet met Huid Naturel 500 g",
       "pack": "500 g",
@@ -2249,23 +2296,23 @@
       "profile": "vis",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-zalmfilet-met-huid-naturel-ca-270-g-715172STK",
-      "name": "Jumbo Zalmfilet met Huid Naturel ca. 270 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-ca-270-g-715172STK",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "3d0f9ca3b81ac3bb6c2cf7cb"
+      "product_id": "jumbo-zalmfilet-warmgerookt-125-g-681123STK",
+      "name": "Jumbo Zalmfilet Warmgerookt 125 g",
+      "pack": "125 g",
+      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-warmgerookt-125-g-681123STK",
+      "reason": "niet herkende productbeschrijving: warmgerookt",
+      "fingerprint": "32a2080b3cbb4ca1493dfc36"
     },
     {
       "profile": "vis",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-zalmfilet-met-huid-naturel-ca-360-g-715170STK",
-      "name": "Jumbo Zalmfilet met Huid Naturel ca. 360 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-ca-360-g-715170STK",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "9c37353aedbd69ff81050890"
+      "product_id": "jumbo-zalmfilet-zonder-huid-naturel-160-g-715173STK",
+      "name": "Jumbo Zalmfilet zonder Huid Naturel 160 g",
+      "pack": "160 g",
+      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-zonder-huid-naturel-160-g-715173STK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "7cb1e7ddb35705f7ca412e5d"
     },
     {
       "profile": "vis",
@@ -2277,17 +2324,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-zonder-huid-naturel-230-g-715166STK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "9cfaa38b7a9235735c0be362"
-    },
-    {
-      "profile": "vis",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-zalmfilet-zonder-huid-naturel-ca-160-g-715173STK",
-      "name": "Jumbo Zalmfilet zonder Huid Naturel ca. 160 g",
-      "pack": "160 g",
-      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-zonder-huid-naturel-ca-160-g-715173STK",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "bb31b7aacf85de30fafa03a0"
     },
     {
       "profile": "kipfilet",
@@ -2343,17 +2379,6 @@
       "url": "https://www.jumbo.com/producten/maggi-sperziebonen-sate-70g-390223ZK",
       "reason": "niet herkende productbeschrijving: sate",
       "fingerprint": "d43711852689120581f017a9"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "mini-pompoen-387334STK",
-      "name": "Mini Pompoen",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/mini-pompoen-387334STK",
-      "reason": "niet herkende productbeschrijving: mini",
-      "fingerprint": "9d8ad675bf0362fb01d587c2"
     },
     {
       "profile": "kipfilet",
@@ -4207,6 +4232,28 @@
       "profile": "kwark",
       "priority": 1,
       "store": "jumbo",
+      "product_id": "jumbo-kwark-bar-high-protein-aardbei-smaak-40-g-784550ZK",
+      "name": "Jumbo Kwark Bar High Protein Aardbei Smaak 40 g",
+      "pack": "40 g",
+      "url": "https://www.jumbo.com/producten/jumbo-kwark-bar-high-protein-aardbei-smaak-40-g-784550ZK",
+      "reason": "niet herkende productbeschrijving: bar aardbei smaak",
+      "fingerprint": "45fa15b2a7c2be6e69826be7"
+    },
+    {
+      "profile": "kwark",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-kwark-bar-high-protein-vanille-smaak-40-g-784553ZK",
+      "name": "Jumbo Kwark Bar High Protein Vanille Smaak 40 g",
+      "pack": "40 g",
+      "url": "https://www.jumbo.com/producten/jumbo-kwark-bar-high-protein-vanille-smaak-40-g-784553ZK",
+      "reason": "niet herkende productbeschrijving: bar vanille smaak",
+      "fingerprint": "2d67a074b514af0b030c93d3"
+    },
+    {
+      "profile": "kwark",
+      "priority": 1,
+      "store": "jumbo",
       "product_id": "jumbo-lekker-vrij-van-lactose-magere-kwark-500-g-330936CUP",
       "name": "Jumbo Lekker Vrij van Lactose Magere Kwark 500 g",
       "pack": "500 g",
@@ -4339,34 +4386,12 @@
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "jumbo-pindakaas-met-stukjes-pinda-350-g-452147POT",
-      "name": "Jumbo Pindakaas met Stukjes Pinda 350 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-pindakaas-met-stukjes-pinda-350-g-452147POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "158b85cad761f75ac97b8f18"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "jumbo-pindakaas-met-stukjes-pinda-600-g-452144POT",
       "name": "Jumbo Pindakaas met Stukjes Pinda 600 g",
       "pack": "600 g",
       "url": "https://www.jumbo.com/producten/jumbo-pindakaas-met-stukjes-pinda-600-g-452144POT",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "51c408fb7694d67d3475920b"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "jumbo-pindakaas-naturel-350-g-618928POT",
-      "name": "Jumbo Pindakaas Naturel 350 g",
-      "pack": "350 g",
-      "url": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-350-g-618928POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "06ee99461a01ba376febdcd2"
     },
     {
       "profile": "pindakaas",
@@ -4537,12 +4562,45 @@
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "jumbo-s-pindakaas-naturel-290-g-665484POT",
-      "name": "Jumbo's Pindakaas Naturel 290 g",
-      "pack": "290 g",
-      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-naturel-290-g-665484POT",
+      "product_id": "jumbo-s-pindakaas-met-stukjes-350-g-783023POT",
+      "name": "Jumbo's Pindakaas met Stukjes 350 g",
+      "pack": "350 g",
+      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-met-stukjes-350-g-783023POT",
       "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "6a768e5fb3c0750ad732e590"
+      "fingerprint": "1a0536fc557fedd7f5058e53"
+    },
+    {
+      "profile": "pindakaas",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-s-pindakaas-met-stukjes-600-g-783025POT",
+      "name": "Jumbo's Pindakaas met Stukjes 600 g",
+      "pack": "600 g",
+      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-met-stukjes-600-g-783025POT",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "9a735a4ff9a13fe72fbef603"
+    },
+    {
+      "profile": "pindakaas",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-s-pindakaas-naturel-350-g-783022POT",
+      "name": "Jumbo's Pindakaas Naturel 350 g",
+      "pack": "350 g",
+      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-naturel-350-g-783022POT",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "731f1e69dc67bd0fee9ea556"
+    },
+    {
+      "profile": "pindakaas",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-s-pindakaas-naturel-600-g-783024POT",
+      "name": "Jumbo's Pindakaas Naturel 600 g",
+      "pack": "600 g",
+      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-naturel-600-g-783024POT",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "924c9943aa970b1fb3f24e4d"
     },
     {
       "profile": "pindakaas",
@@ -4554,17 +4612,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-proteine-350-g-669292POT",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "f9f52c5e35a09704d3cd94e6"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "jumbo-s-pindakaas-stukjes-pinda-290-g-665644POT",
-      "name": "Jumbo's Pindakaas Stukjes Pinda 290 g",
-      "pack": "290 g",
-      "url": "https://www.jumbo.com/producten/jumbo-s-pindakaas-stukjes-pinda-290-g-665644POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "2b0617fbfc160197627d9858"
     },
     {
       "profile": "popcorn",
@@ -4702,17 +4749,6 @@
       "profile": "kwark",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "optimel-magere-kwark-met-magere-yoghurt-citroen-0-vet-limited-edition-500g-68927BAK",
-      "name": "Optimel Magere Kwark met Magere Yoghurt Citroen 0% Vet Limited Edition 500g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-citroen-0-vet-limited-edition-500g-68927BAK",
-      "reason": "productsoort niet voldoende bevestigd",
-      "fingerprint": "443d9c12f0e7e424d453b47e"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "optimel-magere-kwark-met-magere-yoghurt-sinaasappel-abrikoos-0-vet-500g-498984CUP",
       "name": "Optimel Magere Kwark met Magere Yoghurt Sinaasappel Abrikoos 0% Vet 500g",
       "pack": "500 g",
@@ -4741,6 +4777,28 @@
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-yoghurt-bosbes-0-vet-500-g-beker-457844CUP",
       "reason": "niet herkende productbeschrijving: yoghurt bosbes beker",
       "fingerprint": "69e6e9d5d5c5f75a6edb8384"
+    },
+    {
+      "profile": "kwark",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "optimel-magere-kwark-winter-orange-limited-edition-500g-68927BAK",
+      "name": "Optimel Magere Kwark Winter Orange Limited Edition 500g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/optimel-magere-kwark-winter-orange-limited-edition-500g-68927BAK",
+      "reason": "niet herkende productbeschrijving: winter orange limited edition",
+      "fingerprint": "34b908c882353f4980fb935c"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "pathe-popcorn-zoet-746284ZK",
+      "name": "Pathé Popcorn zoet",
+      "pack": "150 g",
+      "url": "https://www.jumbo.com/producten/pathe-popcorn-zoet-746284ZK",
+      "reason": "niet herkende productbeschrijving: zoet",
+      "fingerprint": "b158321fd2e23a7ee801f6ac"
     },
     {
       "profile": "popcorn",
