@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T17:56:09.349Z",
+  "generated_at": "2026-11-08T19:40:22.995Z",
   "checked_date": "2026-11-08",
   "summary": {
     "profiles": 20,
@@ -227,8 +227,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
         "product_name": "Jumbo Franse Kwark Mager 1000 g",
         "price": 1.69,
-        "price_status": "winkelprijswaarneming · 2026-11-07",
-        "checked_date": "2026-11-07"
+        "price_status": "winkelprijswaarneming · 2026-11-08",
+        "checked_date": "2026-11-08"
       },
       "dreft": {
         "state": "price_observed",
@@ -254,8 +254,8 @@
         "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
         "product_name": "Vivera Zachte Tofu 550 g",
         "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-07",
-        "checked_date": "2026-11-07"
+        "price_status": "winkelprijswaarneming · 2026-11-08",
+        "checked_date": "2026-11-08"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -335,8 +335,8 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-07",
-        "checked_date": "2026-11-07"
+        "price_status": "winkelprijswaarneming · 2026-11-08",
+        "checked_date": "2026-11-08"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
@@ -344,8 +344,8 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-07",
-        "checked_date": "2026-11-07"
+        "price_status": "winkelprijswaarneming · 2026-11-08",
+        "checked_date": "2026-11-08"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
