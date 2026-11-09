@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T16:09:33.701Z",
-  "checked_date": "2026-11-09",
+  "generated_at": "2026-11-09T23:57:16.692Z",
+  "checked_date": "2026-11-10",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -215,20 +215,20 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
-        "product_name": "Jumbo Pindakaas Naturel 600 g",
-        "price": 1.35,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "source": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-340-g-730860POT",
+        "product_name": "Whole Earth Smooth Pindakaas 340 g",
+        "price": 3.49,
+        "price_status": "winkelprijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
-        "product_name": "Jumbo Franse Kwark Mager 1000 g",
-        "price": 1.69,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "source": "https://www.jumbo.com/producten/jumbo-milde-kwark-mager-500-g-394229CUP",
+        "product_name": "Jumbo Milde Kwark Mager 500 g",
+        "price": 1.49,
+        "price_status": "winkelprijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "dreft": {
         "state": "price_observed",
@@ -242,11 +242,11 @@
       "walnoten": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
-        "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
-        "price": 6.19,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-140-g-708449CUP",
+        "product_name": "Jumbo Ongebrande Walnoten 140 g",
+        "price": 2.69,
+        "price_status": "winkelprijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "tofu": {
         "state": "price_observed",
@@ -254,8 +254,8 @@
         "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
         "product_name": "Vivera Zachte Tofu 550 g",
         "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "price_status": "externe prijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -317,8 +317,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "price_status": "externe prijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "volle_melk": {
         "state": "price_observed",
@@ -334,18 +334,18 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
-        "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "price": 9.39,
+        "price_status": "externe prijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
-        "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "price": 9.39,
+        "price_status": "externe prijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
