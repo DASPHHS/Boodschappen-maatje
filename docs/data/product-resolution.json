@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T14:22:19.842Z",
+  "generated_at": "2026-11-09T16:09:33.701Z",
   "checked_date": "2026-11-09",
   "summary": {
     "profiles": 20,
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "price_status": "winkelprijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -323,11 +323,11 @@
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175PAK",
-        "product_name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
-        "price": 1.45,
-        "price_status": "winkelprijswaarneming · 2026-11-08",
-        "checked_date": "2026-11-08"
+        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
+        "product_name": "Jumbo Houdbare Volle Melk 1 L",
+        "price": 0.98,
+        "price_status": "winkelprijswaarneming · 2026-11-09",
+        "checked_date": "2026-11-09"
       },
       "skuumkoppe": {
         "state": "price_observed",
