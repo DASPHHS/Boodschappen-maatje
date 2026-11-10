@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T23:57:16.692Z",
+  "generated_at": "2026-11-10T01:30:24.559Z",
   "checked_date": "2026-11-10",
   "summary": {
     "profiles": 20,
@@ -263,8 +263,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
         "price": 7.99,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,8 +272,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.51,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       },
       "vis": {
         "state": "price_observed",
@@ -281,8 +281,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.75,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       },
       "pompoen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.55,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       },
       "bospeen": {
         "state": "needs_source",
@@ -371,8 +371,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.38,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       }
     },
     "ah": {
