@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-10T13:27:31.985Z",
+  "generated_at": "2026-11-10T13:49:25.632Z",
   "checked_date": "2026-11-10",
   "summary": {
     "profiles": 20,
     "checked": 60,
     "price_observed": 44,
     "stale_or_unavailable": 0,
-    "needs_variant_evidence": 6,
-    "needs_source": 10
+    "needs_variant_evidence": 7,
+    "needs_source": 9
   },
   "stores": {
     "lidl": {
@@ -157,8 +157,8 @@
         "checked_date": "2026-11-10"
       },
       "skuumkoppe_00": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
+        "state": "needs_variant_evidence",
+        "reason": "product gevonden, productvorm of inhoud onvoldoende bewezen",
         "source": null,
         "product_name": null,
         "price": null,
@@ -451,9 +451,9 @@
       "kipfilet": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi531825/ah-scharrel-kipfilet",
-        "product_name": "AH Scharrel kipfilet",
-        "price": 9.99,
+        "source": "https://www.ah.nl/producten/product/wi280081/ah-biologisch-kipfilet",
+        "product_name": "AH Biologisch Kipfilet",
+        "price": 3.39,
         "price_status": "externe prijswaarneming · 2026-11-10",
         "checked_date": "2026-11-10"
       },
