@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-10T14:49:25.149Z",
+  "generated_at": "2026-11-10T21:17:44.678Z",
   "checked_date": "2026-11-10",
   "summary": {
     "profiles": 20,
@@ -224,11 +224,11 @@
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-milde-kwark-mager-500-g-394229CUP",
-        "product_name": "Jumbo Milde Kwark Mager 500 g",
-        "price": 1.49,
-        "price_status": "winkelprijswaarneming · 2026-11-09",
-        "checked_date": "2026-11-09"
+        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
+        "product_name": "Jumbo Franse Kwark Mager 1000 g",
+        "price": 1.69,
+        "price_status": "winkelprijswaarneming · 2026-11-10",
+        "checked_date": "2026-11-10"
       },
       "dreft": {
         "state": "price_observed",
@@ -251,10 +251,10 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-11-10",
+        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
+        "product_name": "Jumbo Tofu Naturel 375g",
+        "price": 1.44,
+        "price_status": "winkelprijswaarneming · 2026-11-10",
         "checked_date": "2026-11-10"
       },
       "gemengdgehakt": {
