@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-10T01:30:22.927Z",
-  "source_date": "2026-11-09",
-  "source_commit": "a1a8eb68e1b81f30d82444f42d56d939c7c026cc",
+  "generated_at": "2026-11-10T13:27:30.284Z",
+  "source_date": "2026-11-10",
+  "source_commit": "a6e4de791151920db14cb1d6a8eb29967d9464ad",
   "counts": {
-    "match": 250,
-    "partial": 354,
-    "reject": 225
+    "match": 252,
+    "partial": 363,
+    "reject": 233
   },
   "profiles": {
     "sungold": {
@@ -190,7 +190,7 @@
     },
     "kwark": {
       "match": 20,
-      "partial": 46,
+      "partial": 47,
       "reject": 1,
       "reasons": {
         "niet herkende productbeschrijving: almhof": 1,
@@ -203,6 +203,7 @@
         "niet herkende productbeschrijving: n vleugje vanille": 1,
         "niet herkende productbeschrijving: n vleugje vanille voordeelpak": 1,
         "niet herkende productbeschrijving: voordeelpak": 1,
+        "niet herkende productbeschrijving: crepe vanille": 1,
         "niet herkende productbeschrijving: framboos": 1,
         "niet herkende productbeschrijving: perzik passievrucht": 1,
         "niet herkende productbeschrijving: bar aardbei smaak": 1,
@@ -565,11 +566,11 @@
       }
     },
     "gemengdgehakt": {
-      "match": 9,
+      "match": 10,
       "partial": 0,
       "reject": 3,
       "reasons": {
-        "productkenmerken en verpakking passen": 9,
+        "productkenmerken en verpakking passen": 10,
         "andere productvorm: seasoned": 3
       },
       "samples": [
@@ -597,7 +598,7 @@
           "label": "Gehakt · gemengd · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 2,
-            "jumbo": 3,
+            "jumbo": 4,
             "ah": 3
           }
         },
@@ -611,12 +612,12 @@
     },
     "kipfilet": {
       "match": 46,
-      "partial": 67,
-      "reject": 85,
+      "partial": 69,
+      "reject": 88,
       "reasons": {
         "productkenmerken en verpakking passen": 46,
         "productnaam of uitsluitingen passen niet": 6,
-        "andere productvorm: cooked": 62,
+        "andere productvorm: cooked": 65,
         "niet herkende productbeschrijving: a la minute": 4,
         "andere productvorm: mixed": 9,
         "andere productvorm: seasoned": 1,
@@ -646,7 +647,8 @@
         "andere productvorm: preserved": 1,
         "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
         "niet herkende productbeschrijving: ca": 6,
-        "niet herkende productbeschrijving: voorgegaard": 1,
+        "niet herkende productbeschrijving: gourmet mini": 1,
+        "niet herkende productbeschrijving: voorgegaard": 2,
         "niet herkende productbeschrijving: scharrelkip": 2,
         "niet herkende productbeschrijving: trattoria pastagerecht romana": 1,
         "niet herkende productbeschrijving: trattoria pastagerecht toscana": 1,
@@ -754,11 +756,11 @@
       }
     },
     "vis": {
-      "match": 48,
+      "match": 47,
       "partial": 22,
       "reject": 29,
       "reasons": {
-        "productkenmerken en verpakking passen": 48,
+        "productkenmerken en verpakking passen": 47,
         "niet herkende productbeschrijving: blue planet": 1,
         "niet herkende productbeschrijving: deense": 1,
         "niet herkende productbeschrijving: deense ger": 1,
@@ -879,12 +881,6 @@
             "ah": 1
           }
         },
-        "salmon|plain||naturel · biologisch|kg": {
-          "label": "Zalm · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
-          "stores": {
-            "jumbo": 1
-          }
-        },
         "pollock|frozen||naturel|kg": {
           "label": "Koolvis · diepvries · per kg",
           "stores": {
@@ -902,8 +898,8 @@
     },
     "pompoen": {
       "match": 10,
-      "partial": 39,
-      "reject": 44,
+      "partial": 40,
+      "reject": 45,
       "reasons": {
         "productkenmerken en verpakking passen": 10,
         "andere productvorm: prepared": 10,
@@ -922,13 +918,13 @@
         "andere productvorm: mixed": 3,
         "niet herkende productbeschrijving: sierkussen": 1,
         "niet herkende productbeschrijving: mini spark": 1,
-        "andere doelgroep: baby": 22,
+        "andere doelgroep: baby": 23,
         "niet herkende productbeschrijving: boeren knapperig en": 1,
         "niet herkende productbeschrijving: grijze": 1,
         "niet herkende productbeschrijving: flammkuchen verspakket personen": 1,
         "niet herkende productbeschrijving: herfstmix spruit ui": 1,
         "niet herkende productbeschrijving: mix zoete aardappel": 1,
-        "niet herkende productbeschrijving: oranje": 1,
+        "niet herkende productbeschrijving: oranje": 2,
         "niet herkende productbeschrijving: pasta pesto verspakket personen": 1,
         "productnaam of uitsluitingen passen niet": 8,
         "niet herkende productbeschrijving: stampot verspakket personen": 1,
@@ -1030,19 +1026,19 @@
       }
     },
     "sperziebonen": {
-      "match": 8,
+      "match": 10,
       "partial": 18,
-      "reject": 22,
+      "reject": 24,
       "reasons": {
         "vers/diepvries of conserven niet uit productbron vastgesteld": 13,
-        "andere productvorm: preserved": 16,
+        "andere productvorm: preserved": 17,
         "niet herkende productbeschrijving: tk": 1,
-        "productkenmerken en verpakking passen": 8,
+        "productkenmerken en verpakking passen": 10,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
+        "andere productvorm: prepared": 5,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
-        "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: sate": 1,
         "andere doelgroep: pet": 1
       },
@@ -1100,7 +1096,7 @@
         "green_beans|frozen||naturel|kg": {
           "label": "Sperziebonen · diepvries · per kg",
           "stores": {
-            "jumbo": 2,
+            "jumbo": 3,
             "ah": 1
           }
         },
@@ -1114,6 +1110,12 @@
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "jumbo": 4
+          }
+        },
+        "green_beans|plain||naturel · biologisch|kg": {
+          "label": "Sperziebonen · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 1
           }
         }
       }
@@ -1158,7 +1160,7 @@
     },
     "popcorn": {
       "match": 6,
-      "partial": 53,
+      "partial": 58,
       "reject": 2,
       "reasons": {
         "niet herkende productbeschrijving: almdudler": 1,
@@ -1174,7 +1176,7 @@
         "niet herkende productbeschrijving: emmer": 2,
         "niet herkende productbeschrijving: magnetr sk16": 1,
         "niet herkende productbeschrijving: zeezout": 1,
-        "niet herkende productbeschrijving: zoet": 5,
+        "niet herkende productbeschrijving: zoet": 7,
         "niet herkende productbeschrijving: zoet bak": 1,
         "niet herkende productbeschrijving: zoet zout xx": 1,
         "niet herkende productbeschrijving: zout bak": 1,
@@ -1188,8 +1190,10 @@
         "niet herkende productbeschrijving: sweet": 1,
         "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: dunne maiswafels zoute smaak": 1,
-        "niet herkende productbeschrijving: zout": 4,
+        "niet herkende productbeschrijving: zout": 5,
+        "productsoort niet voldoende bevestigd": 2,
         "niet herkende productbeschrijving: chili lime": 1,
+        "niet herkende productbeschrijving: confetti": 1,
         "niet herkende productbeschrijving: karamel zeezout": 1,
         "niet herkende productbeschrijving: rotsjes crispy": 1,
         "niet herkende productbeschrijving: the barista edition flavour": 1,
@@ -1205,7 +1209,6 @@
         "niet herkende productbeschrijving: jimmy zout pack": 1,
         "niet herkende productbeschrijving: pathe zout": 1,
         "niet herkende productbeschrijving: proper sea salted": 1,
-        "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: proper sweet salty": 1
       },
       "samples": [
@@ -1591,14 +1594,14 @@
     "sereh": {
       "match": 4,
       "partial": 12,
-      "reject": 10,
+      "reject": 12,
       "reasons": {
         "productkenmerken en verpakking passen": 4,
         "niet herkende productbeschrijving: morning sunshine mate infusion": 1,
         "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion": 1,
+        "productnaam of uitsluitingen passen niet": 10,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
         "niet herkende productbeschrijving: brandnetel kaneel": 1,
-        "productnaam of uitsluitingen passen niet": 8,
         "andere productvorm: prepared": 2,
         "niet herkende productbeschrijving: brandnetel zakjes": 1,
         "niet herkende productbeschrijving: gember zakjes": 1,
@@ -1623,9 +1626,21 @@
         },
         {
           "store": "jumbo",
+          "name": "Jumbo Biologisch Citroengras Gember Thee 30 g",
+          "status": "reject",
+          "reason": "productnaam of uitsluitingen passen niet"
+        },
+        {
+          "store": "jumbo",
           "name": "Jumbo Smoothiemix Green Reviver Boerenkool, Banaan, Mango & Citroengras 250 g",
           "status": "partial",
           "reason": "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango"
+        },
+        {
+          "store": "jumbo",
+          "name": "Jumbo's Biologische Groene Thee Lemongrass Bergamot Glow 18 Stuks",
+          "status": "reject",
+          "reason": "productnaam of uitsluitingen passen niet"
         },
         {
           "store": "jumbo",
@@ -1644,18 +1659,6 @@
           "name": "YumYum Thai Spicy Soup with Shrimp & Lemongrass (Tom Yum) - 10 x 100 g",
           "status": "reject",
           "reason": "andere productvorm: prepared"
-        },
-        {
-          "store": "jumbo",
-          "name": "YumYum Thai Spicy Soup with Shrimp & Lemongrass (Tom Yum) 100 g",
-          "status": "reject",
-          "reason": "andere productvorm: prepared"
-        },
-        {
-          "store": "jumbo",
-          "name": "Zonnatura Bio 100% Brandnetel Citroengras 20 Zakjes 32 g",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: brandnetel zakjes"
         }
       ],
       "groups": {
@@ -1831,17 +1834,6 @@
       "fingerprint": "12ad4a3601e623b962687471"
     },
     {
-      "profile": "vis",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-biologische-zalmfilet-met-huid-175-g-782942TRA",
-      "name": "Jumbo Biologische Zalmfilet met Huid 175 g",
-      "pack": "175 g",
-      "url": "https://www.jumbo.com/producten/jumbo-biologische-zalmfilet-met-huid-175-g-782942TRA",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "9b23802969218a9c9bdfc437"
-    },
-    {
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
@@ -1933,6 +1925,17 @@
       "profile": "gemengdgehakt",
       "priority": 0,
       "store": "jumbo",
+      "product_id": "jumbo-gemengd-gehakt-175-g-798790TRA",
+      "name": "Jumbo Gemengd Gehakt 175 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-175-g-798790TRA",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "a298fd8b59917f40594dda2d"
+    },
+    {
+      "profile": "gemengdgehakt",
+      "priority": 0,
+      "store": "jumbo",
       "product_id": "jumbo-gemengd-gehakt-2-x-500g-649263TRA",
       "name": "Jumbo Gemengd Gehakt 2 x 500g",
       "pack": "1000 g",
@@ -1961,6 +1964,17 @@
       "url": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "33cd8fc719b2ec942fdd0203"
+    },
+    {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-gourmet-mini-kipfilet-120-g-697225TRA",
+      "name": "Jumbo Gourmet Mini Kipfilet 120 g",
+      "pack": "120 g",
+      "url": "https://www.jumbo.com/producten/jumbo-gourmet-mini-kipfilet-120-g-697225TRA",
+      "reason": "niet herkende productbeschrijving: gourmet mini",
+      "fingerprint": "49f8bf237399b6ad14be02c2"
     },
     {
       "profile": "pompoen",
@@ -2062,6 +2076,17 @@
       "fingerprint": "ea5ec8647ad12998849354a0"
     },
     {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-kipfiletreepjes-voorgegaard-135-g-797949TRA",
+      "name": "Jumbo Kipfiletreepjes Voorgegaard 135 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-kipfiletreepjes-voorgegaard-135-g-797949TRA",
+      "reason": "niet herkende productbeschrijving: voorgegaard",
+      "fingerprint": "f835eb4003a9c4ddd3287ca3"
+    },
+    {
       "profile": "kippenpoten",
       "priority": 0,
       "store": "jumbo",
@@ -2093,6 +2118,17 @@
       "url": "https://www.jumbo.com/producten/jumbo-mix-pompoen-zoete-aardappel-400-g-703750ZK",
       "reason": "niet herkende productbeschrijving: mix zoete aardappel",
       "fingerprint": "e3aa95d996979d5bdaba4c96"
+    },
+    {
+      "profile": "pompoen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-oranje-pompoen-biologisch-208855STK",
+      "name": "Jumbo Oranje Pompoen Biologisch",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-oranje-pompoen-biologisch-208855STK",
+      "reason": "niet herkende productbeschrijving: oranje",
+      "fingerprint": "f1c7a52b00e7150047369b81"
     },
     {
       "profile": "pompoen",
@@ -2192,6 +2228,28 @@
       "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-500-g-302252ZK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "e99ff35401b8e3a264055866"
+    },
+    {
+      "profile": "sperziebonen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-sperziebonen-biologisch-400-g-398279ZK",
+      "name": "Jumbo Sperziebonen Biologisch 400 g",
+      "pack": "400 g",
+      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-biologisch-400-g-398279ZK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "6816109c4806306407413c05"
+    },
+    {
+      "profile": "sperziebonen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-sperziebonen-gebroken-450-g-780728ZK",
+      "name": "Jumbo Sperziebonen Gebroken 450 g",
+      "pack": "450 g",
+      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-450-g-780728ZK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "bd5298d51db00d6a1a70710a"
     },
     {
       "profile": "sperziebonen",
@@ -4020,6 +4078,17 @@
       "fingerprint": "26031c55c388e92bfe76a554"
     },
     {
+      "profile": "kwark",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "high-protein-crepe-met-vanille-kwark-200-g-754542TRA",
+      "name": "High Protein Crepe met Vanille Kwark 200 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/high-protein-crepe-met-vanille-kwark-200-g-754542TRA",
+      "reason": "niet herkende productbeschrijving: crepe vanille",
+      "fingerprint": "2c1eeeae62f49b80b131fcf7"
+    },
+    {
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
@@ -4309,12 +4378,34 @@
       "profile": "popcorn",
       "priority": 1,
       "store": "jumbo",
+      "product_id": "jumbo-magnetron-popcorn-zoet-3-stuks-789934ZK",
+      "name": "Jumbo Magnetron Popcorn Zoet 3 Stuks",
+      "pack": "3 x 100 g",
+      "url": "https://www.jumbo.com/producten/jumbo-magnetron-popcorn-zoet-3-stuks-789934ZK",
+      "reason": "niet herkende productbeschrijving: zoet",
+      "fingerprint": "db52675411a58743681160ed"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
       "product_id": "jumbo-magnetron-popcorn-zoet-3-x-90-g-569935DS",
       "name": "Jumbo Magnetron Popcorn Zoet 3 x 90 g",
       "pack": "3 x 90 g",
       "url": "https://www.jumbo.com/producten/jumbo-magnetron-popcorn-zoet-3-x-90-g-569935DS",
       "reason": "niet herkende productbeschrijving: zoet",
       "fingerprint": "a8337f8446af7345edebfff5"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-magnetron-popcorn-zout-3-stuks-790472ZK",
+      "name": "Jumbo Magnetron Popcorn Zout 3 Stuks",
+      "pack": "3 x 100 g",
+      "url": "https://www.jumbo.com/producten/jumbo-magnetron-popcorn-zout-3-stuks-790472ZK",
+      "reason": "niet herkende productbeschrijving: zout",
+      "fingerprint": "8310c44fb8dee21d1b7330dd"
     },
     {
       "profile": "popcorn",
@@ -4383,6 +4474,17 @@
       "fingerprint": "863f8676fea5d15dc873b257"
     },
     {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-paaseitjes-melk-popcorn-karamel-gevuld-200-g-711626ZK",
+      "name": "Jumbo Paaseitjes Melk Popcorn Karamel Gevuld 200 g",
+      "pack": "200 g",
+      "url": "https://www.jumbo.com/producten/jumbo-paaseitjes-melk-popcorn-karamel-gevuld-200-g-711626ZK",
+      "reason": "productsoort niet voldoende bevestigd",
+      "fingerprint": "f72beb756f4cf680029fa00f"
+    },
+    {
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
@@ -4419,6 +4521,17 @@
       "profile": "popcorn",
       "priority": 1,
       "store": "jumbo",
+      "product_id": "jumbo-popcorn-confetti-90-g-748224ZK",
+      "name": "Jumbo Popcorn Confetti 90 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-popcorn-confetti-90-g-748224ZK",
+      "reason": "niet herkende productbeschrijving: confetti",
+      "fingerprint": "5e522a16aa2fe0d17aa657ad"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
       "product_id": "jumbo-popcorn-karamel-zeezout-150-g-570370ZK",
       "name": "Jumbo Popcorn Karamel-Zeezout 150 g",
       "pack": "150 g",
@@ -4447,6 +4560,17 @@
       "url": "https://www.jumbo.com/producten/jumbo-popcorn-zoet-175-g-570373ZK",
       "reason": "niet herkende productbeschrijving: zoet",
       "fingerprint": "12c4328b68e5324b039c4950"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-popcorn-zoet-175-g-797716ZK",
+      "name": "Jumbo Popcorn Zoet 175 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-popcorn-zoet-175-g-797716ZK",
+      "reason": "niet herkende productbeschrijving: zoet",
+      "fingerprint": "c7cedcbe3f234f270922a28b"
     },
     {
       "profile": "popcorn",
