@@ -479,6 +479,39 @@
           "unit_price": 3.91,
           "variant": "alcoholvrij",
           "price_conflict": null
+        },
+        {
+          "id": "jumbo-20261111-sukadelappen-officieel",
+          "name": "Sukadelappen",
+          "category": "vlees",
+          "price": 1.59,
+          "regular_price": 2.19,
+          "pack_label": "per 100 gram",
+          "unit": "kg",
+          "unit_price": 15.9,
+          "price_basis": "variable_weight_100g",
+          "start_date": "2026-11-11",
+          "end_date": "2026-11-17",
+          "verified": true,
+          "promotion_status": "active",
+          "member_required": false,
+          "source_provider": "jumbo_official",
+          "source": {
+            "label": "Jumbo officiële weekaanbieding: 11 t/m 17 november, per 100 gram",
+            "url": "https://www.jumbo.com/aanbiedingen/sukadelappen/3022259"
+          },
+          "note": "Actieprijs geldt per 100 gram; het af te rekenen totaal is afhankelijk van het werkelijke gewicht. Productoverzichten kunnen de reguliere kiloprijs blijven tonen. Geen vaste verpakkingsprijs.",
+          "promotion_evidence": {
+            "name": "Sukadelappen",
+            "price": 1.59,
+            "pack_label": "per 100 gram",
+            "start_date": "2026-11-11",
+            "end_date": "2026-11-17",
+            "member_required": false,
+            "status": "available",
+            "checked_at": "2026-11-11",
+            "url": "https://www.jumbo.com/aanbiedingen/sukadelappen/3022259"
+          }
         }
       ],
       "recipes": [
