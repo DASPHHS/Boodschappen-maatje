@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-11T14:32:57.245Z",
+  "generated_at": "2026-11-11T21:55:15.815Z",
   "checked_date": "2026-11-11",
   "summary": {
     "profiles": 20,
@@ -251,11 +251,11 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
-        "product_name": "Jumbo Tofu Naturel 375g",
-        "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-10",
-        "checked_date": "2026-11-10"
+        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
+        "product_name": "Vivera Zachte Tofu 550 g",
+        "price": 1.99,
+        "price_status": "winkelprijswaarneming · 2026-11-11",
+        "checked_date": "2026-11-11"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -323,11 +323,11 @@
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175PAK",
-        "product_name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
-        "price": 1.45,
-        "price_status": "winkelprijswaarneming · 2026-11-10",
-        "checked_date": "2026-11-10"
+        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
+        "product_name": "Jumbo Houdbare Volle Melk 1 L",
+        "price": 0.98,
+        "price_status": "winkelprijswaarneming · 2026-11-11",
+        "checked_date": "2026-11-11"
       },
       "skuumkoppe": {
         "state": "price_observed",
