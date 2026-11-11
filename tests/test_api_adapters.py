@@ -113,5 +113,34 @@ class ImportTransaction(unittest.TestCase):
                 prior_feed=out.read_text();prior_state=state.read_text()
                 with patch.object(importer,'request',side_effect=OSError('service down')):self.assertEqual(importer.main(),1)
                 self.assertEqual(out.read_text(),prior_feed);self.assertEqual(state.read_text(),prior_state)
+
+class ProteinOfferClassification(unittest.TestCase):
+    def test_sukade_riblappen_and_shoarma_are_protein_bases(self):
+        from scripts.sync_aanbiedingen import kind
+        for name,expected in [
+            ('Jumbo Rund Sukadelappen 525 g','vlees'),
+            ('Jumbo Rund Riblappen 500 g','vlees'),
+            ('Jumbo Kipshoarma 300 g','kip'),
+            ('Jumbo Kip Shoarma 300 g','kip'),
+            ('Jumbo Varken Shoarma 500 g','vlees'),
+            ('Jumbo Shoarma 500 g','vlees'),
+            ('Vegetarische shoarma 175 g','vega'),
+        ]:
+            with self.subTest(name=name):
+                self.assertEqual(kind(name),expected)
+    def test_spices_sauces_and_meals_not_meat_bases(self):
+        from scripts.sync_aanbiedingen import kind
+        for name in ['Shoarmakruiden', 'Shoarmasaus', 'Kipshoarma maaltijd', 'Shoarma kruidenmix']:
+            with self.subTest(name=name):
+                self.assertIsNone(kind(name))
+    def test_expired_promotion_cannot_reenter_feed(self):
+        from scripts.sync_aanbiedingen import item
+        base=dict(product_id='shoarma',name='Jumbo Kipshoarma 300 g',
+                  promotion_status='active',price=4.35,valid_from='2026-11-11',
+                  valid_until='2026-11-17')
+        self.assertIsNotNone(item(base,'2026-11-11'))
+        self.assertIsNone(item(base,'2026-11-18'))
+        self.assertIsNone(item({**base,'promotion_status':'upcoming'},'2026-11-11'))
+
 if __name__=='__main__':unittest.main()
 
