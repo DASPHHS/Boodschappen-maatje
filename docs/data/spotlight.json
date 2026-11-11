@@ -518,7 +518,7 @@
           "name": "Jumbo Kipshoarma 300 g (2 schalen)",
           "category": "kip",
           "price": 4.35,
-          "regular_price": 4.35,
+          "regular_price": 8.7,
           "pack_label": "2 × 300 g",
           "multi_buy_quantity": 2,
           "multi_buy_price": 4.35,
@@ -534,7 +534,7 @@
             "label": "Officiële Jumbo-actie: kip- of varkensshoarma, 1+1 gratis (11–17 nov)",
             "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
           },
-          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 300 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen.",
+          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 300 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen. Normaal kosten twee gelijke schalen samen € 8,70.",
           "promotion_evidence": {
             "name": "Jumbo Kipshoarma 300 g (2 schalen)",
             "price": 4.35,
@@ -554,7 +554,7 @@
           "name": "Jumbo Shoarma 500 g (2 schalen)",
           "category": "vlees",
           "price": 4.95,
-          "regular_price": 4.95,
+          "regular_price": 9.9,
           "pack_label": "2 × 500 g",
           "multi_buy_quantity": 2,
           "multi_buy_price": 4.95,
@@ -570,7 +570,7 @@
             "label": "Officiële Jumbo-actie: kip- of varkensshoarma, 1+1 gratis (11–17 nov)",
             "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
           },
-          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 500 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen.",
+          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 500 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen. Normaal kosten twee gelijke schalen samen € 9,90.",
           "promotion_evidence": {
             "name": "Jumbo Shoarma 500 g (2 schalen)",
             "price": 4.95,
