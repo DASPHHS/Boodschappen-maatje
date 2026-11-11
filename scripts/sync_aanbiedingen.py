@@ -13,9 +13,9 @@ BASE="https://www.prijsprofeet.nl/api/v1/products/promotional/all"
 SYNC_STATE=Path(__file__).resolve().parents[1]/".sync/promotion-state.json"
 RETAILERS={"lidl":"lidl","jumbo":"jumbo","ah":"albert_heijn"}
 REGEX={
-"kip":r"\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt)[a-z]*\b",
+"kip":r"\b(kip|kalkoen|kipfilet|kipdij|kiphaas|kipgehakt|kipshoarma)[a-z]*\b",
 "vis":r"\b(zalm|makreel|haring|forel|sardine|koolvis|kabeljauw|witvis|heek|schol|pangasius|schelvis|tonijn|visfilet)[a-z]*\b",
-"vlees":r"\b(rund|runder|biefstuk|varken|varkens|hamlap|riblappen|entrecote|rosbief|ossenhaas|gehakt)[a-z]*\b",
+"vlees":r"\b(rund|runder|biefstuk|varken|varkens|hamlap|riblappen|sukade|sukadelappen|entrecote|rosbief|ossenhaas|gehakt|varkensshoarma)[a-z]*\b",
 "vega":r"\b(tofu|tempeh|seitan|edamame|eieren|kikkererwten|linzen|sojabrokken|vegan spek|plantaardige kip)[a-z]*\b",
 "groente":r"\b(broccoli|bloemkool|courgette|paprika|champignon|prei|wortel|waspeen|spinazie|spruit|paksoi|boerenkool|spitskool|witte kool|rode kool|aubergine|tomaat|tomaten|uien|komkommer|venkel|sperziebonen|witlof|andijvie|wokgroente)[a-z]*\b"}
 BLOCK=r"\b(spekreepjes|bacon|rookworst|salami|kroket|frikandel|nugget|schnitzel|hamburger|runderburger|kipburger|kruidenmix|kipkruiden|gepaneerd|visstick|fishstick|dierenvoer|kattenvoer|bier|wijn|chips|snoep|olvarit|baby|dreumes|peuter|maaltijdmix|kruiden|kruidenmix|basis voor|noedels|noodles|bouillon|saus|soep|wraphapje|wrap|rolletje|borrel|gevulde eieren|salade|pesto|spread|dip|grillworst|knaks|donut|rijstcookies|cracker|roti|pokebowl|bowl|kant-en-klaar|maaltijd|pasta|risotto|cordon bleu|voorgegaard|roerbakmix|belegd)\b"
@@ -28,13 +28,13 @@ def kind(name):
          "rookvlees","gerookt","snack","cracker","borrel","wraphapje","rolletje",
          "olvarit","ella's kitchen","noedels","noodles","baby","maaltijdmix","visstick",
          "gepaneerd","kipstick","knaks","roti","maaltijd","uit eigen keuken",
-         "spread","kant-en-klaar","spice mix","pesto","plakjes","krokant","airfryer")
+         "spread","kant-en-klaar","spice mix","pesto","plakjes","krokant","airfryer","shoarmakruiden","shoarmasaus")
     if any(part in t for part in bad):return None
     if any(part in t for part in ("kroket","nugget","cordon bleu","grillworst","spiesje","balletje",
                                   "staafje","flinterdun","vleesvervanger","beyond meat","kipknak",
                                   "gehaktbal","scholier","cracker","kippensoep")):return None
     if re.search(BLOCK,t):return None
-    if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
+    # Shoarma is a usable protein, but spice blends, sauces and ready meals are not.\n    if re.search(r"\\b(vega|vegetarisch|vegan|plantaardig)\\w*\\b",t) and "shoarma" in t:return "vega"\n    if re.search(r"\\bkip\\s*shoarma\\b|\\bkipshoarma\\b",t):return "kip"\n    if re.search(r"\\b(varkens?\\s*shoarma|varkensshoarma|shoarmavlees|jumbo shoarma)\\b",t):return "vlees"\n    if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
     if re.search(r"\b(plantaardig\w*|vegan|vegetarisch)\b",t) and re.search(r"\b(kip\w*|zalm\w*|vis\w*|gehakt\w*|shoarma\w*|stukjes)\b",t):return "vega"
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"
     for k in ("kip","vis","vlees","vega","groente"):
