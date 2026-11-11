@@ -512,6 +512,78 @@
             "checked_at": "2026-11-11",
             "url": "https://www.jumbo.com/aanbiedingen/sukadelappen/3022259"
           }
+        },
+        {
+          "id": "jumbo-20261111-kipshoarma-300-bundel",
+          "name": "Jumbo Kipshoarma 300 g (2 schalen)",
+          "category": "kip",
+          "price": 4.35,
+          "regular_price": 4.35,
+          "pack_label": "2 × 300 g",
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 4.35,
+          "promotion_type": "buy_one_get_one_free",
+          "price_basis": "2_identical_packs_bundle",
+          "start_date": "2026-11-11",
+          "end_date": "2026-11-17",
+          "verified": true,
+          "source_provider": "jumbo_official",
+          "promotion_status": "active",
+          "member_required": false,
+          "source": {
+            "label": "Officiële Jumbo-actie: kip- of varkensshoarma, 1+1 gratis (11–17 nov)",
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
+          },
+          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 300 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen.",
+          "promotion_evidence": {
+            "name": "Jumbo Kipshoarma 300 g (2 schalen)",
+            "price": 4.35,
+            "pack_label": "2 × 300 g",
+            "multi_buy_quantity": 2,
+            "multi_buy_price": 4.35,
+            "status": "available",
+            "checked_at": "2026-11-11",
+            "start_date": "2026-11-11",
+            "end_date": "2026-11-17",
+            "member_required": false,
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
+          }
+        },
+        {
+          "id": "jumbo-20261111-shoarma-500-bundel",
+          "name": "Jumbo Shoarma 500 g (2 schalen)",
+          "category": "vlees",
+          "price": 4.95,
+          "regular_price": 4.95,
+          "pack_label": "2 × 500 g",
+          "multi_buy_quantity": 2,
+          "multi_buy_price": 4.95,
+          "promotion_type": "buy_one_get_one_free",
+          "price_basis": "2_identical_packs_bundle",
+          "start_date": "2026-11-11",
+          "end_date": "2026-11-17",
+          "verified": true,
+          "source_provider": "jumbo_official",
+          "promotion_status": "active",
+          "member_required": false,
+          "source": {
+            "label": "Officiële Jumbo-actie: kip- of varkensshoarma, 1+1 gratis (11–17 nov)",
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
+          },
+          "note": "Actie 1+1 gratis, de vermelde prijs is voor twee identieke schalen van 500 g, niet per schaal. Bij combineren kunnen de effectieve prijzen verschillen.",
+          "promotion_evidence": {
+            "name": "Jumbo Shoarma 500 g (2 schalen)",
+            "price": 4.95,
+            "pack_label": "2 × 500 g",
+            "multi_buy_quantity": 2,
+            "multi_buy_price": 4.95,
+            "status": "available",
+            "checked_at": "2026-11-11",
+            "start_date": "2026-11-11",
+            "end_date": "2026-11-17",
+            "member_required": false,
+            "url": "https://www.jumbo.com/aanbiedingen/jumbo-kip-of-varkensshoarma/3023369"
+          }
         }
       ],
       "recipes": [
