@@ -634,11 +634,15 @@ let x='<section class="hero"><div><div class="eyebrow" style="color:#c6e79b">GOE
 x+=title('Drie winkels, jouw keuze','Jij kiest zelf precies één winkel. Hieronder zie je de bronwaarnemingen en receptmogelijkheden per supermarkt.');
 x+='<div class="store-grid">'+ORDER.map(s=>{
 const publisher=window.MaatjePublisherSelection.recipesForOffers({index:state.publisherRecipes,stores:[s],offersByStore:{[s]:offers(s)},engine:window.MaatjeRecipeDiscovery,retailerCatalog:state.retailerCatalog,excludePrei:state.excludePrei});
-const deals=publisher.filter(x=>x.matched.hasMain).length+recipes(s).filter(r=>recipeBenefit(r,s).hasMain).length;
- const knownOffers=offers(s).filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict).length;
- const otherReports=offers(s).length-knownOffers;
-const known=recipes(s).filter(r=>recipePrice(r).total!==null).length;
-return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+deals+' met hoofdproductactie</span></div><p>'+deals+' recepten met een hoofdingrediënt uit de beschikbare actiebronnen. '+known+' recepten met een volledige prijsindicatie. '+otherReports+' externe of nog niet rechtstreeks bevestigde actiemeldingen.</p><div class="store-metrics"><div class="metric"><b>'+knownOffers+'</b><small>acties met directe winkelbron</small></div><div class="metric"><b>'+(storeRecipeCounts(s)+publisher.length)+'</b><small>recepten met minstens 2 acties</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
+const ownRecipes=recipes(s);
+const potentialMain=publisher.filter(x=>x.matched?.hasMain).length+ownRecipes.filter(r=>recipeBenefit(r,s).hasMain).length;
+const confirmedOffers=offers(s).filter(o=>isOfficialOfferSource(o,s)&&!o.price_conflict);
+const knownOffers=confirmedOffers.length;
+const otherReports=offers(s).length-knownOffers;
+const fullyPriced=ownRecipes.filter(r=>recipePrice(r).total!==null).length;
+const todayPriced=ownRecipes.filter(r=>recipePrice(r).state==='today_confirmed').length;
+const confirmedTwo=ownRecipes.filter(r=>new Set(offerInfo(r,s).confirmed.map(x=>x.offer.id)).size>=2).length;
+return '<article class="store-card"><div class="store-top"><div class="store-logo">'+storeLogo(s)+safe(NAMES[s])+'</div><span class="tag">'+potentialMain+' mogelijke hoofdproductacties</span></div><p>'+potentialMain+' receptkoppelingen met een mogelijke hoofdproductactie (geen bevestigde besparing). '+fullyPriced+' recepten met een volledige, eventueel historische prijsindicatie; '+todayPriced+' met vandaag volledig bevestigde prijzen. '+otherReports+' externe of niet rechtstreeks bevestigde actiemeldingen.</p><div class="store-metrics"><div class="metric"><b>'+knownOffers+'</b><small>acties met officiële winkelbron en bevestigde actiegegevens</small></div><div class="metric"><b>'+confirmedTwo+'</b><small>eigen recepten met minimaal 2 exact gekoppelde, bevestigde acties</small></div></div><button class="button full" data-goto-store="'+s+'">Bekijk '+safe(NAMES[s])+' →</button></article>';
 }).join('')+'</div>';
 x+='<div class="my-home-link"><span>♧ <strong>'+state.savedRecipes.length+' bewaarde recepten</strong> · '+Object.values(state.selected).reduce((n,v)=>n+(v?.length||0),0)+' gerechten gepland</span><button class="button secondary small" data-view="mijn">Mijn recepten →</button></div>';
 x+='<div class="favorite-home-link"><span>♥ <strong>'+state.favorites.length+' favorieten</strong> · Bekijk direct je actuele aanbiedingen</span><button class="button secondary small" data-open-favorites="1">Mijn favorieten →</button></div>';
