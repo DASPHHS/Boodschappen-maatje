@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-11T13:01:48.304Z",
+  "generated_at": "2026-11-11T14:12:53.409Z",
   "checked_date": "2026-11-11",
   "summary": {
     "profiles": 20,
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-10",
-        "checked_date": "2026-11-10"
+        "price_status": "winkelprijswaarneming · 2026-11-11",
+        "checked_date": "2026-11-11"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -335,7 +335,7 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 9.39,
-        "price_status": "externe prijswaarneming · 2026-11-11",
+        "price_status": "winkelprijswaarneming · 2026-11-11",
         "checked_date": "2026-11-11"
       },
       "skuumkoppe_00": {
@@ -344,7 +344,7 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 9.39,
-        "price_status": "externe prijswaarneming · 2026-11-11",
+        "price_status": "winkelprijswaarneming · 2026-11-11",
         "checked_date": "2026-11-11"
       },
       "soto_boemboe": {
