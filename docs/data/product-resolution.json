@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T13:44:46.981Z",
+  "generated_at": "2026-11-12T15:07:15.768Z",
   "checked_date": "2026-11-12",
   "summary": {
     "profiles": 20,
@@ -215,11 +215,11 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-600-g-730862POT",
-        "product_name": "Whole Earth Smooth Pindakaas 600 g",
-        "price": 4.79,
-        "price_status": "winkelprijswaarneming · 2026-11-11",
-        "checked_date": "2026-11-11"
+        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
+        "product_name": "Jumbo Pindakaas Naturel 600 g",
+        "price": 1.35,
+        "price_status": "winkelprijswaarneming · 2026-11-12",
+        "checked_date": "2026-11-12"
       },
       "kwark": {
         "state": "price_observed",
@@ -242,11 +242,11 @@
       "walnoten": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-140-g-708449CUP",
-        "product_name": "Jumbo Ongebrande Walnoten 140 g",
-        "price": 2.69,
-        "price_status": "winkelprijswaarneming · 2026-11-11",
-        "checked_date": "2026-11-11"
+        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
+        "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
+        "price": 6.19,
+        "price_status": "winkelprijswaarneming · 2026-11-12",
+        "checked_date": "2026-11-12"
       },
       "tofu": {
         "state": "price_observed",
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-11",
-        "checked_date": "2026-11-11"
+        "price_status": "winkelprijswaarneming · 2026-11-12",
+        "checked_date": "2026-11-12"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -317,7 +317,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-11-12",
+        "price_status": "winkelprijswaarneming · 2026-11-12",
         "checked_date": "2026-11-12"
       },
       "volle_melk": {
