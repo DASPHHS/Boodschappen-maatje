@@ -1,245 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T07:14:53.942731+01:00",
+  "generated_at": "2026-11-13T07:16:54.777714+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-13T07:14:44.741154+01:00",
+      "checked_at": "2026-11-13T07:16:47.857559+01:00",
       "status": "ok",
-      "offers": [
-        {
-          "id": "folderz-lidl-70311677",
-          "name": "Handsinaasappelen",
-          "category": "overig",
-          "price": 1.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/handsinaasappelen-aanbieding-70311677/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311993",
-          "name": "Mora Oven & Airfryer snacks",
-          "category": "overig",
-          "price": 1.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/mora-oven-airfryer-snacks-aanbieding-70311993/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311824",
-          "name": "Monster Energy",
-          "category": "dranken",
-          "price": 1.29,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/monster-energy-aanbieding-70311824/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311858",
-          "name": "Livarno Waxinelichtjes 4 uur",
-          "category": "overig",
-          "price": 2.97,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/livarno-waxinelichtjes-4-uur-aanbieding-70311858/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70312006",
-          "name": "Silvercrest Dubbele airfryer",
-          "category": "overig",
-          "price": 69.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/silvercrest-dubbele-airfryer-aanbieding-70312006/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311818",
-          "name": "Mandarijnen in kist",
-          "category": "fruit",
-          "price": 2.49,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/mandarijnen-in-kist-aanbieding-70311818/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311708",
-          "name": "Iets Kruidig Aardappelen",
-          "category": "brood_graan",
-          "price": 2.49,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/iets-kruidig-aardappelen-aanbieding-70311708/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311679",
-          "name": "Fireworks mania",
-          "category": "overig",
-          "price": 12.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/fireworks-mania-aanbieding-70311679/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311967",
-          "name": "Cleanmaxx Accu-kruimeldief set",
-          "category": "overig",
-          "price": 34.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/cleanmaxx-accu-kruimeldief-set-aanbieding-70311967/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311676",
-          "name": "Milbona Goudse plakken kaas",
-          "category": "zuivel",
-          "price": 2.59,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/milbona-goudse-plakken-kaas-aanbieding-70311676/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311936",
-          "name": "Esmara Dames lange winterjas",
-          "category": "overig",
-          "price": 19.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/esmara-dames-lange-winterjas-aanbieding-70311936/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70311678",
-          "name": "Bellarom Koffiecapsules",
-          "category": "overig",
-          "price": 8.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-09",
-          "end_date": "2026-11-14",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/bellarom-koffiecapsules-aanbieding-70311678/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-13",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        }
-      ],
+      "offers": [],
       "official_check": {
-        "checked_at": "2026-11-13T07:14:47.510485+01:00",
+        "checked_at": "2026-11-13T07:16:49.996733+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
@@ -254,12 +25,14 @@
       },
       "official_prices": [],
       "folderz_check": {
-        "checked_at": "2026-11-13T07:14:53.942731+01:00",
-        "status": "ok",
-        "details_checked": 12,
-        "accepted": 12,
+        "checked_at": "2026-11-13T07:16:54.777714+01:00",
+        "status": "partial",
+        "details_checked": 0,
+        "accepted": 0,
         "retained": 0,
-        "errors": {},
+        "errors": {
+          "https://www.folderz.nl/winkels/lidl/aanbiedingen": "No detail links; returned page: "
+        },
         "coverage": "bounded_first_listing_page"
       }
     },
