@@ -34,7 +34,11 @@ def kind(name):
                                   "staafje","flinterdun","vleesvervanger","beyond meat","kipknak",
                                   "gehaktbal","scholier","cracker","kippensoep")):return None
     if re.search(BLOCK,t):return None
-    # Shoarma is a usable protein, but spice blends, sauces and ready meals are not.\n    if re.search(r"\\b(vega|vegetarisch|vegan|plantaardig)\\w*\\b",t) and "shoarma" in t:return "vega"\n    if re.search(r"\\bkip\\s*shoarma\\b|\\bkipshoarma\\b",t):return "kip"\n    if re.search(r"\\b(varkens?\\s*shoarma|varkensshoarma|shoarmavlees|jumbo shoarma)\\b",t):return "vlees"\n    if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
+    # Shoarma is a usable protein, but spice blends, sauces and ready meals are not.
+    if re.search(r"\b(vega|vegetarisch|vegan|plantaardig)\w*\b",t) and "shoarma" in t:return "vega"
+    if re.search(r"\bkip\s*shoarma\b|\bkipshoarma\b",t):return "kip"
+    if re.search(r"\b(varkens?\s*shoarma|varkensshoarma|shoarmavlees|jumbo shoarma)\b",t):return "vlees"
+    if re.search(r"\b(100% plantaardig|vegan|vegetarisch)\b",t) and re.search(r"\b(kip|rund|varken|zalm|vis)\b",t) and not re.search(REGEX['vega'],t):return None
     if re.search(r"\b(plantaardig\w*|vegan|vegetarisch)\b",t) and re.search(r"\b(kip\w*|zalm\w*|vis\w*|gehakt\w*|shoarma\w*|stukjes)\b",t):return "vega"
     if re.search(r"\b(vegan|vegetarisch|plantaardig)\b",t) and re.search(REGEX["vega"],t):return "vega"
     for k in ("kip","vis","vlees","vega","groente"):
