@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-14T12:33:33.446Z",
+  "generated_at": "2026-11-14T13:27:22.147Z",
   "checked_date": "2026-11-14",
   "summary": {
     "profiles": 20,
@@ -215,11 +215,11 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/calve-pindakaas-stukjes-pinda-1000-g-216436STK",
-        "product_name": "Calve Pindakaas Stukjes Pinda 1000 g",
-        "price": 7.99,
-        "price_status": "winkelprijswaarneming · 2026-11-13",
-        "checked_date": "2026-11-13"
+        "source": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-600-g-730862POT",
+        "product_name": "Whole Earth Smooth Pindakaas 600 g",
+        "price": 4.79,
+        "price_status": "winkelprijswaarneming · 2026-11-14",
+        "checked_date": "2026-11-14"
       },
       "kwark": {
         "state": "price_observed",
@@ -290,17 +290,17 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-13",
-        "checked_date": "2026-11-13"
+        "price_status": "winkelprijswaarneming · 2026-11-14",
+        "checked_date": "2026-11-14"
       },
       "sperziebonen": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
-        "price": 1.55,
-        "price_status": "winkelprijswaarneming · 2026-11-13",
-        "checked_date": "2026-11-13"
+        "price": 1.44,
+        "price_status": "winkelprijswaarneming · 2026-11-14",
+        "checked_date": "2026-11-14"
       },
       "bospeen": {
         "state": "needs_source",
