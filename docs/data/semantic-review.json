@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-13T21:37:57.548Z",
-  "source_date": "2026-11-13",
-  "source_commit": "4bd657d2ff7804e25fd24c7dad1eca6beb11cacd",
+  "generated_at": "2026-11-14T12:09:11.651Z",
+  "source_date": "2026-11-14",
+  "source_commit": "7ac655230521a9f159f97348cefe628f7d3369bb",
   "counts": {
     "match": 248,
     "partial": 352,
