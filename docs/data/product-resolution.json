@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16T14:02:36.667Z",
+  "generated_at": "2026-11-16T15:37:54.706Z",
   "checked_date": "2026-11-16",
   "summary": {
     "profiles": 20,
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-15",
-        "checked_date": "2026-11-15"
+        "price_status": "winkelprijswaarneming · 2026-11-16",
+        "checked_date": "2026-11-16"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-15",
-        "checked_date": "2026-11-15"
+        "price_status": "winkelprijswaarneming · 2026-11-16",
+        "checked_date": "2026-11-16"
       },
       "bospeen": {
         "state": "needs_source",
@@ -317,7 +317,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "externe prijswaarneming · 2026-11-16",
+        "price_status": "winkelprijswaarneming · 2026-11-16",
         "checked_date": "2026-11-16"
       },
       "volle_melk": {
