@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16T13:36:32.063Z",
+  "generated_at": "2026-11-16T14:02:36.667Z",
   "checked_date": "2026-11-16",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 44,
+    "price_observed": 46,
     "stale_or_unavailable": 0,
     "needs_variant_evidence": 6,
-    "needs_source": 10
+    "needs_source": 8
   },
   "stores": {
     "lidl": {
@@ -469,9 +469,9 @@
       "pompoen": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.ah.nl/producten/product/wi426004/ah-biologisch-flespompoen",
-        "product_name": "AH Biologisch Flespompoen",
-        "price": 2.78,
+        "source": "https://www.ah.nl/producten/product/wi482844/ah-flespompoen-stukjes",
+        "product_name": "AH Flespompoen stukjes",
+        "price": 3.39,
         "price_status": "externe prijswaarneming · 2026-11-16",
         "checked_date": "2026-11-16"
       },
@@ -512,22 +512,22 @@
         "checked_date": "2026-11-16"
       },
       "skuumkoppe": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi606448/texels-skuumkoppe",
+        "product_name": "Texels Skuumkoppe",
+        "price": 1.87,
+        "price_status": "externe actiemelding · t/m 2026-11-22",
+        "checked_date": "2026-11-16"
       },
       "skuumkoppe_00": {
-        "state": "needs_source",
-        "reason": "geen passende productprijs uit aangesloten bronnen",
-        "source": null,
-        "product_name": null,
-        "price": null,
-        "price_status": null,
-        "checked_date": null
+        "state": "price_observed",
+        "reason": null,
+        "source": "https://www.ah.nl/producten/product/wi589403/texels-skuumkoppe-0-0",
+        "product_name": "Texels Skuumkoppe 0.0%",
+        "price": 1.31,
+        "price_status": "externe actiemelding · t/m 2026-11-22",
+        "checked_date": "2026-11-16"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
