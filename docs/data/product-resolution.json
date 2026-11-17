@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-17T14:56:37.521Z",
+  "generated_at": "2026-11-17T15:56:37.458Z",
   "checked_date": "2026-11-17",
   "summary": {
     "profiles": 20,
@@ -215,9 +215,9 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-s-pindakaas-met-stukjes-350-g-783023POT",
-        "product_name": "Jumbo's Pindakaas met Stukjes 350 g",
-        "price": 1.69,
+        "source": "https://www.jumbo.com/producten/jumbo-s-pindakaas-met-stukjes-600-g-783025POT",
+        "product_name": "Jumbo's Pindakaas met Stukjes 600 g",
+        "price": 2.79,
         "price_status": "winkelprijswaarneming · 2026-11-17",
         "checked_date": "2026-11-17"
       },
@@ -226,8 +226,8 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
         "product_name": "Jumbo Franse Kwark Mager 1000 g",
-        "price": 1.69,
-        "price_status": "externe prijswaarneming · 2026-11-17",
+        "price": 1.65,
+        "price_status": "winkelprijswaarneming · 2026-11-17",
         "checked_date": "2026-11-17"
       },
       "dreft": {
@@ -251,10 +251,10 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "externe prijswaarneming · 2026-11-17",
+        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
+        "product_name": "Jumbo Tofu Naturel 375g",
+        "price": 1.4,
+        "price_status": "winkelprijswaarneming · 2026-11-17",
         "checked_date": "2026-11-17"
       },
       "gemengdgehakt": {
@@ -326,7 +326,7 @@
         "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
         "product_name": "Jumbo Houdbare Volle Melk 1 L",
         "price": 0.98,
-        "price_status": "externe prijswaarneming · 2026-11-17",
+        "price_status": "winkelprijswaarneming · 2026-11-17",
         "checked_date": "2026-11-17"
       },
       "skuumkoppe": {
@@ -344,7 +344,7 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
         "price": 9.39,
-        "price_status": "externe prijswaarneming · 2026-11-17",
+        "price_status": "winkelprijswaarneming · 2026-11-17",
         "checked_date": "2026-11-17"
       },
       "soto_boemboe": {
