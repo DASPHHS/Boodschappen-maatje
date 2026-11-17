@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-17T15:56:37.458Z",
-  "checked_date": "2026-11-17",
+  "generated_at": "2026-11-17T23:09:40.463Z",
+  "checked_date": "2026-11-18",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -317,8 +317,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "winkelprijswaarneming · 2026-11-16",
-        "checked_date": "2026-11-16"
+        "price_status": "externe prijswaarneming · 2026-11-17",
+        "checked_date": "2026-11-17"
       },
       "volle_melk": {
         "state": "price_observed",
