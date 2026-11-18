@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-18T00:56:58.956Z",
-  "source_date": "2026-11-17",
-  "source_commit": "0d692c1743c4163ee98723d460f420f7e8bacf94",
+  "generated_at": "2026-11-18T13:56:02.552Z",
+  "source_date": "2026-11-18",
+  "source_commit": "73ba1dadbeaf025fb345ebbd3a4b379dae409f69",
   "counts": {
-    "match": 248,
-    "partial": 352,
-    "reject": 226
+    "match": 249,
+    "partial": 356,
+    "reject": 221
   },
   "profiles": {
     "sungold": {
@@ -610,13 +610,13 @@
       }
     },
     "kipfilet": {
-      "match": 46,
-      "partial": 67,
-      "reject": 85,
+      "match": 48,
+      "partial": 70,
+      "reject": 80,
       "reasons": {
-        "productkenmerken en verpakking passen": 46,
+        "productkenmerken en verpakking passen": 48,
         "productnaam of uitsluitingen passen niet": 6,
-        "andere productvorm: cooked": 62,
+        "andere productvorm: cooked": 57,
         "niet herkende productbeschrijving: a la minute": 4,
         "andere productvorm: mixed": 9,
         "andere productvorm: seasoned": 1,
@@ -659,18 +659,20 @@
         "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: minder": 2,
         "andere doelgroep: baby": 1,
+        "niet herkende productbeschrijving: bieslook": 1,
         "niet herkende productbeschrijving: van haas": 1,
         "niet herkende productbeschrijving: jalapeno": 1,
         "niet herkende productbeschrijving: roerbak": 2,
         "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: thais": 1,
         "niet herkende productbeschrijving: roasted": 1,
-        "niet herkende productbeschrijving: roerbak sensatie pasta": 1,
+        "niet herkende productbeschrijving: iglo roerbak sensatie pasta": 1,
         "niet herkende productbeschrijving: knorr tratorria toscana": 1,
         "niet herkende productbeschrijving: knorr trattoria romana": 1,
         "niet herkende productbeschrijving: marhaba": 1,
-        "niet herkende productbeschrijving: wahid": 2,
-        "niet herkende productbeschrijving: wahid chilipeper": 1
+        "niet herkende productbeschrijving: wahid": 3,
+        "niet herkende productbeschrijving: wahid chilipeper": 1,
+        "niet herkende productbeschrijving: wahid provence": 1
       },
       "samples": [
         {
@@ -734,7 +736,7 @@
           "label": "Kipfilet · naturel; bewaarmethode niet vermeld · inhoud niet bevestigd",
           "stores": {
             "lidl": 14,
-            "ah": 2
+            "ah": 3
           }
         },
         "chicken_breast|plain||naturel|kg": {
@@ -742,7 +744,7 @@
           "stores": {
             "lidl": 11,
             "jumbo": 3,
-            "ah": 10
+            "ah": 11
           }
         },
         "chicken_breast|plain||naturel · biologisch|inhoud onbekend": {
@@ -876,7 +878,7 @@
           "stores": {
             "lidl": 10,
             "jumbo": 5,
-            "ah": 1
+            "ah": 2
           }
         },
         "salmon|plain||naturel · biologisch|kg": {
@@ -894,8 +896,7 @@
         "salmon|frozen||naturel|kg": {
           "label": "Zalm · diepvries · per kg",
           "stores": {
-            "jumbo": 3,
-            "ah": 1
+            "jumbo": 3
           }
         }
       }
@@ -935,7 +936,7 @@
         "niet herkende productbeschrijving: pasta mezzelune kaas": 1,
         "niet herkende productbeschrijving: lantaarn": 1,
         "niet herkende productbeschrijving: crispy broodjes": 1,
-        "niet herkende productbeschrijving: broodmix": 1,
+        "niet herkende productbeschrijving: abdij broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
         "niet herkende productbeschrijving: maaltijdhapje rijst kip": 1,
         "niet herkende productbeschrijving: robuust broodjes": 1,
@@ -1028,14 +1029,14 @@
       }
     },
     "sperziebonen": {
-      "match": 8,
-      "partial": 18,
+      "match": 7,
+      "partial": 19,
       "reject": 22,
       "reasons": {
-        "vers/diepvries of conserven niet uit productbron vastgesteld": 13,
+        "vers/diepvries of conserven niet uit productbron vastgesteld": 14,
         "andere productvorm: preserved": 16,
         "niet herkende productbeschrijving: tk": 1,
-        "productkenmerken en verpakking passen": 8,
+        "productkenmerken en verpakking passen": 7,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
@@ -1098,8 +1099,7 @@
         "green_beans|frozen||naturel|kg": {
           "label": "Sperziebonen · diepvries · per kg",
           "stores": {
-            "jumbo": 2,
-            "ah": 1
+            "jumbo": 2
           }
         },
         "green_beans|frozen||naturel · biologisch|kg": {
@@ -2544,6 +2544,17 @@
       "fingerprint": "a3aafd5dd03852581d56cf0c"
     },
     {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "ah",
+      "product_id": "wi132220/ah-kipfilet-grootverpakking",
+      "name": "AH Kipfilet grootverpakking",
+      "pack": "250 g",
+      "url": "https://www.ah.nl/producten/product/wi132220/ah-kipfilet-grootverpakking",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "e5c7c802751cc258d0fefbc6"
+    },
+    {
       "profile": "vis",
       "priority": 0,
       "store": "ah",
@@ -2553,6 +2564,17 @@
       "url": "https://www.ah.nl/producten/product/wi135757/ah-zalmfilet",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "5304a24bec3b29f49eb9042b"
+    },
+    {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "ah",
+      "product_id": "wi137939/ah-scharrel-kipfilet",
+      "name": "AH Scharrel kipfilet",
+      "pack": "ca. 125 g",
+      "url": "https://www.ah.nl/producten/product/wi137939/ah-scharrel-kipfilet",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "c608fc16fdc457f624a81cc7"
     },
     {
       "profile": "vis",
@@ -2577,6 +2599,17 @@
       "fingerprint": "7179e1153c82da3a6509f59a"
     },
     {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "ah",
+      "product_id": "wi162009/wahid-kipfilet",
+      "name": "Wahid kipfilet",
+      "pack": "125 g",
+      "url": "https://www.ah.nl/producten/product/wi162009/wahid-kipfilet",
+      "reason": "niet herkende productbeschrijving: wahid",
+      "fingerprint": "52fef6e03c7c0ee1d10bc3e3"
+    },
+    {
       "profile": "pompoen",
       "priority": 0,
       "store": "ah",
@@ -2584,7 +2617,7 @@
       "name": "Abdij Broodmix pompoen",
       "pack": "1 kg",
       "url": "https://www.ah.nl/producten/product/wi164734/abdij-broodmix-pompoen",
-      "reason": "niet herkende productbeschrijving: broodmix",
+      "reason": "niet herkende productbeschrijving: abdij broodmix",
       "fingerprint": "6e20f1e1161a838d46125599"
     },
     {
@@ -2639,7 +2672,7 @@
       "name": "Iglo Roerbak sensatie pasta kipfilet",
       "pack": "450 g",
       "url": "https://www.ah.nl/producten/product/wi187167/iglo-roerbak-sensatie-pasta-kipfilet",
-      "reason": "niet herkende productbeschrijving: roerbak sensatie pasta",
+      "reason": "niet herkende productbeschrijving: iglo roerbak sensatie pasta",
       "fingerprint": "b58042e1f0c84e52761a3076"
     },
     {
@@ -2665,6 +2698,17 @@
       "fingerprint": "81b4efd2350b5c333b41f370"
     },
     {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "ah",
+      "product_id": "wi191122/wahid-kipfilet-provence",
+      "name": "Wahid Kipfilet provence",
+      "pack": "125 g",
+      "url": "https://www.ah.nl/producten/product/wi191122/wahid-kipfilet-provence",
+      "reason": "niet herkende productbeschrijving: wahid provence",
+      "fingerprint": "8c16f3dc86403583582a8cd8"
+    },
+    {
       "profile": "vis",
       "priority": 0,
       "store": "ah",
@@ -2674,6 +2718,17 @@
       "url": "https://www.ah.nl/producten/product/wi191133/ah-biologisch-zalmfilet",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "0089219a96b395c4f4be8b7f"
+    },
+    {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "ah",
+      "product_id": "wi192850/ah-scharrel-kipfilet-bieslook",
+      "name": "AH Scharrel kipfilet bieslook",
+      "pack": "ca. 125 g",
+      "url": "https://www.ah.nl/producten/product/wi192850/ah-scharrel-kipfilet-bieslook",
+      "reason": "niet herkende productbeschrijving: bieslook",
+      "fingerprint": "0b637c7cb37b4a83d4ddc23d"
     },
     {
       "profile": "kipfilet",
@@ -2727,7 +2782,7 @@
       "name": "AH Sperziebonen gebroken",
       "pack": "450 g",
       "url": "https://www.ah.nl/producten/product/wi226498/ah-sperziebonen-gebroken",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "vers/diepvries of conserven niet uit productbron vastgesteld",
       "fingerprint": "9f19801953fd7b7c7889bc6e"
     },
     {
