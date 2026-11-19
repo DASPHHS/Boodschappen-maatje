@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T22:47:15.463Z",
-  "checked_date": "2026-11-18",
+  "generated_at": "2026-11-19T00:20:10.723Z",
+  "checked_date": "2026-11-19",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 45,
-    "stale_or_unavailable": 0,
+    "price_observed": 44,
+    "stale_or_unavailable": 1,
     "needs_variant_evidence": 6,
     "needs_source": 9
   },
@@ -224,11 +224,11 @@
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
-        "product_name": "Jumbo Franse Kwark Mager 1000 g",
+        "source": "https://www.jumbo.com/producten/jumbo-biologisch-magere-kwark-500-g-395980BKR",
+        "product_name": "Jumbo Biologisch Magere Kwark 500 g",
         "price": 1.65,
-        "price_status": "winkelprijswaarneming · 2026-11-17",
-        "checked_date": "2026-11-17"
+        "price_status": "winkelprijswaarneming · 2026-11-18",
+        "checked_date": "2026-11-18"
       },
       "dreft": {
         "state": "price_observed",
@@ -263,8 +263,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
         "price": 7.99,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,8 +272,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "vis": {
         "state": "price_observed",
@@ -281,8 +281,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.65,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "pompoen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "bospeen": {
         "state": "needs_source",
@@ -323,11 +323,11 @@
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
-        "product_name": "Jumbo Houdbare Volle Melk 1 L",
-        "price": 0.98,
-        "price_status": "winkelprijswaarneming · 2026-11-17",
-        "checked_date": "2026-11-17"
+        "source": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175PAK",
+        "product_name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
+        "price": 1.45,
+        "price_status": "winkelprijswaarneming · 2026-11-18",
+        "checked_date": "2026-11-18"
       },
       "skuumkoppe": {
         "state": "price_observed",
@@ -339,12 +339,12 @@
         "checked_date": "2026-11-18"
       },
       "skuumkoppe_00": {
-        "state": "price_observed",
+        "state": "stale_or_unavailable",
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
-        "price": 7.04,
-        "price_status": "externe actiemelding · t/m 2026-11-24",
+        "price": 9.39,
+        "price_status": "Bronprijzen verschillen; hercontrole nodig",
         "checked_date": "2026-11-18"
       },
       "soto_boemboe": {
@@ -371,8 +371,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.38,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       }
     },
     "ah": {
