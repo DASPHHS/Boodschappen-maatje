@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-19T00:20:08.987Z",
-  "source_date": "2026-11-18",
-  "source_commit": "73ba1dadbeaf025fb345ebbd3a4b379dae409f69",
+  "generated_at": "2026-11-19T14:23:55.692Z",
+  "source_date": "2026-11-19",
+  "source_commit": "22e95e2ecb61d161cc987e5f9f306eb9b3bfd640",
   "counts": {
-    "match": 249,
-    "partial": 356,
+    "match": 252,
+    "partial": 354,
     "reject": 221
   },
   "profiles": {
@@ -416,11 +416,11 @@
       }
     },
     "walnoten": {
-      "match": 8,
+      "match": 10,
       "partial": 0,
       "reject": 1,
       "reasons": {
-        "productkenmerken en verpakking passen": 8,
+        "productkenmerken en verpakking passen": 10,
         "productnaam of uitsluitingen passen niet": 1
       },
       "samples": [
@@ -436,7 +436,7 @@
           "label": "Walnoten · naturel · ongebrand · zout niet vermeld · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 1,
-            "jumbo": 1,
+            "jumbo": 3,
             "ah": 3
           }
         },
@@ -611,7 +611,7 @@
     },
     "kipfilet": {
       "match": 48,
-      "partial": 70,
+      "partial": 71,
       "reject": 80,
       "reasons": {
         "productkenmerken en verpakking passen": 48,
@@ -646,6 +646,7 @@
         "andere productvorm: preserved": 1,
         "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
         "niet herkende productbeschrijving: ca": 6,
+        "niet herkende productbeschrijving: gourmet mini": 1,
         "niet herkende productbeschrijving: voorgegaard": 1,
         "niet herkende productbeschrijving: scharrelkip": 2,
         "niet herkende productbeschrijving: trattoria pastagerecht romana": 1,
@@ -903,7 +904,7 @@
     },
     "pompoen": {
       "match": 10,
-      "partial": 37,
+      "partial": 34,
       "reject": 45,
       "reasons": {
         "productkenmerken en verpakking passen": 10,
@@ -929,12 +930,9 @@
         "niet herkende productbeschrijving: herfstmix spruit ui": 1,
         "niet herkende productbeschrijving: mix zoete aardappel": 1,
         "niet herkende productbeschrijving: oranje": 1,
-        "niet herkende productbeschrijving: pasta pesto verspakket personen": 1,
         "productnaam of uitsluitingen passen niet": 8,
-        "niet herkende productbeschrijving: stampot verspakket personen": 1,
         "niet herkende productbeschrijving: traybake knolselderij mix": 1,
         "niet herkende productbeschrijving: pasta mezzelune kaas": 1,
-        "niet herkende productbeschrijving: lantaarn": 1,
         "niet herkende productbeschrijving: crispy broodjes": 1,
         "niet herkende productbeschrijving: abdij broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
@@ -1029,17 +1027,17 @@
       }
     },
     "sperziebonen": {
-      "match": 7,
+      "match": 8,
       "partial": 19,
       "reject": 22,
       "reasons": {
         "vers/diepvries of conserven niet uit productbron vastgesteld": 14,
         "andere productvorm: preserved": 16,
         "niet herkende productbeschrijving: tk": 1,
-        "productkenmerken en verpakking passen": 7,
         "andere doelgroep: baby": 1,
         "productsoort niet voldoende bevestigd": 1,
         "niet herkende productbeschrijving: ping klaar lasagnette": 1,
+        "productkenmerken en verpakking passen": 8,
         "niet herkende productbeschrijving: traybake spruitjes mix": 1,
         "andere productvorm: prepared": 4,
         "niet herkende productbeschrijving: sate": 1,
@@ -1096,12 +1094,6 @@
         }
       ],
       "groups": {
-        "green_beans|frozen||naturel|kg": {
-          "label": "Sperziebonen · diepvries · per kg",
-          "stores": {
-            "jumbo": 2
-          }
-        },
         "green_beans|frozen||naturel · biologisch|kg": {
           "label": "Sperziebonen · naturel · biologisch · diepvries · per kg",
           "stores": {
@@ -1112,6 +1104,18 @@
           "label": "Sperziebonen · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "jumbo": 4
+          }
+        },
+        "green_beans|plain||naturel · biologisch|kg": {
+          "label": "Sperziebonen · naturel · biologisch · naturel; bewaarmethode niet vermeld · per kg",
+          "stores": {
+            "jumbo": 1
+          }
+        },
+        "green_beans|frozen||naturel|kg": {
+          "label": "Sperziebonen · diepvries · per kg",
+          "stores": {
+            "jumbo": 2
           }
         }
       }
@@ -1675,17 +1679,6 @@
   },
   "queue": [
     {
-      "profile": "sperziebonen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "ardo-gebroken-sperziebonen-1kg-760358ZK",
-      "name": "Ardo Gebroken Sperziebonen 1KG",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/ardo-gebroken-sperziebonen-1kg-760358ZK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "6894f8e75f9896f872eed691"
-    },
-    {
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
@@ -1950,6 +1943,17 @@
       "fingerprint": "33cd8fc719b2ec942fdd0203"
     },
     {
+      "profile": "kipfilet",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-gourmet-mini-kipfilet-120-g-697225TRA",
+      "name": "Jumbo Gourmet Mini Kipfilet 120 g",
+      "pack": "120 g",
+      "url": "https://www.jumbo.com/producten/jumbo-gourmet-mini-kipfilet-120-g-697225TRA",
+      "reason": "niet herkende productbeschrijving: gourmet mini",
+      "fingerprint": "49f8bf237399b6ad14be02c2"
+    },
+    {
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
@@ -2096,28 +2100,6 @@
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-pasta-pompoen-met-pesto-verspakket-2-3-personen-777131DS",
-      "name": "Jumbo Pasta Pompoen met Pesto Verspakket 2-3 Personen",
-      "pack": "870 g",
-      "url": "https://www.jumbo.com/producten/jumbo-pasta-pompoen-met-pesto-verspakket-2-3-personen-777131DS",
-      "reason": "niet herkende productbeschrijving: pasta pesto verspakket personen",
-      "fingerprint": "ff32b4390b8e2b1763c52885"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-pompoen-stampot-verspakket-4-personen-776392DS",
-      "name": "Jumbo Pompoen Stampot Verspakket 4 Personen",
-      "pack": "1420 g",
-      "url": "https://www.jumbo.com/producten/jumbo-pompoen-stampot-verspakket-4-personen-776392DS",
-      "reason": "niet herkende productbeschrijving: stampot verspakket personen",
-      "fingerprint": "03670a54b8381a651b0fa289"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-s-traybake-knolselderij-pompoen-mix-450-g-673176ZK",
       "name": "Jumbo's Traybake Knolselderij & Pompoen Mix 450 g",
       "pack": "450 g",
@@ -2175,10 +2157,32 @@
       "store": "jumbo",
       "product_id": "jumbo-sperziebonen-500-g-302252ZK",
       "name": "Jumbo Sperziebonen 500 g",
-      "pack": "",
+      "pack": "500 G",
       "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-500-g-302252ZK",
       "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "e99ff35401b8e3a264055866"
+      "fingerprint": "f3f3f50fd53d94508de3df8c"
+    },
+    {
+      "profile": "sperziebonen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-sperziebonen-biologisch-400-g-398279ZK",
+      "name": "Jumbo Sperziebonen Biologisch 400 g",
+      "pack": "400 g",
+      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-biologisch-400-g-398279ZK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "6816109c4806306407413c05"
+    },
+    {
+      "profile": "sperziebonen",
+      "priority": 0,
+      "store": "jumbo",
+      "product_id": "jumbo-sperziebonen-gebroken-450-g-780728ZK",
+      "name": "Jumbo Sperziebonen Gebroken 450 g",
+      "pack": "450 g",
+      "url": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-450-g-780728ZK",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "bd5298d51db00d6a1a70710a"
     },
     {
       "profile": "sperziebonen",
@@ -2443,17 +2447,6 @@
       "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-mexican-style-witte-rijst-mais-mexicana-spieropbouw-450-g-587175SC",
       "reason": "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw",
       "fingerprint": "17fdb2da32fca1de4af5c6af"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "pompoen-lantaarn-743394STK",
-      "name": "Pompoen Lantaarn",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/pompoen-lantaarn-743394STK",
-      "reason": "niet herkende productbeschrijving: lantaarn",
-      "fingerprint": "8f49b9169a2468d9b277def7"
     },
     {
       "profile": "vis",
@@ -4175,12 +4168,12 @@
       "profile": "volle_melk",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "jumbo-biologische-volle-melk-houdbaar-1-l-167175PAK",
-      "name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
+      "product_id": "jumbo-biologische-houdbare-volle-melk-1-l-167175PAK",
+      "name": "Jumbo Biologische Houdbare Volle Melk 1 L",
       "pack": "1 L",
-      "url": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175PAK",
+      "url": "https://www.jumbo.com/producten/jumbo-biologische-houdbare-volle-melk-1-l-167175PAK",
       "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "fc41930f568cd106f28d558f"
+      "fingerprint": "7288611b705f6413a16f1866"
     },
     {
       "profile": "volle_melk",
@@ -4379,6 +4372,28 @@
       "url": "https://www.jumbo.com/producten/jumbo-milde-magere-kwark-6-x-500-g-394229PKL",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "bd01af69b1202ed8648a09c2"
+    },
+    {
+      "profile": "walnoten",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-ongebrande-walnoten-140-g-708449CUP",
+      "name": "Jumbo Ongebrande Walnoten 140 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-140-g-708449CUP",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "6e8f8c78f253c3181a0d0a84"
+    },
+    {
+      "profile": "walnoten",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-ongebrande-walnoten-200-g-561767TAS",
+      "name": "Jumbo Ongebrande Walnoten 200 g",
+      "pack": "200 g",
+      "url": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-200-g-561767TAS",
+      "reason": "productkenmerken en verpakking passen",
+      "fingerprint": "e0f40c9afa9a56be756e7186"
     },
     {
       "profile": "walnoten",
