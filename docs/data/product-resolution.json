@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-19T14:44:48.481Z",
+  "generated_at": "2026-11-19T15:41:19.481Z",
   "checked_date": "2026-11-19",
   "summary": {
     "profiles": 20,
@@ -224,11 +224,11 @@
       "kwark": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologisch-magere-kwark-500-g-395980BKR",
-        "product_name": "Jumbo Biologisch Magere Kwark 500 g",
+        "source": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
+        "product_name": "Jumbo Franse Kwark Mager 1000 g",
         "price": 1.65,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "dreft": {
         "state": "price_observed",
@@ -251,11 +251,11 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-18",
-        "checked_date": "2026-11-18"
+        "source": "https://www.jumbo.com/producten/jumbo-tempeh-naturel-395g-680367BAK",
+        "product_name": "Jumbo Tempeh Naturel 395g",
+        "price": 1,
+        "price_status": "winkelprijswaarneming · 2026-11-19",
+        "checked_date": "2026-11-19"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -323,9 +323,9 @@
       "volle_melk": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-biologische-houdbare-volle-melk-1-l-167175PAK",
-        "product_name": "Jumbo Biologische Houdbare Volle Melk 1 L",
-        "price": 1.45,
+        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
+        "product_name": "Jumbo Houdbare Volle Melk 1 L",
+        "price": 0.98,
         "price_status": "winkelprijswaarneming · 2026-11-19",
         "checked_date": "2026-11-19"
       },
