@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T23:41:06.649263+01:00",
+  "generated_at": "2026-11-19T15:39:09.237615+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-18T23:40:57.362059+01:00",
+      "checked_at": "2026-11-19T15:39:01.460819+01:00",
       "status": "ok",
       "offers": [
         {
@@ -239,7 +239,7 @@
         }
       ],
       "official_check": {
-        "checked_at": "2026-11-18T23:41:00.002477+01:00",
+        "checked_at": "2026-11-19T15:39:03.581306+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
@@ -254,12 +254,14 @@
       },
       "official_prices": [],
       "folderz_check": {
-        "checked_at": "2026-11-18T23:41:06.649263+01:00",
-        "status": "ok",
-        "details_checked": 12,
-        "accepted": 12,
-        "retained": 0,
-        "errors": {},
+        "checked_at": "2026-11-19T15:39:09.237615+01:00",
+        "status": "partial",
+        "details_checked": 0,
+        "accepted": 0,
+        "retained": 12,
+        "errors": {
+          "https://www.folderz.nl/winkels/lidl/aanbiedingen": "No detail links; returned page: "
+        },
         "coverage": "bounded_first_listing_page"
       }
     },
