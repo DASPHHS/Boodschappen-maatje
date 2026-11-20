@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-20T14:21:27.037Z",
+  "generated_at": "2026-11-20T15:23:20.220Z",
   "source_date": "2026-11-20",
   "source_commit": "892746e6b2484692bae14a8c0e7c73878ed2c47d",
   "counts": {
-    "match": 252,
-    "partial": 354,
+    "match": 251,
+    "partial": 355,
     "reject": 221
   },
   "profiles": {
@@ -1295,15 +1295,16 @@
       }
     },
     "volle_melk": {
-      "match": 8,
-      "partial": 10,
+      "match": 7,
+      "partial": 11,
       "reject": 7,
       "reasons": {
-        "productkenmerken en verpakking passen": 8,
+        "productkenmerken en verpakking passen": 7,
         "exacte inhoud ontbreekt": 3,
         "verpakkingsgrootte verschilt": 5,
         "niet herkende productbeschrijving: 12x1": 1,
         "niet herkende productbeschrijving: voordeelpak": 1,
+        "winkelpagina noemt een andere verpakking; hercontrole nodig": 1,
         "productnaam of uitsluitingen passen niet": 2,
         "niet herkende productbeschrijving: pack": 1,
         "niet herkende productbeschrijving: campina": 3,
@@ -1354,9 +1355,9 @@
         },
         {
           "store": "jumbo",
-          "name": "Jumbo Houdbare Volle Melk 500ML",
-          "status": "reject",
-          "reason": "verpakkingsgrootte verschilt"
+          "name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
+          "status": "partial",
+          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
         }
       ],
       "groups": {
@@ -1371,7 +1372,7 @@
         "milk|plain|houdbaar|naturel · biologisch · vol · lactose niet gespecificeerd|L": {
           "label": "Melk · houdbaar · naturel · biologisch · vol · lactose niet gespecificeerd · per L",
           "stores": {
-            "jumbo": 2,
+            "jumbo": 1,
             "ah": 1
           }
         }
@@ -4183,7 +4184,7 @@
       "name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
       "pack": "",
       "url": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175TRL",
-      "reason": "productkenmerken en verpakking passen",
+      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
       "fingerprint": "bf12bf7882e9b18f29508ea8"
     },
     {
