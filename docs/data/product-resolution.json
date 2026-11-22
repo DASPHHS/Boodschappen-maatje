@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-22T13:39:32.861Z",
+  "generated_at": "2026-11-22T14:30:58.110Z",
   "checked_date": "2026-11-22",
   "summary": {
     "profiles": 20,
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-21",
-        "checked_date": "2026-11-21"
+        "price_status": "winkelprijswaarneming · 2026-11-22",
+        "checked_date": "2026-11-22"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-21",
-        "checked_date": "2026-11-21"
+        "price_status": "winkelprijswaarneming · 2026-11-22",
+        "checked_date": "2026-11-22"
       },
       "bospeen": {
         "state": "needs_source",
@@ -334,9 +334,9 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
-        "price": 9.39,
-        "price_status": "externe prijswaarneming · 2026-11-20",
-        "checked_date": "2026-11-20"
+        "price": 7.04,
+        "price_status": "winkelprijswaarneming · 2026-11-22",
+        "checked_date": "2026-11-22"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
