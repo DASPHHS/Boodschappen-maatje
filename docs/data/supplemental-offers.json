@@ -1,245 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-21T22:03:42.033231+01:00",
+  "generated_at": "2026-11-22T14:33:40.439635+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-21T22:03:34.792838+01:00",
+      "checked_at": "2026-11-22T14:33:32.440395+01:00",
       "status": "ok",
-      "offers": [
-        {
-          "id": "folderz-lidl-70726303",
-          "name": "Robijn wasmiddel",
-          "category": "huishouden",
-          "price": 7.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/robijn-wasmiddel-aanbieding-70726303/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726224",
-          "name": "Zespri Kiwi gold",
-          "category": "fruit",
-          "price": 3.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/zespri-kiwi-gold-aanbieding-70726224/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726225",
-          "name": "Pepsi of Rivella",
-          "category": "overig",
-          "price": 1.25,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/pepsi-of-rivella-aanbieding-70726225/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726272",
-          "name": "Parkside Metalen gereedschapswand",
-          "category": "overig",
-          "price": 7.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/parkside-metalen-gereedschapswand-aanbieding-70726272/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726403",
-          "name": "Livarno/Parkside Glazen kerstornamenten",
-          "category": "overig",
-          "price": 2.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/livarno-parkside-glazen-kerstornamenten-aanbieding-70726403/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726227",
-          "name": "Livarno Papieren kerstboom met LED-verlichting",
-          "category": "overig",
-          "price": 29.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/livarno-papieren-kerstboom-met-led-verlichting-aanbieding-70726227/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726380",
-          "name": "Livarno LED-kerstman op ladder",
-          "category": "overig",
-          "price": 14.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/livarno-led-kerstman-op-ladder-aanbieding-70726380/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726228",
-          "name": "Floralys Keukenrol",
-          "category": "huishouden",
-          "price": 4.49,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/floralys-keukenrol-aanbieding-70726228/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726431",
-          "name": "Parkside Heren thermoshirt",
-          "category": "overig",
-          "price": 4.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/parkside-heren-thermoshirt-aanbieding-70726431/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726333",
-          "name": "Alesto Cashewnoten of walnoten",
-          "category": "voorraad",
-          "price": 1.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/alesto-cashewnoten-of-walnoten-aanbieding-70726333/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726341",
-          "name": "Silvercrest RVS contactgrill",
-          "category": "overig",
-          "price": 24.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/silvercrest-rvs-contactgrill-aanbieding-70726341/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        },
-        {
-          "id": "folderz-lidl-70726429",
-          "name": "Parkside Heren gebreide trui",
-          "category": "overig",
-          "price": 12.99,
-          "regular_price": null,
-          "pack_label": "inhoud niet bevestigd",
-          "start_date": "2026-11-16",
-          "end_date": "2026-11-21",
-          "promotion_status": "active",
-          "verified": false,
-          "source_provider": "Folderz",
-          "source": {
-            "url": "https://www.folderz.nl/winkels/lidl/aanbiedingen/parkside-heren-gebreide-trui-aanbieding-70726429/",
-            "label": "Folderz externe aanbiedingsmelding"
-          },
-          "checked_at": "2026-11-18",
-          "note": "Externe melding; verpakking, Lidl Plus-voorwaarden en kassaprijs bij Lidl controleren."
-        }
-      ],
+      "offers": [],
       "official_check": {
-        "checked_at": "2026-11-21T22:03:37.108464+01:00",
+        "checked_at": "2026-11-22T14:33:34.322114+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
@@ -254,11 +25,11 @@
       },
       "official_prices": [],
       "folderz_check": {
-        "checked_at": "2026-11-21T22:03:42.033231+01:00",
+        "checked_at": "2026-11-22T14:33:40.439635+01:00",
         "status": "partial",
         "details_checked": 0,
         "accepted": 0,
-        "retained": 12,
+        "retained": 0,
         "errors": {
           "https://www.folderz.nl/winkels/lidl/aanbiedingen": "No detail links; returned page: "
         },
