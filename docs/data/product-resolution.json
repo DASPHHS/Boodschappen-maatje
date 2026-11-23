@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23T16:31:11.625Z",
+  "generated_at": "2026-11-23T17:59:24.391Z",
   "checked_date": "2026-11-23",
   "summary": {
     "profiles": 20,
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-22",
-        "checked_date": "2026-11-22"
+        "price_status": "winkelprijswaarneming · 2026-11-23",
+        "checked_date": "2026-11-23"
       },
       "sperziebonen": {
         "state": "price_observed",
