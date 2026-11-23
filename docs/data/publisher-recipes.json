@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_policy": "publisher_link_metadata_only",
-  "generated_at": "2026-11-16",
+  "generated_at": "2026-11-23",
   "notice": "Geselecteerde recepten van originele uitgevers, waaronder Allerhande en HelloFresh. Alleen feitelijke metadata en directe links; volledige receptinstructies, afbeeldingen en ingredientenlijsten blijven bij de uitgever. Titel-/familiekoppelingen bevestigen niet de ingredientvarianten of supermarktprijzen.",
   "recipes": [
     {
@@ -4834,7 +4834,7 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
+      "last_checked": "2026-11-23",
       "ingredient_families": [
         "kip",
         "limoen",
@@ -4844,7 +4844,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Indonesisch",
-      "ingredient_checked_at": "2026-11-14T13:50:37.309959+00:00",
+      "ingredient_checked_at": "2026-11-23T18:49:29.849771+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4905,14 +4905,14 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
+      "last_checked": "2026-11-23",
       "ingredient_families": [
         "eieren",
         "rijst"
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Chinees",
-      "ingredient_checked_at": "2026-11-14T13:50:37.309991+00:00",
+      "ingredient_checked_at": "2026-11-23T18:49:34.372466+00:00",
       "ingredient_profiles": [
         {
           "family": "rijst",
@@ -4953,7 +4953,7 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
+      "last_checked": "2026-11-23",
       "ingredient_families": [
         "eieren",
         "komkommer",
@@ -4964,7 +4964,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-14T13:50:38.001850+00:00",
+      "ingredient_checked_at": "2026-11-23T18:49:34.372495+00:00",
       "ingredient_profiles": [
         {
           "family": "sperziebonen",
@@ -5032,7 +5032,7 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
+      "last_checked": "2026-11-23",
       "ingredient_families": [
         "limoen",
         "noedels",
@@ -5040,7 +5040,7 @@
       ],
       "ingredient_evidence": "publisher_recipe_schema",
       "cuisine": "Aziatisch",
-      "ingredient_checked_at": "2026-11-14T13:50:39.317101+00:00",
+      "ingredient_checked_at": "2026-11-23T18:49:36.625042+00:00",
       "ingredient_profiles": [
         {
           "family": "noedels",
@@ -15882,7 +15882,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-23T18:49:57.659910+00:00"
     },
     {
       "id": "ah-sitemap-r-r1187579",
@@ -15900,7 +15901,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_sitemap_title_only",
-      "last_checked": "2026-11-02"
+      "last_checked": "2026-11-02",
+      "ingredient_checked_at": "2026-11-23T18:49:57.659952+00:00"
     },
     {
       "id": "ah-sitemap-r-r1188000",
@@ -16745,8 +16747,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:27.615385+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:03.026459+00:00"
     },
     {
       "id": "hf-page-867fc5e0e060a1",
@@ -16809,8 +16811,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:27.615414+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:13.638260+00:00"
     },
     {
       "id": "hf-page-eb01a0f1949475",
@@ -16863,8 +16865,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:30.792327+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:13.638302+00:00"
     },
     {
       "id": "hf-page-28694056f215da",
@@ -16927,8 +16929,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:30.792356+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:27.029928+00:00"
     },
     {
       "id": "hf-page-9d30285d301102",
@@ -16981,8 +16983,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:33.019570+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:27.029972+00:00"
     },
     {
       "id": "hf-page-6e3b3d0ab98151",
@@ -17035,8 +17037,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:33.872738+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:29.424473+00:00"
     },
     {
       "id": "ah-sitemap-r-r383266",
@@ -23945,8 +23947,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:11.651398+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:27.985902+00:00"
     },
     {
       "id": "hf-page-370bf09d24a707",
@@ -24010,8 +24012,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:11.651456+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:31.928393+00:00"
     },
     {
       "id": "hf-page-194ced3c967629",
@@ -24064,8 +24066,8 @@
       "vegetable_families": 1,
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:14.951142+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:31.928435+00:00"
     },
     {
       "id": "hf-page-1f5b97eb22058f",
@@ -24146,8 +24148,8 @@
       "vegetable_families": 2,
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:14.951173+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:36.163147+00:00"
     },
     {
       "id": "hf-page-a49e185663d307",
@@ -24196,8 +24198,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:18.005822+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:36.462624+00:00"
     },
     {
       "id": "hf-page-3b3f26fdf1f875",
@@ -24260,8 +24262,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:19.272679+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:38.662447+00:00"
     },
     {
       "id": "hf-page-560135e41261f3",
@@ -24324,8 +24326,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:21.692547+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:38.690903+00:00"
     },
     {
       "id": "hf-page-1246a23a307201",
@@ -24400,8 +24402,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:21.692575+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:42.521316+00:00"
     },
     {
       "id": "hf-page-8e83c482d89ca4",
@@ -24424,7 +24426,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-05",
-      "ingredient_checked_at": "2026-11-14T13:49:23.618898+00:00"
+      "ingredient_checked_at": "2026-11-23T18:47:42.521344+00:00"
     },
     {
       "id": "hf-page-9bd34e74a4b5cf",
@@ -24477,8 +24479,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:23.744463+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:45.423768+00:00"
     },
     {
       "id": "hf-page-8d58bb31c07d2c",
@@ -24542,8 +24544,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:25.399044+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:45.666683+00:00"
     },
     {
       "id": "hf-page-7c6c41bebe02fd",
@@ -24588,8 +24590,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:25.399074+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:48.085018+00:00"
     },
     {
       "id": "hf-page-957396756cd8e9",
@@ -24653,8 +24655,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:26.224057+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:48.244356+00:00"
     },
     {
       "id": "hf-page-12de1aa668effe",
@@ -24697,8 +24699,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:26.263041+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:50.277525+00:00"
     },
     {
       "id": "hf-page-3ba564ebdedf47",
@@ -24763,8 +24765,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:28.505574+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:50.305080+00:00"
     },
     {
       "id": "hf-page-0009f213caed81",
@@ -24827,8 +24829,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:28.737304+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:01.299467+00:00"
     },
     {
       "id": "hf-page-821f723ca3c2f1",
@@ -24891,8 +24893,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:29.545060+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:01.299502+00:00"
     },
     {
       "id": "hf-page-8a1a611bac63ba",
@@ -24935,8 +24937,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:31.000712+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:04.258514+00:00"
     },
     {
       "id": "hf-page-f63d71b577e411",
@@ -24999,8 +25001,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:33.760698+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:07.726415+00:00"
     },
     {
       "id": "hf-page-ea67d87b2004b9",
@@ -25063,8 +25065,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:34.724538+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:11.408667+00:00"
     },
     {
       "id": "hf-page-8ca0495c2d1a2a",
@@ -25108,8 +25110,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:38.171383+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:11.408707+00:00"
     },
     {
       "id": "hf-page-cf5578eb6db9f7",
@@ -25162,8 +25164,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:38.171412+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:13.962341+00:00"
     },
     {
       "id": "hf-page-6a56d69853a2af",
@@ -25206,8 +25208,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:40.291943+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:13.962376+00:00"
     },
     {
       "id": "hf-page-bab751dceec6a0",
@@ -25269,8 +25271,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:41.024319+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:18.125361+00:00"
     },
     {
       "id": "hf-page-77d49105513de1",
@@ -25327,8 +25329,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:43.707789+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:19.636925+00:00"
     },
     {
       "id": "hf-page-2bc5e95278d4bd",
@@ -25378,8 +25380,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:43.707820+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:22.832360+00:00"
     },
     {
       "id": "hf-page-bfb8df233cf04c",
@@ -25442,8 +25444,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:46.610576+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:22.832388+00:00"
     },
     {
       "id": "hf-page-9cc9da67509615",
@@ -25504,8 +25506,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:46.610607+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:23.633019+00:00"
     },
     {
       "id": "hf-page-3518020cc10048",
@@ -25579,8 +25581,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:49.512944+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:26.068503+00:00"
     },
     {
       "id": "hf-page-d11f57bc2a4a1a",
@@ -25643,8 +25645,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:49.512974+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:29.063865+00:00"
     },
     {
       "id": "hf-page-97e81dd34aaae4",
@@ -25725,8 +25727,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:52.671143+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:29.063902+00:00"
     },
     {
       "id": "hf-page-305f3a3dcf5425",
@@ -25840,8 +25842,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:52.671172+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:32.535409+00:00"
     },
     {
       "id": "hf-page-d25e91d7aa0f6c",
@@ -25892,8 +25894,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:53.369027+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:32.535448+00:00"
     },
     {
       "id": "hf-page-74241d9fd280c4",
@@ -25936,8 +25938,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:55.756873+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:35.142517+00:00"
     },
     {
       "id": "hf-page-661cbf42a1774a",
@@ -26016,8 +26018,8 @@
       "vegetable_families": 4,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:56.568301+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:35.142541+00:00"
     },
     {
       "id": "hf-page-b36822f6521d6b",
@@ -26091,8 +26093,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:49:58.515799+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:38.693500+00:00"
     },
     {
       "id": "hf-page-5e96b2b4ec5fa0",
@@ -26135,8 +26137,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:00.854476+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:38.693539+00:00"
     },
     {
       "id": "hf-page-c8175e9e493cc5",
@@ -26189,8 +26191,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:00.854506+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:40.914689+00:00"
     },
     {
       "id": "hf-page-48148a1b29eca0",
@@ -26234,8 +26236,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:04.487187+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:41.062594+00:00"
     },
     {
       "id": "hf-page-e19fffa06c1e86",
@@ -26289,8 +26291,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:04.487217+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:44.796336+00:00"
     },
     {
       "id": "hf-page-6050e2fa4996c4",
@@ -26343,8 +26345,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:08.715022+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:44.796376+00:00"
     },
     {
       "id": "hf-page-acab7110e3dc19",
@@ -26407,8 +26409,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:23.064498+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:59.923782+00:00"
     },
     {
       "id": "hf-page-5b813b27fa9bbe",
@@ -26451,8 +26453,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:24.598899+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:02.184927+00:00"
     },
     {
       "id": "ah-sitemap-r-r1189621",
@@ -27147,8 +27149,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:42.992707+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:38.854226+00:00"
     },
     {
       "id": "hf-page-9173ccd55ca731",
@@ -27211,8 +27213,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:43.454845+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:43.002642+00:00"
     },
     {
       "id": "hf-page-993c63969ac21b",
@@ -27236,7 +27238,7 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-06",
-      "ingredient_checked_at": "2026-11-14T13:50:46.063057+00:00"
+      "ingredient_checked_at": "2026-11-23T18:49:43.002687+00:00"
     },
     {
       "id": "hf-page-51417f1adfeeb1",
@@ -27325,8 +27327,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:46.063081+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:46.150524+00:00"
     },
     {
       "id": "hf-page-e3218fd5b2210f",
@@ -27369,8 +27371,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:48.406200+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:46.150562+00:00"
     },
     {
       "id": "hf-page-bf3514e5c04489",
@@ -27433,8 +27435,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:49.468061+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:50.946301+00:00"
     },
     {
       "id": "hf-page-38c56e903390b9",
@@ -27517,8 +27519,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:52.450404+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:50.946344+00:00"
     },
     {
       "id": "hf-page-af2ac597bac56d",
@@ -27597,8 +27599,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:52.450481+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:53.205513+00:00"
     },
     {
       "id": "hf-page-06589017dd492c",
@@ -27651,8 +27653,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:55.025928+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:54.238704+00:00"
     },
     {
       "id": "hf-page-2c6c055bccc87e",
@@ -27735,8 +27737,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:55.156254+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:56.937390+00:00"
     },
     {
       "id": "hf-page-fe6056dfcf0ab3",
@@ -29306,8 +29308,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:59.421054+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:49:56.937423+00:00"
     },
     {
       "id": "hf-page-4660abbc7c38e2",
@@ -30409,8 +30411,8 @@
       "vegetable_families": 2,
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:08.715052+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:46.881080+00:00"
     },
     {
       "id": "hf-page-a915afbdfb7909",
@@ -30463,8 +30465,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:09.516462+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:46.910135+00:00"
     },
     {
       "id": "hf-page-e6f5b4390fc418",
@@ -30527,8 +30529,8 @@
       "vegetable_families": 1,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:11.312666+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:49.419552+00:00"
     },
     {
       "id": "hf-page-2347d723653e27",
@@ -30579,8 +30581,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:14.428216+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:49.419580+00:00"
     },
     {
       "id": "hf-page-1add0721edc6fe",
@@ -30623,8 +30625,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:14.428243+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:51.590629+00:00"
     },
     {
       "id": "hf-page-337b7d66992854",
@@ -30667,8 +30669,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:17.542782+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:51.590666+00:00"
     },
     {
       "id": "hf-page-347d0cc08f11c0",
@@ -30721,8 +30723,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:17.655791+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:55.364425+00:00"
     },
     {
       "id": "hf-page-06c6a3dd5fb870",
@@ -30755,8 +30757,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:18.943239+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:55.364463+00:00"
     },
     {
       "id": "hf-page-3dc45207142b44",
@@ -30799,8 +30801,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:19.881101+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:57.714168+00:00"
     },
     {
       "id": "hf-page-c3e380e4fd5bb4",
@@ -30843,8 +30845,8 @@
       "vegetable_families": 0,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:22.367409+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:57.714203+00:00"
     },
     {
       "id": "hf-page-f9fd89f7b73230",
@@ -30923,8 +30925,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14",
-      "ingredient_checked_at": "2026-11-14T13:50:22.367459+00:00"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:48:59.923743+00:00"
     },
     {
       "id": "hf-page-5610baf105348b",
@@ -32827,7 +32829,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:07.338115+00:00"
     },
     {
       "id": "hf-page-bc8d66c28cc955",
@@ -32890,7 +32893,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:07.740421+00:00"
     },
     {
       "id": "hf-page-2d7046e3757329",
@@ -32943,7 +32947,8 @@
       "vegetable_families": 2,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:23.319559+00:00"
     },
     {
       "id": "hf-page-f330f64295ce04",
@@ -33027,7 +33032,8 @@
       "vegetable_families": 3,
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:23.319595+00:00"
     },
     {
       "id": "hf-page-3b9a67fd97e1b6",
@@ -33081,7 +33087,8 @@
       "vegetable_families": 0,
       "has_legumes": true,
       "review_status": "publisher_page_title_verified",
-      "last_checked": "2026-11-14"
+      "last_checked": "2026-11-23",
+      "ingredient_checked_at": "2026-11-23T18:47:26.463410+00:00"
     },
     {
       "id": "hf-page-95b1505137431c",
@@ -34135,6 +34142,1359 @@
       "has_legumes": false,
       "review_status": "publisher_page_title_verified",
       "last_checked": "2026-11-16"
+    },
+    {
+      "id": "hf-page-e369f59af8acd0",
+      "source": "HelloFresh",
+      "title": "Zoete aardappel met yoghurtsaus en vega gehakt",
+      "url": "https://www.hellofresh.nl/recipes/zoete-aardappel-met-yoghurtsaus-en-vega-gehakt-6aa15b27548a82de3e1b3063",
+      "families": [
+        "aardappelen",
+        "aubergine",
+        "gehakt",
+        "paprika",
+        "tomaten",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "aubergine",
+        "paprika",
+        "tomaten",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 300,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Middle Eastern",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-23474e40549519",
+      "source": "HelloFresh",
+      "title": "Heek met kruidige gele currysaus",
+      "url": "https://www.hellofresh.nl/recipes/heek-met-kruidige-gele-currysaus-6aa160f6ab95f37e5f0c1725",
+      "families": [
+        "broccoli",
+        "limoen",
+        "rijst",
+        "ui",
+        "witvis"
+      ],
+      "ingredient_families": [
+        "broccoli",
+        "limoen",
+        "rijst",
+        "ui",
+        "witvis"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "witvis",
+          "group": "vis",
+          "variant": "hake",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "broccoli",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Vietnamees",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-04b9588690c802",
+      "source": "HelloFresh",
+      "title": "Sportersfavoriet: boterbonenstoof met knoflookbrood en aardappeltjes",
+      "url": "https://www.hellofresh.nl/recipes/w10-functional-foods-carb-quick-69e60db0fe534c766c45079f",
+      "families": [
+        "aardappelen",
+        "prei",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "prei",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 500,
+          "unit": "g"
+        },
+        {
+          "family": "prei",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 100,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "stoof",
+      "cuisine": "Europese",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-d6e3b72aa8e5e4",
+      "source": "HelloFresh",
+      "title": "Fusion biefstukreepjes met Thais basilicum en Koreaanse kruiden",
+      "url": "https://www.hellofresh.nl/recipes/fusion-biefstukreepjes-met-thais-basilicum-en-koreaanse-kruiden-6aa01883d83fec55e3cd0a6d",
+      "families": [
+        "biefstuk",
+        "paksoi",
+        "rijst",
+        "sperziebonen",
+        "ui"
+      ],
+      "ingredient_families": [
+        "biefstuk",
+        "paksoi",
+        "rijst",
+        "sperziebonen",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "biefstuk",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "sperziebonen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-57780b8294a47f",
+      "source": "HelloFresh",
+      "title": "Grote garnalen met kruidige gele currysaus",
+      "url": "https://www.hellofresh.nl/recipes/grote-garnalen-met-kruidige-gele-currysaus-6aa9454724258ceb6cef3912",
+      "families": [
+        "broccoli",
+        "garnalen",
+        "limoen",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_families": [
+        "broccoli",
+        "garnalen",
+        "limoen",
+        "rijst",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "garnalen",
+          "group": "vis",
+          "variant": null,
+          "form": "plain",
+          "quantity": 260,
+          "unit": "g"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "broccoli",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 360,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 15,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Vietnamees",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-0e0b64b6d52ba1",
+      "source": "HelloFresh",
+      "title": "Stir-fry met pittig varkensgehakt, gochujang en champignons",
+      "url": "https://www.hellofresh.nl/recipes/stir-fry-met-pittig-kipgehakt-gochujang-en-champignons-6a9ed777548a82de3e1a8178",
+      "families": [
+        "champignons",
+        "gehakt",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "champignons",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "champignons",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 125,
+          "unit": "g"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Koreaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-c99a6c925452fd",
+      "source": "HelloFresh",
+      "title": "Kabeljauwfilet met smokey moqueca-stijl soep",
+      "url": "https://www.hellofresh.nl/recipes/moqueca-stijl-vissoep-met-korianderolie-68116a4d80e0f84c774d129c",
+      "families": [
+        "limoen",
+        "paksoi",
+        "paprika",
+        "tomaten",
+        "ui",
+        "witvis"
+      ],
+      "ingredient_families": [
+        "limoen",
+        "paksoi",
+        "paprika",
+        "tomaten",
+        "ui",
+        "witvis"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "witvis",
+          "group": "vis",
+          "variant": "cod",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 30,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "soep",
+      "cuisine": "Latin American",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-b3ec4227ce3e1c",
+      "source": "HelloFresh",
+      "title": "Sticky speklap met Koreaanse kruiden",
+      "url": "https://www.hellofresh.nl/recipes/sticky-buikspek-met-tauge-en-koreaanse-kruiden-6aa3dcde38e0591044bd5410",
+      "families": [
+        "ui",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "ui",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Koreaans",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-5ed8a62c68e5ea",
+      "source": "HelloFresh",
+      "title": "Gebakken rijst met roerei en paksoi",
+      "url": "https://www.hellofresh.nl/recipes/gebakken-rijst-met-roerei-en-paksoi-602563251fb18d4f8c4acb06",
+      "families": [
+        "eieren",
+        "limoen",
+        "paksoi",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "eieren",
+        "limoen",
+        "paksoi",
+        "rijst",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "eieren",
+          "group": "vega",
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "rijst",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-5ccbf7b0facd7f",
+      "source": "HelloFresh",
+      "title": "Noedels met vegetarische runderstukjes in pittige saus",
+      "url": "https://www.hellofresh.nl/recipes/noedels-met-vegetarische-kip-in-pittige-saus-67482b21989edba91be32871",
+      "families": [
+        "noedels",
+        "paksoi",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_families": [
+        "noedels",
+        "paksoi",
+        "paprika",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 10,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "noedels",
+      "cuisine": "Thais",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-b6261b09143b2e",
+      "source": "HelloFresh",
+      "title": "Groene curry met garnalen en rijst",
+      "url": "https://www.hellofresh.nl/recipes/groene-curry-met-garnalen-en-rijst-62050e4d08ba68796b536c4b",
+      "families": [
+        "garnalen",
+        "rijst",
+        "sperziebonen",
+        "spitskool",
+        "ui"
+      ],
+      "ingredient_families": [
+        "garnalen",
+        "rijst",
+        "sperziebonen",
+        "spitskool",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "sperziebonen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 150,
+          "unit": "g"
+        },
+        {
+          "family": "spitskool",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "garnalen",
+          "group": "vis",
+          "variant": null,
+          "form": "plain",
+          "quantity": 160,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Thais",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-5a3bc307fe21bf",
+      "source": "HelloFresh",
+      "title": "SMOKEY SMAAKEXPLOSIE! Chipotle, BBQ-rub en gerookt paprikapoeder",
+      "url": "https://www.hellofresh.nl/recipes/smokey-smaakexplosie-chipotle-bbq-rub-en-gerookt-paprikapoeder-6a032e7ad30da77cc87ed626",
+      "families": [
+        "aubergine",
+        "pasta",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "pasta",
+        "ui",
+        "yoghurt"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "family": "yoghurt",
+          "group": "vega",
+          "variant": "full",
+          "form": "plain",
+          "flavour": "plain",
+          "quantity": 75,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Middle Eastern",
+      "vegetable_families": 1,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-746c48815070fc",
+      "source": "HelloFresh",
+      "title": "Kip-Parmezaan met pasta",
+      "url": "https://www.hellofresh.nl/recipes/kip-parmigiana-pasta-67d81ba21c42c47c5571de9f",
+      "families": [
+        "courgette",
+        "kip",
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "courgette",
+        "kip",
+        "pasta",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "courgette",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 180,
+          "unit": "g"
+        },
+        {
+          "family": "kip",
+          "group": "kip",
+          "variant": "breast",
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "pasta",
+      "cuisine": "Italiaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-db6d6e8e1e08b6",
+      "source": "HelloFresh",
+      "title": "Varkensgehaktballetjes in zoete sojasaus",
+      "url": "https://www.hellofresh.nl/recipes/varkensgehaktballetjes-in-zoete-sojasaus-6a9958de56a4cfbb96385211",
+      "families": [
+        "citroen",
+        "komkommer",
+        "noedels",
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "citroen",
+        "komkommer",
+        "noedels",
+        "tomaten",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "noedels",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 220,
+          "unit": "g"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Japans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-041f2630bdcd98",
+      "source": "HelloFresh",
+      "title": "Krokante kikkererwten met zoete romige currysaus",
+      "url": "https://www.hellofresh.nl/recipes/krokante-kikkererwten-met-zoete-romige-currysaus-699869b91d69a6906de1f49b",
+      "families": [
+        "kikkererwten",
+        "limoen",
+        "tomaten",
+        "ui",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "kikkererwten",
+        "limoen",
+        "tomaten",
+        "ui",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "kikkererwten",
+          "group": "vega",
+          "variant": null,
+          "form": "plain"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 2,
+          "unit": "stuk"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "limoen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 25,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "curry",
+      "cuisine": "Indiase",
+      "vegetable_families": 2,
+      "has_legumes": true,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-5d960856a1f700",
+      "source": "HelloFresh",
+      "title": "Kipmerguez met ovengroenten en gebakken aardappelen",
+      "url": "https://www.hellofresh.nl/recipes/kipmerguez-met-ovengroenten-en-gebakken-aardappelen-5718fbb7f8b25e727a8b4567",
+      "families": [
+        "aardappelen",
+        "paprika",
+        "ui",
+        "venkel"
+      ],
+      "ingredient_families": [
+        "aardappelen",
+        "paprika",
+        "ui",
+        "venkel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "aardappelen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 600,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "venkel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 40,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "oven",
+      "cuisine": "Europese",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-e4b83637e42e38",
+      "source": "HelloFresh",
+      "title": "SMOKEY SMAAKEXPLOSIE! Spekreepjes, chipotle, hazelnoten en paprikapoeder",
+      "url": "https://www.hellofresh.nl/recipes/smokey-smaakexplosie-spekreepjes-chipotle-hazelnoten-en-paprikapoeder-6aa16acaab95f37e5f0c198b",
+      "families": [
+        "other_vlees",
+        "pasta",
+        "ui"
+      ],
+      "ingredient_families": [
+        "other_vlees",
+        "pasta",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "family": "other_vlees",
+          "group": "vlees",
+          "variant": "unsupported",
+          "form": "unsupported",
+          "quantity": 80,
+          "unit": "g"
+        },
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 35,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Italiaans",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-bf19f9b79be57b",
+      "source": "HelloFresh",
+      "title": "Pokébowl met tonijn, furikake en zoet-pittige mais",
+      "url": "https://www.hellofresh.nl/recipes/pokebowl-met-tonijn-furikake-en-zoet-pittige-mais-6aa15ac4548a82de3e1b3009",
+      "families": [
+        "komkommer",
+        "other_vis",
+        "rijst"
+      ],
+      "ingredient_families": [
+        "komkommer",
+        "other_vis",
+        "rijst"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "other_vis",
+          "group": "vis",
+          "variant": "unsupported",
+          "form": "unsupported"
+        },
+        {
+          "family": "komkommer",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 0.5,
+          "unit": "stuk"
+        },
+        {
+          "family": "rijst",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 350,
+          "unit": "ml"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "bowl",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-5ce6db34fc9218",
+      "source": "HelloFresh",
+      "title": "Sweet & sticky biefstukreepjes",
+      "url": "https://www.hellofresh.nl/recipes/sweet-and-sticky-biefstukreepjes-6a9958fe71b095d5fbafae78",
+      "families": [
+        "biefstuk",
+        "paksoi",
+        "paprika",
+        "wortel"
+      ],
+      "ingredient_families": [
+        "biefstuk",
+        "paksoi",
+        "paprika",
+        "wortel"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "biefstuk",
+          "group": "vlees",
+          "variant": null,
+          "form": "plain",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "family": "wortel",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paksoi",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "paprika",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "anders",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 3,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-71e4fea1937937",
+      "source": "HelloFresh",
+      "title": "Lasagnesoep alla Norma met citroen-ricottatopping",
+      "url": "https://www.hellofresh.nl/recipes/lasagnesoep-alla-norma-met-citroen-ricottatopping-6aa16aad00c1712eb5d56c39",
+      "families": [
+        "aubergine",
+        "citroen",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_families": [
+        "aubergine",
+        "citroen",
+        "tomaten",
+        "ui"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "ui",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "aubergine",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        },
+        {
+          "family": "tomaten",
+          "group": null,
+          "variant": null,
+          "form": "canned"
+        },
+        {
+          "family": "citroen",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 1,
+          "unit": "stuk"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 20,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "lasagne",
+      "cuisine": "Italiaans",
+      "vegetable_families": 2,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
+    },
+    {
+      "id": "hf-page-0e5be2f7f96cd7",
+      "source": "HelloFresh",
+      "title": "5-minuten char siu noedels met vega gehakt",
+      "url": "https://www.hellofresh.nl/recipes/5-minuten-char-siu-noedels-met-vega-gehakt-6aa16163548a82de3e1b32a1",
+      "families": [
+        "gehakt",
+        "pasta"
+      ],
+      "ingredient_families": [
+        "pasta"
+      ],
+      "ingredient_profiles": [
+        {
+          "family": "pasta",
+          "group": null,
+          "variant": null,
+          "form": "plain",
+          "quantity": 75,
+          "unit": "g"
+        }
+      ],
+      "ingredient_profile_version": 2,
+      "ingredient_evidence": "publisher_recipe_schema",
+      "minutes": 5,
+      "servings": 2,
+      "course": "hoofdgerecht",
+      "method": "noedels",
+      "cuisine": "Aziatisch",
+      "vegetable_families": 0,
+      "has_legumes": false,
+      "review_status": "publisher_page_title_verified",
+      "last_checked": "2026-11-23"
     }
   ]
 }
