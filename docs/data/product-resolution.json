@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24T16:21:21.609Z",
+  "generated_at": "2026-11-24T17:37:22.398Z",
   "checked_date": "2026-11-24",
   "summary": {
     "profiles": 20,
@@ -219,7 +219,7 @@
         "product_name": "Jumbo Pindakaas Naturel 600 g",
         "price": 1.34,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "kwark": {
         "state": "stale_or_unavailable",
@@ -246,7 +246,7 @@
         "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
         "price": 6.19,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "tofu": {
         "state": "stale_or_unavailable",
@@ -318,7 +318,7 @@
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "volle_melk": {
         "state": "stale_or_unavailable",
@@ -334,18 +334,18 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
-        "price": 9.39,
+        "price": 7.04,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "skuumkoppe_00": {
         "state": "stale_or_unavailable",
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
-        "price": 9.39,
+        "price": 7.04,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
