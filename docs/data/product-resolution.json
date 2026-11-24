@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24T04:29:41.890Z",
+  "generated_at": "2026-11-24T15:49:28.159Z",
   "checked_date": "2026-11-24",
   "summary": {
     "profiles": 20,
@@ -291,7 +291,7 @@
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-24"
       },
       "sperziebonen": {
         "state": "stale_or_unavailable",
@@ -323,11 +323,11 @@
       "volle_melk": {
         "state": "stale_or_unavailable",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-houdbare-volle-melk-1-l-49608STK",
-        "product_name": "Jumbo Houdbare Volle Melk 1 L",
-        "price": 0.98,
+        "source": "https://www.jumbo.com/producten/holland-jersey-houdbare-volle-jersey-melk-1-l-218535STK",
+        "product_name": "Holland Jersey Houdbare Volle Jersey Melk 1 L",
+        "price": 2.59,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-20"
+        "checked_date": "2026-11-24"
       },
       "skuumkoppe": {
         "state": "stale_or_unavailable",
