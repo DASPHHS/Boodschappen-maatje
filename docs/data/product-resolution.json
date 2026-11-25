@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24T17:37:22.398Z",
-  "checked_date": "2026-11-24",
+  "generated_at": "2026-11-25T02:23:14.093Z",
+  "checked_date": "2026-11-25",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -224,11 +224,11 @@
       "kwark": {
         "state": "stale_or_unavailable",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/oing-magere-kwark-500-g-226296CUP",
-        "product_name": "Öing Magere Kwark 500 g",
-        "price": 0.99,
+        "source": "https://www.jumbo.com/producten/jumbo-biologisch-magere-kwark-500-g-395980BKR",
+        "product_name": "Jumbo Biologisch Magere Kwark 500 g",
+        "price": 1.65,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-24"
       },
       "dreft": {
         "state": "stale_or_unavailable",
@@ -251,20 +251,20 @@
       "tofu": {
         "state": "stale_or_unavailable",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
-        "product_name": "Jumbo Tofu Naturel 375g",
-        "price": 1,
+        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
+        "product_name": "Vivera Zachte Tofu 550 g",
+        "price": 1.99,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-24"
       },
       "gemengdgehakt": {
         "state": "stale_or_unavailable",
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
-        "price": 7.99,
+        "price": 4.99,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-24"
+        "checked_date": "2026-11-25"
       },
       "kipfilet": {
         "state": "stale_or_unavailable",
@@ -273,7 +273,7 @@
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-24"
+        "checked_date": "2026-11-25"
       },
       "vis": {
         "state": "stale_or_unavailable",
@@ -282,7 +282,7 @@
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.65,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-24"
+        "checked_date": "2026-11-25"
       },
       "pompoen": {
         "state": "stale_or_unavailable",
@@ -300,7 +300,7 @@
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-24"
+        "checked_date": "2026-11-25"
       },
       "bospeen": {
         "state": "needs_source",
@@ -372,7 +372,7 @@
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.38,
         "price_status": "Oude cataloguswaarneming 2026-11-20",
-        "checked_date": "2026-11-24"
+        "checked_date": "2026-11-25"
       }
     },
     "ah": {
