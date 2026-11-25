@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "policy_version": "2026-11-01.2",
-  "generated_at": "2026-11-25T03:14:14.199Z",
-  "source_date": "2026-11-20",
-  "source_commit": "892746e6b2484692bae14a8c0e7c73878ed2c47d",
+  "generated_at": "2026-11-25T15:33:28.740Z",
+  "source_date": "2026-11-25",
+  "source_commit": "610862b9b2747364ce069f43ad95da1bcdf57f8f",
   "counts": {
-    "match": 251,
-    "partial": 355,
-    "reject": 221
+    "match": 242,
+    "partial": 341,
+    "reject": 212
   },
   "profiles": {
     "sungold": {
@@ -40,11 +40,11 @@
       "groups": {}
     },
     "pindakaas": {
-      "match": 48,
-      "partial": 37,
+      "match": 43,
+      "partial": 36,
       "reject": 9,
       "reasons": {
-        "productkenmerken en verpakking passen": 48,
+        "productkenmerken en verpakking passen": 43,
         "niet herkende productbeschrijving: noot": 3,
         "niet herkende productbeschrijving: creamy": 4,
         "niet herkende productbeschrijving: crispy ch": 1,
@@ -56,7 +56,7 @@
         "andere productvorm: powder": 1,
         "niet herkende productbeschrijving: bewust": 1,
         "niet herkende productbeschrijving: gr": 1,
-        "niet herkende productbeschrijving: regular": 3,
+        "niet herkende productbeschrijving: regular": 2,
         "niet herkende productbeschrijving: regular 12x": 1,
         "andere doelgroep: baby": 2,
         "niet herkende productbeschrijving: reep banaan": 1,
@@ -124,7 +124,7 @@
           "label": "Pindakaas · naturel · structuur niet vermeld · 100% pindas · per kg",
           "stores": {
             "lidl": 3,
-            "jumbo": 5,
+            "jumbo": 3,
             "ah": 2
           }
         },
@@ -157,7 +157,7 @@
         "peanut_butter|plain||naturel · met stukjes · regulier|kg": {
           "label": "Pindakaas · naturel · met stukjes · regulier · per kg",
           "stores": {
-            "jumbo": 8,
+            "jumbo": 7,
             "ah": 4
           }
         },
@@ -179,29 +179,20 @@
             "jumbo": 3,
             "ah": 2
           }
-        },
-        "peanut_butter|plain||naturel · glad · regulier|kg": {
-          "label": "Pindakaas · naturel · glad · regulier · per kg",
-          "stores": {
-            "jumbo": 2
-          }
         }
       }
     },
     "kwark": {
-      "match": 20,
-      "partial": 46,
+      "match": 19,
+      "partial": 39,
       "reject": 1,
       "reasons": {
         "niet herkende productbeschrijving: almhof": 1,
         "niet herkende productbeschrijving: campina": 2,
-        "productkenmerken en verpakking passen": 20,
+        "productkenmerken en verpakking passen": 19,
         "niet herkende productbeschrijving: lactofree lactosevrij": 1,
         "niet herkende productbeschrijving: n vleugje aardbei": 1,
-        "niet herkende productbeschrijving: n vleugje banaan": 1,
-        "niet herkende productbeschrijving: n vleugje mango": 1,
         "niet herkende productbeschrijving: n vleugje vanille": 1,
-        "niet herkende productbeschrijving: n vleugje vanille voordeelpak": 1,
         "niet herkende productbeschrijving: voordeelpak": 1,
         "niet herkende productbeschrijving: framboos": 1,
         "niet herkende productbeschrijving: perzik passievrucht": 1,
@@ -209,13 +200,10 @@
         "niet herkende productbeschrijving: bar vanille smaak": 1,
         "niet herkende productbeschrijving: lekker vrij van lactose": 1,
         "niet herkende productbeschrijving: yoghurt aardbei framboos": 1,
-        "niet herkende productbeschrijving: yoghurt appel kaneel": 2,
-        "niet herkende productbeschrijving: yoghurt mango passievrucht": 1,
+        "niet herkende productbeschrijving: yoghurt appel kaneel": 1,
         "niet herkende productbeschrijving: yoghurt vanille": 3,
         "niet herkende productbeschrijving: yoghurt aardbei": 2,
-        "niet herkende productbeschrijving: yoghurt sinaasappel abrikoos": 1,
         "niet herkende productbeschrijving: yoghurt stracciatella smaak": 1,
-        "niet herkende productbeschrijving: yoghurt bosbes beker": 1,
         "niet herkende productbeschrijving: winter orange limited edition": 1,
         "niet herkende productbeschrijving: nutrition perzik passievrucht": 1,
         "niet herkende productbeschrijving: biogarde": 1,
@@ -264,27 +252,27 @@
         },
         {
           "store": "jumbo",
-          "name": "Campina Magere Milde Kwark met 'n Vleugje Banaan 500 g",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: n vleugje banaan"
-        },
-        {
-          "store": "jumbo",
-          "name": "Campina Magere Milde Kwark met 'n Vleugje Mango 500 g",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: n vleugje mango"
-        },
-        {
-          "store": "jumbo",
           "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille 500 g",
           "status": "partial",
           "reason": "niet herkende productbeschrijving: n vleugje vanille"
         },
         {
           "store": "jumbo",
-          "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille Voordeelpak 1 kg",
+          "name": "Campina Magere Milde Kwark Naturel Voordeelpak 1 kg",
           "status": "partial",
-          "reason": "niet herkende productbeschrijving: n vleugje vanille voordeelpak"
+          "reason": "niet herkende productbeschrijving: voordeelpak"
+        },
+        {
+          "store": "jumbo",
+          "name": "Jumbo High Protein Kwark Framboos 200 g",
+          "status": "partial",
+          "reason": "niet herkende productbeschrijving: framboos"
+        },
+        {
+          "store": "jumbo",
+          "name": "Jumbo High Protein Kwark Perzik Passievrucht 200 g",
+          "status": "partial",
+          "reason": "niet herkende productbeschrijving: perzik passievrucht"
         }
       ],
       "groups": {
@@ -304,7 +292,7 @@
           "label": "Kwark · mager · naturel · lactose niet gespecificeerd · per kg",
           "stores": {
             "lidl": 2,
-            "jumbo": 5,
+            "jumbo": 4,
             "ah": 3
           }
         },
@@ -331,12 +319,13 @@
     },
     "dreft": {
       "match": 7,
-      "partial": 16,
+      "partial": 15,
       "reject": 2,
       "reasons": {
         "productkenmerken en verpakking passen": 7,
-        "productsoort niet voldoende bevestigd": 10,
+        "productsoort niet voldoende bevestigd": 8,
         "andere doelgroep: human": 2,
+        "niet herkende productbeschrijving: miracle minute miracle 90x": 1,
         "niet herkende productbeschrijving: anti dofheidstechnologie": 1,
         "niet herkende productbeschrijving: bries": 1,
         "niet herkende productbeschrijving: miracle maxi": 1,
@@ -365,6 +354,12 @@
         },
         {
           "store": "jumbo",
+          "name": "Dreft Platinum Miracle All In One, 30 Minute Miracle Vaatwascapsules, 90X",
+          "status": "partial",
+          "reason": "niet herkende productbeschrijving: miracle minute miracle 90x"
+        },
+        {
+          "store": "jumbo",
           "name": "Dreft Platinum Miracle All-In-One, 31X",
           "status": "reject",
           "reason": "andere doelgroep: human"
@@ -384,12 +379,6 @@
         {
           "store": "jumbo",
           "name": "Dreft Platinum Plus Citroen Vaatwascapsules 19 Stuks",
-          "status": "partial",
-          "reason": "productsoort niet voldoende bevestigd"
-        },
-        {
-          "store": "jumbo",
-          "name": "Dreft Platinum Plus Citroen Vaatwascapsules 40 Stuks",
           "status": "partial",
           "reason": "productsoort niet voldoende bevestigd"
         }
@@ -565,23 +554,17 @@
       }
     },
     "gemengdgehakt": {
-      "match": 9,
+      "match": 7,
       "partial": 0,
-      "reject": 3,
+      "reject": 2,
       "reasons": {
-        "productkenmerken en verpakking passen": 9,
-        "andere productvorm: seasoned": 3
+        "productkenmerken en verpakking passen": 7,
+        "andere productvorm: seasoned": 2
       },
       "samples": [
         {
           "store": "jumbo",
           "name": "Jumbo Gemengd Gehakt Gekruid  2 x 500 g",
-          "status": "reject",
-          "reason": "andere productvorm: seasoned"
-        },
-        {
-          "store": "jumbo",
-          "name": "Jumbo Gemengd Gehakt Gekruid 500 g",
           "status": "reject",
           "reason": "andere productvorm: seasoned"
         },
@@ -597,7 +580,7 @@
           "label": "Gehakt · gemengd · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 2,
-            "jumbo": 3,
+            "jumbo": 1,
             "ah": 3
           }
         },
@@ -611,12 +594,12 @@
     },
     "kipfilet": {
       "match": 48,
-      "partial": 71,
-      "reject": 80,
+      "partial": 67,
+      "reject": 75,
       "reasons": {
         "productkenmerken en verpakking passen": 48,
-        "productnaam of uitsluitingen passen niet": 6,
-        "andere productvorm: cooked": 57,
+        "productnaam of uitsluitingen passen niet": 5,
+        "andere productvorm: cooked": 53,
         "niet herkende productbeschrijving: a la minute": 4,
         "andere productvorm: mixed": 9,
         "andere productvorm: seasoned": 1,
@@ -645,7 +628,7 @@
         "niet herkende productbeschrijving: satespiesje": 1,
         "andere productvorm: preserved": 1,
         "niet herkende productbeschrijving: roerbak sensatie pasta boursin": 1,
-        "niet herkende productbeschrijving: ca": 6,
+        "niet herkende productbeschrijving: ca": 5,
         "niet herkende productbeschrijving: gourmet mini": 1,
         "niet herkende productbeschrijving: voorgegaard": 1,
         "niet herkende productbeschrijving: scharrelkip": 2,
@@ -654,9 +637,6 @@
         "niet herkende productbeschrijving: meals spicy nuggets": 1,
         "niet herkende productbeschrijving: meals chunks base nasi goreng": 1,
         "niet herkende productbeschrijving: meals chunks oriental rijstmix": 1,
-        "niet herkende productbeschrijving: meals chunks penne spinazie mediterranea": 1,
-        "niet herkende productbeschrijving: meals chunks risotto spinaci": 1,
-        "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw": 1,
         "niet herkende productbeschrijving: meals mexican style rijst mexicana spieropbouw": 1,
         "niet herkende productbeschrijving: minder": 2,
         "andere doelgroep: baby": 1,
@@ -757,11 +737,11 @@
       }
     },
     "vis": {
-      "match": 48,
-      "partial": 22,
-      "reject": 29,
+      "match": 47,
+      "partial": 21,
+      "reject": 28,
       "reasons": {
-        "productkenmerken en verpakking passen": 48,
+        "productkenmerken en verpakking passen": 47,
         "niet herkende productbeschrijving: blue planet": 1,
         "niet herkende productbeschrijving: deense": 1,
         "niet herkende productbeschrijving: deense ger": 1,
@@ -777,10 +757,9 @@
         "niet herkende productbeschrijving: nori wasa": 1,
         "andere productvorm: smoked": 10,
         "andere doelgroep: pet": 8,
-        "niet herkende productbeschrijving: ca": 1,
         "niet herkende productbeschrijving: warmgerookt": 1,
         "andere productvorm: prepared": 2,
-        "andere productvorm: mixed": 2,
+        "andere productvorm: mixed": 1,
         "plantaardige variant in vlees/visvergelijking": 1,
         "niet herkende productbeschrijving: op": 3,
         "niet herkende productbeschrijving: warmgerookte": 2,
@@ -878,7 +857,7 @@
           "label": "Zalm · naturel; bewaarmethode niet vermeld · per kg",
           "stores": {
             "lidl": 10,
-            "jumbo": 5,
+            "jumbo": 4,
             "ah": 2
           }
         },
@@ -904,8 +883,8 @@
     },
     "pompoen": {
       "match": 10,
-      "partial": 34,
-      "reject": 45,
+      "partial": 33,
+      "reject": 43,
       "reasons": {
         "productkenmerken en verpakking passen": 10,
         "andere productvorm: prepared": 10,
@@ -924,16 +903,14 @@
         "andere productvorm: mixed": 3,
         "niet herkende productbeschrijving: sierkussen": 1,
         "niet herkende productbeschrijving: mini spark": 1,
-        "andere doelgroep: baby": 23,
+        "andere doelgroep: baby": 21,
         "niet herkende productbeschrijving: boeren knapperig en": 1,
         "niet herkende productbeschrijving: grijze": 1,
         "niet herkende productbeschrijving: herfstmix spruit ui": 1,
         "niet herkende productbeschrijving: mix zoete aardappel": 1,
-        "niet herkende productbeschrijving: oranje": 1,
+        "niet herkende productbeschrijving: oranje": 2,
         "productnaam of uitsluitingen passen niet": 8,
         "niet herkende productbeschrijving: traybake knolselderij mix": 1,
-        "niet herkende productbeschrijving: pasta mezzelune kaas": 1,
-        "niet herkende productbeschrijving: crispy broodjes": 1,
         "niet herkende productbeschrijving: abdij broodmix": 1,
         "niet herkende productbeschrijving: maaltijdhapje groentestoof": 1,
         "niet herkende productbeschrijving: maaltijdhapje rijst kip": 1,
@@ -1160,7 +1137,7 @@
     },
     "popcorn": {
       "match": 6,
-      "partial": 53,
+      "partial": 55,
       "reject": 2,
       "reasons": {
         "niet herkende productbeschrijving: almdudler": 1,
@@ -1176,7 +1153,7 @@
         "niet herkende productbeschrijving: emmer": 2,
         "niet herkende productbeschrijving: magnetr sk16": 1,
         "niet herkende productbeschrijving: zeezout": 1,
-        "niet herkende productbeschrijving: zoet": 5,
+        "niet herkende productbeschrijving: zoet": 6,
         "niet herkende productbeschrijving: zoet bak": 1,
         "niet herkende productbeschrijving: zoet zout xx": 1,
         "niet herkende productbeschrijving: zout bak": 1,
@@ -1190,7 +1167,7 @@
         "niet herkende productbeschrijving: sweet": 1,
         "niet herkende productbeschrijving: sweet chili": 1,
         "niet herkende productbeschrijving: dunne maiswafels zoute smaak": 1,
-        "niet herkende productbeschrijving: zout": 4,
+        "niet herkende productbeschrijving: zout": 5,
         "niet herkende productbeschrijving: chili lime": 1,
         "niet herkende productbeschrijving: karamel zeezout": 1,
         "niet herkende productbeschrijving: rotsjes crispy": 1,
@@ -1296,15 +1273,14 @@
     },
     "volle_melk": {
       "match": 7,
-      "partial": 11,
-      "reject": 7,
+      "partial": 10,
+      "reject": 6,
       "reasons": {
         "productkenmerken en verpakking passen": 7,
         "exacte inhoud ontbreekt": 3,
-        "verpakkingsgrootte verschilt": 5,
+        "verpakkingsgrootte verschilt": 4,
         "niet herkende productbeschrijving: 12x1": 1,
         "niet herkende productbeschrijving: voordeelpak": 1,
-        "winkelpagina noemt een andere verpakking; hercontrole nodig": 1,
         "productnaam of uitsluitingen passen niet": 2,
         "niet herkende productbeschrijving: pack": 1,
         "niet herkende productbeschrijving: campina": 3,
@@ -1355,9 +1331,9 @@
         },
         {
           "store": "jumbo",
-          "name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
-          "status": "partial",
-          "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig"
+          "name": "Jumbo Houdbare Volle Melk 6 x 200 ml",
+          "status": "reject",
+          "reason": "verpakkingsgrootte verschilt"
         }
       ],
       "groups": {
@@ -1594,14 +1570,14 @@
     "sereh": {
       "match": 4,
       "partial": 12,
-      "reject": 10,
+      "reject": 11,
       "reasons": {
         "productkenmerken en verpakking passen": 4,
         "niet herkende productbeschrijving: morning sunshine mate infusion": 1,
         "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion": 1,
+        "productnaam of uitsluitingen passen niet": 9,
         "niet herkende productbeschrijving: smoothiemix green reviver boerenkool banaan mango": 1,
         "niet herkende productbeschrijving: brandnetel kaneel": 1,
-        "productnaam of uitsluitingen passen niet": 8,
         "andere productvorm: prepared": 2,
         "niet herkende productbeschrijving: brandnetel zakjes": 1,
         "niet herkende productbeschrijving: gember zakjes": 1,
@@ -1623,6 +1599,12 @@
           "name": "Clipper Zen Again Organic Lemongrass, Eucaluptus & Ginkgo Infusion 20 Stuks 35 g",
           "status": "partial",
           "reason": "niet herkende productbeschrijving: zen again eucaluptus ginkgo infusion"
+        },
+        {
+          "store": "jumbo",
+          "name": "Jumbo Biologisch Citroengras Gember Thee 30 g",
+          "status": "reject",
+          "reason": "productnaam of uitsluitingen passen niet"
         },
         {
           "store": "jumbo",
@@ -1653,12 +1635,6 @@
           "name": "YumYum Thai Spicy Soup with Shrimp & Lemongrass (Tom Yum) 100 g",
           "status": "reject",
           "reason": "andere productvorm: prepared"
-        },
-        {
-          "store": "jumbo",
-          "name": "Zonnatura Bio 100% Brandnetel Citroengras 20 Zakjes 32 g",
-          "status": "partial",
-          "reason": "niet herkende productbeschrijving: brandnetel zakjes"
         }
       ],
       "groups": {
@@ -1922,28 +1898,6 @@
       "fingerprint": "f30eb83cd8a6f7624f0d802f"
     },
     {
-      "profile": "gemengdgehakt",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gemengd-gehakt-300-g-173435BAK",
-      "name": "Jumbo Gemengd Gehakt 300 g",
-      "pack": "300 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-300-g-173435BAK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "cab554a4da4852063e59aae6"
-    },
-    {
-      "profile": "gemengdgehakt",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-gemengd-gehakt-500-g-87858BAK",
-      "name": "Jumbo Gemengd Gehakt 500 g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-500-g-87858BAK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "33cd8fc719b2ec942fdd0203"
-    },
-    {
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
@@ -2024,17 +1978,6 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-kipfilet-ca-600g-515106KGR",
-      "name": "Jumbo Kipfilet ca. 600g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-kipfilet-ca-600g-515106KGR",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "ec403d5adfcbbbd56f908e47"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-kipfiletblokjes-600-g-515014BAK",
       "name": "Jumbo Kipfiletblokjes 600 g",
       "pack": "600 g",
@@ -2090,6 +2033,17 @@
       "profile": "pompoen",
       "priority": 0,
       "store": "jumbo",
+      "product_id": "jumbo-oranje-pompoen-biologisch-208855STK",
+      "name": "Jumbo Oranje Pompoen Biologisch",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-oranje-pompoen-biologisch-208855STK",
+      "reason": "niet herkende productbeschrijving: oranje",
+      "fingerprint": "f1c7a52b00e7150047369b81"
+    },
+    {
+      "profile": "pompoen",
+      "priority": 0,
+      "store": "jumbo",
       "product_id": "jumbo-oranje-pompoen-biologisch-68850STK",
       "name": "Jumbo Oranje Pompoen Biologisch",
       "pack": "",
@@ -2118,17 +2072,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-s-traybake-sperziebonen-spruitjes-mix-450-g-673172ZK",
       "reason": "niet herkende productbeschrijving: traybake spruitjes mix",
       "fingerprint": "5172e609edbc0a74fd1adffb"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-s-verse-pasta-mezzelune-pompoen-kaas-250-g-208675BAK",
-      "name": "Jumbo's Verse Pasta Mezzelune Pompoen Kaas 250 g",
-      "pack": "250 g",
-      "url": "https://www.jumbo.com/producten/jumbo-s-verse-pasta-mezzelune-pompoen-kaas-250-g-208675BAK",
-      "reason": "niet herkende productbeschrijving: pasta mezzelune kaas",
-      "fingerprint": "a717a2f4c456496841d3df61"
     },
     {
       "profile": "kipfilet",
@@ -2266,28 +2209,6 @@
       "profile": "vis",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "jumbo-zalmfilet-met-huid-naturel-500-g-769823TRA",
-      "name": "Jumbo Zalmfilet met Huid Naturel 500 g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-500-g-769823TRA",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "307d3072d9c66bf47a79e74b"
-    },
-    {
-      "profile": "vis",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "jumbo-zalmfilet-met-huid-naturel-ca-125-g-715171STK",
-      "name": "Jumbo Zalmfilet met Huid Naturel ca. 125 g",
-      "pack": "125 g",
-      "url": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-ca-125-g-715171STK",
-      "reason": "niet herkende productbeschrijving: ca",
-      "fingerprint": "5dfd56b288116d61a5292ba4"
-    },
-    {
-      "profile": "vis",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "jumbo-zalmfilet-warmgerookt-125-g-681123STK",
       "name": "Jumbo Zalmfilet Warmgerookt 125 g",
       "pack": "125 g",
@@ -2409,39 +2330,6 @@
       "profile": "kipfilet",
       "priority": 0,
       "store": "jumbo",
-      "product_id": "muscle-meat-high-protein-meals-kipfilet-chunks-penne-spinazie-mediterranea-500-g-686522TRA",
-      "name": "Muscle Meat High Protein Meals Kipfilet Chunks Penne - Spinazie Mediterranea 500 g",
-      "pack": "500 Gram",
-      "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-penne-spinazie-mediterranea-500-g-686522TRA",
-      "reason": "niet herkende productbeschrijving: meals chunks penne spinazie mediterranea",
-      "fingerprint": "8307f77b71e1c1c14bed3a88"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "muscle-meat-high-protein-meals-kipfilet-chunks-risotto-spinaci-450-g-587176SC",
-      "name": "Muscle Meat High Protein Meals Kipfilet Chunks Risotto Spinaci 450 g",
-      "pack": "450 Gram",
-      "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-risotto-spinaci-450-g-587176SC",
-      "reason": "niet herkende productbeschrijving: meals chunks risotto spinaci",
-      "fingerprint": "7d35c43b2ea8f9dc96d8230f"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "muscle-meat-high-protein-meals-kipfilet-chunks-tortelloni-ricotta-spinazie-spieropbouw-450-g-587177SC",
-      "name": "Muscle Meat High Protein Meals Kipfilet Chunks Tortelloni Ricotta-Spinazie Spieropbouw 450 g",
-      "pack": "450 Gram",
-      "url": "https://www.jumbo.com/producten/muscle-meat-high-protein-meals-kipfilet-chunks-tortelloni-ricotta-spinazie-spieropbouw-450-g-587177SC",
-      "reason": "niet herkende productbeschrijving: meals chunks tortelloni ricotta spinazie spieropbouw",
-      "fingerprint": "68470be4795a443ce2aa97b9"
-    },
-    {
-      "profile": "kipfilet",
-      "priority": 0,
-      "store": "jumbo",
       "product_id": "muscle-meat-high-protein-meals-kipfilet-mexican-style-witte-rijst-mais-mexicana-spieropbouw-450-g-587175SC",
       "name": "Muscle Meat High Protein Meals Kipfilet Mexican Style Witte Rijst - Mais Mexicana Spieropbouw 450 g",
       "pack": "450 Gram",
@@ -2459,17 +2347,6 @@
       "url": "https://www.jumbo.com/producten/queens-alaska-koolvis-filets-375-g-419422ZK",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d7c19e31f892209053227e38"
-    },
-    {
-      "profile": "pompoen",
-      "priority": 0,
-      "store": "jumbo",
-      "product_id": "slooow-bio-organic-crispy-pompoen-broodjes-320-g-406137ZK",
-      "name": "SlooOW Bio Organic Crispy Pompoen Broodjes 320 g",
-      "pack": "320 g",
-      "url": "https://www.jumbo.com/producten/slooow-bio-organic-crispy-pompoen-broodjes-320-g-406137ZK",
-      "reason": "niet herkende productbeschrijving: crispy broodjes",
-      "fingerprint": "44420ef787eeb52628cf61fe"
     },
     {
       "profile": "pompoen",
@@ -3685,17 +3562,6 @@
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "calve-pindakaas-100-naturel-600-g-444833POT",
-      "name": "Calvé Pindakaas 100% Naturel 600 g",
-      "pack": "600 g",
-      "url": "https://www.jumbo.com/producten/calve-pindakaas-100-naturel-600-g-444833POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "766ef8ebf974ba5035fe3eae"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "calve-pindakaas-bewust-350-g-785421POT",
       "name": "Calvé Pindakaas Bewust 350 g",
       "pack": "",
@@ -3729,17 +3595,6 @@
       "profile": "pindakaas",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "calve-pindakaas-regular-1-kg-216639STK",
-      "name": "Calvé Pindakaas Regular 1 kg",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/calve-pindakaas-regular-1-kg-216639STK",
-      "reason": "niet herkende productbeschrijving: regular",
-      "fingerprint": "c9f0cee354f29f216f3de344"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "calve-pindakaas-regular-350-g-216438STK",
       "name": "Calvé Pindakaas Regular 350 g",
       "pack": "350 g",
@@ -3768,17 +3623,6 @@
       "url": "https://www.jumbo.com/producten/calve-pindakaas-regular-650-g-216435STK",
       "reason": "niet herkende productbeschrijving: regular",
       "fingerprint": "3947884e14d943a10b5a5b19"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "calve-pindakaas-stukjes-pinda-1000-g-216436STK",
-      "name": "Calve Pindakaas Stukjes Pinda 1000 g",
-      "pack": "1000 g",
-      "url": "https://www.jumbo.com/producten/calve-pindakaas-stukjes-pinda-1000-g-216436STK",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "da66101cf511c2a0d961afcd"
     },
     {
       "profile": "pindakaas",
@@ -3850,45 +3694,12 @@
       "profile": "kwark",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "campina-magere-milde-kwark-met-n-vleugje-banaan-500-g-499036CUP",
-      "name": "Campina Magere Milde Kwark met 'n Vleugje Banaan 500 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-banaan-500-g-499036CUP",
-      "reason": "niet herkende productbeschrijving: n vleugje banaan",
-      "fingerprint": "05699899ae0db6ed77cecad8"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "campina-magere-milde-kwark-met-n-vleugje-mango-500-g-206342STK",
-      "name": "Campina Magere Milde Kwark met 'n Vleugje Mango 500 g",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-mango-500-g-206342STK",
-      "reason": "niet herkende productbeschrijving: n vleugje mango",
-      "fingerprint": "eec207c7d66e0f67830ddd97"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "campina-magere-milde-kwark-met-n-vleugje-vanille-500-g-168787CUP",
       "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille 500 g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-vanille-500-g-168787CUP",
       "reason": "niet herkende productbeschrijving: n vleugje vanille",
       "fingerprint": "17ef431ebccc244967112c89"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "campina-magere-milde-kwark-met-n-vleugje-vanille-voordeelpak-1-kg-567727CUP",
-      "name": "Campina Magere Milde Kwark met 'n Vleugje Vanille Voordeelpak 1 kg",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/campina-magere-milde-kwark-met-n-vleugje-vanille-voordeelpak-1-kg-567727CUP",
-      "reason": "niet herkende productbeschrijving: n vleugje vanille voordeelpak",
-      "fingerprint": "5305490c66d98d2e5c22750e"
     },
     {
       "profile": "kwark",
@@ -3960,6 +3771,17 @@
       "profile": "dreft",
       "priority": 1,
       "store": "jumbo",
+      "product_id": "dreft-platinum-miracle-all-in-one-30-minute-miracle-vaatwascapsules-90x-789606ZK",
+      "name": "Dreft Platinum Miracle All In One, 30 Minute Miracle Vaatwascapsules, 90X",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/dreft-platinum-miracle-all-in-one-30-minute-miracle-vaatwascapsules-90x-789606ZK",
+      "reason": "niet herkende productbeschrijving: miracle minute miracle 90x",
+      "fingerprint": "da0321ee4de7c06daeeb3993"
+    },
+    {
+      "profile": "dreft",
+      "priority": 1,
+      "store": "jumbo",
       "product_id": "dreft-platinum-plus-all-in-one-vaatwastabletten-anti-dofheidstechnologie-19-x-676439ZK",
       "name": "Dreft Platinum Plus All In One Vaatwastabletten Anti-dofheidstechnologie 19 X",
       "pack": "",
@@ -3999,28 +3821,6 @@
       "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-30-x-738708ZK",
       "reason": "productsoort niet voldoende bevestigd",
       "fingerprint": "5e813674482ce0162e7b0934"
-    },
-    {
-      "profile": "dreft",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "dreft-platinum-plus-citroen-vaatwascapsules-40-stuks-738233ZK",
-      "name": "Dreft Platinum Plus Citroen Vaatwascapsules 40 Stuks",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-40-stuks-738233ZK",
-      "reason": "productsoort niet voldoende bevestigd",
-      "fingerprint": "be32ec0559ec6b9f84c737a7"
-    },
-    {
-      "profile": "dreft",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "dreft-platinum-plus-citroen-vaatwascapsules-59-x-739042ZK",
-      "name": "Dreft Platinum Plus, Citroen, Vaatwascapsules 59 X",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/dreft-platinum-plus-citroen-vaatwascapsules-59-x-739042ZK",
-      "reason": "productsoort niet voldoende bevestigd",
-      "fingerprint": "c607d734e25f7b559ab66cdc"
     },
     {
       "profile": "tofu",
@@ -4177,17 +3977,6 @@
       "fingerprint": "7288611b705f6413a16f1866"
     },
     {
-      "profile": "volle_melk",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "jumbo-biologische-volle-melk-houdbaar-1-l-167175TRL",
-      "name": "Jumbo Biologische Volle Melk Houdbaar 1 L",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/jumbo-biologische-volle-melk-houdbaar-1-l-167175TRL",
-      "reason": "winkelpagina noemt een andere verpakking; hercontrole nodig",
-      "fingerprint": "bf12bf7882e9b18f29508ea8"
-    },
-    {
       "profile": "popcorn",
       "priority": 1,
       "store": "jumbo",
@@ -4208,17 +3997,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-1000-g-394270CUP",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "515bb7745445edf2812e521d"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "jumbo-franse-kwark-mager-500-g-394225CUP",
-      "name": "Jumbo Franse Kwark Mager 500 g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/jumbo-franse-kwark-mager-500-g-394225CUP",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "127d7eee7346662bdbd98bb2"
     },
     {
       "profile": "kwark",
@@ -4312,17 +4090,6 @@
       "profile": "kwark",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "jumbo-magere-kwark-met-yoghurt-mango-passievrucht-0-vet-500-g-715945POT",
-      "name": "Jumbo Magere Kwark met Yoghurt Mango Passievrucht 0% Vet 500 g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/jumbo-magere-kwark-met-yoghurt-mango-passievrucht-0-vet-500-g-715945POT",
-      "reason": "niet herkende productbeschrijving: yoghurt mango passievrucht",
-      "fingerprint": "41a230f1379ca7ce232110ae"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "jumbo-magere-kwark-met-yoghurt-vanille-0-vet-500-g-715947POT",
       "name": "Jumbo Magere Kwark met Yoghurt Vanille 0% Vet 500 g",
       "pack": "500 g",
@@ -4340,6 +4107,17 @@
       "url": "https://www.jumbo.com/producten/jumbo-magnetron-popcorn-zoet-3-x-90-g-569935DS",
       "reason": "niet herkende productbeschrijving: zoet",
       "fingerprint": "a8337f8446af7345edebfff5"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
+      "product_id": "jumbo-magnetron-popcorn-zout-3-stuks-790472ZK",
+      "name": "Jumbo Magnetron Popcorn Zout 3 Stuks",
+      "pack": "3 x 100 g",
+      "url": "https://www.jumbo.com/producten/jumbo-magnetron-popcorn-zout-3-stuks-790472ZK",
+      "reason": "niet herkende productbeschrijving: zout",
+      "fingerprint": "8310c44fb8dee21d1b7330dd"
     },
     {
       "profile": "popcorn",
@@ -4477,6 +4255,17 @@
       "profile": "popcorn",
       "priority": 1,
       "store": "jumbo",
+      "product_id": "jumbo-popcorn-zoet-175-g-797716ZK",
+      "name": "Jumbo Popcorn Zoet 175 g",
+      "pack": "",
+      "url": "https://www.jumbo.com/producten/jumbo-popcorn-zoet-175-g-797716ZK",
+      "reason": "niet herkende productbeschrijving: zoet",
+      "fingerprint": "c7cedcbe3f234f270922a28b"
+    },
+    {
+      "profile": "popcorn",
+      "priority": 1,
+      "store": "jumbo",
       "product_id": "jumbo-popcorn-zout-100-g-570372ZK",
       "name": "Jumbo Popcorn Zout 100 g",
       "pack": "100 g",
@@ -4527,17 +4316,6 @@
       "url": "https://www.jumbo.com/producten/jumbo-s-100-pindakaas-naturel-300-g-732032FLS",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "e57a78bbbbc606499c3c2947"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "jumbo-s-100-pindakaas-naturel-350g-668551POT",
-      "name": "Jumbo's 100% Pindakaas Naturel 350g",
-      "pack": "350 g",
-      "url": "https://www.jumbo.com/producten/jumbo-s-100-pindakaas-naturel-350g-668551POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "a9b78e1127973d850349e4bd"
     },
     {
       "profile": "pindakaas",
@@ -4763,45 +4541,12 @@
       "profile": "kwark",
       "priority": 1,
       "store": "jumbo",
-      "product_id": "optimel-magere-kwark-met-magere-yoghurt-appel-kaneel-0-vet-500g-512896CUP",
-      "name": "Optimel Magere Kwark met Magere Yoghurt Appel Kaneel 0% Vet 500g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-appel-kaneel-0-vet-500g-512896CUP",
-      "reason": "niet herkende productbeschrijving: yoghurt appel kaneel",
-      "fingerprint": "25f6b5aa0af4cbfdd3497133"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "optimel-magere-kwark-met-magere-yoghurt-sinaasappel-abrikoos-0-vet-500g-498984CUP",
-      "name": "Optimel Magere Kwark met Magere Yoghurt Sinaasappel Abrikoos 0% Vet 500g",
-      "pack": "500 g",
-      "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-sinaasappel-abrikoos-0-vet-500g-498984CUP",
-      "reason": "niet herkende productbeschrijving: yoghurt sinaasappel abrikoos",
-      "fingerprint": "379f647f4c9a49af0b9f15fb"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
       "product_id": "optimel-magere-kwark-met-magere-yoghurt-stracciatella-smaak-0-vet-500g-421722CUP",
       "name": "Optimel Magere Kwark met Magere Yoghurt Stracciatella Smaak 0% Vet 500g",
       "pack": "",
       "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-magere-yoghurt-stracciatella-smaak-0-vet-500g-421722CUP",
       "reason": "niet herkende productbeschrijving: yoghurt stracciatella smaak",
       "fingerprint": "3c2fbeccf90434f09672e9ef"
-    },
-    {
-      "profile": "kwark",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "optimel-magere-kwark-met-yoghurt-bosbes-0-vet-500-g-beker-457844CUP",
-      "name": "Optimel Magere Kwark met yoghurt Bosbes 0% Vet 500 g beker",
-      "pack": "",
-      "url": "https://www.jumbo.com/producten/optimel-magere-kwark-met-yoghurt-bosbes-0-vet-500-g-beker-457844CUP",
-      "reason": "niet herkende productbeschrijving: yoghurt bosbes beker",
-      "fingerprint": "69e6e9d5d5c5f75a6edb8384"
     },
     {
       "profile": "kwark",
@@ -4989,28 +4734,6 @@
       "url": "https://www.jumbo.com/producten/whole-earth-crunchy-pindakaas-600-g-737614POT",
       "reason": "productkenmerken en verpakking passen",
       "fingerprint": "d12ed609ba1658a50879ef6d"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "whole-earth-smooth-pindakaas-340-g-730860POT",
-      "name": "Whole Earth Smooth Pindakaas 340 g",
-      "pack": "340 g",
-      "url": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-340-g-730860POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "c06b31a8a7f4f93bc220e770"
-    },
-    {
-      "profile": "pindakaas",
-      "priority": 1,
-      "store": "jumbo",
-      "product_id": "whole-earth-smooth-pindakaas-600-g-730862POT",
-      "name": "Whole Earth Smooth Pindakaas 600 g",
-      "pack": "600 g",
-      "url": "https://www.jumbo.com/producten/whole-earth-smooth-pindakaas-600-g-730862POT",
-      "reason": "productkenmerken en verpakking passen",
-      "fingerprint": "a4cd79fcebc5f3abf9a99345"
     },
     {
       "profile": "kwark",
