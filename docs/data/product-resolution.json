@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T02:23:14.093Z",
+  "generated_at": "2026-11-25T03:14:15.801Z",
   "checked_date": "2026-11-25",
   "summary": {
     "profiles": 20,
     "checked": 60,
-    "price_observed": 6,
-    "stale_or_unavailable": 37,
+    "price_observed": 7,
+    "stale_or_unavailable": 36,
     "needs_variant_evidence": 7,
     "needs_source": 10
   },
@@ -276,12 +276,12 @@
         "checked_date": "2026-11-25"
       },
       "vis": {
-        "state": "stale_or_unavailable",
+        "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
-        "product_name": "Jumbo Koolvis Filet 400 g",
-        "price": 2.65,
-        "price_status": "Oude cataloguswaarneming 2026-11-20",
+        "source": "https://www.jumbo.com/producten/jumbo-zalmfilet-met-huid-naturel-500-g-769823TRA",
+        "product_name": "Jumbo Zalmfilet met Huid Naturel 500 g",
+        "price": 7.99,
+        "price_status": "externe actiemelding · t/m 2026-12-01",
         "checked_date": "2026-11-25"
       },
       "pompoen": {
@@ -437,7 +437,7 @@
         "product_name": "Vivera Zachte tofu",
         "price": 1.33,
         "price_status": "externe actiemelding · t/m 2026-11-29",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-25"
       },
       "gemengdgehakt": {
         "state": "stale_or_unavailable",
@@ -455,7 +455,7 @@
         "product_name": "AH Scharrel kipfilet 2 stuks",
         "price": 3.49,
         "price_status": "externe actiemelding · t/m 2026-11-29",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-25"
       },
       "vis": {
         "state": "price_observed",
@@ -464,7 +464,7 @@
         "product_name": "AH Zalmfilet",
         "price": 4.4,
         "price_status": "externe actiemelding · t/m 2026-11-29",
-        "checked_date": "2026-11-23"
+        "checked_date": "2026-11-25"
       },
       "pompoen": {
         "state": "stale_or_unavailable",
