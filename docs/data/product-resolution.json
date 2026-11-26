@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T17:08:33.923Z",
-  "checked_date": "2026-11-25",
+  "generated_at": "2026-11-26T01:47:00.931Z",
+  "checked_date": "2026-11-26",
   "summary": {
     "profiles": 20,
     "checked": 60,
@@ -215,11 +215,11 @@
       "pindakaas": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
-        "product_name": "Jumbo Pindakaas Naturel 600 g",
-        "price": 1.34,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "source": "https://www.jumbo.com/producten/jumbo-s-pindakaas-met-stukjes-600-g-783025POT",
+        "product_name": "Jumbo's Pindakaas met Stukjes 600 g",
+        "price": 2.09,
+        "price_status": "winkelprijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "kwark": {
         "state": "price_observed",
@@ -242,20 +242,20 @@
       "walnoten": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
-        "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
-        "price": 6.19,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-200-g-561767TAS",
+        "product_name": "Jumbo Ongebrande Walnoten 200 g",
+        "price": 2.49,
+        "price_status": "winkelprijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
-        "product_name": "Vivera Zachte Tofu 550 g",
-        "price": 1.99,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
+        "product_name": "Jumbo Tofu Naturel 375g",
+        "price": 1.4,
+        "price_status": "winkelprijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -263,8 +263,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
         "price": 4.99,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,8 +272,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       },
       "vis": {
         "state": "price_observed",
@@ -281,8 +281,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.65,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       },
       "pompoen": {
         "state": "price_observed",
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       },
       "bospeen": {
         "state": "needs_source",
@@ -317,8 +317,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "price_status": "externe prijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "volle_melk": {
         "state": "price_observed",
@@ -334,18 +334,18 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
-        "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "price": 9.39,
+        "price_status": "externe prijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
         "reason": null,
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-00-bier-fles-6-x-300ml-603195TRA",
         "product_name": "Texels Skuumkoppe 0.0 Bier Fles 6 x 300ml",
-        "price": 7.04,
-        "price_status": "winkelprijswaarneming · 2026-11-24",
-        "checked_date": "2026-11-24"
+        "price": 9.39,
+        "price_status": "externe prijswaarneming · 2026-11-25",
+        "checked_date": "2026-11-25"
       },
       "soto_boemboe": {
         "state": "needs_variant_evidence",
@@ -370,9 +370,9 @@
         "reason": null,
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
-        "price": 3.38,
-        "price_status": "winkelprijswaarneming · 2026-11-25",
-        "checked_date": "2026-11-25"
+        "price": 3.55,
+        "price_status": "winkelprijswaarneming · 2026-11-26",
+        "checked_date": "2026-11-26"
       }
     },
     "ah": {
