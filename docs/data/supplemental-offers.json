@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T16:30:04.846167+01:00",
+  "generated_at": "2026-11-28T00:40:37.768537+01:00",
   "source": "Lidl supplemental third-party product page checks",
   "status": "ok",
   "errors": {},
   "stores": {
     "lidl": {
-      "checked_at": "2026-11-27T16:29:58.559373+01:00",
+      "checked_at": "2026-11-28T00:40:31.785128+01:00",
       "status": "ok",
       "offers": [
         {
@@ -220,7 +220,7 @@
         }
       ],
       "official_check": {
-        "checked_at": "2026-11-27T16:30:00.263700+01:00",
+        "checked_at": "2026-11-28T00:40:33.189900+01:00",
         "status": "partial",
         "pages": {},
         "errors": {
@@ -235,7 +235,7 @@
       },
       "official_prices": [],
       "folderz_check": {
-        "checked_at": "2026-11-27T16:30:04.846167+01:00",
+        "checked_at": "2026-11-28T00:40:37.768537+01:00",
         "status": "partial",
         "details_checked": 0,
         "accepted": 0,
