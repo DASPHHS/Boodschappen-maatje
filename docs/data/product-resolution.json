@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T15:35:37.454Z",
+  "generated_at": "2026-11-27T16:35:09.441Z",
   "checked_date": "2026-11-27",
   "summary": {
     "profiles": 20,
@@ -218,8 +218,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-pindakaas-naturel-600-g-618591POT",
         "product_name": "Jumbo Pindakaas Naturel 600 g",
         "price": 1.34,
-        "price_status": "winkelprijswaarneming · 2026-11-26",
-        "checked_date": "2026-11-26"
+        "price_status": "winkelprijswaarneming · 2026-11-27",
+        "checked_date": "2026-11-27"
       },
       "kwark": {
         "state": "price_observed",
@@ -245,8 +245,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-ongebrande-walnoten-voordeelverpakking-500-g-561766TAS",
         "product_name": "Jumbo Ongebrande Walnoten Voordeelverpakking 500 g",
         "price": 6.19,
-        "price_status": "winkelprijswaarneming · 2026-11-26",
-        "checked_date": "2026-11-26"
+        "price_status": "winkelprijswaarneming · 2026-11-27",
+        "checked_date": "2026-11-27"
       },
       "tofu": {
         "state": "price_observed",
@@ -317,8 +317,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-popcorn-mais-500-g-711085ZK",
         "product_name": "Jumbo Popcorn Maïs 500 g",
         "price": 2.29,
-        "price_status": "winkelprijswaarneming · 2026-11-26",
-        "checked_date": "2026-11-26"
+        "price_status": "winkelprijswaarneming · 2026-11-27",
+        "checked_date": "2026-11-27"
       },
       "volle_melk": {
         "state": "price_observed",
