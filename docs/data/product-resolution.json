@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T23:45:54.360Z",
+  "generated_at": "2026-11-28T01:27:17.631Z",
   "checked_date": "2026-11-28",
   "summary": {
     "profiles": 20,
@@ -263,8 +263,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-gemengd-gehakt-2-x-500g-649263TRA",
         "product_name": "Jumbo Gemengd Gehakt 2 x 500g",
         "price": 4.99,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "kipfilet": {
         "state": "price_observed",
@@ -272,8 +272,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-kipfilet-800-g-753633KGR",
         "product_name": "Jumbo Kipfilet 800 g",
         "price": 9.19,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "vis": {
         "state": "price_observed",
@@ -281,8 +281,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-koolvis-filet-400-g-713748DS",
         "product_name": "Jumbo Koolvis Filet 400 g",
         "price": 2.65,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "pompoen": {
         "state": "price_observed",
@@ -290,8 +290,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-stukjes-pompoen-450-g-457789ZK",
         "product_name": "Jumbo Stukjes Pompoen 450 g",
         "price": 1.89,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "sperziebonen": {
         "state": "price_observed",
@@ -299,8 +299,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-sperziebonen-gebroken-750-g-785878STK",
         "product_name": "Jumbo Sperziebonen Gebroken 750 g",
         "price": 1.44,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "bospeen": {
         "state": "needs_source",
@@ -371,8 +371,8 @@
         "source": "https://www.jumbo.com/producten/jumbo-citroengras-100-g-458824STK",
         "product_name": "Jumbo Citroengras 100 g",
         "price": 3.55,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       }
     },
     "ah": {
