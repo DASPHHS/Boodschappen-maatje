@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-28T14:34:25.825Z",
+  "generated_at": "2026-11-28T15:27:57.704Z",
   "checked_date": "2026-11-28",
   "summary": {
     "profiles": 20,
@@ -251,11 +251,11 @@
       "tofu": {
         "state": "price_observed",
         "reason": null,
-        "source": "https://www.jumbo.com/producten/jumbo-tofu-naturel-375g-680366STK",
-        "product_name": "Jumbo Tofu Naturel 375g",
-        "price": 1.4,
-        "price_status": "winkelprijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "source": "https://www.jumbo.com/producten/vivera-zachte-tofu-550-g-763479TRA",
+        "product_name": "Vivera Zachte Tofu 550 g",
+        "price": 1.99,
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "gemengdgehakt": {
         "state": "price_observed",
@@ -335,8 +335,8 @@
         "source": "https://www.jumbo.com/producten/texels-skuumkoppe-bier-fles-6-x-300-ml-546681DS",
         "product_name": "Texels Skuumkoppe Bier Fles 6 x 300 ml",
         "price": 9.39,
-        "price_status": "externe prijswaarneming · 2026-11-27",
-        "checked_date": "2026-11-27"
+        "price_status": "winkelprijswaarneming · 2026-11-28",
+        "checked_date": "2026-11-28"
       },
       "skuumkoppe_00": {
         "state": "price_observed",
